@@ -7,6 +7,8 @@
 <title>찜 목록</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="jjim_cart.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="main.css">
 <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){

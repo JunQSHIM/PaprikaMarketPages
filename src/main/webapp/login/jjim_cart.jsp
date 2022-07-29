@@ -120,14 +120,9 @@ function mypage(){
 		<div class="jjimBody">
 		<div id="frame">
 		<form>
-			<div id="frame2">
-				<span style="font-size: 16pt; font-weight: bold;">찜목록</span>
-				<span class="home">홈 > 찜목록</span>
-			</div>
+			
 		</form>
-	
-	<br/>
-	
+		
 	<div>
 		<table class="list1">
 			<tr>
@@ -140,6 +135,14 @@ function mypage(){
 		</table>
 	</div>
 	<br>
+	<div id="frame2">
+				 <span style="font-size: 16pt; font-weight: bold;">찜 1</span>
+			</div>
+			<div>
+			
+			</div>
+	<br>
+	
 	<div class="btns">
 		<table class="list1">
 		<thead>

@@ -79,3 +79,12 @@ table.list1 td{
 #array a:hover{
 	color: red;
 }
+
+table .jjim_page{
+	border-left-style: solid;
+	border-left-color: black;
+	border-right-style: solid;
+	border-right-color: black;
+	border-top-style: solid;
+	border-top-color: black;
+}

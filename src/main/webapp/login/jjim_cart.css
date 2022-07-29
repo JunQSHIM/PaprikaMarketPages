@@ -1,5 +1,5 @@
-body.jjimBody { /*찜목록 바디*/
-	background-color: #f5f5f0;
+.jjimBody { /*찜목록 바디*/
+	background-color:white;
 	font-size: 13pt;
 	min-width: 100%;
 	padding: 50px 0;

@@ -24,12 +24,7 @@ function mypage(){
 <title>mypage</title>
 </head>
 <body>
-<div class="header">
-<c:choose>
-<c:when test="${param.id ne null }"><button type="button" onclick="logout()">로그아웃</button><button type="button" onclick="mypage()">마이페이지</button></c:when>
-<c:otherwise><button type="button" onclick="login()">로그인</button><button type="button" onclick="register()">회원가입</button></c:otherwise>
-</c:choose>
-</div>
+<%@include file="header.jsp"%>
 <hr style="border: 1px solid orange;">
 <div class="card">
 <div>

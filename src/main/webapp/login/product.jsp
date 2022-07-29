@@ -6,7 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>category_product</title>
-<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="ctProduct.css">
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -25,25 +31,18 @@
 			$("#result1").hide();
 		});
 		
-	var ctButton = document.getElementsByClassName("result1");
-		$(ctButton).mouseenter(function(){
-			ctButton.style.color = "red";
-		});
-		$(ctButton).mouseleave(function(){
-			ctButton.style.color = "black";
+		$("#top").click(function() {
+			//$('html, body').animate({scrollTop:0}, '1000');
+			$('html, body').scrollTop(0);
 		});
 	});
-	
-	var check = true;
-	$("#category").on("click",function(){
-		if(check){
-			$("#result1").show();
-			check=false;
-		}else{
-			$("#result1").hide();			
-			check=true;
-		}
-	});
+	$(document).ready(function(){
+		$('.slider').bxSlider({
+		        controls:false,
+		        auto: true, 
+		        mode:'horizontal',
+	    });
+    });
 	function login()  {
 		 window.location.href ='login.jsp';
 	}	
@@ -60,16 +59,15 @@
 </head>
 <body>
 <div class="container">
-<div class="header">
-<c:choose>
-<c:when test="${param.id ne null }"><button type="button" onclick="logout()">로그아웃</button><button type="button" onclick="mypage()">마이페이지</button></c:when>
-<c:otherwise><button type="button" onclick="login()">로그인</button><button type="button" onclick="register()">회원가입</button></c:otherwise>
-</c:choose>
-</div>
+<%@include file="header.jsp"%>
 <img src="images/pklogo.png" onclick="main()">
 <div id="search">
-		<input type="text" name="search" placeholder="상품명검색">
-	<div id="category_btn">
+<input onkeyup="mySend(this)" type="search" id="value" placeholder="상품명, 지역명, @상점명 입력"><button id="icon"><img src="./images/search.png" width="20px" height="20px"></button>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+		<a href="#"> <img src="./images/sell_list.png" class="search_list"> 판매하기</a>
+		<span>|</span>
+		<a href="#"> <img src="./images/mystore.png" class="search_list"> 내상점</a>
+		<span>|</span>
+		<a href="chatpage.jsp"> <img src="./images/chatting.png" class="search_list"> 파프리카톡 </a>	<div id="category_btn">
 		<button id="showCategory" ><img src="images/category_button.png"></button>
 	</div>
 	</div>
@@ -98,6 +96,11 @@
 			</div>
 			</div>
 			<div id="productPage">
+				<div class="slider">
+    			<div><img src="./images/slider1.jpg"></div>
+    			<div><img src="./images/slider2.jpg"></div>
+    			<div><img src="./images/slider3.jpg"></div>
+    			</div>
 				<div id="productList">
 			홈 > 
 			<select onchange="if(this.value) location.href=(this.value);">
@@ -121,24 +124,29 @@
 				<option value="product.jsp?product=삽니다">삽니다</option>
 			</select>
 			</div>
-			<%=p %>의 추천상품
+			<font color="red"><%=p %></font>의 추천상품
 			</div>
 		</div>
 		<div id="function">
 			<div id="wishlist">
-			찜한 상품
+			찜한 상품<br>
+			<a href="jjim_cart.jsp"> ♥ 2</a>
 			</div>
 			<div id="recent">
-			최근본상품
+			최근본상품<br>
+			........<br>
+			<span class="recent_product">최근 본 상품<br>이<br> 없습니다.</span>
 			</div>
 			<div id="add">
-			+상품올리기
+			앱 다운로드<br>
+			<img src="./images/jjim_icon/qr_code.png" width="70px" height="70px">
 			</div>
-			여백
+		<div id="top" style="cursor: pointer">TOP</div>
 		</div>
-	<div id="footer">
-		&lt;1 2 3 4 5&gt;
-	</div>
+		<div>
+		</div>
+	<div id="footer" style="float: bottom;">
+	<%@include file="footer.jsp" %>
 </div>
 </body>
 </html>

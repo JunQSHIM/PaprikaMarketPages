@@ -40,7 +40,7 @@
 	width:1200px;
 	float:center;
 	margin: 0 auto;
-	height:1000px;
+	height:1600px;
 	align-content: center;
 }
 body,html{
@@ -128,37 +128,115 @@ body,html{
 }
 #product{
 	width: 1020px;
-	height:900px;
+	height:1400px;
 	float: left;
 	position: relative; 
 	z-index: 2;
 }
 #productPage{
-	background-color: lightgrey;
 	width:920px;
-	height:880px;
+	height:100%;
 	margin-left:100px;
 }
 #function{
-	width: 125px;
-	height:800px;
-	background-color: yellow;
+	position: absolute;
+	position: fixed;
+	text-align: center;
+	top: 20%; right : 18%;
+	width: 75px;
+	margin-right:-40px;
+	margin-top:20px;
+	height: 600px;
+	background-color: none;
 	float: right;
 }
-#wishlist{
-	width: 125px;
-	height:30%;
-	background-color: lightblue;
+div #wishlist {
+	border: 1px solid #FF8200;
+	width: 100px;
+	height: 50px;
+	background-color: white;
+	margin: 5px;
+}
+
+#wishlist a {
+	text-decoration: none;
+	color: red;
+}
+
+#wishlist a:hover {
+	color: red;
 }
 #recent{
 	width: 125px;
 	height:30%;
 	background-color: white;
 }
-#add{
-	width: 125px;
-	height:30%;
-	background-color: skyblue;
+#recent {
+	margin: 5px;
+	border: 1px solid #FFAA28;
+	width: 100px;
+	height: 30%;
+	background-color: white;
+}
+
+#add {
+	margin: 5px;
+	border: 1px solid #FFAA28;
+	width: 100px;
+	height: 100px;
+	background-color: white;
+}
+
+div #top {
+	margin: 5px;
+	border: 1px solid #FFAA28;
+	width: 100px;
+	height: 35px;
+	background-color: white;
+	z-index: 999;
+}
+search {
+	
+	width: 1182px;
+	background-color: white;
+	text-align: center;
+	padding: 9px;
+	height: 50px;
+}
+
+#search a {
+	text-decoration: none;
+	color: black;
+}
+
+#search .search_list {
+	width: 25px;
+	height: 25px;
+}
+
+#search a:hover {
+	color: black;
+}
+
+#value {
+	outline:none;
+	padding: 6px;
+	border:2px solid orange;
+	width: 40%;
+	height: 60%;
+}
+div #icon {
+	width:50px;
+	height:60%;
+	border:0px;
+	background:white;
+	outline: none;
+	padding:0px;
+	cursor: pointer;
+}
+
+.thunder{
+	float: left;
 }
 #footer{
 	width:1000px;
@@ -167,8 +245,15 @@ body,html{
 	font:bold;
 	text-align: center;
 }
+.app{
+	float:left;
+}
+.recent_product{
+	color: #bebebe;
+}
 #productList{
-	margin-top:5px;
+	padding-top:5px;
+	padding-bottom: 15px;
 }
 #productList select {
 	width: 150px;

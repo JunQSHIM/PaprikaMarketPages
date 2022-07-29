@@ -37,11 +37,12 @@
 	width:1200px;
 	float:center;
 	margin: 0 auto;
-	height:1000px;
+	height:1600px;
 	align-content: center;
 }
 #mainLine{
 	border:1px solid orange;
+	width:100%;
 }
 body,html{
 	width:100%;
@@ -66,6 +67,7 @@ body,html{
 	border:3px solid orange;
 	width:500px;
 	height:30px;
+	padding-bottom:15px;
 }
 #category{
 	background-color:white;
@@ -128,27 +130,28 @@ body,html{
 }
 #product{
 	width: 1020px;
-	height:900px;
+	height:1400px;
 	float: left;
 	position: relative; 
 	z-index: 2;
 }
 #productPage{
 	width:920px;
-	height:880px;
+	height:100%;
 	margin-left:100px;
 }
-#function{
-	position: absolute;
+/* 찜/장바구니 부분 위랑 왼쪽 떨어지게 여백 줌
+   앱다운로드는 저희가....할수없어서 빼야하지않을까요????
+ */
+.function  {
 	position: fixed;
 	text-align: center;
-	top: 20%; right : 18%;
 	width: 75px;
+	margin-top: 20px;
+	margin-right: -800px;
 	height: 600px;
 	background-color: none;
-	float: right;
-	right: 18%;
-}
+    }
 div #wishlist {
 	border: 1px solid #FF8200;
 	width: 100px;
@@ -167,14 +170,14 @@ div #wishlist {
 }
 #recent{
 	width: 125px;
-	height:30%;
+	height: 200px;
 	background-color: white;
 }
 #recent {
 	margin: 5px;
 	border: 1px solid #FFAA28;
 	width: 100px;
-	height: 30%;
+	height: 200px;
 	background-color: white;
 }
 

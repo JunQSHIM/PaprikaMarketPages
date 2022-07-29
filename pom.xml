@@ -155,12 +155,21 @@
 			<version>5.3.21</version>
 		</dependency>
 
-		<!-- 오라클 드라이버 -->
+	<!-- 각자 에러안나게 버전 확인해서 사용하세용 버전 통일 전까지만! -->
+		<!-- 오라클 드라이버 
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc11</artifactId>
 			<version>21.6</version>
-		</dependency>
+		</dependency> -->
+		
+		<!-- 오라클 드라이버 
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>18.15</version>
+		</dependency> -->
+
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
@@ -230,8 +239,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>

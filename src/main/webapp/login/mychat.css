@@ -1,0 +1,63 @@
+@charset "UTF-8";
+#chat{
+	width: 90%;
+	height:90%;
+	background-color: #E7EED2;
+	align-content:center;
+	border-width:3px,3px,3px,3px;
+	border-style: solid;
+	margin:auto;
+	display: flex;
+}
+#chatlist{
+	width: 50%;
+	height: 100%;
+	float:left;
+	border-right : 1px solid black;
+}
+#chatcontent{
+	width:50%;
+	height:100%;
+	float:right;
+	border-left : 1px solid black;
+}
+
+table{
+	width:100%;
+	overflow: auto;
+	border-collapse: collapse;
+}
+td{
+	border-bottom: 1px solid black;
+}
+div.content{
+	float:left;
+}
+div.chatcount{
+	float:right;
+}
+#print{
+	height:95%;
+	background-color: white;
+}
+#input{
+	height:5%;
+}
+#chatbox{
+	height:100%;
+}
+#chatcontent{
+	flex:4;
+}
+#send{
+	flex:1;
+}
+#inputtext{
+	display:flex;
+	flex-direction: row;
+}
+body,html{
+	height: 100%;
+	margin:0;
+	font-family: 'Numans', sans-serif;
+}

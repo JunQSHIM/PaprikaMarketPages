@@ -1,0 +1,185 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url('https://fonts.googleapis.com/css?family=Numans');
+.header{
+	width:1200px;
+	background-color: white;
+	height:30px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+	font:bold;
+	text-align: right;
+	float:center;
+}
+.header a{
+	color:black;
+	text-decoration:none;
+}
+.header button{
+	border: 1px solid orange;
+    background-color: rgba(0,0,0,0);
+    color: orange;
+	font : bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+    padding: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;  
+	width:90px;
+	height:30px;
+	margin-top:10px;
+	margin-right: 8px;
+}
+.header button:hover{
+	color:white;
+    background-color: orange;
+}
+#mainLine{
+	border:1px solid orange;
+}
+.container{
+	width:1200px;
+	float:center;
+	margin: 0 auto;
+	height:1000px;
+	align-content: center;
+}
+body,html{
+	width:100%;
+	height: 1000px;
+	margin:0px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+}
+#search{
+	width:1182px;
+	background-color:white;
+	text-align: center;
+	padding: 9px;
+	height:30px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+}
+#search input{
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+	border:3px solid orange;
+	width:500px;
+	height:30px;
+}
+#category{
+	background-color:white;
+	float: left;
+	width: 360px;
+	position: absolute; 
+	z-index: 1;
+}
+#category_btn{
+	float: left;
+}
+#category_btn img{
+	width:50px;
+	height:40px;
+}
+#showCategory{
+	font: bold;
+	font-size: 15px;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	border: 0px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+	background-color: transparent !important;
+}
+#result1{
+	display: none;
+}
+#result1 a{
+	color:black;
+	text-decoration:none;
+}
+#categories button{
+	border:0px;
+    background-color: rgba(0,0,0,0);
+    color: black;
+    padding: 10px;
+	font-size: 13px;
+	font : bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width:115px;
+    height:100px;
+}
+#categories img{
+	width:90px;
+	height:60px;
+	size: cover;
+	align-items: center;
+}
+#categories button:hover{
+    color:white;
+    background-color: orange;
+}
+#categories ul{
+	padding : 5px;
+	list-style: none;
+}
+#categories ul li{
+	float:left;
+}
+#product{
+	width: 1020px;
+	height:900px;
+	float: left;
+	position: relative; 
+	z-index: 2;
+}
+#productPage{
+	background-color: lightgrey;
+	width:920px;
+	height:880px;
+	margin-left:100px;
+}
+#function{
+	width: 125px;
+	height:800px;
+	background-color: yellow;
+	float: right;
+}
+#wishlist{
+	width: 125px;
+	height:30%;
+	background-color: lightblue;
+}
+#recent{
+	width: 125px;
+	height:30%;
+	background-color: white;
+}
+#add{
+	width: 125px;
+	height:30%;
+	background-color: skyblue;
+}
+#footer{
+	width:1000px;
+	height:10px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+	font:bold;
+	text-align: center;
+}
+#productList{
+	margin-top:5px;
+}
+#productList select {
+	width: 150px;
+	height: 30px;
+	border: 1px solid #999;
+	font-family: inherit;
+	background: url('images/arrow.jpg') no-repeat 95% 50%;
+	background-color:white;
+	appearance: none;
+	border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}

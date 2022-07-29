@@ -1,0 +1,81 @@
+body.jjimBody { /*찜목록 바디*/
+	background-color: #f5f5f0;
+	font-size: 13pt;
+	min-width: 100%;
+	padding: 50px 0;
+}
+
+tbody.list2 tr{
+	height: 90px;
+	background-color: #fff;
+}
+
+tbody.list2 td{
+	text-align: left; 
+	text-align: center; 
+	border-right: none;
+}
+
+#frame { /*전체div*/
+	width: 80%;
+	margin: 0 auto;
+	padding: 50px 50px;
+	background-color: #fff;
+}
+
+#frame2 { /* 페이지 맨위 header아님!! */
+	border-bottom: solid 1px #e0e0eb;
+	padding-bottom: 10px;
+}
+
+.home { /* 홈 -> 장바구니 */
+	float: right;
+}
+
+table.list1{
+	clear: both;
+	border: solid 1px #e0e0eb;
+	border-collapse: collapse;
+	background-color: #f5f5f0;
+	width: 100%;
+	font-size: 10pt;
+}
+
+table.list1 th{
+	border: solid 1px #e0e0eb;
+	padding: 10px 0;
+}
+table.list1 td{
+	border: solid 1px #e0e0eb;
+	text-align: center;
+}
+
+.btn{
+	border: none;
+	color:white;
+	padding: 5px 10px;
+	font-size:13px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.default {background-color: #fff; border: solid 1px gray; color: black;}
+.default:hover{background: #ddd;}
+.backBt{background: #fff; border: solid 1px gray;}
+.btnfloat{float:left;}
+.btnfloat2{float:right;}
+.clearboth{clear:both;}
+
+#array{
+	float: right;
+	margin:0;
+	font-size: 10px;
+	word-spacing: 5px;
+}
+
+#array a{
+	text-decoration: none;
+	color: #333;
+}
+#array a:hover{
+	color: red;
+}

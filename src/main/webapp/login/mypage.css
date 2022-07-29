@@ -1,0 +1,162 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url('https://fonts.googleapis.com/css?family=Numans');
+.header{
+	width:1200px;
+	background-color: white;
+	height:60px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+	font:bold;
+	text-align: right;
+	float:center;
+}
+.header a{
+	color:black;
+	text-decoration:none;
+}
+.header button{
+	border: 1px solid orange;
+    background-color: rgba(0,0,0,0);
+    color: orange;
+	font : bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+    padding: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;  
+	width:90px;
+	height:30px;
+	margin-top:10px;
+	margin-right: 8px;
+}
+.header button:hover{
+	color:white;
+    background-color: orange;
+}
+body,html{
+	width:100%;
+	height: 1000px;
+	margin:0px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+}
+.card{
+	margin: auto;
+	width: 1000px;
+	height: 600px;
+	background-color: rgba(0,0,0,0) !important;
+	border : 0px;
+}
+#profile{
+	float: left;
+	width:150px;
+	height:150px;
+	margin-top:15px;
+    margin-right: 15px;
+    margin-left : 5px;
+	line-height:150px;
+    text-align: center;
+}
+#profile_pic{
+	float: left;
+	width:150px;
+	height:150px;
+    margin-right: 15px;
+    margin-left : 5px;
+    background-image:url("images/profile.png");
+	background-size: cover;
+	background-position : center;
+	border-top-right-radius: 90px;
+    border-bottom-right-radius: 90px;  
+    border-top-left-radius: 90px;
+    border-bottom-left-radius: 90px; 
+}
+#nickname{
+	float:center;
+	height:150px;
+	line-height:150px;
+}
+#profile_edit{
+	height:70px;
+	line-height:70px;
+	text-align: center;
+}
+#function{
+	margin-top:25px;
+	float:right;
+	width:350px;
+	height:150px;
+}
+#function button{
+	margin-right: 25px;
+	font-family: 'Spoqa Han Sans Neo'; 
+	width:70px;
+	height:70px;
+	border : 0px;
+	border-top-right-radius: 90px;
+    border-bottom-right-radius: 90px;  
+    border-top-left-radius: 90px;
+    border-bottom-left-radius: 90px; 
+}
+#function button:hover{
+	border : 1px solid orange;
+}
+#sell{
+	background-image: url("images/sell.png");	
+	background-size: contain;
+	background-position : center;
+}
+#buy{
+	background-image: url("images/buy.png");	
+	background-size: contain;
+	background-position : center;
+}
+#wishlist{
+	background-image: url("images/wishlist.png");	
+	background-size: contain;
+	background-position : center;
+}
+#function button:hover{
+	color:white;
+    background-color: orange;
+}
+#profile_edit button{
+	width:150px;
+	height:30px;
+	border: 1px solid orange;
+    background-color: rgba(0,0,0,0);
+    color: orange;
+	font : bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;   
+	margin-left:350px;
+}
+#profile_edit button:hover{
+	color:white;
+    background-color: orange;
+}
+#manner{
+	height:70px;
+	line-height:70px;
+	text-align: center;
+	background-color: rgba(0,0,0,0.07);
+	border-top: 2px solid orange;
+}
+#manner_eval{
+	height:200px;
+	width:500px;
+	float:left;
+	background-color: gray;
+}
+#purchase_review{
+	height:200px;
+	width:500px;
+	float:right;
+	text-align: left;
+	background-color: yellow;
+}
+#logo{
+	align-items: center;
+}

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
 <title>Main Page</title>
 <link rel="stylesheet" type="text/css" href="main.css">
 <%

@@ -7,7 +7,7 @@
 <title>찜 목록</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="jjim_cart.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -89,7 +89,7 @@ $(document).ready(function(){
 				<td style="text-align: left; text-align: center; border-right: none;">
 					<input type="checkbox" name="checkbox" class="checkbox">
 				</td>
-				<td style="border-left: none; border-right: none;"><img style="max-width:200px;" src="images/travis.png"></td>
+				<td style="border-left: none; border-right: none;"><img style="max-width:200px;" src="images/jjim_icon/travis.png"></td>
 				<td style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;">트래비스 스캇 프라그먼트 조던 1 로우 DM7866-140</td>
 				<td><span style="padding-left: 10px;">98,000원</span></td>
 			</tr>
@@ -97,7 +97,7 @@ $(document).ready(function(){
 				<td style="text-align: left; text-align: center; border-right: none;">
 					<input type="checkbox" name="checkbox" class="checkbox">
 				</td>
-				<td style="border-left: none; border-right: none;" ><img style="max-width:200px;" src="images/santiago.png"></td>
+				<td style="border-left: none; border-right: none;" ><img style="max-width:200px;" src="images/jjim_icon/santiago.png"></td>
 				<td style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;">레알 마드리드 - 산티아고 베르나베우 스타디움</td>
 				<td><span style="padding-left: 10px;">300,000원</span></td>
 			</tr>

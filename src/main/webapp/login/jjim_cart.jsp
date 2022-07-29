@@ -24,46 +24,41 @@ function ctProduct(){
 			$("#result1").hide();
 		});
 		
+		$(".aa").mouseover(function(){
+			$(this).css("background","gray");
+			
+		})
+		.mouseout(function(){
+			$(this).css("background","#f5f5f0");
+			
+		});
+		$(".list1 thead input:checkbox[id=check]").click(function(){
+			var bool =$(this).prop("checked");
+			$(".list1 tbody input:checkbox[name=checkbox]").prop("checked", bool);
+		});
+		$(".list1 tbody input:checkbox[name=checkbox]").click(function(){
+			var flag = false;
+			$(".list1 tbody input:checkbox[name=checkbox]").each(function(){
+				var bool = $(this).prop("checked");
+				
+				if(!bool){
+					$(".list1 thead input:checkbox[id=check]").prop("checked",false);
+					flag = true;
+					return false;
+				}
+			});
+			if(!flag){
+				$(".list1 thead input:checkbox[id=check]").prop("checked",true);
+			}
+		
+		});
+		
 		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
 		$("#top").click(function() {
 			//$('html, body').animate({scrollTop:0}, '1000');
 			$('html, body').scrollTop(0);
 		});
 	});
-});
-$(document).ready(function(){
-	
-	$(".list1 thead input:checkbox[id=check]").click(function(){
-		var bool =$(this).prop("checked");
-		$(".list1 tbody input:checkbox[name=checkbox]").prop("checked", bool);
-	});
-	$(".list1 tbody input:checkbox[name=checkbox]").click(function(){
-		var flag = false;
-		$(".list1 tbody input:checkbox[name=checkbox]").each(function(){
-			var bool = $(this).prop("checked");
-			
-			if(!bool){
-				$(".list1 thead input:checkbox[id=check]").prop("checked",false);
-				flag = true;
-				return false;
-			}
-		});
-		if(!flag){
-			$(".list1 thead input:checkbox[id=check]").prop("checked",true);
-		}
-	
-	});
-	
-	
-	$("list1").mouseover(function(){
-		$(this).css("background","gray");
-		
-	})
-	.mouseout(function(){
-		$(this).css("background","#f5f5f0");
-		
-	});
-	
 function login()  {
 	 window.location.href ='login.jsp';
 }	

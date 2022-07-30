@@ -53,12 +53,16 @@ function ctProduct(){
 		
 		});
 		
+		
+		
 		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
 		$("#top").click(function() {
 			//$('html, body').animate({scrollTop:0}, '1000');
 			$('html, body').scrollTop(0);
 		});
 	});
+	
+	
 function login()  {
 	 window.location.href ='login.jsp';
 }	
@@ -137,24 +141,27 @@ function mypage(){
 	<br>
 	<div id="frame2">
 				 <span style="font-size: 16pt; font-weight: bold;">찜 1</span>
+				 
+	</div>
+			<div id="array">
+			<a href="#">최신순</a> | <a href="#">인기순</a> | <a href="#">고가순</a> | <a href="#">저가순</a>
 			</div>
-			<div>
-			
-			</div>
-	<br>
+	<br><br><br>
 	
-	<div class="btns">
+	
+	<div>
 		<table class="list1">
 		<thead>
 			<tr>
-				<th colspan="10" style="text-align: left; padding-right: 10px;">찜한 상품(2)<div id="array"><a href="#">최신순</a> | <a href="#">인기순</a> | <a href="#">고가순</a> | <a href="#">저가순</a></div>
+				<th colspan="10" style="text-align: left; padding-right: 10px;">
 				<div class="clear"></div></th>
 			</tr>
 			<tr>
 			<th><input type="checkbox" name="checkbox" id="check"></th>
-			<th><span>이미지</span></th>
-			<th style="width: 550px;"><span>상품정보</span></th>
-			<th>판매가</th>
+			<th><div style="margin: 10px 0;" class="btns">
+			<button class="btn default btnfloat" id="btn1" disabled="disabled" style="background-color: gray; color: #fff;" onclick="alert('삭제 되었습니다.')">x 삭제하기</button>&nbsp;
+		</div></th>
+		
 			</tr>
 		</thead>
 		
@@ -177,10 +184,7 @@ function mypage(){
 			</tr>
 		</tbody>
 		</table>
-		<div style="margin: 10px 0;" id="btns">
-			<span style="margin: 0 10px;" class="btnfloat">선택 상품을</span>
-			<button class="btn default btnfloat" id="btn1" disabled="disabled" style="background-color: gray; color: #fff;" onclick="alert('삭제 되었습니다.')">x 삭제하기</button>&nbsp;
-		</div>
+		
 	</div>
 </div>
 			</div>

@@ -76,6 +76,7 @@ function mypage(){
 			<button id="showCategory" ><img src="images/category_button.png"></button>
 		</div>
 	</div>
+	
 	<hr id="mainLine">
 		<div id="product">
 			<div id="category">

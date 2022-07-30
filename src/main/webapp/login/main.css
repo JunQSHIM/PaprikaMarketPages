@@ -234,9 +234,6 @@ div #icon {
 	cursor: pointer;
 }
 
-
-
-
 #top {
 	margin: 5px;
 	border: 1px solid #bebebe;
@@ -263,4 +260,5 @@ div #icon {
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
 	font:bold;
 	text-align: center;
+	
 }

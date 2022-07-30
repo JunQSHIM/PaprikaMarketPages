@@ -126,7 +126,7 @@ function mypage(){
 		<div id="top" style="cursor: pointer">TOP</div>
 		</div>
 	<div id="footer" style="float: bottom;">
-	<%@include file="footer.jsp" %>
+		<%@include file="footer.jsp" %>
 	</div>
 </div>
 </body>

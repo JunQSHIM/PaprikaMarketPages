@@ -20,7 +20,6 @@
           	호스팅서비스 제공자 : Amazon Web Services (AWS)<br>
           	EMAIL : help@bunjang.co.kr   |   FAX : 02-598-8241<br>
 			주소 : 서울특별시 서초구 서초대로38길 12, 타워1 1층, 타워2 7층 지하1층<br>
-			
           	</p>
           </div>
 
@@ -49,23 +48,12 @@
         </div>
         <hr>
       </div>
-      <div class="container">
         <div class="row">
           <div class="col-md-8 col-sm-6 col-xs-12">
             <p class="copyright-text">&copy; paprikamarket. Inc All rights reserved.
             </p>
           </div>
-
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <ul class="social-icons">
-              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
-            </ul>
-          </div>
         </div>
-      </div>
 </footer>
 </body>
 </html>

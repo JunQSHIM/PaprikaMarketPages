@@ -66,7 +66,7 @@ function mypage(){
 <%@include file="header.jsp"%>
 	<img src="images/pklogo.png" onclick="main()">
 	<div id="search">
-		<input onkeyup="mySend(this)" type="search" id="value" placeholder="상품명, 지역명, @상점명 입력"/><button id="icon"><img src="./images/search.png" width="20px" height="20px"></button>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+		<input onkeyup="" type="search" id="value" placeholder="상품명, 지역명, @상점명 입력"/><button id="icon"><img src="./images/search.png" width="20px" height="20px"></button>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
 		<a href="#"> <img src="./images/sell_list.png" class="search_list"> 판매하기</a>
 		<span>|</span>
 		<a href="#"> <img src="./images/mystore.png" class="search_list"> 내상점</a>

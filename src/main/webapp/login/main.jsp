@@ -12,7 +12,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+<link rel="stylesheet" type="text/css" href="./css/footer.css">
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
@@ -30,7 +31,7 @@ function ctProduct(){
 		});
 		
 		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
-		$("#top").click(function() {
+		$(".top").click(function() {
 			//$('html, body').animate({scrollTop:0}, '1000');
 			$('html, body').scrollTop(0);
 		});
@@ -78,6 +79,7 @@ function mypage(){
 	<div class="header_list">
 	<button class="chat" onclick="location.href='chatpage.jsp'"><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
 	<a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a>
+	<a class="sell_btn"><img src="./images/sell_list.png" width="23" height="24">판매하기</a>
 	</div>
 	
 	<hr class="mainLine">
@@ -108,7 +110,7 @@ function mypage(){
 			</div>
 			</div>
 			  
-			<div id="productPage">
+			<div class="productPage">
 				<div class="slider">
     			<div><img src="./images/slider1.jpg"></div>
     			<div><img src="./images/slider2.jpg"></div>
@@ -116,25 +118,30 @@ function mypage(){
  			</div>
 			</div>
 		</div>
-			<div id="function">
-			<div id="wishlist">
+		
+		<div class="function">
+			<div class="wishlist">
 			찜한 상품<br>
 			<a href="jjim_cart.jsp"> ♥ 2</a>
 			</div>
-			<div id="recent">
+			<div class="recent">
 			최근본상품<br>
 			........<br>
 			<span class="recent_product">최근 본 상품<br>이<br> 없습니다.</span>
 			</div>
-			<div id="add">
+			<div class="add">
 			앱 다운로드<br>
 			<img src="./images/jjim_icon/qr_code.png" width="70px" height="70px">
 			</div>
-		<div id="top" style="cursor: pointer">TOP</div>
+		<div class="top" style="cursor: pointer">TOP</div>
 		</div>
-	<div id="footer" style="float: bottom;">
+	<footer class="site-footer">
+	
+	
 		<%@include file="footer.jsp" %>
-	</div>
+	
+	
+	</footer>
 </div>
 </body>
 </html>

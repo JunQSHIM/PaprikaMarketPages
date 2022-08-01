@@ -5,7 +5,7 @@
 <head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
 <script src = "https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- 	<li onclick="kakaoLogout();">
       <a href="javascript:void(0)">

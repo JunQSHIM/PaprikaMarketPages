@@ -64,20 +64,25 @@ function mypage(){
 <body>
 <div class="container">
 <%@include file="header.jsp"%>
-	<img src="images/pklogo.png" onclick="main()">
-	<div id="search">
-		<input onkeyup="" type="search" id="value" placeholder="상품명, 지역명, @상점명 입력"/><button id="icon"><img src="./images/search.png" width="20px" height="20px"></button>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-		<a href="#"> <img src="./images/sell_list.png" class="search_list"> 판매하기</a>
-		<span>|</span>
-		<a href="#"> <img src="./images/mystore.png" class="search_list"> 내상점</a>
-		<span>|</span>
-		<a href="chatpage.jsp"> <img src="./images/chatting.png" class="search_list"> 파프리카톡 </a>	
-		<div id="category_btn">
-			<button id="showCategory" ><img src="images/category_button.png"></button>
-		</div>
+	
+	<div class="search">
+			<div class="logo"><img src="images/pklogo.png" onclick="main()"></div>
 	</div>
 	
-	<hr id="mainLine">
+	<div class="search_bar">
+		<div class="search_text" >
+			<input type="text" placeholder="상품명, 지역명, @상점명 입력"><a>검색</a>
+		</div>
+	</div>
+	<div class="header_list">
+	<button class="chat" onclick="location.href='chatpage.jsp'"><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
+	<!--  <a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a> -->
+	</div>
+	
+	<hr class="mainLine">
+		<div id="category_btn">
+			<button id="showCategory"><img src="images/category_button.png"></button>
+		</div>
 		<div id="product">
 			<div id="category">
 			<div id="categories">
@@ -101,6 +106,7 @@ function mypage(){
 			</form>
 			</div>
 			</div>
+			  
 			<div id="productPage">
 				<div class="slider">
     			<div><img src="./images/slider1.jpg"></div>

@@ -5,7 +5,7 @@
 <head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
 <script src = "https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- 	<li onclick="kakaoLogout();">
       <a href="javascript:void(0)">
@@ -133,7 +133,7 @@ $(document).ready(function(){
 			</div>
 			<div class="card-footer">
 					<div class="btn float-left register_btn">
-						<a href="register.jsp">회원가입</a>
+						<a href="registerAgree.jsp">회원가입</a>
 					</div>
 					<div class="btn float-right register_btn">
 					<a href="#">비밀번호 찾기</a>

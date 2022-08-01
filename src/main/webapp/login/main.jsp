@@ -34,6 +34,7 @@ function ctProduct(){
 			//$('html, body').animate({scrollTop:0}, '1000');
 			$('html, body').scrollTop(0);
 		});
+
 	});
 	
 	// 슬라이드 배너 ==> 이동시키는 버튼이 있으면 카테고리에 마우스 올렸을때
@@ -51,7 +52,7 @@ function login()  {
 	 window.location.href ='login.jsp';
 }	
 function register()  {
-	 window.location.href ='register.jsp';
+	 window.location.href ='registerAgree.jsp';
 }
 function main(){
 	window.location.href = 'main.jsp';

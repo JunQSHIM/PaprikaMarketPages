@@ -47,7 +47,7 @@
 		 window.location.href ='login.jsp';
 	}	
 	function register()  {
-		 window.location.href ='register.jsp';
+		 window.location.href ='registerAgree.jsp';
 	}
 	function main(){
 		window.location.href = 'main.jsp';

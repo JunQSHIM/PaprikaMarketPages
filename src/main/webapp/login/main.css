@@ -106,7 +106,7 @@ body,html{
 #showCategory{
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
 	font: bold;
-	font-size: 15px;
+	font-size: 0.938rem;
 	text-align: center;
 	cursor: pointer;
 	text-decoration: none;
@@ -125,7 +125,7 @@ body,html{
     background-color: rgba(0,0,0,0);
     color: black;
     padding: 10px;
-	font-size: 13px;
+	font-size: 0.813rem;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     border-top-right-radius: 5px;

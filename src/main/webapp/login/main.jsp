@@ -77,7 +77,7 @@ function mypage(){
 	</div>
 	<div class="header_list">
 	<button class="chat" onclick="location.href='chatpage.jsp'"><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
-	<!--  <a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a> -->
+	<a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a>
 	</div>
 	
 	<hr class="mainLine">

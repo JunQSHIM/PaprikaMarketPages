@@ -93,23 +93,37 @@ body,html{
 	cursor: pointer;
 }
 .header_list{
-	float: right;
-    width:30%;
-    box-sizing: border-box;
+	display: flex;
+    flex-direction: row-reverse;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 .chat{
-	background-color: transparent;
-    cursor: pointer;
-    outline: none;
-    border-style: none;
-    vertical-align: bottom;
-    margin: 5px;
-    box-sizing: border-box;
+	margin-left: 30px;
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    padding: 0px;
+    border: 0px;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    direction: ltr;
+    text-align: left;
+    color: rgb(33, 33, 33);
+    letter-spacing: -0.5px;
 }
 
 .chat img{
@@ -119,18 +133,25 @@ body,html{
 }
 
 .mystore{
-	background-color: transparent;
-    cursor: pointer;
-    outline: none;
-    border-style: none;
-    vertical-align: bottom;
-    margin: 5px;
-    box-sizing: border-box;
     margin-left: 30px;
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     position: relative;
+    color: rgb(33, 33, 33);
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    direction: ltr;
+    text-align: left;
+   
 }
 
 .mystore::after {
@@ -147,6 +168,10 @@ body,html{
     margin-right: 5px;
     vertical-align: bottom;
     border-style: none;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
 }
 
 #category{

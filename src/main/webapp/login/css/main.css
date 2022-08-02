@@ -63,7 +63,7 @@ body,html{
 	width:1182px;
 	background-color:white;
 	text-align: center;
-	height:30px;
+	height:60px;
 	margin:auto;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
 }
@@ -77,6 +77,7 @@ body,html{
 .search_bar{
 	float: left;
     margin-left: 10%;
+    margin-top:20px;
     width:37%;
     box-sizing: border-box;
 }
@@ -96,6 +97,7 @@ body,html{
 	cursor: pointer;
 }
 .header_list{
+	margin-top:23px;
 	float:right;
 	width:30%;
 	display: flex;

@@ -5,11 +5,11 @@
 <html>
 <head>
 <script src="js/jquery-3.6.0.min.js"></script>
-<title>Main Page</title>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<title>jjim Page</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
@@ -48,6 +48,31 @@ function ctProduct(){
 	    });
     });
 	
+	//chat
+	$(function(){
+		$(".ui-dialog").dialog({
+			autoOpen : false,
+			height : 450,
+			width : 400,
+			position : {
+				my : "center center",
+				at : "right buttom",
+				of : window
+			},
+			show : {
+				effect : "slide",
+				duration : 1000
+			},
+			hide : {
+				effect : "slide",
+				duration : 1000
+			}
+		});
+		$(".chat").on("click", function() {
+			$("#chatting").dialog("open");
+		});
+	});
+	
 function login()  {
 	 window.location.href ='login.jsp';
 }	
@@ -68,7 +93,7 @@ function mypage(){
 	
 	<div class="search">
 			<div class="logo"><img src="images/pklogo.png" onclick="main()"></div>
-	</div>
+	
 	
 	<div class="search_bar">
 		<div class="search_text" >
@@ -76,11 +101,11 @@ function mypage(){
 		</div>
 	</div>
 	<div class="header_list">
-	<button class="chat" onclick="location.href='chatpage.jsp'"><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
+	<button class="chat" ><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
 	<a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a>
 	<a class="sell_btn"><img src="./images/sell_list.png" width="23" height="24">판매하기</a>
 	</div>
-	
+	</div>
 	<hr class="mainLine">
 		<div id="category_btn">
 			<button id="showCategory"><img src="images/category_button.png"></button>
@@ -110,9 +135,85 @@ function mypage(){
 			</div>
 			  
 			<div class="productPage">
-				
+			<div class="favorite_body">
+				<div class="jjim_list">
+					<div class="jjim_list_1">
+					 	<a class="sell_product">상품 <span class="sell_product_span">0</span></a>
+					 	<a class="review_product">상품후기 <span class="review_product_span">0</span></a>
+					 	<a class="jjim_product">찜 <span class="jjim_product_span">0</span></a>
+					 </div>
+				</div>
+			</div>
+			<div class="jjim_list_2">
+				<div class="jjim_list_3">
+					<div class=jjim_list_4>
+						<div>
+							찜
+							<span class="jjim_list_4_span">1</span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="jjim_board">
+					<div class="jjim_delete">
+						<div class="jjim_delete_1">
+							<div class="jjim_delete_btn">
+							</div>
+							<button class="select_delete_btn">선택삭제</button>
+						</div>
+						<div class="array">
+							<a class="select_array">
+								최신순
+							</a>
+							<a class="non_select_array">
+								인기순
+							</a>
+							<a class="non_select_array">
+								저가순
+							</a>
+							<a class="non_select_array">
+								고가순
+							</a>
+							
+						</div>
+					</div>
+				<div class="jjim_board_body">
+					<div class="jjim_board_list">
+						<a class="jjim_board_article" href="#">
+							<div class="article_select">
+								<div class="article_select1">
+								</div>
+							</div>
+						<div class="jjim_image">
+							<img src="./images/jjim_icon/travis.png" alt="상품 이미지">
+							<div class="delivery_charge">배송비 포함</div>
+							<div class="inner_jjim_image"></div>
+						</div>
+					<div class="jjim_detail">
+							<div class="jjim_detail_1">
+								<div class="jjim_title">에어 조던 1 로우 OG SP 트래비스 스캇 프라그먼트 밀리터리 블루</div>
+								<div class="jjim_price">
+									<div>
+										17,000
+									</div>
+								</div>
+								<div class="jjim_day">4일 전</div>
+							</div>
+						<div class="jjim_location">
+							<img src="./images/jjim_icon/location.png" width="15" height="17" alt="위치 아이콘">
+							서울특별시 성북구 석관동
+						</div>
+					</div>
+					</a>
+					</div>
+				</div>
+			</div>
+			</div>
+			
  			</div>
 			</div>
+			
+			
 		</div>
 		
 		<div class="function">
@@ -125,15 +226,17 @@ function mypage(){
 			........<br>
 			<span class="recent_product">최근 본 상품<br>이<br> 없습니다.</span>
 			</div>
-			<div class="add">
-			앱 다운로드<br>
-			<img src="./images/jjim_icon/qr_code.png" width="70px" height="70px">
-			</div>
 		<div class="top" style="cursor: pointer">TOP</div>
 		</div>
-	<footer class="site-footer">
-		<%@include file="footer.jsp" %>
+		
+	<footer>
+
 	</footer>
-</div>
+
+
+<!-- chat -->
+<div class="ui-dialog" id="chatting">
+		<iframe src="chatpage.jsp"></iframe>
+	</div>
 </body>
 </html>

@@ -93,7 +93,7 @@ function mypage(){
 	
 	<div class="search">
 			<div class="logo"><img src="images/pklogo.png" onclick="main()"></div>
-	</div>
+	
 	
 	<div class="search_bar">
 		<div class="search_text" >
@@ -105,7 +105,7 @@ function mypage(){
 	<a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a>
 	<a class="sell_btn"><img src="./images/sell_list.png" width="23" height="24">판매하기</a>
 	</div>
-	
+	</div>
 	<hr class="mainLine">
 		<div id="category_btn">
 			<button id="showCategory"><img src="images/category_button.png"></button>
@@ -153,18 +153,10 @@ function mypage(){
 			........<br>
 			<span class="recent_product">최근 본 상품<br>이<br> 없습니다.</span>
 			</div>
-			<div class="add">
-			앱 다운로드<br>
-			<img src="./images/jjim_icon/qr_code.png" width="70px" height="70px">
-			</div>
 		<div class="top" style="cursor: pointer">TOP</div>
 		</div>
-	<footer class="site-footer">
-	
-	
+	<footer>
 		<%@include file="footer.jsp" %>
-	
-	
 	</footer>
 </div>
 

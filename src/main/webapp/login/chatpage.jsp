@@ -8,13 +8,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://kit.fontawesome.com/a75c39dc66.js" crossorigin="anonymous"></script>
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
  $(document).ready(function(){
- 	$("ul.list li").click(function(){
- 		$(".chat-history").load("chatcontent.jsp");
- 	})
- })
+	 $("ul.list li").click(function(){
+			var chatname = $(this).find('.name').text();
+			var chatimg = $(this).find('.cimg').attr("src");
+	 		$(".chat").load("chatcontent.jsp?chatname="+chatname+"&chatimg="+chatimg);
+	 	})
+	 })
 </script>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="mychat.css">
@@ -28,7 +31,7 @@
 				<input type="text" placeholder="search" /> <i class="fa fa-search"></i>
 			</div>
 			<ul class="list">
-				<li class="clearfix"><img
+				<li class="clearfix"><img class="cimg"
 					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg"
 					alt="avatar" />
 					<div class="about">
@@ -38,7 +41,7 @@
 						</div>
 					</div></li>
 
-				<li class="clearfix"><img
+				<li class="clearfix"><img class="cimg"
 					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg"
 					alt="avatar" />
 					<div class="about">
@@ -48,7 +51,7 @@
 						</div>
 					</div></li>
 
-				<li class="clearfix"><img
+				<li class="clearfix"><img class="cimg"
 					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg"
 					alt="avatar" />
 					<div class="about">
@@ -58,7 +61,7 @@
 						</div>
 					</div></li>
 
-				<li class="clearfix"><img
+				<li class="clearfix"><img class="cimg"
 					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg"
 					alt="avatar" />
 					<div class="about">
@@ -68,7 +71,7 @@
 						</div>
 					</div></li>
 
-				<li class="clearfix"><img
+				<li class="clearfix"><img class="cimg"
 					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg"
 					alt="avatar" />
 					<div class="about">
@@ -78,7 +81,7 @@
 						</div>
 					</div></li>
 
-				<li class="clearfix"><img
+				<li class="clearfix"><img class="cimg"
 					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_06.jpg"
 					alt="avatar" />
 					<div class="about">
@@ -90,23 +93,7 @@
 			</ul>
 		</div>
 		<div class="chat">
-			<div class="chat-header clearfix">
-				<img
-					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg"
-					alt="avatar" />
-
-				<div class="chat-about">
-					<div class="chat-with">Chat with Vincent Porter</div>
-					<div class="chat-num-messages">already 1 902 messages</div>
-				</div>
-				<i class="fa fa-star"></i>
-			</div>
-			<!-- end chat-header -->
-
-			<div class="chat-history">
-
-			</div>
-			<!-- end chat-message -->
+			
 
 		</div>
 		<!-- end chat -->

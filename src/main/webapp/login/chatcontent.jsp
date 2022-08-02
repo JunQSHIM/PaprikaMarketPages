@@ -4,64 +4,79 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://kit.fontawesome.com/a75c39dc66.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<ul>
-		<li class="clearfix">
-			<div class="message-data align-right">
-				<span class="message-data-time">10:10 AM, Today</span> &nbsp; &nbsp;
-				<span class="message-data-name">Olia</span> <i
-					class="fa fa-circle me"></i>
+	<div class="chat-header clearfix">
+		<img
+			src="${param.chatimg }"
+			alt="avatar" />
 
-			</div>
-			<div class="message other-message float-right">Hi Vincent, how
-				are you? How is the project coming along?</div>
-		</li>
+		<div class="chat-about">
+			<div class="chat-with">${param.chatname}</div>
+			<div class="chat-num-messages">already 1 902 messages</div>
+		</div>
+		<i class="fa fa-star"></i>
+	</div>
+	<!-- end chat-header -->
 
-		<li>
-			<div class="message-data">
-				<span class="message-data-name"><i
-					class="fa fa-circle online"></i> Vincent</span> <span
-					class="message-data-time">10:12 AM, Today</span>
-			</div>
-			<div class="message my-message">Are we meeting today? Project
-				has been already finished and I have results to show you.</div>
-		</li>
+	<div class="chat-history">
+		<ul>
+			<li class="clearfix">
+				<div class="message-data align-right">
+					<span class="message-data-time">10:10 AM, Today</span> &nbsp;
+					&nbsp; <span class="message-data-name">Olia</span> <i
+						class="fa fa-circle me"></i>
 
-		<li class="clearfix">
-			<div class="message-data align-right">
-				<span class="message-data-time">10:14 AM, Today</span> &nbsp; &nbsp;
-				<span class="message-data-name">Olia</span> <i
-					class="fa fa-circle me"></i>
+				</div>
+				<div class="message other-message float-right">Hi Vincent, how
+					are you? How is the project coming along?</div>
+			</li>
 
-			</div>
-			<div class="message other-message float-right">Well I am not
-				sure. The rest of the team is not here yet. Maybe in an hour or so?
-				Have you faced any problems at the last phase of the project?</div>
-		</li>
+			<li>
+				<div class="message-data">
+					<span class="message-data-name"><i
+						class="fa fa-circle online"></i> Vincent</span> <span
+						class="message-data-time">10:12 AM, Today</span>
+				</div>
+				<div class="message my-message">Are we meeting today? Project
+					has been already finished and I have results to show you.</div>
+			</li>
 
-		<li>
-			<div class="message-data">
-				<span class="message-data-name"><i
-					class="fa fa-circle online"></i> Vincent</span> <span
-					class="message-data-time">10:20 AM, Today</span>
-			</div>
-			<div class="message my-message">Actually everything was fine.
-				I'm very excited to show this to our team.</div>
-		</li>
+			<li class="clearfix">
+				<div class="message-data align-right">
+					<span class="message-data-time">10:14 AM, Today</span> &nbsp;
+					&nbsp; <span class="message-data-name">Olia</span> <i
+						class="fa fa-circle me"></i>
 
-		<li>
-			<div class="message-data">
-				<span class="message-data-name"><i
-					class="fa fa-circle online"></i> Vincent</span> <span
-					class="message-data-time">10:31 AM, Today</span>
-			</div> <i class="fa fa-circle online"></i> <i class="fa fa-circle online"
-			style="color: #AED2A6"></i> <i class="fa fa-circle online"
-			style="color: #DAE9DA"></i>
-		</li>
+				</div>
+				<div class="message other-message float-right">Well I am not
+					sure. The rest of the team is not here yet. Maybe in an hour or so?
+					Have you faced any problems at the last phase of the project?</div>
+			</li>
 
-	</ul>
+			<li>
+				<div class="message-data">
+					<span class="message-data-name"><i
+						class="fa fa-circle online"></i> Vincent</span> <span
+						class="message-data-time">10:20 AM, Today</span>
+				</div>
+				<div class="message my-message">Actually everything was fine.
+					I'm very excited to show this to our team.</div>
+			</li>
+
+			<li>
+				<div class="message-data">
+					<span class="message-data-name"><i
+						class="fa fa-circle online"></i> Vincent</span> <span
+						class="message-data-time">10:31 AM, Today</span>
+				</div> <i class="fa fa-circle online"></i> <i class="fa fa-circle online"
+				style="color: #AED2A6"></i> <i class="fa fa-circle online"
+				style="color: #DAE9DA"></i>
+			</li>
+
+		</ul>
 
 	</div>
 	<!-- end chat-history -->
@@ -74,5 +89,8 @@
 			class="fa fa-file-image-o"></i>
 
 		<button>Send</button>
+	</div>
+	<!-- end chat-message -->
+
 </body>
 </html>

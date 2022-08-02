@@ -29,13 +29,11 @@ function ctProduct(){
 		$("#category").mouseleave(function(){
 			$("#result1").hide();
 		});
-		
 		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
 		$(".top").click(function() {
 			//$('html, body').animate({scrollTop:0}, '1000');
 			$('html, body').scrollTop(0);
 		});
-
 	});
 	
 	// 슬라이드 배너 ==> 이동시키는 버튼이 있으면 카테고리에 마우스 올렸을때

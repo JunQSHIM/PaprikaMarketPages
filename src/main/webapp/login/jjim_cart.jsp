@@ -12,7 +12,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+<link rel="stylesheet" type="text/css" href="./css/footer.css">
 <link rel="stylesheet" type="text/css" href="jjim_cart.css">
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -29,51 +30,29 @@ function ctProduct(){
 		$("#category").mouseleave(function(){
 			$("#result1").hide();
 		});
-		
-		$(".aa").mouseover(function(){
-			$(this).css("background","gray");
-			
-		})
-		.mouseout(function(){
-			$(this).css("background","#f5f5f0");
-			
-		});
-		$(".list1 thead input:checkbox[id=check]").click(function(){
-			var bool =$(this).prop("checked");
-			$(".list1 tbody input:checkbox[name=checkbox]").prop("checked", bool);
-		});
-		$(".list1 tbody input:checkbox[name=checkbox]").click(function(){
-			var flag = false;
-			$(".list1 tbody input:checkbox[name=checkbox]").each(function(){
-				var bool = $(this).prop("checked");
-				
-				if(!bool){
-					$(".list1 thead input:checkbox[id=check]").prop("checked",false);
-					flag = true;
-					return false;
-				}
-			});
-			if(!flag){
-				$(".list1 thead input:checkbox[id=check]").prop("checked",true);
-			}
-		
-		});
-		
-		
-		
 		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
-		$("#top").click(function() {
+		$(".top").click(function() {
 			//$('html, body').animate({scrollTop:0}, '1000');
 			$('html, body').scrollTop(0);
 		});
 	});
 	
+	// 슬라이드 배너 ==> 이동시키는 버튼이 있으면 카테고리에 마우스 올렸을때
+	// 그 버튼만 보여서 버튼을 없애고 오토 슬라이드로 변경했습니다(준규)
+	// 버튼가리는거를 찾아보다가 못찾았어여...
+	 $(document).ready(function(){
+		$('.slider').bxSlider({
+		        controls:false,
+		        auto: true, 
+		        mode:'horizontal',
+	    });
+    });
 	
 function login()  {
 	 window.location.href ='login.jsp';
 }	
 function register()  {
-	 window.location.href ='register.jsp';
+	 window.location.href ='registerAgree.jsp';
 }
 function main(){
 	window.location.href = 'main.jsp';
@@ -86,20 +65,26 @@ function mypage(){
 <body>
 <div class="container">
 <%@include file="header.jsp"%>
-	<img src="images/pklogo.png" onclick="main()">
-	<div id="search">
-		<input onkeyup="" type="search" id="value" placeholder="상품명, 지역명, @상점명 입력"/><button id="icon"><img src="./images/search.png" width="20px" height="20px"></button>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-		<a href="#"> <img src="./images/sell_list.png" class="search_list"> 판매하기</a>
-		<span>|</span>
-		<a href="#"> <img src="./images/mystore.png" class="search_list"> 내상점</a>
-		<span>|</span>
-		<a href="chatpage.jsp"> <img src="./images/chatting.png" class="search_list"> 파프리카톡 </a>	
-		<div id="category_btn">
-			<button id="showCategory" ><img src="images/category_button.png"></button>
-		</div>
+	
+	<div class="search">
+			<div class="logo"><img src="images/pklogo.png" onclick="main()"></div>
 	</div>
 	
-	<hr id="mainLine">
+	<div class="search_bar">
+		<div class="search_text" >
+			<input type="text" placeholder="상품명, 지역명, @상점명 입력"><a>검색</a>
+		</div>
+	</div>
+	<div class="header_list">
+	<button class="chat" onclick="location.href='chatpage.jsp'"><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
+	<a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a>
+	<a class="sell_btn"><img src="./images/sell_list.png" width="23" height="24">판매하기</a>
+	</div>
+	
+	<hr class="mainLine">
+		<div id="category_btn">
+			<button id="showCategory"><img src="images/category_button.png"></button>
+		</div>
 		<div id="product">
 			<div id="category">
 			<div id="categories">
@@ -123,94 +108,32 @@ function mypage(){
 			</form>
 			</div>
 			</div>
-			<div class="jjimBody">
-		<div id="frame">
-		<form>
-			
-		</form>
-		
-	<div>
-		<table class="list1">
-			<tr>
-				<th class="aa" width="100px" >상품 0</th>
-				<th class="aa" width="100px">상점후기 0</th>
-				<th class="aa" width="100px">찜 2</th>
-				<th class="aa" width="100px">팔로잉 0</th>
-				<th class="aa" width="100px">팔로워 0</th>
-			</tr>
-		</table>
-	</div>
-	<br>
-	<div id="frame2">
-				 <span style="font-size: 16pt; font-weight: bold;">찜 1</span>
-				 
-	</div>
-			<div id="array">
-			<a href="#">최신순</a> | <a href="#">인기순</a> | <a href="#">고가순</a> | <a href="#">저가순</a>
+			  
+			<div class="productPage">
+				
+ 			</div>
 			</div>
-	<br><br><br>
-	
-	
-	<div>
-		<table class="list1">
-		<thead>
-			<tr>
-				<th colspan="10" style="text-align: left; padding-right: 10px;">
-				<div class="clear"></div></th>
-			</tr>
-			<tr>
-			<th><input type="checkbox" name="checkbox" id="check"></th>
-			<th><div style="margin: 10px 0;" class="btns">
-			<button class="btn default btnfloat" id="btn1" disabled="disabled" style="background-color: gray; color: #fff;" onclick="alert('삭제 되었습니다.')">x 삭제하기</button>&nbsp;
-		</div></th>
-		
-			</tr>
-		</thead>
-		
-		<tbody class="list2">
-			<tr class="img1">
-				<td style="text-align: left; text-align: center; border-right: none;">
-					<input type="checkbox" name="checkbox" class="checkbox">
-				</td>
-				<td style="border-left: none; border-right: none;"><img style="max-width:200px;" src="images/jjim_icon/travis.png"></td>
-				<td style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;">트래비스 스캇 프라그먼트 조던 1 로우 DM7866-140</td>
-				<td><span style="padding-left: 10px;">98,000원</span></td>
-			</tr>
-			<tr class="img1">
-				<td style="text-align: left; text-align: center; border-right: none;">
-					<input type="checkbox" name="checkbox" class="checkbox">
-				</td>
-				<td style="border-left: none; border-right: none;" ><img style="max-width:200px;" src="images/jjim_icon/santiago.png"></td>
-				<td style="text-align: left; padding-left: 10px; border-left: none; font-weight: bold;">레알 마드리드 - 산티아고 베르나베우 스타디움</td>
-				<td><span style="padding-left: 10px;">300,000원</span></td>
-			</tr>
-		</tbody>
-		</table>
-		
-	</div>
-</div>
-
 		</div>
-			<div id="function">
-			<div id="wishlist">
+		
+		<div class="function">
+			<div class="wishlist">
 			찜한 상품<br>
 			<a href="jjim_cart.jsp"> ♥ 2</a>
 			</div>
-			<div id="recent">
+			<div class="recent">
 			최근본상품<br>
 			........<br>
 			<span class="recent_product">최근 본 상품<br>이<br> 없습니다.</span>
 			</div>
-			<div id="add">
+			<div class="add">
 			앱 다운로드<br>
 			<img src="./images/jjim_icon/qr_code.png" width="70px" height="70px">
 			</div>
-		<div id="top" style="cursor: pointer">TOP</div>
+		<div class="top" style="cursor: pointer">TOP</div>
 		</div>
-	
-	<div id="footer" style="float: bottom;">
+	<footer class="site-footer">
 		<%@include file="footer.jsp" %>
-	</div>
+	</footer>
 </div>
 </body>
 </html>

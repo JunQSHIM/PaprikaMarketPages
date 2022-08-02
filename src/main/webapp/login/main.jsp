@@ -5,11 +5,12 @@
 <html>
 <head>
 <script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+
 <title>Main Page</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
@@ -49,6 +50,31 @@ function ctProduct(){
 	    });
     });
 	
+	//chat
+	$(function(){
+		$(".ui-dialog").dialog({
+			autoOpen : false,
+			height : 450,
+			width : 400,
+			position : {
+				my : "center center",
+				at : "right buttom",
+				of : window
+			},
+			show : {
+				effect : "slide",
+				duration : 1000
+			},
+			hide : {
+				effect : "slide",
+				duration : 1000
+			}
+		});
+		$(".chat").on("click", function() {
+			$("#chatting").dialog("open");
+		});
+	});
+	
 function login()  {
 	 window.location.href ='login.jsp';
 }	
@@ -77,7 +103,7 @@ function mypage(){
 		</div>
 	</div>
 	<div class="header_list">
-	<button class="chat" onclick="location.href='chatpage.jsp'"><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
+	<button class="chat" ><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
 	<a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a>
 	<a class="sell_btn"><img src="./images/sell_list.png" width="23" height="24">판매하기</a>
 	</div>
@@ -143,5 +169,10 @@ function mypage(){
 	
 	</footer>
 </div>
+
+<!-- chat -->
+<div class="ui-dialog" id="chatting">
+		<iframe src="chatpage.jsp"></iframe>
+	</div>
 </body>
 </html>

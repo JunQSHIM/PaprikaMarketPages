@@ -389,3 +389,6 @@ body,html{
 	text-align: center;
 	
 }
+.ui-front{
+	z-index:10;
+}

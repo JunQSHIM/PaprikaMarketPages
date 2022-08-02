@@ -102,7 +102,7 @@ function mypage(){
 	</div>
 	<div class="header_list">
 	<button class="chat" ><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
-	<a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a>
+	<a class="mystore" href="myProductCart.jsp"><img src="./images/mystore.png" width="23" height="24">내상점</a>
 	<a class="sell_btn"><img src="./images/sell_list.png" width="23" height="24">판매하기</a>
 	</div>
 	</div>
@@ -153,7 +153,7 @@ function mypage(){
 			........<br>
 			<span class="recent_product">최근 본 상품<br>이<br> 없습니다.</span>
 			</div>
-		<div class="top" style="cursor: pointer">TOP</div>
+		<div class="top" style="cursor: pointer"><div class="top_btn">TOP</div></div>
 		</div>
 	<footer>
 		<%@include file="footer.jsp" %>

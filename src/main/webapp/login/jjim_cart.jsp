@@ -8,10 +8,6 @@
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <title>jjim Page</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
 <link rel="stylesheet" type="text/css" href="./css/footer.css">
 <link rel="stylesheet" type="text/css" href="jjim_cart.css">
@@ -37,16 +33,6 @@ function ctProduct(){
 		});
 	});
 	
-	// 슬라이드 배너 ==> 이동시키는 버튼이 있으면 카테고리에 마우스 올렸을때
-	// 그 버튼만 보여서 버튼을 없애고 오토 슬라이드로 변경했습니다(준규)
-	// 버튼가리는거를 찾아보다가 못찾았어여...
-	 $(document).ready(function(){
-		$('.slider').bxSlider({
-		        controls:false,
-		        auto: true, 
-		        mode:'horizontal',
-	    });
-    });
 	
 	//chat
 	$(function(){
@@ -102,7 +88,7 @@ function mypage(){
 	</div>
 	<div class="header_list">
 	<button class="chat" ><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
-	<a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a>
+	<a class="mystore" href="myProductCart.jsp"><img src="./images/mystore.png" width="23" height="24">내상점</a>
 	<a class="sell_btn"><img src="./images/sell_list.png" width="23" height="24">판매하기</a>
 	</div>
 	</div>
@@ -138,9 +124,9 @@ function mypage(){
 			<div class="favorite_body">
 				<div class="jjim_list">
 					<div class="jjim_list_1">
-					 	<a class="sell_product">상품 <span class="sell_product_span">0</span></a>
+					 	<a class="sell_product" href="myProductCart.jsp">상품 <span class="sell_product_span">1</span></a>
 					 	<a class="review_product">상품후기 <span class="review_product_span">0</span></a>
-					 	<a class="jjim_product">찜 <span class="jjim_product_span">0</span></a>
+					 	<a class="jjim_product">찜 <span class="jjim_product_span">1</span></a>
 					 </div>
 				</div>
 			</div>
@@ -226,10 +212,10 @@ function mypage(){
 			........<br>
 			<span class="recent_product">최근 본 상품<br>이<br> 없습니다.</span>
 			</div>
-		<div class="top" style="cursor: pointer">TOP</div>
+		<div class="top" style="cursor: pointer"><div class="top_btn">TOP</div></div>
 		</div>
 		
-	<footer class="jjim_footer">
+	<footer>
 		<%@include file="footer.jsp" %>
 	</footer>
 

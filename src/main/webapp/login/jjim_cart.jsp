@@ -229,8 +229,8 @@ function mypage(){
 		<div class="top" style="cursor: pointer">TOP</div>
 		</div>
 		
-	<footer>
-
+	<footer class="jjim_footer">
+		<%@include file="footer.jsp" %>
 	</footer>
 
 

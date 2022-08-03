@@ -12,6 +12,5 @@ DIV로 세분화해서 나눔. 찜목록도 DIV로 세분화하고 크기도 맞춤.
 sellpage.jsp sellpage.css 추가 및 main div,css 수정
 
 =======
-
-커밋 테스트
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
+마이페이지 매너 온도 추가, 매너 평가, 받은 거래 후기 추가
+mypage.jsp, mypage.css 수정

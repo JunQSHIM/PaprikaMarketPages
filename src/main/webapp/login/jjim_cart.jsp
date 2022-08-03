@@ -145,7 +145,7 @@ function mypage(){
 						<div class="jjim_delete_1">
 							<div class="jjim_delete_btn">
 							</div>
-							<button class="select_delete_btn">선택삭제</button>
+							<button class="select_delete_btn" onclick="alert('선택하신 상품이 없습니다.')">선택삭제</button>
 						</div>
 						<div class="array">
 							<a class="select_array">

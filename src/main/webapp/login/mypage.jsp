@@ -44,6 +44,9 @@ function toMyReview() {
 		<hr style="border: 1px solid orange;">
 
 		<div class="card">
+			<div id="myPage_head">
+				<img src="images/pkIcon.png"><b>마이페이지</b>
+			</div>
 			<div id="profile">
 				<div id="profile_pic"></div>
 				<div id="nickname_and_button">

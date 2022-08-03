@@ -53,13 +53,12 @@ body,html{
 	margin:0px;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
 }
-
 .logo {
     width:20%;
     box-sizing: border-box;
 }
 
-.eval_detail{
+.review_detail{
 	margin: auto;
 	width: 1000px;
 	height: 600px;
@@ -67,7 +66,7 @@ body,html{
 	border : 0px;
 }
 
-#my_manner_head {
+#review_head {
 	border-bottom: 1px solid orange;
 	font-size: 25px;
 	padding-top: 10px;
@@ -75,13 +74,13 @@ body,html{
 	padding-left: 5px;
 }
 
-#my_manner_head img {
+#review_head img {
 	width: 30px;
 	height: 30px;
 	border: 0px;
 }
 
-/* 매너 칭찬, 비매너, 참고사항 탭 */
+/* 전체, 판매자, 구매자 후기 탭 */
 ul.tabs{
 	margin: 0px;
 	padding: 0px;

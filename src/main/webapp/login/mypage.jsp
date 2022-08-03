@@ -62,11 +62,11 @@ function toMyReview() {
 					</div>
 					<div id="redeal_and_answer">
 						<div id="redeal">
-							<b>♡ 재거래희망율 -%</b><br/>
+							<b>🧡재거래희망율 -%</b><br/>
 							-명 중 -명이 만족
 						</div>
 						<div id="answer">
-							<b>☏ 응답율 -%</b><br/>
+							<b>💬응답율 -%</b><br/>
 							보통 -분 이내 응답
 						</div>
 					</div>

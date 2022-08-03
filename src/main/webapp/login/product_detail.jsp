@@ -77,6 +77,24 @@
 		var source = image.src;
 	    window.open(source,'new','width=800, height=600, scrollbars=yes');
 	}
+	var checkStatus = true;
+	$(function () {
+		let num = 0;
+		let imageName = ["check.png", "uncheck.png"];
+		$("#jjim").click(function() {
+			if(num == 1){
+				$("#status").attr("src","images/"+ imageName[num]);
+				$("#status").fadeIn(1200);
+				$("#status").fadeOut(2000);
+				num=0;
+			}else{
+				$("#status").attr("src","images/"+ imageName[num]);
+				$("#status").fadeIn(1200);
+				$("#status").fadeOut(2000);
+				num++;	
+			}
+		});
+	});	
 </script>
 </head>
 <body>
@@ -173,10 +191,11 @@
 						</div>
 					</div>
 					<div class="item" id="func">
-						<button>찜</button>
+						<button id="jjim">찜</button>
 						<button>연락하기</button>
 						<button>바로구매</button>
 					</div>
+					<div><img id="status"></div>
 				</div>
 				<div class="item2">
 					연관상품

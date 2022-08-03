@@ -1,5 +1,19 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 @import url('https://fonts.googleapis.com/css?family=Numans');
+
+.container{
+	width:1200px;
+	height:1600px;
+	align-content: center;
+}
+
+body,html{
+	width:100%;
+	height: 1800px;
+	margin:0px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+}
+
 .header{
 	width:1200px;
 	background-color: white;
@@ -33,7 +47,6 @@
 	color:white;
     background-color: orange;
 }
-
 body,html{
 	width:100%;
 	height: 1000px;
@@ -47,43 +60,54 @@ body,html{
 	background-color: rgba(0,0,0,0) !important;
 	border : 0px;
 }
-#profile{
-	float: left;
-	width:150px;
-	height:150px;
-	margin-top:15px;
-    margin-right: 15px;
-    margin-left : 5px;
-	line-height:150px;
-    text-align: center;
+
+#profile {
+	display: flex;
 }
+
 #profile_pic{
-	float: left;
-	width:150px;
-	height:150px;
-    margin-right: 15px;
-    margin-left : 5px;
     background-image:url("images/profile.png");
-	background-size: cover;
-	background-position : center;
-	border-top-right-radius: 90px;
-    border-bottom-right-radius: 90px;  
-    border-top-left-radius: 90px;
-    border-bottom-left-radius: 90px; 
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;  
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
 }
-#nickname{
-	float:center;
-	height:150px;
-	line-height:150px;
+
+#redeal_and_answer {
+	display: flex;
 }
+
+#redeal {
+	width: 50%;
+	padding-top: 5px;
+}
+
+#answer {
+	width: 50%;
+	padding-top: 5px;
+}
+
+#nickName {
+	font-size: 30px;
+	padding-left: 32px;
+}
+
+#nickname_and_button {
+	border-right: 1px solid orange;
+}
+
 #profile_edit{
 	height:70px;
 	line-height:70px;
 	text-align: center;
 }
 #function{
-	margin-top:25px;
-	float:right;
+	align-items: center;
+	justify-content: center;
+	display: flex;
 	width:350px;
 	height:150px;
 }
@@ -131,33 +155,84 @@ body,html{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;  
     border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;   
-	margin-left:350px;
+    border-bottom-left-radius: 5px;
 }
 #profile_edit button:hover{
 	color:white;
     background-color: orange;
 }
-#manner{
-	height:70px;
-	line-height:70px;
-	text-align: center;
-	background-color: rgba(0,0,0,0.07);
-	border-top: 2px solid orange;
+
+#profile_edit {
+	border-top: 1px solid orange;
+	border-bottom: 1px solid orange;
 }
+
+#eval_and_review {
+	display: flex;
+}
+
 #manner_eval{
-	height:200px;
-	width:500px;
-	float:left;
-	background-color: gray;
+	width: 50%;
+	padding-left: 10px;
+	padding-top: 5px;
 }
+
+#manner_eval_head{
+	margin-bottom: 10px;
+	font-size: 20px;
+	width: 140px;
+	cursor: pointer;
+}
+
 #purchase_review{
-	height:200px;
-	width:500px;
-	float:right;
-	text-align: left;
-	background-color: yellow;
+	width: 50%;
+	padding-left: 10px;
+	padding-top: 5px;
+	border-left: 1px solid orange;
 }
-#logo{
-	align-items: center;
+
+#review_list_head {
+	margin-bottom: 10px;
+	font-size: 20px;
+	width: 140px;
+	cursor: pointer;
+}
+
+.logo {
+    width:20%;
+    box-sizing: border-box;
+}
+
+#temperature {
+	margin: 20px;
+	height: 50px;
+	width: 40%;
+}
+
+#mannerTemp {
+	text-align: right;
+}
+
+.outterTempBar{
+    clear: both;
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    position: relative;
+    vertical-align: middle;
+    height:10px;
+    z-index: 2;
+    position: relative;
+}
+
+#innerTempBar {
+    background-color: #319e45;
+    z-index: 1;
+    height:10px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    position: absolute;
 }

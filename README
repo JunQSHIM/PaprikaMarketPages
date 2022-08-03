@@ -5,9 +5,13 @@ header 목록 디테일하게 바꿈
 DIV로 세분화해서 나눔. 찜목록도 DIV로 세분화하고 크기도 맞춤.
 푸터 부분도 수정했으나 크기가 안 맞아서 더 수정해야함.
 =======
-회원가입 약관동의 registerAgree.jsp 추가했음
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
+회원가입 약관동의 registerAgree.jsp 추가했음 ==> 집가서 다시 올림
 
 채팅창 오픈 추가
-sell.jsp sell.css 추가
+<<<<<<< HEAD
+sellpage.jsp sellpage.css 추가 및 main div,css 수정
 
+=======
+
+커밋 테스트
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git

@@ -14,3 +14,7 @@ sellpage.jsp sellpage.css 추가 및 main div,css 수정
 =======
 마이페이지 매너 온도 추가, 매너 평가, 받은 거래 후기 추가(김유신)
 mypage.jsp, mypage.css 수정
+
+======
+상품 상세보기 페이지
+product_detail.jsp product_detail.css 생성

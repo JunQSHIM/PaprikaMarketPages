@@ -27,10 +27,10 @@ function ctProduct(){
 			$("#result1").hide();
 		});
 		
-		$(".product_category_2").mouseenter(function(){
+		$(".product_category_1").mouseenter(function(){
 			$(".product_category_3").show();
 		});
-		$(".product_category_2").mouseleave(function(){
+		$(".product_category_1").mouseleave(function(){
 			$(".product_category_3").hide();
 		});
 		
@@ -158,9 +158,60 @@ function mypage(){
 						</div>
 					</div>
 				</div>
-					
+				<div class="sell_cart_1">
+					<div class="sell_cart_2">
+						<div class="sell_cart_3">
+							<div class="sell_cart_4">
+								<div>전체</div>
+								<span class="sell_cart_4_span">1 개</span>
+							</div>
+							<div class="array">
+								<a class="select_array">
+									최신순
+								</a>
+								<a class="non_select_array">
+									인기순
+								</a>
+								<a class="non_select_array">
+									저가순
+								</a>
+								<a class="non_select_array">
+								고가순
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="sell_product_cart">
+						<div class="sell_product_board">
+							<a class="sell_board" href="#">
+								<div class="sell_image">
+									<img src="./images/jjim_icon/anya.jpg" width="194" height="194">
+									<span class="image_span">
+										<img src="./images/jjim_icon/pay.svg" alt="페이 가능">
+									</span>
+									<div class="inner_sell_image"></div>
+								</div>
+								<div class="sell_product_detail">
+									<div class="sell_product_title">스파이 패밀리-아냐</div>
+									<div class="sell_product_price">
+										<div class="sell_product_price_1">
+											150,000
+										</div>
+										<div class="sell_product_time">
+											<span>8시간 전</span>
+										</div>
+									</div>
+								</div>
+								<div class="sell_location">
+									<img src="./images/jjim_icon/location.png" width="15" height="17" alt="위치">
+									전국
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="bottom_space"></div>
 				</div>
-	
+			</div>
 			</div>
 			
  			</div>

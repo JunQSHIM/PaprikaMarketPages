@@ -84,11 +84,8 @@ body,html{
 	float: left;
     width:20%;
     box-sizing: border-box;
-<<<<<<< HEAD
     cursor: pointer;
-=======
-    flex:1;
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
+
 }
 
 .search_bar{
@@ -96,6 +93,7 @@ body,html{
     width:50%;
     margin-left: 10%;
     margin-top:20px;
+    margin-top:23px;
     width:37%;
     box-sizing: border-box;
     align-items: center;
@@ -118,9 +116,7 @@ body,html{
 .search_text a{
 	cursor: pointer;
 }
-.search_bar{
-	margin : 10px;
-}
+
 .header_list{
 	margin-top:23px;
 	float:right;
@@ -187,7 +183,6 @@ body,html{
 }
 
 .mystore::after {
-	
     content: "";
     width: 1px;
     height: 10px;
@@ -303,10 +298,10 @@ body,html{
 }
 
 .function {
-	position: relative;
+	position: absolute;
 	position:fixed;
-    top: 102px;
-    right: calc(50% - 730px);
+    top: 120px;
+    right: calc(50% - 640px);
     z-index: 20;
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;

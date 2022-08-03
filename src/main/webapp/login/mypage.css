@@ -103,6 +103,8 @@ body,html{
 	height:70px;
 	line-height:70px;
 	text-align: center;
+	border-top: 2px solid orange;
+	border-bottom: 2px solid orange;
 }
 #function{
 	align-items: center;
@@ -160,11 +162,6 @@ body,html{
 #profile_edit button:hover{
 	color:white;
     background-color: orange;
-}
-
-#profile_edit {
-	border-top: 2px solid orange;
-	border-bottom: 2px solid orange;
 }
 
 #eval_and_review {

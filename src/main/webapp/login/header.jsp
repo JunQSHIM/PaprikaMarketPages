@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div class="header">
-	<div class="app">
+<div class="grid_12 row header">
+	<div class="grid_3 app">
 		<div>
 			<a href="app_download.jsp" class="app_download"><img
 				src="./images/app_logo.svg">앱 다운로드</a> &nbsp;&nbsp;&nbsp;
@@ -14,8 +14,8 @@
 			</span>
 		</div>
 	</div>
-	<div class="space"></div>
-	<div class="header-button">
+	<div class="grid_6 empty"></div>
+	<div class="grid_3 topbt">
 		<c:choose>
 			<c:when test="${param.id ne null }">
 				<button type="button" onclick="logout()">로그아웃</button>

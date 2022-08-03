@@ -90,6 +90,9 @@ body,html{
 .search_bar{
 	float: left;
     width:50%;
+    margin-left: 10%;
+    margin-top:20px;
+    width:37%;
     box-sizing: border-box;
     align-items: center;
     flex:4;
@@ -115,6 +118,7 @@ body,html{
 	margin : 10px;
 }
 .header_list{
+	margin-top:23px;
 	float:right;
 	width:30%;
 	display: flex;
@@ -295,7 +299,7 @@ body,html{
 }
 
 .function {
-	position: absolute;
+	position: relative;
 	position:fixed;
     top: 102px;
     right: calc(50% - 730px);
@@ -348,6 +352,10 @@ body,html{
 	background-color: white;
 	z-index: 999;
 }
+
+.top_btn{
+	margin-top:6px;
+}
 .app{
 	float:left;
     display: flex;
@@ -395,6 +403,7 @@ body,html{
 .recent_product{
 	color: #bebebe;
 }
+
 footer{
 	align-content:center;
 	margin:auto;

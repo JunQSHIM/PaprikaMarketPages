@@ -10,7 +10,7 @@
 <title>jjim Page</title>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
 <link rel="stylesheet" type="text/css" href="./css/footer.css">
-<link rel="stylesheet" type="text/css" href="jjim_cart.css">
+<link rel="stylesheet" type="text/css" href="myProductCart.css">
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
@@ -26,6 +26,14 @@ function ctProduct(){
 		$("#category").mouseleave(function(){
 			$("#result1").hide();
 		});
+		
+		$(".product_category_2").mouseenter(function(){
+			$(".product_category_3").show();
+		});
+		$(".product_category_2").mouseleave(function(){
+			$(".product_category_3").hide();
+		});
+		
 		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
 		$(".top").click(function() {
 			//$('html, body').animate({scrollTop:0}, '1000');
@@ -124,9 +132,9 @@ function mypage(){
 			<div class="favorite_body">
 				<div class="jjim_list">
 					<div class="jjim_list_1">
-					 	<a class="sell_product" href="myProductCart.jsp">상품 <span class="sell_product_span">1</span></a>
+					 	<a class="sell_product">상품 <span class="sell_product_span">1</span></a>
 					 	<a class="review_product">상품후기 <span class="review_product_span">0</span></a>
-					 	<a class="jjim_product">찜 <span class="jjim_product_span">1</span></a>
+					 	<a class="jjim_product" href="jjim_cart.jsp">찜 <span class="jjim_product_span">1</span></a>
 					 </div>
 				</div>
 			</div>
@@ -134,66 +142,25 @@ function mypage(){
 				<div class="jjim_list_3">
 					<div class=jjim_list_4>
 						<div>
-							찜
+							상품
 							<span class="jjim_list_4_span">1</span>
 						</div>
+					<div class="product_category">
+						<div class="product_category_1">
+							<div class="product_category_2">
+								전체
+								<img src="./images/jjim_icon/category_arrow.png" width="10" height="6" alt="카테고리 화살표 아이콘">
+							</div>
+							<div class="product_category_3">
+								<a class="all_category">전체</a>
+								<a class="digital_category">디지털/가전</a>
+							</div>
+						</div>
 					</div>
+				</div>
 					
 				</div>
-				<div class="jjim_board">
-					<div class="jjim_delete">
-						<div class="jjim_delete_1">
-							<div class="jjim_delete_btn">
-							</div>
-							<button class="select_delete_btn">선택삭제</button>
-						</div>
-						<div class="array">
-							<a class="select_array">
-								최신순
-							</a>
-							<a class="non_select_array">
-								인기순
-							</a>
-							<a class="non_select_array">
-								저가순
-							</a>
-							<a class="non_select_array">
-								고가순
-							</a>
-							
-						</div>
-					</div>
-				<div class="jjim_board_body">
-					<div class="jjim_board_list">
-						<a class="jjim_board_article" href="#">
-							<div class="article_select">
-								<div class="article_select1">
-								</div>
-							</div>
-						<div class="jjim_image">
-							<img src="./images/jjim_icon/travis.png" alt="상품 이미지">
-							<div class="delivery_charge">배송비 포함</div>
-							<div class="inner_jjim_image"></div>
-						</div>
-					<div class="jjim_detail">
-							<div class="jjim_detail_1">
-								<div class="jjim_title">에어 조던 1 로우 OG SP 트래비스 스캇 프라그먼트 밀리터리 블루</div>
-								<div class="jjim_price">
-									<div>
-										17,000
-									</div>
-								</div>
-								<div class="jjim_day">4일 전</div>
-							</div>
-						<div class="jjim_location">
-							<img src="./images/jjim_icon/location.png" width="15" height="17" alt="위치 아이콘">
-							서울특별시 성북구 석관동
-						</div>
-					</div>
-					</a>
-					</div>
-				</div>
-			</div>
+	
 			</div>
 			
  			</div>

@@ -99,13 +99,15 @@ function mypage(){
 				<input type="text" placeholder="상품명, 지역명, @상점명 입력"><a>검색</a>
 			</div>
 		</div>
-
 		<div class="header_list">
 			<button class="chat" ><img src="./images/chatting.png" width="23" height="24">파프리카톡</button>
-			<a class="mystore"><img src="./images/mystore.png" width="23" height="24">내상점</a>
+			<a class="mystore" href="myProductCart.jsp"><img src="./images/mystore.png" width="23" height="24">내상점</a>
 			<a class="sell_btn"><img src="./images/sell_list.png" width="23" height="24">판매하기</a>
 		</div>
+		
 	</div>
+
+	
 	
 	<hr class="mainLine">
 		<div id="category_btn">

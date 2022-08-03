@@ -221,7 +221,7 @@
 							</div>
 							<div id="follow">
 								<button>팔로우</button>
-								<button>상점가기</button>
+								<button onclick="location.href='myProductCart.jsp'">상점가기</button>
 							</div>
 							<div id="rt_img">
 								<div class="slider2">

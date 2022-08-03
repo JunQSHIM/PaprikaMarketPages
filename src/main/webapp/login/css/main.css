@@ -84,11 +84,8 @@ body,html{
 	float: left;
     width:20%;
     box-sizing: border-box;
-<<<<<<< HEAD
     cursor: pointer;
-=======
     flex:1;
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 }
 
 .search_bar{

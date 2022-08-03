@@ -10,11 +10,15 @@
 	font:bold;
 	text-align: right;
 	float:center;
+	display : flex;
+	flex-direction: row;
+	margin-top: 10px;
 }
 .header a{
 	color:black;
 	text-decoration:none;
 }
+
 .header button{
 	border: 1px solid orange;
     background-color: rgba(0,0,0,0);
@@ -28,13 +32,22 @@
     border-bottom-left-radius: 5px;  
 	width:90px;
 	height:30px;
-	margin-top:10px;
 	margin-right: 8px;
 }
 .header button:hover{
 	color:white;
     background-color: orange;
 }
+.app div{
+	flex:1;
+}
+.space{
+	flex:15;
+}
+.header-button{
+	flex:5;
+}
+
 .container{
 	width:1200px;
 	float:center;
@@ -55,32 +68,40 @@ body,html{
 #category_btn img{
 	width:50px;
 	height:40px;
-
 }
 
 .search{
-	
 	width:1182px;
 	background-color:white;
 	text-align: center;
-	height:60px;
+	height:64px;
 	margin:auto;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+	display:flex;
 }
 
 .logo {
 	float: left;
     width:20%;
     box-sizing: border-box;
+<<<<<<< HEAD
     cursor: pointer;
+=======
+    flex:1;
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 }
 
 .search_bar{
 	float: left;
+    width:50%;
     margin-left: 10%;
     margin-top:20px;
     width:37%;
     box-sizing: border-box;
+    align-items: center;
+    flex:4;
+    display: flex;
+    align-items: center;
 }
 .search_text{
 	border: 2px solid orange;
@@ -97,6 +118,9 @@ body,html{
 .search_text a{
 	cursor: pointer;
 }
+.search_bar{
+	margin : 10px;
+}
 .header_list{
 	margin-top:23px;
 	float:right;
@@ -109,7 +133,7 @@ body,html{
     flex-grow: 1;
     font: inherit;
     vertical-align: baseline;
-    margin-right: 3px;
+    flex:3;
 }
 
 .chat{
@@ -210,6 +234,7 @@ body,html{
 	width: 360px;
 	position: absolute; 
 	z-index: 1;
+	flex:1;
 }
 #category_btn{
 	float: left;
@@ -281,7 +306,7 @@ body,html{
 	position: relative;
 	position:fixed;
     top: 102px;
-    right: calc(50% - 650px);
+    right: calc(50% - 730px);
     z-index: 20;
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
@@ -335,11 +360,8 @@ body,html{
 .top_btn{
 	margin-top:6px;
 }
-
-
 .app{
 	float:left;
-	margin-left: 30px;
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -357,6 +379,7 @@ body,html{
     text-align: left;
     color: rgb(33, 33, 33);
     letter-spacing: -0.5px;
+    flex:5;
 }
 
 .app_download {
@@ -380,11 +403,7 @@ body,html{
 }
 .favorite img{
 	margin-right: 5px;
-
 }
-
-
-
 .recent_product{
 	color: #bebebe;
 }

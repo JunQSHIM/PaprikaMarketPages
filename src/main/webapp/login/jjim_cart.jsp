@@ -215,11 +215,11 @@ function mypage(){
 		<div class="top" style="cursor: pointer"><div class="top_btn">TOP</div></div>
 		</div>
 		
-	<footer>
-		<%@include file="footer.jsp" %>
-	</footer>
-
-
+		<div id="footer_page">
+			<footer>
+				<%@include file="footer.jsp" %>
+			</footer>
+		</div>
 <!-- chat -->
 <div class="ui-dialog" id="chatting">
 		<iframe src="chatpage.jsp"></iframe>

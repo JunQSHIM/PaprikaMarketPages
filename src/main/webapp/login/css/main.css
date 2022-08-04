@@ -95,10 +95,10 @@ body, html {
 
 .logo {
 	float: left;
-	width: 20%;
-	box-sizing: border-box;
-	cursor: pointer;
-	flex: 1;
+    width:20%;
+    box-sizing: border-box;
+    cursor: pointer;
+    flex:1;
 }
 
 .search_bar {

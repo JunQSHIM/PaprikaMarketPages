@@ -71,7 +71,7 @@ function register() {
 	window.location.href = 'registerAgree.jsp';
 }
 function main() {
-	window.location.href = 'main.jsp';
+	window.location.href = 'mother.jsp';
 }
 function mypage() {
 	window.location.href = 'mypage.jsp';
@@ -96,7 +96,7 @@ function mypage() {
 		window.location.href = 'registerAgree.jsp';
 	}
 	function main() {
-		window.location.href = 'main.jsp';
+		window.location.href = 'mother.jsp';
 	}
 	function mypage() {
 		window.location.href = 'mypage.jsp';

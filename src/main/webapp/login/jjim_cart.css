@@ -191,6 +191,15 @@ a {
 	transform-origin: 100% 100%;
 }
 
+
+.jjim_delete_btn::after {
+    content: "";
+    width: 8px;
+    height: 14px;
+    border-right: 2px solid rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+
 .jjim_delete_btn::after {
 	content: "";
 	position: absolute;

@@ -31,6 +31,9 @@ function ctProduct(){
 			//$('html, body').animate({scrollTop:0}, '1000');
 			$('html, body').scrollTop(0);
 		});
+		
+		
+		
 	});
 	
 	

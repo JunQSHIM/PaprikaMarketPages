@@ -63,6 +63,19 @@ $(document).ready(function() {
 		});
 	});
 	
+
+	function login() {
+		window.location.href = 'login.jsp';
+	}
+	function register() {
+		window.location.href = 'registerAgree.jsp';
+	}
+	function main() {
+		window.location.href = 'main.jsp';
+	}
+	function mypage() {
+		window.location.href = 'mypage.jsp';
+
 	//sellpage
 	$(function() {
 		$("#control").click(function() {
@@ -90,4 +103,32 @@ $(document).ready(function() {
 	}
 	function sell() {
 		window.location.href = 'sellpage.jsp';
+
+	//sellpage
+	$(function() {
+		$("#control").click(function() {
+			$("#sell-list").hide();
+			$("#sell-control").show();
+		});
+		$("#list").click(function() {
+			$("#sell-control").hide();
+			$("#sell-list").show();
+		});
+	
+	});
+	
+	function login() {
+		window.location.href = 'login.jsp';
+	}
+	function register() {
+		window.location.href = 'registerAgree.jsp';
+	}
+	function main() {
+		window.location.href = 'main.jsp';
+	}
+	function mypage() {
+		window.location.href = 'mypage.jsp';
+	}
+	function sell() {
+	window.location.href = 'sellpage.jsp';
 	}

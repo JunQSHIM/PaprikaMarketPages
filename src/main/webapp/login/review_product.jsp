@@ -210,7 +210,7 @@ function mypage(){
 								<img src="./images/jjim_icon/arrow2.png" width="6" height="10" alt="화살표">
 								</button>
 							</a>
-							<div class="review_content">TEST 리뷰 작성입니다.</div>
+							<div class="review_content">TEST 리뷰 작성입니다!!!</div>
 							<div class="report_body">
 								<a class="report_btn">
 									<img src="./images/jjim_icon/report.png" width="14" height="14" alt="신고하기">

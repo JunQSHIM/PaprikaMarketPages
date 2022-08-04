@@ -1,33 +1,36 @@
 <<<<<<< HEAD
-ë©”ì¸ íŽ˜ì´ì§€ ê²€ìƒ‰ì°½ DIV íƒœê·¸ë¡œ ë”ìš± ì„¸ë¶„í™” í•´ì„œ ë‚˜ëˆ„ì–´ ë†“ìŒ.
+¸ÞÀÎ ÆäÀÌÁö °Ë»öÃ¢ DIV ÅÂ±×·Î ´õ¿í ¼¼ºÐÈ­ ÇØ¼­ ³ª´©¾î ³õÀ½.
 
-header ëª©ë¡ ë””í…Œì¼í•˜ê²Œ ë°”ê¿ˆ
-DIVë¡œ ì„¸ë¶„í™”í•´ì„œ ë‚˜ëˆ”. ì°œëª©ë¡ë„ DIVë¡œ ì„¸ë¶„í™”í•˜ê³  í¬ê¸°ë„ ë§žì¶¤.
-í‘¸í„° ë¶€ë¶„ë„ ìˆ˜ì •í–ˆìœ¼ë‚˜ í¬ê¸°ê°€ ì•ˆ ë§žì•„ì„œ ë” ìˆ˜ì •í•´ì•¼í•¨.
+header ¸ñ·Ï µðÅ×ÀÏÇÏ°Ô ¹Ù²Þ
+DIV·Î ¼¼ºÐÈ­ÇØ¼­ ³ª´®. Âò¸ñ·Ïµµ DIV·Î ¼¼ºÐÈ­ÇÏ°í Å©±âµµ ¸ÂÃã.
+ÇªÅÍ ºÎºÐµµ ¼öÁ¤ÇßÀ¸³ª Å©±â°¡ ¾È ¸Â¾Æ¼­ ´õ ¼öÁ¤ÇØ¾ßÇÔ.
 =======
-íšŒì›ê°€ìž… ì•½ê´€ë™ì˜ registerAgree.jsp ì¶”ê°€í–ˆìŒ ==> ì§‘ê°€ì„œ ë‹¤ì‹œ ì˜¬ë¦¼
+È¸¿ø°¡ÀÔ ¾à°üµ¿ÀÇ registerAgree.jsp Ãß°¡ÇßÀ½ ==> Áý°¡¼­ ´Ù½Ã ¿Ã¸²
 
-ì±„íŒ…ì°½ ì˜¤í”ˆ ì¶”ê°€
+Ã¤ÆÃÃ¢ ¿ÀÇÂ Ãß°¡
 <<<<<<< HEAD
-sellpage.jsp sellpage.css ì¶”ê°€ ë° main div,css ìˆ˜ì •
+sellpage.jsp sellpage.css Ãß°¡ ¹× main div,css ¼öÁ¤
 
 =======
-ë§ˆì´íŽ˜ì´ì§€ ë§¤ë„ˆ ì˜¨ë„ ì¶”ê°€, ë§¤ë„ˆ í‰ê°€, ë°›ì€ ê±°ëž˜ í›„ê¸° ì¶”ê°€(ê¹€ìœ ì‹ -ë¶€ì‚°)
-mypage.jsp, mypage.css ìˆ˜ì •
+¸¶ÀÌÆäÀÌÁö ¸Å³Ê ¿Âµµ Ãß°¡, ¸Å³Ê Æò°¡, ¹ÞÀº °Å·¡ ÈÄ±â Ãß°¡(±èÀ¯½Å-ºÎ»ê)
+mypage.jsp, mypage.css ¼öÁ¤
 
-ë§¤ë„ˆ í‰ê°€ íŽ˜ì´ì§€ ì¶”ê°€, mypageì— êµ¬ë¶„ì„  ì¶”ê°€ ë° ìˆ˜ì •(ê¹€ìœ ì‹ -ë¶€ì‚°)
-mannerEval.jsp, mannerEval.css ì¶”ê°€, mypage.css ìˆ˜ì •
-mypage.jsp ì´ëª¨ì§€ ì¶”ê°€ (ê¹€ìœ ì‹ -ë¶€ì‚°)
+¸Å³Ê Æò°¡ ÆäÀÌÁö Ãß°¡, mypage¿¡ ±¸ºÐ¼± Ãß°¡ ¹× ¼öÁ¤(±èÀ¯½Å-ºÎ»ê)
+mannerEval.jsp, mannerEval.css Ãß°¡, mypage.css ¼öÁ¤
+mypage.jsp ÀÌ¸ðÁö Ãß°¡ (±èÀ¯½Å-ºÎ»ê)
 
-ë§ˆì´íŽ˜ì´ì§€ì— ì œëª© ì¶”ê°€(ê¹€ìœ ì‹ -ë¶€ì‚°)
-ë§¤ë„ˆ í‰ê°€ íŽ˜ì´ì§€ì— ë§ˆì´íŽ˜ì´ì§€ë¡œ ì´ë™ ë²„íŠ¼ ì¶”ê°€ (ê¹€ìœ ì‹ -ë¶€ì‚°)
-ê±°ëž˜ í›„ê¸° íŽ˜ì´ì§€ ìž‘ì„±(ê¹€ìœ ì‹ -ë¶€ì‚°)
-mypage.jsp, mypage.css, mannerEval.jsp, mannerEval.css ìˆ˜ì •
-myReview.jsp, myReview.css ì¶”ê°€
+¸¶ÀÌÆäÀÌÁö¿¡ Á¦¸ñ Ãß°¡(±èÀ¯½Å-ºÎ»ê)
+¸Å³Ê Æò°¡ ÆäÀÌÁö¿¡ ¸¶ÀÌÆäÀÌÁö·Î ÀÌµ¿ ¹öÆ° Ãß°¡ (±èÀ¯½Å-ºÎ»ê)
+°Å·¡ ÈÄ±â ÆäÀÌÁö ÀÛ¼º(±èÀ¯½Å-ºÎ»ê)
+mypage.jsp, mypage.css, mannerEval.jsp, mannerEval.css ¼öÁ¤
+myReview.jsp, myReview.css Ãß°¡
+
+ÇÁ·ÎÇÊ ¼öÁ¤ ÆäÀÌÁö Ãß°¡ - ±èÀ¯½Å
+profileEdit.jsp, profileEdit.css Ãß°¡
 
 ======
-ìƒí’ˆ ìƒì„¸ë³´ê¸° íŽ˜ì´ì§€
-product_detail.jsp product_detail.css ìƒì„±
-ë°”ë¡œ êµ¬ë§¤ í´ë¦­ì‹œ ê²°ì œì°½ ë„ì›€ --> ì¹´ì¹´ì˜¤íŽ˜ì´, ë„¤ì´ë²„íŽ˜ì´ ë‹¤ ìŒ‰ê°€ëŠ¥
-ì°œ í´ë¦­ì‹œ ì°œí–ˆìŠµë‹ˆë‹¤ì´ë¯¸ì§€ì™€ í•¨ê»˜ ì°œ->â™¥ì°œìœ¼ë¡œ ë³€ê²½
-ë‹¤ì‹œ í´ë¦­ì‹œ ì›ìƒíƒœë¡œë¨
+»óÇ° »ó¼¼º¸±â ÆäÀÌÁö
+product_detail.jsp product_detail.css »ý¼º
+¹Ù·Î ±¸¸Å Å¬¸¯½Ã °áÁ¦Ã¢ ¶ç¿ò --> Ä«Ä«¿ÀÆäÀÌ, ³×ÀÌ¹öÆäÀÌ ´Ù ½Ô°¡´É
+Âò Å¬¸¯½Ã ÂòÇß½À´Ï´ÙÀÌ¹ÌÁö¿Í ÇÔ²² Âò->¢¾ÂòÀ¸·Î º¯°æ
+´Ù½Ã Å¬¸¯½Ã ¿ø»óÅÂ·ÎµÊ

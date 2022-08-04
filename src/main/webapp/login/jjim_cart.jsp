@@ -208,7 +208,11 @@ function reviewProduct()  {
  			</div>
 			</div>
 			
-			
+			<div id="footer_page">
+			<footer>
+				<%@include file="footer.jsp" %>
+			</footer>
+		</div>
 		</div>
 		
 		<div class="function">
@@ -224,11 +228,7 @@ function reviewProduct()  {
 		<div class="top" style="cursor: pointer"><div class="top_btn">TOP</div></div>
 		</div>
 		
-		<div id="footer_page">
-			<footer>
-				<%@include file="footer.jsp" %>
-			</footer>
-		</div>
+		
 <!-- chat -->
 <div class="ui-dialog" id="chatting">
 		<iframe src="chatpage.jsp"></iframe>

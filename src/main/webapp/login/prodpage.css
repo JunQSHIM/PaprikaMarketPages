@@ -1,47 +1,44 @@
 @charset "UTF-8";
 
-div{ 
-	border:1px solid black;
-} 
+body {
+	margin: 0;
+	padding: 0;
+}
 
-
-.pics, .texts, .feat{
-	height:350px;
+div {
 	
 }
 
-.pics div{
-	height:300px;
-	margin:0px 40px;
-	
-	background:pink;
-}
-.pics img{
-	height:300px;
-}
-.texts .innertext  {
-	height:300px;
-	margin:0px 40px;
-	
-	background:pink;
+.pics, .texts {
+	height: 400px;
 }
 
-.feat div  {
-	height:300px;
-	margin:0px 40px;
-	
-	background:pink;
+.pics img {
+	height: 400px;
 }
 
-.texts .innertext .user{
-	background: green;
-	height:60px;
-	margin-top:10px;
+.texts {
+	height: 400px;
+}
+
+.innertext {
+	margin-left: 30px;
+}
+
+.innertext .proinfo {
 	clear: both;
-	
 }
 
-.user img{
+.texts .innertext .user {
+	height: 60px;
+	width: 100%
+}
+
+.name {
+	margin-top: 5px;
+}
+
+.user img {
 	margin: 5px;
 	float: left;
 	width: 50px;
@@ -49,13 +46,115 @@ div{
 	border-radius: 50px;
 	float: left;
 }
-.location{
+
+.location {
 	display: block;
 }
-.mannertemp{
-	margin-left:0px;
-	line-height:55px;
-	text-align:right;
-	height:60px;
 
+.mannertemp {
+	margin-left: 0px;
+	line-height: 55px;
+	text-align: right;
+	height: 60px;
+}
+
+.proinfo_1 div {
+	margin-left: 10px;
+}
+
+.proinfo_1 .cate {
+	line-height: 60px;
+}
+
+.title {
+	font-size: 2.0rem;
+	font-weight: bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.price {
+	margin-bottom: 15px;
+	font-size: 3.0rem;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.state {
+	margin-top: 15px;
+	color: #a7a7a7;
+	line-height: 50px;
+	overflow: hidden;
+}
+
+.state div {
+	float: left;
+	margin: 0 5px;
+}
+
+.state img {
+	margin-top: 12px;
+}
+
+.state .s_4_1 {
+	float: right;
+}
+
+.buybtns div {
+	color: white;
+	float: left;
+	height: 55px;
+	line-height: 55px;
+	font-size: 1.3rem;
+	text-align: center;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.jjimbtn, .talk, .buy {
+	margin-top: 18px;
+}
+
+.buybtns .jjimbtn {
+	background: #a7a7a7a7;
+}
+
+.buybtns .talk {
+	margin: 18px 28px;
+	background: orange;
+}
+.buybtns img{
+	margin-left: 10px;
+}
+
+.buybtns .buy {
+	background: red;
+}
+
+.separate {
+	
+	height: 100px;
+}
+
+hr {
+	border: 1px solid orange;
+}
+
+.feat{
+	height: 300px;
+	background: pink;	
+}
+.prodinfo, .storeinfo {
+	font-size: 1.5rem;
+	
+}
+.featleft{
+	width:65%;
+	
+	float:left;
+	background: red;
+	
+}
+
+.featright{
+	width:30%;
+	background: blue;
+	float:right;
 }

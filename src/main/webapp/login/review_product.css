@@ -264,3 +264,44 @@ button {
     top: 1px;
     right: -14px;
 }
+
+.more_review{
+    margin-top: 10px;
+}
+
+.more_review_btn {
+    height: 50px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-size: 14px;
+    color: rgb(136, 136, 136);
+    width: 100%;
+}
+
+.more_review_text {
+    position: relative;
+    line-height: 1;
+}
+
+button, input {
+    padding: 0px;
+    border: 0px;
+}
+
+.more_review_text::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: -20px;
+    background-color: rgb(204, 204, 204);
+    background-size: 7px 7px;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAC9JREFUKBVjYMAB/kMBDmkGJlwShMRHgkZGUOARCghs8mQHDjbDwGKj8chAfloFAO6aFATVmNerAAAAAElFTkSuQmCC);
+    background-position: 4px 4px;
+}

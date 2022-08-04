@@ -63,6 +63,19 @@ $(document).ready(function() {
 		});
 	});
 	
+	//sellpage
+	$(function() {
+		$("#control").click(function() {
+			$("#sell-list").hide();
+			$("#sell-control").show();
+		});
+		$("#list").click(function() {
+			$("#sell-control").hide();
+			$("#sell-list").show();
+		});
+	
+	});
+	
 	function login() {
 		window.location.href = 'login.jsp';
 	}
@@ -74,4 +87,7 @@ $(document).ready(function() {
 	}
 	function mypage() {
 		window.location.href = 'mypage.jsp';
+	}
+	function sell() {
+		window.location.href = 'sellpage.jsp';
 	}

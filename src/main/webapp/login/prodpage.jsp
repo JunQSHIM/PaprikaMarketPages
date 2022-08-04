@@ -10,7 +10,7 @@
 <body>
 	<%@include file="mothertop.jsp"%>
 
-	<div class="prodread">
+	<div class="prodread"> 
 		<div class="grid_12 read">
 			<div class="grid_6 pics">
 				사진

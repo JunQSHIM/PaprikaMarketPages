@@ -8,7 +8,7 @@
 
   
 </head>
-<body>
+<body> 
 
 	<footer class="row grid_12">
 		<div class="grid_12">

@@ -122,7 +122,7 @@ String id = request.getParameter("id");
 							<div class="nav_btn">
 								<a class="mystore" href="myProductCart.jsp"> <img
 									src="./images/mystore.png" width="23" height="24">상점
-								</a>
+								</a> 
 							</div>
 							<div class="nav_btn">
 								<button class="chat">

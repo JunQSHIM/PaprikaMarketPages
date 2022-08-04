@@ -32,6 +32,9 @@ function toMannerEval() {
 function toMyReview() {
 	window.location.href = 'myReview.jsp';
 }
+function toProfileEdit() {
+	window.location.href = 'profileEdit.jsp';
+}
 </script>
 <title>mypage</title>
 </head>
@@ -77,7 +80,7 @@ function toMyReview() {
 			</div>
 			<div id="profile_edit">
 				<div id="edit_button">
-					<button type="button">프로필 수정</button>
+					<button type="button" onclick=toProfileEdit()>프로필 수정</button>
 				</div>
 			</div>
 			<div id="eval_and_review">

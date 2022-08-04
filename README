@@ -12,16 +12,16 @@ DIV로 세분화해서 나눔. 찜목록도 DIV로 세분화하고 크기도 맞
 sellpage.jsp sellpage.css 추가 및 main div,css 수정
 
 =======
-마이페이지 매너 온도 추가, 매너 평가, 받은 거래 후기 추가(김유신)
+마이페이지 매너 온도 추가, 매너 평가, 받은 거래 후기 추가(김유신-부산)
 mypage.jsp, mypage.css 수정
 
-매너 평가 페이지 추가, mypage에 구분선 추가 및 수정(김유신)
+매너 평가 페이지 추가, mypage에 구분선 추가 및 수정(김유신-부산)
 mannerEval.jsp, mannerEval.css 추가, mypage.css 수정
-mypage.jsp 이모지 추가 (김유신)
+mypage.jsp 이모지 추가 (김유신-부산)
 
-마이페이지에 제목 추가(김유신)
-매너 평가 페이지에 마이페이지로 이동 버튼 추가 (김유신)
-거래 후기 페이지 작성(김유신)
+마이페이지에 제목 추가(김유신-부산)
+매너 평가 페이지에 마이페이지로 이동 버튼 추가 (김유신-부산)
+거래 후기 페이지 작성(김유신-부산)
 mypage.jsp, mypage.css, mannerEval.jsp, mannerEval.css 수정
 myReview.jsp, myReview.css 추가
 

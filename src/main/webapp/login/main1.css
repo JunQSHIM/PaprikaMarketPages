@@ -8,10 +8,6 @@ div {
 	box-sizing: border-box;
 }
 
-
-
-
-
 .jbFixed {
 	position: fixed;
 	top: 0px;
@@ -71,6 +67,12 @@ div {
 .header button:hover {
 	color: white;
 	background-color: orange;
+}
+
+.alarm_message {
+    display: block;
+    font-size: 13px;
+    color: rgb(102, 102, 102);
 }
 
 .header .app {
@@ -546,6 +548,8 @@ footer {
 	z-index: 10;
 }
 
+
+
 /*
 footer {
 	text-align: center;
@@ -571,3 +575,4 @@ footer hr{
 	margin-top:15px;
 	margin-bottom: 15px;
 }*/
+

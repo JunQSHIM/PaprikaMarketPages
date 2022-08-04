@@ -35,11 +35,11 @@ function ctProduct(){
 
 			    if(order2Chk){
 			        $(".article_select1").prop("checked",true);
-			        $(".jjim_delete_1 button").prop("disabled",false);
+			        $(".jjim_delete_1 button").css({"backgroundColor":"#ff8955","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 			    }
 			    else{
 			        $(".article_select1").prop("checked",false);
-			        $(".jjim_delete_1 button").prop("disabled",true);
+			        $(".jjim_delete_1 button").css({"backgroundColor":"white","cursor":"auto","color":"rgb(136, 136, 136)"}).prop("disabled",true);
 			    }
 			});
 
@@ -61,9 +61,9 @@ function ctProduct(){
 			    
 			    // 체크박스가 모두 선택되었을 때 상위 체크박스 선택되도록 설정
 			    if(tt == ss){
-			    	$("#jjim_delete_btn").prop("checked",true);
+			    	$("#jjim_delete_btn").css({"backgroundColor":"#ff8955","cursor":"pointer","color":"#fff"}).prop("checked",true);
 			    }else{
-			    	$("#jjim_delete_btn").prop("checked",false);
+			    	$("#jjim_delete_btn").css({"backgroundColor":"white","cursor":"auto","color":"rgb(136, 136, 136)"}).prop("checked",false);
 			    }
 			    
 				});
@@ -125,6 +125,9 @@ function jjimCart()  {
 }
 function reviewProduct()  {
 	 window.location.href ='review_product.jsp';
+}
+function btn(){
+    alert('삭제 되었습니다.');
 }
 </script>
 
@@ -201,7 +204,7 @@ function reviewProduct()  {
 					<div class="jjim_delete">
 						<div class="jjim_delete_1">
 							<input type="checkbox" id="jjim_delete_btn">
-							<button class="select_delete_btn" onclick="alert('삭제되었습니다.')">선택삭제</button>
+							<button class="select_delete_btn" disabled="disabled" onclick="btn()">선택삭제</button>
 						</div>
 						<div class="array">
 							<a class="select_array">
@@ -225,7 +228,7 @@ function reviewProduct()  {
 					<div class="jjim_board_list">
 						<a class="jjim_board_article" href="#">
 							<div class="article_select">
-								<input type="checkbox" class="article_select1">
+								<input type="checkbox"  class="article_select1">
 								
 							</div>
 						<div class="jjim_image">

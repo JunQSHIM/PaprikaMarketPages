@@ -7,7 +7,6 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
 
 
 <title>Mother</title>
@@ -25,17 +24,17 @@ request.setCharacterEncoding("UTF-8");
 String id = request.getParameter("id");
 %>
 <script>
-	<!-- 네비바 상단고정  -->
-	$(document).ready(function() {
-		var jbOffset = $('.nav').offset();
-		$(window).scroll(function() {
-			if ($(document).scrollTop() > jbOffset.top) {
-				$('.nav').addClass('jbFixed');
-			} else {
-				$('.nav').removeClass('jbFixed');
-			}
-		});
-	}); <!-- 네비바 상단고정 -->
+<!-- 네비바 상단고정  -->
+$(document).ready(function() {
+	var jbOffset = $('.nav').offset();
+	$(window).scroll(function() {
+		if ($(document).scrollTop() > jbOffset.top) {
+			$('.nav').addClass('jbFixed');
+		} else {
+			$('.nav').removeClass('jbFixed');
+		}
+	});
+}); <!-- 네비바 상단고정 -->
 
 	function ctProduct() {
 		theForm.submit();
@@ -66,7 +65,7 @@ String id = request.getParameter("id");
 	});
 
 	//chat
-	$(function() {
+	$(function(){
 		$(".ui-dialog").dialog({
 			autoOpen : false,
 			height : 450,
@@ -89,7 +88,7 @@ String id = request.getParameter("id");
 			$("#chatting").dialog("open");
 		});
 	});
-
+	
 	function login() {
 		window.location.href = 'login.jsp';
 	}

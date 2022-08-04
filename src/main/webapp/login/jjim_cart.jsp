@@ -71,6 +71,15 @@ function main(){
 function mypage(){
 	window.location.href = 'mypage.jsp';
 }
+function myProductCart()  {
+	 window.location.href ='myProductCart.jsp';
+}	
+function jjimCart()  {
+	 window.location.href ='jjim_cart.jsp';
+}
+function reviewProduct()  {
+	 window.location.href ='review_product.jsp';
+}
 </script>
 </head>
 <body>
@@ -125,8 +134,8 @@ function mypage(){
 				<div class="jjim_list">
 					<div class="jjim_list_1">
 					 	<a class="sell_product" href="myProductCart.jsp">상품 <span class="sell_product_span">1</span></a>
-					 	<a class="review_product">상품후기 <span class="review_product_span">0</span></a>
-					 	<a class="jjim_product">찜 <span class="jjim_product_span">1</span></a>
+					 	<a class="review_product" href="review_product.jsp">상품후기 <span class="review_product_span">2</span></a>
+					 	<a class="jjim_product" >찜 <span class="jjim_product_span">1</span></a>
 					 </div>
 				</div>
 			</div>
@@ -215,11 +224,11 @@ function mypage(){
 		<div class="top" style="cursor: pointer"><div class="top_btn">TOP</div></div>
 		</div>
 		
-	<footer>
-		<%@include file="footer.jsp" %>
-	</footer>
-
-
+		<div id="footer_page">
+			<footer>
+				<%@include file="footer.jsp" %>
+			</footer>
+		</div>
 <!-- chat -->
 <div class="ui-dialog" id="chatting">
 		<iframe src="chatpage.jsp"></iframe>

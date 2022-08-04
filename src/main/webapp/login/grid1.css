@@ -10,6 +10,10 @@ li {
 	list-style: none;
 }
  
+.clear{
+	clear:both;
+}
+ 
 a {
 	text-decoration: none;
 }

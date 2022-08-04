@@ -7,6 +7,8 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery-ui.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
 
 <title>Mother</title>
 <link rel="stylesheet"
@@ -23,6 +25,18 @@ request.setCharacterEncoding("UTF-8");
 String id = request.getParameter("id");
 %>
 <script>
+	<!-- 네비바 상단고정  -->
+	$(document).ready(function() {
+		var jbOffset = $('.nav').offset();
+		$(window).scroll(function() {
+			if ($(document).scrollTop() > jbOffset.top) {
+				$('.nav').addClass('jbFixed');
+			} else {
+				$('.nav').removeClass('jbFixed');
+			}
+		});
+	}); <!-- 네비바 상단고정 -->
+
 	function ctProduct() {
 		theForm.submit();
 	}
@@ -229,8 +243,8 @@ String id = request.getParameter("id");
 				</div>
 
 				<div class="products">
-				
-				
+
+
 					<%
 					for (int i = 0; i < 20; i++) {
 					%>
@@ -278,7 +292,9 @@ String id = request.getParameter("id");
 						본 상품<br>이<br> 없습니다.
 					</span>
 				</div>
-				<div class="top" style="cursor: pointer"><div class="top_btn">TOP</div></div>
+				<div class="top" style="cursor: pointer">
+					<div class="top_btn">TOP</div>
+				</div>
 			</div>
 
 

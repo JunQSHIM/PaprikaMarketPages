@@ -8,15 +8,17 @@ div {
 	box-sizing: border-box;
 }
 
-.fakeheader {
-	background: none;
+
+
+
+
+.jbFixed {
 	position: fixed;
-	width: 100%;
-	height: 175px;
-	border: 1px solid #333333;
-	
-	/*z-index:2;
-	position: fixed;*/
+	top: 0px;
+}
+
+.nav{
+	z-index:100;
 }
 
 .ht1200 {
@@ -73,16 +75,13 @@ div {
 
 .header .app {
 	background: white;
-	border-top:1px solid #333333;
-	
-	
+	border-top: 1px solid #333333;
 }
 
 .header .topbt {
 	background: white;
 	text-align: right;
-	border-top:1px solid #333333;
-	
+	border-top: 1px solid #333333;
 }
 
 .app div {
@@ -411,19 +410,17 @@ body, html {
 	height: 100%;
 	margin-left: 100px;
 }*/
-
 .ban {
 	float: left;
-
-
-
 }
+
+
 
 .banner {
 	/*position: absolute;
 	top: 20%;
 	right: 18%;
-	width: 75px;
+	width: 75px;	
 	height: 600px;
 	right: 20px;*/
 	margin-left: 10px;
@@ -431,9 +428,7 @@ body, html {
 	position: fixed;
 	text-align: center;
 	float: right;
-
 	margin-left: 10px
-	
 }
 
 .wishlist {

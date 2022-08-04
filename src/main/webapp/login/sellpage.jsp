@@ -4,186 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="js/jquery-3.6.0.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-
-<title>Sell Page</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="sellpage.css">
-<link rel="stylesheet" type="text/css" href="./css/footer.css">
-<%
-request.setCharacterEncoding("UTF-8");
-String id = request.getParameter("id");
-%>
-<script>
-	function ctProduct() {
-		theForm.submit();
-	}
-	$(document).ready(function() {
-		$("#showCategory").mouseenter(function() {
-			$("#result1").show();
-		});
-		$("#category").mouseleave(function() {
-			$("#result1").hide();
-		});
-		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
-		$(".top").click(function() {
-			//$('html, body').animate({scrollTop:0}, '1000');
-			$('html, body').scrollTop(0);
-		});
-	});
-
-	// 슬라이드 배너 ==> 이동시키는 버튼이 있으면 카테고리에 마우스 올렸을때
-	// 그 버튼만 보여서 버튼을 없애고 오토 슬라이드로 변경했습니다(준규)
-	// 버튼가리는거를 찾아보다가 못찾았어여...
-	$(document).ready(function() {
-		$('.slider').bxSlider({
-			controls : false,
-			auto : true,
-			mode : 'horizontal',
-		});
-	});
-
-	//chat
-	$(function() {
-		$(".ui-dialog").dialog({
-			autoOpen : false,
-			height : 450,
-			width : 400,
-			position : {
-				my : "center center",
-				at : "right buttom",
-				of : window
-			},
-			show : {
-				effect : "slide",
-				duration : 1000
-			},
-			hide : {
-				effect : "slide",
-				duration : 1000
-			}
-		});
-		$(".chat").on("click", function() {
-			$("#chatting").dialog("open");
-		});
-	});
-
-	function login() {
-		window.location.href = 'login.jsp';
-	}
-	function register() {
-		window.location.href = 'registerAgree.jsp';
-	}
-	function main() {
-		window.location.href = 'main.jsp';
-	}
-	function mypage() {
-		window.location.href = 'mypage.jsp';
-	}
-</script>
+<meta charset="UTF-8">
+<title>Sell page</title>
 </head>
 <body>
-	<div class="container">
-		<%@include file="header.jsp"%>
-
-		<div class="search">
-			<div class="logo">
-				<img src="images/pklogo.png" onclick="main()">
-			</div>
-
-			<div class="search_bar">
-				<div class="search_text">
-					<input type="text" placeholder="상품명, 지역명, @상점명 입력"><a>검색</a>
-				</div>
-			</div>
-
-			<div class="header_list">
-				<button class="chat">
-					<img src="./images/chatting.png" width="23" height="24">파프리카톡
-				</button>
-				<a class="mystore"><img src="./images/mystore.png" width="23"
-					height="24">내상점</a> <a class="sell_btn"><img
-					src="./images/sell_list.png" width="23" height="24">판매하기</a>
-			</div>
-		</div>
-
-		<hr class="mainLine">
-		<div id="category_btn">
-			<button id="showCategory">
-				<img src="images/category_button.png">
-			</button>
-		</div>
-
-		<div id="product">
-			<div id="category">
-				<div id="categories">
-					<form action="product.jsp" name="category">
-						<ul id="result1">
-							<li><button onclick="ctProduct()" name="product"
-									value="디지털기기">
-									<img src="images/ct_icon/digital.png" />디지털기기/가전
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="가구/인테리어">
-									<img src="images/ct_icon/interior.png" />가구/인테리어
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="유아동/유아도서">
-									<img src="images/ct_icon/baby.png" />유아동/유아도서
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="생활/가공식품">
-									<img src="images/ct_icon/life.png" />생활/가공식품
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="스포츠/레저">
-									<img src="images/ct_icon/sport.png" />스포츠/레저
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="여성잡화">
-									<img src="images/ct_icon/waccessories.png" />여성잡화
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="여성의류">
-									<img src="images/ct_icon/wclothes.png" />여성의류
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="남성패션/잡화">
-									<img src="images/ct_icon/mclothes.png" />남성패션/잡화
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="게임/취미">
-									<img src="images/ct_icon/game.png" />게임/취미
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="뷰티/미용">
-									<img src="images/ct_icon/beauty.png" />뷰티/미용
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="반려동물용품">
-									<img src="images/ct_icon/pet.png" />반려동물용품
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="도서/티켓/음반">
-									<img src="images/ct_icon/ticket.png" />도서/티켓/음반
-								</button>
-							<li><button onclick="ctProduct()" name="product"
-									value="기타 중고물품">
-									<img src="images/ct_icon/etc.png" />기타 중고물품
-								</button>
-							<li><button onclick="ctProduct()" name="product" value="삽니다">
-									<img src="images/ct_icon/buyproduct.png" />삽니다
-								</button>
-						</ul>
-					</form>
-				</div>
-			</div>
-
+	<%@include file="mothertop.jsp"%>
+	
 			<div id="sell">
 				<div id="sell-menu">
 					<button id="submit">상품 등록</button>
@@ -192,79 +19,134 @@ String id = request.getParameter("id");
 				</div>
 
 				<div id="sell-main">
-					<div id="control-head">
-						<div class="sell-search">
-							<input type="text" placeholder="search" /> <i
-								class="fa fa-search"></i>
+					<div id="sell-control">
+						<div id="control-head">
+							<div id="sell-search">
+								<input type="text" placeholder="search" /> <i
+									class="fa fa-search"></i>
+							</div>
+	
+							<div id="show-count">
+								<select name="count" id="count">
+									<option value="5">5개씩</option>
+									<option value="10">10개씩</option>
+								</select>
+							</div>
+	
+							<div id="show-state">
+								<select name="count" id="count">
+									<option value="#">전체</option>
+									<option value="#">판매중</option>
+									<option value="#">예약중</option>
+									<option value="#">판매완료</option>
+									<option value="#">판매대기</option>
+								</select>
+							</div>
 						</div>
-
-						<div></div>
-
-						<div></div>
+						<div id="control-main">
+							<div id="title">
+								<div class="img">사진</div>
+								<div class="state">판매상태</div>
+								<div class="product-name">상품명</div>
+								<div class="price">가격</div>
+								<div class="jjim">찜</div>
+								<div class="date">최근 수정일</div>
+								<div class="control">관리</div>
+							</div>
+	
+							<div class="sell-products">
+								<div class="img">
+									<img src="images/jjim_icon/santiago.png" alt="img">
+								</div>
+								<div class="state">판매 완료</div>
+								<div class="product-name">레고</div>
+								<div class="price">700,000원</div>
+								<div class="jjim">♥</div>
+								<div class="date">22-08-02</div>
+								<div class="control">
+									<button>수정</button>
+									<button>삭제</button>
+									<button>중지</button>
+								</div>
+							</div>
+	
+							<div class="sell-products">
+								<div class="img">
+									<img src="images/jjim_icon/travis.png" alt="img">
+								</div>
+								<div class="state">판매 중</div>
+								<div class="product-name">신발</div>
+								<div class="price">1700,000원</div>
+								<div class="jjim">♥</div>
+								<div class="date">22-08-02</div>
+								<div class="control">
+									<button>수정</button>
+									<button>삭제</button>
+									<button>중지</button>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div id="control-main">
-						<div id="title">
-							<div class="img">사진</div>
-							<div class="state">판매상태</div>
-							<div class="product-name">상품명</div>
-							<div class="price">가격</div>
-							<div class="jjim">찜</div>
-							<div class="date">최근 수정일</div>
-						</div>
-
-						<div class="sell-products">
-							<div class="img">
-								<img src="images/jjim_icon/santiago.png" alt="img">
+					<div id="sell-list">
+						<div id="control-head">
+							<div id="sell-search">
+								<input type="text" placeholder="search" /> <i
+									class="fa fa-search"></i>
 							</div>
-							<div class="state">판매 완료</div>
-							<div class="product-name">레고</div>
-							<div class="price">700,000원</div>
-							<div class="jjim">♥</div>
-							<div class="date">22-08-02</div>
-						</div>
-
-						<div class="sell-products">
-							<div class="img">
-								<img src="images/jjim_icon/travis.png" alt="img">
+	
+							<div id="show-count">
+								<select name="count" id="count">
+									<option value="5">5개씩</option>
+									<option value="10">10개씩</option>
+								</select>
 							</div>
-							<div class="state">판매 중</div>
-							<div class="product-name">신발</div>
-							<div class="price">1700,000원</div>
-							<div class="jjim">♥</div>
-							<div class="date">22-08-02</div>
+	
+							<div id="show-state">
+								<select name="count" id="count">
+									<option value="#">전체</option>
+									<option value="#">판매</option>
+									<option value="#">구매</option>
+								</select>
+							</div>
 						</div>
+						<div id="control-main">
+							<div id="title">
+								<div class="select">선택</div>
+								<div class="img">사진</div>
+								<div class="state">상태</div>
+								<div class="product-name">상품명</div>
+								<div class="price">가격</div>
+								<div class="date">날짜</div>
+							</div>
+	
+							<div class="sell-products">
+								<div class="select"><input type="checkbox"></div>
+								<div class="img">
+									<img src="images/jjim_icon/santiago.png" alt="img">
+								</div>
+								<div class="state">판매</div>
+								<div class="product-name">레고</div>
+								<div class="price">700,000원</div>
+								<div class="date">22-08-02</div>
+							</div>
+	
+							<div class="sell-products">
+								<div class="select"><input type="checkbox"></div>
+								<div class="img">
+									<img src="images/jjim_icon/travis.png" alt="img">
+								</div>
+								<div class="state">구매</div>
+								<div class="product-name">신발</div>
+								<div class="price">1700,000원</div>
+								<div class="date">22-08-02</div>
+							</div>
+						</div>
+					</div>
+					
 					</div>
 				</div>
-			</div>
-		</div>
-
-		<div class="function">
-			<div class="wishlist">
-				찜한 상품<br> <a href="jjim_cart.jsp"> ♥ 2</a>
-			</div>
-			<div class="recent">
-				최근본상품<br> ........<br> <span class="recent_product">최근
-					본 상품<br>이<br> 없습니다.
-				</span>
-			</div>
-			<div class="add">
-				앱 다운로드<br> <img src="./images/jjim_icon/qr_code.png"
-					width="70px" height="70px">
-			</div>
-			<div class="top" style="cursor: pointer">TOP</div>
-		</div>
-		<footer class="site-footer">
-
-
-			<%@include file="footer.jsp"%>
-
-
-		</footer>
-	</div>
-
-	<!-- chat -->
-	<div class="ui-dialog" id="chatting">
-		<iframe src="chatpage.jsp"></iframe>
-	</div>
+	
+	
+	<%@include file="motherbottom.jsp"%>	
 </body>
 </html>

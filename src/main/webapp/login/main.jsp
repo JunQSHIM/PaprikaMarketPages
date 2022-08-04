@@ -85,6 +85,12 @@ function main(){
 function mypage(){
 	window.location.href = 'mypage.jsp';
 }
+function myproductcart(){
+	window.location.href = 'myProductCart.jsp';
+}
+function sellpage(){
+	window.location.href = 'sellpage.jsp';
+}
 </script>
 </head>
 <body>

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>category_product</title>
 <script src="js/jquery-3.6.0.min.js"></script>
+<<<<<<< HEAD
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script
@@ -14,15 +15,24 @@
 <script
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+=======
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 <link rel="stylesheet" type="text/css" href="ctProduct.css">
 <link rel="stylesheet" type="text/css" href="product_detail.css">
+<<<<<<< HEAD
 
+=======
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
 	String p = request.getParameter("product");
 %>
 <script>
+	
 	function ctProduct(){
 		theForm.submit();
 	}
@@ -38,6 +48,7 @@
 			//$('html, body').animate({scrollTop:0}, '1000');
 			$('html, body').scrollTop(0);
 		});
+		
 	});
 	$(document).ready(function(){
 		$('.slider').bxSlider({
@@ -79,7 +90,6 @@
 		var source = image.src;
 	    window.open(source,'new','width=800, height=600, scrollbars=yes');
 	}
-	var checkStatus = true;
 	$(function () {
 		let num = 0;
 		let imageName = ["check.png", "uncheck.png"];
@@ -88,15 +98,21 @@
 				$("#status").attr("src","images/"+ imageName[num]);
 				$("#status").fadeIn(1200);
 				$("#status").fadeOut(2000);
+				$("#jjim").html('찜');
 				num=0;
 			}else{
 				$("#status").attr("src","images/"+ imageName[num]);
 				$("#status").fadeIn(1200);
 				$("#status").fadeOut(2000);
+				$("#jjim").html('♥찜');
 				num++;	
 			}
 		});
+<<<<<<< HEAD
 	});	
+=======
+	});
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 	/** 결제 **/
     // 결제 금액, 구매자의 이름, 이메일
     const priceAmount = "100000";
@@ -248,7 +264,7 @@
 						</div>
 					</div>
 					<div class="item" id="func">
-						<button id="jjim">찜</button>
+						<button id="jjim" type="button">찜</button>
 						<button>연락하기</button>
 						<button onclick="requestPay()">바로구매</button>
 					</div>

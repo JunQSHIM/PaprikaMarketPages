@@ -227,6 +227,8 @@ String id = request.getParameter("id");
 				</div>
 
 				<div class="products">
+				
+				
 					<%
 					for (int i = 0; i < 20; i++) {
 					%>
@@ -274,11 +276,7 @@ String id = request.getParameter("id");
 						본 상품<br>이<br> 없습니다.
 					</span>
 				</div>
-				<div class="add">
-					앱 다운로드<br> <img src="./images/jjim_icon/qr_code.png"
-						width="70px" height="70px">
-				</div>
-				<div class="top" style="cursor: pointer">TOP</div>
+				<div class="top" style="cursor: pointer"><div class="top_btn">TOP</div></div>
 			</div>
 
 

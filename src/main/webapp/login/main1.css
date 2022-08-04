@@ -411,8 +411,12 @@ body, html {
 	height: 100%;
 	margin-left: 100px;
 }*/
+
 .ban {
 	float: left;
+
+
+
 }
 
 .banner {
@@ -427,7 +431,9 @@ body, html {
 	position: fixed;
 	text-align: center;
 	float: right;
-	background-color: none;
+
+	margin-left: 10px
+	
 }
 
 .wishlist {

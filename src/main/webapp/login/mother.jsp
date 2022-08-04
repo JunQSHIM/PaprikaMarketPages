@@ -13,7 +13,7 @@
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<link rel="stylesheet" type="text/css" href="grid.css">
+<link rel="stylesheet" type="text/css" href="grid1.css">
 <link rel="stylesheet" type="text/css" href="main1.css">
 <link rel="stylesheet" type="text/css" href="prods.css">
 <link rel="stylesheet" type="text/css" href="./css/footer.css">
@@ -121,12 +121,12 @@ String id = request.getParameter("id");
 
 							<div class="nav_btn">
 								<a class="mystore" href="myProductCart.jsp"> <img
-									src="./images/mystore.png" width="23" height="24">내상점
+									src="./images/mystore.png" width="23" height="24">상점
 								</a>
 							</div>
 							<div class="nav_btn">
 								<button class="chat">
-									<img src="./images/chatting.png" width="23" height="24">파프리카톡
+									<img src="./images/chatting.png" width="23" height="24">파프리톡
 								</button>
 							</div>
 							<div class="nav_btn">

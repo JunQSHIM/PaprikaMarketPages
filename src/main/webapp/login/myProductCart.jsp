@@ -7,7 +7,7 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<title>jjim Page</title>
+<title>my store Page</title>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
 <link rel="stylesheet" type="text/css" href="./css/footer.css">
 <link rel="stylesheet" type="text/css" href="myProductCart.css">
@@ -27,10 +27,10 @@ function ctProduct(){
 			$("#result1").hide();
 		});
 		
-		$(".product_category_2").mouseenter(function(){
+		$(".product_category_1").mouseenter(function(){
 			$(".product_category_3").show();
 		});
-		$(".product_category_2").mouseleave(function(){
+		$(".product_category_1").mouseleave(function(){
 			$(".product_category_3").hide();
 		});
 		
@@ -133,7 +133,7 @@ function mypage(){
 				<div class="jjim_list">
 					<div class="jjim_list_1">
 					 	<a class="sell_product">상품 <span class="sell_product_span">1</span></a>
-					 	<a class="review_product">상품후기 <span class="review_product_span">0</span></a>
+					 	<a class="review_product" href="review_product.jsp">상품후기 <span class="review_product_span">2</span></a>
 					 	<a class="jjim_product" href="jjim_cart.jsp">찜 <span class="jjim_product_span">1</span></a>
 					 </div>
 				</div>
@@ -158,14 +158,69 @@ function mypage(){
 						</div>
 					</div>
 				</div>
-					
+				<div class="sell_cart_1">
+					<div class="sell_cart_2">
+						<div class="sell_cart_3">
+							<div class="sell_cart_4">
+								<div>전체</div>
+								<span class="sell_cart_4_span">1 개</span>
+							</div>
+							<div class="array">
+								<a class="select_array">
+									최신순
+								</a>
+								<a class="non_select_array">
+									인기순
+								</a>
+								<a class="non_select_array">
+									저가순
+								</a>
+								<a class="non_select_array">
+								고가순
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="sell_product_cart">
+						<div class="sell_product_board">
+							<a class="sell_board" href="#">
+								<div class="sell_image">
+									<img src="./images/jjim_icon/anya.jpg" width="194" height="194">
+									<span class="image_span">
+										<img src="./images/jjim_icon/pay.svg" alt="페이 가능">
+									</span>
+									<div class="inner_sell_image"></div>
+								</div>
+								<div class="sell_product_detail">
+									<div class="sell_product_title">스파이 패밀리-아냐</div>
+									<div class="sell_product_price">
+										<div class="sell_product_price_1">
+											150,000
+										</div>
+										<div class="sell_product_time">
+											<span>8시간 전</span>
+										</div>
+									</div>
+								</div>
+								<div class="sell_location">
+									<img src="./images/jjim_icon/location.png" width="15" height="17" alt="위치">
+									전국
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="bottom_space"></div>
 				</div>
-	
+			</div>
 			</div>
 			
  			</div>
 			</div>
 			
+			<footer>
+		<%@include file="footer.jsp" %>
+	</footer>
+
 			
 		</div>
 		
@@ -182,11 +237,7 @@ function mypage(){
 		<div class="top" style="cursor: pointer"><div class="top_btn">TOP</div></div>
 		</div>
 		
-	<footer>
-		<%@include file="footer.jsp" %>
-	</footer>
-
-
+	
 <!-- chat -->
 <div class="ui-dialog" id="chatting">
 		<iframe src="chatpage.jsp"></iframe>

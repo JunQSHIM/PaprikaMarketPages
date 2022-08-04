@@ -122,3 +122,8 @@
 #more_reviews{
 	text-align: center;
 }
+#status{
+	position: absolute;
+	z-index: 1;
+	margin-left:-20px;
+}

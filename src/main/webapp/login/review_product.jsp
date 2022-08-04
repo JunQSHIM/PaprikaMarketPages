@@ -7,10 +7,10 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<title>jjim Page</title>
+<title>my store Page</title>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
 <link rel="stylesheet" type="text/css" href="./css/footer.css">
-<link rel="stylesheet" type="text/css" href="jjim_cart.css">
+<link rel="stylesheet" type="text/css" href="review_product.css">
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
@@ -26,6 +26,14 @@ function ctProduct(){
 		$("#category").mouseleave(function(){
 			$("#result1").hide();
 		});
+		
+		$(".product_category_1").mouseenter(function(){
+			$(".product_category_3").show();
+		});
+		$(".product_category_1").mouseleave(function(){
+			$(".product_category_3").hide();
+		});
+		
 		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
 		$(".top").click(function() {
 			//$('html, body').animate({scrollTop:0}, '1000');
@@ -71,15 +79,7 @@ function main(){
 function mypage(){
 	window.location.href = 'mypage.jsp';
 }
-function myProductCart()  {
-	 window.location.href ='myProductCart.jsp';
-}	
-function jjimCart()  {
-	 window.location.href ='jjim_cart.jsp';
-}
-function reviewProduct()  {
-	 window.location.href ='review_product.jsp';
-}
+
 </script>
 </head>
 <body>
@@ -133,9 +133,9 @@ function reviewProduct()  {
 			<div class="favorite_body">
 				<div class="jjim_list">
 					<div class="jjim_list_1">
-					 	<a class="sell_product" href="myProductCart.jsp">상품 <span class="sell_product_span">1</span></a>
-					 	<a class="review_product" href="review_product.jsp">상품후기 <span class="review_product_span">2</span></a>
-					 	<a class="jjim_product" >찜 <span class="jjim_product_span">1</span></a>
+					 	<a class="sell_product"  href="myProductCart.jsp">상품 <span class="sell_product_span">1</span></a>
+					 	<a class="review_product">상품후기 <span class="review_product_span">2</span></a>
+					 	<a class="jjim_product"  href="jjim_cart.jsp">찜 <span class="jjim_product_span">1</span></a>
 					 </div>
 				</div>
 			</div>
@@ -143,76 +143,94 @@ function reviewProduct()  {
 				<div class="jjim_list_3">
 					<div class=jjim_list_4>
 						<div>
-							찜
-							<span class="jjim_list_4_span">1</span>
+							상점후기
+							<span class="jjim_list_4_span">2</span>
 						</div>
-					</div>
-					
 				</div>
-				<div class="jjim_board">
-					<div class="jjim_delete">
-						<div class="jjim_delete_1">
-							<div class="jjim_delete_btn">
-							</div>
-							<button class="select_delete_btn" onclick="alert('선택하신 상품이 없습니다.')">선택삭제</button>
-						</div>
-						<div class="array">
-							<a class="select_array">
-								최신순
-							</a>
-							<a class="non_select_array">
-								인기순
-							</a>
-							<a class="non_select_array">
-								저가순
-							</a>
-							<a class="non_select_array">
-								고가순
-							</a>
-							
-						</div>
-					</div>
-				<div class="jjim_board_body">
-					<div class="jjim_board_list">
-						<a class="jjim_board_article" href="#">
-							<div class="article_select">
-								<div class="article_select1">
+				<div class="review_board">
+					<div class="review_1">
+						<a class="other_store" href="#">
+							<img src="./images/jjim_icon/store.svg" width="60" height="60" alt="리뷰어 이미지">
+						</a>
+						<div class="review_board">
+							<div class="reviewer_title">
+								<div class="reviewer_name">
+									<a class="reviewer_name_1">
+										준귀염둥이규
+									</a>
+									<div class="review_date">2주 전</div>
 								</div>
-							</div>
-						<div class="jjim_image">
-							<img src="./images/jjim_icon/travis.png" alt="상품 이미지">
-							<div class="delivery_charge">배송비 포함</div>
-							<div class="inner_jjim_image"></div>
-						</div>
-					<div class="jjim_detail">
-							<div class="jjim_detail_1">
-								<div class="jjim_title">에어 조던 1 로우 OG SP 트래비스 스캇 프라그먼트 밀리터리 블루</div>
-								<div class="jjim_price">
-									<div>
-										17,000
+								<a class="review_scores" href="#">
+									<div class="review_score">
+										<img src="./images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="./images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="./images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="./images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="./images/jjim_icon/score.png" width="15" height="14" alt="별">
 									</div>
-								</div>
-								<div class="jjim_day">4일 전</div>
+								</a>
 							</div>
-						<div class="jjim_location">
-							<img src="./images/jjim_icon/location.png" width="15" height="17" alt="위치 아이콘">
-							서울특별시 성북구 석관동
+							<a class="purchase_product" href="#">
+								<button class="purchase_name">트레비스 스캇 x 나이키 (정품)
+								<img src="./images/jjim_icon/arrow2.png" width="6" height="10" alt="화살표">
+								</button>
+							</a>
+							<div class="review_content">잘 신겠습니다. 감사합니다.</div>
+							<div class="report_body">
+								<a class="report_btn">
+									<img src="./images/jjim_icon/report.png" width="14" height="14" alt="신고하기">
+									신고하기
+								</a>
+							</div>
 						</div>
 					</div>
-					</a>
+								<div class="review_1">
+						<a class="other_store" href="#">
+							<img src="./images/jjim_icon/store.svg" width="60" height="60" alt="리뷰어 이미지">
+						</a>
+						<div class="review_board">
+							<div class="reviewer_title">
+								<div class="reviewer_name">
+									<a class="reviewer_name_1">
+										임스응태액
+									</a>
+									<div class="review_date">3주 전</div>
+								</div>
+								<a class="review_scores" href="#">
+									<div class="review_score">
+										<img src="./images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="./images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="./images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="./images/jjim_icon/score.png" width="15" height="14" alt="별">
+									</div>
+								</a>
+							</div>
+							<a class="purchase_product" href="#">
+								<button class="purchase_name">레고 21336 오피스 아이디어 팝니다.
+								<img src="./images/jjim_icon/arrow2.png" width="6" height="10" alt="화살표">
+								</button>
+							</a>
+							<div class="review_content">TEST 리뷰 작성입니다!!!</div>
+							<div class="report_body">
+								<a class="report_btn">
+									<img src="./images/jjim_icon/report.png" width="14" height="14" alt="신고하기">
+									신고하기
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
+		
 			</div>
 			</div>
 			
  			</div>
 			</div>
 			
-			<div id="footer_page">
 			<footer>
 				<%@include file="footer.jsp" %>
 			</footer>
-		</div>
+			
 		</div>
 		
 		<div class="function">
@@ -227,7 +245,6 @@ function reviewProduct()  {
 			</div>
 		<div class="top" style="cursor: pointer"><div class="top_btn">TOP</div></div>
 		</div>
-		
 		
 <!-- chat -->
 <div class="ui-dialog" id="chatting">

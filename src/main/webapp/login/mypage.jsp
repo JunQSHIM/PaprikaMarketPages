@@ -44,6 +44,9 @@ function toMyReview() {
 		<hr style="border: 1px solid orange;">
 
 		<div class="card">
+			<div id="myPage_head">
+				<img src="images/pkIcon.png"><b>마이페이지</b>
+			</div>
 			<div id="profile">
 				<div id="profile_pic"></div>
 				<div id="nickname_and_button">
@@ -62,11 +65,11 @@ function toMyReview() {
 					</div>
 					<div id="redeal_and_answer">
 						<div id="redeal">
-							<b>♡ 재거래희망율 -%</b><br/>
+							<b>🧡재거래희망율 -%</b><br/>
 							-명 중 -명이 만족
 						</div>
 						<div id="answer">
-							<b>☏ 응답율 -%</b><br/>
+							<b>💬응답율 -%</b><br/>
 							보통 -분 이내 응답
 						</div>
 					</div>

@@ -220,7 +220,6 @@ function mypage(){
 						</div>
 					</div>
 				</div>
-				
 				<div class="more_review">
 					<button class="more_review_btn">
 						<div class="more_review_text">
@@ -233,13 +232,15 @@ function mypage(){
 			</div>
 			
  			</div>
+ 			
 			</div>
-			
 			<footer>
 				<%@include file="footer.jsp" %>
 			</footer>
 			
+			
 		</div>
+		
 		
 		<div class="function">
 			<div class="wishlist">

@@ -222,6 +222,8 @@ button {
     background-color: transparent;
     cursor: pointer;
     outline: none;
+    ㄴpadding: 0px;
+    border: 0px;
 }
 
 .purchase_product img {
@@ -284,11 +286,6 @@ button {
 .more_review_text {
     position: relative;
     line-height: 1;
-}
-
-button, input {
-    padding: 0px;
-    border: 0px;
 }
 
 .more_review_text::after {

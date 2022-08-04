@@ -26,16 +26,58 @@ function ctProduct(){
 		$("#category").mouseleave(function(){
 			$("#result1").hide();
 		});
+		
+		// 체크박스 선택 자바스크립트
+		$(document).ready(function(){
+			//전체 체크 클릭 시, 나머지 체크 
+			$("#jjim_delete_btn").click(function(){
+			var order2Chk=$("#jjim_delete_btn").prop("checked");
+
+			    if(order2Chk){
+			        $(".article_select1").prop("checked",true);
+			        $(".jjim_delete_1 button").prop("disabled",false);
+			    }
+			    else{
+			        $(".article_select1").prop("checked",false);
+			        $(".jjim_delete_1 button").prop("disabled",true);
+			    }
+			});
+
+			// 모든 체크박스를 클릭하면 버튼 활성화시키기
+			$('.article_select1').click(function(){
+			    var tmpp = $(this).prop('checked'); 
+			    //자식 체크 전체 체크시, 부모 체크박스 체크 됨
+			    var tt = $(".article_select1").length;
+			    var ss = $(".article_select1:checked").length;
+			    
+			    //선택한 체크박스 값이 true 이거나 체크박스 1개 이상 체크시 버튼 활성화시키기
+			    if(tmpp==true || ss>0){
+			    $(".jjim_delete_1 button").prop("disabled",false);
+			    }
+			    else{
+			    $(".jjim_delete_1 button").prop("disabled",true);
+			    }
+			    
+			    
+			    // 체크박스가 모두 선택되었을 때 상위 체크박스 선택되도록 설정
+			    if(tt == ss){
+			    	$("#jjim_delete_btn").prop("checked",true);
+			    }else{
+			    	$("#jjim_delete_btn").prop("checked",false);
+			    }
+			    
+				});
+			  
+			  
+			});
+		
 		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
 		$(".top").click(function() {
 			//$('html, body').animate({scrollTop:0}, '1000');
 			$('html, body').scrollTop(0);
 		});
 		
-		
-		
 	});
-	
 	
 	//chat
 	$(function(){
@@ -62,6 +104,7 @@ function ctProduct(){
 		});
 	});
 	
+	
 function login()  {
 	 window.location.href ='login.jsp';
 }	
@@ -84,6 +127,7 @@ function reviewProduct()  {
 	 window.location.href ='review_product.jsp';
 }
 </script>
+
 </head>
 <body>
 <div class="container">
@@ -152,12 +196,12 @@ function reviewProduct()  {
 					</div>
 					
 				</div>
+				<div>
 				<div class="jjim_board">
 					<div class="jjim_delete">
 						<div class="jjim_delete_1">
-							<div class="jjim_delete_btn">
-							</div>
-							<button class="select_delete_btn" onclick="alert('선택하신 상품이 없습니다.')">선택삭제</button>
+							<input type="checkbox" id="jjim_delete_btn">
+							<button class="select_delete_btn" onclick="alert('삭제되었습니다.')">선택삭제</button>
 						</div>
 						<div class="array">
 							<a class="select_array">
@@ -175,12 +219,43 @@ function reviewProduct()  {
 							
 						</div>
 					</div>
+						
+					</div>
 				<div class="jjim_board_body">
 					<div class="jjim_board_list">
 						<a class="jjim_board_article" href="#">
 							<div class="article_select">
-								<div class="article_select1">
+								<input type="checkbox" class="article_select1">
+								
+							</div>
+						<div class="jjim_image">
+							<img src="./images/jjim_icon/travis.png" alt="상품 이미지">
+							<div class="delivery_charge">배송비 포함</div>
+							<div class="inner_jjim_image"></div>
+						</div>
+					<div class="jjim_detail">
+							<div class="jjim_detail_1">
+								<div class="jjim_title">에어 조던 1 로우 OG SP 트래비스 스캇 프라그먼트 밀리터리 블루</div>
+								<div class="jjim_price">
+									<div>
+										17,000
+									</div>
 								</div>
+								<div class="jjim_day">4일 전</div>
+							</div>
+						<div class="jjim_location">
+							<img src="./images/jjim_icon/location.png" width="15" height="17" alt="위치 아이콘">
+							서울특별시 성북구 석관동
+						</div>
+					</div>
+					</a>
+					</div>
+					
+										<div class="jjim_board_list">
+						<a class="jjim_board_article" href="#">
+							<div class="article_select">
+								<input type="checkbox" class="article_select1">
+								
 							</div>
 						<div class="jjim_image">
 							<img src="./images/jjim_icon/travis.png" alt="상품 이미지">

@@ -278,7 +278,7 @@ function mypage(){
 			
 			<footer>
 		<%@include file="footer.jsp" %>
-	</footer>
+			</footer>
 
 			
 		</div>

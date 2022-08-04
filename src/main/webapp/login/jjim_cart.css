@@ -148,11 +148,11 @@ a {
 	-webkit-box-align: center;
 	align-items: center;
 	-webkit-box-pack: justify;
-	justify-content: space-between;
 	padding: 0px;
 	border: 0px;
 	font: inherit;
 	vertical-align: baseline;
+	justify-content: space-between;
 }
 
 .jjim_delete_1 {
@@ -167,52 +167,12 @@ a {
 	letter-spacing: -0.5px;
 }
 
-.jjim_delete_btn {
+#jjim_delete_btn {
 	width: 24px;
 	height: 24px;
 	border: 1px solid rgb(238, 238, 238);
 	cursor: pointer;
-	transition: border 0.2s ease 0s, background-color 0.2s ease 0s;
 	position: relative;
-}
-
-.jjim_delete_btn::before {
-	content: "";
-	position: absolute;
-	bottom: 5px;
-	left: 2px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: transparent rgb(204, 204, 204) rgb(204, 204, 204)
-		transparent;
-	width: 8px;
-	height: 14px;
-	transform: rotate(40deg);
-	transform-origin: 100% 100%;
-}
-
-
-.jjim_delete_btn::after {
-    content: "";
-    width: 8px;
-    height: 14px;
-    border-right: 2px solid rgb(255, 255, 255);
-    border-bottom: 2px solid rgb(255, 255, 255);
-}
-
-.jjim_delete_btn::after {
-	content: "";
-	position: absolute;
-	bottom: 5px;
-	left: 2px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: transparent;
-	width: 0px;
-	height: 0px;
-	transform: rotate(40deg);
-	transform-origin: 100% 100%;
-	transition: width 0.1s ease-out 0s, height 0.1s ease-out 0.1s;
 }
 
 .jjim_delete_1 button {
@@ -239,18 +199,6 @@ a {
 .array {
 	display: flex;
 	font-size: 13px;
-	margin: 0px;
-	padding: 0px;
-	border: 0px;
-	font: inherit;
-	vertical-align: baseline;
-	font-synthesis: none;
-	-webkit-font-smoothing: antialiased;
-	direction: ltr;
-	text-align: left;
-	color: rgb(33, 33, 33);
-	letter-spacing: -0.5px;
-	text-size-adjust: 100%;
 }
 
 .select_array {
@@ -372,34 +320,6 @@ a {
     position: relative;
 }
 
-.article_select1::before {
-    content: "";
-    position: absolute;
-    bottom: 5px;
-    left: 2px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: transparent rgb(204, 204, 204) rgb(204, 204, 204) transparent;
-    width: 8px;
-    height: 14px;
-    transform: rotate(40deg);
-    transform-origin: 100% 100%;
-}
-.article_select1::after {
-    content: "";
-    position: absolute;
-    bottom: 5px;
-    left: 2px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: transparent;
-    width: 0px;
-    height: 0px;
-    transform: rotate(40deg);
-    transform-origin: 100% 100%;
-    transition: width 0.1s ease-out 0s, height 0.1s ease-out 0.1s;
-}
-
 .jjim_image {
     position: relative;
     width: 139px;
@@ -510,5 +430,6 @@ img {
     vertical-align: bottom;
     border-style: none;
 }
-
-
+.clicked {
+  background-color: yellow;
+}

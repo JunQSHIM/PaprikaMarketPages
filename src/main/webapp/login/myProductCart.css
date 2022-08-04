@@ -242,18 +242,7 @@ a {
 .array {
 	display: flex;
 	font-size: 13px;
-	margin: 0px;
-	padding: 0px;
-	border: 0px;
-	font: inherit;
-	vertical-align: baseline;
-	font-synthesis: none;
-	-webkit-font-smoothing: antialiased;
-	direction: ltr;
-	text-align: left;
-	color: rgb(33, 33, 33);
-	letter-spacing: -0.5px;
-	text-size-adjust: 100%;
+
 }
 
 .select_array {

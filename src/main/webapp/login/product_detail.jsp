@@ -13,8 +13,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <link rel="stylesheet" type="text/css" href="ctProduct.css">
 <link rel="stylesheet" type="text/css" href="product_detail.css">
+
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
@@ -95,6 +97,61 @@
 			}
 		});
 	});	
+	/** 결제 **/
+    // 결제 금액, 구매자의 이름, 이메일
+    const priceAmount = "100000";
+    const buyerMemberEmail = "uusin@gmail.com";
+    const buyerMemberName = "김유신(부산)";
+    // const form = document.getElementById("payment");
+
+    console.log(priceAmount);
+    console.log(buyerMemberName);
+    console.log(buyerMemberEmail);
+    const IMP = window.IMP;
+    IMP.init('imp62063820');
+
+    function requestPay() {
+        // IMP.request_pay(param, callback) 결제창 호출
+        IMP.request_pay({ // param
+            pg: "html5_inicis",
+            pay_method: "card",
+            merchant_uid: 'cart_' + new Date().getTime(),
+            name: "자석펫",
+            amount: priceAmount,
+            buyer_email: buyerMemberEmail,
+            buyer_name: buyerMemberName,
+
+        }, function (rsp) { // callback
+
+            /** 결제 검증 **/
+            $.ajax({
+                type: 'POST',
+                url: '/verifyIamport/'+rsp.imp_uid,
+                beforeSend: function(xhr){
+                    xhr.setRequestHeader(header, token);
+                }
+            }).done(function(result){
+                // rsp.paid_amount와 result.response.amount(서버 검증) 비교 후 로직 실행
+                if(rsp.paid_amount === result.response.amount){
+                    alert("결제가 완료되었습니다.");
+                    $.ajax({
+                        type:'POST',
+                        url:'/lecture/payment',
+                        beforeSend: function(xhr){
+                            xhr.setRequestHeader(header, token);
+                        }
+                    }).done(function() {
+                        window.location.reload();
+                    }).fail(function(error){
+                            alert(JSON.stringify(error));
+                    })
+                } else{
+                    alert("결제에 실패했습니다."+"에러코드 : "+rsp.error_code+"에러 메시지 : "+rsp.error_message);
+
+                }
+            })
+        });
+    };
 </script>
 </head>
 <body>
@@ -193,7 +250,7 @@
 					<div class="item" id="func">
 						<button id="jjim">찜</button>
 						<button>연락하기</button>
-						<button>바로구매</button>
+						<button onclick="requestPay()">바로구매</button>
 					</div>
 					<div><img id="status"></div>
 				</div>

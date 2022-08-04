@@ -91,12 +91,14 @@ String id = request.getParameter("id");
 </script>
 </head>
 <body>
+	<div class="fakeheader"></div>
 	<div class="row wrap">
 
 		<div class="grid_2 ad"></div>
 		<div class="container_12">
-			<%@include file="header.jsp"%>
-
+			<div class="head">
+				<%@include file="header.jsp"%>
+			</div>
 			<div class="grid_12 nav">
 				<div class="nafix">
 					<div class="grid_3 loca">
@@ -122,7 +124,7 @@ String id = request.getParameter("id");
 							<div class="nav_btn">
 								<a class="mystore" href="myProductCart.jsp"> <img
 									src="./images/mystore.png" width="23" height="24">상점
-								</a> 
+								</a>
 							</div>
 							<div class="nav_btn">
 								<button class="chat">
@@ -252,9 +254,9 @@ String id = request.getParameter("id");
 					}
 					%>
 				</div>
- 
 
- 
+
+
 
 				<%@include file="footer1.jsp"%>
 

@@ -220,6 +220,14 @@ function mypage(){
 						</div>
 					</div>
 				</div>
+				
+				<div class="more_review">
+					<button class="more_review_btn">
+						<div class="more_review_text">
+							상점후기 더보기
+						</div>
+					</button>
+				</div>
 		
 			</div>
 			</div>

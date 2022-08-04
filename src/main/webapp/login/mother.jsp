@@ -3,20 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-
-
-
-
 <meta charset="UTF-8">
 <title>Mother</title>
-
-
-
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script
@@ -26,10 +17,7 @@
 <link rel="stylesheet" type="text/css" href="prods.css">
 <link rel="stylesheet" type="text/css" href="./css/footer.css">
 
-<%
-request.setCharacterEncoding("UTF-8");
-String id = request.getParameter("id");
-%>
+
 <script>
 <!-- 네비바 상단고정  -->
 $(document).ready(function() {
@@ -109,15 +97,8 @@ $(document).ready(function() {
 		window.location.href = 'mypage.jsp';
 	}
 </script>
-
-
-
-
 </head>
 <body>
-
-
-
 	<div class="row wrap">
 
 		<div class="grid_2 ad"></div>
@@ -156,7 +137,7 @@ $(document).ready(function() {
 				<%@include file="footer1.jsp"%>
 			</div>
 		</div>
-
+</div>
 		<%@include file="ban.jsp"%>
 		<!-- chat -->
 		<div class="ui-dialog" id="chatting">

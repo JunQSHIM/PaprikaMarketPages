@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+div{
+	border:1px solid black;
+}
+
+
+.pics, .texts, .feat{
+	height:350px;
+	
+}
+
+.pics div{
+	height:300px;
+	margin:0px 40px;
+	
+	background:pink;
+}
+.pics img{
+	height:300px;
+}
+.texts .innertext  {
+	height:300px;
+	margin:0px 40px;
+	
+	background:pink;
+}
+
+.feat div  {
+	height:300px;
+	margin:0px 40px;
+	
+	background:pink;
+}
+
+.texts .innertext .user{
+	background: green;
+	height:60px;
+	margin-top:10px;
+	clear: both;
+	
+}
+
+.user img{
+	margin: 5px;
+	float: left;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	float: left;
+}
+.location{
+	display: block;
+}
+.mannertemp{
+	margin-left:0px;
+	line-height:55px;
+	text-align:right;
+	height:60px;
+
+}

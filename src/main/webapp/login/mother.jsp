@@ -4,14 +4,17 @@
 <html>
 <head>
 
+
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 
 
 
+
 <meta charset="UTF-8">
 <title>Mother</title>
+
 
 
 <link rel="stylesheet"
@@ -108,8 +111,11 @@ $(document).ready(function() {
 </script>
 
 
+
+
 </head>
 <body>
+
 
 
 	<div class="row wrap">
@@ -156,6 +162,7 @@ $(document).ready(function() {
 		<div class="ui-dialog" id="chatting">
 			<iframe src="chatpage.jsp"></iframe>
 		</div>
+
 
 
 	<%@include file="mothertop.jsp"%>

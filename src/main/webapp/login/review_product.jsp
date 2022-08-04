@@ -210,7 +210,7 @@ function mypage(){
 								<img src="./images/jjim_icon/arrow2.png" width="6" height="10" alt="화살표">
 								</button>
 							</a>
-							<div class="review_content">상품에 상처가 있네요!</div>
+							<div class="review_content">TEST 리뷰 작성입니다!!!</div>
 							<div class="report_body">
 								<a class="report_btn">
 									<img src="./images/jjim_icon/report.png" width="14" height="14" alt="신고하기">
@@ -227,6 +227,9 @@ function mypage(){
  			</div>
 			</div>
 			
+			<footer>
+				<%@include file="footer.jsp" %>
+			</footer>
 			
 		</div>
 		
@@ -243,11 +246,6 @@ function mypage(){
 		<div class="top" style="cursor: pointer"><div class="top_btn">TOP</div></div>
 		</div>
 		
-	<footer>
-		<%@include file="footer.jsp" %>
-	</footer>
-
-
 <!-- chat -->
 <div class="ui-dialog" id="chatting">
 		<iframe src="chatpage.jsp"></iframe>

@@ -120,7 +120,8 @@ div {
 	margin: 18px 28px;
 	background: orange;
 }
-.buybtns img{
+
+.buybtns img {
 	margin-left: 10px;
 }
 
@@ -129,7 +130,6 @@ div {
 }
 
 .separate {
-	
 	height: 100px;
 }
 
@@ -137,24 +137,65 @@ hr {
 	border: 1px solid orange;
 }
 
-.feat{
-	height: 300px;
-	background: pink;	
-}
-.prodinfo, .storeinfo {
-	font-size: 1.5rem;
-	 
-}
-.featleft{
-	width:65%;
+.feat {
 	
-	float:left;
-	background: red;
-	
+	background: none;
 }
 
-.featright{
-	width:30%;
+.prodinfo, .storeinfo {
+	font-size: 1.5rem;
+}
+
+.featleft {
+	float: left;
+	background: none;
+}
+.innerfl{
+	margin-top:35px;
+	width:95%;
+	margin-left:0;
+}
+
+.featright {
+	border-left: 1px solid #a7a7a7a7;
+	border-right: 1px solid #a7a7a7a7;
+	
+	
+}
+.prodinfo,
+.storeinfo_1,
+.storeinfo_2, 
+.storeinfo_3{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+/*
+.storeinfo_1{
+	background: skyblue;
+}
+.storeinfo_2{
 	background: blue;
-	float:right;
+}
+.storeinfo_3{
+	background: purple;
+}
+*/
+.innerfr{
+	
+	width:85%;
+	margin:15px auto;
+}
+
+.review, .reviews {
+	font-size: 1rem;
+}
+
+.count {
+	font-size: 1rem;
+	float: left;
+	color: red;
+}
+
+.storeinfo_2 .user{
+	font-size: 1rem;
 }

@@ -81,21 +81,83 @@
 			</div>
 			<div class="grid_12 separate"></div>
 			<hr>
-			<div class="grid_12 separate"></div>
+
 			<div class="row grid_12 feat">
-				<div class="featleft">
-					<div class="prodinfo">
-						상품정보<hr>
+				<div class="grid_8 featleft">
+					<div class="innerfl">
+						<div class="prodinfo">
+							상품정보
+							<hr>
+						</div>
+
+
+						<div class="feature">
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+							<p>대머리 필수품 지금 바로 주문하세요!</p>
+						</div>
 					</div>
- 
-					
-					<div class="feature">대머리 필수품 지금 바로 주문하세요!</div>
 				</div>
-				<div class="featright">
-					<div class="storeinfo">
-						상점정보<hr>
+				<div class="grid_4 featright">
+					<div class="innerfr">
+
+						<div class="row storeinfo">
+							<div class="storeinfo_1">
+								상점정보
+								<hr>
+							</div>
+							<div class="storeinfo_2">
+								<div class="row user">
+									<div class="grid_1 psa">
+										<img class="grid_1" src="images/hair.png">
+									</div>
+									<div class="grid_1 name">
+										<h3>장문기</h3>
+										<div class="grid_1 location">부천시 상동</div>
+									</div>
+									<div class="grid_1 mannertemp">45도</div>
+
+								</div>
+								<div>
+									<hr>
+								</div>
+							</div>
+							<div class="row gird_2 storeinfo_3">
+								<div class="grid_1 review"><b>상점후기</b></div>
+								<div class="count">41</div>
+								<div class="clear">
+									<hr>
+								</div>
+								<div class="reviews">
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+									<p>김유신 : 와이라노</p>
+								</div>
+							</div>
+						</div>
 					</div>
-				
+
 				</div>
 			</div>
 			<div class="btns">

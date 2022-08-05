@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+div {
+
+}
+
+.management div {
+	line-height: 4rem;
+	float: left;
+	margin-right: 35px;
+}
+.star{
+	float:left;
+	color:red;
+}
+.bar {
+	color: orange;
+}
+
+.newinfo_1 {
+	border-bottom: 2px solid orange;
+}
+
+
+.management, .proimg, .title, .categ, .location, .state, .refund, .price,
+	.feat, .tag, .fastsell {
+	border-bottom: 1px solid orange;
+}
+
+.explain {
+	font-size: 1.3rem;
+}
+
+.proimg{
+	margin-top:30px;
+}
+
+.regpic, .regedpic {
+	overflow: hidden;
+	margin: 10px;
+	height: 150px;
+}
+
+
+
+.warn{
+	font-size:0.8rem;
+	margin-top:30px;
+}
+
+.regpic input {
+	width:150px;
+	height: 150px;
+	opacity: 0;
+}
+
+.regpic img {
+	height: 150px;
+	width: 150px;
+}
+
+
+.file_1 {
+	float: left;
+	z-index: 2;
+	position: relative;
+}
+
+.file_2 {
+	height: 152px;
+	width: 152px;
+	float: left;
+	position: absolute;
+	z-index: 1;
+	border: 1px solid black;
+}
+
+.newinfo_1 {
+	height: 60px;
+	margin-top: 20px;
+}
+
+.newinfo_1_1, .fastsell_1 {
+	font-size: 1.7rem;
+}
+
+.newinfo_1_2 {
+	margin: 6px 0 0 0;
+	color: red;
+	font-size: 1.2rem;
+}
+
+.titlebox{
+	border:1px solid #a7a7a7a7;
+	height:30px;
+}
+
+.titlebox input{
+	width:500px;
+	
+	
+	
+}
+
+.titlebox a{
+	float:right;
+}
+
+.fastsell_2 {
+	margin: 6px 0 0 0;
+	font-size: 1rem;
+}

@@ -131,7 +131,7 @@
 
 								</div>
 								<div>
-									<hr>
+									<hr> 
 								</div>
 							</div>
 							<div class="row gird_2 storeinfo_3">

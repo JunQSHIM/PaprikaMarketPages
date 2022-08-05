@@ -293,6 +293,23 @@ function toProfileEdit() {
 function ctProduct() {
 	theForm.submit();
 }
+function upload() {
+	let myPic = document.getElementById("my_pic");
+	myPic.click();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -317,4 +334,39 @@ $(function() {
 		"width": "30%"
 	});
 });
+
+
+
+
+
+
+
+//profileEdit
+
+function setThumbnail(event) {
+	var reader = new FileReader();
+	console.log('hi');
+	reader.onload = function(event) {
+		var img = document.createElement("img");
+		img.setAttribute("src", event.target.result);
+		img.setAttribute("height", '100%');
+
+		if (document.getElementById("profile_pic").childNodes.length != 0) {
+			removeAllchild(document.getElementById("profile_pic"));
+		}
+		document.getElementById("profile_pic").appendChild(img).setAttribute('width', '100%');
+	};
+
+	reader.readAsDataURL(event.target.files[0]);
+}
+
+function removeAllchild(div) {
+	while (div.hasChildNodes()) {
+		div.removeChild(div.firstChild);
+	}
+}
+
+
+
+
 

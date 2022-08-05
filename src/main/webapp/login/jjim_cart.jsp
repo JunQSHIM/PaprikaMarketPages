@@ -42,34 +42,31 @@ function ctProduct(){
 			        $(".jjim_delete_1 button").css({"backgroundColor":"white","cursor":"auto","color":"rgb(136, 136, 136)"}).prop("disabled",true);
 			    }
 			});
-
 			// 모든 체크박스를 클릭하면 버튼 활성화시키기
 			$('.article_select1').click(function(){
 			    var tmpp = $(this).prop('checked'); 
 			    //자식 체크 전체 체크시, 부모 체크박스 체크 됨
 			    var tt = $(".article_select1").length;
 			    var ss = $(".article_select1:checked").length;
-			    
 			    //선택한 체크박스 값이 true 이거나 체크박스 1개 이상 체크시 버튼 활성화시키기
 			    if(tmpp==true || ss>0){
-			    $(".jjim_delete_1 button").prop("disabled",false);
+			    $(".jjim_delete_1 button").css({"backgroundColor":"#ff8955","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 			    }
 			    else{
-			    $(".jjim_delete_1 button").prop("disabled",true);
+			    $(".jjim_delete_1 button").css({"backgroundColor":"white","cursor":"auto","color":"rgb(136, 136, 136)"}).prop("disabled",true);
+			    	
 			    }
-			    
-			    
+			   
 			    // 체크박스가 모두 선택되었을 때 상위 체크박스 선택되도록 설정
 			    if(tt == ss){
 			    	$("#jjim_delete_btn").css({"backgroundColor":"#ff8955","cursor":"pointer","color":"#fff"}).prop("checked",true);
 			    }else{
 			    	$("#jjim_delete_btn").css({"backgroundColor":"white","cursor":"auto","color":"rgb(136, 136, 136)"}).prop("checked",false);
+			    	
 			    }
 			    
 				});
-			  
-			  
-			});
+			}); // 체크박스 제이쿼리
 		
 		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
 		$(".top").click(function() {
@@ -126,9 +123,11 @@ function jjimCart()  {
 function reviewProduct()  {
 	 window.location.href ='review_product.jsp';
 }
-function btn(){
+function delete_btn(){
     alert('삭제 되었습니다.');
 }
+
+
 </script>
 
 </head>
@@ -183,9 +182,9 @@ function btn(){
 			<div class="favorite_body">
 				<div class="jjim_list">
 					<div class="jjim_list_1">
-					 	<a class="sell_product" href="myProductCart.jsp">상품 <span class="sell_product_span">1</span></a>
-					 	<a class="review_product" href="review_product.jsp">상품후기 <span class="review_product_span">2</span></a>
-					 	<a class="jjim_product" >찜 <span class="jjim_product_span">1</span></a>
+					 	<a class="sell_product" href="myProductCart.jsp">상품 <span class="sell_product_span">3</span></a>
+					 	<a class="review_product" href="review_product.jsp">상품후기 <span class="review_product_span">5</span></a>
+					 	<a class="jjim_product" >찜 <span class="jjim_product_span">2</span></a>
 					 </div>
 				</div>
 			</div>
@@ -203,8 +202,12 @@ function btn(){
 				<div class="jjim_board">
 					<div class="jjim_delete">
 						<div class="jjim_delete_1">
+							<div>
 							<input type="checkbox" id="jjim_delete_btn">
-							<button class="select_delete_btn" disabled="disabled" onclick="btn()">선택삭제</button>
+							</div>
+							<div>
+							<button class="select_delete_btn" disabled="disabled" onclick="delete_btn()">선택삭제</button>
+							</div>
 						</div>
 						<div class="array">
 							<a class="select_array">

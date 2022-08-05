@@ -2,6 +2,8 @@
 
 @charset "utf-8";
 
+
+
 div {
 	display: block;
 }
@@ -140,6 +142,7 @@ a {
     border: 0px;
     font: inherit;
     vertical-align: baseline;
+    
 }
 .review_1 {
     padding: 20px;
@@ -301,4 +304,8 @@ button {
     background-repeat: no-repeat;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAC9JREFUKBVjYMAB/kMBDmkGJlwShMRHgkZGUOARCghs8mQHDjbDwGKj8chAfloFAO6aFATVmNerAAAAAElFTkSuQmCC);
     background-position: 4px 4px;
+}
+
+.none{
+	display: none;
 }

@@ -132,9 +132,9 @@ function mypage(){
 			<div class="favorite_body">
 				<div class="jjim_list">
 					<div class="jjim_list_1">
-					 	<a class="sell_product">상품 <span class="sell_product_span">1</span></a>
-					 	<a class="review_product" href="review_product.jsp">상품후기 <span class="review_product_span">2</span></a>
-					 	<a class="jjim_product" href="jjim_cart.jsp">찜 <span class="jjim_product_span">1</span></a>
+					 	<a class="sell_product">상품 <span class="sell_product_span">3</span></a>
+					 	<a class="review_product" href="review_product.jsp">상품후기 <span class="review_product_span">5</span></a>
+					 	<a class="jjim_product" href="jjim_cart.jsp">찜 <span class="jjim_product_span">2</span></a>
 					 </div>
 				</div>
 			</div>

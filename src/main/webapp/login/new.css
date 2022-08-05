@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+div {
+	border:1px solid black;
+}
+
+.management div {
+	line-height: 4rem;
+	float: left;
+	margin-right: 35px;
+}
+
+.bar {
+	color: orange;
+}
+
+.management, 
+.newinfo_1,
+.proimg,
+.title,
+.categ,
+.location,
+.state,
+.refund,
+.price,
+.feat,
+.tag,
+.fastsell_1{
+	border-bottom: 2px solid orange;
+}
+
+.newinfo_1 {
+	height:60px;
+	margin-top: 20px;
+
+}
+
+.newinfo_1_1 {
+	font-size: 1.7rem;
+}
+
+.newinfo_1_2 {
+	margin: 6px 0 0 0;
+	color: red;
+	font-size: 1.2rem;
+}

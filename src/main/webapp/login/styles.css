@@ -1,82 +1,63 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image:url("images/dk.png");
-background-size: cover;
-background-position : center;
-background-repeat: no-repeat;
-height: 100%;
-font-family: 'Numans', sans-serif;
+	height: 100%;
+	font-family: 'Numans', sans-serif;
 }
-
 .container{
-height: 60%;
-align-content: center;
+	height: 60%;
+	align-content: center;
 }
 .card{
-height: 620px;
-margin-top: auto;
-margin-bottom: auto;
-width: 400px;
-background-color: rgba(0,0,0,0.3) !important;
+	height: 620px;
+	width: 400px;
+	border : 0.3px solid lightgray;
+	background-color: rgba(0,0,0,0) !important;
 }
-
-.social_icon span{
-font-size: 60px;
-margin-left: 10px;
-color: #FFC312;
+.card-login{
+	height: 400px;
+	width: 400px;
+	border : 0.3px solid lightgray;
+	background-color: rgba(0,0,0,0.03) !important;
 }
-
-.social_icon span:hover{
-color: white;
-cursor: pointer;
+input{
+	padding-top:10px;
+	margin-top: 5px;
 }
-
 .card-header h3{
-color: white;
+	color: black;
 }
-
-.social_icon{
-position: absolute;
-right: 20px;
-top: -45px;
-}
-
 .input-group-prepend span{
-width: 50px;
-background-color: #FFC312;
-color: black;
-border:0 !important;
+	width: 50px;
+	background-color: #FFC312;
+	color: black;
+	border:0 !important;
 }
-
 input:focus{
-outline: 0 0 0 0  !important;
-box-shadow: 0 0 0 0 !important;
-
+	outline: 0 0 0 0  !important;
+	box-shadow: 0 0 0 0 !important;
 }
-
 .remember{
-color: white;
+	color: black;
 }
-
-.remember input
-{
-width: 20px;
-height: 20px;
-margin-left: 15px;
-margin-right: 5px;
-}
-
+.remember input{
+	width: 20px;
+	height: 20px;
+	margin-left: 15px;
+	margin-right: 5px;
+}	
 .login_btn{
-color: black;
-background-color: #FFC312;
-width: 100px;
+	color: black;
+	background-color: #FFC312;
+	width: 100px;
 }
 
 .register_btn{
-color: black;
-background-color: #FFC312;
-width: 150px;
+	margin-left:10px;
+	color: black;
+	background-color: #FFC312;
+	width: 150px;
+	margin-right:10px;
 }
 
 .register_btn a{
@@ -85,32 +66,23 @@ width: 150px;
 }
 
 .register_btn:hover{
-	color:black;
-	background-color:white;
+	color: black;
+	background-color: #FFE900;
 }
-
 
 .login_btn:hover{
-color: black;
-background-color: white;
-}
-
-.links{
-color: white;
-}
-
-.links a{
-margin-left: 4px;
+	color: black;
+	background-color: #FFE900;
 }
 
 select {
   width: 80px; 
-  padding: .10em .10em; /* �������� ���� ���� */
-  font-family: inherit;  /* ��Ʈ ��� */
-  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* ����Ƽ�� ȭ��ǥ ��ü */  
+  padding: .10em .10em; /* 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 */
+  font-family: inherit;  /* 占쏙옙트 占쏙옙占� */
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 占쏙옙占쏙옙티占쏙옙 화占쏙옙표 占쏙옙체 */  
   border: 1px solid #999; 
-  border-radius: 3px; /* iOS �ձٸ𼭸� ���� */
-  -webkit-appearance: none; /* ����Ƽ�� ���� ���߱� */
+  border-radius: 3px; /* iOS 占쌌근모서몌옙 占쏙옙占쏙옙 */
+  -webkit-appearance: none; /* 占쏙옙占쏙옙티占쏙옙 占쏙옙占쏙옙 占쏙옙占쌩깍옙 */
   -moz-appearance: none;
   appearance: none;
 }

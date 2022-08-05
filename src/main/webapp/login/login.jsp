@@ -73,7 +73,6 @@ $(document).ready(function(){
 		   theForm.password.focus();
 		   if(theForm.id.value!=""){
 			   setOutline(theForm.id,"1px solid black");
-			   
 		   }
 		   return;
 	   }
@@ -81,13 +80,13 @@ $(document).ready(function(){
 	});
 });
 </script>
-	<title>login</title>
-	<!--Bootsrap 4 CDN-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!--Fontawesome CDN-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="styles.css">
+<title>login</title>
+<!--Bootsrap 4 CDN-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!--Fontawesome CDN-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<!--Custom styles-->
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 <div align="center" style="margin-top:150px;">
@@ -96,8 +95,7 @@ $(document).ready(function(){
 </a></div>
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<div class="card-header">
+		<div class="card-login">
 			<div align="center">
 				<h3 align="center">로그인</h3>
 			</div>
@@ -108,7 +106,6 @@ $(document).ready(function(){
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 						<input type="text" class="form-control" placeholder="아이디" name="id">
-						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
@@ -131,15 +128,12 @@ $(document).ready(function(){
 						</div>
 				</form>
 			</div>
-			<div class="card-footer">
-					<div class="btn float-left register_btn">
-						<a href="registerAgree.jsp">회원가입</a>
-					</div>
-					<div class="btn float-right register_btn">
-					<a href="#">비밀번호 찾기</a>
-				</div>
+			<div class="btn float-left register_btn">
+				<a href="registerAgree.jsp">회원가입</a>
 			</div>
-		</div>
+			<div class="btn float-right register_btn">
+				<a href="#">비밀번호 찾기</a>
+		    </div>
 	</div>
 	</div>
 </div>

@@ -6,7 +6,7 @@ body {
 }
 
 div {
-	
+
 }
 
 .pics, .texts {
@@ -110,6 +110,7 @@ div {
 
 .jjimbtn, .talk, .buy {
 	margin-top: 18px;
+	font-weight: bold;
 }
 
 .buybtns .jjimbtn {
@@ -121,7 +122,7 @@ div {
 	background: orange;
 }
 
-.buybtns img {
+.talk img {
 	margin-left: 10px;
 }
 
@@ -138,7 +139,6 @@ hr {
 }
 
 .feat {
-	
 	background: none;
 }
 
@@ -150,24 +150,22 @@ hr {
 	float: left;
 	background: none;
 }
-.innerfl{
-	margin-top:35px;
-	width:95%;
-	margin-left:0;
+
+.innerfl {
+	margin-top: 35px;
+	width: 95%;
+	margin-left: 0;
+	width: 95%;
 }
 
 .featright {
 	border-left: 1px solid #a7a7a7a7;
 	border-right: 1px solid #a7a7a7a7;
-	
-	
 }
-.prodinfo,
-.storeinfo_1,
-.storeinfo_2, 
-.storeinfo_3{
-	margin-top:20px;
-	margin-bottom:20px;
+
+.prodinfo, .storeinfo_1, .storeinfo_2, .storeinfo_3 {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 /*
 .storeinfo_1{
@@ -180,14 +178,38 @@ hr {
 	background: purple;
 }
 */
-.innerfr{
-	
-	width:85%;
-	margin:15px auto;
+.innerfr {
+	width: 85%;
+	margin: 15px auto;
 }
 
 .review, .reviews {
 	font-size: 1rem;
+}
+
+.featright .buybtns_feat .talk {
+	width: 45%;
+	background: orange;
+	float: left;
+	height: 45px;
+	text-align: center;
+	line-height: 45px;
+	margin-left: 10px;
+	color:white;
+	
+}
+
+.featright .buybtns_feat .buy {
+	
+	color:white;
+	margin-left: 10px;
+	line-height : 45px;
+	text-align: center;
+	float: left;
+	width: 45%;
+	background: red;
+	height: 45px;
+	line-height: 45px;
 }
 
 .count {
@@ -196,6 +218,6 @@ hr {
 	color: red;
 }
 
-.storeinfo_2 .user{
+.storeinfo_2 .user {
 	font-size: 1rem;
 }

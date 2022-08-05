@@ -131,11 +131,13 @@
 
 								</div>
 								<div>
-									<hr> 
+									<hr>
 								</div>
 							</div>
 							<div class="row gird_2 storeinfo_3">
-								<div class="grid_1 review"><b>상점후기</b></div>
+								<div class="grid_1 review">
+									<b>상점후기</b>
+								</div>
 								<div class="count">41</div>
 								<div class="clear">
 									<hr>
@@ -157,7 +159,14 @@
 							</div>
 						</div>
 					</div>
+					<div class="grid_4 buybtns_feat">
+						<div class="chat talk">
 
+							<img src="images/talkmark.png" alt="파프리카톡">파프리카톡
+
+						</div>
+						<div class="buy">바로구매</div>
+					</div>
 				</div>
 			</div>
 			<div class="btns">

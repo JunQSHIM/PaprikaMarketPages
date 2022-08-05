@@ -7,24 +7,10 @@
 <meta charset="UTF-8">
 <title>category_product</title>
 <script src="js/jquery-3.6.0.min.js"></script>
-
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
 <link rel="stylesheet" type="text/css" href="ctProduct.css">
 <link rel="stylesheet" type="text/css" href="product_detail.css">
-
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -108,15 +94,7 @@
 				num++;	
 			}
 		});
-<<<<<<< HEAD
-<<<<<<< HEAD
-	});	
-=======
 	});
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
-=======
-	});
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 	/** 결제 **/
     // 결제 금액, 구매자의 이름, 이메일
     const priceAmount = "100000";

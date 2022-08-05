@@ -77,12 +77,12 @@ input:focus{
 
 select {
   width: 80px; 
-  padding: .10em .10em; /* 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 */
-  font-family: inherit;  /* 占쏙옙트 占쏙옙占� */
-  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 占쏙옙占쏙옙티占쏙옙 화占쏙옙표 占쏙옙체 */  
+  padding: .10em .10em; 
+  font-family: inherit;  
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;   
   border: 1px solid #999; 
-  border-radius: 3px; /* iOS 占쌌근모서몌옙 占쏙옙占쏙옙 */
-  -webkit-appearance: none; /* 占쏙옙占쏙옙티占쏙옙 占쏙옙占쏙옙 占쏙옙占쌩깍옙 */
+  border-radius: 3px; 
+  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }

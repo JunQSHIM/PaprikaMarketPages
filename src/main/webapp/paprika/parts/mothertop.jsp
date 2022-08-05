@@ -7,7 +7,7 @@
 <script src="../js/jquery-3.6.0.min.js"></script>
 <script src="../js/jquery-ui.js"></script>
 <script src="../js/jquery-ui.min.js"></script>
-<script src="../js/mother.js"></script>
+<script src="../js/mother1.js"></script>
 
 <title>Mother</title>
 <link rel="stylesheet"

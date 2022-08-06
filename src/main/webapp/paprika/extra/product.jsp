@@ -59,7 +59,7 @@
 </head>
 <body>
 <div class="container">
-<%@include file="header.jsp"%>
+<%@include file="../parts/header.jsp"%>
 <img src="images/pklogo.png" onclick="main()">
 <div id="search">
 <input onkeyup="mySend(this)" type="search" id="value" placeholder="상품명, 지역명, @상점명 입력"><button id="icon"><img src="./images/search.png" width="20px" height="20px"></button>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
@@ -146,7 +146,7 @@
 		<div>
 		</div>
 	<div id="footer" style="float: bottom;">
-	<%@include file="footer.jsp" %>
+	<%@include file="../parts/footer.jsp" %>
 </div>
 </body>
 </html>

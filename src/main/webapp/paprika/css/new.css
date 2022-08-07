@@ -33,6 +33,7 @@ div {
 
 .proimg{
 	margin-top:30px;
+
 }
 
 .regpic, .regedpic {
@@ -44,8 +45,10 @@ div {
 
 
 .warn{
+		margin-bottom:30px;
 	font-size:0.8rem;
 	margin-top:30px;
+	color:skyblue;
 }
 
 .regpic input {
@@ -90,13 +93,29 @@ div {
 	font-size: 1.2rem;
 }
 
+.title{
+	
+	height:60px;
+	line-height: 60px;
+}
+
 .titlebox{
+	width:90%;
+	line-height: 1.3rem;
+	font-size:1.3rem;
+	margin-top:15px;
 	border:1px solid #a7a7a7a7;
 	height:30px;
 }
 
+.titlebox a{
+	font-size:1rem;
+}
+
 .titlebox input{
-	width:500px;
+	font-size:1.1rem;
+	width:85%;
+	border:0;
 	
 	
 	
@@ -109,4 +128,10 @@ div {
 .fastsell_2 {
 	margin: 6px 0 0 0;
 	font-size: 1rem;
+}
+
+textarea{
+	width:100%;
+	height:250px;
+	
 }

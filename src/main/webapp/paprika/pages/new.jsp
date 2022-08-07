@@ -64,7 +64,7 @@
 			<div class="grid_9 newdata">
 				<div class="titlebox">
 					<input type="text" name="title" placeholder="상품 제목을 입력해주세요.">
-					<a href="#" >거래금지 품목</a>
+					<a href="#">거래금지 품목</a>
 				</div>
 
 			</div>
@@ -88,28 +88,38 @@
 				상태
 				<div class="star">*</div>
 			</div>
-			<div class="grid_9 newdata">1</div>
+			<div class="grid_9 newdata">
+				<input type="radio" name="state" value="secondhand">중고상품 <input
+					type="radio" name="state" value="newone">새상품
+			</div>
 		</div>
 		<div class="grid_12 refund">
 			<div class="grid_3 explain">
 				교환
 				<div class="star">*</div>
 			</div>
-			<div class="grid_9 newdata">1</div>
+			<div class="grid_9 newdata">
+				<input type="radio" name="refund" value="can">환불가능 <input
+					type="radio" name="refund" value="cannot">환불불가
+			</div>
 		</div>
 		<div class="grid_12 price">
 			<div class="grid_3 explain">
 				가격
 				<div class="star">*</div>
 			</div>
-			<div class="grid_9 newdata">1</div>
+			<div class="grid_9 newdata">
+				<input type="number" name="price" placeholder="숫자만 입력해주세요.">
+				원<input type="checkbox" name="shipfee"> 배송비 포함
+			</div>
 		</div>
 		<div class="grid_12 feat">
 			<div class="grid_3 explain">
 				설명
 				<div class="star">*</div>
 			</div>
-			<div class="grid_9 newdata">1</div>
+			<div class="grid_9 newdata">
+			<textarea placeholder=""></textarea></div>
 		</div>
 		<div class="grid_12 tag">
 			<div class="grid_3 explain">연관태그</div>

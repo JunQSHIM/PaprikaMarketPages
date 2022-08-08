@@ -10,10 +10,6 @@ $(document).ready(function() {
 	});
 });
 
-
-
-
-
 $(document).ready(function() {
 	$("#showCategory").mouseenter(function() {
 		$("#result1").show();
@@ -53,48 +49,50 @@ $(document).ready(function() {
 			}).prop("disabled", true);
 		}
 	});
-});
+	// 모든 체크박스를 클릭하면 버튼 활성화시키기
+	$('.article_select1').click(function() {
+		var tmpp = $(this).prop('checked');
+		//자식 체크 전체 체크시, 부모 체크박스 체크 됨
+		var tt = $(".article_select1").length;
+		var ss = $(".article_select1:checked").length;
 
+		//선택한 체크박스 값이 true 이거나 체크박스 1개 이상 체크시 버튼 활성화시키기
+		if (tmpp == true || ss > 0) {
+			$(".jjim_delete_1 button").css({"backgroundColor":"#ff8955","cursor":"pointer","color":"#fff"}).prop("disabled", false);
+		} else {
+			$(".jjim_delete_1 button").css({"backgroundColor":"white","cursor":"auto","color":"rgb(136, 136, 136)"}).prop("disabled", true);
+		}
 
+		// 체크박스가 모두 선택되었을 때 상위 체크박스 선택되도록 설정
+		if (tt == ss) {
+			$("#jjim_delete_btn").css({
+				"backgroundColor": "#ff8955",
+				"cursor": "pointer",
+				"color": "#fff"
+			}).prop("checked", true);
+		} else {
+			$("#jjim_delete_btn").css({
+				"backgroundColor": "white",
+				"cursor": "auto",
+				"color": "rgb(136, 136, 136)"
+			}).prop("checked", false);
+		}
 
-// 모든 체크박스를 클릭하면 버튼 활성화시키기
-$('.article_select1').click(function() {
-	var tmpp = $(this).prop('checked');
-	//자식 체크 전체 체크시, 부모 체크박스 체크 됨
-	var tt = $(".article_select1").length;
-	var ss = $(".article_select1:checked").length;
-
-	//선택한 체크박스 값이 true 이거나 체크박스 1개 이상 체크시 버튼 활성화시키기
-	if (tmpp == true || ss > 0) {
-		$(".jjim_delete_1 button").prop("disabled", false);
-	} else {
-		$(".jjim_delete_1 button").prop("disabled", true);
-	}
-
-	// 체크박스가 모두 선택되었을 때 상위 체크박스 선택되도록 설정
-	if (tt == ss) {
-		$("#jjim_delete_btn").css({
-			"backgroundColor": "#ff8955",
-			"cursor": "pointer",
-			"color": "#fff"
-		}).prop("checked", true);
-	} else {
-		$("#jjim_delete_btn").css({
-			"backgroundColor": "white",
-			"cursor": "auto",
-			"color": "rgb(136, 136, 136)"
-		}).prop("checked", false);
-	}
-
-});
-
-
-
-// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
+	});
+	// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
 $(".top").click(function() {
 	//$('html, body').animate({scrollTop:0}, '1000');
 	$('html, body').scrollTop(0);
 });
+});
+
+
+
+
+
+
+
+
 
 
 
@@ -315,14 +313,7 @@ $(function() {
 	});
 });
 
-
-
-
-
-
-
 //profileEdit
-
 function setThumbnail(event) {
 	var reader = new FileReader();
 	console.log('hi');
@@ -346,8 +337,6 @@ function removeAllchild(div) {
 	}
 }
 
-
-
 //review_product
 // 상품후기 더보기 
 $(function() {
@@ -360,15 +349,3 @@ $(function() {
 		$(".none:hidden").slice(0, 2).show(); // 숨김 설정된 다음 2개를 선택하여 표시
 	});
 });
-
-
-
-
-
-
-
-
-
-
-
-

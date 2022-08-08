@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/mother.js"></script>
 <meta charset="UTF-8">
 <title>jjim page</title>
 

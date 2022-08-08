@@ -9,7 +9,7 @@
 <body>
 		<div id="category">
 					<div id="categories">
-						<form action="product.jsp" name="category">
+						<form action="../pages/mother.jsp" name="category">
 							<ul id="result1">
 								<li><button onclick="ctProduct()" name="product"
 										value="디지털기기">

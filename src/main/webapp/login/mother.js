@@ -133,5 +133,7 @@ function mypage() {
 			window.location.href = 'sellpage.jsp';
 		}
 	}
-
 }
+
+
+

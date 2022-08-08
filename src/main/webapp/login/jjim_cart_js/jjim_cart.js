@@ -27,9 +27,11 @@ function ctProduct(){
 			// 모든 체크박스를 클릭하면 버튼 활성화시키기
 			$('.article_select1').click(function(){
 			    var tmpp = $(this).prop('checked'); 
+			    
 			    //자식 체크 전체 체크시, 부모 체크박스 체크 됨
 			    var tt = $(".article_select1").length;
 			    var ss = $(".article_select1:checked").length;
+			    
 			    //선택한 체크박스 값이 true 이거나 체크박스 1개 이상 체크시 버튼 활성화시키기
 			    if(tmpp==true || ss>0){
 			    $(".jjim_delete_1 button").css({"backgroundColor":"#ff8955","cursor":"pointer","color":"#fff"}).prop("disabled",false);

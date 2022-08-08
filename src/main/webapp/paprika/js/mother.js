@@ -18,14 +18,7 @@ $(document).ready(function() {
 		$("#result1").hide();
 	});
 
-	$("#top").click(function() {
-		//$('html, body').animate({scrollTop:0}, '1000');
-		$('html, body').scrollTop(0);
-	});
-
 });
-
-
 
 // 체크박스 선택 자바스크립트
 $(document).ready(function() {
@@ -80,22 +73,10 @@ $(document).ready(function() {
 
 	});
 	// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
-$(".top").click(function() {
-	//$('html, body').animate({scrollTop:0}, '1000');
+	$(".top").click(function() {
 	$('html, body').scrollTop(0);
 });
 });
-
-
-
-
-
-
-
-
-
-
-
 
 // 슬라이드 배너 ==> 이동시키는 버튼이 있으면 카테고리에 마우스 올렸을때
 // 그 버튼만 보여서 버튼을 없애고 오토 슬라이드로 변경했습니다(준규)
@@ -194,49 +175,6 @@ function requestPay() {
 			})
 	});
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//chat
-$(function() {
-	$(".ui-dialog").dialog({
-		autoOpen: false,
-		height: 450,
-		width: 400,
-		position: {
-			my: "center center",
-			at: "right bottom",
-			of: window
-		},
-		show: {
-			effect: "slide",
-			duration: 1000
-		},
-		hide: {
-			effect: "slide",
-			duration: 1000
-		}
-	});
-	$(".chat").on("click", function() {
-		$("#chatting").dialog("open");
-	});
-});
-
-
-
 
 //sellpage
 $(function() {
@@ -347,5 +285,30 @@ $(function() {
 			alert("더 이상 항목이 없습니다"); // 더 이상 로드할 항목이 없는 경우 경고
 		}
 		$(".none:hidden").slice(0, 2).show(); // 숨김 설정된 다음 2개를 선택하여 표시
+	});
+});
+
+//chat
+$(function() {
+	$(".ui-dialog").dialog({
+		autoOpen: false,
+		height: 450,
+		width: 400,
+		position: {
+			my: "center center",
+			at: "right bottom",
+			of: window
+		},
+		show: {
+			effect: "slide",
+			duration: 1000
+		},
+		hide: {
+			effect: "slide",
+			duration: 1000
+		}
+	});
+	$(".chat").on("click", function() {
+		$("#chatting").dialog("open");
 	});
 });

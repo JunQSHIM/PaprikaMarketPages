@@ -22,10 +22,35 @@
 
 					</div>
 					<div class="grid_5 search">
+					
 						<div class="search_text">
-							<input type="text" placeholder="상품명, 지역명, @상점명 입력"><a>검색</a>
+							<input type="text" placeholder="상품명, 지역명, @상점명 입력" ><a>검색</a>
+							<div class="search_menu" id="search_drop">
+						<div class="seacrh_menu_1">
+							<div class="search_menu_top">
+								<div class="search_menu_board">
+									<div class="search_menu_board_1">
+										<div class="search_menu_board_2">
+											<div class="search_menu_board_3">
+											<div class="search_menu_board_4"></div>
+											<div class="search_text_none">
+												<img src="./images/jjim_icon/search_text.png" width="52" height="45" alt="검색어 없음 이미지">
+												<div>최근 검색어가 없습니다.</div>
+											</div>
+											</div>
+										</div>
+									</div>
+									<!-- 인기검색어 -->
+								</div>
+							</div>
 						</div>
 					</div>
+						</div>
+						
+						
+						
+					</div>
+					
 					<div class="grid_4 bts">
 						<div class="row grid_4 bts">
 

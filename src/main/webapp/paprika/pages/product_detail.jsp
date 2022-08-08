@@ -5,52 +5,52 @@
 <head>
 <meta charset="UTF-8">
 <title>product detail</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/ctProduct.css">
 <link rel="stylesheet" type="text/css" href="../css/product_detail.css">
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+<script src="../js/product_detail.js"></script>
 </head>
 <body>
-
 	<%@include file="../parts/mothertop.jsp"%>
-
-
 	<div id="productPage">
 			<div id="productList">
 			홈 > 
 			<select onchange="if(this.value) location.href=(this.value);">
 				<option selected disabled>카테고리</option>
-				<option value="product.jsp?product=디지털기기">디지털기기</option>
-				<option value="product.jsp?product=생활가전">생활가전</option>
-				<option value="product.jsp?product=가구/인테리어">가구/인테리어</option>
-				<option value="product.jsp?product=유아동">유아동</option>
-				<option value="product.jsp?product=유아도서">유아도서</option>
-				<option value="product.jsp?product=생활/가공식품">생활/가공식품</option>
-				<option value="product.jsp?product=스포츠/레저">스포츠/레저</option>
-				<option value="product.jsp?product=여성잡화">여성잡화</option>
-				<option value="product.jsp?product=여성의류">여성의류</option>
-				<option value="product.jsp?product=남성패션/잡화">남성패션/잡화</option>
-				<option value="product.jsp?product=게임/취미">게임/취미</option>
-				<option value="product.jsp?product=뷰티/미용">뷰티/미용</option>
-				<option value="product.jsp?product=반려동물용품">반려동물용품</option>
-				<option value="product.jsp?product=도서/티켓/음반">도서/티켓/음반</option>
-				<option value="product.jsp?product=식물">식물</option>
-				<option value="product.jsp?product=기타 중고물품">기타 중고물품</option>
-				<option value="product.jsp?product=삽니다">삽니다</option>
+				<option value="mother.jsp?product=디지털기기">디지털기기</option>
+				<option value="mother.jsp?product=생활가전">생활가전</option>
+				<option value="mother.jsp?product=가구/인테리어">가구/인테리어</option>
+				<option value="mother.jsp?product=유아동">유아동</option>
+				<option value="mother.jsp?product=유아도서">유아도서</option>
+				<option value="mother.jsp?product=생활/가공식품">생활/가공식품</option>
+				<option value="mother.jsp?product=스포츠/레저">스포츠/레저</option>
+				<option value="mother.jsp?product=여성잡화">여성잡화</option>
+				<option value="mother.jsp?product=여성의류">여성의류</option>
+				<option value="mother.jsp?product=남성패션/잡화">남성패션/잡화</option>
+				<option value="mother.jsp?product=게임/취미">게임/취미</option>
+				<option value="mother.jsp?product=뷰티/미용">뷰티/미용</option>
+				<option value="mother.jsp?product=반려동물용품">반려동물용품</option>
+				<option value="mother.jsp?product=도서/티켓/음반">도서/티켓/음반</option>
+				<option value="mother.jsp?product=식물">식물</option>
+				<option value="mother.jsp?product=기타 중고물품">기타 중고물품</option>
+				<option value="mother.jsp?product=삽니다">삽니다</option>
 			</select>
 			</div>
 			<div class="container1">
 				<div class="item" id="picture" onclick = "zoom()">
 					<img src="../images/camera.png" id="image">
-					<button>+확대</button>
+					<div class="item1"><button id="zoom">+확대</button>
+					</div>
 				</div>
 				<div class="container2">
 					<div class="item" id="detail">
 						<div id="title">디지털 카메라<br>100000원<br></div>
 						<hr style="border: 0.3px solid lightgray;">
 					</div>
-					<div class="item">
+					<div class="item1">
 					<button>♥36</button> | <button>⊙70</button> | <button>⏲5일전</button> | <button>신고하기</button><br>
 						<div id="info">
 							<ul>
@@ -71,12 +71,12 @@
 							</ul>
 						</div>
 					</div>
-					<div class="item" id="func">
+					<div class="item" id="func1">
 						<button id="jjim" type="button">찜</button>
 						<button>연락하기</button>
 						<button onclick="requestPay()">바로구매</button>
-					</div>
 					<div><img id="status"></div>
+					</div>
 				</div>
 				<div class="item2">
 					연관상품
@@ -142,7 +142,7 @@
 								상점921호 ★★★★☆
 								<div style="background-color: rgb(0,0,0,0.08)">어차피 수십년전 제품들이라 재생만이라도 잘 되면 좋은데 재생잘되요</div>
 							</div>
-							<div id="more_reivews"><button>후기더보기</button></div>
+							<div id="more_reviews"><button>후기더보기</button></div>
 						</div>
 					</div>
 				</div>

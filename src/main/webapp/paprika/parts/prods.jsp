@@ -4,9 +4,10 @@
 		<%
 		for (int i = 0; i < 20; i++) {
 		%>
-		<a href="prodpage.jsp">
+		<a href="../pages/product_detail.jsp">
 			<div class="row grid_3 products">
-				<div class="pic"></div>
+				<div class="pic">
+				</div>
 				<div class="text">
 					<div class="title">
 						<h3>상품명 : 선풍기</h3>

@@ -91,18 +91,18 @@ $(document).ready(function(){
 </head>
 <body>
 <div align="center" style="margin-top:150px;">
-<a  href="main.jsp">
+<a  href="mother.jsp">
 	<img src="../images/pklogo.png">
 </a></div>
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
-		<div class="card">
+		<div class="card-login">
 			<div class="card-header">
 			<div align="center">
 				<h3 align="center">로그인</h3>
 			</div>
 			<div class="card-body">
-				<form action="main.jsp" name="login">
+				<form action="mother.jsp" name="login">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -131,14 +131,12 @@ $(document).ready(function(){
 						</div>
 				</form>
 			</div>
-			<div class="card-footer">
-					<div class="btn float-left register_btn">
-						<a href="registerAgree.jsp">회원가입</a>
-					</div>
-					<div class="btn float-right register_btn">
-					<a href="#">비밀번호 찾기</a>
+				<div class="btn float-left register_btn">
+					<a href="registerAgree.jsp">회원가입</a>
 				</div>
-			</div>
+				<div class="btn float-right register_btn">
+				<a href="#">비밀번호 찾기</a>
+				</div>
 		</div>
 	</div>
 	</div>

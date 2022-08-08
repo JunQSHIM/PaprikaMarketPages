@@ -41,7 +41,7 @@
 		var theForm = document.register;
 		var id = theForm.id.value; //id값이 "id"인 입력란의 값을 저장
 		$.ajax({
-			url : 'idCheck.jsp', //Controller에서 요청 받을 주소
+			url : '../parts/idCheck.jsp', //Controller에서 요청 받을 주소
 			type : 'post', //POST 방식으로 전달
 			data : {
 				id : id
@@ -234,7 +234,7 @@ $("#registerButton").click(function() {
 				<h3 align="center">회원가입</h3>
 				</div>
 			<div class="card-body">
-			<form action="mother.jsp" name="register" id="register">
+			<form action="main.jsp" name="register" id="register">
 					<div class="input-group form-group">
 					<input type="text" name="id" placeholder="아이디" style="width:400px;" oninput = "checkId()">
 					<div id="result3"></div>

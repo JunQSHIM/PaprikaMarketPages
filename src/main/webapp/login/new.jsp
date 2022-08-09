@@ -8,7 +8,7 @@
 
 <link href="news.css" rel="stylesheet" type="text/css">
 
-</head>
+</head> 
 
 
 

@@ -181,7 +181,7 @@ function assertMsg(intMax, objMsg, st) {
 			inc = 4;
 		} else {
 			inc = 1;
-		}
+		} 
 		if ((nbytes + inc) > intMax) {
 			break;
 		}

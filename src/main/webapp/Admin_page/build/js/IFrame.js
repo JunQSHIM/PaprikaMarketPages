@@ -431,7 +431,7 @@ class IFrame {
       $(this).data(DATA_KEY, typeof config === 'object' ? config : { link, name, id, reload, ...data })
       if (typeof config === 'string' && /createTab|openTabSidebar|switchTab|removeActiveTab/.test(config)) {
         plugin[config](name, link, id, reload)
-      }
+      } 
     } else {
       window.iFrameInstance = new IFrame($(this), JSON.parse(localStorage.getItem('AdminLTE:IFrame:Options')))._initFrameElement()
     }

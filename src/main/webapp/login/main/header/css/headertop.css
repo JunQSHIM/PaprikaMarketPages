@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.header_wrap{
+	height:45px;
+}
+.button_part{
+	float:right;
+}
+.favorite_part{
+	margin-top:10px;
+}
+.favorite {
+	color: black;
+	cursor: pointer;
+}
+a {
+	color: black;
+	text-decoration: none;
+}
+button {
+	border: 1px solid orange;
+	background-color: rgba(0, 0, 0, 0);
+	color: orange;
+	font: bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+	padding: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	width: 90px;
+	height: 30px;
+	margin-top: 10px;
+	margin-right: 8px;
+}
+
+button:hover {
+	color: white;
+	background-color: orange;
+}
+
+.alarm_message {
+    display: block;
+    font-size: 13px;
+    color: rgb(102, 102, 102);
+}

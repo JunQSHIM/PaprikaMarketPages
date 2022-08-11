@@ -25,7 +25,9 @@
 					
 						<div class="search_text">
 							<input type="text" placeholder="상품명, 지역명, @상점명 입력" ><a>검색</a>
-							<div class="search_menu" id="search_drop">
+							
+						</div>
+						<div class="search_menu" id="search_drop">
 						<div class="seacrh_menu_1">
 							<div class="search_menu_top">
 								<div class="search_menu_board">
@@ -45,8 +47,6 @@
 							</div>
 						</div>
 					</div>
-						</div>
-						
 						
 						
 					</div>

@@ -13,20 +13,26 @@
 	align-items: flex-end
 }
 
+.logo{
+	margin-left:30px;
+}
 
-.category_btn {
+.btn_img{
+	float:left;
+}
+
+.btn_words{
+	text-align: center;
+	margin:0 auto;
+}
+
+.cb {
+	margin-left:0;
 	float: left;
 }
 
 #showCategory {
-	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
-	font: bold;
-	font-size: 15px;
-	text-align: center;
 	cursor: pointer;
-	text-decoration: none;
-	border: 0px;
-	background-color: transparent !important;
 }
 
 .category_btn img {
@@ -74,10 +80,11 @@
 }
 
 .nav_btn {
-	width: 104px;
+	width: 110px;
 	float: left;
 }
 .nav_btn_1 {
+	margin:0 27px;
 	width: 70px;
 	float: left;
 }
@@ -89,4 +96,9 @@
 }
 .fakenav {
 	height: 68px;
+}
+
+#mainLine{
+	border: 1px solid orange;
+	background: orange;
 }

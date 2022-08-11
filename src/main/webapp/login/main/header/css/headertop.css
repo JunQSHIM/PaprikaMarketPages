@@ -1,23 +1,30 @@
 @charset "UTF-8";
 
-.header_wrap{
-	height:45px;
+.header_wrap {
+	height: 45px;
+	overflow: hidden;
 }
-.button_part{
-	float:right;
+
+.favorite_part {
+	margin-top: 10px;
+	float: left;
 }
-.favorite_part{
-	margin-top:10px;
+
+.button_part {
+	float: right;
 }
+
 .favorite {
 	color: black;
 	cursor: pointer;
 }
+
 a {
 	color: black;
 	text-decoration: none;
 }
-button {
+
+.button_wrap button {
 	border: 1px solid orange;
 	background-color: rgba(0, 0, 0, 0);
 	color: orange;
@@ -31,16 +38,16 @@ button {
 	width: 90px;
 	height: 30px;
 	margin-top: 10px;
-	margin-right: 8px;
+	margin-left: 8px;
 }
 
-button:hover {
+.button_wrap button:hover {
 	color: white;
 	background-color: orange;
 }
 
 .alarm_message {
-    display: block;
-    font-size: 13px;
-    color: rgb(102, 102, 102);
+	display: block;
+	font-size: 13px;
+	color: rgb(102, 102, 102);
 }

@@ -4,13 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="sellpage.css">
+<link rel="stylesheet" type="text/css" href="/myweb/login/sellpage/sellpage.css">
 <meta charset="UTF-8">
 <title>Sell page</title>
 </head>
 <body>
-	<%@include file="mothertop.jsp"%>
-	
 			<div id="sell">
 				<div id="sell-menu">
 					<button id="submit">상품 등록</button>
@@ -145,8 +143,5 @@
 					
 					</div>
 				</div>
-	
-	
-	<%@include file="motherbottom.jsp"%>	
 </body>
 </html>

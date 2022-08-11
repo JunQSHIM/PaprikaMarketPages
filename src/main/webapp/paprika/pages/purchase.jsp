@@ -57,12 +57,13 @@
 		<input type="checkbox" name="manner_eval" id="12" value="bad_manner_eval6"><label for="12">상품설명이 부족해요.</label><br>
 		<input type="checkbox" name="manner_eval" id="13" value="bad_manner_eval7"><label for="13">없음.</label><br>
 	</div>
-	</form>
 	
 	
 	<br>
 	<h3>후기작성하기 ></h3>
-
+		<textarea rows="40" cols="40">
+		</textarea>	
+	</form>
 	</div>
 	<%@include file="../parts/motherbottom.jsp"%>
 </body>

@@ -2,6 +2,12 @@ function ctProduct(){
 	theForm.submit();
 }
 	$(document).ready(function(){
+		$("#showCategory").mouseenter(function(){
+			$("#result1").show();
+		});
+		$("#category").mouseleave(function(){
+			$("#result1").hide();
+		});
 		
 		// 체크박스 선택 자바스크립트
 		$(document).ready(function(){
@@ -46,9 +52,52 @@ function ctProduct(){
 				});
 			}); // 체크박스 제이쿼리
 		
+		// TOP 버튼 누르면 페이지 맨 위로 가는 스크립트
+		$(".top").click(function() {
+			//$('html, body').animate({scrollTop:0}, '1000');
+			$('html, body').scrollTop(0);
+		});
+		
+	});
+	
+	//chat
+	$(function(){
+		$(".ui-dialog").dialog({
+			autoOpen : false,
+			height : 450,
+			width : 400,
+			position : {
+				my : "center center",
+				at : "right buttom",
+				of : window
+			},
+			show : {
+				effect : "slide",
+				duration : 1000
+			},
+			hide : {
+				effect : "slide",
+				duration : 1000
+			}
+		});
+		$(".chat").on("click", function() {
+			$("#chatting").dialog("open");
+		});
 	});
 	
 	
+function login()  {
+	 window.location.href ='login.jsp';
+}	
+function register()  {
+	 window.location.href ='registerAgree.jsp';
+}
+function main(){
+	window.location.href = 'main.jsp';
+}
+function mypage(){
+	window.location.href = 'mypage.jsp';
+}
 function myProductCart()  {
 	 window.location.href ='myProductCart.jsp';
 }	

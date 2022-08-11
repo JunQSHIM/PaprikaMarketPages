@@ -1,0 +1,52 @@
+@charset "UTF-8";
+.ban {
+	float: right;
+	
+}
+.banner {
+	margin-left: 10px;
+	background-color: none;
+	position: fixed;
+	text-align: center;
+	float: right;
+	margin-left: 10px;
+	top:125px;
+	left:1370px;
+}
+
+.wishlist {
+	border: 1px solid #FF8200;
+	width: 100px;
+	height: 50px;
+	background-color: white;
+	margin: 5px;
+}
+
+.wishlist a {
+	text-decoration: none;
+	color: red;
+}
+
+.wishlist a:hover {
+	color: red;
+}
+
+.recent {
+	margin: 5px;
+	border: 1px solid #FFAA28;
+	width: 100px;
+	height: 200px;
+	background-color: white;
+}
+.top {
+	margin: 5px;
+	border: 1px solid #FFAA28;
+	width: 100px;
+	height: 35px;
+	background-color: white;
+	z-index: 999;
+}
+
+.top_btn {
+	margin-top: 6px;
+}

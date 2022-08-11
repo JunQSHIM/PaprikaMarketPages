@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<script src="/myweb/login/main/header/js/ban.js"></script>
+<link rel="stylesheet" type="text/css" href="/myweb/login/main/header/css/ban.css">
 <head>
 <meta charset="UTF-8">
 <title>ban</title>

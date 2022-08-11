@@ -4,6 +4,7 @@
 <html>
 <head>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
+<script src="/myweb/login/main/main.js"></script>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,11 +14,11 @@
 	<header>
 		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
 	</header>
-
+	
 	<article class="container_12">
 		<jsp:include page="/login/main/category.jsp"></jsp:include>
-		
-		
+		<jsp:include page="/login/slider/slider.jsp"></jsp:include>
+	 
 	</article>
 	
 	<footer class="container_12">

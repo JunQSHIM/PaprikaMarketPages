@@ -4,6 +4,7 @@
 <html>
 <head>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
+<script src="/myweb/login/main/main.js"></script>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />

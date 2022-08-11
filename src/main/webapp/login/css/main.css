@@ -335,30 +335,7 @@ body, html {
 	letter-spacing: -0.5px;
 }
 
-.wishlist {
-	border: 1px solid #FF8200;
-	width: 100px;
-	height: 50px;
-	background-color: white;
-	margin: 5px;
-}
 
-.wishlist a {
-	text-decoration: none;
-	color: red;
-}
-
-.wishlist a:hover {
-	color: red;
-}
-
-.recent {
-	margin: 5px;
-	border: 1px solid #FFAA28;
-	width: 100px;
-	height: 200px;
-	background-color: white;
-}
 
 .add {
 	margin: 5px;
@@ -368,18 +345,7 @@ body, html {
 	background-color: white;
 }
 
-.top {
-	margin: 5px;
-	border: 1px solid #FFAA28;
-	width: 100px;
-	height: 35px;
-	background-color: white;
-	z-index: 999;
-}
 
-.top_btn {
-	margin-top: 6px;
-}
 
 .app {
 	float: left;

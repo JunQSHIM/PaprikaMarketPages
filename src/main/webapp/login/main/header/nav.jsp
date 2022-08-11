@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css"
-	href="/myweb/login/main/header/css/nav.css">
+<!-- <script src="/myweb/login/main/header/js/nav.js"></script> -->
+<link rel="stylesheet" type="text/css" href="/myweb/login/main/header/css/nav.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/grid.css">
 <head>
 <meta charset="UTF-8">
@@ -42,7 +42,7 @@
 					</a>
 				</div>
 				<div class="nav_btn_1">
-					<a class="mystore" href="myProductCart.jsp">
+					<a class="mystore" href="/myweb/login/myProductCart.jsp">
 						<div class="btn_img">
 							<img src="images/mystore.png" width="23" height="24">
 						</div>

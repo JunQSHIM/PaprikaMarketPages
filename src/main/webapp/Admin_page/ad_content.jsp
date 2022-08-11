@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+</head> 
 <body>
 	<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">

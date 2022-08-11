@@ -5,7 +5,7 @@
 <head> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdminLTE 3 | 인덱스4</title>
+<title>관리자 페이지</title>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"

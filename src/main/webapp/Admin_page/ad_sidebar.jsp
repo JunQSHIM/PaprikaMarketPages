@@ -8,6 +8,12 @@
 </head>
 <body>
 	<aside class="main-sidebar elevation-4">
+		<!-- Brand Logo -->
+		<a href="ad_mother.jsp" class="brand-link"> <img
+			src="../login/images/paplogo.png" alt="paprikaLogo"
+			class="brand-image " style="opacity: .8">
+			<span class="brand-text font-weight-light pap" style="color:orange"><h4><b>파프리카 마켓</b></h4></span>
+		</a>
 		<div class="sidebar">
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -469,10 +475,10 @@
 					<li class="nav-header">LABELS</li>
 					<li class="nav-item"><a href="#" class="nav-link"> <i
 							class="nav-icon far fa-circle text-danger"></i>
-				 			<p class="text">Important</p>
+							<p class="text">Important</p>
 					</a></li>
 					<li class="nav-item"><a href="#" class="nav-link"> <i
-			 				class="nav-icon far fa-circle text-warning"></i>
+							class="nav-icon far fa-circle text-warning"></i>
 							<p>Warning</p>
 					</a></li>
 					<li class="nav-item"><a href="#" class="nav-link"> <i

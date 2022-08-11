@@ -576,11 +576,12 @@ footer hr{
 	margin-bottom: 15px;
 }*/
 
+/* 검색창 최근 검색 */
 .search_menu {
     position: absolute;
     top: 90px;
-    left: 250px;
-    width: 40%;
+    left: 240px;
+    width: 395px;
     border: 1px solid rgb(217, 217, 217);
     background: rgb(255, 255, 255);
     z-index: 10;

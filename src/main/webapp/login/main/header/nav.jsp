@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<!-- <script src="/myweb/login/main/header/js/nav.js"></script> -->
+
+<script src="/myweb/login/main/header/js/nav.js"></script>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/header/css/nav.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/grid.css">
 <head>

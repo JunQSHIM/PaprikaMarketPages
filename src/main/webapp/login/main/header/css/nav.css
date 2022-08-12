@@ -102,3 +102,8 @@
 	border: 1px solid orange;
 	background: orange;
 }
+
+.jbFixed {
+	position: fixed;
+	top: 0px;
+}

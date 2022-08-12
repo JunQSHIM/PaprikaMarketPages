@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>new</title>
+<script type="text/javascript" src="/myweb/login/new/new.js"></script>
 <link href="/myweb/login/new/news.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -43,7 +44,7 @@
 
 				</div>
 				<div class="clear grid_9 warn">
-					* 상품 이미지는 640x640에 최적화 되어 있습니다. <br> - 상품 이미지는 PC에서는 1:1,
+					<b>* 상품 이미지는 640x640에 최적화 되어 있습니다.</b> <br> - 상품 이미지는 PC에서는 1:1,
 					모바일에서는 1:1.23 비율로 보여집니다. <br>- 이미지는 상품 등록 시 정사각형으로 잘려서 등록됩니다.
 					<br>- 이미지를 클릭할 경우 원본 이미지를 확인할 수 있습니다. <br>- 이미지를 클릭 후
 					이동하여 등록순서를 변경할 수 있습니다. <br>- 큰 이미지일 경우 이미지가 깨지는 경우가 발생할 수
@@ -130,7 +131,7 @@
 					<form action="" name="gForm">
 						<textarea class="text_area" rows="6"
 							placeholder="여러 장의 상품 사진과 구입 연도, 브랜드, 사용감, 하자 유무 등 구매자에게 필요한 정보를 꼭 포함해 주세요. (10자 이상)&#13;안전하고 건전한 거래 환경을 위해 과학기술정보통신부, 한국인터넷진흥원과 번개장터(주)가 함께 합니다."
-							name="feat" onkeyup="chkMsgLength(1000,feat,currentMsgLen);"></textarea>
+							name="feat" onkeyup="chkMsgLength(2000,feat,currentMsgLen);"></textarea>
 						<br>
 						<div class="hoxy">
 							혹시 <a href="https://help.bunjang.co.kr/notice/607"

@@ -23,6 +23,9 @@ div {
 	color: orange;
 }
 
+.warn{
+	color:#4797de;
+}
 .newinfo_1 {
 	border-bottom: 2px solid orange;
 }

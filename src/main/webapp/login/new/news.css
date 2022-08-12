@@ -133,7 +133,7 @@ div {
 	display: block;
 	width: 7px;
 	height: 7px;
-	margin: 10%;
+	margin: 1px auto;
 	border-radius: 7px;
 	background: red;
 }

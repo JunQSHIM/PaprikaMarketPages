@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.nav{
+	z-index:999;
+	
+}
 .nafix {
 	background: white;
 	position: fixed;

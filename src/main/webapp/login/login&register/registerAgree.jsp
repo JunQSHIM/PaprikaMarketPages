@@ -5,14 +5,14 @@
 <head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="js/jquery-3.6.0.min.js"></script>
+<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
 <title>register</title>
 <!--Bootsrap 4 CDN-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="/myweb/login/login&register/styles.css">
 <script>
 function fregister_submit(f) {
 	if (!f.agree.checked) {
@@ -33,11 +33,9 @@ jQuery(function($) {
 	$("input[name=chk_all]").click(
 			function() {
 				if ($(this).prop('checked')) {
-					$("input[name^=agree]").prop(
-							'checked', true);
+					$("input[name^=agree]").prop('checked', true);
 				} else {
-					$("input[name^=agree]").prop(
-							"checked", false);
+					$("input[name^=agree]").prop("checked", false);
 				}
 			});
 });
@@ -45,8 +43,8 @@ jQuery(function($) {
 </head>
 <body>
 <div align="center" style="margin-top:150px;">
-<a  href="main.jsp">
-	<img src="images/pklogo.png">
+<a  href="/myweb/login/main/mother.jsp">
+	<img src="/myweb/login/images/pklogo.png">
 </a>
 </div>
 <div class="container">

@@ -1,18 +1,17 @@
 @charset "UTF-8";
-
 .ban {
+	float: right;
 	
-    position:fixed;
-    top: 130px;
-    right: calc(50% - 800px);
-    z-index: 20;
-
 }
-
 .banner {
-	
-    width: 90px;
-
+	margin-left: 10px;
+	background-color: none;
+	position: fixed;
+	text-align: center;
+	float: right;
+	margin-left: 10px;
+	top:125px;
+	left:1370px;
 }
 
 .wishlist {
@@ -39,7 +38,6 @@
 	height: 200px;
 	background-color: white;
 }
-
 .top {
 	margin: 5px;
 	border: 1px solid #FFAA28;

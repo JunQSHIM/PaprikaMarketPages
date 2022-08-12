@@ -4,7 +4,7 @@
 		<%
 		for (int i = 0; i < 20; i++) {
 		%>
-		<a href="prodpage.jsp">
+		<a href="/myweb/login/product&purchase/product_detail.jsp">
 			<div class="row grid_3 products">
 				<div class="pic"></div>
 				<div class="text">

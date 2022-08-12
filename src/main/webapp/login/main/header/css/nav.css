@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-.nav{
-	z-index:999;
-	
-}
 .nafix {
 	background: white;
 	position: fixed;
@@ -105,9 +101,4 @@
 #mainLine{
 	border: 1px solid orange;
 	background: orange;
-}
-
-.jbFixed {
-	position: fixed;
-	top: 0px;
 }

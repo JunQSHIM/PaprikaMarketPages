@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
-<script src="/myweb/login/main/header/js/nav.js"></script>
+<!-- <script src="/myweb/login/main/header/js/nav.js"></script> -->
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/header/css/nav.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/grid.css">
 <head>
@@ -17,12 +16,12 @@
 				<div class="row category_btn">
 					<button id="showCategory">
 						<div class="cb">
-							<img src="images/category_button.png">
+							<img src="/myweb/login/images/category_button.png">
 						</div>
 					</button>
 				</div>
 				<div class="grid_2 logo">
-					<img src="images/pklogo.png" onclick="main()">
+					<img src="/myweb/login/images/pklogo.png" onclick="main()">
 				</div>
 
 
@@ -37,7 +36,7 @@
 				<div class="nav_btn">
 					<a class="sell_btn">
 						<div class="btn_img">
-							<img src="images/sell_list.png" width="23" height="24">
+							<img src="/myweb/login/images/sell_list.png" width="23" height="24">
 						</div>
 						<div class="btn_words">판매하기</div>
 					</a>
@@ -45,7 +44,7 @@
 				<div class="nav_btn_1">
 					<a class="mystore" href="/myweb/login/myProductCart.jsp">
 						<div class="btn_img">
-							<img src="images/mystore.png" width="23" height="24">
+							<img src="/myweb/login/images/mystore.png" width="23" height="24">
 						</div>
 						<div class="btn_words">상 점</div>
 					</a>
@@ -53,7 +52,7 @@
 				<div class="nav_btn">
 					<a class="chat">
 						<div class="btn_img">
-							<img src="images/chatting.png" width="23" height="24">
+							<img src="/myweb/login/images/chatting.png" width="23" height="24">
 						</div>
 						<div class="btn_words">파프리카톡</div>
 					</a>

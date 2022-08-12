@@ -79,7 +79,7 @@ body,html{
 }
 
 #profile_pic{
-    background-image:url("images/profile.png");
+    background-image:url("/myweb/login/images/profile.png");
     background-size: cover;
     height: 200px;
     width: 200px;
@@ -141,17 +141,17 @@ body,html{
 	border : 1px solid orange;
 }
 #sell{
-	background-image: url("images/sell.png");	
+	background-image: url("/myweb/login/images/sell.png");	
 	background-size: contain;
 	background-position : center;
 }
 #buy{
-	background-image: url("images/buy.png");	
+	background-image: url("/myweb/login/images/buy.png");	
 	background-size: contain;
 	background-position : center;
 }
 #wishlist{
-	background-image: url("images/wishlist.png");	
+	background-image: url("/myweb/login/images/wishlist.png");	
 	background-size: contain;
 	background-position : center;
 }

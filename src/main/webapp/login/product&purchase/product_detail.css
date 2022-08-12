@@ -69,6 +69,22 @@
 	color:white;
     background-color: orange;
 }
+.item button{
+	border: 0px;
+    background-color: rgba(0,0,0,0);
+    color: orange;
+	font : bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+    padding: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;  
+}
+.item button:hover{
+	color:white;
+    background-color: orange;
+}
 #func{
 	grid-column:span 2;
 }

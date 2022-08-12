@@ -4,15 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="js/jquery-3.6.0.min.js"></script>
+<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="myReview.css">
+<script src="/myweb/login/main/main.js"></script>
+<link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <meta charset="UTF-8">
 <script>
 function move() {
-	window.location.href = 'main.jsp';
+	window.location.href = '/myweb/login/main/mother.jsp';
 }
 function toMypage() {
-	window.location.href = 'mypage.jsp';
+	window.location.href = '/myweb/login/mypage/mypage.jsp';
 }
 
 $(document).ready(function(){
@@ -30,16 +32,18 @@ $(document).ready(function(){
 <title>My Review Page</title>
 </head>
 <body>
-	<div class="container">
-		<%@include file="header.jsp"%>
-		<div class="logo">
-			<img src="images/pklogo.png" onclick=move()>
-		</div>
-		<hr style="border: 1px solid orange;">
-
+<header>
+		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+	</header>
+	
+	<article class="container_12">
+		<jsp:include page="/login/main/category.jsp"></jsp:include>
+	</article>
+	<article class="container_12">
+	
 		<div class="review_detail">
 			<div id="review_head">
-				<img src="images/pkIcon.png"><b>나의 거래 후기</b>
+				<img src="/myweb/login/images/pkIcon.png"><b>나의 거래 후기</b>
 			</div>
 			<ul class="tabs">
 				<li class="tab-link current" data-tab="tab-1"><b>전체 후기</b></li>
@@ -68,9 +72,9 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
-		<footer>
-			<%@include file="footer.jsp"%>
-		</footer>
-	</div>
+	</article>
+	<footer class="container_12">
+		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

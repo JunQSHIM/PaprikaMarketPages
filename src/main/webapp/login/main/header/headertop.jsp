@@ -6,7 +6,7 @@
 <div class="header_wrap">
 	<div class="favorite_part">
 			<span onclick="alert('Ctrl+D 키를 누르면 즐겨찾기에 추가하실 수 있습니다.')"
-				class="favorite"> <img src="images/favorite.svg">
+				class="favorite"> <img src="/myweb/login/images/favorite.svg">
 				즐겨찾기
 			</span>
 	</div>

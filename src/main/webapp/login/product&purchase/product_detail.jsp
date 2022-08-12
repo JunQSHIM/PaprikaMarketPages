@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -11,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/product&purchase/ctProduct.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/product&purchase/product_detail.css">
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Main Page</title>
@@ -58,16 +58,16 @@
     });
     });
 	function login()  {
-		 window.location.href ='login.jsp';
+		 window.location.href ='/myweb/login/login&register/login.jsp';
 	}	
 	function register()  {
-		 window.location.href ='registerAgree.jsp';
+		 window.location.href ='/myweb/login/login&register/registerAgree.jsp';
 	}
 	function main(){
-		window.location.href = 'main.jsp';
+		window.location.href = '/myweb/login/main/mother.jsp';
 	}
 	function mypage(){
-		window.location.href = 'mypage.jsp';
+		window.location.href = '/myweb/login/mypage/mypage.jsp';
 	}
 	function zoom(){
 		$("#picture").style.width = "800px";

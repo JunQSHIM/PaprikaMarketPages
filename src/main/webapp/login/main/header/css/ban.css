@@ -2,7 +2,7 @@
 
 .ban {
 	
-    position: absolute;
+    position:fixed;
     top: 130px;
     right: calc(50% - 800px);
     z-index: 20;

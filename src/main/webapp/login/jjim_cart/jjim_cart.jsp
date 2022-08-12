@@ -10,7 +10,7 @@
 <title>jjim cart</title>
 </head>
 <body>
-<div class="productPage">
+
 			<div class="favorite_body">
 				<div class="jjim_list">
 					<div class="jjim_list_1">
@@ -121,6 +121,6 @@
 			</div>
 			</div>
 			
- 			</div>
+ 		
 </body>
 </html>

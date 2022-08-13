@@ -1,12 +1,21 @@
 @charset "UTF-8";
 
+
+.nav{
+	z-index: 999;
+}
 .nafix {
 	background: white;
 	position: fixed;
-	z-index: 999;
 	display:flex;
 	flex-direction: row;
 }
+
+.jbFixed {
+	position: fixed;
+	top: 0px;
+}
+
 .loca{
 	display :flex;
 	flex-direction: row;

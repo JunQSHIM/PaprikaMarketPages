@@ -5,7 +5,7 @@
 <head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="js/jquery-3.6.0.min.js"></script>
+<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
 <script src = "https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- 	<li onclick="kakaoLogout();">
       <a href="javascript:void(0)">
@@ -86,12 +86,12 @@ $(document).ready(function(){
 <!--Fontawesome CDN-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <!--Custom styles-->
-<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" type="text/css" href="/myweb/login/login&register/styles.css">
 </head>
 <body>
 <div align="center" style="margin-top:150px;">
-<a  href="main.jsp">
-	<img src="images/pklogo.png">
+<a  href="/myweb/login/main/mother.jsp">
+	<img src="/myweb/login/images/pklogo.png">
 </a></div>
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
@@ -100,7 +100,7 @@ $(document).ready(function(){
 				<h3 align="center">로그인</h3>
 			</div>
 			<div class="card-body">
-				<form action="main.jsp" name="login">
+				<form action="/myweb/login/main/mother.jsp" name="login">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -129,7 +129,7 @@ $(document).ready(function(){
 				</form>
 			</div>
 			<div class="btn float-left register_btn">
-				<a href="registerAgree.jsp">회원가입</a>
+				<a href="/myweb/login/login&register/registerAgree.jsp">회원가입</a>
 			</div>
 			<div class="btn float-right register_btn">
 				<a href="#">비밀번호 찾기</a>

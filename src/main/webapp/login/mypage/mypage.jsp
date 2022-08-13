@@ -4,21 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="js/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" type="text/css" href="mypage.css">
+<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
+<script src="/myweb/login/main/main.js"></script>
+<link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
+<link rel="stylesheet" type="text/css" href="/myweb/login/mypage/mypage.css">
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>
 function move()  {
-	 window.location.href ='main.jsp';
+	 window.location.href ='/myweb/login/main/mother.jsp';
 }
 function login()  {
-	 window.location.href ='login.jsp';
+	 window.location.href ='/myweb/login/login&register/login.jsp';
 }	
 function register()  {
-	 window.location.href ='register.jsp';
+	 window.location.href ='/myweb/login/login&register/register.jsp';
 }
 function mypage(){
-	window.location.href = 'mypage.jsp';
+	window.location.href = '/myweb/login/mypage/mypage.jsp';
 }
 $(function(){
 	$("#innerTempBar").css({
@@ -27,28 +30,30 @@ $(function(){
 });
 
 function toMannerEval() {
-	window.location.href = 'mannerEval.jsp';
+	window.location.href = '/myweb/login/mypage/mannerEval.jsp';
 }
 function toMyReview() {
-	window.location.href = 'myReview.jsp';
+	window.location.href = '/myweb/login/mypage/myReview.jsp';
 }
 function toProfileEdit() {
-	window.location.href = 'profileEdit.jsp';
+	window.location.href = '/myweb/login/mypage/profileEdit.jsp';
 }
 </script>
 <title>mypage</title>
 </head>
 <body>
-	<div class="container">
-		<%@include file="header.jsp"%>
-		<div class="logo">
-			<img src="images/pklogo.png" onclick=move()>
-		</div>
-		<hr style="border: 1px solid orange;">
+<header>
+		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+	</header>
+	
+	<article class="container_12">
+		<jsp:include page="/login/main/category.jsp"></jsp:include>
+	</article>
+	<article class="container_12">
 
 		<div class="card">
 			<div id="myPage_head">
-				<img src="images/pkIcon.png"><b>마이페이지</b>
+				<img src="/myweb/login/images/pkIcon.png"><b>마이페이지</b>
 			</div>
 			<div id="profile">
 				<div id="profile_pic"></div>
@@ -94,9 +99,9 @@ function toProfileEdit() {
 				</div>
 			</div>
 		</div>
-		<footer>
-			<%@include file="footer.jsp" %>
-		</footer>
-	</div>
+		</article>
+	<footer class="container_12">
+		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

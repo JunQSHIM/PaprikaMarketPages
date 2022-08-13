@@ -4,27 +4,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="js/jquery-3.6.0.min.js"></script>
+<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="profileEdit.css">
+<script src="/myweb/login/main/main.js"></script>
+<link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <meta charset="UTF-8">
 <title>프로필 수정</title>
+<script>
+function move() {
+	window.location.href = '/myweb/login/main/mother.jsp';
+}
+function toMypage() {
+	window.location.href = '/myweb/login/mypage/mypage.jsp';
+}
+</script>
 </head>
 <body>
-	<div class="container">
-		<%@include file="header.jsp"%>
-		<div class="logo">
-			<img src="images/pklogo.png" onclick=move()>
-		</div>
-		<hr style="border: 1px solid orange;">
+	<header>
+		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+	</header>
+	
+	<article class="container_12">
+		<jsp:include page="/login/main/category.jsp"></jsp:include>
+	</article>
+	<article class="container_12">
 
 		<div class="edit_detail">
 			<div id="edit_head">
-				<img src="images/pkIcon.png"><b>프로필 수정</b>
+				<img src="/myweb/login/images/pkIcon.png"><b>프로필 수정</b>
 			</div>
 			<div id="edit">
-				<input id="my_pic" type="file" accept="image/*" onchange="setThumbnail(event);"/>
+				<input id="my_pic" type="file" accept="/myweb/login/image/*" onchange="setThumbnail(event);"/>
 				<div id="profile_pic">
-					<img id="profile_pic_update" src="images/profile.png">
+					<img id="profile_pic_update" src="/myweb/login/images/profile.png">
 				</div>
 				<div id="nickname_edit">
 					<input type="text" id="new_nickname" placeholder="새로운 닉네임">
@@ -48,10 +60,10 @@
 				</div>
 			</div>
 		</div>
-		<footer>
-			<%@include file="footer.jsp"%>
-		</footer>
-	</div>
+		</article>
+	<footer class="container_12">
+		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+	</footer>
 <script>
 function move() {
 	window.location.href = 'main.jsp';

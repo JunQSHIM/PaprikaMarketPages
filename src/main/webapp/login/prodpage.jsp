@@ -68,10 +68,6 @@
 							</div>
 							<div class="grid_2 buy">바로구매</div>
 						</div>
-
-
-
-
 						<div class="data"></div>
 
 

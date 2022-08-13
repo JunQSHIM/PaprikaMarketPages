@@ -260,7 +260,7 @@ div #icon {
 	height: 30px;
 	border: 1px solid #999;
 	font-family: inherit;
-	background: url('images/arrow.jpg') no-repeat 95% 50%;
+	background: url('/myweb/login/images/arrow.jpg') no-repeat 95% 50%;
 	background-color:white;
 	appearance: none;
 	border-top-right-radius: 5px;

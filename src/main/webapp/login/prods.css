@@ -1,14 +1,9 @@
 @charset "UTF-8";
 
 div {
+	
 	box-sizing: border-box;
 }
- 
-/*.article {
-	
-	
-	border: 1px solid black;
-}*/
  
 .pic {
 	width: 200px;

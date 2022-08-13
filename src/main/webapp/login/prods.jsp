@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	
 <div class="products">
 		<%
 		for (int i = 0; i < 20; i++) {
@@ -9,7 +11,7 @@
 				<div class="pic"></div>
 				<div class="text">
 					<div class="title">
-						<h3>상품명 : 선풍기</h3>
+						<h3>상품명 : 대머리</h3>
 					</div>
 					<div class="location">지역 : 부천시</div>
 					<div class="price">가격 : 0000원</div>

@@ -51,7 +51,7 @@
 						<hr style="border: 0.3px solid lightgray;">
 					</div>
 					<div class="item1">
-					<button>♥36</button> | <button>⊙70</button> | <button>⏲5일전</button> | <button>신고하기</button><br>
+					<button>♥36</button> | <button>⊙70</button> | <button>⏲5일전</button> | <button class="singo">신고하기</button><br>
 						<div id="info">
 							<ul>
 								<li>상품상태</li>
@@ -153,5 +153,16 @@
 
 
 	<%@include file="../parts/motherbottom.jsp"%>
+	
+		<div class="popup">
+			<div class="singo_board">
+				<div class="singo_titles">
+					<div class="singo_title">신고하기</div>
+					<button class="singo_close">
+						<img src="./images/close.png" width="24" height="24">
+					</button>
+				</div>
+			</div>
+		</div>
 </body>
 </html>

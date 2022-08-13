@@ -19,7 +19,9 @@
 		<jsp:include page="/login/main/category.jsp"></jsp:include>
 		<jsp:include page="/login/slider/slider.jsp"></jsp:include>
 	</article>
-	
+	<article class="container_12">
+	<!-- 여기에 코드 추가 -->
+	</article>
 	<footer class="container_12">
 		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>

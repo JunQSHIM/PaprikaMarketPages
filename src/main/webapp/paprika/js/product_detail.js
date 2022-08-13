@@ -1,4 +1,5 @@
 	//네비바 상단고정
+	
 $(document).ready(function() {
 	var jbOffset = $('.nav').offset();
 	$(window).scroll(function() {
@@ -130,3 +131,7 @@ $(document).ready(function() {
             })
         });
     };
+    
+
+
+   

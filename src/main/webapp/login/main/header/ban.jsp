@@ -12,7 +12,10 @@
 <div class="grid_2 ban">
 			<div class="banner">
 				<div class="wishlist">
-					찜한 상품<br> <a href="jjim_cart.jsp"> ♥ 2</a>
+					<div class="jjim_text">찜한 상품</div>
+					<div class="jjim_heart">
+						<a href="jjim_cart.jsp"> ♥ 2</a>
+					</div>
 				</div>
 				<div class="recent">
 					최근본상품<br> ........<br> <span class="recent_product">최근

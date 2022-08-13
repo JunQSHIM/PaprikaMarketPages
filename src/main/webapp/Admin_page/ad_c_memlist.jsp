@@ -65,6 +65,8 @@
 											<th>이메일</th>
 											<th>핸드폰번호</th>
 											<th>나이</th>
+											<th>나이</th>
+											<th>나이</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -77,47 +79,47 @@
 											<td>부산</td>
 											<td>usin@naver.com</td>
 											<td>01012314124</td>
-											<td>52</td>
+											<td>52</td><td>52</td><td>52</td>
 										</tr>
 										<tr>
 											<td>장문기</td>
 											<td>부천</td>
 											<td>moonknight@naver.com</td>
 											<td>01015325234</td>
-											<td>71</td>
+											<td>71</td>	<td>71</td>	<td>71</td>
 										</tr>
 										<tr>
 											<td>박예솔</td>
 											<td>서울</td>
 											<td>yesol@naver.com</td>
 											<td>01016438454</td>
-											<td>57</td>
+											<td>57</td><td>57</td><td>57</td>
 										</tr>
 										<tr>
 											<td>심준규</td>
 											<td>인천</td>
 											<td>junq@naver.com</td>
 											<td>01014833424</td>
-											<td>63</td>
+											<td>63</td><td>57</td><td>57</td>
 										</tr>
 										<tr>
 											<td>임승택</td>
 											<td>부천</td>
 											<td>lst@naver.com</td>
 											<td>01012235756</td>
-											<td>42</td>
+											<td>42</td><td>57</td><td>57</td>
 										</tr>
 										<tr>
 											<td>임홍</td>
 											<td>부천</td>
 											<td>leemong486@naver.com</td>
 											<td>01098762341</td>
-											<td>92</td>
+											<td>92</td><td>57</td><td>57</td>
 										</tr>
 										<%
 										}
 										%>
-										
+
 									</tbody>
 									<tfoot>
 										<tr>
@@ -125,6 +127,8 @@
 											<th>지역</th>
 											<th>이메일</th>
 											<th>핸드폰번호</th>
+											<th>나이</th>
+											<th>나이</th>
 											<th>나이</th>
 										</tr>
 									</tfoot>
@@ -142,15 +146,7 @@
 		</section>
 		<!-- /.content -->
 	</div>
-	<!-- /.content-wrapper -->
-	<footer class="main-footer">
-		<div class="float-right d-none d-sm-block">
-			<b>Version</b> 3.2.0
-		</div>
-		<strong>Copyright &copy; 2014-2021 <a
-			href="https://adminlte.io">AdminLTE.io</a>.
-		</strong> All rights reserved.
-	</footer>
+	
 
 	<!-- Control Sidebar -->
 	<aside class="control-sidebar control-sidebar-dark">
@@ -159,7 +155,7 @@
 	<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+	<script src="plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap 4 -->
 	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- DataTables  & Plugins -->

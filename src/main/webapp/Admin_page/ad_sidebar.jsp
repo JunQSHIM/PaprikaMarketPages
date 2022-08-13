@@ -44,23 +44,6 @@
 			</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			<!-- Sidebar Menu -->
 			<nav class="mt-2">
 				<ul class="nav nav-pills nav-sidebar flex-column"
@@ -75,7 +58,7 @@
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="./index.html"
+							<li class="nav-item"><a href="ad_memlist.jsp"
 								class="nav-link active"> <i
 									class="nav-icon fas fa-address-card"></i>
 									<p>회원목록</p>

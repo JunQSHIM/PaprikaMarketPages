@@ -7,13 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- 메인 네비바 -->
+	 <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- 사이드바 접기 -->
+    <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+     
     </ul>
 
     <!-- Right navbar links -->

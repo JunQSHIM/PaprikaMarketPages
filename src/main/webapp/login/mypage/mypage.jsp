@@ -38,7 +38,15 @@ function toMyReview() {
 function toProfileEdit() {
 	window.location.href = '/myweb/login/mypage/profileEdit.jsp';
 }
+function verifyLoc() {
+	window.location.href = '/myweb/login/location/verify.jsp';
+}
 </script>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String nearAddr = request.getParameter("nearAddr");
+	String myAddr = request.getParameter("myAddr");
+%>
 <title>mypage</title>
 </head>
 <body>
@@ -81,11 +89,17 @@ function toProfileEdit() {
 							보통 -분 이내 응답
 						</div>
 					</div>
+					<div id="myLoc">
+						<b>내 동네</b>
+						<%=myAddr %>
+						<%=nearAddr %>
+					</div>
 				</div>
 			</div>
 			<div id="profile_edit">
 				<div id="edit_button">
 					<button type="button" onclick=toProfileEdit()>프로필 수정</button>
+					<button type="button" onclick=verifyLoc()>동네 인증하기</button>
 				</div>
 			</div>
 			<div id="eval_and_review">

@@ -46,6 +46,10 @@ function verifyLoc() {
 	request.setCharacterEncoding("UTF-8");
 	String nearAddr = request.getParameter("nearAddr");
 	String myAddr = request.getParameter("myAddr");
+	if(nearAddr==null||myAddr==null){
+		nearAddr = "동네인증이 필요합니다.";
+		myAddr = "";
+	}
 %>
 <title>mypage</title>
 </head>

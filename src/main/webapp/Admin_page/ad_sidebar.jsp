@@ -63,130 +63,142 @@
 									class="nav-icon fas fa-address-card"></i>
 									<p>회원목록</p>
 							</a></li>
+							<li class="nav-item"><a href="ad_memlist.jsp"
+								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
+									<p>블랙리스트</p>
+							</a></li>
+							<li class="nav-item"><a href="ad_memlist.jsp"
+								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
+									<p>신고</p>
+							</a></li>
+							<li class="nav-item"><a href="ad_memlist.jsp"
+								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
+									<p>신고 내용</p>
+							</a></li>
 
 						</ul></li>
 
 					<li class="nav-item"><a href="#" class="nav-link"> <i
 							class="nav-icon fas fa-copy"></i>
 							<p>
-								페이지 관리 <i class="fas fa-angle-left right"></i> <span
+								콘텐츠 관리 <i class="fas fa-angle-left right"></i> <span
 									class="badge badge-info right">6</span>
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="pages/layout/top-nav.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>페이지 관리</p>
-							</a></li>
+							<li class="nav-item"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-tree"></i>
+									<p>
+										상품<i class="fas fa-angle-left right"></i>
+									</p>
+							</a>
+								<ul class="nav nav-treeview">
+									<li class="nav-item"><a href="pages/UI/general.html"
+										class="nav-link"> <i class="far fa-circle nav-icon"></i>
+											<p>상품목록</p>
+									</a></li>
+									<li class="nav-item"><a href="pages/UI/icons.html"
+										class="nav-link"> <i class="far fa-circle nav-icon"></i>
+											<p>상품 수정 및 삭제</p>
+									</a></li>
+									<li class="nav-item"><a href="pages/UI/buttons.html"
+										class="nav-link"> <i class="far fa-circle nav-icon"></i>
+											<p>후기관리</p>
+									</a></li>
+									<li class="nav-item"><a href="pages/UI/sliders.html"
+										class="nav-link"> <i class="far fa-circle nav-icon"></i>
+											<p>후기 수정 및 삭제</p>
+									</a></li>
 
+								</ul></li>
+							<li class="nav-item"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-tree"></i>
+									<p>
+										게시판<i class="fas fa-angle-left right"></i>
+									</p>
+							</a>
+								<ul class="nav nav-treeview">
+									<li class="nav-item"><a href="pages/UI/general.html"
+										class="nav-link"> <i class="far fa-circle nav-icon"></i>
+											<p>게시판 목록</p>
+									</a></li>
+									<li class="nav-item"><a href="pages/UI/icons.html"
+										class="nav-link"> <i class="far fa-circle nav-icon"></i>
+											<p>공지 사항 쓰기</p>
+									</a></li>
+									<li class="nav-item"><a href="pages/UI/buttons.html"
+										class="nav-link"> <i class="far fa-circle nav-icon"></i>
+											<p>글, 댓글 관리</p>
+									</a></li>
+
+
+								</ul></li>
 						</ul></li>
 					<li class="nav-item"><a href="#" class="nav-link"> <i
 							class="nav-icon fas fa-chart-pie"></i>
 							<p>
-								구매 관리 <i class="right fas fa-angle-left"></i>
+								페이지 관리<i class="right fas fa-angle-left"></i>
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item"><a href="pages/charts/chartjs.html"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>상품관리(카테고리 연동)</p>
+									<p>배너 이미지 변경</p>
 							</a></li>
 							<li class="nav-item"><a href="pages/charts/flot.html"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>연동 상품관리</p>
+									<p>로고 변경</p>
 							</a></li>
-							<li class="nav-item"><a href="pages/charts/inline.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>구매평 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/charts/uplot.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>적립금 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/charts/uplot.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>쿠폰</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/charts/uplot.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>네이버/카카오</p>
-							</a></li>
+
 						</ul></li>
 					<li class="nav-item"><a href="#" class="nav-link"> <i
 							class="nav-icon fas fa-tree"></i>
-							<p>
-								콘텐츠 관리 <i class="fas fa-angle-left right"></i>
-							</p>
-					</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="pages/UI/general.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>게시물 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/UI/icons.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>댓글 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/UI/buttons.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>입력폼 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/UI/sliders.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>상단 메뉴 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/UI/modals.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>푸터 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/UI/navbar.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>지도 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/UI/timeline.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>일정 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/UI/ribbons.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>이미지 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/UI/ribbons.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>신고 관리</p>
-							</a></li>
-						</ul></li>
-					<li class="nav-item"><a href="#" class="nav-link"> <i
-							class="nav-icon fas fa-edit"></i>
 							<p>
 								통계 <i class="fas fa-angle-left right"></i>
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
+							<li class="nav-item"><a href="pages/UI/general.html"
+								class="nav-link"> <i class="far fa-circle nav-icon"></i>
+									<p>탈퇴 사유</p>
+							</a></li>
+							<li class="nav-item"><a href="pages/UI/icons.html"
+								class="nav-link"> <i class="far fa-circle nav-icon"></i>
+									<p>인기상품</p>
+							</a></li>
+							<li class="nav-item"><a href="pages/UI/buttons.html"
+								class="nav-link"> <i class="far fa-circle nav-icon"></i>
+									<p>가입자수를 기간별로 필터링</p>
+							</a></li>
+							<li class="nav-item"><a href="pages/UI/sliders.html"
+								class="nav-link"> <i class="far fa-circle nav-icon"></i>
+									<p>상품 거래된 수 지역별 필터링</p>
+							</a></li>
+							<li class="nav-item"><a href="pages/UI/modals.html"
+								class="nav-link"> <i class="far fa-circle nav-icon"></i>
+									<p>주된 신고 사유</p>
+							</a></li>
+						</ul></li>
+					<li class="nav-item"><a href="#" class="nav-link"> <i
+							class="nav-icon fas fa-edit"></i>
+							<p>
+								관리자 등록 <i class="fas fa-angle-left right"></i>
+							</p>
+					</a>
+						<ul class="nav nav-treeview">
 							<li class="nav-item"><a href="pages/forms/general.html"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>개요</p>
+									<p>관리자 권한 위임 및 해임</p>
 							</a></li>
 							<li class="nav-item"><a href="pages/forms/advanced.html"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>기간별 분석</p>
+									<p>관리자 목록</p>
 							</a></li>
 							<li class="nav-item"><a href="pages/forms/editors.html"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>방문자 통계(일간, 주별, 월별)</p>
+									<p>QnA</p>
 							</a></li>
-							<li class="nav-item"><a href="pages/forms/validation.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>많이 구매한 상품(카테고리?)</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/forms/validation.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>많이 방문한 페이지</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/forms/validation.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>트래픽</p>
-							</a></li>
+
 						</ul></li>
 
 				</ul>

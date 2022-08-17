@@ -164,9 +164,13 @@
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>인기상품</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/statistics/quit.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/visit_statics.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>가입자수를 기간별로 필터링</p>
+									<p>방문자 수</p>
+							</a></li>
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/ad_subscribers.jsp"
+								class="nav-link"> <i class="far fa-circle nav-icon"></i>
+									<p>가입자 수</p>
 							</a></li>
 							<li class="nav-item"><a href="/myweb/Admin_page/statistics/quit.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>

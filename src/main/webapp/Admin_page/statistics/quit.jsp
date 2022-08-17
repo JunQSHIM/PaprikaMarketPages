@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-<link rel="stylesheet" href="ad.css" type="text/css">
+<link rel="stylesheet" href="../ad.css" type="text/css">
 </head>
 <!--
 `body` tag options:
@@ -36,7 +36,8 @@
 
 
 		<!-- 콘텐츠 jsp 삽입구간 -->
-		<%@include file="/Admin_page/member/ad_c_memlist.jsp"%>
+		<%@include file="member_quit.jsp"%>
+		
 		<!-- 콘텐츠 jsp 삽입구간 -->
 		
 		
@@ -58,16 +59,16 @@
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="plugins/raphael/raphael.min.js"></script>
-<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<script src="../plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="../plugins/raphael/raphael.min.js"></script>
+<script src="../plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="../plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="../plugins/chart.js/Chart.min.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<script src="../dist/js/pages/dashboard2.js"></script>
 </body>
 </html>

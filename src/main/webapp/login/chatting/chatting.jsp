@@ -8,8 +8,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/myweb/login/chatting/mychat.css">
 <script src="https://kit.fontawesome.com/a75c39dc66.js" crossorigin="anonymous"></script>
-<script src="js/jquery-3.6.0.min.js"></script>
 <script>
  $(document).ready(function(){
 	 $("ul.list li").click(function(){

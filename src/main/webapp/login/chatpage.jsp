@@ -17,7 +17,7 @@
 
 	<article class="container_12">
 		<jsp:include page="/login/main/category.jsp"></jsp:include>
-		<jsp:include page="/login/sellpage/sellpage.jsp"></jsp:include>
+		<iframe id="frame" src="/myweb/login/chatting/chatting.jsp"></iframe>
 	</article>
 	
 	<footer class="container_12">

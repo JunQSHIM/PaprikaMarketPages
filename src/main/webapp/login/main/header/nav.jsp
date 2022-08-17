@@ -35,7 +35,7 @@
 			<div class="row grid_4 bts">
 
 				<div class="nav_btn">
-					<a class="sell_btn">
+					<a class="sell_btn" href="/myweb/login/sell.jsp">
 						<div class="btn_img">
 							<img src="/myweb/login/images/sell_list.png" width="23" height="24">
 						</div>
@@ -51,7 +51,7 @@
 					</a>
 				</div>
 				<div class="nav_btn">
-					<a class="chat">
+					<a class="chat" href="/myweb/login/chatpage.jsp">
 						<div class="btn_img">
 							<img src="/myweb/login/images/chatting.png" width="23" height="24">
 						</div>

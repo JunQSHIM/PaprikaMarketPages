@@ -41,15 +41,15 @@
 		<!-- Preloader -->
 		<div
 			class="preloader flex-column justify-content-center align-items-center">
-			<img class="animation__shake" src="dist/img/AdminLTELogo.png"
+			<img class="animation__shake" src="/myweb/Admin_page/layout/dist/img/AdminLTELogo.png"
 				alt="AdminLTELogo" height="60" width="60">
 		</div>
 
 
 		<!-- 상단네비바 -->
-		<%@include file="ad_nav.jsp"%>
+		<%@include file="layout/ad_nav.jsp"%>
 		<!-- 사이드네비바 -->
-		<%@include file="ad_sidebar.jsp"%>
+		<%@include file="layout/ad_sidebar.jsp"%>
 
 
 		<!-- 콘텐츠 jsp 삽입구간 -->
@@ -60,7 +60,7 @@
 
 
 		<!-- 푸터 -->
-		<%@include file="ad_footer.jsp"%>
+		<%@include file="layout/ad_footer.jsp"%>
 
 
 

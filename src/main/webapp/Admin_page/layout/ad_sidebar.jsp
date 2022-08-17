@@ -11,17 +11,15 @@
 	<!-- Main Sidebar Container -->
 	<aside class="main-sidebar sidebar-light-orange elevation-4">
 		<!-- Brand Logo -->
-		<a href="ad_mother.jsp" class="brand-link  navbar-orange"> <img
-			src="../login/images/paplogo.png" alt="paprikaLogo"
-			class="brand-image" style="opacity: .8"> <span
-			class="brand-text font-weight-light pap"><h5>파프리카 마켓</h5></span>
+		<a href="/myweb/Admin_page/ad_mother.jsp" class="brand-link  navbar-orange"> <img src="/myweb/Admin_page/login/images/paplogo.png" alt="paprikaLogo" class="brand-image" style="opacity: .8"> 
+		<span class="brand-text font-weight-light pap"><h5>파프리카 마켓</h5></span>
 		</a>
 
 		<div class="sidebar">
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 				<div class="image">
-					<img src="dist/img/usin.png" class="img-circle elevation-2"
+					<img src="/myweb/Admin_page/dist/img/usin.png" class="img-circle elevation-2"
 						alt="User Image">
 				</div>
 				<div class="info">
@@ -58,20 +56,20 @@
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="ad_memlist.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_memlist.jsp"
 								class="nav-link active"> <i
 									class="nav-icon fas fa-address-card"></i>
 									<p>회원목록</p>
 							</a></li>
-							<li class="nav-item"><a href="ad_memlist.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_memlist.jsp"
 								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
 									<p>블랙리스트</p>
 							</a></li>
-							<li class="nav-item"><a href="ad_memlist.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_memlist.jsp"
 								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
 									<p>신고</p>
 							</a></li>
-							<li class="nav-item"><a href="ad_memlist.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_memlist.jsp"
 								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
 									<p>신고 내용</p>
 							</a></li>
@@ -141,11 +139,11 @@
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="pages/charts/chartjs.html"
+							<li class="nav-item"><a href="/myweb/Admin_page/pages/charts/chartjs.html"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>배너 이미지 변경</p>
 							</a></li>
-							<li class="nav-item"><a href="pages/charts/flot.html"
+							<li class="nav-item"><a href="/myweb/Admin_page/pages/charts/flot.html"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>로고 변경</p>
 							</a></li>
@@ -158,23 +156,23 @@
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="pages/UI/general.html"
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/quit.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>탈퇴 사유</p>
 							</a></li>
-							<li class="nav-item"><a href="pages/UI/icons.html"
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/quit.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>인기상품</p>
 							</a></li>
-							<li class="nav-item"><a href="pages/UI/buttons.html"
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/quit.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>가입자수를 기간별로 필터링</p>
 							</a></li>
-							<li class="nav-item"><a href="pages/UI/sliders.html"
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/quit.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>상품 거래된 수 지역별 필터링</p>
 							</a></li>
-							<li class="nav-item"><a href="pages/UI/modals.html"
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/quit.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>주된 신고 사유</p>
 							</a></li>

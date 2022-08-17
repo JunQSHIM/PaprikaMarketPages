@@ -11,7 +11,7 @@
 	<!-- Main Sidebar Container -->
 	<aside class="main-sidebar sidebar-light-orange elevation-4">
 		<!-- Brand Logo -->
-		<a href="/myweb/Admin_page/ad_mother.jsp" class="brand-link  navbar-orange"> <img src="/myweb/Admin_page/login/images/paplogo.png" alt="paprikaLogo" class="brand-image" style="opacity: .8"> 
+		<a href="/myweb/Admin_page/ad_mother.jsp" class="brand-link  navbar-orange"> <img src="/myweb/login/images/paplogo.png" alt="paprikaLogo" class="brand-image" style="opacity: .8"> 
 		<span class="brand-text font-weight-light pap"><h5>파프리카 마켓</h5></span>
 		</a>
 
@@ -184,15 +184,15 @@
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="pages/forms/general.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>관리자 권한 위임 및 해임</p>
-							</a></li>
-							<li class="nav-item"><a href="pages/forms/advanced.html"
+							<li class="nav-item"><a href="/myweb/Admin_page/admin_list/admin_list.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>관리자 목록</p>
 							</a></li>
-							<li class="nav-item"><a href="pages/forms/editors.html"
+							<li class="nav-item"><a href="/myweb/Admin_page/admin_list/admin_authority.jsp"
+								class="nav-link"> <i class="far fa-circle nav-icon"></i>
+									<p>관리자 권한 위임 및 해임</p>
+							</a></li>
+							<li class="nav-item"><a href="/myweb/Admin_page/admin_list/qna.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>QnA</p>
 							</a></li>

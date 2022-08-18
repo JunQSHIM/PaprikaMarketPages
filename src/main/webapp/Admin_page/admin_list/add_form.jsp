@@ -33,22 +33,21 @@ function editComp(){
 function goToAdd(){
 	 window.location.href ='/myweb/Admin_page/admin_list/add.jsp';
 }
-function checkId(){
-	var id = $('#id').val();	// 서버로 보낼 데이터를 입력창에서 얻어온다.
-	$.ajax({
-		url: "checkId.jsp",
-		type: "post",
-		traditional: true,	// ajax 배열 넘기기 옵션!
-		data: {"id" : id},
-		success: function (info) {
-			console.log(info[0]);
-		},
-		error:function(request,status,error){
-			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}
+var name1 = "";
+$(document).ready(function(){
+	$('#submit').click(function(){   //submit 버튼을 클릭하였을 때
+		let sendData = "id="+$('input[name=id]').val();
+		$.ajax({
+			type:'post',   //post 방식으로 전송
+			url:'checkId.jsp',   //데이터를 주고받을 파일 주소
+			data:sendData,   //위의 변수에 담긴 데이터를 전송해준다.
+			success : function(data){ 
+				$('#infoData').html(data);  
+			}
+		});
 	});
-}
-</script>
+});
+
 </script>
 </head>
 <body>
@@ -82,6 +81,7 @@ function checkId(){
 								</div>
 							</div>
 							<div class="card-body">
+							<form action="admin_list.jsp" method="post">
 								<table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr>
@@ -90,7 +90,7 @@ function checkId(){
 										<tr>
 											<td>
 												<input type="text" id="id" name="id">
-												<button onclick="checkId()" style="border:0px;">확인</button>
+												<input type="button" id="submit" value="입력">
 											</td>
 										</tr>
 										<tr>
@@ -105,27 +105,12 @@ function checkId(){
 											<th>직급</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<td>김유신</td>
-											<td>00001</td>
-											<td>00001</td>
-											<td>00001</td>
-											<td>usin@naver.com</td>
-											<td>01012314124</td>
-											<td>1998.08.15</td>
-											<td>부산사람</td>
-											<td>
-												<select name="role">
-													<option value="Super Admin">Super Admin</option>
-													<option value="Administrator">Administrator</option>
-													<option value="Editor">Editor</option>													
-												</select>
-											</td>
-										</tr>
+									<tbody id="infoData">
+										
 									</tbody>
 								</table>
-								<div id="infoData">전환</div>
+								<input type="submit" value="등록">
+								</form>
 							</div>
 							<!-- /.card-body -->
 						</div>

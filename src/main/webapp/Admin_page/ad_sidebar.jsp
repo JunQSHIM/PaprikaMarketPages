@@ -50,8 +50,8 @@
 					data-widget="treeview" role="menu" data-accordion="false">
 					<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-					<li class="nav-item menu-open"><a href="#"
-						class="nav-link active"> <i
+					<li class="nav-item"><a href="#"
+						class="nav-link"> <i
 							class="nav-icon fas fa-address-card"></i>
 							<p>
 								회원 관리 <i class="fas fa-angle-left right"></i>
@@ -59,7 +59,7 @@
 					</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item"><a href="ad_memlist.jsp"
-								class="nav-link active"> <i
+								class="nav-link"> <i
 									class="nav-icon fas fa-address-card"></i>
 									<p>회원목록</p>
 							</a></li>

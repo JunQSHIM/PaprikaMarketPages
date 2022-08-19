@@ -46,7 +46,7 @@
 		<!-- 푸터 -->
 		<%@include file="/Admin_page/layout/ad_footer.jsp"%>
 	</div>
-	<!-- ./wrapper -->
+	<!-- ./wrapper --> 
 
 	<!-- REQUIRED SCRIPTS -->
 

@@ -77,7 +77,7 @@
 										<%
 										for (int i = 0; i < 20; i++) {
 										%>
-										<tr>
+										<tr> 
 											<td>김유신</td>
 											<td>부산</td>
 											<td>usin@naver.com</td>

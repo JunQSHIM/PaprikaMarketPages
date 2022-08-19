@@ -130,7 +130,7 @@
 											<td><button class="black_btn" type="button">차단
 													해제</button></td>
 										</tr>
-										<tr>
+										<tr> 
 											<td>임홍</td>
 											<td>부천</td>
 											<td>leemong486@naver.com</td>

@@ -69,7 +69,7 @@
 								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
 									<p>신고</p>
 							</a></li>
-							
+							 
 
 						</ul></li>
 

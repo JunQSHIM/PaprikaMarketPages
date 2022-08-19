@@ -13,3 +13,7 @@ article{
 footer{
 	height:250px;
 }
+iframe{
+	width:100%;
+	height:1000px;
+}

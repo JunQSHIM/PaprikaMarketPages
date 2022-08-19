@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="/myweb/login/sellpage/sellpage.js"></script>
 <link rel="stylesheet" type="text/css" href="/myweb/login/sellpage/sellpage.css">
 <meta charset="UTF-8">
 <title>Sell page</title>

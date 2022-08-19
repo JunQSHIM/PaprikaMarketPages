@@ -4,11 +4,8 @@
 	
 }
 .banner {
-<<<<<<< HEAD
-	position:fixed;
+	position: absolute;
     width: 90px;
-
-=======
 	margin-left: 10px;
 	background-color: none;
 	position: fixed;
@@ -16,8 +13,8 @@
 	float: right;
 	margin-left: 10px;
 	top:125px;
-	left:1370px;
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
+	right: calc(50% - 690px);
+	z-index: 20;
 }
 
 .wishlist {

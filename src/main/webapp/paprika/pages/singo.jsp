@@ -4,7 +4,51 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="../js/jquery-3.6.0.min.js"></script>
+
 <title>Insert title here</title>
+<script type="text/javascript">
+
+ $(document).ready(function(){     
+	   // menu 클래스 바로 하위에 있는 a 태그를 클릭했을때   
+	     $(".singo_list_1 > a").click(function(){       
+		     var submenu = $(this).next("div");      
+		       // submenu 가 화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기      
+		      if( submenu.is(":visible") ){           
+			     submenu.slideUp();       
+			     }else{         
+				       submenu.slideDown();    
+				        }   
+				     }); 
+  });
+
+
+
+
+
+
+
+//$(document).ready(function() {
+//	$(".dropDown").mouseenter(function() {
+//		$(".trade_list").show();
+//	});
+//	$(".dropDown").mouseleave(function() {
+//		$(".trade_list").hide();
+//	});
+
+//});
+
+//$(document).ready(function() {
+//	$(".dropDown").mouseenter(function() {
+//		$(".prod_info_board").show();
+//	});
+//	$(".dropDown").mouseleave(function() {
+//		$(".prod_info_board").hide();
+//	});
+
+//});
+
+</script>
 <link rel="stylesheet" type="text/css" href="singo.css">
 
 </head>
@@ -17,17 +61,17 @@
 					<img src="../images/close.png" width="24" height="24">
 				</button>
 			</div>
-			<div class="singo_content">
+			<div class="singo">
 				<div class="singo_list">
 					<div class="singo_list_1">
 						<span>광고 (상점 및 타사이트 홍보, 상품도배)</span>
-						<button type="button">
+						<a type="button" class="dropDown">
 							<img
 								src="../images/dropdown.png"
 								width="13" height="8" alt="화살표 아이콘">
-						</button>
+						</a>
 					</div>
-					<div class="ad_drop">
+					<div class="trade_list">
 						<div class="trade_list_1">
 							<button type="button">상점 및 타사이트 홍보</button>
 						</div>
@@ -60,10 +104,11 @@
 						<button type="button">
 							<img
 								src="../images/dropdown.png"
-								width="13" height="8" alt="화살표 아이콘">
+								width="13" height="8" alt="화살표 아이콘"
+								onclick="buttonClicked()">
 						</button>
 					</div>
-					<div class="trade_list">
+					<div class="trade_list" >
 						<div class="trade_list_1">
 							<button type="button">가품(위조품/이미테이션)</button>
 						</div>
@@ -109,7 +154,7 @@
 								width="13" height="8" alt="화살표 아이콘">
 						</button>
 					</div>
-					<div class="safe_list">
+					<div class="trade_list">
 						<div class="trade_list_1">
 							<button type="button">안전결제 거부</button>
 						</div>
@@ -130,8 +175,8 @@
 								width="13" height="8" alt="화살표 아이콘">
 						</button>
 					</div>
-					<div class="singo_board_1">
-						<div class="singo_board_2">
+					<div class="prod_info_board">
+						<div class="prod_info_content">
 							<textarea
 								placeholder="신고 내용을 직접 작성해주세요.
 자세하게 적어주시면 신고처리에 큰 도움이 됩니다."></textarea>
@@ -148,8 +193,8 @@
 								width="13" height="8" alt="화살표 아이콘">
 						</button>
 					</div>
-					<div class="singo_contents_1">
-						<div class="singo_contents_2">
+					<div class="prod_info_board">
+						<div class="prod_info_content">
 							<textarea
 								placeholder="신고 내용을 직접 작성해주세요.
 자세하게 적어주시면 신고처리에 큰 도움이 됩니다."></textarea>

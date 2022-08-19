@@ -17,7 +17,7 @@
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-				<%@include file="admin.jsp" %>
+
 			</section>
 			<!-- /.content -->
 		</div>

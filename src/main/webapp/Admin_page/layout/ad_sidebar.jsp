@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
 	<!-- Main Sidebar Container -->
 	<aside class="main-sidebar sidebar-light-orange elevation-4">
@@ -48,21 +41,22 @@
 					data-widget="treeview" role="menu" data-accordion="false">
 					<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-					<li class="nav-item menu-open"><a href="#"
-						class="nav-link active"> <i
-							class="nav-icon fas fa-address-card"></i>
+					<li class="nav-item">
+					<a href="#" class="nav-link">
+						<i class="nav-icon fa-solid fa-user-gear"></i>
 							<p>
 								회원 관리 <i class="fas fa-angle-left right"></i>
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_memlist.jsp"
-								class="nav-link active"> <i
-									class="nav-icon fas fa-address-card"></i>
+							<li class="nav-item">
+							<a href="/myweb/Admin_page/member/ad_memlist.jsp" class="nav-link">
+							<i class="nav-icon fa-solid fa-address-book"></i>
 									<p>회원목록</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_blacklist.jsp"
-								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
+							<li class="nav-item">
+							<a href="/myweb/Admin_page/member/ad_blacklist.jsp" class="nav-link"> 
+								<i class="nav-icon fa-solid fa-user-slash"></i>
 									<p>블랙리스트</p>
 							</a></li>
 							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_report.jsp"
@@ -73,11 +67,10 @@
 
 						</ul></li>
 
-					<li class="nav-item"><a href="#" class="nav-link"> <i
-							class="nav-icon fas fa-copy"></i>
+					<li class="nav-item"><a href="#" class="nav-link">
+					<i class="nav-icon fas fa-copy"></i>
 							<p>
-								콘텐츠 관리 <i class="fas fa-angle-left right"></i> <span
-									class="badge badge-info right">6</span>
+								콘텐츠 관리<i class="right fas fa-angle-left"></i>
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
@@ -206,5 +199,3 @@
 		</div>
 		<!-- /.sidebar -->
 	</aside>
-</body>
-</html>

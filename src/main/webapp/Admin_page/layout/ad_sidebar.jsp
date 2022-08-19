@@ -61,18 +61,15 @@
 									class="nav-icon fas fa-address-card"></i>
 									<p>회원목록</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_memlist.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_blacklist.jsp"
 								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
 									<p>블랙리스트</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_memlist.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_report.jsp"
 								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
 									<p>신고</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_memlist.jsp"
-								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
-									<p>신고 내용</p>
-							</a></li>
+							
 
 						</ul></li>
 

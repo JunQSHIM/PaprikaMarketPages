@@ -74,9 +74,7 @@
 									</thead>
 									<tbody>
 
-										<%
-										for (int i = 0; i < 20; i++) {
-										%>
+
 										<tr>
 											<td>김유신</td>
 											<td>부산</td>
@@ -85,7 +83,8 @@
 											<td>1998.08.15</td>
 											<td>부산사람</td>
 											<td>152</td>
-											<td><button class="black_btn" type="button">차단</button></td>
+											<td><button class="black_btn" type="button">차단
+													해제</button></td>
 										</tr>
 										<tr>
 											<td>장문기</td>
@@ -95,7 +94,8 @@
 											<td>1993.01.01</td>
 											<td>부천인</td>
 											<td>0</td>
-											<td><button class="black_btn" type="button">차단</button></td>
+											<td><button class="black_btn" type="button">차단
+													해제</button></td>
 										</tr>
 										<tr>
 											<td>박예솔</td>
@@ -105,7 +105,8 @@
 											<td>1996.03.03</td>
 											<td>서울사람</td>
 											<td>1</td>
-											<td><button class="black_btn" type="button">차단</button></td>
+											<td><button class="black_btn" type="button">차단
+													해제</button></td>
 										</tr>
 										<tr>
 											<td>심준규</td>
@@ -115,7 +116,8 @@
 											<td>1997.03.07</td>
 											<td>인천사람</td>
 											<td>7</td>
-											<td><button class="black_btn" type="button">차단</button></td>
+											<td><button class="black_btn" type="button">차단
+													해제</button></td>
 										</tr>
 										<tr>
 											<td>임승택</td>
@@ -125,7 +127,8 @@
 											<td>1997.04.04</td>
 											<td>빵맨</td>
 											<td>157</td>
-											<td><button class="black_btn" type="button">차단</button></td>
+											<td><button class="black_btn" type="button">차단
+													해제</button></td>
 										</tr>
 										<tr>
 											<td>임홍</td>
@@ -135,11 +138,9 @@
 											<td>92</td>
 											<td>57</td>
 											<td>57</td>
-											<td><button class="black_btn" type="button">차단</button></td>
+											<td><button class="black_btn" type="button">차단
+													해제</button></td>
 										</tr>
-										<%
-										}
-										%>
 
 									</tbody>
 

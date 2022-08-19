@@ -169,7 +169,7 @@
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>가입자 수</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/statistics/quit.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/prodChart_quit.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>상품 거래된 수 지역별 필터링</p>
 							</a></li>

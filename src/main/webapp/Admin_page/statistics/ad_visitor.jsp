@@ -34,29 +34,42 @@ $(document).ready(function(){
 
 <div id="tab-1" class="tab-content">
 	<div id="today_visitor">
-<canvas id="bar-chart1" style="width: 300px; height: 150px;" ></canvas>
+<canvas id="line-chart" style="width: 200px; height: 100px"></canvas>
 <script type="text/javascript">
-new Chart(document.getElementById("bar-chart1"), {
-    type: 'bar',
-    data: {
-      labels: ["일요일"],
-      datasets: [
-        {
-          label: "Population (millions)",
-          backgroundColor: ["#3e95cd",],
-          data: [2478]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-    	fontSize: 30,
-        display: true,
-        text: '방문자 수'
-      }
-    }
-});
+new Chart(document.getElementById("line-chart"), {
+	  type: 'line',
+	  data: {
+	    labels: [00,02,04,06,08,10,12,14,16,18,20,22],
+	    datasets: [{ 
+	        data: [86,114,106,106,107,111,133,221,783,2478,432,334],
+	        label: "오늘 방문자 수",
+	        borderColor: "#3e95cd",
+	        fill: false
+	      }
+	    ]
+	  },
+	  options: {
+		  scales: {
+				xAxes: [{
+					ticks:{
+						fontColor : 'rgba(12, 13, 13, 1)',
+						fontSize : 20
+					},
+				}],
+			yAxes: [{
+				ticks:{
+					fontColor : 'rgba(12, 13, 13, 1)',
+					fontSize : 20
+				},
+			}]
+	      },
+	    title: {
+	      display: true,
+	      fontSize:30,
+	      text: '방문자 수'
+	    }
+	  }
+	});
 </script>
 </div>
 </div>
@@ -79,6 +92,21 @@ new Chart(document.getElementById("bar-chart2"), {
     },
     options: {
       legend: { display: false },
+      scales: {
+			xAxes: [{
+				ticks:{
+					fontColor : 'rgba(12, 13, 13, 1)',
+					fontSize : 20
+				},
+			}],
+		
+		yAxes: [{
+			ticks:{
+				fontColor : 'rgba(12, 13, 13, 1)',
+				fontSize : 20
+			},
+		}]
+      },
       title: {
     	fontSize: 30,
         display: true,
@@ -101,6 +129,7 @@ new Chart(document.getElementById("bar-chart3"), {
       datasets: [
         {
           label: "Population (millions)",
+         fontSize:30,
           backgroundColor: ["#3e95cd", "#3e95cd", "#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
           data: [2478,5267,734,784,433,555,999,2478,5267,734,784,433]
         }
@@ -108,6 +137,21 @@ new Chart(document.getElementById("bar-chart3"), {
     },
     options: {
       legend: { display: false },
+      scales: {
+			xAxes: [{
+				ticks:{
+					fontColor : 'rgba(12, 13, 13, 1)',
+					fontSize : 20
+				},
+			}],
+		
+		yAxes: [{
+			ticks:{
+				fontColor : 'rgba(12, 13, 13, 1)',
+				fontSize : 20
+			},
+		}]
+    },
       title: {
     	fontSize: 30,
         display: true,

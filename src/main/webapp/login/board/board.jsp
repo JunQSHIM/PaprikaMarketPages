@@ -49,6 +49,9 @@
 	function mypage(){
 		window.location.href = '/myweb/login/mypage/mypage.jsp';
 	}
+	function toWritePage(){
+		window.location.href = '/myweb/login/board_write/write.jsp';
+	}
 </script>
 </head>
 <body>
@@ -263,6 +266,9 @@
 						</span>
 					</a>
 				</article>
+			</div>
+			<div id="write_button_wrap">
+				<button id="write_button" onclick=toWritePage()>글 작성하기</button>
 			</div>
 		</div>
 	</article>

@@ -5,22 +5,8 @@
 <head>
 <meta charset="UTF-8">
 
-<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <title>방문자 수</title>
-<script>
-$(document).ready(function(){
-	$('ul.tabs li').click(function(){
-		var tab_id = $(this).attr('data-tab'); 
-
-		$('ul.tabs li').removeClass('current');
-		$('.tab-content').removeClass('current');
-
-		$(this).addClass('current');
-		$("#"+tab_id).addClass('current');
-	})
-})
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <link rel="stylesheet" type="text/css" href="ad_visitor.css">
 
 </head>
@@ -162,8 +148,10 @@ new Chart(document.getElementById("bar-chart3"), {
 </script>
 </div>
 </div>
-		
-	<script src="../plugins/jquery/jquery.min.js"></script>
+
+<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="ad_visitor.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Ekko Lightbox -->

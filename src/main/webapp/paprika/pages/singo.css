@@ -28,7 +28,6 @@ body, input, textarea, select, button {
 textarea {
     overflow: auto;
 }
-
 .popup {
 	width: 100%;
 	height: 100%;
@@ -78,6 +77,10 @@ button {
     cursor: pointer;
     outline: none;
     float:right;
+}
+
+#panel1, #panel2, #panel3, #panel4, #panel5, #panel6{
+	display: none;
 }
 
 button, input {

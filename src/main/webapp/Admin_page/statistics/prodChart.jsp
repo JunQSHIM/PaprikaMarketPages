@@ -17,8 +17,8 @@
 		<div class="content-wrapper" style="background-color: white;">
 			<!-- Main content -->
 			<section class="content">
-			<div style="display: block; align-content: center; margin: 50px 50px 100px">
-				<%@include file="/Admin_page/statistics/ad_visitor.jsp"%>
+				<div style="display: block; align-content: center; margin: 50px 50px 100px ;">
+					<%@include file="ad_prodChart.jsp"%>
 				</div>
 			</section>
 			<!-- /.content -->

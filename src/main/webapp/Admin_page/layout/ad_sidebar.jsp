@@ -158,17 +158,17 @@
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>방문자 수</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/statistics/ad_subscribers.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/subscribers.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>가입자 수</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/statistics/prodChart_quit.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/prodChart.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>상품 거래된 수 지역별 필터링</p>
+									<p>카테고리별 거래량</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/statistics/quit.jsp"
+							<li class="nav-item"><a href="/myweb/Admin_page/statistics/reason_report.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>주된 신고 사유</p>
+									<p>신고 사유</p>
 							</a></li>
 						</ul></li>
 					<li class="nav-item"><a href="#" class="nav-link"> <i

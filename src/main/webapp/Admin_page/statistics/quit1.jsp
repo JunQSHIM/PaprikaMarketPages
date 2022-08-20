@@ -36,9 +36,7 @@
 		<%@include file="/Admin_page/layout/ad_sidebar.jsp"%>
 
 		<!-- 콘텐츠 jsp 삽입구간 -->
-		<div style="display: block; align-content: center; margin: 50px 50px 100px 280px;">
-		<%@include file="ad_prodChart.jsp"%>
-		</div>
+		<%@include file="member_quit.jsp"%>
 		<!-- 콘텐츠 jsp 삽입구간 -->
 		
 		<!-- 푸터 -->

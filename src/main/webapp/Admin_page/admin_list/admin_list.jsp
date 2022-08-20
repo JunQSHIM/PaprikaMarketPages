@@ -14,7 +14,7 @@
 		<%@include file="/Admin_page/layout/ad_layout.jsp"%>
 
 		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
+		<div class="content-wrapper" style="background-color: white;">
 			<!-- Main content -->
 			<section class="content">
 				<%@include file="admin.jsp" %>

@@ -14,6 +14,7 @@
 <script src="../js/product_detail.js"></script>
 </head>
 <body>
+
 	<%@include file="../parts/mothertop.jsp"%>
 	<div id="productPage">
 			<div id="productList">

@@ -14,12 +14,10 @@
 		<%@include file="/Admin_page/layout/ad_layout.jsp"%>
 
 		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper" style="background-color: white;">
+		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-		<div style="margin-left:100px; margin:50 50 50 50;">
-			<%@include file="ad_subscribers.jsp"%>
-			</div>
+		<%@include file="/Admin_page/admin_board/admin_board.jsp"%>
 			</section>
 			<!-- /.content -->
 		</div>

@@ -4,7 +4,7 @@
 	<!-- Main Sidebar Container -->
 	<aside class="main-sidebar sidebar-light-orange elevation-4">
 		<!-- Brand Logo -->
-		<a href="/myweb/Admin_page/ad_mother.jsp" class="brand-link  navbar-orange"> <img src="/myweb/login/images/paplogo.png" alt="paprikaLogo" class="brand-image" style="opacity: .8"> 
+		<a href="/myweb/Admin_page/layout/ad_main_layout.jsp" class="brand-link  navbar-orange"> <img src="/myweb/login/images/paplogo.png" alt="paprikaLogo" class="brand-image" style="opacity: .8"> 
 		<span class="brand-text font-weight-light pap"><h5>파프리카 마켓</h5></span>
 		</a>
 
@@ -49,6 +49,14 @@
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
+						
+
+							<li class="nav-item">
+							<a href="/myweb/Admin_page/admin_board/ad_board.jsp" class="nav-link">
+							<i class="nav-icon fa-solid fa-address-book"></i>
+									<p>회원가입</p>
+							</a></li>
+						
 							<li class="nav-item">
 							<a href="/myweb/Admin_page/member/ad_memlist.jsp" class="nav-link">
 							<i class="nav-icon fa-solid fa-address-book"></i>
@@ -59,14 +67,41 @@
 								<i class="nav-icon fa-solid fa-user-slash"></i>
 									<p>블랙리스트</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/member/ad_report.jsp"
-								class="nav-link"> <i class="nav-icon fas fa-address-card"></i>
-									<p>신고</p>
-							</a></li>
-							 
-
 						</ul></li>
-
+					
+					<li class="nav-item">
+						<a href="#" class="nav-link">
+								<i class="nav-icon fas fa-address-card"></i>
+								<p>신고 관리<i class="fas fa-angle-left right"></i></p>
+						</a>
+						
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa-solid fa-laptop"></i>
+										<p>게시판</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa-regular fa-message"></i>
+										<p>상품 댓글</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="/myweb/Admin_page/singo/ad_report.jsp" class="nav-link">
+									<i class="nav-icon fa-solid fa-user"></i>
+										<p>유저</p>
+								</a>
+							</li>
+						</ul>
+					
+					</li>
+					
+					
+					
+					
+							
 					<li class="nav-item"><a href="#" class="nav-link">
 					<i class="nav-icon fas fa-copy"></i>
 							<p>
@@ -195,7 +230,5 @@
 
 				</ul>
 			</nav>
-			<!-- /.sidebar-menu -->
 		</div>
-		<!-- /.sidebar -->
 	</aside>

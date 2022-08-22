@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 차트</title>
-<link rel="stylesheet" href="ad_prodChart.css">
+<link rel="stylesheet" href="/myweb/Admin_page/statistics/ad_prodChart.css">
 
 </head>
 <body>

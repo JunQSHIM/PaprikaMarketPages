@@ -49,6 +49,11 @@
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="/myweb/Admin_page/admin_board/ad_board.jsp" class="nav-link">
+							<i class="nav-icon fa-solid fa-address-book"></i>
+									<p>회원가입</p>
+							</a></li>
 							<li class="nav-item">
 							<a href="/myweb/Admin_page/member/ad_memlist.jsp" class="nav-link">
 							<i class="nav-icon fa-solid fa-address-book"></i>

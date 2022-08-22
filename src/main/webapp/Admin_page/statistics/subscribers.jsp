@@ -17,7 +17,7 @@
 		<div class="content-wrapper" style="background-color: white;">
 			<!-- Main content -->
 			<section class="content">
-		<div style="margin-left:100px; margin:auto;">
+		<div style="margin-left:100px; margin:50 50 50 50;">
 			<%@include file="ad_subscribers.jsp"%>
 			</div>
 			</section>

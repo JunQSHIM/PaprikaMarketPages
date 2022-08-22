@@ -78,7 +78,7 @@
 					<button type="submit">검색</button>
 				</div>
 				<article class="article">
-					<a class="article_link" href="">
+					<a class="article_link" href="/myweb/login/board/board_content.jsp">
 						<div class="article_photo">
 							<img id="article_thumbnail" src="https://dnvefa72aowie.cloudfront.net/origin/article/202208/89E071DCFCDF8FD4E621F5027C9A82603FBF15DE3E9F7D644038831E5B750413.jpg?q=82&amp;s=300x300&amp;t=crop">
 						</div>

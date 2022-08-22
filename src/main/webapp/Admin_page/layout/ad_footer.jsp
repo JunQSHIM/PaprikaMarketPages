@@ -15,19 +15,5 @@
 			<b>Version</b> 3.2.0
 		</div>
 	</footer>
-	
-	<!-- jQuery -->
-	<script src="/myweb/Admin_page/plugins/jquery/jquery.min.js"></script>
-	<!-- jQuery UI 1.11.4 -->
-	<script src="/myweb/Admin_page/plugins/jquery-ui/jquery-ui.min.js"></script>
-	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-	<script>
-	  $.widget.bridge('uibutton', $.ui.button)
-	</script>
-	<!-- Bootstrap 4 -->
-	<script src="/Admin_page/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- Tempusdominus Bootstrap 4 -->
-	<script src="/myweb/Admin_page/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-	<script src="/myweb/Admin_page/layout/js/adminlte.js"></script>
 </body>
 </html>

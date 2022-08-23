@@ -12,7 +12,7 @@
 		<div class="singo_board">
 			<div class="singo_titles">
 				<div class="singo_title">신고하기</div>
-				<button class="singo_close" onClick="window.close()">
+				<button class="singo_close" id="btn7">
 					<img src="../images/close.png" width="24" height="24">
 				</button>
 			</div>

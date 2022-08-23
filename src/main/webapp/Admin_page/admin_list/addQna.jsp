@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html> 
 <head> 
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>관리자 페이지</title>
@@ -21,6 +17,7 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="/myweb/Admin_page/dist/css/adminlte.min.css">
 <link rel="stylesheet" href="/myweb/Admin_page/ad.css" type="text/css">
+<link rel="stylesheet" href="qna_list.css" type="text/css">
 </head>
 <!--
 `body` tag options:
@@ -40,7 +37,7 @@
 		<%@include file="/Admin_page/layout/ad_sidebar.jsp"%>
 
 		<!-- 콘텐츠 jsp 삽입구간 -->
-		<%@include file="qna_list.jsp"%>
+		<%@include file="addQna_form.jsp"%>
 		<!-- 콘텐츠 jsp 삽입구간 -->
 		
 		<!-- 푸터 -->

@@ -10,6 +10,8 @@
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/product&purchase/ctProduct.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/product&purchase/product_detail.css">
+<link rel="stylesheet" type="text/css" href="/myweb/login/singo/modal.css">
+
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -152,6 +154,7 @@
         });
     };
 </script>
+
 </head>
 <body>
 	<header>
@@ -196,7 +199,7 @@
 						<hr style="border: 0.3px solid lightgray;">
 					</div>
 					<div class="item">
-					<button>♥36</button> | <button>⊙70</button> | <button>⏲5일전</button> | <button>신고하기</button><br>
+					<button>♥36</button> | <button>⊙70</button> | <button>⏲5일전</button> | <button class="openBtn">신고하기</button><br>
 						<div id="info">
 							<ul>
 								<li>상품상태</li>
@@ -295,10 +298,25 @@
 			</div>
 		</div>
 		</div>
+		<%@ include file="/login/singo/singo.jsp" %>
 	</article>
 	<div style="margin-bottom:40px;"></div>
 	<footer class="container_12">
 		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
+<script>
+  const open = () => {
+    document.querySelector(".modal").classList.remove("hidden");
+  }
+
+  const close = () => {
+    document.querySelector(".modal").classList.add("hidden");
+  }
+
+  document.querySelector(".openBtn").addEventListener("click", open);
+  document.querySelector(".closeBtn").addEventListener("click", close);
+  document.querySelector(".bg").addEventListener("click", close);
+
+</script>
 </html>

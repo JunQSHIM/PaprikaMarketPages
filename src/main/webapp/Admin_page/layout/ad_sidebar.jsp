@@ -77,7 +77,7 @@
 						
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="#" class="nav-link">
+								<a href="/myweb/Admin_page/singo/ad_singo_board.jsp" class="nav-link">
 									<i class="nav-icon fa-solid fa-laptop"></i>
 										<p>게시판</p>
 								</a>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html> 
@@ -8,11 +7,6 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
-=======
-<!DOCTYPE html>
-<html>
-<head>
->>>>>>> JunQ
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AdminLTE 3 | DataTables</title>
@@ -89,11 +83,7 @@ $(document).ready(function(){
 			<div class="container-fluid">
 				<div class="row mb-2">
 					<div class="col-sm-6">
-<<<<<<< HEAD
 						<h1>QnA</h1>
-=======
-						<h1>*nA</h1>
->>>>>>> JunQ
 					</div>
 				</div>
 			</div>
@@ -120,12 +110,8 @@ $(document).ready(function(){
 									<li class="tab-link" data-tab="tab-5"><b>판매 금지 물품</b></li>
 									<li class="tab-link" data-tab="tab-6"><b>개인정보처리방침</b></li>
 								</ul>
-<<<<<<< HEAD
-
-
 								<div id="tab-1" class="tab-content current">
 									<div>
-									
 										<div class="flip">Q.운영정책</div>
 										<div class="panel" style="display: none;">
 											<div>서로 존중하고 배려해요.</div>
@@ -226,7 +212,9 @@ $(document).ready(function(){
 												<input type="text" value="단기간에 너무 많은 동네에서 인증하거나 정상적이지 않은 방법으로 동네인증 할 경우 동네인증이 제한될 수 있어요.">
 												<input type="text" value="위의 다섯 가지 경우에 해당하지 않는데 동네인증이 안 된다면 [고객센터에 문의하기]를 통해 문의 남겨 주세요.">
 											</div>
-=======
+										</div>
+									</div>
+								</div>
 								<div id="tab-1" class="tab-content current">
 									<div>
 										<div id="flip">중고거래 운영정책</div>
@@ -343,13 +331,11 @@ $(document).ready(function(){
 													</ul>
 												</li>
 											</ul>
->>>>>>> JunQ
 										</div>
 									</div>
 								</div>
 								<div id="tab-3" class="tab-content">
 									<div>
-<<<<<<< HEAD
 										<div class="flip"><input type="text" value="Q.신고방법"></div>
 										<div class="panel" style="display: none;">
 											<div>
@@ -450,7 +436,6 @@ $(document).ready(function(){
 												<input type="text" value="보호자 동의 없이 거래한 경우 거래가 취소될 수 있어요.">
 												<input type="text" value="다만, 미성년자가 거짓으로 동의했다고 믿게 한 경우에는 거래를 취소할 수 없어요.">
 											</div>
-=======
 										<div id="flip1">거래 도중에 분쟁이 발생한 경우</div>
 										<div id="panel1" style="display: none;">
 											<ul>
@@ -499,7 +484,6 @@ $(document).ready(function(){
 										</div>
 									</div>
 								</div>
-
 
 								<div id="tab-4" class="tab-content">
 									<div>
@@ -568,13 +552,11 @@ $(document).ready(function(){
 													</ul>
 												</li>
 											</ul>
->>>>>>> JunQ
 										</div>
 									</div>
 								</div>
 								<div id="tab-5" class="tab-content">
 									<div>
-<<<<<<< HEAD
 										<div class="flip"><input type="text" value="Q.판매 금지 물품"></div>
 										<div class="panel" style="display: none;">
 											<div>
@@ -621,7 +603,6 @@ $(document).ready(function(){
 												<input type="text" value="보호자 동의 없이 거래한 경우 거래가 취소될 수 있어요.">
 												<input type="text" value="다만, 미성년자가 거짓으로 동의했다고 믿게 한 경우에는 거래를 취소할 수 없어요.">
 											</div>
-=======
 										<div id="flip4">판매 금지 물품</div>
 										<div id="panel4" style="display: none;">
 											<ul>
@@ -668,13 +649,11 @@ $(document).ready(function(){
 													</ul>
 												</li>
 											</ul>
->>>>>>> JunQ
 										</div>
 									</div>
 								</div>
 								<div id="tab-6" class="tab-content">
 									<div>
-<<<<<<< HEAD
 										<div class="flip">Q.개인정보처리방침</div>
 										<div class="panel" style="display: none;">
 											<ul>
@@ -733,7 +712,7 @@ $(document).ready(function(){
 												<li>장기 미이용회원은 당근마켓의 서비스를 1년간 이용하지 않은 이용자를 말해요</li>
 												<li>이 회원의 개인정보를 별도로 분리 보관 또는 삭제하고 있으며, 분리 보관된 개인정보는 4년간
 													보관 후 지체없이 파기하고 있어요.</li>
-=======
+											</ul>
 										<div id="flip5">개인정보처리방침</div>
 										<div id="panel5" style="display: none;">
 											<ul>
@@ -774,7 +753,6 @@ $(document).ready(function(){
 															4년간 보관 후 지체없이 파기하고 있어요.</li>
 													</ul>
 												</li>
->>>>>>> JunQ
 											</ul>
 										</div>
 									</div>

@@ -28,39 +28,6 @@
 <link rel="stylesheet" href="qna_list.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-<script>
-
-	var num = 7;
-	function addComp() {
-		window.location.href = '/myweb/Admin_page/admin_list/qna.jsp';
-	}
-	function update() {
-		window.location.href = '/myweb/Admin_page/admin_list/editQna.jsp';
-	}
-	$(document).ready(function() {
-		$(".flip").click(function() {
-			$(".panel").slideToggle("slow");
-		});
-		$('ul.tabs li').click(function() {
-			var tab_id = $(this).attr('data-tab');
-
-			$('ul.tabs li').removeClass('current');
-			$('.tab-content').removeClass('current');
-
-			$(this).addClass('current');
-			$("#" + tab_id).addClass('current');
-		});
-		$('#addCategory').click(function(){
-			const addValue = document.getElementById('category').value;
-			$("#tabs").append("<li class='tab-link' data-tab='tab-"+num+"'><b>"+addValue+"</b></li>");
-			console.log(num);
-			num++;
-		});
-	});
-</script>
-
 </head>
 <body>
 	<!-- Content Wrapper. Contains page content -->
@@ -97,19 +64,20 @@
 									<li class="tab-link" data-tab="tab-5"><b>판매 금지 물품</b></li>
 									<li class="tab-link" data-tab="tab-6"><b>개인정보처리방침</b></li>
 								</ul>
-								<input type="text" id="category"> <input type="button" id="addCategory" value="카테고리추가">
 								<form action="qna.jsp" method="post" id="qnaForm">
+								<input type="text"  name="newCt" id="category"> 
+								<input type="button" id="addCategory" onclick="addCt()" value="카테고리추가">
 								<table id="qnaTable">
 									<tr>
 										<td>카테고리 선택</td>
 										<td>
-											<select name="category">
-												<option value="운영정책">운영정책</option>
-												<option value="계정/인증">계정/인증</option>
-												<option value="분쟁 및 이용제재">분쟁 및 이용제재</option>
-												<option value="거래 및 환불정책">거래 및 환불정책</option>
-												<option value="판매금지물품">판매금지물품</option>
-												<option value="개인정보처리방침">개인정보처리방침</option>
+											<select id="category1" name="category">
+												<option value="1">운영정책</option>
+												<option value="2">계정/인증</option>
+												<option value="3">분쟁 및 이용제재</option>
+												<option value="4">거래 및 환불정책</option>
+												<option value="5">판매금지물품</option>
+												<option value="6">개인정보처리방침</option>
 											</select>
 										</td>
 									</tr>
@@ -176,8 +144,9 @@
 			$("#" + tab_id).addClass('current');
 		});
 	});
+	var addValue = document.getElementById('category').value;
 	function addCt(){
-		const addValue = document.getElementById('category').value;
+		addValue = document.getElementById('category').value;
 		$("#tabs").append("<li class='tab-link' data-tab='tab-"+num+"'><b>"+addValue+"</b></li>");
 		$('ul.tabs li').click(function() {
 			var tab_id = $(this).attr('data-tab');
@@ -187,6 +156,9 @@
 			$(this).addClass('current');
 			$("#" + tab_id).addClass('current');
 			tabId = tab_id;
+		});
+		$(document).on("click", "#category1", function(){
+		   $("#category1").append("<option value='7'>"+addValue+"</option>");
 		});
 		num++;
 	}

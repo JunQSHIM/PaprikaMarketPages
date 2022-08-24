@@ -70,38 +70,11 @@
 						</ul></li>
 					
 					<li class="nav-item">
-						<a href="#" class="nav-link">
-								<i class="nav-icon fas fa-address-card"></i>
-								<p>신고 관리<i class="fas fa-angle-left right"></i></p>
+						<a href="/myweb/Admin_page/singo/ad_singo_list.jsp" class="nav-link">
+								<i class="nav-icon fa-solid fa-circle-exclamation"></i>
+								<p>신고 관리</p>
 						</a>
-						
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="/myweb/Admin_page/singo/ad_singo_board.jsp" class="nav-link">
-									<i class="nav-icon fa-solid fa-laptop"></i>
-										<p>게시판</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="nav-icon fa-regular fa-message"></i>
-										<p>상품 댓글</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="/myweb/Admin_page/member/ad_report.jsp" class="nav-link">
-									<i class="nav-icon fa-solid fa-user"></i>
-										<p>유저</p>
-								</a>
-							</li>
-						</ul>
-					
 					</li>
-					
-					
-					
-					
-							
 					<li class="nav-item"><a href="#" class="nav-link">
 					<i class="nav-icon fas fa-copy"></i>
 							<p>

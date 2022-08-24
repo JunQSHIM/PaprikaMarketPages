@@ -17,7 +17,7 @@
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-				<%@include file="singo_board.jsp" %>
+				<%@include file="singo_list.jsp" %>
 			</section>
 			<!-- /.content -->
 		</div>

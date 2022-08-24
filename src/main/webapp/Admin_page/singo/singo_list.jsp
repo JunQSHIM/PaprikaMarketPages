@@ -44,172 +44,125 @@
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card">
-			<div class="buttons"><button>블라인드</button><button>삭제</button></div>
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th><input type="checkbox" id="adminAllBtn"></th>
-							<th>카테고리?</th>
-							<th>제목</th>
-							<th>아이디</th>
-							<th>작성자</th>
-							<th>작성일</th>
+							<th>신고 위치?</th>
+							<th>신고자</th>
+							<th>피신고자</th>
+							<th>신고일</th>
 							<th>신고내역</th>
+							<th>진행상태</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕하세요</td>
-							<td>yesol_vvv</td>
-							<td>박예솔</td>
+							<td>게시판</td>
+							<td>박예솔(yesol_vvv)</td>
+							<td>심준규(simjunq)</td>
 							<td>22-08-24</td>
 							<td><button>신고내용</button></td>
+							<td>처리중</td>
+							
 						</tr>
 
 						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕</td>
-							<td>simjunq</td>
-							<td>심준규</td>
+							<td>댓글</td>
+							<td>심준규(simjunq)</td>
+							<td>장문기(iammoong)</td>
 							<td>22-08-24</td>
 							<td><button>신고내용</button></td>
+							<td>처리중</td>
+						</tr>
+						
+						<tr>
+							<td>채팅</td>
+							<td>장문기(iammoong)</td>
+							<td>심준규(simjunq)</td>
+							<td>22-08-24</td>
+							<td><button>신고내용</button></td>
+							<td>처리완료</td>
 						</tr>
 						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕하세요</td>
-							<td>yesol_vvv</td>
-							<td>박예솔</td>
+							<td>게시판</td>
+							<td>박예솔(yesol_vvv)</td>
+							<td>심준규(simjunq)</td>
 							<td>22-08-24</td>
 							<td><button>신고내용</button></td>
+							<td>처리중</td>
 						</tr>
 
 						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕</td>
-							<td>simjunq</td>
-							<td>심준규</td>
+							<td>댓글</td>
+							<td>심준규(simjunq)</td>
+							<td>장문기(iammoong)</td>
 							<td>22-08-24</td>
 							<td><button>신고내용</button></td>
+							<td>처리완료</td>
+						</tr>
+						
+						<tr>
+							<td>채팅</td>
+							<td>장문기(iammoong)</td>
+							<td>심준규(simjunq)</td>
+							<td>22-08-24</td>
+							<td><button>신고내용</button></td>
+							<td>처리중</td>
 						</tr>
 						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕하세요</td>
-							<td>yesol_vvv</td>
-							<td>박예솔</td>
+							<td>게시판</td>
+							<td>박예솔(yesol_vvv)</td>
+							<td>심준규(simjunq)</td>
 							<td>22-08-24</td>
 							<td><button>신고내용</button></td>
+							<td>처리완료</td>
 						</tr>
 
 						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕</td>
-							<td>simjunq</td>
-							<td>심준규</td>
+							<td>댓글</td>
+							<td>심준규(simjunq)</td>
+							<td>장문기(iammoong)</td>
 							<td>22-08-24</td>
 							<td><button>신고내용</button></td>
+							<td>처리완료</td>
+						</tr>
+						
+						<tr>
+							<td>채팅</td>
+							<td>장문기(iammoong)</td>
+							<td>심준규(simjunq)</td>
+							<td>22-08-24</td>
+							<td><button>신고내용</button></td>
+							<td>처리완료</td>
+							
 						</tr>
 						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕하세요</td>
-							<td>yesol_vvv</td>
-							<td>박예솔</td>
+							<td>게시판</td>
+							<td>박예솔(yesol_vvv)</td>
+							<td>심준규(simjunq)</td>
 							<td>22-08-24</td>
 							<td><button>신고내용</button></td>
+							<td>처리완료</td>
 						</tr>
 
 						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕</td>
-							<td>simjunq</td>
-							<td>심준규</td>
+							<td>댓글</td>
+							<td>심준규(simjunq)</td>
+							<td>장문기(iammoong)</td>
 							<td>22-08-24</td>
 							<td><button>신고내용</button></td>
+							<td>처리중</td>
 						</tr>
+						
 						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕하세요</td>
-							<td>yesol_vvv</td>
-							<td>박예솔</td>
+							<td>채팅</td>
+							<td>장문기(iammoong)</td>
+							<td>심준규(simjunq)</td>
 							<td>22-08-24</td>
 							<td><button>신고내용</button></td>
+							<td>처리완료</td>
 						</tr>
 
-						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕</td>
-							<td>simjunq</td>
-							<td>심준규</td>
-							<td>22-08-24</td>
-							<td><button>신고내용</button></td>
-						</tr>
-						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕하세요</td>
-							<td>yesol_vvv</td>
-							<td>박예솔</td>
-							<td>22-08-24</td>
-							<td><button>신고내용</button></td>
-						</tr>
-
-						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕</td>
-							<td>simjunq</td>
-							<td>심준규</td>
-							<td>22-08-24</td>
-							<td><button>신고내용</button></td>
-						</tr>
-						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕하세요</td>
-							<td>yesol_vvv</td>
-							<td>박예솔</td>
-							<td>22-08-24</td>
-							<td><button>신고내용</button></td>
-						</tr>
-
-						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕</td>
-							<td>simjunq</td>
-							<td>심준규</td>
-							<td>22-08-24</td>
-							<td><button>신고내용</button></td>
-						</tr>
-						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕하세요</td>
-							<td>yesol_vvv</td>
-							<td>박예솔</td>
-							<td>22-08-24</td>
-							<td><button>신고내용</button></td>
-						</tr>
-
-						<tr>
-							<th><input type="checkbox" class="adminArticleBtn"></th>
-							<td>자유게시판</td>
-							<td>안녕</td>
-							<td>simjunq</td>
-							<td>심준규</td>
-							<td>22-08-24</td>
-							<td><button>신고내용</button></td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -225,7 +178,6 @@
 						"responsive" : true,
 						"lengthChange" : false,
 						"autoWidth" : false,
-						"buttons" : [ "colvis" ]
 					}).buttons().container().appendTo(
 					'#example1_wrapper .col-md-6:eq(0)');
 		});

@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+#deleteBtn {
+ border:none;
+ float:right;
+ margin-bottom: 5px;
+}
+#registerBtn{
+ border:none;
+ float:right;
+ margin-bottom: 5px;
+ margin-right:5px;
+ background-color:#ff8955;
+ color:#fff;
+}
+
+#msgBtn{
+border:none;
+ margin-bottom: 5px;
+ margin-left:5px;
+ background-color:#ff8955;
+ color:#fff;
+}

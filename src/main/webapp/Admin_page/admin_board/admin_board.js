@@ -1,5 +1,4 @@
 $(document).ready(function(){
-		
 		// 체크박스 선택 자바스크립트
 		$(document).ready(function(){
 			//전체 체크 클릭 시, 나머지 체크 
@@ -42,5 +41,4 @@ $(document).ready(function(){
 			    
 				});
 			}); // 체크박스 제이쿼리
-		
 	});

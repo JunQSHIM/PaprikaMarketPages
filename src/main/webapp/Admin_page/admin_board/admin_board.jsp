@@ -12,14 +12,10 @@
 <link rel="stylesheet"
 	href="/myweb/Admin_page/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+ <link rel="stylesheet" type="text/css" href="admin_board.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="admin_board.js"></script>
-<style>
-#deleteBtn {
- border:none;
- float:right;
-}
-</style>
+
 </head>
 <body class="hold-transition sidebar-mini">
 
@@ -54,12 +50,19 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              
+              <select>
+               <option disabled selected>전송문자선택</option>
+              	<option>회원가입 문자</option>
+              	<option>이용정지 문자</option>
+              	<option>경고 문자</option>
+              </select>
+              <button type="submit" id="msgBtn">전송</button>
+               <button type="submit" id="deleteBtn" disabled="disabled">삭제</button>
+               <button type="submit" id="registerBtn">등록</button>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  
                   <tr>
-                  	<th><input type="checkbox" id="adminAllBtn"><button id="deleteBtn" disabled="disabled">삭제</button></th>
+                  	<th><input type="checkbox" id="adminAllBtn"></th>
                     <th>회원번호</th>
                     <th>회원가입유형</th>
                     <th>아이디</th>

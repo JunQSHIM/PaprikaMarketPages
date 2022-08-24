@@ -157,7 +157,6 @@ button, [type="button"], [type="reset"], [type="submit"] {
 	background: rgb(249, 249, 249);
 	padding: 0px 20px;
 	overflow: hidden;
-	transition: height 0.3s ease-out 0s;
 	height: 140px;
 }
 
@@ -216,5 +215,4 @@ button, input, optgroup, select, textarea {
 	background: rgb(249, 249, 249);
 	padding: 0px 20px;
 	overflow: hidden;
-	transition: height 0.3s ease-out 0s;
 }

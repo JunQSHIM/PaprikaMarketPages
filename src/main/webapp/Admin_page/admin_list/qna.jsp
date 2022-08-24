@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html> 
@@ -8,11 +7,6 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
-=======
-<!DOCTYPE html>
-<html> 
-<head> 
->>>>>>> JunQ
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>관리자 페이지</title>

@@ -20,9 +20,7 @@
 	href="/myweb/Admin_page/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet"
 	href="/myweb/Admin_page/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-<!-- Theme style -->
-<link rel="stylesheet"
-	href="/myweb/Admin_page/dist/css/adminlte.min.css">
+
 </head>
 <body>
 	<!-- Content Wrapper. Contains page content -->
@@ -42,7 +40,7 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-header">
-								<h3 class="card-title">Expandable Table</h3>
+								<h3 class="card-title">신고 목록</h3>
 							</div>
 							<!-- ./card-header -->
 							<div class="card-body">
@@ -387,8 +385,7 @@
 	</div>
 	<!-- ./wrapper -->
 
-	<!-- jQuery -->
-	<script src="../../plugins/jquery/jquery.min.js"></script>
+
 	<!-- Bootstrap 4 -->
 	<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- AdminLTE App -->

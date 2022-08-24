@@ -89,7 +89,6 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="/myweb/Admin_page/singo/ad_report.jsp" class="nav-link">
 								<a href="/myweb/Admin_page/member/ad_report.jsp" class="nav-link">
 									<i class="nav-icon fa-solid fa-user"></i>
 										<p>유저</p>

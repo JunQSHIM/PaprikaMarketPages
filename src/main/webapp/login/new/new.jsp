@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>new</title>
 <script src="/myweb/login/new/new.js"></script>
-<link href="news.css" rel="stylesheet" type="text/css">
+<link href="/myweb/login/new/news.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -16,14 +16,6 @@
 
 
 
-	<div class="grid_12 management">
-		<div class="register">상품등록</div>
-		<div class="bar">|</div>
-		<div class="manager">상품관리</div>
-		<div class="bar">|</div>
-		<div class="hist">구매/판매 내역</div>
-
-	</div>
 	<div class="grid_12 newinfo">
 		<div class="newinfo_1">
 			<div class="grid_2 newinfo_1_1">기본정보</div>

@@ -28,6 +28,9 @@
 <link rel="stylesheet" href="qna_list.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<<<<<<< HEAD
+
+=======
 <script>
 
 	var num = 7;
@@ -58,6 +61,7 @@
 		});
 	});
 </script>
+>>>>>>> JunQ
 </head>
 <body>
 	<!-- Content Wrapper. Contains page content -->
@@ -86,6 +90,42 @@
 								</div>
 							</div>
 							<div class="card-body">
+<<<<<<< HEAD
+							<form action="qna.jsp" method="post" id="qnaForm">
+								<table id="qnaTable">
+									<tr>
+										<td>카테고리 선택</td>
+										<td>
+											<select name="category">
+												<option value="운영정책">운영정책</option>
+												<option value="계정/인증">계정/인증</option>
+												<option value="분쟁 및 이용제재">분쟁 및 이용제재</option>
+												<option value="거래 및 환불정책">거래 및 환불정책</option>
+												<option value="판매금지물품">판매금지물품</option>
+												<option value="개인정보처리방침">개인정보처리방침</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											질문추가
+										</td>
+										<td>
+											<input type="text" name="Q">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											답변추가
+										</td>
+										<td>
+											<input type="text" name="A">
+										</td>
+									</tr>
+								</table>
+								<button type="button" onclick="addA()">답변추가</button>
+							</form>	
+=======
 								<ul class="tabs" id="tabs">
 									<li class="tab-link" data-tab="tab-1"><b>운영정책</b></li>
 									<li class="tab-link" data-tab="tab-2"><b>계정 / 인증</b></li>
@@ -408,6 +448,7 @@
 										</div>
 									</div>
 								</div>
+>>>>>>> JunQ
 					</div>
 					<!-- /.card-body -->
 				</div>
@@ -427,6 +468,58 @@
 	</aside>
 	<!-- /.control-sidebar -->
 	<!-- ./wrapper -->
+<<<<<<< HEAD
+	<script>
+	var tabId;
+	var num = 7;
+	function addComp() {
+		document.getElementById("qnaForm").submit();
+	}
+	function update() {
+		window.location.href = '/myweb/Admin_page/admin_list/editQna.jsp';
+	}
+
+	$(document).ready(function() {
+		$(".flip").click(function() {
+			$(".panel").slideToggle("slow");
+		});
+		$('ul.tabs li').click(function() {
+			var tab_id = $(this).attr('data-tab');
+			$('ul.tabs li').removeClass('current');
+			$('.tab-content').removeClass('current');
+
+			$(this).addClass('current');
+			$("#" + tab_id).addClass('current');
+		});
+	});
+	function addCt(){
+		const addValue = document.getElementById('category').value;
+		$("#tabs").append("<li class='tab-link' data-tab='tab-"+num+"'><b>"+addValue+"</b></li>");
+		$('ul.tabs li').click(function() {
+			var tab_id = $(this).attr('data-tab');
+			$('ul.tabs li').removeClass('current');
+			$('.tab-content').removeClass('current');
+
+			$(this).addClass('current');
+			$("#" + tab_id).addClass('current');
+			tabId = tab_id;
+		});
+		num++;
+	}
+	function addA(){
+		
+		var insertTr = "";
+
+		insertTr += "<tr>";
+		insertTr += "<td>답변추가</td>"
+		insertTr += "<td><input type='text' name='A'></td>";
+		insertTr += "</tr>";
+
+		$("#qnaTable").append(insertTr);
+	}
+	</script>
+=======
+>>>>>>> JunQ
 	<script src="/myweb/Admin_page/plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap 4 -->
 	<script

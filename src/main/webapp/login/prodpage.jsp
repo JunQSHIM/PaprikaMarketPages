@@ -8,7 +8,13 @@
 <link rel="stylesheet" type="text/css" href="prodpage.css">
 </head>
 <body>
-	<%@include file="mothertop.jsp"%>
+	<header>
+		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+	</header>
+
+	<article class="container_12">
+		<jsp:include page="/login/main/category.jsp"></jsp:include>
+	</article>
 	<br>
 	<div class="prodread">
 		<div class="grid_12 read">
@@ -170,7 +176,9 @@
 			</div>
 		</div>
 	</div>
+	<footer class="container_12">
+		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+	</footer>
 
-	<%@include file="motherbottom.jsp"%>
 </body>
 </html>

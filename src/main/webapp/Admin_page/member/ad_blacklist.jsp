@@ -7,9 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>관리자 페이지</title>
 
-<!-- Google Font: Source Sans Pro -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href="/myweb/Admin_page/plugins/fontawesome-free/css/all.min.css">
 <!-- IonIcons -->
@@ -19,23 +18,12 @@
 <link rel="stylesheet" href="/myweb/Admin_page/dist/css/adminlte.min.css">
 <link rel="stylesheet" href="/myweb/Admin_page/ad.css" type="text/css">
 </head>
-<!--
-`body` tag options:
 
-  Apply one or more of the following classes to to the body tag
-  to get the desired effect
 
-  * sidebar-collapse
-  * sidebar-mini
---> 
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
 
-		<!-- 상단네비바 -->
-		<%@include file="/Admin_page/layout/ad_nav.jsp"%>
-		<!-- 사이드네비바 -->
-		<%@include file="/Admin_page/layout/ad_sidebar.jsp"%>
-
+		<%@include file="/Admin_page/layout/ad_layout.jsp"%>
 
 		<!-- 콘텐츠 jsp 삽입구간 -->
 		<%@include file="ad_c_blacklist.jsp"%>

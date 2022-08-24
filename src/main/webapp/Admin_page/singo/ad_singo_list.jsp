@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AdminPage</title>
-
+ <link rel="stylesheet" type="text/css" href="singo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
@@ -17,12 +17,12 @@
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-				<%@include file="ad_c_blacklist.jsp"%>
+				<%@include file="singo_list.jsp" %>
 			</section>
 			<!-- /.content -->
 		</div>
 		<%@include file="/Admin_page/layout/ad_footer.jsp"%>
 	</div>
-
+	
 </body>
 </html>

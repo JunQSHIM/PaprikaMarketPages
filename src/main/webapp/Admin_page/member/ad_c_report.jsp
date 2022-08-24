@@ -20,9 +20,7 @@
 	href="/myweb/Admin_page/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet"
 	href="/myweb/Admin_page/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-<!-- Theme style -->
-<link rel="stylesheet"
-	href="/myweb/Admin_page/dist/css/adminlte.min.css">
+
 </head>
 <body>
 	<!-- Content Wrapper. Contains page content -->
@@ -387,8 +385,7 @@
 	</div>
 	<!-- ./wrapper -->
 
-	<!-- jQuery -->
-	<script src="../../plugins/jquery/jquery.min.js"></script>
+
 	<!-- Bootstrap 4 -->
 	<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- AdminLTE App -->

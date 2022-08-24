@@ -29,7 +29,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-=======
+
 <script>
 
 	var num = 7;
@@ -60,7 +60,7 @@
 		});
 	});
 </script>
->>>>>>> JunQ
+
 </head>
 <body>
 	<!-- Content Wrapper. Contains page content -->
@@ -89,7 +89,6 @@
 								</div>
 							</div>
 							<div class="card-body">
-<<<<<<< HEAD
 							<form action="qna.jsp" method="post" id="qnaForm">
 								<table id="qnaTable">
 									<tr>
@@ -124,7 +123,7 @@
 								</table>
 								<button type="button" onclick="addA()">답변추가</button>
 							</form>	
-=======
+
 								<ul class="tabs" id="tabs">
 									<li class="tab-link" data-tab="tab-1"><b>운영정책</b></li>
 									<li class="tab-link" data-tab="tab-2"><b>계정 / 인증</b></li>
@@ -447,7 +446,7 @@
 										</div>
 									</div>
 								</div>
->>>>>>> JunQ
+
 					</div>
 					<!-- /.card-body -->
 				</div>
@@ -467,7 +466,7 @@
 	</aside>
 	<!-- /.control-sidebar -->
 	<!-- ./wrapper -->
-<<<<<<< HEAD
+
 	<script>
 	var tabId;
 	var num = 7;
@@ -517,8 +516,8 @@
 		$("#qnaTable").append(insertTr);
 	}
 	</script>
-=======
->>>>>>> JunQ
+
+
 	<script src="/myweb/Admin_page/plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap 4 -->
 	<script

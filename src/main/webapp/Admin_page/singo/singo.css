@@ -1,0 +1,8 @@
+@charset "UTF-8";
+hr{
+	background-color : orange;
+}
+#search{
+	width:100%;
+	display :flex;
+}

@@ -97,8 +97,7 @@
 									<li class="tab-link" data-tab="tab-5"><b>판매 금지 물품</b></li>
 									<li class="tab-link" data-tab="tab-6"><b>개인정보처리방침</b></li>
 								</ul>
-								<input type="text" id="category"> <input type="button"
-									id="addCategory" value="카테고리추가">
+								<input type="text" id="category"> <input type="button" id="addCategory" value="카테고리추가">
 								<form action="qna.jsp" method="post" id="qnaForm">
 								<table id="qnaTable">
 									<tr>
@@ -192,14 +191,11 @@
 		num++;
 	}
 	function addA(){
-		
 		var insertTr = "";
-
 		insertTr += "<tr>";
 		insertTr += "<td>답변추가</td>"
 		insertTr += "<td><input type='text' name='A'></td>";
 		insertTr += "</tr>";
-
 		$("#qnaTable").append(insertTr);
 	}
 	</script>

@@ -34,6 +34,38 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		<!-- 문자 발송 -->
+		<!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5.13</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.14</version>
+		</dependency>
+
+
+
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -155,20 +187,12 @@
 			<version>5.3.21</version>
 		</dependency>
 
-	<!-- 각자 에러안나게 버전 확인해서 사용하세용 버전 통일 전까지만! -->
-		<!-- 오라클 드라이버 
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc11</artifactId>
-			<version>21.6</version>
-		</dependency> -->
-		
-		<!-- 오라클 드라이버 
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc8</artifactId>
-			<version>18.15</version>
-		</dependency> -->
+		<!-- 각자 에러안나게 버전 확인해서 사용하세용 버전 통일 전까지만! -->
+		<!-- 오라클 드라이버 <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc11</artifactId> 
+			<version>21.6</version> </dependency> -->
+
+		<!-- 오라클 드라이버 <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc8</artifactId> 
+			<version>18.15</version> </dependency> -->
 
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
@@ -255,8 +279,8 @@
 				</configuration>
 			</plugin>
 			<plugin>
-			  <artifactId>maven-war-plugin</artifactId>
-			  <version>3.2.2</version>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.2</version>
 			</plugin>
 		</plugins>
 	</build>

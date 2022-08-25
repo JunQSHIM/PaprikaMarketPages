@@ -15,14 +15,6 @@ a {
 	background-color: transparent;
 }
 
-ul, ol {
-	padding-left: 16px;
-}
-
-ul, ol {
-	margin-top: 0;
-	margin-bottom: 10px;
-}
 
 .header-fixed .top_header {
 	z-index: 1003;

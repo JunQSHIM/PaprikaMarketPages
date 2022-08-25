@@ -32,8 +32,6 @@
 	</script>
 	<!-- Bootstrap 4 -->
 	<script src="/myweb/Admin_page/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- Tempusdominus Bootstrap 4 -->
-	<script src="/myweb/Admin_page/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 	<script src="/myweb/Admin_page/layout/js/adminlte.js"></script>
 		<!-- DataTables  & Plugins -->
 	<script	src="/myweb/Admin_page/plugins/datatables/jquery.dataTables.min.js"></script>

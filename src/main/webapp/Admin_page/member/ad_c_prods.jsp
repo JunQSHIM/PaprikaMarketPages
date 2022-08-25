@@ -50,9 +50,11 @@
 										<th>사진</th>
 										<th>상품명</th>
 										<th>판매자</th>
+										<th>구매자</th>					
 										<th>업로드시간</th>
 										<th>닉네임</th>
 										<th>신고받은횟수</th>
+										<th>상태</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -64,10 +66,12 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td><a href="ad_memde.jsp">장문기</a></td>
+										<td id="seller"><a href="ad_memde.jsp">장문기</a></td>
+										<td id="buyer"><a href="ad_memde.jsp">Null</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
+										<td>판매중</td>
 										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 									<tr>
@@ -75,10 +79,12 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td><a href="ad_memde.jsp">임승택</a></td>
+										<td id="seller"><a href="ad_memde.jsp">임승택</a></td>
+										<td id="buyer"><a href="ad_memde.jsp">장문기</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
+										<td>거래완료</td>
 										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 									<tr>
@@ -86,10 +92,12 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td><a href="ad_memde.jsp">임홍</a></td>
+										<td id="seller"><a href="ad_memde.jsp">임홍</a></td>
+										<td id="buyer"><a href="ad_memde.jsp">장문기</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
+										<td>거래완료</td>
 										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 									<tr>
@@ -97,10 +105,12 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td><a href="ad_memde.jsp">장문기</a></td>
+										<td id="seller"><a href="ad_memde.jsp">장문기</a></td>
+										<td id="buyer"><a href="ad_memde.jsp">임홍</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
+										<td>거래완료</td>
 										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 									<tr>
@@ -108,10 +118,12 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td><a href="ad_memde.jsp">장문기</a></td>
+										<td id="seller"><a href="ad_memde.jsp">장문기</a></td>
+										<td id="buyer"><a href="ad_memde.jsp">Null</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
+										<td>판매중</td>
 										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 									<tr>
@@ -119,10 +131,12 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td><a href="ad_memde.jsp">장문기</a></td>
+										<td id="seller"><a href="ad_memde.jsp">장문기</a></td>
+										<td id="buyer"><a href="ad_memde.jsp">Null</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
+										<td>판매중</td>
 										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 

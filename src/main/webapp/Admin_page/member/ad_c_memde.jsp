@@ -45,8 +45,8 @@
 									<div id="nickname_and_button">
 										<div id="nickName">장문기</div>
 										<div id="function">
-											<button type="button" id="sell" onclick=move()></button>
-											<button type="button" id="buy" onclick=move()></button>
+											<button type="button" id="sell" onclick=toprods()></button>
+											<button type="button" id="buy" onclick=toprods()></button>
 											<button type="button" id="wishlist" onclick=move()></button>
 										</div>
 									</div>
@@ -111,6 +111,9 @@
 	<script>
 	function toreviewlist() {
 		window.location.href = 'ad_reviewlist.jsp';
+	}
+	function toprods() {
+		window.location.href = 'ad_prods.jsp';
 	}
 	
 	

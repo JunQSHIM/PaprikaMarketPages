@@ -38,8 +38,9 @@
 								<thead>
 									<tr>
 										<th>판매자</th>
-										<th>구매자</th>
+										<th>구매자</th>										
 										<th>거래지역</th>
+										<th>상품</th>
 										<th>작성시간</th>
 										<th>후기내용</th>
 										<th>상태</th>
@@ -55,7 +56,9 @@
 										<td><a href="ad_memde.jsp">김유신</a></td>
 										<td><a href="ad_memde.jsp">심준규</a></td>
 										<td>부산</td>
-
+										<td><div class="pic">
+													<a href="ad_prod_de.jsp"><img src="anya.jpg" width="80px"></a>
+											</div></td>
 										<td>2022.9.30</td>
 										<td>잘쓰겠습니다 감사합니다.</td>
 
@@ -69,7 +72,9 @@
 										<td><a href="ad_memde.jsp">장문기</a></td>
 										<td><a href="ad_memde.jsp">심준규</a></td>
 										<td>부산</td>
-
+										<td><div class="pic">
+													<a href="ad_prod_de.jsp"><img src="anya.jpg" width="80px"></a>
+											</div></td>
 										<td>2022.9.30</td>
 										<td>잘쓰겠습니다 감사합니다.</td>
 
@@ -83,7 +88,9 @@
 										<td><a href="ad_memde.jsp">박예솔</a></td>
 										<td><a href="ad_memde.jsp">심준규</a></td>
 										<td>부산</td>
-
+										<td><div class="pic">
+												<a href="ad_prod_de.jsp"><img src="anya.jpg" width="80px"></a>
+											</div></td>
 										<td>2022.9.30</td>
 										<td>잘쓰겠습니다 감사합니다.</td>
 
@@ -97,7 +104,9 @@
 										<td><a href="ad_memde.jsp">임홍</a></td>
 										<td><a href="ad_memde.jsp">심준규</a></td>
 										<td>부산</td>
-
+										<td><div class="pic">
+												<a href="ad_prod_de.jsp"><img src="anya.jpg" width="80px"></a>
+											</div></td>
 										<td>2022.9.30</td>
 										<td>잘쓰겠습니다 감사합니다.</td>
 
@@ -111,7 +120,9 @@
 										<td><a href="ad_memde.jsp">임승택</a></td>
 										<td><a href="ad_memde.jsp">심준규</a></td>
 										<td>부산</td>
-
+										<td><div class="pic">
+												<a href="ad_prod_de.jsp"><img src="anya.jpg" width="80px"></a>
+											</div></td>
 										<td>2022.9.30</td>
 										<td>잘쓰겠습니다 감사합니다.</td>
 

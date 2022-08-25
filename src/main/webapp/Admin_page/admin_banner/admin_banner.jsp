@@ -18,7 +18,7 @@
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-				<%@include file="/Admin_page/admin_banner/ad_banner.jsp"%>
+				<%@include file="/Admin_page/admin_banner/post_banner.jsp"%>
 			</section>
 			<!-- /.content -->
 		</div>

@@ -54,13 +54,8 @@
 							<li class="nav-item">
 							<a href="/myweb/Admin_page/admin_board/ad_board.jsp" class="nav-link">
 							<i class="nav-icon fa-solid fa-address-book"></i>
-<<<<<<< HEAD
 									<p>문자전송/인증서비스</p>
-=======
-									<p>SNS</p>
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 							</a></li>
-						
 							<li class="nav-item">
 							<a href="/myweb/Admin_page/member/ad_memlist.jsp" class="nav-link">
 							<i class="nav-icon fa-solid fa-address-book"></i>
@@ -139,13 +134,8 @@
 						<ul class="nav nav-treeview">
 							<li class="nav-item"><a href="/myweb/Admin_page/admin_banner/admin_banner.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>팝업/배너 관리</p>
+									<p>배너 관리</p>
 							</a></li>
-							<li class="nav-item"><a href="/myweb/Admin_page/pages/charts/flot.html"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>로고 변경</p>
-							</a></li>
-
 						</ul></li>
 					<li class="nav-item"><a href="#" class="nav-link"> <i
 							class="nav-icon fas fa-tree"></i>

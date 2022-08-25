@@ -54,7 +54,7 @@
 							<li class="nav-item">
 							<a href="/myweb/Admin_page/admin_board/ad_board.jsp" class="nav-link">
 							<i class="nav-icon fa-solid fa-address-book"></i>
-									<p>회원가입</p>
+									<p>문자전송/인증서비스</p>
 							</a></li>
 						
 							<li class="nav-item">
@@ -137,9 +137,9 @@
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="/myweb/Admin_page/pages/charts/chartjs.html"
+							<li class="nav-item"><a href="/myweb/Admin_page/admin_banner/admin_banner.jsp"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>배너 이미지 변경</p>
+									<p>팝업/배너 관리</p>
 							</a></li>
 							<li class="nav-item"><a href="/myweb/Admin_page/pages/charts/flot.html"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>

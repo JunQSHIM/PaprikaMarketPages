@@ -51,8 +51,10 @@
               	<option>경고 문자</option>
               </select>
               <button type="submit" id="msgBtn">전송</button>
-               <button type="submit" id="deleteBtn" disabled="disabled">삭제</button>
-               <button type="submit" id="registerBtn">등록</button>
+              
+              <button type="submit" id="deleteBtn" disabled="disabled">삭제</button>
+              <button type="submit" id="modifyBtn">수정</button>
+              <button type="submit" id="registerBtn">등록</button>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>

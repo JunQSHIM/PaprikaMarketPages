@@ -1,8 +1,16 @@
 @charset "UTF-8";
-hr{
-	background-color : orange;
+.card button{
+	border: 1px solid orange;
+	background-color: rgba(0, 0, 0, 0);
+	color: orange;
+	font: bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+	width: 90px;
+	height: 30px;
+	margin-top: 10px;
+	margin-left: 8px;
 }
-#search{
-	width:100%;
-	display :flex;
+.btns{
+	display: flex;
+    justify-content: flex-end;
 }

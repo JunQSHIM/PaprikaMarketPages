@@ -68,7 +68,7 @@
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
-										<td><button class="black_btn" type="button">상세페이지</button></td>
+										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 									<tr>
 										<td><div class="pic">
@@ -79,7 +79,7 @@
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
-										<td><button class="black_btn" type="button">상세페이지</button></td>
+										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 									<tr>
 										<td><div class="pic">
@@ -90,7 +90,7 @@
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
-										<td><button class="black_btn" type="button">상세페이지</button></td>
+										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 									<tr>
 										<td><div class="pic">
@@ -101,7 +101,7 @@
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
-										<td><button class="black_btn" type="button">상세페이지</button></td>
+										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 									<tr>
 										<td><div class="pic">
@@ -112,7 +112,7 @@
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
-										<td><button class="black_btn" type="button">상세페이지</button></td>
+										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 									<tr>
 										<td><div class="pic">
@@ -123,7 +123,7 @@
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
-										<td><button class="black_btn" type="button">상세페이지</button></td>
+										<td><a href="ad_prod_de.jsp">상세</a></td>
 									</tr>
 
 								</tbody>

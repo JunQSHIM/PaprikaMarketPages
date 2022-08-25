@@ -15,7 +15,7 @@
 <body>
 		<header class="top_header" id="header">
 			<div class="headerbar">
-				<div class="headerbar-left">
+				<div class="headerbar-left"> 
 					<ul class="header-nav header-nav-options">
 						<li class="hidden-lg hidden-md"><a
 							class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar"

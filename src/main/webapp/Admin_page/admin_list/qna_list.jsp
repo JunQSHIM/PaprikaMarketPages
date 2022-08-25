@@ -429,7 +429,7 @@ var num = 6;
 										<div class="flip">Q.개인정보 수집 및 이용 현황(일반회원)</div>
 										<div class="panel" style="display: none;">
 											<ul>
-												<li><img src="images/personal_info.png"></li>
+												<li><img src="/myweb/Admin_page/dist/img/personal_info.png"></li>
 											</ul>
 										</div>
 									</div>
@@ -437,7 +437,7 @@ var num = 6;
 										<div class="flip">Q.회사 내부 방침에 의한 사유</div>
 										<div class="panel" style="display: none;">
 											<ul>
-												<li><img src="images/personal_info2.png"></li>
+												<li><img src="/myweb/Admin_page/dist/img/personal_info2.png"></li>
 											</ul>
 										</div>
 									</div>
@@ -445,7 +445,7 @@ var num = 6;
 										<div class="flip">Q.직거래 주의사항</div>
 										<div class="panel" style="display: none;">
 											<ul>
-												<li><img src="images/personal_info3.png"></li>
+												<li><img src="/myweb/Admin_page/dist/img/personal_info3.png"></li>
 											</ul>
 										</div>
 									</div>

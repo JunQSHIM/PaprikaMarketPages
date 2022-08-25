@@ -17,7 +17,7 @@
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-				<%@include file="ad_c_blacklist.jsp"%>
+				<%@include file="ad_c_prod_de.jsp"%>
 			</section>
 			<!-- /.content -->
 		</div>

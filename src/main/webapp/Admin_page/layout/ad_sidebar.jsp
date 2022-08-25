@@ -54,19 +54,19 @@
 							<li class="nav-item">
 							<a href="/myweb/Admin_page/admin_board/ad_board.jsp" class="nav-link">
 							<i class="nav-icon fa-solid fa-address-book"></i>
+<<<<<<< HEAD
 									<p>문자전송/인증서비스</p>
+=======
+									<p>SNS</p>
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 							</a></li>
 						
 							<li class="nav-item">
 							<a href="/myweb/Admin_page/member/ad_memlist.jsp" class="nav-link">
 							<i class="nav-icon fa-solid fa-address-book"></i>
-									<p>회원목록</p>
+									<p>회원 관리</p>
 							</a></li>
-							<li class="nav-item">
-							<a href="/myweb/Admin_page/member/ad_blacklist.jsp" class="nav-link"> 
-								<i class="nav-icon fa-solid fa-user-slash"></i>
-									<p>블랙리스트</p>
-							</a></li>
+							
 						</ul></li>
 					
 					<li class="nav-item">
@@ -89,7 +89,7 @@
 									</p>
 							</a>
 								<ul class="nav nav-treeview">
-									<li class="nav-item"><a href="pages/UI/general.html"
+									<li class="nav-item"><a href="/myweb/Admin_page/member/ad_prods.jsp"
 										class="nav-link"> <i class="far fa-circle nav-icon"></i>
 											<p>상품목록</p>
 									</a></li>

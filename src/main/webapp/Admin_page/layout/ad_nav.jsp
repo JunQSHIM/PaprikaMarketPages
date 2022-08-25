@@ -116,15 +116,11 @@
 						class="float-right text-muted text-sm">3 mins</span>
 					</a>
 					<div class="dropdown-divider"></div>
-					<a href="/myweb/Admin_page/member/ad_report.jsp" class="dropdown-item"> <i class="fas fa-users mr-2"></i>
-						8 상품 신고 대기 <span class="float-right text-muted text-sm">12
+					<a href="/myweb/Admin_page/singo/ad_singo_list.jsp" class="dropdown-item"> <i class="fas fa-users mr-2"></i>
+						8 신고 대기 <span class="float-right text-muted text-sm">12
 							hours</span>
 					</a>
-					<div class="dropdown-divider"></div>
-					<a href="#" class="dropdown-item"> <i class="fas fa-file mr-2"></i>
-						3 게시판 신고 대기 <span class="float-right text-muted text-sm">2
-							days</span>
-					</a>
+					
 					<div class="dropdown-divider"></div>
 					<a href="#" class="dropdown-item dropdown-footer">See All
 						Notifications</a>

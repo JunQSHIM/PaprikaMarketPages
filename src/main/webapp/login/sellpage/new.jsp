@@ -5,17 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>new</title>
-<script src="/myweb/login/new/new.js"></script>
-<link href="/myweb/login/new/news.css" rel="stylesheet" type="text/css">
-
+<script src="/myweb/login/sellpage/new.js"></script>
+<link href="/myweb/login/sellpage/news.css" rel="stylesheet" type="text/css">
 </head>
-
-
-
 <body>
-
-
-
 	<div class="grid_12 newinfo">
 		<div class="newinfo_1">
 			<div class="grid_2 newinfo_1_1">기본정보</div>
@@ -83,7 +76,7 @@
 				<input readonly value=" &nbsp;지역설정안함">
 			</div>
 		</div>
-		<div class="grid_12 state">
+		<div class="grid_12 new_state">
 			<div class="grid_3 explain">
 				상태<span>*</span>
 
@@ -106,7 +99,7 @@
 				</label>
 			</div>
 		</div>
-		<div class="grid_12 price">
+		<div class="grid_12 new_price">
 			<div class="grid_3 explain">
 				가격 <span>*</span>
 			</div>

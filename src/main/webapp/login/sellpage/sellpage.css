@@ -162,3 +162,8 @@
 	margin-top: 10px;
 	margin-left: 8px;
 }
+
+.control button:hover {
+	color: white;
+	background-color: orange;
+}

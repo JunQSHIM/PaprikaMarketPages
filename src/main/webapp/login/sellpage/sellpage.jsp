@@ -20,7 +20,7 @@
 
 		<div id="sell-main">
 			<div id="sell-submit">
-			<jsp:include page="/login/new/new.jsp"></jsp:include>
+			<jsp:include page="new.jsp"></jsp:include>
 			</div>
 
 			<div id="sell-control">

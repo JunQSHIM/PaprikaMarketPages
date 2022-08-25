@@ -225,6 +225,10 @@
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>QnA</p>
 							</a></li>
+							<li class="nav-item"><a href="/myweb/Admin_page/admin_list/agreement.jsp"
+								class="nav-link"> <i class="far fa-circle nav-icon"></i>
+									<p>약관 수정</p>
+							</a></li>
 
 						</ul></li>
 

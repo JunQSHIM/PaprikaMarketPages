@@ -74,7 +74,7 @@
                     <td>1</td>
                     <td>카카오톡가입</td>
                     <td>yesol_vvv</td>
-                    <td>박예솔</td>
+                    	<td><a href="../member/ad_memde.jsp">장문기</a></td>
                     <td>010-1111-1111</td>
                     <td>yesol@naver.com</td>
                     <td>O</td>
@@ -85,7 +85,7 @@
                     <td>2</td>
                     <td>카카오톡가입</td>
                     <td>simjunq</td>
-                    <td>심준규</td>
+                    <td><a href="../member/ad_memde.jsp">심준규</a></td>
                     <td>010-2222-2222</td>
                     <td>sim@naver.com</td>
                     <td>X</td>
@@ -96,7 +96,7 @@
                     <td>3</td>
                     <td>카카오톡가입</td>
                     <td>limseangteak</td>
-                    <td>임승택</td>
+                   <td><a href="../member/ad_memde.jsp">임승택</a></td>
                     <td>010-3333-3333</td>
                     <td>lst0513@naver.com</td>
                     <td>X</td>
@@ -107,7 +107,7 @@
                     <td>4</td>
                     <td>일반가입</td>
                     <td>kimyoosin</td>
-                    <td>김유신</td>
+                   <td><a href="../member/ad_memde.jsp">김유신</a></td>
                     <td>010-1234-5678</td>
                     <td>kim@naver.com</td>
                     <td>O</td>
@@ -118,7 +118,7 @@
                     <td>5</td>
                     <td>일반가입</td>
                     <td>leemhong9999</td>
-                    <td>임홍</td>
+                    <td><a href="../member/ad_memde.jsp">임홍</a></td>
                     <td>010-5432-1234</td>
                     <td>leemhong@naver.com</td>
                     <td>O</td>
@@ -129,7 +129,7 @@
                     <td>6</td>
                     <td>일반가입</td>
                     <td>moonki</td>
-                    <td>장문기</td>
+                  <td><a href="../member/ad_memde.jsp">장문기</a></td>
                     <td>010-9999-9999</td>
                     <td>ansrlwkd225@naver.com</td>
                     <td>O</td>
@@ -140,7 +140,7 @@
                     <td>1</td>
                     <td>카카오톡가입</td>
                     <td>yesol_vvv</td>
-                    <td>박예솔</td>
+                     <td><a href="../member/ad_memde.jsp">박예솔</a></td>
                     <td>010-1111-1111</td>
                     <td>yesol@naver.com</td>
                     <td>O</td>
@@ -151,7 +151,7 @@
                     <td>2</td>
                     <td>카카오톡가입</td>
                     <td>simjunq</td>
-                    <td>심준규</td>
+                    <td><a href="../member/ad_memde.jsp">심준규</a></td>
                     <td>010-2222-2222</td>
                     <td>sim@naver.com</td>
                     <td>X</td>
@@ -162,7 +162,7 @@
                     <td>3</td>
                     <td>카카오톡가입</td>
                     <td>limseangteak</td>
-                    <td>임승택</td>
+                     <td><a href="../member/ad_memde.jsp">임승택</a></td>
                     <td>010-3333-3333</td>
                     <td>lst0513@naver.com</td>
                     <td>X</td>
@@ -173,7 +173,7 @@
                     <td>4</td>
                     <td>일반가입</td>
                     <td>kimyoosin</td>
-                    <td>김유신</td>
+                   <td><a href="../member/ad_memde.jsp">김유신</a></td>
                     <td>010-1234-5678</td>
                     <td>kim@naver.com</td>
                     <td>O</td>
@@ -184,7 +184,7 @@
                     <td>5</td>
                     <td>일반가입</td>
                     <td>leemhong9999</td>
-                    <td>임홍</td>
+                   <td><a href="../member/ad_memde.jsp">임홍</a></td>
                     <td>010-5432-1234</td>
                     <td>leemhong@naver.com</td>
                     <td>O</td>
@@ -195,7 +195,7 @@
                     <td>6</td>
                     <td>일반가입</td>
                     <td>moonki</td>
-                    <td>장문기</td>
+                    <td><a href="../member/ad_memde.jsp">장문기</a></td>
                     <td>010-9999-9999</td>
                     <td>ansrlwkd225@naver.com</td>
                     <td>O</td>
@@ -206,7 +206,7 @@
                     <td>1</td>
                     <td>카카오톡가입</td>
                     <td>yesol_vvv</td>
-                    <td>박예솔</td>
+                      <td><a href="../member/ad_memde.jsp">박예솔</a></td>
                     <td>010-1111-1111</td>
                     <td>yesol@naver.com</td>
                     <td>O</td>
@@ -217,7 +217,7 @@
                     <td>2</td>
                     <td>카카오톡가입</td>
                     <td>simjunq</td>
-                    <td>심준규</td>
+                    <td><a href="../member/ad_memde.jsp">심준규</a></td>
                     <td>010-2222-2222</td>
                     <td>sim@naver.com</td>
                     <td>X</td>
@@ -228,7 +228,7 @@
                     <td>3</td>
                     <td>카카오톡가입</td>
                     <td>limseangteak</td>
-                    <td>임승택</td>
+                    <td><a href="../member/ad_memde.jsp">임승택</a></td>
                     <td>010-3333-3333</td>
                     <td>lst0513@naver.com</td>
                     <td>X</td>
@@ -239,7 +239,7 @@
                     <td>4</td>
                     <td>일반가입</td>
                     <td>kimyoosin</td>
-                    <td>김유신</td>
+                      <td><a href="../member/ad_memde.jsp">김유신</a></td>
                     <td>010-1234-5678</td>
                     <td>kim@naver.com</td>
                     <td>O</td>
@@ -250,7 +250,7 @@
                     <td>5</td>
                     <td>일반가입</td>
                     <td>leemhong9999</td>
-                    <td>임홍</td>
+                   <td><a href="../member/ad_memde.jsp">임홍</a></td>
                     <td>010-5432-1234</td>
                     <td>leemhong@naver.com</td>
                     <td>O</td>
@@ -261,7 +261,7 @@
                     <td>6</td>
                     <td>일반가입</td>
                     <td>moonki</td>
-                    <td>장문기</td>
+                   <td><a href="../member/ad_memde.jsp">장문기</a></td>
                     <td>010-9999-9999</td>
                     <td>ansrlwkd225@naver.com</td>
                     <td>O</td>

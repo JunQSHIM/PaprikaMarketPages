@@ -64,7 +64,7 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td>장문기</td>
+										<td><a href="ad_memde.jsp">장문기</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
@@ -75,7 +75,7 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td>임승택</td>
+										<td><a href="ad_memde.jsp">임승택</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
@@ -86,7 +86,7 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td>임홍</td>
+										<td><a href="ad_memde.jsp">임홍</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
@@ -97,7 +97,7 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td>장문기</td>
+										<td><a href="ad_memde.jsp">장문기</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
@@ -108,7 +108,7 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td>장문기</td>
+										<td><a href="ad_memde.jsp">장문기</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>
@@ -119,7 +119,7 @@
 												<img src="anya.jpg" width="80px">
 											</div></td>
 										<td>아냐</td>
-										<td>장문기</td>
+										<td><a href="ad_memde.jsp">장문기</a></td>
 										<td>2022.9.30</td>
 										<td>아냐남친</td>
 										<td>152</td>

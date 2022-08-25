@@ -180,11 +180,13 @@ a {
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
-.del{
+#del_prod{
+	font-size:1.5rem;
 	margin-top: 18px;
 	font-weight: bold;
-	background: #a7a7a7a7;
+	background:orange;
 }
+
 
 hr {
 	border: 1px solid orange;

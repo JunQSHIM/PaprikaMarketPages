@@ -1,0 +1,34 @@
+#search_bar {
+	display: flex;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	padding: 5px;
+}
+
+.search_button img {
+	width: 28px;
+}
+
+.search_button button {
+	padding: 0;
+	background-color: white;
+	outline: none;
+	border: none;
+}
+
+.search_input {
+	margin-left: 5px;
+	width: 100%;
+}
+
+.search_input input {
+	border: none;
+	outline: none;
+	height: 30px;
+	width: 100%;
+	font-size: 22px;
+}
+
+#total_count {
+	display: inline-block;
+}

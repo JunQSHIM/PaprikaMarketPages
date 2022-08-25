@@ -1,43 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
-<html> 
-<head> 
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdminLTE 3 | DataTables</title>
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
-<!-- Google Font: Source Sans Pro -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-<!-- Font Awesome -->
-<link rel="stylesheet"
-	href="/myweb/Admin_page/plugins/fontawesome-free/css/all.min.css">
-<!-- DataTables -->
-<link rel="stylesheet"
-	href="/myweb/Admin_page/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet"
-	href="/myweb/Admin_page/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<link rel="stylesheet"
-	href="/myweb/Admin_page/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-<!-- Theme style -->
-<link rel="stylesheet"
-	href="/myweb/Admin_page/dist/css/adminlte.min.css">
-<link rel="stylesheet" type="text/css" href="admins.css">
-<link rel="stylesheet" href="qna_list.css" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<html>
+<head>
+<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
+<script src="/myweb/login/main/main.js"></script>
+<link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/myweb/Admin_page/admin_list/qna_list.css" type="text/css">
 <script>
-function add(){
-	window.location.href ='/myweb/Admin_page/admin_list/addQna.jsp';
-}
-function update(){
-	 window.location.href ='/myweb/Admin_page/admin_list/editQna.jsp';
-}
 $(document).ready(function(){
 
 	$(".flip").click(function() {
@@ -55,32 +29,22 @@ $(document).ready(function(){
 });
 var num = 6;
 </script>
+<title>QnA</title>
 </head>
 <body>
-<!-- Content Wrapper. Contains page content -->
-	<div class="content-wrapper">
-		<!-- Content Header (Page header) -->
-		<section class="content-header">
-			<div class="container-fluid">
-				<div class="row mb-2">
-					<div class="col-sm-6">
-						<h1>QnA</h1>
-					</div>
-				</div>
-			</div>
-			<!-- /.container-fluid -->
-		</section>
-		<!-- Main content -->
-		<section class="content">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12">
+	<header>
+		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+	</header>
+	
+	<article class="container_12">
+		<jsp:include page="/login/main/category.jsp"></jsp:include>
+	</article>
+	<article class="container_12">
+	<!-- 여기에 코드 추가 -->
+	<div class="col-12">
 						<div class="card">
 							<div class="card-header">
-								<div style="float: right;">
-									<button onclick="update()">수정</button>
-									<button onclick="add()">추가</button>
-								</div>
+							자주 묻는 질문
 							</div>
 							<div class="card-body">
 								<ul class="tabs">
@@ -495,52 +459,12 @@ var num = 6;
 								</div>
 								</c:if>
 								</div>
+							</div>
+						</div>
 					</div>
-					<!-- /.card-body -->
-				</div>
-				<!-- /.card -->
-			</div>
-			<!-- /.col -->
-	</div>
-	<!-- /.row -->
-	</div>
-	<!-- /.container-fluid -->
-	</section>
-		<!-- /.content -->
-	</div>
-	<!-- Control Sidebar -->
-	<aside class="control-sidebar control-sidebar-dark">
-		<!-- Control sidebar content goes here -->
-	</aside>
-	<!-- /.control-sidebar -->
-	<!-- ./wrapper -->
-	<script src="/myweb/Admin_page/plugins/jquery/jquery.min.js"></script>
-	<!-- Bootstrap 4 -->
-	<script
-		src="/myweb/Admin_page/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- DataTables  & Plugins -->
-	<script
-		src="/myweb/Admin_page/plugins/datatables/jquery.dataTables.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-	<script src="/myweb/Admin_page/plugins/jszip/jszip.min.js"></script>
-	<script src="/myweb/Admin_page/plugins/pdfmake/pdfmake.min.js"></script>
-	<script src="/myweb/Admin_page/plugins/pdfmake/vfs_fonts.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="/myweb/Admin_page/dist/js/adminlte.min.js"></script>
+	</article>
+	<footer class="container_12">
+		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+	</footer>
 </body>
-</html>	
+</html>

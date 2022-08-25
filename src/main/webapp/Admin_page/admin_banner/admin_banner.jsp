@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>AdminPage</title>
 
 </head>
@@ -17,12 +18,11 @@
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-				<%@include file="ad_c_blacklist.jsp"%>
+				<%@include file="/Admin_page/admin_banner/ad_banner.jsp"%>
 			</section>
 			<!-- /.content -->
 		</div>
 		<%@include file="/Admin_page/layout/ad_footer.jsp"%>
 	</div>
-
 </body>
 </html>

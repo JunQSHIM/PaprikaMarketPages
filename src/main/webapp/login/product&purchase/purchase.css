@@ -15,10 +15,10 @@ body, html{
     text-shadow: 0 0 0 #f0f0f0; 
 }
 #manner label:hover{
-    text-shadow: 0 0 0 #FF8955; 
+    text-shadow: 0 0 0 orange;
 }
 #manner label:hover ~ label{
-    text-shadow: 0 0 0 #FF8955; 
+    text-shadow: 0 0 0 orange;
 }
 
 #manner fieldset{
@@ -39,7 +39,7 @@ body, html{
 }
 
 #manner input[type=radio]:checked ~ label{
-    text-shadow: 0 0 0 #FF8955; 
+    text-shadow: 0 0 0 orange;
 }
 .manner_evaluation label{
 	color:black;
@@ -49,14 +49,14 @@ body, html{
 	border-bottom-right-radius: 10px;
 }
 .manner_evaluation input[type=checkbox]:checked + label{
-   	background-color: #FF8955; 
+   	background-color: orange;
    	color:white;
 }
 .manner_evaluation input[type=checkbox]{
     display: none; 
 }
 .manner_evaluation label:hover{
-	background-color: #FF8955; 
+	background-color: orange;
    	color:white;
 }
 .manner_evaluation{
@@ -67,7 +67,7 @@ textarea {
 	height: 200px;
 	padding: 10px;
 	box-sizing: border-box;
-	border: solid 2px #FF8955;
+	border: solid 2px orange;
 	border-radius: 5px;
 	font-size: 16px;
 	resize: both;
@@ -88,7 +88,7 @@ textarea {
 }
 
 #confirm:hover{
-	background-color: #FF8955; 
+	background-color: orange;
    	color:white;
    	font-family: 'Gothic A1', sans-serif;
    	font:bold;

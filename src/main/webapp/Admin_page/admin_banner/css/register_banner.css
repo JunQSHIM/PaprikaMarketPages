@@ -208,14 +208,14 @@ form {
 
 .btn-primary {
     color: #ffffff;
-    background-color: #ff8955;
-    border-color: #ff8955;
+    background-color: orange;
+    border-color: orange;
 }
 
 .btn-primary:hover{
 	color: #ffffff;
-    background-color: #ff8955;
-    border-color: #ff8955;
+    background-color: orange;
+    border-color: orange;
 }
 
 .vertical-middle {
@@ -335,7 +335,7 @@ section {
 }
 .contents .upload-box .file-label {
   margin-top: 30px;
-  background-color: #ff8955;
+  background-color: orange;
   color: #fff;
   text-align: center;
   padding: 10px 0;

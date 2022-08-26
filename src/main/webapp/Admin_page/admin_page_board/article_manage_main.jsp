@@ -66,7 +66,7 @@
 						<th><input type="checkbox" class="adminArticleBtn"></th>
 						<td>1</td>
 						<td>동네 정보</td>
-						<td>안녕하세요</td>
+						<td><a href="adminBoardContent.jsp">안녕하세요</a></td>
 						<td>심준규</td>
 						<td>마계 인천</td>
 						<td>2022.08.24</td>

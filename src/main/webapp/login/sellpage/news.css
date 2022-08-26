@@ -19,11 +19,11 @@ div{
 }
 
 .bar {
-	color: #FF8955;
+	color: orange;
 }
 
 .newinfo_1 {
-	border-bottom: 2px solid #FF8955;
+	border-bottom: 2px solid orange;
 }
 
 .newinfo .state .explain span {
@@ -32,7 +32,7 @@ div{
 
 .management, .proimg, .title, .categ, .location, .new_state, .refund, .new_price,
 	.feat, .tag, .fastsell {
-	border-bottom: 1px solid #FF8955;
+	border-bottom: 1px solid orange;
 }
 
 .explain, .newdata {
@@ -143,9 +143,9 @@ div{
 }
 
 .location button {
-	border: 1px solid #FF8955;
+	border: 1px solid orange;
 	background-color: rgba(0, 0, 0, 0);
-	color: #FF8955;
+	color: orange;
 	font: bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 	padding: 5px;
@@ -161,7 +161,7 @@ div{
 
 .location button:hover {
 	color: white;
-	background-color: #FF8955;
+	background-color: orange;
 }
 
 .location input {
@@ -220,12 +220,12 @@ div{
 
  small{
  	font-size:0.8rem;
- 	color: #FF8955;
+ 	color: orange;
  }
 
  small a{
  	font-size:0.8rem;
- 	color: #FF8955;
+ 	color: orange;
  	text-decoration: underline;
  }
  

@@ -7,7 +7,6 @@
 
 <title>방문자 수</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<link rel="stylesheet" type="text/css" href="ad_visitor.css">
 
 </head>
 <body>
@@ -149,8 +148,6 @@ new Chart(document.getElementById("bar-chart3"), {
 </div>
 </div>
 
-<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="ad_visitor.js"></script>
-<script src="../plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/myweb/Admin_page/statistics/ad_visitor.js"></script>
 </body>
 </html>

@@ -6,8 +6,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AdminPage</title>
-<link rel="stylesheet" type="text/css" href="/myweb/Admin_page/statistics/ad_visitor.css">
-
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
@@ -15,12 +13,10 @@
 		<%@include file="/Admin_page/layout/ad_layout.jsp"%>
 
 		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper" style="background-color: white;">
+		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-			<div style="display: block; align-content: center; margin: 50px 50px 100px">
-				<%@include file="/Admin_page/statistics/ad_visitor.jsp"%>
-				</div>
+				<%@ include file="chart_page.jsp" %>
 			</section>
 			<!-- /.content -->
 		</div>

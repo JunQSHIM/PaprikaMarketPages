@@ -87,6 +87,5 @@ let chartOptions = {
 	<script src="/myweb/Admin_page/plugins/jquery/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="chart-test.js"></script>
 </body>
 </html>

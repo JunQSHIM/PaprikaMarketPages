@@ -32,7 +32,7 @@
 	</script>
 	<!-- Bootstrap 4 -->
 	<script src="/myweb/Admin_page/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="/myweb/Admin_page/layout/js/adminlte.js"></script>
+	
 		<!-- DataTables  & Plugins -->
 	<script	src="/myweb/Admin_page/plugins/datatables/jquery.dataTables.min.js"></script>
 	<script	src="/myweb/Admin_page/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -47,8 +47,12 @@
 	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 	
+	<!-- chart -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	
-	
+	<!-- custom -->	
+	<script src="/myweb/Admin_page/layout/js/adminlte.js"></script>
+	<script src="/myweb/Admin_page/layout/js/sortable.js"></script>
 </head>
 <body>
 	<!-- Preloader -->

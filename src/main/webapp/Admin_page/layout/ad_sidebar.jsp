@@ -4,7 +4,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-orange elevation-4">
 	<!-- Brand Logo -->
-	<a href="/myweb/Admin_page/layout/ad_main_layout.jsp"
+	<a href="/myweb/Admin_page/layout/ad_main.jsp"
 		class="brand-link  navbar-orange"> <img
 		src="/myweb/login/images/paplogo.png" alt="paprikaLogo"
 		class="brand-image" style="opacity: .8"> <span

@@ -1,8 +1,8 @@
 @charset "UTF-8";
 .card button{
-	border: 1px solid #FF8955;
+	border: 1px solid orange;
 	background-color: rgba(0, 0, 0, 0);
-	color: #FF8955;
+	color: orange;
 	font: bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 	width: 90px;

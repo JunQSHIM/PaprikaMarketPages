@@ -207,14 +207,14 @@ ul, ol {
 
 .btn-primary {
     color: #ffffff;
-    background-color: #ff8955;
-    border-color: #ff8955;
+    background-color: orange;
+    border-color: orange;
 }
 
 .btn-primary:hover{
 	color: #ffffff;
-    background-color: #ff8955;
-    border-color: #ff8955;
+    background-color: orange;
+    border-color: orange;
 }
 .vertical-middle {
     vertical-align: middle !important;

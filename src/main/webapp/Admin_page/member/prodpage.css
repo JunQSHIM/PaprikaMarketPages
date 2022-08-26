@@ -184,10 +184,10 @@ a {
 	font-size:1.5rem;
 	margin-top: 18px;
 	font-weight: bold;
-	background: #FF8955;
+	background: orange;
 }
 
 
 hr {
-	border: 1px solid #FF8955;
+	border: 1px solid orange;
 }

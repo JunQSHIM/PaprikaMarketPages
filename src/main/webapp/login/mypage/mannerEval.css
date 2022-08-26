@@ -28,9 +28,9 @@ body,html{
 	text-decoration:none;
 }
 .header button{
-	border: 1px solid #FF8955;
+	border: 1px solid orange;
     background-color: rgba(0,0,0,0);
-    color: #FF8955;
+    color: orange;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     padding: 5px;
@@ -45,7 +45,7 @@ body,html{
 }
 .header button:hover{
 	color:white;
-    background-color: #FF8955;
+    background-color: orange;
 }
 body,html{
 	width:100%;
@@ -68,7 +68,7 @@ body,html{
 }
 
 #my_manner_head {
-	border-bottom: 1px solid #FF8955;
+	border-bottom: 1px solid orange;
 	font-size: 25px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -114,9 +114,9 @@ ul.tabs li.current{
 #toMypage button{
 	width:150px;
 	height:30px;
-	border: 1px solid #FF8955;
+	border: 1px solid orange;
     background-color: rgba(0,0,0,0);
-    color: #FF8955;
+    color: orange;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     border-top-right-radius: 5px;
@@ -126,11 +126,11 @@ ul.tabs li.current{
 }
 #toMypage button:hover{
 	color:white;
-    background-color: #FF8955;
+    background-color: orange;
 }
 #toMypage {
 	height:70px;
 	line-height:70px;
 	text-align: center;
-	border-bottom: 1px solid #FF8955;
+	border-bottom: 1px solid orange;
 }

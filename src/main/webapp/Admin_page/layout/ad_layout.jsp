@@ -53,7 +53,7 @@
 <body>
 	<!-- Preloader -->
 	<div class="preloader flex-column justify-content-center align-items-center">
-			<img class="animation__shake" src="/myweb/login/images/paplogo.png" alt="paprikaLogo"  height="60" width="60">
+			<img class="animation__shake" src="/myweb/login/images/dklogo_face.png" alt="paprikaLogo" width="80%">
 		</div>
 	
 	<%@include file="ad_nav.jsp"%>

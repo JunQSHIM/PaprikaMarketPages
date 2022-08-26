@@ -82,7 +82,7 @@
                                 $('.cvf_uploaded_files').append(
                                 "<li file = '" + file.name + "'>" +                                
                                     "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
-                                    "<a href = '#' class = 'cvf_delete_image' title = 'Cancel'><img class = 'delete-btn' src = '../images/delete-btn.png' /></a>" +
+                                    "<a href = '#' class = 'cvf_delete_image' title = 'Cancel'><img class = 'delete-btn' src = 'delete-btn.png' /></a>" +
                                 "</li>"
                                 );     
                             };

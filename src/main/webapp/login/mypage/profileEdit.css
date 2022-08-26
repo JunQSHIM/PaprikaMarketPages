@@ -28,9 +28,9 @@ body,html{
 	text-decoration:none;
 }
 .header button{
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     padding: 5px;
@@ -45,7 +45,7 @@ body,html{
 }
 .header button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 body,html{
 	width:100%;
@@ -70,7 +70,7 @@ body,html{
 }
 
 #edit_head {
-	border-bottom: 2px solid orange;
+	border-bottom: 2px solid #FF8955;
 	font-size: 25px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -105,9 +105,9 @@ body,html{
 #nickname_edit button{
 	width:80px;
 	height:30px;
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     border-top-right-radius: 5px;
@@ -117,7 +117,7 @@ body,html{
 }
 #nickname_edit button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 #nickname_edit input {
 	font-size: 20px;
@@ -138,9 +138,9 @@ body,html{
 #upload_button button {
 	width:150px;
 	height:30px;
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     border-top-right-radius: 5px;
@@ -150,15 +150,15 @@ body,html{
 }
 #upload_button button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 
 #toMypage button{
 	width:150px;
 	height:30px;
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     border-top-right-radius: 5px;
@@ -168,14 +168,14 @@ body,html{
 }
 #toMypage button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 #toMypage {
 	height:70px;
 	line-height:70px;
 	text-align: center;
-	border-bottom: 2px solid orange;
-	border-top: 2px solid orange;
+	border-bottom: 2px solid #FF8955;
+	border-top: 2px solid #FF8955;
 	display: flex;
 }
 #edit_submit {

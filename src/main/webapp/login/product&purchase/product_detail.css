@@ -57,7 +57,7 @@
 .container button{
 	border: 0px;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     padding: 5px;
@@ -68,12 +68,12 @@
 }
 .container button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 .item button{
 	border: 0px;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     padding: 5px;
@@ -84,7 +84,7 @@
 }
 .item button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 #func{
 	grid-column:span 2;
@@ -93,9 +93,9 @@
 	float:left;
 }
 #func button{
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
 	font-size:1.2rem;
@@ -111,7 +111,7 @@
 }
 #func button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 #product_info{
 	grid-column:span 2;

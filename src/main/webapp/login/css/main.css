@@ -27,9 +27,9 @@ div {
 }
 
 .header button {
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
 	background-color: rgba(0, 0, 0, 0);
-	color: orange;
+	color: #FF8955;
 	font: bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 	padding: 5px;
@@ -44,7 +44,7 @@ div {
 
 .header button:hover {
 	color: white;
-	background-color: orange;
+	background-color: #FF8955;
 }
 
 .app div {
@@ -67,7 +67,7 @@ div {
 }
 
 .mainLine {
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
 	width: 100%;
 }
 
@@ -116,7 +116,7 @@ body, html {
 }
 
 .search_text {
-	border: 2px solid orange;
+	border: 2px solid #FF8955;
 	width: 100%
 }
 
@@ -295,7 +295,7 @@ body, html {
 
 #categories button:hover {
 	color: white;
-	background-color: orange;
+	background-color: #FF8955;
 }
 
 #categories ul {
@@ -339,7 +339,7 @@ body, html {
 
 .add {
 	margin: 5px;
-	border: 1px solid #FFAA28;
+	border: 1px solid #FF8955;
 	width: 100px;
 	height: 100px;
 	background-color: white;

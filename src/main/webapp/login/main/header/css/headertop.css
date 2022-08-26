@@ -25,9 +25,9 @@ a {
 }
 
 .button_wrap button {
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
 	background-color: rgba(0, 0, 0, 0);
-	color: orange;
+	color: #FF8955;
 	font: bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 	padding: 5px;
@@ -43,7 +43,7 @@ a {
 
 .button_wrap button:hover {
 	color: white;
-	background-color: orange;
+	background-color: #FF8955;
 }
 
 .alarm_message {

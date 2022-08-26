@@ -7,7 +7,7 @@
 }
 #sell-menu{
 	height:50px;
-	border-bottom: 1px solid orange;
+	border-bottom: 1px solid #FF8955;
 	display: flex;
 	flex-direction: row;
 	float:right;
@@ -64,8 +64,8 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	border-top: 1px solid orange;
-	border-bottom: 1px solid orange;
+	border-top: 1px solid #FF8955;
+	border-bottom: 1px solid #FF8955;
 }
 #title div{
 	text-align: center;
@@ -101,7 +101,7 @@
 	align-items: center;
 	margin-top:20px;
 	text-align : center;
-	border-bottom : 1px solid orange;
+	border-bottom : 1px solid #FF8955;
 }
 .sell-products img{
 	max-height:80%;
@@ -147,9 +147,9 @@
 }
 
 .control button {
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
 	background-color: rgba(0, 0, 0, 0);
-	color: orange;
+	color: #FF8955;
 	font: bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 	padding: 5px;
@@ -165,5 +165,5 @@
 
 .control button:hover {
 	color: white;
-	background-color: orange;
+	background-color: #FF8955;
 }

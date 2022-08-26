@@ -28,9 +28,9 @@ body,html{
 	text-decoration:none;
 }
 .header button{
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     padding: 5px;
@@ -45,7 +45,7 @@ body,html{
 }
 .header button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 body,html{
 	width:100%;
@@ -66,7 +66,7 @@ body,html{
 }
 
 #myPage_head {
-	border-bottom: 1px solid orange;
+	border-bottom: 1px solid #FF8955;
 	font-size: 25px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -109,15 +109,15 @@ body,html{
 }
 
 #nickname_and_button {
-	border-right: 1px solid orange;
+	border-right: 1px solid #FF8955;
 }
 
 #profile_edit{
 	height:70px;
 	line-height:70px;
 	text-align: center;
-	border-top: 2px solid orange;
-	border-bottom: 2px solid orange;
+	border-top: 2px solid #FF8955;
+	border-bottom: 2px solid #FF8955;
 }
 #function{
 	align-items: center;
@@ -138,7 +138,7 @@ body,html{
     border-bottom-left-radius: 90px; 
 }
 #function button:hover{
-	border : 1px solid orange;
+	border : 1px solid #FF8955;
 }
 #sell{
 	background-image: url("/myweb/login/images/sell.png");	
@@ -157,14 +157,14 @@ body,html{
 }
 #function button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 #profile_edit button{
 	width:150px;
 	height:30px;
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     border-top-right-radius: 5px;
@@ -174,12 +174,12 @@ body,html{
 }
 #profile_edit button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 
 #eval_and_review {
 	display: flex;
-	border-bottom: 2px solid orange;
+	border-bottom: 2px solid #FF8955;
 }
 
 #manner_eval{
@@ -201,7 +201,7 @@ body,html{
 	padding-left: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	border-left: 1px solid orange;
+	border-left: 1px solid #FF8955;
 }
 
 #review_list_head {

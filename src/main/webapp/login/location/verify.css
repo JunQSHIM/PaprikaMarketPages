@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&display=swap');
 #nearLoc button{
-	border: 1px solid orange;
+	border: 1px solid #FF8955;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     padding: 5px;
@@ -17,7 +17,7 @@
 }
 #nearLoc button:hover{
 	color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 input[type=checkbox]{
     display: none; 
@@ -27,9 +27,9 @@ h3{
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
 }
 label{
-    border: 1px solid orange;
+    border: 1px solid #FF8955;
     background-color: rgba(0,0,0,0);
-    color: orange;
+    color: #FF8955;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     padding: 5px;
@@ -45,10 +45,10 @@ label{
 }
 label:hover{
     color:white;
-    background-color: orange;
+    background-color: #FF8955;
 }
 #loc input[type=checkbox]:checked + label{
-   	background-color: orange; 
+   	background-color: #FF8955; 
    	color:white;
 }
 #loc1{

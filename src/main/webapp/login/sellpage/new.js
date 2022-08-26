@@ -60,3 +60,10 @@ function assertMsg(intMax,objMsg,st ) {
  st.innerHTML = nbytes; //현재 byte수를 넣는다
  return msg;
 }
+
+
+
+
+
+//사진 업로드
+

@@ -4,6 +4,9 @@ span {
 	color: red;
 }
 
+div{
+	
+}
 .management div {
 	line-height: 4rem;
 	float: left;
@@ -54,12 +57,12 @@ span {
 }
 
 .regpic input {
-	width: 150px;
-	height: 150px;
+	width: 130px;
+	height: 130px;
 	opacity: 0;
 }
 
-.regpic img {
+.file_2 img {
 	height: 150px;
 	width: 150px;
 }
@@ -86,6 +89,11 @@ span {
 
 .newinfo_1_1, .fastsell_1 {
 	font-size: 1.7rem;
+	
+}
+
+.fastsell_1, .fastsell_2{
+	line-height: 10rem;
 }
 
 .newinfo_1_2 {
@@ -148,7 +156,7 @@ span {
 	width: 120px;
 	height: 30px;
 	margin-top: 10px;
-	margin-left: 8px;
+	
 }
 
 .location button:hover {
@@ -220,5 +228,56 @@ span {
  	color:orange;
  	text-decoration: underline;
  }
-  
-  
+ 
+ 
+ 
+ /*사진 업로드*/
+ 
+ 
+ ul.cvf_uploaded_files {
+	list-style-type: none;
+	margin:  0;
+	padding: 0;
+}
+
+ul.cvf_uploaded_files li {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	float: left;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	padding: 2px;
+	width: 150px;
+	height: 150px;
+	line-height: 150px;
+	position: relative;
+}
+
+ul.cvf_uploaded_files li img.img-thumb {
+	width: 150px;
+	height: 150px;
+}
+
+ul.cvf_uploaded_files .ui-selected {
+	background: red;
+}
+
+ul.cvf_uploaded_files .highlight {
+	border: 1px dashed #000;
+	width: 150px;
+	background-color: #ccc;
+	border-radius: 5px;
+}
+
+ul.cvf_uploaded_files .delete-btn {
+	width: 24px;
+	border: 0;
+	position: absolute;
+	top: -12px;
+	right: -14px;
+}
+
+.bg-success {
+	padding: 7px;
+}  

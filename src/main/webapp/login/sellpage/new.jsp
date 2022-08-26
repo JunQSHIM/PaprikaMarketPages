@@ -6,7 +6,152 @@
 <meta charset="UTF-8">
 <title>new</title>
 <script src="/myweb/login/sellpage/new.js"></script>
-<link href="/myweb/login/sellpage/news.css" rel="stylesheet" type="text/css">
+<link href="/myweb/login/sellpage/news.css" rel="stylesheet"
+	type="text/css">
+<script src="/myweb/login/sellpage/new.js"></script>
+<link href="/myweb/login/sellpage/news.css" rel="stylesheet"
+	type="text/css">
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+	integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+        jQuery(document).ready(function() {        
+           
+            var storedFiles = [];      
+            //$('.cvf_order').hide();
+           
+            // Apply sort function 
+            function cvf_reload_order() {
+                var order = $('.cvf_uploaded_files').sortable('toArray', {attribute: 'item'});
+                $('.cvf_hidden_field').val(order);
+            }
+           
+            function cvf_add_order() {
+                $('.cvf_uploaded_files li').each(function(n) {
+                    $(this).attr('item', n);
+                });
+                console.log('test');
+            }
+           
+           
+            $(function() {
+                $('.cvf_uploaded_files').sortable({
+                    cursor: 'move',
+                    placeholder: 'highlight',
+                    start: function (event, ui) {
+                        ui.item.toggleClass('highlight');
+                    },
+                    stop: function (event, ui) {
+                        ui.item.toggleClass('highlight');
+                    },
+                    update: function () {
+                        //cvf_reload_order();
+                    },
+                    create:function(){
+                        var list = this;
+                        resize = function(){
+                            $(list).css('height','auto');
+                            $(list).height($(list).height());
+                        };
+                        $(list).height($(list).height());
+                        $(list).find('img').load(resize).error(resize);
+                    }
+                });
+                $('.cvf_uploaded_files').disableSelection();
+            });
+                   
+            $('body').on('change', '.user_picked_files', function() {
+               
+                var files = this.files;
+                var i = 0;
+                           
+                for (i = 0; i < files.length; i++) {
+                    var readImg = new FileReader();
+                    var file = files[i];
+                   
+                    if (file.type.match('image.*')){
+                        storedFiles.push(file);
+                        readImg.onload = (function(file) {
+                            return function(e) {
+                                $('.cvf_uploaded_files').append(
+                                "<li file = '" + file.name + "'>" +                                
+                                    "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
+                                    "<a href = '#' class = 'cvf_delete_image' title = 'Cancel'><img class = 'delete-btn' src = '../images/delete-btn.png' /></a>" +
+                                "</li>"
+                                );     
+                            };
+                        })(file);
+                        readImg.readAsDataURL(file);
+                       
+                    } else {
+                        alert('the file '+ file.name + ' is not an image<br/>');
+                    }
+                   
+                    if(files.length === (i+1)){
+                        setTimeout(function(){
+                            cvf_add_order();
+                        }, 1000);
+                    }
+                }
+            });
+           
+            // Delete Image from Queue
+            $('body').on('click','a.cvf_delete_image',function(e){
+                e.preventDefault();
+                $(this).parent().remove('');       
+               
+                var file = $(this).parent().attr('file');
+                for(var i = 0; i < storedFiles.length; i++) {
+                    if(storedFiles[i].name == file) {
+                        storedFiles.splice(i, 1);
+                        break;
+                    }
+                }
+               
+                //cvf_reload_order();
+               
+            });
+                   
+            // AJAX Upload
+            $('body').on('click', '.cvf_upload_btn', function(e){
+               
+                e.preventDefault();
+                cvf_reload_order();
+               
+                //$(".cvf_uploaded_files").html('<p><img src = "loading.gif" class = "loader" /></p>');
+                var data = new FormData();
+               
+                var items_array = $('.cvf_hidden_field').val();
+                var items = items_array.split(',');
+                for (var i in items){
+                    var item_number = items[i];
+                    data.append('files' + i, storedFiles[item_number]);
+                }
+                   
+                $.ajax({
+                    url: 'upload.php',
+                    type: 'POST',
+                    contentType: false,
+                    data: data,
+                    processData: false,
+                    cache: false,
+                    success: function(response, textStatus, jqXHR) {
+                        //$(".cvf_uploaded_files").html('');                                               
+                        //bootbox.alert('<br /><p class = "bg-success">File(s) uploaded successfully.</p>');
+                        alert(jqXHR.responseText);
+                    }
+                });
+               
+            });        
+        });
+      
+    </script>
 </head>
 <body>
 	<div class="grid_12 newinfo">
@@ -15,24 +160,27 @@
 			<div class="grid_2 newinfo_1_2">*필수항목</div>
 		</div>
 		<div class="grid_12 proimg">
-			<div class="grid_3 explain">
+			<div class="grid_2 explain">
 				상품이미지 <span>*</span>
 			</div>
-			<div class="grid_9 newdata">
-				<div class="grid_9 pics">
+			<div class="grid_10 newdata">
+				<div class="grid_10 pics">
 					<div class="grid_2 regpic">
 						<div class="file_0">
 							<div class="file_1">
-								<input type="file">
+
+								<input type="file" name="upload" multiple="multiple"
+									class="form-control user_picked_files" />
+
 							</div>
-							<div class="file_2">
-								<img src="images/regpic.png" alt="이미지등록" onclick="#">
-							</div>
+
 						</div>
 					</div>
-					<div class="grid_2 regedpic">1</div>
-					<div class="grid_2 regedpic">1</div>
-					<div class="grid_2 regedpic">1</div>
+					<div class="file_2">
+						<img src="images/regpic.png" alt="이미지등록" onclick="#">
+
+					</div>
+					<ul class="cvf_uploaded_files"></ul>
 
 				</div>
 				<div class="clear grid_9 warn">
@@ -46,10 +194,10 @@
 
 		</div>
 		<div class="grid_12 title">
-			<div class="grid_3 explain">
+			<div class="grid_2 explain">
 				제목 <span>*</span>
 			</div>
-			<div class="grid_9 newdata">
+			<div class="grid_10 newdata">
 				<div class="titlebox">
 					<input type="text" name="title" placeholder="상품 제목을 입력해주세요.">
 					<a href="#">거래금지 품목</a>
@@ -59,16 +207,38 @@
 		</div>
 		<div class="grid_12 categ">
 
-			<div class="grid_3 explain">
+			<div class="grid_2 explain">
 				카테고리 <span>*</span>
 			</div>
-			<div class="grid_9 newdata"></div>
+			<div class="grid_10 newdata">
+				<select id="cate">
+
+					<option value="digital">디지털/가전</option>
+					<option value="interior">가구/인테리어</option>
+					<option value="kids">유아동/유아도서</option>
+					<option value="food">생활/가공식품</option>
+					<option value="sports">스포츠/레저</option>
+					<option value="fe_acc">여성잡화</option>
+					<option value="fe_dress">여성의류</option>
+					<option value="ma_dress">남성패션/잡화</option>
+					<option value="hobby">게임/취미</option>
+					<option value="beauty">뷰티/미용</option>
+					<option value="pet">반려동물용품</option>
+					<option value="books">도서/티켓/음반</option>
+					<option value="etc">기타 중고물품</option>
+					<option value="sayo">삽니다</option>
+
+				</select>
+
+
+
+			</div>
 		</div>
 		<div class="grid_12 location">
-			<div class="grid_3 explain">
+			<div class="grid_2 explain">
 				거래지역 <span>*</span>
 			</div>
-			<div class="grid_9 newdata">
+			<div class="grid_10 newdata">
 				<button type="button" onclick="#">내위치</button>
 				<button type="button" onclick="#">최근 지역</button>
 				<button type="button" onclick="#">주소 검색</button>
@@ -77,11 +247,11 @@
 			</div>
 		</div>
 		<div class="grid_12 new_state">
-			<div class="grid_3 explain">
+			<div class="grid_2 explain">
 				상태<span>*</span>
 
 			</div>
-			<div class="grid_9 newdata">
+			<div class="grid_10 newdata">
 				<label><input name="schd" id="중고상품" type="radio" value="0"
 					checked> 중고상품 </label> <label> <input name="schd" id="새상품"
 					type="radio" value="0"> 새상품
@@ -89,10 +259,10 @@
 			</div>
 		</div>
 		<div class="grid_12 refund">
-			<div class="grid_3 explain">
+			<div class="grid_2 explain">
 				교환 <span>*</span>
 			</div>
-			<div class="grid_9 newdata">
+			<div class="grid_10 newdata">
 				<label><input name="refund" id="교환불가" type="radio" value="0"
 					checked> 교환불가 </label> <label> <input name="refund"
 					id="교환가능" type="radio" value="0"> 교환가능
@@ -100,10 +270,10 @@
 			</div>
 		</div>
 		<div class="grid_12 new_price">
-			<div class="grid_3 explain">
+			<div class="grid_2 explain">
 				가격 <span>*</span>
 			</div>
-			<div class="grid_9 newdata">
+			<div class="grid_10 newdata">
 				<div class="pri">
 					<input type="text" placeholder=" 숫자만 입력해주세요."> 원
 				</div>
@@ -115,10 +285,10 @@
 			</div>
 		</div>
 		<div class="grid_12 feat">
-			<div class="grid_3 explain">
+			<div class="grid_2 explain">
 				설명 <span>*</span>
 			</div>
-			<div class="grid_9 newdata">
+			<div class="grid_10 newdata">
 				<div class="textbox">
 					<form action="" name="gForm">
 						<textarea class="text_area" rows="6"
@@ -140,8 +310,8 @@
 			</div>
 		</div>
 		<div class="grid_12 tag">
-			<div class="grid_3 explain">연관태그</div>
-			<div class="grid_9 newdata">
+			<div class="grid_2 explain">연관태그</div>
+			<div class="grid_10 newdata">
 				<div class="tags">
 					<input type="text" placeholder="연관태그를 입력해주세요. (최대 5개)" name="tags">
 				</div>
@@ -155,44 +325,46 @@
 			</div>
 		</div>
 
-		<div class="fastsell">
+		<div class="grid_12 fastsell">
 			<div class="grid_2 fastsell_1">빠른 판매</div>
-			<div class="grid_5 fastsell_2">
+			<div class="grid_10 fastsell_2">
 				내 상품에 안전결제 배지가 표시돼요 <a href="#">자세히</a>
 			</div>
 			<div class="clear"></div>
-			<div class="grid_3 explain">옵션</div>
-			<div class="grid_9 newdata">
-
-				<div class="option">
-					<label><input id="bunPayFilter" type="checkbox">안전결제
-						환영</span></label>
-				</div>
-				<ul class="opt">
-					<li>
-						<p>안전결제(번개페이) 요청을 거절하지 않는 대신 혜택을 받을 수 있어요.</p>
-						<p>
-							<small>거절 시, <a
-								href="https://help.bunjang.co.kr/faq/3/415" target="_blank">이용
-									제재</a>가 있을 수 있으니 주의해 주세요.
-							</small>
-						</p>
-					</li>
-					<li>
-						<p>내 상품을 먼저 보여주는 전용 필터로 더 빠르게 판매할 수 있어요.</p>
-					</li>
-					<li>
-						<p>번개페이 배지로 더 많은 관심을 받을 수 있어요.</p>
-					</li>
-				</ul>
-				<div>* 번개페이 배지와 전용 필터 기능은 앱 또는 모바일 웹에서만 볼 수 있어요.</div>
-			</div>
-
 		</div>
 
+		<div class="grid_2 explain">옵션</div>
+		<div class="grid_10 newdata">
 
+			<div class="option">
+				<label><input id="bunPayFilter" type="checkbox">안전결제
+					환영</label>
+			</div>
+			<ul class="opt">
+				<li>
+					<p>안전결제(번개페이) 요청을 거절하지 않는 대신 혜택을 받을 수 있어요.</p>
+					<p>
+						<small>거절 시, <a
+							href="https://help.bunjang.co.kr/faq/3/415" target="_blank">이용
+								제재</a>가 있을 수 있으니 주의해 주세요.
+						</small>
+					</p>
+				</li>
+				<li>
+					<p>내 상품을 먼저 보여주는 전용 필터로 더 빠르게 판매할 수 있어요.</p>
+				</li>
+				<li>
+					<p>번개페이 배지로 더 많은 관심을 받을 수 있어요.</p>
+				</li>
+			</ul>
+			<div>* 번개페이 배지와 전용 필터 기능은 앱 또는 모바일 웹에서만 볼 수 있어요.</div>
+		</div>
 
 	</div>
+
+
+
+
 
 
 

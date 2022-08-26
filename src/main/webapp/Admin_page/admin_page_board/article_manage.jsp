@@ -17,7 +17,7 @@
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-				<%@include file="/Admin_page/Admin_page_board/article_manage_main.jsp"%>
+				<%@include file="/Admin_page/admin_page_board/article_manage_main.jsp"%>
 			</section>
 			<!-- /.content -->
 		</div>

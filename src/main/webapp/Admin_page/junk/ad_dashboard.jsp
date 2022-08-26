@@ -112,10 +112,10 @@
                   <!-- Morris chart - Sales -->
                   <div class="chart tab-pane active" id="revenue-chart"
                        style="position: relative; height: 400px;">
-                    <%@include file="statistics/member_quit.jsp"%>
+                    <%@include file="../statistics/member_quit.jsp"%>
                    </div>
                   <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                  <%@include file="statistics/ad_prodChart.jsp"%>
+                  <%@include file="../statistics/ad_prodChart.jsp"%>
                   </div>
                 </div>
               </div><!-- /.card-body -->

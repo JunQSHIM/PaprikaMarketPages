@@ -47,9 +47,9 @@
 
 
 		<!-- 상단네비바 -->
-		<%@include file="layout/ad_nav.jsp"%>
+		<%@include file="../layout/ad_nav.jsp"%>
 		<!-- 사이드네비바 -->
-		<%@include file="layout/ad_sidebar.jsp"%>
+		<%@include file="../layout/ad_sidebar.jsp"%>
 
 
 		<!-- 콘텐츠 jsp 삽입구간 -->
@@ -60,7 +60,7 @@
 
 
 		<!-- 푸터 -->
-		<%@include file="layout/ad_footer.jsp"%>
+		<%@include file="../layout/ad_footer.jsp"%>
 
 
 

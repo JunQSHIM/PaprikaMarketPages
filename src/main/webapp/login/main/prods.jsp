@@ -11,7 +11,7 @@
 				<div class="pic"></div>
 				<div class="text">
 					<div class="title">
-						<h3>상품명 : 대머리</h3>
+						<h3>상품명 : 아냐</h3>
 					</div>
 					<div class="location">지역 : 부천시</div>
 					<div class="price">가격 : 0000원</div>

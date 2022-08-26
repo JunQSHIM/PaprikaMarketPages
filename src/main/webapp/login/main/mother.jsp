@@ -7,7 +7,7 @@
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
 <script src="/myweb/login/main/main.js"></script>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
-<link href="/myweb/login/prods.css" rel="stylesheet" type="text/css">
+<link href="/myweb/login/main/prods.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Main Page</title>
@@ -55,7 +55,7 @@
 			</c:when>
 		</c:choose>
 	</div>	
-	<%@include file="/login/prods.jsp"%>
+	<%@include file="/login/main/prods.jsp"%>
 	</article>
 	<footer class="container_12">
 		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>

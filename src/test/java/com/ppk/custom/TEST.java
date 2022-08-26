@@ -19,9 +19,10 @@ public class TEST {
 	@Test
 	public void testConnection() {
 
-		try (Connection con = DriverManager.getConnection("jdbc:mysql://paprika.c3y7hfipeyzf.ap-northeast-2.rds.amazonaws.com:3306/paprika?serverTimezone=Asia/Seoul", "root", "alcls225")) {
+		try (Connection con = DriverManager.getConnection(
+				"jdbc:mysql://paprika.c3y7hfipeyzf.ap-northeast-2.rds.amazonaws.com:3306/paprika?serverTimezone=Asia/Seoul", "root", "alcls225")) {
 			System.out.println(con);
-			System.out.println("�����Ϸ�");
+			System.out.println("Success");
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}

@@ -374,6 +374,20 @@ section {
 	margin-bottom: 10px;
 }
 
-.banner-content textarea{
-	border: 0.5px solid black;
+.banner-title {
+	margin-bottom: 10px;
+	padding-right: 30px;
+}
+
+.banner-content {
+	padding-right: 30px;
+}
+
+.banner-content textarea, .banner-title input{
+	border: 0.5px solid #dbdbdb;
+	border-radius: 3px;
+	resize: none;
+	width: 100%;
+	outline: none;
+	padding: 1px 2px;
 }

@@ -67,8 +67,9 @@
 							<table id="example1" class="table table-bordered table-striped">
 								<thead>
 									<tr>
-										<th><input type="checkbox" id="adminAllBtn"></th>
+										<th><input type="checkbox" id="adminAllBtn"> 선택</th>
 										<th>글 번호</th>
+										<th>카테고리</th>
 										<th>제목</th>
 										<th>작성자</th>
 										<th>지역</th>
@@ -80,6 +81,7 @@
 									<tr>
 										<th><input type="checkbox" class="adminArticleBtn"></th>
 										<td>1</td>
+										<td>동네 정보</td>
 										<td>안녕하세요</td>
 										<td>심준규</td>
 										<td>마계 인천</td>
@@ -89,6 +91,7 @@
 									<tr>
 										<th><input type="checkbox" class="adminArticleBtn"></th>
 										<td>2</td>
+										<td>QnA</td>
 										<td>인간뽀삐 권범준이라고 합니다</td>
 										<td>권범준</td>
 										<td>구미</td>
@@ -98,114 +101,27 @@
 									<tr>
 										<th><input type="checkbox" class="adminArticleBtn"></th>
 										<td>3</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>4</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>5</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>6</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>7</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>8</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>9</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>10</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>11</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>12</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>13</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>14</td>
-										<td>인간뽀삐 권범준이라고 합니다</td>
-										<td>권범준</td>
-										<td>구미</td>
-										<td>2022.08.24</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>동네정보</td>
+										<td>유신아 생일 축하한다</td>
+										<td>강승현</td>
+										<td>서울</td>
+										<td>2022.08.15</td>
 										<td>15</td>
+									</tr>
+									<tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>1</td>
+										<td>동네 정보</td>
+										<td>안녕하세요</td>
+										<td>심준규</td>
+										<td>마계 인천</td>
+										<td>2022.08.24</td>
+										<td>4</td>
+									</tr>
+									<tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>2</td>
+										<td>QnA</td>
 										<td>인간뽀삐 권범준이라고 합니다</td>
 										<td>권범준</td>
 										<td>구미</td>
@@ -214,12 +130,129 @@
 									</tr>
 									<tr>
 										<th><input type="checkbox" class="adminArticleBtn"></th>
-										<td>16</td>
+										<td>3</td>
+										<td>동네정보</td>
+										<td>유신아 생일 축하한다</td>
+										<td>강승현</td>
+										<td>서울</td>
+										<td>2022.08.15</td>
+										<td>15</td>
+									</tr><tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>1</td>
+										<td>동네 정보</td>
+										<td>안녕하세요</td>
+										<td>심준규</td>
+										<td>마계 인천</td>
+										<td>2022.08.24</td>
+										<td>4</td>
+									</tr>
+									<tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>2</td>
+										<td>QnA</td>
 										<td>인간뽀삐 권범준이라고 합니다</td>
 										<td>권범준</td>
 										<td>구미</td>
 										<td>2022.08.24</td>
 										<td>12</td>
+									</tr>
+									<tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>3</td>
+										<td>동네정보</td>
+										<td>유신아 생일 축하한다</td>
+										<td>강승현</td>
+										<td>서울</td>
+										<td>2022.08.15</td>
+										<td>15</td>
+									</tr><tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>1</td>
+										<td>동네 정보</td>
+										<td>안녕하세요</td>
+										<td>심준규</td>
+										<td>마계 인천</td>
+										<td>2022.08.24</td>
+										<td>4</td>
+									</tr>
+									<tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>2</td>
+										<td>QnA</td>
+										<td>인간뽀삐 권범준이라고 합니다</td>
+										<td>권범준</td>
+										<td>구미</td>
+										<td>2022.08.24</td>
+										<td>12</td>
+									</tr>
+									<tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>3</td>
+										<td>동네정보</td>
+										<td>유신아 생일 축하한다</td>
+										<td>강승현</td>
+										<td>서울</td>
+										<td>2022.08.15</td>
+										<td>15</td>
+									</tr><tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>1</td>
+										<td>동네 정보</td>
+										<td>안녕하세요</td>
+										<td>심준규</td>
+										<td>마계 인천</td>
+										<td>2022.08.24</td>
+										<td>4</td>
+									</tr>
+									<tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>2</td>
+										<td>QnA</td>
+										<td>인간뽀삐 권범준이라고 합니다</td>
+										<td>권범준</td>
+										<td>구미</td>
+										<td>2022.08.24</td>
+										<td>12</td>
+									</tr>
+									<tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>3</td>
+										<td>동네정보</td>
+										<td>유신아 생일 축하한다</td>
+										<td>강승현</td>
+										<td>서울</td>
+										<td>2022.08.15</td>
+										<td>15</td>
+									</tr><tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>1</td>
+										<td>동네 정보</td>
+										<td>안녕하세요</td>
+										<td>심준규</td>
+										<td>마계 인천</td>
+										<td>2022.08.24</td>
+										<td>4</td>
+									</tr>
+									<tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>2</td>
+										<td>QnA</td>
+										<td>인간뽀삐 권범준이라고 합니다</td>
+										<td>권범준</td>
+										<td>구미</td>
+										<td>2022.08.24</td>
+										<td>12</td>
+									</tr>
+									<tr>
+										<th><input type="checkbox" class="adminArticleBtn"></th>
+										<td>3</td>
+										<td>동네정보</td>
+										<td>유신아 생일 축하한다</td>
+										<td>강승현</td>
+										<td>서울</td>
+										<td>2022.08.15</td>
+										<td>15</td>
 									</tr>
 								</tbody>
 							</table>

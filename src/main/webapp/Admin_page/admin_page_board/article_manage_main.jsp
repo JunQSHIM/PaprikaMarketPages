@@ -20,14 +20,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>댓글 관리</h1>
+            <h1>게시물 관리</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">paprika</a></li>
               <li class="breadcrumb-item"><a href="#">컨텐츠 관리</a></li>
               <li class="breadcrumb-item"><a href="#">게시판</a></li>
-              <li class="breadcrumb-item active">댓글 관리</li>
+              <li class="breadcrumb-item active">게시물 관리</li>
             </ol>
           </div>
         </div>
@@ -42,7 +42,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">전체 댓글 <div id="total_comment">18</div></h3>
+                <h3 class="card-title">전체 게시물 <div id="total_comment">18</div></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

@@ -121,7 +121,7 @@
 						<li class="nav-item"><a
 							href="/myweb/Admin_page/admin_banner/admin_banner.jsp"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>팝업/배너 관리</p>
+								<p>배너 관리</p>
 						</a></li>
 						<li class="nav-item"><a
 							href="/myweb/Admin_page/pages/charts/flot.html" class="nav-link">

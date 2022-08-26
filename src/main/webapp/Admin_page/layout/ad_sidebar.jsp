@@ -97,13 +97,13 @@
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>게시물 관리</p>
 								</a></li>
+								<li class="nav-item"><a href="pages/UI/buttons.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>댓글 관리</p>
+								</a></li>
 								<li class="nav-item"><a href="pages/UI/icons.html"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>공지 사항 쓰기</p>
-								</a></li>
-								<li class="nav-item"><a href="pages/UI/buttons.html"
-									class="nav-link"> <i class="far fa-circle nav-icon"></i>
-										<p>글, 댓글 관리</p>
 								</a></li>
 
 

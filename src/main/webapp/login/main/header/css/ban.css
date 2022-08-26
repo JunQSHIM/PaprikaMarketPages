@@ -18,7 +18,7 @@
 }
 
 .wishlist {
-	border: 1px solid #FF8955;
+	border: 1px solid orange;
 	width: 100px;
 	height: 50px;
 	background-color: white;
@@ -47,14 +47,14 @@
 
 .recent {
 	margin: 5px;
-	border: 1px solid #FF8955;
+	border: 1px solid orange;
 	width: 100px;
 	height: 200px;
 	background-color: white;
 }
 .top {
 	margin: 5px;
-	border: 1px solid #FF8955;
+	border: 1px solid orange;
 	width: 100px;
 	height: 35px;
 	background-color: white;

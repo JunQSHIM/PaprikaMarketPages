@@ -116,7 +116,7 @@
 							페이지 관리<i class="right fas fa-angle-left"></i>
 						</p>
 				</a>
-					<ul class="nav nav-treeview">
+					<ul class="nav nav-treeview"> 
 						<li class="nav-item"><a
 							href="/myweb/Admin_page/admin_banner/admin_banner.jsp"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>

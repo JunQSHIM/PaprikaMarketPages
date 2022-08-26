@@ -110,7 +110,7 @@
 									</p>
 							</a>
 								<ul class="nav nav-treeview">
-									<li class="nav-item"><a href="/myweb/Admin_page/Admin_page_board/article_manage.jsp"
+									<li class="nav-item"><a href="/myweb/Admin_page/admin_page_board/article_manage.jsp"
 										class="nav-link"> <i class="far fa-circle nav-icon"></i>
 											<p>게시물 관리</p>
 									</a></li>

@@ -47,7 +47,7 @@
 	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 	
-	
+	  
 	
 </head>
 <body>

@@ -1,20 +1,21 @@
 a {
-    text-decoration: none;
-    cursor: pointer;
-    margin: 0px;
-    padding: 0px;
-    border: 0px;
-    font: inherit;
-    vertical-align: baseline;
-    background-color: transparent;
+	text-decoration: none;
+	cursor: pointer;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	font: inherit;
+	vertical-align: baseline;
+	background-color: transparent;
 }
+
 .product_category {
 	width: 140px;
-	float:right;
+	float: right;
 }
 
 .product_category_1 {
-	border: 1px solid #fd7e14;
+	border: 1px solid #FF8955;
 	display: flex;
 	width: 100%;
 	height: 28px;
@@ -28,7 +29,6 @@ a {
 }
 
 .product_category_2 {
-	
 	display: flex;
 	-webkit-box-align: center;
 	align-items: center;
@@ -46,7 +46,6 @@ a {
 	border-style: none;
 }
 
-
 .product_category_3 {
 	position: absolute;
 	top: 27px;
@@ -56,9 +55,9 @@ a {
 	max-height: 280px;
 	overflow-y: auto;
 	z-index: 3;
-	border-left: 1px solid #fd7e14;
-	border-bottom: 1px solid #fd7e14;
-	border-right: 1px solid #fd7e14;
+	border-left: 1px solid #FF8955;
+	border-bottom: 1px solid #FF8955;
+	border-right: 1px solid #FF8955;
 	display: none;
 }
 
@@ -70,21 +69,22 @@ a {
 	display: flex;
 	-webkit-box-align: center;
 	align-items: center;
-	color: #fd7e14;
+	color: #FF8955;
 }
-.all_category:hover  {
-color: #fd7e14;
+
+.all_category:hover {
+	color: #FF8955;
 }
 
 .category {
-	text-decoration:none;
+	text-decoration: none;
 	width: 100%;
 	height: 28px;
 	padding: 0px 10px;
 	display: flex;
 	-webkit-box-align: center;
 	align-items: center;
-	color:rgb(77, 77, 77);
+	color: rgb(77, 77, 77);
 }
 
 .category:hover {

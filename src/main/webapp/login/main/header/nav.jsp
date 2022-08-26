@@ -22,7 +22,7 @@
 					</button>
 				</div>
 				<div class="grid_2 logo">
-					<img src="/myweb/login/images/dklogo.png" onclick="main()">
+					<img src="/myweb/login/images/dklogo.png" width="120%" onclick="main()">
 				</div>
 
 

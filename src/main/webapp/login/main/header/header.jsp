@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/myweb/login/grid.css">
+<link rel="stylesheet" type="text/css" href="/myweb/login/css/grid.css">
 </head>
 <body>
 		<div class="container_12">

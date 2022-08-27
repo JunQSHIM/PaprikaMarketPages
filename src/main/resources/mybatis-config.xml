@@ -4,11 +4,8 @@
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-<<<<<<< HEAD
 		<!-- <typeAlias alias="myboard" type="tommy.spring.web.board.BoardVO" /> -->
-=======
 		<typeAlias alias="UserVO" type="com.spring.myweb.Admin.VO.UserVO" />
->>>>>>> JunQ
 	</typeAliases>
 	<mappers>
 		<!-- <mapper resource="mappings/board-mapping.xml" /> -->

@@ -34,7 +34,11 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
+<<<<<<< HEAD
 			<param-value>/WEB-INF/spring/customContext/spring-servlet.xml</param-value>
+=======
+			<param-value>/WEB-INF/config/user-context.xml</param-value>
+>>>>>>> JunQ
 		</init-param>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
@@ -50,7 +54,11 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
+<<<<<<< HEAD
 			<param-value>/WEB-INF/spring/adminContext/admin-servlet.xml</param-value>
+=======
+			<param-value>/WEB-INF/config/admin-context.xml</param-value>
+>>>>>>> JunQ
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

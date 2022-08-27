@@ -1,19 +1,5 @@
 @charset "UTF-8";
 
- html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
-	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
-	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
-	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
-	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
-	details, embed, figure, figcaption, footer, header, hgroup, main, menu,
-	nav, output, ruby, section, summary, time, mark, audio, video {
-	margin: 0px;
-	padding: 0px;
-	border: 0px;
-	font: inherit;
-	vertical-align: baseline;
-}
-
 .singo_board body, input, textarea, select, button {
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
@@ -23,6 +9,7 @@
     letter-spacing: -0.5px;
     outline: 0px;
     border: 0px;
+    z-index: 1;
 }
 
 .singo_board textarea {
@@ -210,6 +197,5 @@ div {
     background: rgb(249, 249, 249);
     padding: 0px 20px;
     overflow: hidden;
-    transition: height 0.3s ease-out 0s;
 
 }

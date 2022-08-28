@@ -35,4 +35,15 @@ public class UserController {
 	public String insert2() {
 		return "login/login&register/register";
 	}
+	@RequestMapping(value="/login.do")
+	public String login() {
+		return "login/login&register/login";
+	}
+	@RequestMapping(value="/loginProc.do")
+	public String loginUser(Model model,String id) {
+		System.out.println("User login service");
+		UserVO vo = dao.select(id);
+		model.addAttribute("user",vo);
+		return "login/main/mother";
+	}
 }

@@ -13,16 +13,19 @@ $(document).ready(function() {
 	});
 });
 function login() {
-	window.location.href = '/myweb/login/login&register/login.jsp';
+	window.location.href = 'login.do';
 }
 function register() {
-	window.location.href = '/myweb/login/login&register/registerAgree.jsp';
+	window.location.href = 'insert.do';
+}
+function logout() {
+	window.location.href = 'logout.do';
 }
 function main() {
 	window.location.href = '/myweb/login/main/mother.jsp';
 }
 function mypage() {
-	window.location.href = '/myweb/login/mypage/mypage.jsp';
+	window.location.href = 'mypage.do';
 }
 function sell() {
 	window.location.href = '/myweb/login/sellpage.jsp';

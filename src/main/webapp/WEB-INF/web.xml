@@ -59,5 +59,7 @@
 		<servlet-name>admin</servlet-name>
 		<url-pattern>*.mdo</url-pattern>
 	</servlet-mapping>
-
+	<welcome-file-list>
+    	<welcome-file>./WEB-INF/user/login/main/mother.jsp</welcome-file>
+  	</welcome-file-list>
 </web-app>

@@ -70,7 +70,7 @@ function verifyLoc() {
 			<div id="profile">
 				<div id="profile_pic"></div>
 				<div id="nickname_and_button">
-					<div id="nickName">닉네임</div>
+					<div id="nickName">${user.name }</div>
 					<div id="function">	
 						<button type="button" id="sell" onclick=move()></button>
 						<button type="button" id="buy" onclick=move()></button>

@@ -111,7 +111,7 @@
 					<h3 align="center">로그인</h3>
 				</div>
 				<div class="card-body">
-					<form action="/myweb/login/main/mother.jsp" name="login">
+					<form action="loginProc.do" name="login">
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>

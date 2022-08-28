@@ -13,10 +13,10 @@
 	<div class="button_part">
 		<div class="button_wrap">
 			<c:choose>
-				<c:when test="${param.id ne null }">
+				<c:when test="${user.id ne null }">
 					<a class="alarm_message">알림</a>
-					<button type="button" onclick="logout()">로그아웃</button>
-					<button type="button" onclick="mypage()">마이페이지</button>
+					<button type="button" onclick="location.href='logout.do'">로그아웃</button>
+					<button type="button" onclick="location.href='mypage.do'">마이페이지</button>
 				</c:when>
 				<c:otherwise> 
 					<button type="button" onclick="login()">로그인</button>

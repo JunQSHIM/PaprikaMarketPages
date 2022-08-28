@@ -4,4 +4,12 @@
 	<select id="selectUserAll" resultType="UserVO">
 		select * from user;
 	</select>
+	<select id="selectUser" resultType="UserVO">
+		select * from user where id="#{id};
+	</select>
+	<select id="insertUser">
+		insert into user(id,name,password,birth,nickname,email,phone,msg_agree)
+		values(#{id},#{name},#{password},'1997-03-07',#{nickname},#{email},#{phone},#{msg_agree});
+	</select>
+	
 </mapper>

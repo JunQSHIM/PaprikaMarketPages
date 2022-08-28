@@ -15,7 +15,7 @@
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="/myweb/login/login&register/styles.css">
+	<link rel="stylesheet" type="text/css" href="/myweb/login/login&register/css/registerAgree.css">
 </head>
 <body>
 <div align="center" style="margin-top:150px;">
@@ -35,7 +35,7 @@
 						autocomplete="off">
 
 						<div id="fregister_chkall" class="checks2">
-							<input type="checkbox" name="chk_all" value="1" id="chk_all">
+							<input type="checkbox" name="chk_all" value="1" class="agreeBtnAll" id="chk_all">
 							<label for="chk_all">회원가입 약관에 모두 동의합니다</label>
 						</div>
 

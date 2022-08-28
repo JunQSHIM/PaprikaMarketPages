@@ -5,7 +5,6 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/myweb/login/jjim_cart/jjim_cart.css">
-<script type="text/javascript" src="/myweb/login/jjim_cart/jjim_cart.js"></script>
 <meta charset="UTF-8">
 <title>jjim cart</title>
 </head>
@@ -120,7 +119,6 @@
 				</div>
 			</div>
 			</div>
-			
- 		
+<script type="text/javascript" src="/myweb/login/jjim_cart/jjim_cart.js"></script>		
 </body>
 </html>

@@ -31,17 +31,38 @@ function fregister_submit(f) {
 	}
 	return true;
 }
+//체크박스 선택 자바스크립트
+$(document).ready(function(){
+	//전체 체크 클릭 시, 나머지 체크 
+	$("#chk_all").click(function(){
+	var order2Chk=$("#chk_all").prop("checked");
 
-jQuery(function($) {
-	$("input[name=chk_all]").click(
-			function() {
-				if ($(this).prop('checked')) {
-					$("input[name^=agree]").prop('checked', true);
-				} else {
-					$("input[name^=agree]").prop("checked", false);
-				}
-			});
-});
+	    if(order2Chk){
+	        $(".agreeBtn").prop("checked",true);
+	    }
+	    else{
+	        $(".agreeBtn").prop("checked",false);
+	    }
+	});
+	// 모든 체크박스를 클릭하면 버튼 활성화시키기
+	$('.agreeBtn').click(function(){
+	    var tmpp = $(this).prop('checked'); 
+	    
+	    //자식 체크 전체 체크시, 부모 체크박스 체크 됨
+	    var tt = $(".agreeBtn").length;
+	    var ss = $(".agreeBtn:checked").length;
+	   
+	    // 체크박스가 모두 선택되었을 때 상위 체크박스 선택되도록 설정
+	    if(tt == ss){
+	    	$("#chk_all").css({"backgroundColor":"#ff8955","cursor":"pointer","color":"#fff"}).prop("checked",true);
+	    }else{
+	    	$("#chk_all").css({"backgroundColor":"white","cursor":"auto","color":"rgb(136, 136, 136)"}).prop("checked",false);
+	    	
+	    }
+	    
+		});
+	}); // 체크박스 제이쿼리
+
 </script>
 </head>
 <body>
@@ -68,7 +89,7 @@ jQuery(function($) {
 
 						<section id="fregister_term">
 							<div class="fregister_agree2 checks2">
-								<input type="checkbox" name="agree" value="1" id="agree11">
+								<input type="checkbox" name="agree" value="1" class="agreeBtn" id="agree11">
 								<label for="agree11">이용약관 동의<span>(필수)</span></label>
 							</div>
 							<textarea readonly>${register_agreement }</textarea>
@@ -77,7 +98,7 @@ jQuery(function($) {
 
 						<section id="fregister_private">
 							<fieldset class="fregister_agree2 checks2">
-								<input type="checkbox" name="agree2" value="1" id="agree21">
+								<input type="checkbox" name="agree2" value="1" class="agreeBtn" id="agree21">
 								<label for="agree21">개인정보 수집 및 이용 동의<span>(필수)</span></label>
 							</fieldset>
 							<textarea readonly>${pInfo_agreement }</textarea>

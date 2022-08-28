@@ -21,10 +21,9 @@ public class UserDAO {
 			List<UserVO> userList = session.selectList("userDB.selectUserAll");
 			return userList;		
 		}
-		
-		public UserVO select() {
-			UserVO vo = session.selectOne("userDB.selectUser");
-			return vo;
+		public UserVO select(String id) {
+			UserVO user = session.selectOne("userDB.selectUser", id);
+			return user;
 		}
 		
 		public int insertUser(UserVO vo) {

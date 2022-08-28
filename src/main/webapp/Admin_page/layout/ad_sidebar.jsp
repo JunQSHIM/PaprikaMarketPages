@@ -56,7 +56,7 @@
 							href="/myweb/Admin_page/admin_board/ad_board.jsp"
 							class="nav-link"> <i
 								class="nav-icon fa-solid fa-address-book"></i>
-								<p>회원 SMS 관리</p>
+								<p>회원 SMS 관리</p> 
 						</a></li>
 
 						<li class="nav-item"><a

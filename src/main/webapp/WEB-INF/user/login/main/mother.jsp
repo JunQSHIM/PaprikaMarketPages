@@ -5,7 +5,7 @@
 <html>
 <head>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
-<script src="/myweb/login/main/main.js"></script>
+<script src="/WEB-INF/user/login/main/main.js"></script>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/grid.css">
 <link href="/myweb/login/main/prods.css" rel="stylesheet" type="text/css">
@@ -18,7 +18,7 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/header/header.jsp"></jsp:include>
 	</header>
 	
 	<article class="container_12">

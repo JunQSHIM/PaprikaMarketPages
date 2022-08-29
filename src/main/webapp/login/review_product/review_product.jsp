@@ -4,7 +4,6 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/myweb/login/review_product/review_product.css">
-<script type="text/javascript" src="/myweb/login/review_product/review_product.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -228,7 +227,7 @@
 		
 			</div>
 			</div>
-			
  			</div>
+ <script type="text/javascript" src="/myweb/login/review_product/review_product.js"></script>
 </body>
 </html>

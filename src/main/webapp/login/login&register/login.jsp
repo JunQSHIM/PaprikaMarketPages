@@ -3,87 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link
+<title>login</title>
+	<link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-<!-- 	<li onclick="kakaoLogout();">
-      <a href="javascript:void(0)">
-          <span>카카오 로그아웃</span>
-      </a>
-	</li> -->
-<!-- 카카오 스크립트 -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script>
-	//앱키 바꿔줘야함
-	Kakao.init('8890a67c089173194979845f9389950d'); //발급받은 키 중 javascript키를 사용해준다.
-	console.log(Kakao.isInitialized()); // sdk초기화여부판단
-	//카카오로그인
-	function kakaoLogin() {
-		Kakao.Auth.login({
-			success : function(response) {
-				Kakao.API.request({
-					url : '/v2/user/me',
-					success : function(response) {
-						console.log(response)
-					},
-					fail : function(error) {
-						console.log(error)
-					},
-				})
-			},
-			fail : function(error) {
-				console.log(error)
-			},
-		})
-	}
-	//카카오로그아웃  
-	function kakaoLogout() {
-		if (Kakao.Auth.getAccessToken()) {
-			Kakao.API.request({
-				url : '/v1/user/unlink',
-				success : function(response) {
-					console.log(response)
-				},
-				fail : function(error) {
-					console.log(error)
-				},
-			})
-			Kakao.Auth.setAccessToken(undefined)
-		}
-	}
-	function setOutline(objFormElement, color) {
-		if (objFormElement.style)
-			objFormElement.style.outline = color;
-	}
-	//아이디 비밀번호
-	$(document).ready(function() {
-		var theForm = document.login;
-		$("#loginButton").click(function() {
-			if (!theForm.id.value) {
-				setOutline(theForm.id, "2px solid red");
-				theForm.id.placeholder = '아이디를 입력해주세요';
-				theForm.id.focus();
-				return;
-			}
-
-			if (!theForm.password.value) {
-				setOutline(theForm.password, "2px solid red");
-				theForm.password.placeholder = '비밀번호를 입력해주세요';
-				theForm.password.focus();
-				if (theForm.id.value != "") {
-					setOutline(theForm.id, "1px solid black");
-				}
-				return;
-			}
-			theForm.submit();
-		});
-	});
-</script>
-<title>login</title>
 <!--Bootsrap 4 CDN-->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -154,5 +77,18 @@
 			</div>
 		</div>
 	</div>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- 	<li onclick="kakaoLogout();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그아웃</span>
+      </a>
+	</li> -->
+<!-- 카카오 스크립트 -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="/myweb/login/login&register/js/login.js"></script>
 </body>
 </html>

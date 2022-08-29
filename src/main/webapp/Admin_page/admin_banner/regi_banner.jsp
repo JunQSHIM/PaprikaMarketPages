@@ -47,10 +47,16 @@
   <form>
   <div class="contents">
   <div class="content-header">
- <div class="banner-title"> <div>제목</div><div><input type="text" size="27"></div></div>
-   <div>내용</div><div class="banner-content"><textarea rows="5" cols="30"></textarea> </div>
-   </div>
-    <div class="upload-box">
+ 	<div class="banner-title">
+ 		<div>제목</div>
+ 		<div><input type="text"></div>
+ 	</div>
+   	<div class="banner-discription">
+   		<div>설명</div>
+   		<div class="banner-content"><textarea></textarea></div>
+   	</div>
+  </div>
+  <div class="upload-box">
       <div id="drop-file" class="drag-file">
         <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
         <p class="message">이미지를 여기로 드래그</p>
@@ -58,7 +64,7 @@
       </div>
       <label class="file-label" for="chooseFile">이미지 업로드</label>
       <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
-    </div>
+  </div>
   </div>
   </form>
 </div>

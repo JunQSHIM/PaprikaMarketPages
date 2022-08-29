@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 			    if(order2Chk){
 			        $(".adminArticleBtn").prop("checked",true);
-			        $("#deleteBtn").css({"backgroundColor":"#ff8955","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			        $("#deleteBtn").css({"backgroundColor":"orange","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 			    }
 			    else{
 			        $(".adminArticleBtn").prop("checked",false);
@@ -24,7 +24,7 @@ $(document).ready(function(){
 			    
 			    //선택한 체크박스 값이 true 이거나 체크박스 1개 이상 체크시 버튼 활성화시키기
 			    if(tmpp==true || ss>0){
-			    $("#deleteBtn").css({"backgroundColor":"#ff8955","cursor":"pointer","color":"#fff"}).prop("disabled",false);
+			    $("#deleteBtn").css({"backgroundColor":"orange","cursor":"pointer","color":"#fff"}).prop("disabled",false);
 			    }
 			    else{
 			    $("#deleteBtn").css({"backgroundColor":"white","cursor":"auto","color":"rgb(136, 136, 136)"}).prop("disabled",true);

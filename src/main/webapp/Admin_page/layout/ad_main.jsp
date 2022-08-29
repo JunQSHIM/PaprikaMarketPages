@@ -17,6 +17,7 @@
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
+				<%@ include file="/Admin_page/layout/mini.jsp" %>
 				<%@ include file="/Admin_page/chart/chart_page.jsp" %>
 			</section>
 			<!-- /.content -->

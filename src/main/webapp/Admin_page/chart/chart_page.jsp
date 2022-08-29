@@ -5,13 +5,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="/myweb/Admin_page/plugins/chart.js/Chart.js"></script>
 <title>AdminLTE 3 | ChartJS</title>
 </head>
 <body class="hold-transition sidebar-mini">
-	<div class="wrapper">
 
+<div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+	          제목 : <input type="text" id="new_card_title">
+	          	<button id="create_btn">통계 생성</button>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+</div>
+
+	<div class="wrapper">
 		<!-- Main content -->
 		<section class="content">
+		
 			<div class="container-fluid">
 				<div class="row">
 					<section class="col-lg-7 connectedSortable">
@@ -69,25 +85,7 @@
 						<!-- /.card -->
 
 						<!-- 카테고리별 품목 CHART -->
-						<div class="card card-info">
-							<div class="card-header">
-								<h3 class="card-title">가입자/탈퇴자</h3>
-
-								<div class="card-tools">
-									<button type="button" class="btn btn-tool"
-										data-card-widget="collapse">
-										<i class="fas fa-minus"></i>
-									</button>
-								</div>
-							</div>
-							<div class="card-body">
-								<canvas id="prodChart"
-									style="min-height: 300px; height: 250px; max-height: 300px; max-width: 100%;"></canvas>
-							</div>
-							<!-- /.card-body -->
-						</div>
-						<!-- /.card -->
-
+						
 
 						<!-- 가입/탈퇴 CHART -->
 						<div class="card card-danger">
@@ -116,7 +114,7 @@
 					<!-- /.col (LEFT) -->
 
 
-					<section class="col-lg-5 connectedSortable">
+					<section class="col-lg-5 connectedSortable" id="cre_page">
 						<!-- LINE CHART -->
 						<div class="card card-danger">
 							<div class="card-header">
@@ -177,8 +175,7 @@
 							</div>
 							<div class="card-body">
 								<div class="chart">
-									<canvas id="stackedBarChart"
-										style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+									<canvas id="Chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
 								</div>
 							</div>
 							<!-- /.card-body -->
@@ -196,7 +193,11 @@
 	</div>
 
 	<script>
+	
+	
+	
 		$(function() {
+			
 			/* ChartJS
 			 * -------
 			 * Here we will create a few charts using ChartJS
@@ -205,7 +206,6 @@
 			//--------------
 			//- day CHART -
 			//--------------
-			// Get context with jQuery - using jQuery's .get() method.
 			var dayChartCanvas = $('#dayChart').get(0).getContext('2d')
 
 			var dayChartData = {
@@ -383,8 +383,7 @@
 			//- 가입 탈퇴자 CHART -
 			//-------------
 			// Get context with jQuery - using jQuery's .get() method.
-			var subscribersChartCanvas = $('#subscribersChart').get(0)
-					.getContext('2d')
+			var subscribersChartCanvas = $('#subscribersChart').get(0).getContext('2d')
 
 			var subscribersChartData = {
 				labels : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일' ],
@@ -477,8 +476,44 @@
 				options : quitOptions
 			})
 
+			
+		
+		$("#create_btn").on("click", function() {
+			var new_title = $('#new_card_title').val();
+			var card_layout1 =`
+				<div class="card card-info">
+					<div class="card-header">
+						<h3 class="card-title">`
+			var card_layout2= `
+						</h3>
+						<div class="card-tools">
+						<button type="button" class="btn btn-tool" id="cre_chart">
+							통계생성
+						</button>
+						<button type="button" class="btn btn-tool" data-card-widget="collapse">
+							<i class="fas fa-minus"></i>	
+						</button>
+						<button type="button" class="btn btn-tool"
+							data-card-widget="remove">
+							<i class="fas fa-times"></i>
+						</button>
+						</div>
+					</div>
+					<div class="card-body">
+						<div id="place"></div>
+					</div>
+				</div>`
+				console.log(new_title);
+				$("#cre_page").append(card_layout1 + new_title + card_layout2);
+		});
+
+		$(document).on("click", "#cre_chart", function() {
+			var new_chart = `<canvas id="prodChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>`
+			console.log(new_chart);
+			$("#place").after(new_chart);
+			
 			//---------------------
-			//- STACKED BAR CHART -
+			//- prod BAR CHART -
 			//---------------------
 			var prodChartCanvas = $('#prodChart').get(0).getContext('2d')
 			var prodChartData = {
@@ -523,6 +558,10 @@
 				options : prodChartOptions
 			})
 		})
-	</script>
+
+		});
+		
+
+</script>
 </body>
 </html>

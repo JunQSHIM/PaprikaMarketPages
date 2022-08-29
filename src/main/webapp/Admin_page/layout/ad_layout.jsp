@@ -47,9 +47,6 @@
 	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 	
-	<!-- chart -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-	
 	<!-- custom -->	
 	<script src="/myweb/Admin_page/layout/js/adminlte.js"></script>
 	<script src="/myweb/Admin_page/layout/js/sortable.js"></script>

@@ -56,7 +56,7 @@
 							href="/myweb/Admin_page/admin_board/ad_board.jsp"
 							class="nav-link"> <i
 								class="nav-icon fa-solid fa-address-book"></i>
-								<p>회원 SMS 관리</p> 
+								<p>SNS</p>
 						</a></li>
 
 						<li class="nav-item"><a
@@ -128,44 +128,10 @@
 						</a></li>
 
 					</ul></li>
-				<li class="nav-item"><a href="#" class="nav-link"> <i
+				<li class="nav-item"><a href="/myweb/Admin_page/chart/chart.jsp" class="nav-link"> <i
 						class="nav-icon fas fa-tree"></i>
-						<p>
-							통계 <i class="fas fa-angle-left right"></i>
-						</p>
+							통계
 				</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item"><a
-							href="/myweb/Admin_page/statistics/quit.jsp" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>탈퇴 사유</p>
-						</a></li>
-						<li class="nav-item"><a
-							href="/myweb/Admin_page/statistics/quit.jsp" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>인기상품</p>
-						</a></li>
-						<li class="nav-item"><a
-							href="/myweb/Admin_page/statistics/visit_statics.jsp"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>방문자 수</p>
-						</a></li>
-						<li class="nav-item"><a
-							href="/myweb/Admin_page/statistics/subscribers.jsp"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>가입자 / 탈퇴자</p>
-						</a></li>
-						<li class="nav-item"><a
-							href="/myweb/Admin_page/statistics/prodChart.jsp"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>카테고리별 거래량</p>
-						</a></li>
-						<li class="nav-item"><a
-							href="/myweb/Admin_page/statistics/reason_report.jsp"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>신고 사유</p>
-						</a></li>
-					</ul></li>
 				<li class="nav-item"><a href="#" class="nav-link"> <i
 						class="nav-icon fas fa-edit"></i>
 						<p>

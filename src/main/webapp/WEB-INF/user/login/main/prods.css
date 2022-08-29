@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+div {
+	
+	box-sizing: border-box;
+}
+ 
+.pic {
+	width: 200px;
+	height: 150px;
+	margin: 10px auto;
+	background-color: gray;
+}
+
+.text {
+	width: 200px;
+	float: left;
+	background-color: white;
+	margin: 0 0 0 10px;
+	overflow: hidden;
+}
+
+.text .price {
+	font-size: 0.6rem;
+}
+
+.text .location {
+	font-size: 0.8rem;
+}
+
+.text .time {
+	font-size: 0.6rem;
+	float: left;
+}
+
+.wish {
+	font-size: 0.6rem;
+	float: right;
+	text-align: right;
+}

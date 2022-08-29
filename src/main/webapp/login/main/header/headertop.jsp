@@ -14,7 +14,6 @@
 		<div class="button_wrap">
 			<c:choose>
 				<c:when test="${param.id ne null }">
-					<a class="alarm_message">알림</a>
 					<button type="button" onclick="logout()">로그아웃</button>
 					<button type="button" onclick="mypage()">마이페이지</button>
 				</c:when>

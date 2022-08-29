@@ -67,6 +67,7 @@
 
 .item button {
 	border: 0px;
+<<<<<<< HEAD
 	background-color: rgba(0, 0, 0, 0);
 	color: orange;
 	font: bold;
@@ -76,6 +77,90 @@
 	border-bottom-right-radius: 5px;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
+=======
+    background-color: rgba(0,0,0,0);
+    color: orange;
+	font : bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+    padding: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;  
+}
+.container button:hover{
+	color:white;
+    background-color: orange;
+}
+.item button{
+	border: 0px;
+    background-color: rgba(0,0,0,0);
+    color: orange;
+	font : bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+    padding: 5px;
+    text-align:center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;  
+}
+.item button:hover{
+	color:white;
+    background-color: orange;
+}
+#func{
+	grid-column:span 2;
+}
+#follow{
+	float:left;
+}
+#func button{
+	border: 1px solid orange;
+    background-color: rgba(0,0,0,0);
+    color: orange;
+	font : bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+	font-size:1.2rem;
+	line-height: 30px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-right:22px;  
+    margin-left:10px;
+    width:130px;
+    height:40px;
+}
+#func button:hover{
+	color:white;
+    background-color: orange;
+}
+#product_info{
+	grid-column:span 2;
+}
+#profile_pic{
+	float:left;
+	margin-right:10px;
+}
+#profile_pic img{
+	size:contain;
+	width:80px;
+	height:50px;
+}
+#nickname{
+	float:left;
+}
+#rt_img{
+	margin-top:80px;
+	float:center;
+}
+.review_container{
+	display:grid;
+	grid-template-rows:60px 60px;
+}
+#more_reviews{
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 	text-align: center;
 }
 

@@ -3,7 +3,11 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
 	<!-- Appenders -->
+<<<<<<< HEAD
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+=======
+	<appender name="console" class="org.apache.log4j.ConsoleAppender"> 
+>>>>>>> JunQ
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
@@ -11,7 +15,11 @@
 	</appender>
 	
 	<!-- Application Loggers -->
+<<<<<<< HEAD
 	<logger name="com.ppk.web">
+=======
+	<logger name="com.spring.mystore">
+>>>>>>> JunQ
 		<level value="info" />
 	</logger>
 	

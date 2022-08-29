@@ -6,7 +6,6 @@ html, body {
 }
 
 
-
 .container {
 	margin-top: 25px;
 	height: 60%;
@@ -18,12 +17,16 @@ html, body {
 }
 
 .card {
-	height: 620px;
+ 	margin:20px auto;
 	width: 400px;
-	border: 0.3px solid lightgray;
-	background-color: rgba(0, 0, 0, 0) !important;
+	border: 1px solid orange;
+	background-color: rgba(0, 0, 0, 0.03) !important;
 }
 
+.card-body{
+	
+	border:1px solid orange;
+}
 .card-login {
 	height: 400px;
 	width: 400px;
@@ -31,9 +34,7 @@ html, body {
 	background-color: rgba(0, 0, 0, 0.03) !important;
 }
 
-.card-header {
-	border: 0px;
-}
+
 
 input {
 	padding-top: 10px;
@@ -41,7 +42,9 @@ input {
 }
 
 .card-header h3 {
-	color: black;
+	font-weight:bold;
+	
+	color: orange;
 }
 
 .input-group-prepend span {

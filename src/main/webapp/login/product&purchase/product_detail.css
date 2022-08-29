@@ -3,23 +3,46 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 .container2 {
-	display: grid;
+
+	/*display: grid;
 	grid-template-columns: 300px 230px;
-	grid-template-rows: 92px 188px 70px;
+	grid-template-rows: 92px 188px 70px;*/
 }
 
+div{
+	
+}
+
+.homecate{
+	border:1px solid red;
+	margin-bottom:60px;
+}
+.prod_info{
+	float:right;
+	
+}
+
+.prod_info div{
+	
+}
 .container3 {
-	display: grid;
-	grid-template-columns: 550px 280px;
+	
+	/*display: grid;
+	grid-template-columns: 550px 280px;*/
 }
-
 .item2 {
 	grid-column: span 2;
+	margin: 20px auto;
 
+}
+
+.market_info{
+	margin-left:1px;
+	float:right;
 }
 
 .rt_product{
-	margin-left:100px;
+	margin-left:500px;
 }
 
 .container4 {
@@ -34,25 +57,29 @@
 
 #detail {
 	text-align: left;
-	padding-left: 20px;
+	
 	grid-column: span 2;
 }
 
 #title {
 	font-size: 1.9rem;
-	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+
 }
 
 #info {
-	font-size: 1rem;
-	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
-	word-spacing: 8px;
+	font-size: 1.5rem;
+	line-height:1.5rem;
+	
+	margin-bottom:40px;
 	margin-top: 20px;
 	margin-left: 30px;
 }
 
 #info_ans {
-	margin-top: 45px;
+	font-size: 1.5rem;
+	line-height:1.5rem;
+	margin-top: 20px;
+	margin-bottom:40px;
 }
 
 .container2 ul {
@@ -64,10 +91,14 @@
 	margin-left: -33px;
 	padding-top: 10px;
 }
+.item_btn{
+	
+	margin-left:45px;
+}
 
 .item button {
 	border: 0px;
-<<<<<<< HEAD
+
 	background-color: rgba(0, 0, 0, 0);
 	color: orange;
 	font: bold;
@@ -77,7 +108,7 @@
 	border-bottom-right-radius: 5px;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
-=======
+
     background-color: rgba(0,0,0,0);
     color: orange;
 	font : bold;
@@ -160,7 +191,7 @@
 	grid-template-rows:60px 60px;
 }
 #more_reviews{
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
+
 	text-align: center;
 }
 

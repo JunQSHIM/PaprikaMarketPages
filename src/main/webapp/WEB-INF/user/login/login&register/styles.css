@@ -5,7 +5,9 @@ html, body {
 	font-family: 'Numans', sans-serif;
 }
 
-
+div{
+	border:1px solid black;
+}
 .container {
 	margin-top: 25px;
 	height: 60%;

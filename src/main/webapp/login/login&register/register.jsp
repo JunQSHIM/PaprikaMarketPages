@@ -224,7 +224,7 @@ $("#registerButton").click(function() {
 <body>
 <div align="center" style="margin-top:150px;">
 <a  href="/myweb/login/main/mother.jsp">
-	<img src="/myweb/login/images/pklogo.png">
+	<img src="/myweb/login/images/dklogo.png" width="26%">
 </a>
 </div>
 <div class="container">

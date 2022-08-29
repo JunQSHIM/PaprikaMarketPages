@@ -14,7 +14,7 @@
 	vertical-align: baseline;
 }
 
-.singo_board body, input, textarea, select, button {
+.singo_board body, input, textarea, select {
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     direction: ltr;

@@ -22,7 +22,7 @@ function logout() {
 	window.location.href = 'logout.do';
 }
 function main() {
-	window.location.href = '/myweb/login/main/mother.jsp';
+	window.location.href = 'main.do';
 }
 function mypage() {
 	window.location.href = 'mypage.do';

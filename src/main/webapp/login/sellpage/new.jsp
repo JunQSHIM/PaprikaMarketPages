@@ -139,7 +139,7 @@
 
 				</div>
 
-
+ 
 			</div>
 		</div>
 		<div class="grid_12 tag">
@@ -202,11 +202,6 @@
 
 
 	</form>
-<script type="text/javascript">
-$("#price").on('input', function(){
-	$(this).val( $(this).val().replace(/[^0-9]/g,"") );
-});
-</script>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript"

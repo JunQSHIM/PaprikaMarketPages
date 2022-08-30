@@ -1,5 +1,6 @@
 package com.spring.myweb.DAO.UserDAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -32,5 +33,15 @@ public class UserDAOImpl implements UserDAO{
 		int success = 0;
 		success = session.insert("userDB.insertUser", vo); 
 		return success;
+	}
+
+	@Override
+	public void kakaoinsert(HashMap<String, Object> userInfo) {
+		session.insert("userDB.kakaoInsert",userInfo);
+	}
+
+	@Override
+	public UserVO findkakao(HashMap<String, Object> userInfo) {
+		return session.selectOne("userDB.findKakao", userInfo);
 	}
 }

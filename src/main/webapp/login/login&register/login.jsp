@@ -7,8 +7,29 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
+<<<<<<< HEAD
 <!-- 카카오 스크립트 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+=======
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- 카카오 스크립트 -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+	function setOutline(objFormElement, color) {
+		if (objFormElement.style)
+			objFormElement.style.outline = color;
+	}
+	//아이디 비밀번호
+	$(document).ready(function() {
+		var theForm = document.login;
+		$("#loginButton").click(function() {
+			if (!theForm.id.value) {
+				setOutline(theForm.id, "2px solid red");
+				theForm.id.placeholder = '아이디를 입력해주세요';
+				theForm.id.focus();
+				return;
+			}
+>>>>>>> JunQ
 
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/myweb/login/login&register/js/login.js"></script>
@@ -39,12 +60,23 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
+<<<<<<< HEAD
 						<input type="text" class="form-control" placeholder="아이디"
 							name="id">
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
+=======
+						
+						<br>
+						<br>
+						<div class="button-login" align="center">
+							<a id="kakao-login-btn"> <img
+								src="/k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
+								width="83%" height="50px" onclick="kakaoLogin();" />
+							</a>
+>>>>>>> JunQ
 						</div>
 						<input type="password" class="form-control" placeholder="비밀번호"
 							name="password" id="password">

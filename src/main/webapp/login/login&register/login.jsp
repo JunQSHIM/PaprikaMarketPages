@@ -19,7 +19,7 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 	//앱키 바꿔줘야함
-	Kakao.init('8890a67c089173194979845f9389950d'); //발급받은 키 중 javascript키를 사용해준다.
+	Kakao.init('167f49bd1993ff6f8e2356ea7658392c'); //발급받은 키 중 javascript키를 사용해준다.
 	console.log(Kakao.isInitialized()); // sdk초기화여부판단
 	//카카오로그인
 	function kakaoLogin() {

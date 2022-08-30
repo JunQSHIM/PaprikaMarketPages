@@ -8,7 +8,7 @@
 	rel="stylesheet" id="bootstrap-css">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/reources/js/jquery-3.6.0.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- 	<li onclick="kakaoLogout();">
       <a href="javascript:void(0)">
@@ -16,45 +16,46 @@
       </a>
 	</li> -->
 <!-- 카카오 스크립트 -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
-	//앱키 바꿔줘야함
-	Kakao.init('8890a67c089173194979845f9389950d'); //발급받은 키 중 javascript키를 사용해준다.
-	console.log(Kakao.isInitialized()); // sdk초기화여부판단
-	//카카오로그인
-	function kakaoLogin() {
-		Kakao.Auth.login({
-			success : function(response) {
-				Kakao.API.request({
-					url : '/v2/user/me',
-					success : function(response) {
-						console.log(response)
-					},
-					fail : function(error) {
-						console.log(error)
-					},
-				})
-			},
-			fail : function(error) {
-				console.log(error)
-			},
-		})
-	}
-	//카카오로그아웃  
-	function kakaoLogout() {
-		if (Kakao.Auth.getAccessToken()) {
-			Kakao.API.request({
-				url : '/v1/user/unlink',
-				success : function(response) {
-					console.log(response)
-				},
-				fail : function(error) {
-					console.log(error)
-				},
-			})
-			Kakao.Auth.setAccessToken(undefined)
-		}
-	}
+Kakao.init('167f49bd1993ff6f8e2356ea7658392c'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+        	  alert(JSON.stringify(response)); 
+        	  alert(JSON.stringify(authObj));
+        	  location.href='main.do';
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+//카카오로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
 	function setOutline(objFormElement, color) {
 		if (objFormElement.style)
 			objFormElement.style.outline = color;
@@ -143,10 +144,11 @@
 						<br>
 						<br>
 						<div class="button-login" align="center">
-							<a id="kakao-login-btn"> <img
-								src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
+							<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=808d349080855e826b4c4cb8c77a836d&redirect_uri=http://localhost:8080/myweb/kakaoLogin.do&response_type=code">
+							<img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
 								width="83%" height="50px" onclick="kakaoLogin();" />
 							</a>
+							<button onclick="kakaoLogout()">로그아웃</button>
 						</div>
 					</form>
 				</div>

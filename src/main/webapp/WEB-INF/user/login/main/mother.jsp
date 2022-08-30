@@ -26,6 +26,7 @@
 		<jsp:include page="/login/slider/slider.jsp"></jsp:include>
 	</article>
 	<article class="container_12">
+	${kakaoUser.email }
 	<div align="left" style="margin-bottom:40px;">
 		<c:choose>
 			<c:when test="${param.product ne null}">

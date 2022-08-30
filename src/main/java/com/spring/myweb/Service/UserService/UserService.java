@@ -11,5 +11,5 @@ public interface UserService {
 	public int insertUser(UserVO vo);
 	public String getAccessToken(String authroize_code);
 	public HashMap<String, Object> getUserInfo(String access_Token);
+	public void kakaoLogout(String access_Token);
 }
-

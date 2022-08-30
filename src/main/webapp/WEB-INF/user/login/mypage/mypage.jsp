@@ -70,7 +70,16 @@ function verifyLoc() {
 			<div id="profile">
 				<div id="profile_pic"></div>
 				<div id="nickname_and_button">
-					<div id="nickName">${user.name }</div>
+					<div id="nickName">
+					<c:choose>
+						<c:when test="${user.nickname ne null }">
+							${user.nickname }
+						</c:when>
+						<c:otherwise>
+							${kakaoUser.nickname }
+						</c:otherwise>
+					</c:choose>
+					</div>
 					<div id="function">	
 						<button type="button" id="sell" onclick=move()></button>
 						<button type="button" id="buy" onclick=move()></button>

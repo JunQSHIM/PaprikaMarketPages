@@ -47,7 +47,6 @@ public class UserController {
 	}
 	@RequestMapping(value="/loginProc.do", method=RequestMethod.GET)
 	public String loginUser(Model model,String id, ServletRequest request) {
-		System.out.println(request.getParameter("kakaoemail"));
 		System.out.println("User login service");
 		UserVO vo = userService.select(id);
 		model.addAttribute("user",vo);
@@ -55,21 +54,12 @@ public class UserController {
 	}
 	// 카카오 로그인창 호출
 	@RequestMapping(value="/kakaoLogin.do", method=RequestMethod.GET)
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code,Model model) throws Exception {
-		System.out.println("#########" + code);
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest req) throws Exception {
 		String access_Token = userService.getAccessToken(code);
-		System.out.println("###access_Token#### : " + access_Token);
 		HashMap<String, Object> userInfo = userService.getUserInfo(access_Token);
-		System.out.println("###access_Token#### : " + access_Token);
-		System.out.println("###nickname#### : " + userInfo.get("nickname"));
-		System.out.println("###email#### : " + userInfo.get("email"));
-		model.addAttribute("kakaoUser",userInfo);
+        HttpSession session = req.getSession();
+		session.setAttribute("kakaoUser",userInfo);
 		return "login/main/mother";
-		/*
-		 * 리턴값의 testPage는 아무 페이지로 대체해도 괜찮습니다.
-		 * 없는 페이지를 넣어도 무방합니다.
-		 * 404가 떠도 제일 중요한건 #########인증코드 가 잘 출력이 되는지가 중요하므로 너무 신경 안쓰셔도 됩니다.
-		 */
     	}
 	@RequestMapping(value="/mypage.do")
 	public String mypage() {
@@ -87,4 +77,12 @@ public class UserController {
         session.invalidate();
         return mv;
 	}
+	@RequestMapping(value = "/kakaoLogout.do")
+	public String logout(HttpSession session) {
+	    userService.kakaoLogout((String)session.getAttribute("access_Token"));
+	    session.removeAttribute("access_Token");
+	    session.removeAttribute("userInfo");
+	    return "login/main/mother";
+	}
+
 }

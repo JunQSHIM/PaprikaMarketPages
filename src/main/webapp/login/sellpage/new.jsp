@@ -154,120 +154,102 @@
     </script>
 </head>
 <body>
-	<div class="grid_12 newinfo">
-		<div class="newinfo_1">
-			<div class="grid_2 newinfo_1_1">기본정보</div>
-			<div class="grid_2 newinfo_1_2">*필수항목</div>
-		</div>
-		<div class="grid_12 proimg">
-			<div class="grid_2 explain">
-				상품이미지 <span>*</span>
+	<form action="product&purchase/product_detail.jsp" name="new" id="new">
+		<div class="grid_12 newinfo">
+			<div class="newinfo_1">
+				<div class="grid_2 newinfo_1_1">기본정보</div>
+				<div class="grid_2 newinfo_1_2">*필수항목</div>
 			</div>
-			<div class="grid_10 newdata">
-				<div class="grid_10 pics">
-					<div class="grid_2 regpic">
-						<div class="file_0">
-							<div class="file_1">
+			<div class="grid_12 proimg">
+				<div class="grid_2 explain">
+					상품이미지 <span>*</span>
+				</div>
+				<div class="grid_10 newdata">
+					<div class="grid_10 pics">
+						<div class="grid_2 regpic">
+							<div class="file_0">
+								<div class="file_1">
 
-								<input type="file" name="upload" multiple="multiple"
-									class="form-control user_picked_files" />
+									<input type="file" name="upload" multiple="multiple"
+										class="form-control user_picked_files" />
+
+								</div>
 
 							</div>
+						</div>
+						<div class="file_2">
+							<img src="images/regpic.png" alt="이미지등록" onclick="#">
 
 						</div>
-					</div>
-					<div class="file_2">
-						<img src="images/regpic.png" alt="이미지등록" onclick="#">
+						<ul class="cvf_uploaded_files"></ul>
 
 					</div>
-					<ul class="cvf_uploaded_files"></ul>
-
-				</div>
-				<div class="clear grid_9 warn">
-					* 상품 이미지는 640x640에 최적화 되어 있습니다. <br> - 상품 이미지는 PC에서는 1:1,
-					모바일에서는 1:1.23 비율로 보여집니다. <br>- 이미지는 상품 등록 시 정사각형으로 잘려서 등록됩니다.
-					<br>- 이미지를 클릭할 경우 원본 이미지를 확인할 수 있습니다. <br>- 이미지를 클릭 후
-					이동하여 등록순서를 변경할 수 있습니다. <br>- 큰 이미지일 경우 이미지가 깨지는 경우가 발생할 수
-					있습니다. <br>최대 지원 사이즈인 640 X 640으로 리사이즈 해서 올려주세요.(개당 이미지 최대 10M)
-				</div>
-			</div>
-
-		</div>
-		<div class="grid_12 title">
-			<div class="grid_2 explain">
-				제목 <span>*</span>
-			</div>
-			<div class="grid_10 newdata">
-				<div class="titlebox">
-					<input type="text" name="title" placeholder="상품 제목을 입력해주세요.">
-					<a href="#">거래금지 품목</a>
+					<div class="clear grid_9 warn">
+						* 상품 이미지는 640x640에 최적화 되어 있습니다. <br> - 상품 이미지는 PC에서는 1:1,
+						모바일에서는 1:1.23 비율로 보여집니다. <br>- 이미지는 상품 등록 시 정사각형으로 잘려서 등록됩니다.
+						<br>- 이미지를 클릭할 경우 원본 이미지를 확인할 수 있습니다. <br>- 이미지를 클릭 후
+						이동하여 등록순서를 변경할 수 있습니다. <br>- 큰 이미지일 경우 이미지가 깨지는 경우가 발생할 수
+						있습니다. <br>최대 지원 사이즈인 640 X 640으로 리사이즈 해서 올려주세요.(개당 이미지 최대
+						10M)
+					</div>
 				</div>
 
 			</div>
-		</div>
-		<div class="grid_12 categ">
+			<div class="grid_12 title">
+				<div class="grid_2 explain">
+					제목 <span>*</span>
+				</div>
+				<div class="grid_10 newdata">
+					<div class="titlebox">
+						<input type="text" name="title" placeholder="상품 제목을 입력해주세요.">
+						<a href="#">거래금지 품목</a>
+					</div>
 
-			<div class="grid_2 explain">
-				카테고리 <span>*</span>
+				</div>
 			</div>
-			<div class="grid_10 newdata">
-				<select id="cate">
+			<div class="grid_12 categ">
 
-					<option value="digital">디지털/가전</option>
-					<option value="interior">가구/인테리어</option>
-					<option value="kids">유아동/유아도서</option>
-					<option value="food">생활/가공식품</option>
-					<option value="sports">스포츠/레저</option>
-					<option value="fe_acc">여성잡화</option>
-					<option value="fe_dress">여성의류</option>
-					<option value="ma_dress">남성패션/잡화</option>
-					<option value="hobby">게임/취미</option>
-					<option value="beauty">뷰티/미용</option>
-					<option value="pet">반려동물용품</option>
-					<option value="books">도서/티켓/음반</option>
-					<option value="etc">기타 중고물품</option>
-					<option value="sayo">삽니다</option>
+				<div class="grid_2 explain">
+					카테고리 <span>*</span>
+				</div>
+				<div class="grid_10 newdata">
+					<select id="cate">
 
-				</select>
+						<option value="digital">디지털/가전</option>
+						<option value="interior">가구/인테리어</option>
+						<option value="kids">유아동/유아도서</option>
+						<option value="food">생활/가공식품</option>
+						<option value="sports">스포츠/레저</option>
+						<option value="fe_acc">여성잡화</option>
+						<option value="fe_dress">여성의류</option>
+						<option value="ma_dress">남성패션/잡화</option>
+						<option value="hobby">게임/취미</option>
+						<option value="beauty">뷰티/미용</option>
+						<option value="pet">반려동물용품</option>
+						<option value="books">도서/티켓/음반</option>
+						<option value="etc">기타 중고물품</option>
+						<option value="sayo">삽니다</option>
+
+					</select>
 
 
 
+				</div>
 			</div>
-		</div>
-		<div class="grid_12 location">
-			<div class="grid_2 explain">
-				거래지역 <span>*</span>
+			<div class="grid_12 location">
+				<div class="grid_2 explain">
+					거래지역 <span>*</span>
+				</div>
+				<div class="grid_10 newdata">
+					<button type="button" onclick="#">내위치</button>
+					<button type="button" onclick="#">최근 지역</button>
+					<button type="button" onclick="#">주소 검색</button>
+					<button type="button" onclick="#">지역설정안함</button>
+					<input readonly value=" &nbsp;지역설정안함">
+				</div>
 			</div>
-			<div class="grid_10 newdata">
-				<button type="button" onclick="#">내위치</button>
-				<button type="button" onclick="#">최근 지역</button>
-				<button type="button" onclick="#">주소 검색</button>
-				<button type="button" onclick="#">지역설정안함</button>
-				<input readonly value=" &nbsp;지역설정안함">
-			</div>
-		</div>
-		<div class="grid_12 new_state">
-			<div class="grid_2 explain">
-				상태<span>*</span>
 
-			</div>
-			<div class="grid_10 newdata">
-				<label><input name="schd" id="중고상품" type="radio" value="0"
-					checked> 중고상품 </label> <label> <input name="schd" id="새상품"
-					type="radio" value="0"> 새상품
-				</label>
-			</div>
-		</div>
-		<div class="grid_12 refund">
-			<div class="grid_2 explain">
-				교환 <span>*</span>
-			</div>
-			<div class="grid_10 newdata">
-				<label><input name="refund" id="교환불가" type="radio" value="0"
-					checked> 교환불가 </label> <label> <input name="refund"
-					id="교환가능" type="radio" value="0"> 교환가능
-				</label>
-			</div>
+
 		</div>
 		<div class="grid_12 new_price">
 			<div class="grid_2 explain">
@@ -277,11 +259,6 @@
 				<div class="pri">
 					<input type="text" placeholder=" 숫자만 입력해주세요."> 원
 				</div>
-				<p>
-					<label> <input type="checkbox" name="shipfee"> 배송비
-						포함
-					</label>
-				</p>
 			</div>
 		</div>
 		<div class="grid_12 feat">
@@ -290,20 +267,20 @@
 			</div>
 			<div class="grid_10 newdata">
 				<div class="textbox">
-					<form action="" name="gForm">
-						<textarea class="text_area" rows="6"
-							placeholder="여러 장의 상품 사진과 구입 연도, 브랜드, 사용감, 하자 유무 등 구매자에게 필요한 정보를 꼭 포함해 주세요. (10자 이상)&#13;안전하고 건전한 거래 환경을 위해 과학기술정보통신부, 한국인터넷진흥원과 번개장터(주)가 함께 합니다."
-							name="feat" onkeyup="chkMsgLength(1000,feat,currentMsgLen);"></textarea>
-						<br>
-						<div class="hoxy">
-							혹시 <a href="https://help.bunjang.co.kr/notice/607"
-								target="_blank">카카오톡 ID</a> 를 적으셨나요?
-						</div>
-						<div class="counter">
-							<span id="currentMsgLen" style="padding-left: 60;">0</span>/1000자
-						</div>
 
-					</form>
+					<textarea class="text_area" rows="6"
+						placeholder="여러 장의 상품 사진과 구입 연도, 브랜드, 사용감, 하자 유무 등 구매자에게 필요한 정보를 꼭 포함해 주세요. (10자 이상)&#13;안전하고 건전한 거래 환경을 위해 과학기술정보통신부, 한국인터넷진흥원과 번개장터(주)가 함께 합니다."
+						name="feat" onkeyup="chkMsgLength(1000,feat,currentMsgLen);"></textarea>
+					<br>
+					<div class="hoxy">
+						혹시 <a href="https://help.bunjang.co.kr/notice/607" target="_blank">카카오톡
+							ID</a> 를 적으셨나요?
+					</div>
+					<div class="counter">
+						<span id="currentMsgLen" style="padding-left: 60;">0</span>/1000자
+					</div>
+
+
 				</div>
 
 
@@ -360,13 +337,17 @@
 			<div>* 번개페이 배지와 전용 필터 기능은 앱 또는 모바일 웹에서만 볼 수 있어요.</div>
 		</div>
 
-	</div>
+
+		<div class="row container_12">
+			<div class="grid_12 form-group">
+				
+				
+				<button class="new_btn">상품 등록</button>
+			</div>
+		</div>
 
 
-
-
-
-
+	</form>
 
 </body>
 </html>

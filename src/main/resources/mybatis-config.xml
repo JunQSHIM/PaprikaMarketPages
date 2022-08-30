@@ -6,7 +6,12 @@
 	<typeAliases>
 		<!-- <typeAlias alias="myboard" type="tommy.spring.web.board.BoardVO" /> -->
 		<typeAlias alias="UserVO" type="com.spring.myweb.VO.UserVO.UserVO" />
+		<typeAlias alias="SellBoardVO" type="com.spring.myweb.VO.SellboardVO.SellBoardVO" />
 	</typeAliases>
+	
+
+		
+	
 	<mappers>
 		<!-- <mapper resource="mappings/board-mapping.xml" /> -->
 	</mappers>

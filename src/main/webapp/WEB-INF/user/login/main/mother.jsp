@@ -56,7 +56,7 @@
 			</c:when>
 		</c:choose>
 	</div>	
-	<%@include file="/login/main/prods.jsp"%>
+	<%@include file="prods.jsp"%>
 	</article>
 	<footer class="container_12">
 		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>

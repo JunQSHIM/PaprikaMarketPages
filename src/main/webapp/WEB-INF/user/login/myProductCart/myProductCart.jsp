@@ -4,7 +4,6 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/myweb/login/myProductCart/myProductCart.css">
-<script type="text/javascript" src="/myweb/login/myProductCart/myProductCart.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -153,7 +152,7 @@
 				</div>
 			</div>
 			</div>
-			
  			</div>
+ <script type="text/javascript" src="/myweb/login/myProductCart/myProductCart.js"></script>
 </body>
 </html>

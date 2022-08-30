@@ -11,5 +11,7 @@
 		insert into user(id,name,password,birth,nickname,email,phone,msg_agree)
 		values(#{id},#{name},#{password},'1997-03-07',#{nickname},#{email},#{phone},#{msg_agree});
 	</select>
-	
+	<select id="boardList" resultType="SellBoardVO">
+		select * from product;
+	</select>
 </mapper>

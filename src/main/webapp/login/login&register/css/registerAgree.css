@@ -7,10 +7,6 @@ html, body {
 	font-family: 'Numans', sans-serif;
 }
 
-
-div{
-
-}
 .container {
 	margin-top: 25px;
 	height: 60%;
@@ -170,9 +166,9 @@ select {
 	border-bottom-left-radius: 5px;
 	width: 85px;
 	cursor: pointer;
-}a
-
-.btn_confirm input:hover {
-	color: #fff;
-	background-color: orange;
+    border: 1px solid transparent;
+}
+input:hover {
+		color: black;
+	background-color: #FFE900;
 }

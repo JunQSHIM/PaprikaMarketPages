@@ -4,13 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
-<script src="/myweb/login/main/main.js"></script>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <link rel="stylesheet" type="text/css"
 	href="/myweb/login/board/board_content.css">
 <meta charset="UTF-8">
@@ -21,39 +14,6 @@ request.setCharacterEncoding("UTF-8");
 String id = request.getParameter("id");
 String p = request.getParameter("product");
 %>
-<script>
-	function ctProduct() {
-		theForm.submit();
-	}
-	$(document).ready(function() {
-		$("#showCategory").mouseenter(function() {
-			$("#result1").show();
-		});
-		$("#category").mouseleave(function() {
-			$("#result1").hide();
-		});
-
-		$("#top").click(function() {
-			//$('html, body').animate({scrollTop:0}, '1000');
-			$('html, body').scrollTop(0);
-		});
-
-	});
-	function login() {
-		window.location.href = '/myweb/login/login&register/login.jsp';
-	}
-	function register() {
-		window.location.href = '/myweb/login/login&register/registerAgree.jsp';
-	}
-	function main() {
-		window.location.href = '/myweb/login/main/mother.jsp';
-	}
-	function mypage() {
-		window.location.href = '/myweb/login/mypage/mypage.jsp';
-	}
-	
-	
-</script>
 </head>
 <body>
 	<header>

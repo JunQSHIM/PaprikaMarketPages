@@ -88,8 +88,7 @@
 				</div>
 			</div>
 			<div id="tab-3" class="tab-content">
-				<textarea rows="40" cols="40">
-				</textarea>
+				<textarea rows="40" cols="40"></textarea>
 			</div>
 		</div>
 		<input type="submit" value="구매확인" id="confirm">

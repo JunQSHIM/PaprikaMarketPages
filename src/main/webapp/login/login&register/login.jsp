@@ -7,8 +7,6 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<<<<<<< HEAD
-=======
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
@@ -87,7 +85,6 @@
 	});
 </script>
 <title>login</title>
->>>>>>> JunQ
 <!--Bootsrap 4 CDN-->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"

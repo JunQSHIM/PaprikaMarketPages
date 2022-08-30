@@ -8,7 +8,7 @@
 	rel="stylesheet" id="bootstrap-css">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/reources/js/jquery-3.6.0.min.js"></script>
+<script src="login/js/jquery-3.6.0.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- 	<li onclick="kakaoLogout();">
       <a href="javascript:void(0)">
@@ -41,27 +41,12 @@ function kakaoLogin() {
       },
     })
   }
-//카카오로그아웃  
-function kakaoLogout() {
-    if (Kakao.Auth.getAccessToken()) {
-      Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-        	console.log(response)
-        },
-        fail: function (error) {
-          console.log(error)
-        },
-      })
-      Kakao.Auth.setAccessToken(undefined)
-    }
-  }  
-	function setOutline(objFormElement, color) {
-		if (objFormElement.style)
-			objFormElement.style.outline = color;
-	}
+function setOutline(objFormElement, color) {
+	if (objFormElement.style)
+		objFormElement.style.outline = color;
+}
 	//아이디 비밀번호
-	$(document).ready(function() {
+$(document).ready(function() {
 		var theForm = document.login;
 		$("#loginButton").click(function() {
 			if (!theForm.id.value) {
@@ -148,7 +133,6 @@ function kakaoLogout() {
 							<img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
 								width="83%" height="50px" onclick="kakaoLogin();" />
 							</a>
-							<button onclick="kakaoLogout()">로그아웃</button>
 						</div>
 					</form>
 				</div>

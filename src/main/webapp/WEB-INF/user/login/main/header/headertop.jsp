@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/header/css/headertop.css">
-
 <div class="header_wrap">
 	<div class="favorite_part">
 			<span onclick="alert('Ctrl+D 키를 누르면 즐겨찾기에 추가하실 수 있습니다.')"
@@ -14,6 +13,11 @@
 		<div class="button_wrap">
 			<c:choose>
 				<c:when test="${user.id ne null }">
+					<a class="alarm_message">알림</a>
+					<button type="button" onclick="location.href='logout.do'">로그아웃</button>
+					<button type="button" onclick="location.href='mypage.do'">마이페이지</button>
+				</c:when>
+				<c:when test="${kakaoUser.email ne null }">
 					<a class="alarm_message">알림</a>
 					<button type="button" onclick="location.href='logout.do'">로그아웃</button>
 					<button type="button" onclick="location.href='mypage.do'">마이페이지</button>

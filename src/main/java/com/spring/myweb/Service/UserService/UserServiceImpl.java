@@ -18,6 +18,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.spring.myweb.DAO.UserDAO.UserDAO;
+import com.spring.myweb.VO.KakaoVO.KakaoVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Service
@@ -101,49 +102,6 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public HashMap<String, Object> getUserInfo(String access_Token) {
-		HashMap<String, Object> userInfo = new HashMap<String, Object>();
-		String reqURL = "https://kapi.kakao.com/v2/user/me";
-		try {
-			URL url = new URL(reqURL);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-
-			// 요청에 필요한 Header에 포함될 내용
-			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
-
-			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
-
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-			String line = "";
-			String result = "";
-
-			while ((line = br.readLine()) != null) {
-				result += line;
-			}
-			System.out.println("response body : " + result);
-
-			JsonParser parser = new JsonParser();
-			JsonElement element = parser.parse(result);
-
-			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-
-			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-			String email = kakao_account.getAsJsonObject().get("email").getAsString();
-
-			userInfo.put("nickname", nickname);
-			userInfo.put("email", email);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return userInfo;
-	}
-
-	@Override
 	public void kakaoLogout(String access_Token) {
 	    String reqURL = "https://kapi.kakao.com/v1/user/logout";
 	    try {
@@ -167,6 +125,90 @@ public class UserServiceImpl implements UserService{
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
+	}
+	
+	@Override
+	public void unlink(String access_Token) {
+	    String reqURL = "https://kapi.kakao.com/v1/user/unlink";
+	    try {
+	        URL url = new URL(reqURL);
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	        conn.setRequestMethod("POST");
+	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+	        
+	        int responseCode = conn.getResponseCode();
+	        System.out.println("responseCode : " + responseCode);
+	        
+	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        
+	        String result = "";
+	        String line = "";
+	        
+	        while ((line = br.readLine()) != null) {
+	            result += line;
+	        }
+	        System.out.println(result);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+	@Override
+	public void kakaoinsert(HashMap<String, Object> userInfo) {
+		userDAO.kakaoinsert(userInfo);
+	}
+
+	@Override
+	public UserVO getUserInfo(String access_Token) {
+		HashMap<String, Object> userInfo = new HashMap<String, Object>();
+		String reqURL = "https://kapi.kakao.com/v2/user/me";
+		try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode : " + responseCode);
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String line = "";
+			String result = "";
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+			System.out.println("response body : " + result);
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(result);
+			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+			String email = kakao_account.getAsJsonObject().get("email").getAsString();
+			userInfo.put("nickname", nickname);
+			userInfo.put("email", email);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// catch 아래 코드 추가.
+		UserVO result = userDAO.findkakao(userInfo);
+		// 위 코드는 먼저 정보가 저장되있는지 확인하는 코드.
+		System.out.println("S:" + result);
+		if(result==null) {
+		// result가 null이면 정보가 저장이 안되있는거므로 정보를 저장.
+			userDAO.kakaoinsert(userInfo);
+			// 위 코드가 정보를 저장하기 위해 Repository로 보내는 코드임.
+			return userDAO.findkakao(userInfo);
+			// 위 코드는 정보 저장 후 컨트롤러에 정보를 보내는 코드임.
+			//  result를 리턴으로 보내면 null이 리턴되므로 위 코드를 사용.
+		} else {
+			return result;
+			// 정보가 이미 있기 때문에 result를 리턴함.
+		}
+        
+	}
+
+	@Override
+	public UserVO findkakao(HashMap<String, Object> userInfo) {
+		return userDAO.findkakao(userInfo);
 	}
 
 }

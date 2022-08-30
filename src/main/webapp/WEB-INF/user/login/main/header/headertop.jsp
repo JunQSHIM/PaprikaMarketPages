@@ -19,7 +19,7 @@
 				</c:when>
 				<c:when test="${kakaoUser.email ne null }">
 					<a class="alarm_message">알림</a>
-					<button type="button" onclick="location.href='logout.do'">로그아웃</button>
+					<button type="button" onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=808d349080855e826b4c4cb8c77a836d&logout_redirect_uri=http://localhost:8080/myweb/kakaoLogout.do'">로그아웃</button>
 					<button type="button" onclick="location.href='mypage.do'">마이페이지</button>
 				</c:when>
 				<c:otherwise> 

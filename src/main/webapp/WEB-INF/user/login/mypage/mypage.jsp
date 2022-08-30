@@ -12,16 +12,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>
 function move()  {
-	 window.location.href ='/myweb/login/main/mother.jsp';
+	 window.location.href ='main.do';
 }
 function login()  {
-	 window.location.href ='/myweb/login/login&register/login.jsp';
+	 window.location.href ='login.do';
 }	
 function register()  {
-	 window.location.href ='/myweb/login/login&register/register.jsp';
+	 window.location.href ='register.do';
 }
 function mypage(){
-	window.location.href = '/myweb/login/mypage/mypage.jsp';
+	window.location.href = 'mypage.do';
 }
 $(function(){
 	$("#innerTempBar").css({
@@ -55,7 +55,7 @@ function verifyLoc() {
 </head>
 <body>
 <header>
-		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/header/header.jsp"></jsp:include>
 	</header>
 	
 	<article class="container_12">

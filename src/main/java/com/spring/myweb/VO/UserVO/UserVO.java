@@ -23,4 +23,5 @@ public class UserVO {
 	private int join_type;
 	private int msg_agree;
 	private int user_type;
+	private String profile_image;
 }

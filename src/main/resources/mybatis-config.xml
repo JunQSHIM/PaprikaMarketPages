@@ -6,6 +6,7 @@
 	<typeAliases>
 		<!-- <typeAlias alias="myboard" type="tommy.spring.web.board.BoardVO" /> -->
 		<typeAlias alias="UserVO" type="com.spring.myweb.VO.UserVO.UserVO" />
+		<typeAlias alias="KakaoVO" type="com.spring.myweb.VO.KakaoVO.KakaoVO" />
 	</typeAliases>
 	<mappers>
 		<!-- <mapper resource="mappings/board-mapping.xml" /> -->

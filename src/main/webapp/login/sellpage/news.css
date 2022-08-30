@@ -109,6 +109,8 @@ div {
 
 .titlebox input {
 	width: 500px;
+	border:none;
+	outline: none;
 }
 
 .titlebox a {

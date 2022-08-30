@@ -4,14 +4,22 @@
 	<select id="selectUserAll" resultType="UserVO">
 		select * from user;
 	</select>
-	<select id="selectUser" parameterType="string" resultType="UserVO">
+	<select id="selectUser" parameterType="string"
+		resultType="UserVO">
 		select * from user where id=#{value}
 	</select>
 	<select id="insertUser">
-		insert into user(id,name,password,birth,nickname,email,phone,msg_agree)
+		insert into
+		user(id,name,password,birth,nickname,email,phone,msg_agree)
 		values(#{id},#{name},#{password},'1997-03-07',#{nickname},#{email},#{phone},#{msg_agree});
 	</select>
 	<select id="boardList" resultType="SellBoardVO">
 		select * from product;
+	</select>
+	<select id="insertSell" resultType="SellBoardVO">
+		insert into product(nickname,
+		location, prod_title, prod_content, price, category, upload_date,
+		count, status) values('테스트닉네임3',
+		'부산',#{prod_title},#{prod_content},${price},'뷰티/미용',now(), 1,1);
 	</select>
 </mapper>

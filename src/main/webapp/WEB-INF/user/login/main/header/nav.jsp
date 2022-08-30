@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <!-- <script src="/myweb/login/main/header/js/nav.js"></script> -->
@@ -35,7 +36,8 @@
 			<div class="row grid_4 bts">
 
 				<div class="nav_btn">
-					<a class="sell_btn" href="/myweb/login/sell.jsp">
+				<!--  	<a class="sell_btn" href="/myweb/login/sell.jsp">-->
+					<a class="mystore" href="/myweb/login/sell.jsp">
 						<div class="btn_img">
 							<img src="/myweb/login/images/sell_list.png" width="23" height="24">
 						</div>

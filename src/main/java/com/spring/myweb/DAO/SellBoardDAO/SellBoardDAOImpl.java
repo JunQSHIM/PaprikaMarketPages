@@ -21,4 +21,11 @@ public class SellBoardDAOImpl implements SellBoardDAO {
 		return sellList;
 	}
 
+	@Override
+	public int insertSell(SellBoardVO vo) {
+		int success = 0;
+		session.insert("userDB.insertSell", vo);
+		return success;
+	}
+
 }

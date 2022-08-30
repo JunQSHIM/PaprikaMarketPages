@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.myweb.Service.KakaoService.KakaoService;
 import com.spring.myweb.Service.UserService.UserService;
+import com.spring.myweb.VO.KakaoVO.KakaoVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Controller
@@ -24,6 +26,9 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	KakaoService kakaoService;
 
 	@RequestMapping(value = "/insertProc.do", method=RequestMethod.GET)
 	public String insertUser(Model model,UserVO vo) {
@@ -56,11 +61,12 @@ public class UserController {
 	@RequestMapping(value="/kakaoLogin.do", method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest req) throws Exception {
 		String access_Token = userService.getAccessToken(code);
-		HashMap<String, Object> userInfo = userService.getUserInfo(access_Token);
+		UserVO userInfo = userService.getUserInfo(access_Token);
         HttpSession session = req.getSession();
 		session.setAttribute("kakaoUser",userInfo);
 		return "login/main/mother";
-    	}
+    }
+	
 	@RequestMapping(value="/mypage.do")
 	public String mypage() {
 		return "login/mypage/mypage";
@@ -72,7 +78,7 @@ public class UserController {
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public ModelAndView logout(Model model, HttpServletRequest req) throws Exception{
 		model.addAttribute("user",null);
-		ModelAndView mv = new ModelAndView("redirect:/main.do");
+		ModelAndView mv = new ModelAndView("login/main/mother");
         HttpSession session = req.getSession();
         session.invalidate();
         return mv;
@@ -81,8 +87,13 @@ public class UserController {
 	public String logout(HttpSession session) {
 	    userService.kakaoLogout((String)session.getAttribute("access_Token"));
 	    session.removeAttribute("access_Token");
-	    session.removeAttribute("userInfo");
+	    session.removeAttribute("kakaoUser");
 	    return "login/main/mother";
 	}
-
+	@RequestMapping(value="/kakaounlink.do")
+	public String unlink(HttpSession session) {
+		userService.unlink((String)session.getAttribute("access_token"));
+		session.invalidate();
+		return "redirect:main.do";
+	}
 }

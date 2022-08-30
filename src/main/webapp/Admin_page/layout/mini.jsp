@@ -9,6 +9,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
+              <li>      제목 : <input type="text" id="new_card_title">
+	          	<button id="create_btn">카드 생성</button></li>
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Dashboard v1</li>
             </ol>
@@ -83,3 +85,61 @@
 	<!-- ./col -->
 </div>
 <!-- /.row -->
+
+<body class="hold-transition sidebar-mini">
+
+	<div class="wrapper">
+		<!-- Main content -->
+		<section class="content">
+		
+			<div class="container-fluid">
+				<div class="row">
+					<section class="col-lg-7 connectedSortable">
+
+
+
+					</section>
+					<!-- /.col (LEFT) -->
+
+
+					<section class="col-lg-5 connectedSortable" id="cre_page">
+
+					</section>
+					<!-- /.col (RIGHT) -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</section>
+		<!-- /.content -->
+	</div>
+<script>
+$("#create_btn").on("click", function() {
+	var new_title = $('#new_card_title').val();
+	var card_layout1 =`
+		<div class="card card-info">
+			<div class="card-header">
+				<h3 class="card-title">`
+	var card_layout2= `
+				</h3>
+				<div class="card-tools">
+				<button type="button" class="btn btn-tool" id="cre_chart">
+					생성
+				</button>
+				<button type="button" class="btn btn-tool" data-card-widget="collapse">
+					<i class="fas fa-minus"></i>	
+				</button>
+				<button type="button" class="btn btn-tool"
+					data-card-widget="remove">
+					<i class="fas fa-times"></i>
+				</button>
+				</div>
+			</div>
+			<div class="card-body">
+				<div id="place"></div>
+			</div>
+		</div>`
+		console.log(new_title);
+		$("#cre_page").append(card_layout1 + new_title + card_layout2);
+});
+</script>

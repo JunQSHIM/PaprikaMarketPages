@@ -3,7 +3,6 @@ package com.spring.myweb.DAO.UserDAO;
 import java.util.HashMap;
 import java.util.List;
 
-import com.spring.myweb.VO.KakaoVO.KakaoVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 public interface UserDAO {

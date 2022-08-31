@@ -195,7 +195,7 @@ jQuery(document).ready(function() {
        
     });        
 });
-
+ 
 // 폼 유효성 검사
 function Checkform() {
 

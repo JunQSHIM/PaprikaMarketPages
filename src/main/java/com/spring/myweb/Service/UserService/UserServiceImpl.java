@@ -175,6 +175,11 @@ public class UserServiceImpl implements UserService{
 				result += line;
 			}
 			System.out.println("response body : " + result);
+			String img_url="";
+			int start = result.indexOf("profile_image")+16;
+			int end = result.indexOf("thumbnail_image")-3;
+			img_url = result.substring(start,end);
+			System.out.println(img_url);
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
@@ -183,6 +188,8 @@ public class UserServiceImpl implements UserService{
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
+			userInfo.put("profile_image", img_url);
+			System.out.println(userInfo.get("profile_image"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -199,6 +206,9 @@ public class UserServiceImpl implements UserService{
 			// 위 코드는 정보 저장 후 컨트롤러에 정보를 보내는 코드임.
 			//  result를 리턴으로 보내면 null이 리턴되므로 위 코드를 사용.
 		} else {
+			if(result.getProfile_image() != userInfo.get("profile_image")) {
+				result.setProfile_image((String)userInfo.get("profile_image"));
+			}
 			return result;
 			// 정보가 이미 있기 때문에 result를 리턴함.
 		}

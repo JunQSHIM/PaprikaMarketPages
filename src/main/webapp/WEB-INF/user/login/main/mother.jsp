@@ -39,6 +39,7 @@
 		<jsp:include page="/login/slider/slider.jsp"></jsp:include>
 	</article>
 	<article class="container_12">
+	${userInfo.profile_image }
 	<button class="api-btn" onclick="unlinkApp()">앱 탈퇴하기</button>
 	
 	<div align="left" style="margin-bottom:40px;">

@@ -1,7 +1,5 @@
 package com.spring.myweb.User.controller;
 
-import java.util.HashMap;
-
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -59,6 +57,8 @@ public class UserController {
 		UserVO userInfo = userService.getUserInfo(access_Token);
         HttpSession session = req.getSession();
 		session.setAttribute("kakaoUser",userInfo);
+		System.out.println(userInfo.getEmail());
+		System.out.println(userInfo.getProfile_image());
 		return "login/main/mother";
     }
 	

@@ -79,7 +79,6 @@ body,html{
 }
 
 #profile_pic{
-    background-image:url("/myweb/login/images/profile.png");
     background-size: cover;
     height: 200px;
     width: 200px;

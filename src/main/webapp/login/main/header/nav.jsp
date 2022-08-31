@@ -37,7 +37,7 @@
 						
 							검 색 <img src="/myweb/login/images/search.png" width="18px">
 					
-					</button>
+					</button> 
 				</div>
 			</div>
 			<div class="row grid_4 bts">

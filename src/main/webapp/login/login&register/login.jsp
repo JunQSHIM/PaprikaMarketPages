@@ -4,13 +4,16 @@
 <html>
 <head>
 <title>login</title>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
-<<<<<<< HEAD
+
 <!-- 카카오 스크립트 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-=======
+
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- 카카오 스크립트 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -29,18 +32,38 @@
 				theForm.id.focus();
 				return;
 			}
->>>>>>> JunQ
 
+			if (!theForm.password.value) {
+				setOutline(theForm.password, "2px solid red");
+				theForm.password.placeholder = '비밀번호를 입력해주세요';
+				theForm.password.focus();
+				if (theForm.id.value != "") {
+					setOutline(theForm.id, "1px solid black");
+				}
+				return;
+			}
+			theForm.submit();
+		});
+	});
+</script>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/myweb/login/login&register/js/login.js"></script>
+<script type="text/javascript"
+	src="/myweb/login/login&register/js/login.js"></script>
 <title>login</title>
 <!--Bootsrap 4 CDN-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
 <!--Fontawesome CDN-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	crossorigin="anonymous">
 
 <!--Custom styles-->
-<link rel="stylesheet" type="text/css" href="/myweb/login/login&register/styles.css">
+<link rel="stylesheet" type="text/css"
+	href="/myweb/login/login&register/styles.css">
 </head>
 <body>
 	<div align="center" style="margin-top: 70px; margin-bottom: 20px;">
@@ -51,7 +74,6 @@
 	<div>
 		<div class="card">
 			<div class="card-header">
-
 				<h3 align="center">로그인</h3>
 			</div>
 			<div class="card-body">
@@ -60,24 +82,17 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-<<<<<<< HEAD
+
 						<input type="text" class="form-control" placeholder="아이디"
 							name="id">
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
-=======
-						
-						<br>
-						<br>
-						<div class="button-login" align="center">
-							<a id="kakao-login-btn"> <img
-								src="/k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
-								width="83%" height="50px" onclick="kakaoLogin();" />
-							</a>
->>>>>>> JunQ
+
 						</div>
+
+
 						<input type="password" class="form-control" placeholder="비밀번호"
 							name="password" id="password">
 					</div>
@@ -102,6 +117,7 @@
 							width="83%" height="50px" onclick="kakaoLogin();" />
 						</a>
 					</div>
+
 				</form>
 			</div>
 

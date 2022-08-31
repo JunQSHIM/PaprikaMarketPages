@@ -68,7 +68,7 @@ function verifyLoc() {
 				<img src="/myweb/login/images/pkIcon.png"><b>마이페이지</b>
 			</div>
 			<div id="profile">
-				<div id="profile_pic"></div>
+				<div id="profile_pic" style="background-image: url(${kakaoUser.profile_image});"></div>
 				<div id="nickname_and_button">
 					<div id="nickName">
 					<c:choose>

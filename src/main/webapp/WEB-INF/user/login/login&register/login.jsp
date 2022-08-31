@@ -11,13 +11,12 @@
 <script src="login/js/jquery-3.6.0.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
-
-function setOutline(objFormElement, color) {
-	if (objFormElement.style)
-		objFormElement.style.outline = color;
-}
+	function setOutline(objFormElement, color) {
+		if (objFormElement.style)
+			objFormElement.style.outline = color;
+	}
 	//아이디 비밀번호
-$(document).ready(function() {
+	$(document).ready(function() {
 		var theForm = document.login;
 		$("#loginButton").click(function() {
 			if (!theForm.id.value) {
@@ -56,60 +55,59 @@ $(document).ready(function() {
 	href="/myweb/login/login&register/styles.css">
 </head>
 <body>
-	<div align="center" style="margin-top: 70px; margin-bottom:20px;">
+	<div align="center" style="margin-top: 70px; margin-bottom: 20px;">
 		<a href="/myweb/login/main/mother.jsp"> <img
 			src="/myweb/login/images/dklogo.png" width="26%">
 		</a>
 	</div>
-	<div class="container">
-		<div class="d-flex justify-content-center h-100">
-			<div class="card-login">
-				<div align="center"><br>
-					<h3 align="center">로그인</h3>
-				</div>
-				<div class="card-body">
-					<form action="loginProc.do" name="login">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							<input type="text" class="form-control" placeholder="아이디"
-								name="id">
-						</div>
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-							<input type="password" class="form-control" placeholder="비밀번호"
-								name="password" id="password">
-						</div>
-						<div class="row align-items-center remember">
-							<input type="checkbox">ID 기억하기
-						</div>
-						<div class="form-group">
-							<input type="button" id="loginButton" value="로그인"
-								class="btn login_btn">
-						</div>
-						<div class="btn register_btn">
-							<a href="/myweb/login/login&register/registerAgree.jsp">회원가입</a>
-						</div>
-						<div class="btn register_btn">
-							<a href="#">비밀번호 찾기</a>
-						</div>
-						
-						<br>
-						<br>
-						<div class="button-login" align="center">
-							<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=808d349080855e826b4c4cb8c77a836d&redirect_uri=http://localhost:8080/myweb/kakaoLogin.do&response_type=code">
-							<img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
-								width="83%" height="50px" />
-							</a>
-						</div>
-					</form>
-				</div>
-
+	<div>
+		<div class="card">
+			<div class="card-header">
+				<h3 align="center">로그인</h3>
 			</div>
+			<div class="card-body">
+				<form action="loginProc.do" name="login">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="아이디"
+							name="id">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="비밀번호"
+							name="password" id="password">
+					</div>
+					<div class="row align-items-center remember">
+						<input type="checkbox">ID 기억하기
+					</div>
+					<div class="form-group">
+						<input type="button" id="loginButton" value="로그인"
+							class="btn login_btn">
+					</div>
+					<div class="btn register_btn">
+						<a href="/myweb/login/login&register/registerAgree.jsp">회원가입</a>
+					</div>
+					<div class="btn register_btn">
+						<a href="#">비밀번호 찾기</a>
+					</div>
+
+					<br> <br>
+					<div class="button-login" align="center">
+						<a id="kakao-login-btn"> <img
+							src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
+							width="83%" height="50px" onclick="kakaoLogin();" />
+						</a>
+					</div>
+				</form>
+			</div>
+
 		</div>
 	</div>
+
+
 </body>
 </html>

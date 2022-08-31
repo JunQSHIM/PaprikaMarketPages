@@ -1,7 +1,5 @@
 package com.spring.myweb.User.controller;
 
-import java.util.HashMap;
-
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.myweb.Service.KakaoService.KakaoService;
 import com.spring.myweb.Service.UserService.UserService;
-import com.spring.myweb.VO.KakaoVO.KakaoVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Controller
@@ -26,9 +22,6 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
-	
-	@Autowired
-	KakaoService kakaoService;
 
 	@RequestMapping(value = "/insertProc.do", method=RequestMethod.GET)
 	public String insertUser(Model model,UserVO vo) {
@@ -64,6 +57,8 @@ public class UserController {
 		UserVO userInfo = userService.getUserInfo(access_Token);
         HttpSession session = req.getSession();
 		session.setAttribute("kakaoUser",userInfo);
+		System.out.println(userInfo.getEmail());
+		System.out.println(userInfo.getProfile_image());
 		return "login/main/mother";
     }
 	

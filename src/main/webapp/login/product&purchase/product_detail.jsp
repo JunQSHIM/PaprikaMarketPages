@@ -65,8 +65,8 @@ String p = request.getParameter("product");
 	        slideWidth: 130,
 	        slideMargin: 5,
 	        captions:true
-    });
-    });
+   		 });
+	});
 	function login()  {
 		 window.location.href ='/myweb/login/login&register/login.jsp';
 	}	

@@ -28,4 +28,19 @@ public class SellBoardController {
 		model.addAttribute("board",list);
 		return "login/main/prods";
 	}
+	
+	@RequestMapping(value = "/insertSellProc.do", method =RequestMethod.GET)
+	public String insertSell(Model model, SellBoardVO vo){
+		int success = boardService.insertSell(vo);
+		if(success == 1) {
+			model.addAttribute("board",vo);
+		}
+		return "/login/sell";
+	}
+	
+	@RequestMapping(value = "/insertSell.do", method = RequestMethod.GET)
+	public String postInsert(SellBoardVO vo) throws Exception{
+		boardService.insertSell(vo);
+		return "redirect:list.do";
+	}
 }

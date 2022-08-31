@@ -4,15 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
- <link rel="stylesheet" type="text/css" href="adminBoardContent.css">
-
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AdminLTE 3 | DataTables</title>
+	<link rel="stylesheet" type="text/css" href="adminBoardContent.css">
 </head>
 <body class="hold-transition sidebar-mini">
-
- 
   <!-- Content Wrapper. Contains page content -->
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -76,5 +73,8 @@
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    <script>
+    	
+    </script>
 </body>
 </html>

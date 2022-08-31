@@ -163,6 +163,7 @@
 			<div class="grid_2 explain">
 				상품이미지 <span>*</span>
 			</div>
+			
 			<div class="grid_10 newdata">
 				<div class="grid_10 pics">
 					<div class="grid_2 regpic">

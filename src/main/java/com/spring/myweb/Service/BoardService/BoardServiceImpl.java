@@ -20,4 +20,10 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.boardList();
 	}
 
+	@Override
+	public int insertSell(SellBoardVO vo) {
+		return boardDAO.insertSell(vo);
+		
+	}
+
 }

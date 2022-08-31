@@ -18,7 +18,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.spring.myweb.DAO.UserDAO.UserDAO;
-import com.spring.myweb.VO.KakaoVO.KakaoVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Service

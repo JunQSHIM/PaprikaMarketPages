@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.myweb.Service.KakaoService.KakaoService;
 import com.spring.myweb.Service.UserService.UserService;
-import com.spring.myweb.VO.KakaoVO.KakaoVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Controller
@@ -26,9 +24,6 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
-	
-	@Autowired
-	KakaoService kakaoService;
 
 	@RequestMapping(value = "/insertProc.do", method=RequestMethod.GET)
 	public String insertUser(Model model,UserVO vo) {

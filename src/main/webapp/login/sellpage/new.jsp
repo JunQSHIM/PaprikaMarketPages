@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>new</title>
-<link href="/myweb/login/sellpage/news.css" rel="stylesheet"
+<link href="news.css" rel="stylesheet"
 	type="text/css">
 </head>
 <body>

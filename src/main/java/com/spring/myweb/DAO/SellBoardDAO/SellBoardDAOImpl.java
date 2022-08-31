@@ -28,4 +28,16 @@ public class SellBoardDAOImpl implements SellBoardDAO {
 		return success;
 	}
 
+	@Override
+	public SellBoardVO sellDetail(int prod_seq) {
+		SellBoardVO detail = session.selectOne("userDB.sellDetail", prod_seq);
+		return detail;
+	}
+
+	@Override
+	public void sellDelete(int pord_seq) {
+		session.delete("userDB.sellDelete", pord_seq);
+		
+	}
+
 }

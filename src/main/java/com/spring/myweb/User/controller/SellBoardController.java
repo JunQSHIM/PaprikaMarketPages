@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.spring.myweb.DAO.SellBoardDAO.SellBoardDAOImpl;
 import com.spring.myweb.Service.BoardService.BoardService;
 import com.spring.myweb.VO.SellboardVO.SellBoardVO;
 
@@ -20,7 +19,7 @@ public class SellBoardController {
 	
 	@Autowired
 	private BoardService boardService;
-	
+	// 메인 페이지에서 판매 중인 상품 목록 불러오기
 	@RequestMapping(value="/list.do", method = RequestMethod.GET)
 	public String boardList(Model model, SellBoardVO vo) {
 		System.out.println("boardList Service");
@@ -29,18 +28,38 @@ public class SellBoardController {
 		return "login/main/prods";
 	}
 	
-	@RequestMapping(value = "/insertSellProc.do", method =RequestMethod.GET)
+	// 판매하기 등록하기 페이지 이동
+	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
+	public String getCreate() throws Exception {
+		System.out.println("판매하기 접속함");
+		return "login/sell";
+	}
+	
+	// 판매하기 등록 프로세스
+	@RequestMapping(value = "/createProc.do", method =RequestMethod.POST)
 	public String insertSell(Model model, SellBoardVO vo){
+		System.out.println("판매하기 등록함");
 		int success = boardService.insertSell(vo);
 		if(success == 1) {
 			model.addAttribute("board",vo);
 		}
-		return "/login/sell";
+		return "login/product&purchase/product_detail";
 	}
 	
-	@RequestMapping(value = "/insertSell.do", method = RequestMethod.GET)
-	public String postInsert(SellBoardVO vo) throws Exception{
-		boardService.insertSell(vo);
-		return "redirect:list.do";
+	@RequestMapping(value = "/sellDetail.do", method = RequestMethod.GET)
+	public String getDetail(Model model, int prod_seq){
+		System.out.println("상세보기 페이지 이동");
+		SellBoardVO vo = boardService.sellDetail(prod_seq);
+		model.addAttribute("board", vo);
+		return "login/product&purchase/product_detail";
 	}
+	
+	@RequestMapping(value = "sellDelete.do", method = RequestMethod.GET)
+	public String sellDelete(int prod_seq) throws Exception{
+		System.out.println("판매하기 삭제됨.");
+		boardService.sellDelete(prod_seq);
+		return "redirect:main.do";
+	}
+
+
 }

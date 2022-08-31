@@ -199,9 +199,9 @@ jQuery(document).ready(function() {
 // 폼 유효성 검사
 function Checkform() {
 
-    if(sellBoard.title.value == "" ) {
+    if(sellBoard.prod_title.value == "" ) {
         alert("제목을 입력하세요");
-        sellBoard.title.focus();
+        sellBoard.prod_title.focus();
         return false;
     }
     if(sellBoard.price.value == "" ) {
@@ -210,23 +210,25 @@ function Checkform() {
         return false;
     }
     
-    if(sellBoard.feat.value == "" ) {
-    	sellBoard.feat.focus();
+    if(sellBoard.prod_content.value == "" ) {
+    	sellBoard.prod_content.focus();
         alert("내용을 입력하세요");
         return false;
     }
 }
-// 숫자만 입력되게 하기
+// 판매하기 제목 글자 수 제한
 function titleChk(){
 	var obj = document.sellBoard;
-	if(obj.title.value.length < 2 || obj.title.value.length > 40){
-		document.getElementById("titleChk").innerHTML=('<span style="color: red;">제목은 2~40자 사이로 입력하세요.</span>');
+	if(obj.prod_title.value.length < 2 || obj.prod_title.value.length > 40){
+		document.getElementById("titlebox").style.borderColor = "red";
+		document.getElementById("titleChk").innerHTML=('<span style="color: red;">제목은 2자 이상 입력하세요.</span>');
 		return;
 	} else {
+		document.getElementById("titlebox").style.borderColor = "#a7a7a7a7";
 		document.getElementById("titleChk").innerHTML=('<span></span>');
 	}
 }
-
+//숫자만 입력되게 하기
 function chkNum(){
 	if(!((event.keyCode>=48 && event.keyCode<=57)||(event.keyCode >= 96 && event.keyCode <= 105)||event.keyCode==8)){
 		alert("숫자만 입력하세요.")
@@ -236,4 +238,10 @@ function chkNum(){
 
 $("#price").on('input', function(){
 	$(this).val( $(this).val().replace(/[^0-9]/g,"") );
+});
+
+//글자수 실시간 카운팅
+$('#prod_title').keyup(function (e){
+    var content = $(this).val();
+    $('#counter').html(content.length+" / 40"); 
 });

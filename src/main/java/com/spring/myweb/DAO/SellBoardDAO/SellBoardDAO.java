@@ -8,4 +8,6 @@ public interface SellBoardDAO {
 
 	public List<SellBoardVO> boardList(); // 글목록
 	public int insertSell(SellBoardVO vo); // 쓰기
+	public SellBoardVO sellDetail(int prod_seq); // 글 상세보기
+	public void sellDelete(int pord_seq);// 글 삭제
 }

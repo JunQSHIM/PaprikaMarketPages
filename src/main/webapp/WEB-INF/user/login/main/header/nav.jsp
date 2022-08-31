@@ -37,7 +37,7 @@
 
 				<div class="nav_btn">
 				<!--  	<a class="sell_btn" href="/myweb/login/sell.jsp">-->
-					<a class="mystore" href="/myweb/login/sell.jsp">
+					<a class="mystore" href="create.do">
 						<div class="btn_img">
 							<img src="/myweb/login/images/sell_list.png" width="23" height="24">
 						</div>

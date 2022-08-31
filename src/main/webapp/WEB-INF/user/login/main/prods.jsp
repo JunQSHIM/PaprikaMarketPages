@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<link rel="stylesheet" type="text/css" href="/myweb/login/myProductCart/myProductCart.css">
-	
-
-	
-	
 					<div class="productPage">
 		
 			<div class="jjim_list_2">
@@ -21,9 +17,10 @@
 						</div>
 					</div>
 					<div class="sell_product_cart">
-					<c:forEach items="${board }" var="boardList">
+					
+					<c:forEach items="${board }" var="boardList" end="100">
 						<div class="sell_product_board">
-							<a class="sell_board" href="#">
+							<a class="sell_board" href="sellDetail.do?prod_seq=<c:out value='${boardList.prod_seq}'/>">
 								<div class="sell_image">
 									<img src="/myweb/login/images/jjim_icon/anya.jpg" width="194" height="194">
 									<span class="image_span">
@@ -32,10 +29,10 @@
 									<div class="inner_sell_image"></div>
 								</div>
 								<div class="sell_product_detail">
-									<div class="sell_product_title">${boardList.prod_title }</div>
+									<div class="sell_product_title"><c:out value="${boardList.prod_title }"/></div>
 									<div class="sell_product_price">
 										<div class="sell_product_price_1">
-											${boardList.price }
+										<c:out value="${boardList.price }"/>	
 										</div>
 										<div class="sell_product_time">
 											<span>8시간 전</span>
@@ -44,7 +41,8 @@
 								</div>
 								<div class="sell_location">
 									<img src="/myweb/login/images/jjim_icon/location.png" width="15" height="17" alt="위치">
-									${boardList.location }
+									
+									<c:out value="${boardList.location }"/>
 								</div>
 							</a>
 						</div>

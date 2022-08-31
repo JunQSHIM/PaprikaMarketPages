@@ -188,6 +188,7 @@
 					<option value="mother.jsp?product=삽니다">삽니다</option>
 				</select>
 			</div>
+			<form>
 			<div class="container1">
 				<div class="item" id="picture" onclick = "zoom()">
 					<img src="/myweb/login/images/camera.png" id="image">
@@ -195,11 +196,12 @@
 				</div>
 				<div class="container2">
 					<div class="item" id="detail">
-						<div id="title">디지털 카메라<br>100000원<br></div>
+						<div id="title">${board.prod_title }<br>${board.price }<br></div>
 						<hr style="border: 0.3px solid lightgray;">
 					</div>
 					<div class="item">
 					<button>♥36</button> | <button>⊙70</button> | <button>⏲5일전</button> | <button class="openBtn">신고하기</button><br>
+						<a href="sellDelete.do?prod_seq=${board.prod_seq }" role="button">삭제</a>
 						<div id="info">
 							<ul>
 								<li>상품상태</li>
@@ -247,15 +249,7 @@
 					<div class="container2">
 						<div class="item" id="product_info">상품정보<hr style="border:1px solid gray;">
 							<div id="product_desc">
-								소니가 1985년에 발매한 최초의 핸디캠 캠코더입니다.
-								SONY CCD-M8로 구글에 치면 자세한 정보가 나옵니다.
-								80년대 일본을 상징하는 물건이기도 합니다.
-								희소가치가 워크맨 급입니다.
-								워크맨처럼 각이 져있다는점이 특징입니다.
-								오래되었기때문에 소품용, 수집용으로 권장합니다.
-								배터리는 방전되었기에 작동여부를 알수 없습니다.
-								관심있으신분은 문자주세요.<br>
-								제조: 1985, 일본
+								${board.prod_content}
 							</div>
 						</div>
 					</div>
@@ -265,7 +259,7 @@
 								<img src="/myweb/login/images/dklogo.png">
 							</div>
 							<div id="nickname">
-								생각하는 연못
+								${board.nickname}
 							</div>
 							<div id="follow">
 								<button>팔로우</button>
@@ -297,6 +291,7 @@
 			</div>
 			</div>
 		</div>
+		</form>
 		</div>
 		<%@ include file="/login/singo/singo.jsp" %>
 	</article>

@@ -26,4 +26,15 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
+	@Override
+	public SellBoardVO sellDetail(int prod_seq) {
+		return boardDAO.sellDetail(prod_seq);
+	}
+
+	@Override
+	public void sellDelete(int pord_seq) {
+		boardDAO.sellDelete(pord_seq);
+		
+	}
+
 }

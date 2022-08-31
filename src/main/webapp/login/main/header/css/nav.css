@@ -1,8 +1,32 @@
 @charset "UTF-8";
 
-
+div{
+	
+}
 .nav{
 	z-index: 999;
+}
+
+.search button{
+
+	border: 1px solid orange;
+	background-color: rgba(0, 0, 0, 0);
+	color: orange;
+	font: bold;
+	padding: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	width: 70px;
+	height: 33x;
+	margin-top: 10px;
+
+}
+
+.search button:hover{
+	color: white;
+	background-color: #ffbf80;
 }
 .nafix {
 	background: white;
@@ -65,6 +89,7 @@
 	padding: 2px;
 	margin: 3px;
 	outline: none;
+	font-size: 1.2rem;
 }
 
 .search_text a {

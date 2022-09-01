@@ -72,11 +72,12 @@
 			            console.log(result[0].address.address_name);
 			            var location = result[0].address.address_name;
 			            const loc = location.split(" ");
-			            document.getElementById("loc").innerHTML = "<input type='checkbox' name='myAddr' id='myHome' value='"+loc[2]+"'>"+"<label for='myHome' style='cursor:pointer'>"+loc[2]+"</label>";
+			            $("#loc1").append("<label for='myHome'><input type='checkbox' id='myHome' name='location1' value='"+loc[2]+"'/>"+loc[2]+"</label>");
 			        }
 			    }
 			    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 			    document.getElementById("nearLoc").innerHTML = "";
+			    $("#loc1").listView("refresh"); 
 			}
 			
 			function nearAddr(){
@@ -104,7 +105,7 @@
 			            console.log(result);
 			            var location = result[0].address.address_name;
 			            const loc = location.split(" ");
-			            document.getElementById("nearLoc").innerHTML += "<button name='nearAddr' value='"+loc[2]+"'>"+loc[2]+"</button><br>";
+			            $("#loc2").append("<input type='radio' name='location2' value='"+loc[2]+"'>"+loc[2]+"<br>");
 			        }
 			    }
 			    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
@@ -112,15 +113,28 @@
 		</script>
 		</div>
 		<div id="locations">
-			<form action="/myweb/login/mypage/mypage.jsp" method="post">
-				<div id="loc1">
+			<form action="location.do" method="post">
+			<c:choose>
+				<c:when test="${kakaoUser.id ne null}">
+					<input type="hidden" name="id" value="${kakaoUser.id }">
+					<input type="hidden" name="join_type" value="1">
+				</c:when>
+				<c:otherwise>
+					<input type="hidden" name="id" value="${user.id }">
+					<input type="hidden" name="join_type" value="0">
+				</c:otherwise>
+			</c:choose>
+			<div id="loc1">
 					<button type="button" class="btn btn-lg btn-primary" id="getMyPositionBtn" onclick="getCurrentPosBtn()">우리동네보기(현재위치가 선택됩니다.)</button>
-					<div id="loc"></div>
+					<div id="loc">
+						
+					</div>
 				</div>
 				<div id="loc2">
 					<button type="button" class="btn btn-lg btn-primary" id="getNearLocationBtn" onclick="nearAddr()">주변동네보기(1개만 선택해 주십시오.)</button>
 					<div id="nearLoc"></div>
 				</div>
+				<button>sub</button>
 			</form>
 		</div>
 		</article>

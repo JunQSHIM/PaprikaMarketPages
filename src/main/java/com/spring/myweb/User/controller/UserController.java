@@ -1,7 +1,9 @@
 package com.spring.myweb.User.controller;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,27 +45,43 @@ public class UserController {
 	public String login() {
 		return "login/login&register/login";
 	}
+	private boolean rememberId(boolean rememberId) {
+		return rememberId;
+	}
 	@RequestMapping(value="/loginProc.do", method=RequestMethod.GET)
-	public String loginUser(Model model,String id, ServletRequest request) {
+	public String loginUser(HttpSession session, Model model,String id, ServletRequest request, HttpServletResponse response, boolean rememberId) {
 		System.out.println("User login service");
 		UserVO vo = userService.select(id);
 		model.addAttribute("user",vo);
+		session.setAttribute("user", vo);
+		
+		if(rememberId(rememberId)) {
+			Cookie cookie = new Cookie("id", id);
+			response.addCookie(cookie);
+		}else {
+			Cookie cookie = new Cookie("id", id);
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
+		}
 		return "login/main/mother";
 	}
 	// 카카오 로그인창 호출
 	@RequestMapping(value="/kakaoLogin.do", method=RequestMethod.GET)
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest req) throws Exception {
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest req,  Model model) throws Exception {
 		String access_Token = userService.getAccessToken(code);
 		UserVO userInfo = userService.getUserInfo(access_Token);
         HttpSession session = req.getSession();
+        model.addAttribute("kakaoUser",userInfo);
 		session.setAttribute("kakaoUser",userInfo);
+		session.setAttribute("kakaoId",userInfo.getId());
 		System.out.println(userInfo.getEmail());
 		System.out.println(userInfo.getProfile_image());
 		return "login/main/mother";
     }
 	
 	@RequestMapping(value="/mypage.do")
-	public String mypage() {
+	public String mypage(Model model, HttpSession session) {
+		model.addAttribute("user",userService.select((String)session.getAttribute("id")));
 		return "login/mypage/mypage";
 	}
 	@RequestMapping(value="/main.do")
@@ -90,5 +108,35 @@ public class UserController {
 		userService.unlink((String)session.getAttribute("access_token"));
 		session.invalidate();
 		return "redirect:main.do";
+	}
+	@RequestMapping(value="/location.do", method=RequestMethod.POST)
+	public String loaction(Model model, String id, UserVO vo, String join_type) {
+		id = vo.getId();
+		int success = userService.locationInsert(vo);
+		if(success == 1) {
+			UserVO vo2 = userService.select(id);
+			if(join_type.equals("0")) {
+				model.addAttribute("user",vo2);
+			}else {
+				model.addAttribute("kakaoUser",vo2);
+			}
+		}else {
+			System.out.println("fail");
+		}
+		return "login/mypage/mypage";
+	}
+	@RequestMapping(value="/location.do", method=RequestMethod.GET)
+	public String loactionForm(Model model, HttpSession session, UserVO vo) {
+		if(session.getAttribute("user")!=null) {
+			vo = (UserVO)session.getAttribute("user");
+			session.setAttribute("user",vo);
+			model.addAttribute("user",vo);
+		}else if(session.getAttribute("kakaoUser")!=null) {
+			vo = (UserVO)session.getAttribute("kakaoUser");
+			session.setAttribute("kakaoUser",vo);
+			model.addAttribute("kakaoUser",vo);
+		}
+		
+		return "login/location/verify";
 	}
 }

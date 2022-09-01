@@ -26,7 +26,7 @@ h3{
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
 }
-label{
+#loc1 label{
     border: 1px solid orange;
     background-color: rgba(0,0,0,0);
     color: orange;
@@ -43,11 +43,11 @@ label{
 	margin-right: 8px;
 	text-align: center;
 }
-label:hover{
+#loc1 label:hover{
     color:white;
     background-color: orange;
 }
-#loc input[type=checkbox]:checked + label{
+#loc1 input[type=checkbox]:checked #loc1{
    	background-color: orange;
    	color:white;
 }
@@ -55,7 +55,7 @@ label:hover{
 	float:left;
 	width:50%;
 }
-#Loc2{
+#loc2{
 	width:50%;
 }
 #map{

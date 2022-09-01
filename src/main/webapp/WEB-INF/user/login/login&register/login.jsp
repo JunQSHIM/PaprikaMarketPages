@@ -71,7 +71,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="아이디"
+						<input type="text" class="form-control" placeholder="아이디" value="${cookie.id.value}"
 							name="id">
 					</div>
 					<div class="input-group form-group">
@@ -82,7 +82,7 @@
 							name="password" id="password">
 					</div>
 					<div class="row align-items-center remember">
-						<input type="checkbox">ID 기억하기
+						<input type="checkbox" ${empty cookie.id.value ? "":"checked" } name="rememberId">ID 기억하기
 					</div>
 					<div class="form-group">
 						<input type="button" id="loginButton" value="로그인"
@@ -97,9 +97,10 @@
 
 					<br> <br>
 					<div class="button-login" align="center">
-						<a id="kakao-login-btn"> <img
+						<a id="kakao-login-btn"	class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=808d349080855e826b4c4cb8c77a836d&redirect_uri=http://localhost:8080/myweb/kakaoLogin.do&response_type=code">
+						<img
 							src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
-							width="83%" height="50px" onclick="kakaoLogin();" />
+							width="83%" height="50px" />
 						</a>
 					</div>
 				</form>

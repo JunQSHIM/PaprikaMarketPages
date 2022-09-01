@@ -9,19 +9,6 @@
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/grid.css">
 <link href="/myweb/login/main/prods.css" rel="stylesheet" type="text/css">
-<script type="text/javascript">
-  function unlinkApp() {
-    Kakao.API.request({
-      url: '/v1/user/unlink',
-      success: function(res) {
-        alert('success: ' + JSON.stringify(res))
-      },
-      fail: function(err) {
-        alert('fail: ' + JSON.stringify(err))
-      },
-    })
-  }
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Main Page</title>
@@ -39,8 +26,6 @@
 		<jsp:include page="/login/slider/slider.jsp"></jsp:include>
 	</article>
 	<article class="container_12">
-	${userInfo.profile_image }
-	<button class="api-btn" onclick="unlinkApp()">앱 탈퇴하기</button>
 	
 	<div align="left" style="margin-bottom:40px;">
 		<c:choose>
@@ -72,7 +57,7 @@
 			</c:when>
 		</c:choose>
 	</div>	
-	<%@include file="prods.jsp"%>
+	<%@include file="/WEB-INF/user/login/main/prods.jsp"%>
 	</article>
 	<footer class="container_12">
 		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>

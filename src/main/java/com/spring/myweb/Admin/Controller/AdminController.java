@@ -20,12 +20,19 @@ public class AdminController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(value = "/test.mdo", method=RequestMethod.GET)
-	public String testAdmin(Model model) {
+	@RequestMapping(value = "/main.mdo", method=RequestMethod.GET)
+	public String mainAdmin() {
+		return "Admin_page/layout/ad_main";
+	}
+	
+	@RequestMapping(value = "/user.mdo", method=RequestMethod.GET)
+	public String userAdmin(Model model) {
 		List<UserVO> vo2 = userService.selectAll();
 		model.addAttribute("list",vo2);
 		return "Admin_page/member/ad_memlist";
 	}
+	
+	
 	
 
 }

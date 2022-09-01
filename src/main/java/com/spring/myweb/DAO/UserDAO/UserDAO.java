@@ -11,5 +11,5 @@ public interface UserDAO {
 	public int insertUser(UserVO vo);
 	public void kakaoinsert(HashMap<String, Object> userInfo);
 	public UserVO findkakao(HashMap<String, Object> userInfo);
-
+	public int locationInsert(UserVO vo);
 }

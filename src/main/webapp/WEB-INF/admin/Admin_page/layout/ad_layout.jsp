@@ -13,6 +13,14 @@
 	crossorigin="anonymous"></script>
 <!-- Theme style -->
 <link rel="stylesheet" href="/myweb/Admin_page/layout/css/adminlte.light.css">
+
+<!-- DataTables -->
+<link rel="stylesheet"
+	href="/myweb/Admin_page/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="/myweb/Admin_page/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="/myweb/Admin_page/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 	
 	<!-- jQuery -->
 	<script src="/myweb/Admin_page/plugins/jquery/jquery.js"></script>
@@ -24,17 +32,32 @@
 	</script>
 	<!-- Bootstrap 4 -->
 	<script src="/myweb/Admin_page/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- Tempusdominus Bootstrap 4 -->
-	<script src="/myweb/Admin_page/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+	
+		<!-- DataTables  & Plugins -->
+	<script	src="/myweb/Admin_page/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script	src="/myweb/Admin_page/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+	<script	src="/myweb/Admin_page/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+	<script	src="/myweb/Admin_page/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+	<script src="/myweb/Admin_page/plugins/jszip/jszip.min.js"></script>
+	<script src="/myweb/Admin_page/plugins/pdfmake/pdfmake.min.js"></script>
+	<script src="/myweb/Admin_page/plugins/pdfmake/vfs_fonts.js"></script>
+	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+	<script	src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+	
+	<!-- custom -->	
 	<script src="/myweb/Admin_page/layout/js/adminlte.js"></script>
+	<script src="/myweb/Admin_page/layout/js/sortable.js"></script>
 </head>
 <body>
 	<!-- Preloader -->
 	<div class="preloader flex-column justify-content-center align-items-center">
-			<img class="animation__shake" src="/myweb/login/images/paplogo.png" alt="paprikaLogo"  height="60" width="60">
+			<img class="animation__shake" src="/myweb/login/images/dklogo_face.png" alt="paprikaLogo" width="80%">
 		</div>
 	
-	<%@include file="ad_nav.jsp"%>
-	<%@include file="ad_sidebar.jsp"%>
+	<%@include file="/WEB-INF/admin/Admin_page/layout/ad_nav.jsp"%>
+	<%@include file="/WEB-INF/admin/Admin_page/layout/ad_sidebar.jsp"%>
 </body>
 </html>

@@ -15,4 +15,5 @@ public interface UserService {
 	public UserVO getUserInfo(String access_Token);
 	public void kakaoLogout(String access_Token);
 	public void unlink(String access_Token);
+	public int locationInsert(UserVO vo);
 }

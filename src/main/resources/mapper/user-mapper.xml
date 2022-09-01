@@ -4,8 +4,7 @@
 	<select id="selectUserAll" resultType="UserVO">
 		select * from user;
 	</select>
-	<select id="selectUser" parameterType="string"
-		resultType="UserVO">
+	<select id="selectUser" parameterType="string" resultType="UserVO">
 		select * from user where id=#{value}
 	</select>
 	<select id="insertUser">
@@ -41,10 +40,13 @@
 		select * from user where nickname=#{nickname}
 	</select>
 	
-
 	<!-- 정보 저장 -->
 	<insert id="kakaoInsert" parameterType="java.util.HashMap">
 		insert into user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image)
 		values(#{email},#{nickname},'1234','1997-03-07',#{nickname},#{email},'010-1234-1234',0,1,#{profile_image})
 	</insert>
+	
+	<update id="locationInsert" parameterType="UserVO">
+		update user set location1=#{location1},location2=#{location2} where id=#{id}
+	</update>
 </mapper>

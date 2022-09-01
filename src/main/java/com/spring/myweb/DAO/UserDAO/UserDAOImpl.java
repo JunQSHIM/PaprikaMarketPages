@@ -44,4 +44,11 @@ public class UserDAOImpl implements UserDAO{
 	public UserVO findkakao(HashMap<String, Object> userInfo) {
 		return session.selectOne("userDB.findKakao", userInfo);
 	}
+
+	@Override
+	public int locationInsert(UserVO vo) {
+		int success = 0;
+		success = session.update("userDB.locationInsert",vo);
+		return success;
+	}
 }

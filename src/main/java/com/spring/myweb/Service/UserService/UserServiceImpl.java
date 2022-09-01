@@ -220,4 +220,9 @@ public class UserServiceImpl implements UserService{
 		return userDAO.findkakao(userInfo);
 	}
 
+	@Override
+	public int locationInsert(UserVO vo) {
+		return userDAO.locationInsert(vo);
+	}
+
 }

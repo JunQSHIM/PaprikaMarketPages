@@ -38,19 +38,7 @@ function toMyReview() {
 function toProfileEdit() {
 	window.location.href = '/myweb/login/mypage/profileEdit.jsp';
 }
-function verifyLoc() {
-	window.location.href = '/myweb/login/location/verify.jsp';
-}
 </script>
-<%
-	request.setCharacterEncoding("UTF-8");
-	String nearAddr = request.getParameter("nearAddr");
-	String myAddr = request.getParameter("myAddr");
-	if(nearAddr==null||myAddr==null){
-		nearAddr = "동네인증이 필요합니다.";
-		myAddr = "";
-	}
-%>
 <title>mypage</title>
 </head>
 <body>
@@ -68,7 +56,14 @@ function verifyLoc() {
 				<img src="/myweb/login/images/pkIcon.png"><b>마이페이지</b>
 			</div>
 			<div id="profile">
-				<div id="profile_pic" style="background-image: url(${kakaoUser.profile_image});"></div>
+			<c:choose>
+				<c:when test="${kakaoUser ne null }">
+					<div id="profile_pic" style="background-image: url(${kakaoUser.profile_image});"></div>
+				</c:when>
+				<c:otherwise>
+					<div id="profile_pic" style="background-image: url('/myweb/login/images/profile.png');"></div>
+				</c:otherwise>
+			</c:choose>
 				<div id="nickname_and_button">
 					<div id="nickName">
 					<c:choose>
@@ -104,15 +99,24 @@ function verifyLoc() {
 					</div>
 					<div id="myLoc">
 						<b>내 동네</b>
-						<%=myAddr %>
-						<%=nearAddr %>
+						<c:choose>
+							<c:when test="${user.location1 ne null and kakaoUser.location1 eq null }">
+								${user.location1 } / ${user.location2 }
+							</c:when>
+							<c:when test="${kakaoUser.location1 ne null and user.location1 eq null }">
+								${kakaoUser.location1 } / ${kakaoUser.location2 }
+							</c:when>
+							<c:otherwise>
+								동네 인증이 필요합니다!
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</div>
 			<div id="profile_edit">
 				<div id="edit_button">
 					<button type="button" onclick=toProfileEdit()>프로필 수정</button>
-					<button type="button" onclick=verifyLoc()>동네 인증하기</button>
+					<button type="button" onclick="location.href='location.do'">동네 인증하기</button>
 				</div>
 			</div>
 			<div id="eval_and_review">

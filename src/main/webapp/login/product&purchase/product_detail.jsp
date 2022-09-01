@@ -195,8 +195,6 @@ String p = request.getParameter("product");
 					<option value="mother.jsp?product=삽니다">삽니다</option>
 				</select>
 			</div>
-
-
 			<div class="row grid_12">
 				<div class="grid_6 item" id="picture" onclick="zoom()">
 					<img src="/myweb/login/images/camera.png" id="image">
@@ -228,8 +226,6 @@ String p = request.getParameter("product");
 							<li>거래지역</li>
 						</ul>
 					</div>
-
-
 					<div class="grid_3" id="info_ans">
 						<ul>
 							<li>중고</li>

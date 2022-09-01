@@ -36,14 +36,14 @@ public class SellBoardController {
 	}
 	
 	// 판매하기 등록 프로세스
-	@RequestMapping(value = "/createProc.do", method =RequestMethod.POST)
+	@RequestMapping(value = "/createProc.do", method =RequestMethod.GET)
 	public String insertSell(Model model, SellBoardVO vo){
 		System.out.println("판매하기 등록함");
 		int success = boardService.insertSell(vo);
 		if(success == 1) {
 			model.addAttribute("board",vo);
 		}
-		return "/list.do";
+		return "login/main/prods";
 	}
 	
 	@RequestMapping(value = "/sellDetail.do", method = RequestMethod.GET)
@@ -58,7 +58,7 @@ public class SellBoardController {
 	public String sellDelete(int prod_seq) throws Exception{
 		System.out.println("판매하기 삭제됨.");
 		boardService.sellDelete(prod_seq);
-		return "redirect:list.do";
+		return "/main.do";
 	}
 
 

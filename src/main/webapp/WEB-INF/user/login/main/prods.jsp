@@ -46,9 +46,6 @@
 							</a>
 						</div>
 						</c:forEach>
-						
-						
-						
 					</div>
 					<div class="bottom_space"></div>
 				</div>

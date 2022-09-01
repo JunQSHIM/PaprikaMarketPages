@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">  
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AdminPage</title>
 
@@ -17,7 +17,7 @@
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-
+				<%@ include file="/WEB-INF/admin/Admin_page/layout/mini.jsp" %>
 			</section>
 			<!-- /.content -->
 		</div>

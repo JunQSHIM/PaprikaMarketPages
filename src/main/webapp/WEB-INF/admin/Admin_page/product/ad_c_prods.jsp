@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AdminLTE 3 | DataTables</title>
 
-<link rel="stylesheet" href="ad_prods.css">
+<link rel="stylesheet" href="/myweb/Admin_page/member/ad_prods.css">
 <!-- DataTables -->
 <link rel="stylesheet"
 	href="/myweb/Admin_page/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -63,13 +63,14 @@
 
 									<c:forEach items="${board }" var="boardList">
 										<tr>
+										
 											<td><div class="pic">
-													<a href="ad_prod_de.jsp"><img src="anya.jpg"
+													<a href="prod_de.mdo?prod_seq=${boardList.prod_seq}"><img src="/myweb/Admin_page/product/anya.jpg"
 														width="80px"></a>
 												</div></td>
-											<td><a href="ad_prod_de.jsp">${boardList.prod_title }</a></td>
-											<td id="seller"><a href="ad_memde.jsp">${boardList.nickname }</a></td>
-											<td id="buyer"><a href="ad_memde.jsp">Null</a></td>
+											<td><a href="/WEB-INF/admin/Admin_page/product/ad_prod_de.jsp">${boardList.prod_title }</a></td>
+											<td id="seller"><a href="/WEB-INF/admin/Admin_page/member/ad_memde.jsp">${boardList.nickname }</a></td>
+											<td id="buyer"><a href="/WEB-INF/admin/Admin_page/ad_memde.jsp">Null</a></td>
 											<td>${boardList.upload_date }</td>
 											<td>${boardList.nickname }</td>
 											<td>152</td>

@@ -22,7 +22,7 @@
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
 
-		<%@include file="/Admin_page/layout/ad_layout.jsp"%>
+		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_layout.jsp"%>
 
 
 		<!-- 콘텐츠 jsp 삽입구간 -->

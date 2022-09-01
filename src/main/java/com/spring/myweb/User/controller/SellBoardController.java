@@ -49,10 +49,11 @@ public class SellBoardController {
 		}
 		return "login/main/prods";
 	}
-	
+	//글 상세보기
 	@RequestMapping(value = "/sellDetail.do", method = RequestMethod.GET)
 	public String getDetail(Model model, int prod_seq){
 		System.out.println("상세보기 페이지 이동");
+		boardService.viewCount(prod_seq); // 조회수 증가
 		SellBoardVO vo = boardService.sellDetail(prod_seq);
 		model.addAttribute("board", vo);
 		return "login/product&purchase/product_detail";

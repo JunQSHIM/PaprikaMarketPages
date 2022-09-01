@@ -21,8 +21,6 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 @Service
 public class AwsS3 {
 	
-	
-	
 	private AmazonS3 s3Client;
 	
 	final private String accessKey = "AKIAVHPIWTHZMPXQY7WW";

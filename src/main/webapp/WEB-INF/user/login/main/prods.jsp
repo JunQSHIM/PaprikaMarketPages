@@ -22,7 +22,7 @@
 						<div class="sell_product_board">
 							<a class="sell_board" href="sellDetail.do?prod_seq=${boardList.prod_seq}">
 								<div class="sell_image">
-									<img src="/myweb/login/images/jjim_icon/anya.jpg" width="194" height="194">
+									<img src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/김채원.jpg" width="194" height="194">
 									<span class="image_span">
 										<img src="/myweb/login/images/jjim_icon/pay.svg" alt="페이 가능">
 									</span>

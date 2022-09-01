@@ -2,7 +2,6 @@ package com.spring.myweb.Service.BoardService;
 
 import java.util.List;
 
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -10,11 +9,9 @@ import org.springframework.stereotype.Service;
 import com.spring.myweb.DAO.SellBoardDAO.SellBoardDAO;
 import com.spring.myweb.VO.SellboardVO.SellBoardVO;
 
-
 @Service
-public class BoardServiceImpl implements BoardService{
-	
-	
+public class BoardServiceImpl implements BoardService {
+
 	@Inject
 	private SellBoardDAO boardDAO;
 
@@ -26,7 +23,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int insertSell(SellBoardVO vo) {
 		return boardDAO.insertSell(vo);
-		
+
 	}
 
 	@Override
@@ -35,9 +32,14 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void sellDelete(int pord_seq) {
-		boardDAO.sellDelete(pord_seq);
-		
+	public void sellDelete(int prod_seq) {
+		boardDAO.sellDelete(prod_seq);
+
+	}
+
+	@Override
+	public void viewCount(int prod_seq) {
+		boardDAO.viewCount(prod_seq);
 	}
 
 }

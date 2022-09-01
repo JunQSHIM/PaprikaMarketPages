@@ -1,8 +1,10 @@
 package com.spring.myweb.VO.SellboardVO;
 
-import java.sql.Timestamp;
 
-import org.springframework.web.multipart.MultipartFile;
+import java.util.Date;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -16,7 +18,8 @@ public class SellBoardVO {
 	private String prod_content;
 	private int price;
 	private String category;
-	private Timestamp upload_date;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date upload_date;
 	private int count;
 	private int status;
 

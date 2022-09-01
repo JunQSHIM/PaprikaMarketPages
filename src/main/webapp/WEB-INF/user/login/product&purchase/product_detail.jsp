@@ -153,8 +153,11 @@
             })
         });
     };
+    
+   
+    
+    
 </script>
-
 </head>
 <body>
 	<header>
@@ -201,7 +204,7 @@
 					</div>
 					<div class="item">
 
-					<button>♥36</button> | <button>⊙70</button> | <button>⏲${board.upload_date} </button> | <button class="openBtn">신고하기</button><br>
+					<button>♥36</button> | <button>⊙${board.count}</button> | <span>⏲${board.upload_date} </span> | <button class="openBtn">신고하기</button><br>
 
 						<a href="sellDelete.do?prod_seq=${board.prod_seq }" role="button">삭제</a>
 						<br>

@@ -10,8 +10,8 @@
 	type="text/css">
 </head>
 <body>
-	<form enctype="multipart/form-data" action="createProc.do"
-		name="sellBoard" method="get" onsubmit="Checkform()">
+<form enctype="multipart/form-data" action="createProc.do"
+			name="sellBoard" method="get" onsubmit="Checkform()">
 		<div class="grid_12 newinfo">
 			<div class="newinfo_1">
 				<div class="grid_2 newinfo_1_1">기본정보</div>
@@ -27,8 +27,10 @@
 						<div class="grid_2 regpic">
 							<div class="file_0">
 								<div class="file_1">
-									<input type="file" name="upload" multiple="multiple"
+								<form enctype="multipart/form-data" method="post" action="insertPhoto.do">
+									<input type="file" name="origin_file_name" multiple="multiple"
 										class="form-control user_picked_files" />
+								
 								</div>
 
 							</div>
@@ -49,8 +51,8 @@
 						10M)
 					</div>
 				</div>
-
 			</div>
+
 			<div class="grid_12 title">
 				<div class="grid_2 explain">
 					제목<span>*</span>
@@ -208,9 +210,10 @@
 				<button type="submit" class="new_btn">상품 등록</button>
 			</div>
 		</div>
-
-
+		</form>
 	</form>
+
+
 	<script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript"

@@ -24,9 +24,8 @@
 	<select id="insertSell" resultType="SellBoardVO">
 		insert into
 		product(nickname,location, prod_title, prod_content, price, category,
-		upload_date,count, status)
-		values('테스트닉네임3','부산',#{prod_title},#{prod_content},#{price},'뷰티/미용',now(),
-		1,1);
+		upload_date, status)
+		values('닉네임1234','서울',#{prod_title},#{prod_content},#{price},'디지털기기.가전',now(),1);
 	</select>
 
 	<!-- 판매중인 상품 상세보기 -->
@@ -39,6 +38,11 @@
 		delete from product where
 		prod_seq = #{prod_seq};
 	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="viewCount">
+		update product set count = count + 1 where prod_seq = #{prod_seq};
+	</update>
 
 	<!-- 정보 찾기 -->
 	<select id="findKakao" parameterType="java.util.HashMap"

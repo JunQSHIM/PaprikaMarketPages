@@ -18,7 +18,7 @@
 		select * from product order by
 		prod_seq desc;
 	</select>
-
+ 
 	<!-- 판매하기 글 쓰기 -->
 	<select id="insertSell" resultType="SellBoardVO">
 		insert into

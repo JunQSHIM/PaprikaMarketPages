@@ -11,26 +11,20 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-		<%@include file="/Admin_page/layout/ad_layout.jsp"%>
+		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_layout.jsp"%>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
 			
-		<%@include file="/Admin_page/admin_board/admin_board.jsp"%>
+		<%@include file="/WEB-INF/admin/Admin_page/admin_board/admin_board.jsp"%>
 			
 			</section>
 			<!-- /.content -->
 		</div>
-		<%@include file="/Admin_page/layout/ad_footer.jsp"%>
+		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_footer.jsp"%>
 	</div>
-	<!-- PAGE PLUGINS -->
-	<script src="/myweb/Admin_page/plugins/jquery/jquery.min.js"></script>
-	<!-- jQuery -->
-<script src="/myweb/Admin_page/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/myweb/Admin_page/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- DataTables  & Plugins -->
 	<script
 		src="/myweb/Admin_page/plugins/datatables/jquery.dataTables.min.js"></script>

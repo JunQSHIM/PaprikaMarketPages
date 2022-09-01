@@ -18,9 +18,9 @@
 					</div>
 					<div class="sell_product_cart">
 					
-					<c:forEach items="${board }" var="boardList" end="100">
+					<c:forEach items="${board }" var="boardList">
 						<div class="sell_product_board">
-							<a class="sell_board" href="sellDetail.do?prod_seq=<c:out value='${boardList.prod_seq}'/>">
+							<a class="sell_board" href="sellDetail.do?prod_seq=${boardList.prod_seq}">
 								<div class="sell_image">
 									<img src="/myweb/login/images/jjim_icon/anya.jpg" width="194" height="194">
 									<span class="image_span">
@@ -29,10 +29,10 @@
 									<div class="inner_sell_image"></div>
 								</div>
 								<div class="sell_product_detail">
-									<div class="sell_product_title"><c:out value="${boardList.prod_title }"/></div>
+									<div class="sell_product_title">${boardList.prod_title }</div>
 									<div class="sell_product_price">
 										<div class="sell_product_price_1">
-										<c:out value="${boardList.price }"/>	
+										${boardList.price }
 										</div>
 										<div class="sell_product_time">
 											<span>8시간 전</span>
@@ -41,15 +41,11 @@
 								</div>
 								<div class="sell_location">
 									<img src="/myweb/login/images/jjim_icon/location.png" width="15" height="17" alt="위치">
-									
-									<c:out value="${boardList.location }"/>
+									${boardList.location }
 								</div>
 							</a>
 						</div>
 						</c:forEach>
-						
-						
-						
 					</div>
 					<div class="bottom_space"></div>
 				</div>

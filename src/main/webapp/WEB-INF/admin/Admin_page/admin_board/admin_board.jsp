@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,203 +74,28 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>1</td>
-                    <td>카카오톡가입</td>
-                    <td>yesol_vvv</td>
-                    <td>박예솔</td>
-                    <td>010-1111-1111</td>
-                    <td>yesol@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>2</td>
-                    <td>카카오톡가입</td>
-                    <td>simjunq</td>
-                    <td>심준규</td>
-                    <td>010-2222-2222</td>
-                    <td>sim@naver.com</td>
-                    <td>X</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>3</td>
-                    <td>카카오톡가입</td>
-                    <td>limseangteak</td>
-                    <td>임승택</td>
-                    <td>010-3333-3333</td>
-                    <td>lst0513@naver.com</td>
-                    <td>X</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>4</td>
-                    <td>일반가입</td>
-                    <td>kimyoosin</td>
-                    <td>김유신</td>
-                    <td>010-1234-5678</td>
-                    <td>kim@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>5</td>
-                    <td>일반가입</td>
-                    <td>leemhong9999</td>
-                    <td>임홍</td>
-                    <td>010-5432-1234</td>
-                    <td>leemhong@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>6</td>
-                    <td>일반가입</td>
-                    <td>moonki</td>
-                    <td>장문기</td>
-                    <td>010-9999-9999</td>
-                    <td>ansrlwkd225@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>1</td>
-                    <td>카카오톡가입</td>
-                    <td>yesol_vvv</td>
-                    <td>박예솔</td>
-                    <td>010-1111-1111</td>
-                    <td>yesol@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>2</td>
-                    <td>카카오톡가입</td>
-                    <td>simjunq</td>
-                    <td>심준규</td>
-                    <td>010-2222-2222</td>
-                    <td>sim@naver.com</td>
-                    <td>X</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>3</td>
-                    <td>카카오톡가입</td>
-                    <td>limseangteak</td>
-                    <td>임승택</td>
-                    <td>010-3333-3333</td>
-                    <td>lst0513@naver.com</td>
-                    <td>X</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>4</td>
-                    <td>일반가입</td>
-                    <td>kimyoosin</td>
-                    <td>김유신</td>
-                    <td>010-1234-5678</td>
-                    <td>kim@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>5</td>
-                    <td>일반가입</td>
-                    <td>leemhong9999</td>
-                    <td>임홍</td>
-                    <td>010-5432-1234</td>
-                    <td>leemhong@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>6</td>
-                    <td>일반가입</td>
-                    <td>moonki</td>
-                    <td>장문기</td>
-                    <td>010-9999-9999</td>
-                    <td>ansrlwkd225@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>1</td>
-                    <td>카카오톡가입</td>
-                    <td>yesol_vvv</td>
-                    <td>박예솔</td>
-                    <td>010-1111-1111</td>
-                    <td>yesol@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>2</td>
-                    <td>카카오톡가입</td>
-                    <td>simjunq</td>
-                    <td>심준규</td>
-                    <td>010-2222-2222</td>
-                    <td>sim@naver.com</td>
-                    <td>X</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>3</td>
-                    <td>카카오톡가입</td>
-                    <td>limseangteak</td>
-                    <td>임승택</td>
-                    <td>010-3333-3333</td>
-                    <td>lst0513@naver.com</td>
-                    <td>X</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>4</td>
-                    <td>일반가입</td>
-                    <td>kimyoosin</td>
-                    <td>김유신</td>
-                    <td>010-1234-5678</td>
-                    <td>kim@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>5</td>
-                    <td>일반가입</td>
-                    <td>leemhong9999</td>
-                    <td>임홍</td>
-                    <td>010-5432-1234</td>
-                    <td>leemhong@naver.com</td>
-                    <td>O</td>
-                  </tr>
-                  
-                  <tr>
-                  <th><input type="checkbox" class="adminArticleBtn"></th>
-                    <td>6</td>
-                    <td>일반가입</td>
-                    <td>moonki</td>
-                    <td>장문기</td>
-                    <td>010-9999-9999</td>
-                    <td>ansrlwkd225@naver.com</td>
-                    <td>O</td>
-                  </tr>
+                  <c:forEach var="user" items="${list }">
+                  <c:set var="join_type" value="${user.join_type }">
+                  	<c:choose>
+                  		<c:when test="${user.join_type == 1 }">
+                  			 <c:set var="join_type" value="카카오톡 가입"></c:set>
+                  		</c:when>
+                  		<c:when test="${user.join_type == 0 }">
+                  			 <c:set var="join_type" value="일반 가입"></c:set>
+                  		</c:when>
+                 	</c:choose>
+                  </c:set>
+	                  <tr>
+							<th><input type="checkbox" class="adminArticleBtn"></th>
+		                    <td>${user.user_seq }</td>
+		                    <td>${join_type }</td>
+		                    <td>${user.id }</td>
+		                    <td>${user.name }</td>
+		                    <td>${user.phone }</td>
+		                    <td>${user.email }</td>
+		                    <td>${user.msg_agree }</td>
+	                  </tr>
+                  </c:forEach>
                   </tbody>
                 </table>
               </div>

@@ -57,7 +57,7 @@
 			<img class="animation__shake" src="/myweb/login/images/dklogo_face.png" alt="paprikaLogo" width="80%">
 		</div>
 	
-	<%@include file="ad_nav.jsp"%>
-	<%@include file="ad_sidebar.jsp"%>
+	<%@include file="/WEB-INF/admin/Admin_page/layout/ad_nav.jsp"%>
+	<%@include file="/WEB-INF/admin/Admin_page/layout/ad_sidebar.jsp"%>
 </body>
 </html>

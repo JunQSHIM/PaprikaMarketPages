@@ -53,7 +53,7 @@
 
 
 						<li class="nav-item"><a
-							href="sms.mdo"
+							href="sns.mdo"
 							class="nav-link"> <i
 								class="nav-icon fa-solid fa-address-book"></i>
 								<p>SNS</p>

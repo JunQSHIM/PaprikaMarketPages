@@ -9,7 +9,7 @@
 
 
 
-<link rel="stylesheet" href="/Admin_page/member/prodpage.css">
+<link rel="stylesheet" href="/myweb/Admin_page/member/prodpage.css">
 
 </head>
 <body>
@@ -36,7 +36,7 @@
 						<div class="grid_10 read">
 							<div class="grid_4 pics">
 
-								<img class="grid_4" src="/Admin_page/member/anya.jpg">
+								<img class="grid_4" src="anya.jpg">
 
 							</div>
 							<div class="grid_6 texts">
@@ -47,7 +47,7 @@
 											<img class="grid_1" src="anya.jpg">
 										</div>
 										<div class="grid_2 name">
-											<h3><a href="ad_memde.jsp">문기</a></h3>
+											<h3><a href="ad_memde.jsp">${board.nickname}</a></h3>
 											<div class="grid_2 location">부천시 상동</div>
 										</div>
 										<div class="grid_2 mannertemp">45도</div>
@@ -55,7 +55,7 @@
 									<div class="proinfo_1">
 
 										<div class="cate">카테고리 : 아동</div>
-										<div class="title">아냐</div>
+										<div class="title">${board.prod_title }</div>
 										<div class="price">3,000원</div>
 
 										<hr>

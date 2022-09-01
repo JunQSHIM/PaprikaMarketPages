@@ -1,16 +1,10 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 .container2 {
-
-	/*display: grid;
+	display: grid;
 	grid-template-columns: 300px 230px;
-	grid-template-rows: 92px 188px 70px;*/
-}
-
-div{
-	
+	grid-template-rows: 92px 188px 70px;
 }
 
 .homecate{
@@ -22,13 +16,9 @@ div{
 	
 }
 
-.prod_info div{
-	
-}
 .container3 {
-	
-	/*display: grid;
-	grid-template-columns: 550px 280px;*/
+	display: grid;
+	grid-template-columns: 550px 280px;
 }
 .item2 {
 	grid-column: span 2;
@@ -52,12 +42,11 @@ div{
 
 #picture img {
 	size: contain;
-	width: 65%;
+	width: 50%;
 }
 
 #detail {
 	text-align: left;
-	
 	grid-column: span 2;
 }
 
@@ -90,10 +79,6 @@ div{
 	list-style: none;
 	margin-left: -33px;
 	padding-top: 10px;
-}
-.item_btn{
-	
-	margin-left:45px;
 }
 
 .item button {
@@ -194,7 +179,6 @@ div{
 
 	text-align: center;
 }
-
 
 .container  button {
 	border: 1px solid orange;

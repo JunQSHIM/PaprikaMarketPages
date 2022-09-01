@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="/myweb/login/product&purchase/ctProduct.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/product&purchase/product_detail.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/singo/modal.css">
-
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,16 +59,16 @@
     });
     });
 	function login()  {
-		 window.location.href ='/myweb/login/login&register/login.jsp';
+		 window.location.href ='/login.do';
 	}	
 	function register()  {
-		 window.location.href ='/myweb/login/login&register/registerAgree.jsp';
+		 window.location.href ='/register.do';
 	}
 	function main(){
-		window.location.href = '/myweb/login/main/mother.jsp';
+		window.location.href = '/main.do';
 	}
 	function mypage(){
-		window.location.href = '/myweb/login/mypage/mypage.jsp';
+		window.location.href = '/mypage.do';
 	}
 	function zoom(){
 		$("#picture").style.width = "800px";
@@ -78,7 +77,8 @@
 		var image = document.getElementById("image");
 		var source = image.src;
 	    window.open(source,'new','width=800, height=600, scrollbars=yes');
-	}
+	} 
+	
 	$(function () {
 		let num = 0;
 		let imageName = ["check.png", "uncheck.png"];
@@ -158,13 +158,13 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/header/header.jsp"></jsp:include>
 	</header>
 	<article class="container_12">
-		<jsp:include page="/login/main/category.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/category.jsp"></jsp:include>
 	</article>
 	<article class="container_12">
-					<div id="productPage">
+			<div id="productPage">
 			<div id="productList">
 				홈 > 
 				<select onchange="if(this.value) location.href=(this.value);">
@@ -189,20 +189,34 @@
 				</select>
 			</div>
 			<form>
-			<div class="container1">
-				<div class="item" id="picture" onclick = "zoom()">
+			<div class="row grid_12">
+				<div class="grid_4 item" id="picture">
 					<img src="/myweb/login/images/camera.png" id="image">
-					<button>+확대</button>
+					<button type="button" onclick = "zoom()">+확대</button>
 				</div>
-				<div class="container2">
+					<div class="grid_6 prod_info">
 					<div class="item" id="detail">
 						<div id="title">${board.prod_title }<br>${board.price }<br></div>
 						<hr style="border: 0.3px solid lightgray;">
 					</div>
 					<div class="item">
+<<<<<<< HEAD
 					<button>♥36</button> | <button>⊙70</button> | <button>⏲${board.upload_date} </button> | <button class="openBtn">신고하기</button><br>
+=======
+						<button>♥36</button>
+						|
+						<button>⊙70</button>
+						|
+						<button>⏲5일전</button>
+						|
+						<button class="openBtn">신고하기</button>
+						|
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 						<a href="sellDelete.do?prod_seq=${board.prod_seq }" role="button">삭제</a>
-						<div id="info">
+						<br>
+					</div>
+					<br>
+						<div class="grid_2" id="info">
 							<ul>
 								<li>상품상태</li>
 								<li>교환여부</li>
@@ -210,25 +224,25 @@
 								<li>거래지역</li>
 							</ul>
 						</div>
+						<div class="grid_3" id="info_ans">
+						<ul>
+							<li>중고</li>
+							<li>교환불가능</li>
+							<li>배송비포함</li>
+							<li>전국</li>
+						</ul>
 					</div>
-					<div class="item">
-						<div id="info_ans">
-							<ul>
-								<li>중고</li>
-								<li>교환불가능</li>
-								<li>배송비포함</li>
-								<li>전국</li>
-							</ul>
-						</div>
-					</div>
-					<div class="item" id="func">
+					<div class="item_btn" id="func">
 						<button id="jjim" type="button">찜</button>
 						<button>연락하기</button>
 						<button onclick="requestPay()">바로구매</button>
 					</div>
 					<div><img id="status"></div>
+					</div>
+					
 				</div>
-				<div class="item2">
+				<div class="clear"></div>
+				<div class="grid_12 item2">
 					연관상품
 					<div id="rt_product">
     					<div class="slider">
@@ -245,16 +259,16 @@
 						</div>
 				</div>
 				<hr style="border:1px solid gray;">
-				<div class="container3">
-					<div class="container2">
-						<div class="item" id="product_info">상품정보<hr style="border:1px solid gray;">
+					<div class="row grid_12">
+						<div class="grid_8">
+							<div class="item" id="product_info">상품정보<hr style="border:1px solid gray;">
 							<div id="product_desc">
 								${board.prod_content}
 							</div>
 						</div>
 					</div>
-					<div class="container4">
-						<div class="item">상점정보<hr style="border:1px solid gray;">
+					<div class="grid_3 market_info">
+							<div class="item">상점정보<hr style="border:1px solid gray;">
 							<div id="profile_pic">
 								<img src="/myweb/login/images/dklogo.png">
 							</div>
@@ -297,7 +311,7 @@
 	</article>
 	<div style="margin-bottom:40px;"></div>
 	<footer class="container_12">
-		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
 <script>

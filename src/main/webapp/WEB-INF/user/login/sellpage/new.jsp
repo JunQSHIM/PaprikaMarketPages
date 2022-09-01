@@ -27,10 +27,8 @@
 						<div class="grid_2 regpic">
 							<div class="file_0">
 								<div class="file_1">
-
 									<input type="file" name="upload" multiple="multiple"
 										class="form-control user_picked_files" />
-
 								</div>
 
 							</div>

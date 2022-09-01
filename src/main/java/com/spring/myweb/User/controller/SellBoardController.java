@@ -1,5 +1,7 @@
 package com.spring.myweb.User.controller;
 
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.BoardService.BoardService;
 import com.spring.myweb.VO.SellboardVO.SellBoardVO;
@@ -19,6 +22,7 @@ public class SellBoardController {
 	
 	@Autowired
 	private BoardService boardService;
+	
 	// 메인 페이지에서 판매 중인 상품 목록 불러오기
 	@RequestMapping(value="/list.do", method = RequestMethod.GET)
 	public String boardList(Model model, SellBoardVO vo) {
@@ -60,6 +64,8 @@ public class SellBoardController {
 		boardService.sellDelete(prod_seq);
 		return "/main.do";
 	}
+	
+	
 
 
 }

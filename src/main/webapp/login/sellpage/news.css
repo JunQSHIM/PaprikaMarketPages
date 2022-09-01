@@ -3,9 +3,7 @@
 span {
 	color: red;
 }
-div{
-	
-}
+
 .management div {
 	line-height: 4rem;
 	float: left;
@@ -72,6 +70,7 @@ div{
 
 .file_1 {
 	float: left;
+	z-index: 3;
 	position: relative;
 }
 
@@ -80,7 +79,8 @@ div{
 	width: 152px;
 	float: left;
 	position: absolute;
-	border: 1px solid #dcdcdc;
+	z-index: 1;
+	border: 1px solid black;
 }
 
 .newinfo_1 {

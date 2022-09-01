@@ -4,9 +4,6 @@ span {
 	color: red;
 }
 
-div {
-
-}
 
 .management div {
 	line-height: 4rem;
@@ -70,7 +67,7 @@ div {
 
 .file_1 {
 	float: left;
-	z-index: 2;
+	z-index: 3;
 	position: relative;
 }
 
@@ -109,7 +106,7 @@ div {
 
 .titlebox input {
 	width: 500px;
-	border:none;
+	border: none;
 	outline: none;
 }
 

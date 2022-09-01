@@ -1,5 +1,7 @@
 package com.spring.myweb.User.controller;
 
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.BoardService.BoardService;
 import com.spring.myweb.VO.SellboardVO.SellBoardVO;
@@ -19,6 +22,7 @@ public class SellBoardController {
 	
 	@Autowired
 	private BoardService boardService;
+	
 	// 메인 페이지에서 판매 중인 상품 목록 불러오기
 	@RequestMapping(value="/list.do", method = RequestMethod.GET)
 	public String boardList(Model model, SellBoardVO vo) {
@@ -36,14 +40,14 @@ public class SellBoardController {
 	}
 	
 	// 판매하기 등록 프로세스
-	@RequestMapping(value = "/createProc.do", method =RequestMethod.POST)
+	@RequestMapping(value = "/createProc.do", method =RequestMethod.GET)
 	public String insertSell(Model model, SellBoardVO vo){
 		System.out.println("판매하기 등록함");
 		int success = boardService.insertSell(vo);
 		if(success == 1) {
 			model.addAttribute("board",vo);
 		}
-		return "/list.do";
+		return "login/main/prods";
 	}
 	
 	@RequestMapping(value = "/sellDetail.do", method = RequestMethod.GET)
@@ -58,8 +62,10 @@ public class SellBoardController {
 	public String sellDelete(int prod_seq) throws Exception{
 		System.out.println("판매하기 삭제됨.");
 		boardService.sellDelete(prod_seq);
-		return "redirect:list.do";
+		return "/main.do";
 	}
+	
+	
 
 
 }

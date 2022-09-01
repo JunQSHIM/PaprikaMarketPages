@@ -11,7 +11,7 @@
 </head>
 <body>
 	<form enctype="multipart/form-data" action="createProc.do"
-		name="sellBoard" method="POST" onsubmit="Checkform()">
+		name="sellBoard" method="get" onsubmit="Checkform()">
 		<div class="grid_12 newinfo">
 			<div class="newinfo_1">
 				<div class="grid_2 newinfo_1_1">기본정보</div>
@@ -27,10 +27,8 @@
 						<div class="grid_2 regpic">
 							<div class="file_0">
 								<div class="file_1">
-
 									<input type="file" name="upload" multiple="multiple"
 										class="form-control user_picked_files" />
-
 								</div>
 
 							</div>
@@ -59,12 +57,10 @@
 				</div>
 				<div class="grid_10 newdata">
 					<div class="titlebox" id="titlebox">
-<<<<<<< HEAD
+
 						<input type="text" id="prod_title" name="prod_title" placeholder="상품 제목을 입력해주세요."  maxlength="40" onkeyup="titleChk();">
-=======
-						<input type="text" id="prod_title" name="prod_title"
-							placeholder="상품 제목을 입력해주세요." maxlength="39" onkeyup="titleChk();">
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
+
+
 						<a href="#">거래금지 품목</a>
 
 					</div>

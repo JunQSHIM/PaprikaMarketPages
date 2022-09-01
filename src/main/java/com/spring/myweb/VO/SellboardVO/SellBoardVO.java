@@ -1,6 +1,6 @@
 package com.spring.myweb.VO.SellboardVO;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 import lombok.Data;
 
@@ -14,7 +14,7 @@ public class SellBoardVO {
 	private String prod_content;
 	private int price;
 	private String category;
-	private Date upload_date;
+	private Timestamp upload_date;
 	private int count;
 	private int status;
 

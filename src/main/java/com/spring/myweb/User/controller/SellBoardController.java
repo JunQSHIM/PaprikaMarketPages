@@ -43,7 +43,7 @@ public class SellBoardController {
 		if(success == 1) {
 			model.addAttribute("board",vo);
 		}
-		return "login/product&purchase/product_detail";
+		return "/list.do";
 	}
 	
 	@RequestMapping(value = "/sellDetail.do", method = RequestMethod.GET)
@@ -54,11 +54,11 @@ public class SellBoardController {
 		return "login/product&purchase/product_detail";
 	}
 	
-	@RequestMapping(value = "sellDelete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/sellDelete.do", method = RequestMethod.GET)
 	public String sellDelete(int prod_seq) throws Exception{
 		System.out.println("판매하기 삭제됨.");
 		boardService.sellDelete(prod_seq);
-		return "redirect:main.do";
+		return "redirect:list.do";
 	}
 
 

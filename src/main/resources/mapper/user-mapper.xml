@@ -13,38 +13,44 @@
 		user(id,name,password,birth,nickname,email,phone,msg_agree)
 		values(#{id},#{name},#{password},'1997-03-07',#{nickname},#{email},#{phone},#{msg_agree});
 	</select>
-	
-	<!-- 메인 화면에 나오는 판매중인 상품  -->
+
+	<!-- 메인 화면에 나오는 판매중인 상품 -->
 	<select id="boardList" resultType="SellBoardVO">
-		select * from product order by prod_seq desc;
+		select * from product order by
+		prod_seq desc;
 	</select>
-	
-		<!--  판매하기 글 쓰기-->
+
+	<!-- 판매하기 글 쓰기 -->
 	<select id="insertSell" resultType="SellBoardVO">
-		insert into product(nickname,
-		location, prod_title, prod_content, price, category, upload_date,
-		count, status) values('테스트닉네임3',
-		'부산',#{prod_title},#{prod_content},${price},'뷰티/미용',now(), 1,1);
+		insert into
+		product(nickname,location, prod_title, prod_content, price, category,
+		upload_date,count, status)
+		values('테스트닉네임3','부산',#{prod_title},#{prod_content},#{price},'뷰티/미용',now(),
+		1,1);
 	</select>
-	
+
 	<!-- 판매중인 상품 상세보기 -->
-	<select id="sellDetail"  parameterType="int"  resultType="SellBoardVO">
+	<select id="sellDetail" parameterType="int"
+		resultType="SellBoardVO">
 		select * from product where prod_seq = #{prod_seq};
 	</select>
 	<!-- 판매상품 삭제하기 -->
 	<select id="sellDelete" resultType="SellBoardVO">
-		delete from product where prod_seq = #{prod_seq};
+		delete from product where
+		prod_seq = #{prod_seq};
 	</select>
 
 	<!-- 정보 찾기 -->
-	<select id="findKakao" parameterType="java.util.HashMap" resultType="UserVO">
+	<select id="findKakao" parameterType="java.util.HashMap"
+		resultType="UserVO">
 		select * from user where nickname=#{nickname}
 	</select>
-	
+
 
 	<!-- 정보 저장 -->
 	<insert id="kakaoInsert" parameterType="java.util.HashMap">
-		insert into user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image)
+		insert into
+		user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image)
 		values(#{email},#{nickname},'1234','1997-03-07',#{nickname},#{email},'010-1234-1234',0,1,#{profile_image})
 	</insert>
 </mapper>

@@ -58,7 +58,7 @@
 				</div>
 				<div class="grid_10 newdata">
 					<div class="titlebox" id="titlebox">
-						<input type="text" id="prod_title" name="prod_title" placeholder="상품 제목을 입력해주세요."  maxlength="39" onkeyup="titleChk();">
+						<input type="text" id="prod_title" name="prod_title" placeholder="상품 제목을 입력해주세요."  maxlength="40" onkeyup="titleChk();">
 						<a href="#">거래금지 품목</a>
 						
 					</div>

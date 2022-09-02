@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&display=swap');
-#nearLoc button{
+#nearLoc input{
 	border: 1px solid orange;
     background-color: rgba(0,0,0,0);
     color: orange;
@@ -15,7 +15,7 @@
 	margin-top:10px;
 	margin-right: 8px;
 }
-#nearLoc button:hover{
+#nearLoc input:hover{
 	color:white;
     background-color:orange;
 }

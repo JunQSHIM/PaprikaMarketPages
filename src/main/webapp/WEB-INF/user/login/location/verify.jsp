@@ -67,12 +67,14 @@
 
 			function getAddr(lat,lng){
 			    var coord = new kakao.maps.LatLng(lat, lng);
+			    var once = true;
 			    var callback = function(result, status) {
-			        if (status === kakao.maps.services.Status.OK) {
+			        if (status === kakao.maps.services.Status.OK && once == true) {
 			            console.log(result[0].address.address_name);
 			            var location = result[0].address.address_name;
 			            const loc = location.split(" ");
 			            $("#loc1").append("<label for='myHome'><input type='checkbox' id='myHome' name='location1' value='"+loc[2]+"'/>"+loc[2]+"</label>");
+			            once = false;
 			        }
 			    }
 			    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);

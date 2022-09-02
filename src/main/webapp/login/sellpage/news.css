@@ -4,6 +4,16 @@ span {
 	color: red;
 }
 
+
+.cate_value {
+	display: flex;
+}
+
+.result_category {
+	margin-left: 3px;
+	font: bold;
+}
+
 .management div {
 	line-height: 4rem;
 	float: left;
@@ -50,10 +60,9 @@ span {
 
 .warn {
 	margin-top: 1.5rem;
-    color: rgb(74, 164, 255);
-    line-height: 1.5;
-    font-size: 14px;
-	
+	color: rgb(74, 164, 255);
+	line-height: 1.5;
+	font-size: 14px;
 }
 
 .regpic input {
@@ -65,7 +74,7 @@ span {
 .file_2 img {
 	height: 150px;
 	width: 150px;
-	border:none;
+	border: none;
 }
 
 .file_1 {
@@ -80,20 +89,23 @@ span {
 	float: left;
 	position: absolute;
 	z-index: 1;
-	border: 1px solid black;
+	border: 1px solid #a7a7a7a7;
 }
 
 .newinfo_1 {
 	height: 60px;
 	margin-top: 20px;
 }
-#titleCnt{
-	float:right;
+
+#titleCnt {
+	float: right;
 	font-weight: bold;
 }
+
 .newinfo_1_1, .fastsell_1 {
 	font-size: 1.7rem;
 }
+
 .fastsell_1, .fastsell_2 {
 	line-height: 10rem;
 }
@@ -107,23 +119,22 @@ span {
 .titlebox {
 	border: 1px solid #a7a7a7a7;
 	height: 30px;
-	width:800px;
+	width: 800px;
 }
 
 .titlebox input {
 	width: 600px;
-	
-	border:none;
+	border: none;
 	outline: none;
-	margin-top:3px;
+	margin-top: 3px;
 }
 
 .titlebox a {
 	float: right;
-	margin-right:10px;
-	margin-top:3px;
+	margin-right: 10px;
+	margin-top: 3px;
 	text-decoration: underline;
-	color:#bebebe;
+	color: #bebebe;
 }
 
 .fastsell_2 {
@@ -162,21 +173,25 @@ span {
 	height: 2rem;
 }
 
-.price .pri{
+.price .pri {
 	margin-bottom: 10px;
 	width: 250px;
 	height: 2rem;
 }
-#price{
+
+#price {
 	height: 30px;
 }
-#titleChk{
+
+#titleChk {
 	margin-top: 30px;
 }
-#prod_title{
-	margin-left:10px;
+
+#prod_title {
+	margin-left: 10px;
 	height: 20px;
 }
+
 .textbox textarea {
 	resize: none;
 	width: 716px;

@@ -76,12 +76,13 @@
 					카테고리 <span>*</span>
 				</div>
 				<div class="grid_10 newdata">
-					<select id="cate">
+					<select id="selectbox" onchange="handleOnChange(this)" name="selectBox">
 						<option disabled selected>카테고리선택</option>
 						<c:forEach items="${category }" var="category">
-						<option value="${category.category_value }">${category.category_name }</option>
+						<option value="${category.category_name }">${category.category_name }</option>
 						</c:forEach>
 					</select>
+				<div class="cate_value"><span><b>선택한 카테고리 : &nbsp; </b></span><div id='result_category'></div></div>	
 				</div>
 			</div>
 			<div class="grid_12 location">

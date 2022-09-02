@@ -200,19 +200,25 @@ jQuery(document).ready(function() {
 function Checkform() {
 
     if(sellBoard.prod_title.value == "" ) {
-        alert("제목을 입력하세요");
+        alert("제목을 입력하세요.");
         sellBoard.prod_title.focus();
         return false;
     }
     if(sellBoard.price.value == "" ) {
     	sellBoard.price.focus();
-        alert("가격을 입력하세요");
+        alert("가격을 입력하세요.");
         return false;
     }
     
     if(sellBoard.prod_content.value == "" ) {
     	sellBoard.prod_content.focus();
-        alert("내용을 입력하세요");
+        alert("내용을 입력하세요.");
+        return false;
+    }
+    
+    if(sellBoard.selectBox.value == "" ) {
+    	sellBoard.selectBox.focus();
+        alert("카테고리를 선택하세요.");
         return false;
     }
 }
@@ -245,3 +251,10 @@ $('#prod_title').keyup(function (e){
     var content = $(this).val();
     $('#counter').html(content.length+" / 40"); 
 });
+
+function handleOnChange(e) {
+	  const value = e.value;
+	  // 데이터 출력
+	  document.getElementById("result_category").innerText
+	    = value;
+	}

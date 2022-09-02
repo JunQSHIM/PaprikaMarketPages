@@ -156,10 +156,4 @@ public class UserController {
 	    return result;
 	}
 	
-	@RequestMapping(value = "/emailCheck.do" , method = RequestMethod.POST)
-	public @ResponseBody int emailCheck(@ModelAttribute("vo") UserVO vo , Model model) throws Exception{
-	    int result = userService.emailCheck(vo.getEmail());
-	    return result;
-	}
-	
 }

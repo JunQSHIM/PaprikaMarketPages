@@ -21,17 +21,15 @@ function formReset() {
 function checkId() {
 	var theForm = document.register;
 	var id = theForm.id.value; //id값이 "id"인 입력란의 값을 저장
-	$
-			.ajax({
-				url : 'idCheck.jsp', //Controller에서 요청 받을 주소
+	$.ajax({
+				url : '/myweb/idCheck.do', //Controller에서 요청 받을 주소
 				type : 'post', //POST 방식으로 전달
 				data : {
 					id : id
 				},
 				success : function(cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
-					const target = document
-							.getElementById('registerButton');
-					if (cnt == 0) { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+					const target = document.getElementById('registerButton');
+					if (cnt == 1) { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
 						document.getElementById('result3').innerHTML = '<font color="green">사용가능한 아이디 입니다.</font>';
 						setOutline(theForm.id, "2px solid green");
 						target.disabled = false;
@@ -39,6 +37,30 @@ function checkId() {
 						document.getElementById('result3').innerHTML = '<font color="red">중복된 아이디 입니다.</font>';
 						setOutline(theForm.id, "2px solid red");
 						theForm.id.focus();
+						target.disabled = true;
+					}
+				},
+			});
+}
+function checkEmail() {
+	var theForm = document.register;
+	var email = theForm.email.value; 
+	$.ajax({
+				url : '/myweb/emailCheck.do', //Controller에서 요청 받을 주소
+				type : 'post', //POST 방식으로 전달
+				data : {
+					email : email
+				},
+				success : function(cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
+					const target = document.getElementById('registerButton');
+					if (cnt == 1) { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디
+						document.getElementById('result6').innerHTML = '<font color="green">사용가능한 이메일입니다.</font>';
+						setOutline(theForm.email, "2px solid green");
+						target.disabled = false;
+					} else { // cnt가 0일 경우 -> 이미 존재하는 아이디
+						document.getElementById('result6').innerHTML = '<font color="red">중복된 이메일입니다.</font>';
+						setOutline(theForm.email, "2px solid red");
+						theForm.email.focus();
 						target.disabled = true;
 					}
 				},
@@ -78,13 +100,11 @@ $(document)
 										var email = theForm.email.value;
 										var pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 										if (pattern.test(email) == false) {
-											document
-													.getElementById('result4').innerHTML = '<font color="red">올바른 이메일 형식이 아닙니다.</font>';
+											document.getElementById('result4').innerHTML = '<font color="red">올바른 이메일 형식이 아닙니다.</font>';
 											theForm.email.focus();
 											target.disabled = true;
 										} else {
-											document
-													.getElementById('result4').innerHTML = '<font color="green">사용가능한 이메일입니다.</font>';
+											document.getElementById('result4').innerHTML = '<font color="green">사용가능한 이메일입니다.</font>';
 											target.disabled = false;
 										}
 									});

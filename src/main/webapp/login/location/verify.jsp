@@ -72,7 +72,7 @@
 			            console.log(result[0].address.address_name);
 			            var location = result[0].address.address_name;
 			            const loc = location.split(" ");
-			            document.getElementById("loc").innerHTML = "<input type='checkbox' name='myAddr' id='myHome' value='"+loc[2]+"'>"+"<label for='myHome' style='cursor:pointer'>"+loc[2]+"</label>";
+			            document.getElementById("loc").innerHTML = "<input type='checkbox' name='myAddr' id='myHome' checked='checked' value='"+loc[2]+"'>"+"<label for='myHome' style='cursor:pointer'>"+loc[2]+"</label>";
 			        }
 			    }
 			    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);

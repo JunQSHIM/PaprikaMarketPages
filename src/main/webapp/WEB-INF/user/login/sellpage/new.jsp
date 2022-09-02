@@ -30,9 +30,7 @@
 								<form enctype="multipart/form-data" method="post" action="insertPhoto.do">
 									<input type="file" name="origin_file_name" multiple="multiple"
 										class="form-control user_picked_files" />
-								
-								</div>
-
+									</div>
 							</div>
 						</div>
 						<div class="file_2">
@@ -79,7 +77,6 @@
 				</div>
 				<div class="grid_10 newdata">
 					<select id="cate">
-
 						<option value="digital">디지털/가전</option>
 						<option value="interior">가구/인테리어</option>
 						<option value="kids">유아동/유아도서</option>
@@ -94,11 +91,7 @@
 						<option value="books">도서/티켓/음반</option>
 						<option value="etc">기타 중고물품</option>
 						<option value="sayo">삽니다</option>
-
 					</select>
-
-
-
 				</div>
 			</div>
 			<div class="grid_12 location">
@@ -133,7 +126,6 @@
 			</div>
 			<div class="grid_10 newdata">
 				<div class="textbox">
-
 					<textarea class="text_area" rows="6"
 						placeholder="여러 장의 상품 사진과 구입 연도, 브랜드, 사용감, 하자 유무 등 구매자에게 필요한 정보를 꼭 포함해 주세요. (10자 이상)&#13;안전하고 건전한 거래 환경을 위해 과학기술정보통신부, 한국인터넷진흥원과 번개장터(주)가 함께 합니다."
 						name="prod_content"
@@ -146,11 +138,7 @@
 					<div class="counter">
 						<span id="currentMsgLen" style="padding-left: 60;">0</span>/1000자
 					</div>
-
-
 				</div>
-
-
 			</div>
 		</div>
 		<div class="grid_12 tag">

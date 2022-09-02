@@ -1,5 +1,7 @@
 package com.spring.myweb.User.controller;
 
+import java.util.List;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -9,13 +11,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
+import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Controller
@@ -25,6 +31,9 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	RegisterAgreementService registerService;
+	
 	@RequestMapping(value = "/insertProc.do", method=RequestMethod.GET)
 	public String insertUser(Model model,UserVO vo) {
 		int success = userService.insertUser(vo);
@@ -34,7 +43,9 @@ public class UserController {
 		return "login/main/mother";
 	}
 	@RequestMapping(value="/insert.do")
-	public String insert() {
+	public String insert(Model model) {
+		List<RegisterAgreementVO> list = registerService.selectAll();
+		model.addAttribute("newest",list);
 		return "login/login&register/registerAgree";
 	}
 	@RequestMapping(value="registerAgree.do")
@@ -136,7 +147,19 @@ public class UserController {
 			session.setAttribute("kakaoUser",vo);
 			model.addAttribute("kakaoUser",vo);
 		}
-		
 		return "login/location/verify";
 	}
+	
+	@RequestMapping(value = "/idCheck.do" , method = RequestMethod.POST)
+	public @ResponseBody int idCheck(@ModelAttribute("vo") UserVO vo , Model model) throws Exception{
+	    int result = userService.idCheck(vo.getId());
+	    return result;
+	}
+	
+	@RequestMapping(value = "/emailCheck.do" , method = RequestMethod.POST)
+	public @ResponseBody int emailCheck(@ModelAttribute("vo") UserVO vo , Model model) throws Exception{
+	    int result = userService.emailCheck(vo.getEmail());
+	    return result;
+	}
+	
 }

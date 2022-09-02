@@ -51,6 +51,13 @@ public class UserDAOImpl implements UserDAO{
 		success = session.update("userDB.locationInsert",vo);
 		return success;
 	}
+
+	@Override
+	public int emailCheck(String email) {
+		int result = 0;
+		result = session.selectOne("userDB.emailCheck",email);
+		return result;
+	}
 	
 
 }

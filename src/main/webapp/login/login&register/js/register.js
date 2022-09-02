@@ -42,6 +42,7 @@ function checkId() {
 				},
 			});
 }
+var emailCheck = false;
 function checkEmail() {
 	var theForm = document.register;
 	var email = theForm.email.value; 
@@ -53,12 +54,21 @@ function checkEmail() {
 				},
 				success : function(cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
 					const target = document.getElementById('registerButton');
-					if (cnt == 1) { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디
-						document.getElementById('result6').innerHTML = '<font color="green">사용가능한 이메일입니다.</font>';
-						setOutline(theForm.email, "2px solid green");
-						target.disabled = false;
-					} else { // cnt가 0일 경우 -> 이미 존재하는 아이디
-						document.getElementById('result6').innerHTML = '<font color="red">중복된 이메일입니다.</font>';
+					if (cnt == 0 && emailCheck == true){ 
+						if(email != ""){
+							document.getElementById('result6').innerHTML = '<font color="green">사용가능한 이메일입니다.</font>';
+							setOutline(theForm.email, "2px solid green");
+							target.disabled = false;
+						}
+					} else if(cnt !=0){ // cnt가 0일 경우 -> 이미 존재하는 아이디
+						if(email != ""){
+							document.getElementById('result6').innerHTML = '<font color="red">중복된 이메일입니다.</font>';
+							setOutline(theForm.email, "2px solid red");
+							theForm.email.focus();
+							target.disabled = true;
+						}
+					} else if(email == ""){
+						document.getElementById('result6').innerHTML = '<font color="red"></font>';
 						setOutline(theForm.email, "2px solid red");
 						theForm.email.focus();
 						target.disabled = true;
@@ -101,10 +111,12 @@ $(document)
 										var pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 										if (pattern.test(email) == false) {
 											document.getElementById('result4').innerHTML = '<font color="red">올바른 이메일 형식이 아닙니다.</font>';
+											emailCheck = false;
 											theForm.email.focus();
 											target.disabled = true;
 										} else {
-											document.getElementById('result4').innerHTML = '<font color="green">사용가능한 이메일입니다.</font>';
+											document.getElementById('result4').innerHTML = '<font color="green"></font>';
+											emailCheck = true;
 											target.disabled = false;
 										}
 									});

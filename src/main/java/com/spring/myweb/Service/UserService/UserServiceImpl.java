@@ -236,5 +236,12 @@ public class UserServiceImpl implements UserService{
 		}
 		return result;
 	}
+
+	@Override
+	public int emailCheck(String email) {
+		int result = 0;
+		result = userDAO.emailCheck(email);
+		return result;
+	}
 	
 }

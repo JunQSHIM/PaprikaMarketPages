@@ -30,7 +30,7 @@ public class AdminProdController {
 		return "Admin_page/product/ad_prods";
 	}
 
-	// 상품정보 페이지 이동
+	// 상품정보 페이지 이동 
 	@RequestMapping(value = "/prod_de.mdo", method = RequestMethod.GET)
 	public String getDetail(Model model, int prod_seq) {
 		System.out.println("관리자가 상품정보 페이지로 접속함");

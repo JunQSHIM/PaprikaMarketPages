@@ -75,7 +75,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="user" items="${list }">
+										<c:forEach var="user" items="${admin }">
 											<tr>
 												<td>${user.user_seq }</td>
 												<td>${user.id }</td>

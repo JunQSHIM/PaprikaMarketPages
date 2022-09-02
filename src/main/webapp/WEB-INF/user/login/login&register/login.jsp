@@ -51,6 +51,8 @@
 	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 	crossorigin="anonymous">
 <!--Custom styles-->
+<script type="text/javascript"
+	src="/myweb/login/login&register/js/login.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/myweb/login/login&register/styles.css">
 </head>
@@ -89,7 +91,7 @@
 							class="btn login_btn">
 					</div>
 					<div class="btn register_btn">
-						<a href="/myweb/login/login&register/registerAgree.jsp">회원가입</a>
+						<a href="insert.do">회원가입</a>
 					</div>
 					<div class="btn register_btn">
 						<a href="#">비밀번호 찾기</a>
@@ -108,7 +110,6 @@
 
 		</div>
 	</div>
-
 
 </body>
 </html>

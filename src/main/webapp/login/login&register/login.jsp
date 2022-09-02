@@ -47,8 +47,7 @@
 	});
 </script>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript"
-	src="/myweb/login/login&register/js/login.js"></script>
+
 <title>login</title>
 
 

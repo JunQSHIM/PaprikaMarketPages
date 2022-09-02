@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&display=swap');
 #nearLoc button{
 	border: 1px solid orange;
-    background-color: rgba(0,0,0,0);
+    background-color:white;
     color: orange;
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
@@ -22,6 +22,32 @@
 input[type=checkbox]{
     display: none; 
 }
+#loc2 label{
+    border: 1px solid orange;
+    background-color: rgba(0,0,0,0);
+    color: orange;
+	font : bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+    padding: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;  
+	width:120px;
+	height:30px;
+	margin-top:10px;
+	margin-right: 8px;
+	text-align: center;
+}
+#loc2 label:hover{
+    color:white;
+    background-color: orange;
+}
+#loc2 input[type=checkbox]:checked + label{
+   	background-color: orange;
+   	color:white;
+}
+
 h3{
 	font : bold;
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
@@ -47,7 +73,7 @@ h3{
     color:white;
     background-color: orange;
 }
-#loc1 input[type=checkbox]:checked #loc1{
+#loc1 input[type=checkbox]:checked + label{
    	background-color: orange;
    	color:white;
 }
@@ -56,8 +82,9 @@ h3{
 	width:50%;
 }
 #loc2{
+	float:left;
 	width:50%;
 }
 #map{
-	margin-right:50px;
+	float:left;
 }

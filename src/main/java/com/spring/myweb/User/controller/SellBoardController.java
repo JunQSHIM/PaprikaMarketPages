@@ -30,7 +30,7 @@ public class SellBoardController {
 		System.out.println("boardList Service");
 		List<SellBoardVO> list = boardService.boardList();
 		model.addAttribute("board",list);
-		return "login/main/prods";
+		return "redirect:main.do";
 	}
 	
 	// 판매하기 등록하기 페이지 이동
@@ -50,7 +50,7 @@ public class SellBoardController {
 		if(success == 1) {
 			model.addAttribute("board",vo);
 		}
-		return "login/main/prods";
+		return "redirect:main.do";
 	}
 	//글 상세보기
 	@RequestMapping(value = "/sellDetail.do", method = RequestMethod.GET)
@@ -66,7 +66,7 @@ public class SellBoardController {
 	public String sellDelete(int prod_seq) throws Exception{
 		System.out.println("판매하기 삭제됨.");
 		boardService.sellDelete(prod_seq);
-		return "/main.do";
+		return "redirect:main.do";
 	}
 	
 	

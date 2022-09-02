@@ -29,8 +29,15 @@
 	<article class="container_12">
 		<h3>내 동네 설정</h3>
 		<hr style="border:1px solid orange;">
-		<div id="map" style="width:500px;height:400px;float: left;">
+		<div id="map" style="width:400px;height:400px;float: left;">
 		<script>
+			function checkOnlyOne(element){
+				const cb = document.getElementsByName("location2");
+				checkboxes.forEach((e)=>{
+					e.checked = false;
+				})
+				element.checked = true;
+			}
 			var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 			var options = { //지도를 생성할 때 필요한 기본 옵션
 				center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
@@ -64,15 +71,16 @@
 			    navigator.geolocation.getCurrentPosition(locationLoadSuccess,locationLoadError);
 			};
 			var geocoder = new kakao.maps.services.Geocoder();
-
+		    var once = true;
 			function getAddr(lat,lng){
 			    var coord = new kakao.maps.LatLng(lat, lng);
 			    var callback = function(result, status) {
-			        if (status === kakao.maps.services.Status.OK) {
+			        if (status === kakao.maps.services.Status.OK && once == true) {
 			            console.log(result[0].address.address_name);
 			            var location = result[0].address.address_name;
 			            const loc = location.split(" ");
-			            $("#loc1").append("<label for='myHome'><input type='checkbox' id='myHome' name='location1' value='"+loc[2]+"'/>"+loc[2]+"</label>");
+			            $("#loc1").append("<input type='checkbox' id='myHome' name='location1' value='"+loc[2]+"'/><label for='myHome'>"+loc[2]+"</label>");
+			            once = false;
 			        }
 			    }
 			    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
@@ -101,11 +109,17 @@
 			function getAddr2(lat,lng){
 			    var coord = new kakao.maps.LatLng(lat, lng);
 			    var callback = function(result, status) {
+			    	once = true;
 			        if (status === kakao.maps.services.Status.OK) {
 			            console.log(result);
 			            var location = result[0].address.address_name;
 			            const loc = location.split(" ");
-			            $("#loc2").append("<input type='radio' name='location2' value='"+loc[2]+"'>"+loc[2]+"<br>");
+			            $("#loc2").append("<button name='location2' value='"+loc[2]+"'>"+loc[2]+"</button><br>");
+			            once = false;
+			        }
+			        if(once == false){
+			        	const target = document.getElementById('getNearLocationBtn');
+			        	target.disabled = true;
 			        }
 			    }
 			    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
@@ -124,17 +138,16 @@
 					<input type="hidden" name="join_type" value="0">
 				</c:otherwise>
 			</c:choose>
-			<div id="loc1">
+			<div>
+				<div id="loc1">
 					<button type="button" class="btn btn-lg btn-primary" id="getMyPositionBtn" onclick="getCurrentPosBtn()">우리동네보기(현재위치가 선택됩니다.)</button>
-					<div id="loc">
-						
-					</div>
+					<div id="loc"></div>
 				</div>
 				<div id="loc2">
 					<button type="button" class="btn btn-lg btn-primary" id="getNearLocationBtn" onclick="nearAddr()">주변동네보기(1개만 선택해 주십시오.)</button>
 					<div id="nearLoc"></div>
 				</div>
-				<button>sub</button>
+			</div>
 			</form>
 		</div>
 		</article>

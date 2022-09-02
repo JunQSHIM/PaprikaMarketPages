@@ -7,18 +7,22 @@
 	<select id="selectUser" parameterType="string" resultType="UserVO">
 		select * from user where id=#{value}
 	</select>
+	<select id="idCheck" parameterType="String" resultType="int">
+        select count(*) from user where id = #{id}
+    </select>
+   	<select id="emailCheck" parameterType="String" resultType="int">
+        select count(*) from user where email = #{email}
+    </select>
 	<select id="insertUser">
 		insert into
 		user(id,name,password,birth,nickname,email,phone,msg_agree)
 		values(#{id},#{name},#{password},'1997-03-07',#{nickname},#{email},#{phone},#{msg_agree});
 	</select>
-
 	<!-- 메인 화면에 나오는 판매중인 상품 -->
 	<select id="boardList" resultType="SellBoardVO">
 		select * from product order by
 		prod_seq desc;
 	</select>
- 
 	<!-- 판매하기 글 쓰기 -->
 	<select id="insertSell" resultType="SellBoardVO">
 		insert into

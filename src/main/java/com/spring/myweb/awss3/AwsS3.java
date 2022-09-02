@@ -23,7 +23,7 @@ public class AwsS3 {
 	
 	private AmazonS3 s3Client;
 	
-	final private String accessKey = "AKIAVHPIWTHZMPXQY7WW";
+	final private String accessKey = "AKIAVHPIWTHZMPXQY7WW";	
 	final private String secretKey = "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";
 	private Regions clientRegion = Regions.AP_NORTHEAST_2;
 	private String bucket = "paprikaproject";

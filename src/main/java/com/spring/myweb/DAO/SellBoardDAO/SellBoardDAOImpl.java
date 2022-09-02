@@ -37,7 +37,7 @@ public class SellBoardDAOImpl implements SellBoardDAO {
 
 	@Override
 	public void sellDelete(int prod_seq) {
-		session.delete("userDB.sellDelete", prod_seq);
+		session.delete("userDB.sellDelete", prod_seq); 
 		
 	}
 

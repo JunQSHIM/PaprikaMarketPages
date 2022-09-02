@@ -1,19 +1,20 @@
 @charset "UTF-8";
+
 @charset "UTF-8";
 
 * {
 	margin: 0;
 	padding: 0;
-}	
+}
 
-div{ 
+div {
 	
 }
-  
+
 li {
 	list-style: none;
 }
- 
+
 a {
 	text-decoration: none;
 }
@@ -84,7 +85,7 @@ a {
 	height: 400px;
 }
 
-.read{
+.read {
 	margin-left: 20px;
 }
 
@@ -107,7 +108,6 @@ a {
 
 .name {
 	margin-top: 1px;
-	
 }
 
 .user img {
@@ -170,23 +170,31 @@ a {
 	float: right;
 }
 
-.delbtn div {
-	color: white;
-	float: left;
-	height: 55px;
-	line-height: 55px;
-	font-size: 1.3rem;
+.delbtn button {
+	border: 1px solid orange;
+	background-color: rgba(0, 0, 0, 0);
+	color: orange;
+	font: bold;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	width: 90px;
 	text-align: center;
-	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+	height: 30px;
 }
 
-#del_prod{
-	font-size:1.5rem;
+.delbtn button:hover {
+	color: white;
+	background-color: orange;
+}
+
+#del_prod {
+	font-size: 1.5rem;
 	margin-top: 18px;
 	font-weight: bold;
 	background: orange;
 }
-
 
 hr {
 	border: 1px solid orange;

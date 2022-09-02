@@ -7,7 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AdminLTE 3 | DataTables</title>
 
+<script type="text/javascript">
 
+	function prodel() {
+		window.location.href = 'prodel.mdo?prod_seq=${board.prod_seq }';
+	}
+</script>
 
 <link rel="stylesheet" href="/myweb/Admin_page/member/prodpage.css">
 
@@ -47,14 +52,16 @@
 											<img class="grid_1" src="anya.jpg">
 										</div>
 										<div class="grid_2 name">
-											<h3><a href="ad_memde.jsp">${board.nickname}</a></h3>
+											<h3>
+												<a href="ad_memde.jsp">${board.nickname}</a>
+											</h3>
 											<div class="grid_2 location">부천시 상동</div>
 										</div>
 										<div class="grid_2 mannertemp">45도</div>
 									</div>
 									<div class="proinfo_1">
-
-										<div class="cate">카테고리 : 아동</div>
+ 
+										<div class="cate">카테고리 : ${board.category }</div>
 										<div class="title">${board.prod_title }</div>
 										<div class="price">3,000원</div>
 
@@ -63,7 +70,7 @@
 									<div class="proinfo_2">
 
 										<div class="clear row delbtn">
-											<button class="grid_1" id="del_prod">삭제</button>
+											<button class="grid_1" id="prodel" onclick="prodel()">삭제</button>
 
 										</div>
 
@@ -81,17 +88,7 @@
 							</div>
 
 
-							<div class="feature">
-								<p>아냐짱 하악하악;;;</p>
-								<p>아냐짱 하악하악;;;</p>
-								<p>아냐짱 하악하악;;;</p>
-								<p>아냐짱 하악하악;;;</p>
-								<p>아냐짱 하악하악;;;</p>
-								<p>아냐짱 하악하악;;;</p>
-								<p>아냐짱 하악하악;;;</p>
-								<p>아냐짱 하악하악;;;</p>
-							
-							</div>
+							<div class="feature">${board.prod_content }</div>
 
 
 						</div>

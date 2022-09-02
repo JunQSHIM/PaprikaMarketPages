@@ -30,14 +30,20 @@ public class AdminProdController {
 		return "Admin_page/product/ad_prods";
 	}
 
-	//상품정보 페이지 이동
+	// 상품정보 페이지 이동 
 	@RequestMapping(value = "/prod_de.mdo", method = RequestMethod.GET)
-	public String getDetail(Model model, int prod_seq){
+	public String getDetail(Model model, int prod_seq) {
 		System.out.println("관리자가 상품정보 페이지로 접속함");
 		SellBoardVO vo = boardService.sellDetail(prod_seq);
 		model.addAttribute("board", vo);
 		return "Admin_page/product/ad_prod_de";
 	}
 
-	
+	//관리자 상품 삭제
+	@RequestMapping(value = "/prodel.mdo", method = RequestMethod.GET)
+	public String sellDelete(int prod_seq) throws Exception {
+		System.out.println("관리자가 상품 삭제함");
+		boardService.sellDelete(prod_seq);
+		return "redirect:prods.mdo";
+	}
 }

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.myweb.DAO.SellBoardDAO.SellBoardDAO;
+import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.SellboardVO.SellBoardVO;
 
 @Service
@@ -40,6 +41,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void viewCount(int prod_seq) {
 		boardDAO.viewCount(prod_seq);
+	}
+
+	@Override
+	public List<CategoryVO> categoryList() {
+		return boardDAO.categoryList();
 	}
 
 }

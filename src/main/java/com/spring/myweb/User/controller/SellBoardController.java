@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.BoardService.BoardService;
+import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.SellboardVO.SellBoardVO;
 
 @Controller
@@ -34,8 +35,10 @@ public class SellBoardController {
 	
 	// 판매하기 등록하기 페이지 이동
 	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
-	public String getCreate() throws Exception {
+	public String getCreate(Model model, CategoryVO vo) throws Exception {
 		System.out.println("판매하기 접속함");
+		List<CategoryVO> list = boardService.categoryList();
+		model.addAttribute("category",list);
 		return "login/sell";
 	}
 	

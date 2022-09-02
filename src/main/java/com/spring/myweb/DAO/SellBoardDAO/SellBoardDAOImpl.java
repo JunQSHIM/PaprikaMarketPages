@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.SellboardVO.SellBoardVO;
 
 @Repository
@@ -43,6 +44,12 @@ public class SellBoardDAOImpl implements SellBoardDAO {
 	@Override
 	public void viewCount(int prod_seq) {
 		session.update("userDB.viewCount",prod_seq);
+	}
+
+	@Override
+	public List<CategoryVO> categoryList() {
+		List<CategoryVO> cList = session.selectList("userDB.categoryList");
+		return cList;
 	}
 
 }

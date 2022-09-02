@@ -27,7 +27,7 @@
 						<div class="grid_2 regpic">
 							<div class="file_0">
 								<div class="file_1">
-								<form enctype="multipart/form-data" method="post" action="insertPhoto.do">
+								
 									<input type="file" name="origin_file_name" multiple="multiple"
 										class="form-control user_picked_files" />
 								
@@ -79,22 +79,10 @@
 				</div>
 				<div class="grid_10 newdata">
 					<select id="cate">
-
-						<option value="digital">디지털/가전</option>
-						<option value="interior">가구/인테리어</option>
-						<option value="kids">유아동/유아도서</option>
-						<option value="food">생활/가공식품</option>
-						<option value="sports">스포츠/레저</option>
-						<option value="fe_acc">여성잡화</option>
-						<option value="fe_dress">여성의류</option>
-						<option value="ma_dress">남성패션/잡화</option>
-						<option value="hobby">게임/취미</option>
-						<option value="beauty">뷰티/미용</option>
-						<option value="pet">반려동물용품</option>
-						<option value="books">도서/티켓/음반</option>
-						<option value="etc">기타 중고물품</option>
-						<option value="sayo">삽니다</option>
-
+						<option disabled selected>카테고리선택</option>
+						<c:forEach items="${category }" var="category">
+						<option value="${category.category_value }">${category.category_name }</option>
+						</c:forEach>
 					</select>
 
 
@@ -210,7 +198,7 @@
 				<button type="submit" class="new_btn">상품 등록</button>
 			</div>
 		</div>
-		</form>
+		
 	</form>
 
 

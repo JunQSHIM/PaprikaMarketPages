@@ -42,6 +42,10 @@
 	<update id="viewCount">
 		update product set count = count + 1 where prod_seq = #{prod_seq};
 	</update>
+	
+	<select id="categoryList" resultType="CategoryVO">
+		select * from category;
+	</select>
 
 	<!-- 정보 찾기 -->
 	<select id="findKakao" parameterType="java.util.HashMap"

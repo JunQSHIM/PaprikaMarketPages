@@ -60,7 +60,7 @@
 									</tr>
 								</thead>
 								<tbody>
-
+  
 									<c:forEach items="${board }" var="boardList">
 										<tr>
 										

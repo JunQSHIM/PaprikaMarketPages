@@ -203,7 +203,7 @@
 						<hr style="border: 0.3px solid lightgray;">
 					</div>
 					<div class="item">
-
+ 
 					<button>♥36</button> | <button>⊙${board.count}</button> | <span>⏲${board.upload_date} </span> | <button class="openBtn">신고하기</button><br>
 
 

@@ -15,7 +15,7 @@
 							</div>
 							
 						</div>
-					</div>
+					</div> 
 					<div class="sell_product_cart">
 					
 					<c:forEach items="${board }" var="boardList">

@@ -60,7 +60,7 @@
 										<div class="grid_2 mannertemp">45도</div>
 									</div>
 									<div class="proinfo_1">
-
+ 
 										<div class="cate">카테고리 : ${board.category }</div>
 										<div class="title">${board.prod_title }</div>
 										<div class="price">3,000원</div>

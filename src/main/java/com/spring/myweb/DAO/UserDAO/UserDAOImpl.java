@@ -51,4 +51,6 @@ public class UserDAOImpl implements UserDAO{
 		success = session.update("userDB.locationInsert",vo);
 		return success;
 	}
+	
+
 }

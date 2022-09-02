@@ -2,8 +2,6 @@ package com.spring.myweb.Admin.Controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+<<<<<<< HEAD
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
+=======
+import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
+import com.spring.myweb.Service.UserService.UserService;
+import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
+>>>>>>> JunQ
 import com.spring.myweb.VO.UserVO.UserVO;
 
 
@@ -22,7 +26,14 @@ import com.spring.myweb.VO.UserVO.UserVO;
 public class AdminController {
 	
 	@Autowired
+<<<<<<< HEAD
 	AdminService adminService;
+=======
+	UserService userService;
+	
+	@Autowired
+	RegisterAgreementService agreementService;
+>>>>>>> JunQ
 
 
 	@RequestMapping(value = "/main.mdo", method=RequestMethod.GET)
@@ -38,12 +49,20 @@ public class AdminController {
 		return "Admin_page/member/ad_memlist";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "/sms.mdo", method=RequestMethod.GET)
 	public String userSmsAdmin(Model model) {
 		System.out.println("관리자 페이지 sms 회원목록");
 		List<UserSmsVO> sms = adminService.selectSmsAll();
 		model.addAttribute("admin",sms);
 		return "Admin_page/admin_board/ad_board";
+=======
+	@RequestMapping(value ="/admin_list.mdo")
+	public String adminList(Model model) {
+		List<RegisterAgreementVO> agreementList = agreementService.selectAll();
+		model.addAttribute("newest",agreementList);
+		return "Admin_page/admin_list/agreement";
+>>>>>>> JunQ
 	}
 	
 	

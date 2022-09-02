@@ -225,4 +225,16 @@ public class UserServiceImpl implements UserService{
 		return userDAO.locationInsert(vo);
 	}
 
+	@Override
+	public int idCheck(String id){
+		int result = 0;
+		UserVO vo = userDAO.select(id);
+		if(vo==null) {
+			result = 1;
+		}else {
+			result = 0;
+		}
+		return result;
+	}
+	
 }

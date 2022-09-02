@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,13 +50,13 @@ request.setCharacterEncoding("UTF-8");
 								class="agreeBtnAll" id="chk_all"> <label for="chk_all">회원가입
 								약관에 모두 동의합니다</label>
 						</div>
-
+						<c:forEach var="agreement" items="${newest}">
 						<section id="fregister_term">
 							<div class="fregister_agree2 checks2">
 								<input type="checkbox" name="agree" value="1" class="agreeBtn"
 									id="agree11"> <label for="agree11">이용약관 동의<span>(필수)</span></label>
 							</div>
-							<textarea readonly>${register_agreement }</textarea>
+							<textarea readonly>${agreement.register_agreement }</textarea>
 
 						</section>
 
@@ -66,12 +67,13 @@ request.setCharacterEncoding("UTF-8");
 									동의<span>(필수)</span>
 								</label>
 							</fieldset>
-							<textarea readonly>${pInfo_agreement }</textarea>
+							<textarea readonly>${agreement.p_agreement }</textarea>
 						</section>
 						<div class="btn_confirm">
 							<input type="reset" value="취소"> <input type="submit"
 								class="btn_submit" value="회원가입" id="btn_submit">
 						</div>
+						</c:forEach>
 					</form>
 				</div>
 			</div>

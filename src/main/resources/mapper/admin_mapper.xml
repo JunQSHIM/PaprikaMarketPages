@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminDB">
+	<select id="selectAgreement" parameterType="int" resultType="RegisterAgreeVO">
+		select * from agreement where agreement_seq=#{agreement_seq}
+	</select>
+	<select id="selectAgreementAll" resultType="RegisterAgreeVO">
+		select * from agreement;
+	</select>
+</mapper>

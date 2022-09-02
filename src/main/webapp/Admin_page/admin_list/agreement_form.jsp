@@ -69,14 +69,20 @@ function update(){
 							<div class="card-body">
 								<h4 align="left">회원가입 약관 동의</h4>
 								<div id="register_agreement">
-								<c:if test="${param.register_agreement ne null }">
-									<textarea id="register_agreement" readonly>${register_agreement }</textarea>
+								<c:if test="${newest.register_agreement ne null }">
+									<textarea id="register_agreement" readonly>${newest.register_agreement }</textarea>
+								</c:if>
+								<c:if test=${newest.register_agreement eq null }">
+									<textarea id="register_agreement" readonly>회원가입 약관 등록이 필요합니다!</textarea>
 								</c:if>
 								</div>
 								<h4 align="left">개인정보 수집 동의</h4>
 								<div id="pInfo_agreement">
-								<c:if test="${param.pInfo_agreement ne null }">
-									<textarea id="pInfo_agreement" readonly>${pInfo_agreement }</textarea>
+								<c:if test="${newest.pInfo_agreement ne null }">
+									<textarea id="pInfo_agreement" readonly>${newest.pInfo_agreement }</textarea>
+								</c:if>
+								<c:if test=${newest.pInfo_agreement eq null }">
+									<textarea id="register_agreement" readonly>개인정보 수집 약관 등록이 필요합니다!</textarea>
 								</c:if>
 								</div>
 							</div>

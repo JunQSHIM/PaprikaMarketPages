@@ -3,7 +3,6 @@ package com.spring.myweb.awss3;
 import java.io.File;
 import java.io.InputStream;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.amazonaws.AmazonServiceException;

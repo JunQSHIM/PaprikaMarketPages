@@ -13,9 +13,9 @@
 <link rel="stylesheet"
 	href="/myweb/Admin_page/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
- <link rel="stylesheet" type="text/css" href="admin_board.css">
+ <link rel="stylesheet" type="text/css" href="/myweb/Admin_page/admin_board/admin_board.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="admin_board.js"></script>
+<script type="text/javascript" src="/myweb/Admin_page/admin_board/admin_board.js"></script>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -74,8 +74,8 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach var="user" items="${list }">
-                  <c:set var="join_type" value="${user.join_type }">
+                  <c:forEach var="user" items="${admin }">
+                  <c:set var="join_type" value="${user.join_type }"/>
                   	<c:choose>
                   		<c:when test="${user.join_type == 1 }">
                   			 <c:set var="join_type" value="카카오톡 가입"></c:set>
@@ -84,7 +84,14 @@
                   			 <c:set var="join_type" value="일반 가입"></c:set>
                   		</c:when>
                  	</c:choose>
-                  </c:set>
+                 	<c:choose>
+                  		<c:when test="${user.msg_agree == 1 }">
+                  			 <c:set var="msg_agree" value="O"></c:set>
+                  		</c:when>
+                  		<c:when test="${user.msg_agree == 0 }">
+                  			 <c:set var="msg_agree" value="X"></c:set>
+                  		</c:when>
+                 	</c:choose>
 	                  <tr>
 							<th><input type="checkbox" class="adminArticleBtn"></th>
 		                    <td>${user.user_seq }</td>
@@ -93,7 +100,7 @@
 		                    <td>${user.name }</td>
 		                    <td>${user.phone }</td>
 		                    <td>${user.email }</td>
-		                    <td>${user.msg_agree }</td>
+		                    <td>${msg_agree }</td>
 	                  </tr>
                   </c:forEach>
                   </tbody>

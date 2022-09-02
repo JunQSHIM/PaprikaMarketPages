@@ -53,10 +53,10 @@
 
 
 						<li class="nav-item"><a
-							href="sns.mdo"
+							href="sms.mdo"
 							class="nav-link"> <i
 								class="nav-icon fa-solid fa-address-book"></i>
-								<p>SNS</p>
+								<p>SMS</p>
 						</a></li>
 
 						<li class="nav-item"><a

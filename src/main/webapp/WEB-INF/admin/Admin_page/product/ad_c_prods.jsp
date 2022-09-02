@@ -68,7 +68,7 @@
 													<a href="prod_de.mdo?prod_seq=${boardList.prod_seq}"><img src="/myweb/Admin_page/product/anya.jpg"
 														width="80px"></a>
 												</div></td>
-											<td><a href="/WEB-INF/admin/Admin_page/product/ad_prod_de.jsp">${boardList.prod_title }</a></td>
+											<td><a href="prod_de.mdo?prod_seq=${boardList.prod_seq}">${boardList.prod_title }</a></td>
 											<td id="seller"><a href="/WEB-INF/admin/Admin_page/member/ad_memde.jsp">${boardList.nickname }</a></td>
 											<td id="buyer"><a href="/WEB-INF/admin/Admin_page/ad_memde.jsp">Null</a></td>
 											<td>${boardList.upload_date }</td>

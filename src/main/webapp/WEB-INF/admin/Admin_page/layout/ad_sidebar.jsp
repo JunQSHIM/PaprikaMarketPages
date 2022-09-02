@@ -80,7 +80,7 @@
 				</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item"><a
-							href="/myweb/Admin_page/member/ad_prods.jsp" class="nav-link">
+							href="prods.mdo" class="nav-link">
 								<i class="nav-icon fas fa-tree"></i>
 								<p>상품 / 후기</p>
 						</a></li>

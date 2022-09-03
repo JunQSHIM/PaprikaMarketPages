@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -242,6 +243,25 @@ public class UserServiceImpl implements UserService{
 		int result = 0;
 		result = userDAO.emailCheck(email);
 		return result;
+	}
+
+	@Override
+	public int nicknameCheck(String nickname) {
+		int result = 0;
+		result = userDAO.nicknameCheck(nickname);
+		return result;
+	}
+	
+	@Override
+	public int phoneCheck(String phone) {
+		int result = 0;
+		result = userDAO.phoneCheck(phone);
+		return result;
+	}
+
+	@Override
+	public int reloadUser(UserVO vo) {
+		return userDAO.reloadUser(vo);
 	}
 	
 }

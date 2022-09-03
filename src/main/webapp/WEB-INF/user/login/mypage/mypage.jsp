@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,7 @@ function toMyReview() {
 	window.location.href = '/myweb/login/mypage/myReview.jsp';
 }
 function toProfileEdit() {
-	window.location.href = '/myweb/login/mypage/profileEdit.jsp';
+	window.location.href = 'profileEdit.do';
 }
 </script>
 <title>mypage</title>
@@ -50,7 +51,7 @@ function toProfileEdit() {
 		<jsp:include page="/login/main/category.jsp"></jsp:include>
 	</article>
 	<article class="container_12">
-
+	
 		<div class="card">
 			<div id="myPage_head">
 				<img src="/myweb/login/images/pkIcon.png"><b>마이페이지</b>
@@ -61,7 +62,7 @@ function toProfileEdit() {
 					<div id="profile_pic" style="background-image: url(${kakaoUser.profile_image});"></div>
 				</c:when>
 				<c:otherwise>
-					<div id="profile_pic" style="background-image: url('/myweb/login/images/profile.png');"></div>
+					<div id="profile_pic" style="background-image: url(${user.profile_image});"></div>
 				</c:otherwise>
 			</c:choose>
 				<div id="nickname_and_button">
@@ -98,6 +99,7 @@ function toProfileEdit() {
 						</div>
 					</div>
 					<div id="myLoc">
+						
 						<b>내 동네</b>
 						<c:choose>
 							<c:when test="${user.location1 ne null and kakaoUser.location1 eq null }">
@@ -110,6 +112,16 @@ function toProfileEdit() {
 								동네 인증이 필요합니다!
 							</c:otherwise>
 						</c:choose>
+						<br>
+						<div id="verifyBirth">
+						<c:choose>
+						<c:when test="${user.birth ne null}">
+							<b>생년월일</b><fmt:formatDate value="${user.birth}" pattern="yyyy-MM-dd"/>
+						</c:when>
+						<c:when test="${kakaoUser.available eq 0}"><b>본인인증</b><a href="/myweb/userVerify.do" style="cursor: pointer;" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">본인인증이 필요합니다.</a></c:when>
+						<c:otherwise><b>생년월일</b><fmt:formatDate value="${kakaoUser.birth}" pattern="yyyy-MM-dd"/></c:otherwise>
+						</c:choose>
+						</div>
 					</div>
 				</div>
 			</div>

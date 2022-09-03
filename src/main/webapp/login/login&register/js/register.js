@@ -20,7 +20,7 @@ function formReset() {
 }
 function checkId() {
 	var theForm = document.register;
-	var id = theForm.id.value; //id값이 "id"인 입력란의 값을 저장
+	var id = theForm.id.value.trim(); //id값이 "id"인 입력란의 값을 저장
 	$.ajax({
 				url : '/myweb/idCheck.do', //Controller에서 요청 받을 주소
 				type : 'post', //POST 방식으로 전달
@@ -45,7 +45,7 @@ function checkId() {
 var emailCheck = false;
 function checkEmail() {
 	var theForm = document.register;
-	var email = theForm.email.value; 
+	var email = theForm.email.value.trim(); 
 	$.ajax({
 				url : '/myweb/emailCheck.do', //Controller에서 요청 받을 주소
 				type : 'post', //POST 방식으로 전달
@@ -73,6 +73,55 @@ function checkEmail() {
 						theForm.email.focus();
 						target.disabled = true;
 					}
+				},
+			});
+}
+function checkNickname() {
+	var theForm = document.register;
+	var nickname1 = theForm.nickname.value; 
+	var nickname = nickname1.trim();
+	$.ajax({
+				url : '/myweb/nicknameCheck.do', //Controller에서 요청 받을 주소
+				type : 'post', //POST 방식으로 전달
+				data : {
+					nickname : nickname
+				},
+				success : function(cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
+					const target = document.getElementById('registerButton');
+					if (cnt == 0){ 
+							document.getElementById('result7').innerHTML = '<font color="green">사용가능한 닉네입니다.</font>';
+							setOutline(theForm.nickname, "2px solid green");
+							target.disabled = false;
+					} else{ // cnt가 0일 경우 -> 이미 존재하는 아이디
+							document.getElementById('result7').innerHTML = '<font color="red">중복된 닉네임입니다.</font>';
+							setOutline(theForm.nickname, "2px solid red");
+							theForm.nickname.focus();
+							target.disabled = true;
+					} 
+				},
+			});
+}
+function checkPhone() {
+	var theForm = document.register;
+	var phone = theForm.phone.value.trim(); 
+	$.ajax({
+				url : '/myweb/phoneCheck.do', //Controller에서 요청 받을 주소
+				type : 'post', //POST 방식으로 전달
+				data : {
+					phone : phone
+				},
+				success : function(cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
+					const target = document.getElementById('registerButton');
+					if (cnt == 0){ 
+							document.getElementById('result8').innerHTML = '<font color="green"></font>';
+							setOutline(theForm.phone, "2px solid green");
+							target.disabled = false;
+					} else{ // cnt가 0일 경우 -> 이미 존재하는 아이디
+							document.getElementById('result8').innerHTML = '<font color="red">중복된 전화번호입니다.</font>';
+							setOutline(theForm.phone, "2px solid red");
+							theForm.phone.focus();
+							target.disabled = true;
+					} 
 				},
 			});
 }

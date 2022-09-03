@@ -13,4 +13,8 @@ public interface UserDAO {
 	public UserVO findkakao(HashMap<String, Object> userInfo);
 	public int locationInsert(UserVO vo);
 	public int emailCheck(String email);
+	public int nicknameCheck(String nickname);
+	public int phoneCheck(String phone);
+	public int reloadUser(UserVO vo);
+
 }

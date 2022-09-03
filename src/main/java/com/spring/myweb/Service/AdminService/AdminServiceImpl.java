@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.myweb.DAO.AdminDAO.AdminDAO;
+import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
@@ -24,6 +25,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<UserSmsVO> selectSmsAll() {
 		return adminDAO.selectSmsAll();
+	}
+	
+	@Override
+	public List<ReviewSingoVO> selectReviewSingo(){
+		return adminDAO.selectSingoReview();
 	}
 
 }

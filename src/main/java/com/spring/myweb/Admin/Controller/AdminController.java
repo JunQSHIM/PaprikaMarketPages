@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.UserService.UserService;
+import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
@@ -41,7 +42,7 @@ public class AdminController {
 	public String userAdmin(Model model) {
 		System.out.println("관리자 페이지 회원목록");
 		List<UserVO> vo = adminService.selectAll();
-		model.addAttribute("admin",vo);
+		model.addAttribute("list",vo);
 		return "Admin_page/member/ad_memlist";
 	}
 	
@@ -49,7 +50,7 @@ public class AdminController {
 	public String userSmsAdmin(Model model) {
 		System.out.println("관리자 페이지 sms 회원목록");
 		List<UserSmsVO> sms = adminService.selectSmsAll();
-		model.addAttribute("admin",sms);
+		model.addAttribute("sms",sms);
 		return "Admin_page/admin_board/ad_board";
 	}
 	
@@ -58,6 +59,14 @@ public class AdminController {
 		List<RegisterAgreementVO> agreementList = agreementService.selectAll();
 		model.addAttribute("newest",agreementList);
 		return "Admin_page/admin_list/agreement";
+	}
+	
+	@RequestMapping(value = "/singo.mdo", method=RequestMethod.GET)
+	public String singoAdmin(Model model) {
+		System.out.println("관리자 페이지 singo목록");
+		List<ReviewSingoVO> reviewsingo = adminService.selectReviewSingo();
+		model.addAttribute("review", reviewsingo);
+		return "Admin_page/singo/ad_singo_list";
 	}
 	
 }

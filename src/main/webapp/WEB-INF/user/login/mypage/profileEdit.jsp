@@ -5,7 +5,7 @@
 <html>
 <head>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" type="text/css" href="profileEdit.css">
+<link rel="stylesheet" type="text/css" href="/myweb/login/mypage/profileEdit.css">
 <script src="/myweb/login/main/main.js"></script>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <meta charset="UTF-8">
@@ -21,7 +21,7 @@ function toMypage() {
 </head>
 <body>
 	<header>
-		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/header/header.jsp"></jsp:include>
 	</header>
 	
 	<article class="container_12">
@@ -62,7 +62,7 @@ function toMypage() {
 		</div>
 		</article>
 	<footer class="container_12">
-		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 <script>
 function move() {

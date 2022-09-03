@@ -7,5 +7,10 @@
 	<select id="selectUserSms" resultType="UserSmsVO">
 		select user_seq,join_type,id,name,phone,email,msg_agree from user;
 	</select>
-	
+		<select id="selectAgreement" parameterType="int" resultType="RegisterAgreeVO">
+		select * from agreement where agreement_seq=#{agreement_seq}
+	</select>
+	<select id="selectAgreementAll" resultType="RegisterAgreeVO">
+		select * from agreement;
+	</select>
 </mapper>

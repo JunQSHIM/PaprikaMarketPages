@@ -18,4 +18,7 @@ public interface UserService {
 	public int locationInsert(UserVO vo);
 	public int idCheck(String id);
 	public int emailCheck(String email);
+	public int nicknameCheck(String nickname);
+	public int phoneCheck(String phone);
+	public int reloadUser(UserVO vo);
 }

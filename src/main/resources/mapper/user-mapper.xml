@@ -33,9 +33,9 @@
 	<!-- 판매하기 글 쓰기 -->
 	<select id="insertSell" resultType="SellBoardVO">
 		insert into
-		product(nickname,location, prod_title, prod_content, price, category,
+		product(nickname,location, prod_title, prod_content, price, category_seq,
 		upload_date, status)
-		values('닉네임1234','서울',#{prod_title},#{prod_content},#{price},'디지털기기.가전',now(),1);
+		values('닉네임1234','서울',#{prod_title},#{prod_content},#{price},${category_seq},now(),1);
 	</select>
 
 	<!-- 판매중인 상품 상세보기 -->
@@ -53,7 +53,7 @@
 	<update id="viewCount">
 		update product set count = count + 1 where prod_seq = #{prod_seq};
 	</update>
-	
+	<!-- 카테고리 리스트 -->
 	<select id="categoryList" resultType="CategoryVO">
 		select * from category;
 	</select>

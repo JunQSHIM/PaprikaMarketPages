@@ -4,9 +4,24 @@ span {
 	color: red;
 }
 
+select {
+	width: 120px;
+	padding: .8em .5em;
+	border: 1px solid #a7a7a7a7;
+	font-family: inherit;
+	border-radius: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+select::-ms-expand {
+	display: none;
+}
 
 .cate_value {
 	display: flex;
+	margin-top: 10px;
 }
 
 .result_category {

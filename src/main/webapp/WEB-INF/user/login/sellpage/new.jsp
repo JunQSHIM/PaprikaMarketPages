@@ -11,7 +11,7 @@
 </head>
 <body>
 <form enctype="multipart/form-data" action="createProc.do"
-			name="sellBoard" method="get" onsubmit="Checkform()">
+			id="sellBoard" name="sellBoard" method="get" onsubmit="Checkform()">
 		<div class="grid_12 newinfo">
 			<div class="newinfo_1">
 				<div class="grid_2 newinfo_1_1">기본정보</div>
@@ -77,7 +77,7 @@
 				</div>
 				<div class="grid_10 newdata">
 					<select id="selectbox" onchange="handleOnChange(this)" name="selectBox">
-						<option disabled selected>카테고리선택</option>
+						<option disabled selected>카테고리선택&nbsp;&nbsp;▼</option>
 						<c:forEach items="${category }" var="category">
 						<option value="${category.category_name }">${category.category_name }</option>
 						</c:forEach>

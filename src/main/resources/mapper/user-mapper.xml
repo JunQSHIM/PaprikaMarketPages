@@ -13,10 +13,17 @@
    	<select id="emailCheck" parameterType="String" resultType="int">
         select count(*) from user where email = #{email}
     </select>
+    <!-- 닉네임 중복체 -->
+    <select id="nicknameCheck" parameterType="String" resultType="int">
+    	select count(*) from user where nickname = #{nickname}
+    </select>
+   	<select id="phoneCheck" parameterType="String" resultType="int">
+    	select count(*) from user where phone = #{phone}
+    </select>
 	<select id="insertUser">
 		insert into
-		user(id,name,password,birth,nickname,email,phone,msg_agree)
-		values(#{id},#{name},#{password},'1997-03-07',#{nickname},#{email},#{phone},#{msg_agree});
+		user(id,name,password,nickname,email,birth,phone,msg_agree,available,profile_image)
+		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image});
 	</select>
 	<!-- 메인 화면에 나오는 판매중인 상품 -->
 	<select id="boardList" resultType="SellBoardVO">
@@ -64,11 +71,15 @@
 	<!-- 정보 저장 -->
 	<insert id="kakaoInsert" parameterType="java.util.HashMap">
 		insert into
-		user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image)
-		values(#{email},#{nickname},'1234','1997-03-07',#{nickname},#{email},'010-1234-1234',0,1,#{profile_image})
+		user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image,available)
+		values(#{email},#{nickname},'1234','1111-01-01',#{nickname},#{email},'010-1234-1234',0,1,#{profile_image},1)
 	</insert>
 	
 	<update id="locationInsert" parameterType="UserVO">
 		update user set location1=#{location1},location2=#{location2} where id=#{id}
+	</update>
+	
+	<update id="reloadUser" parameterType="UserVO">
+		update user set birth=#{birth}, available=#{available} where id=#{id}
 	</update>
 </mapper>

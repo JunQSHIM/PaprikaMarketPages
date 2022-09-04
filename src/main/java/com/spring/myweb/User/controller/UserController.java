@@ -1,5 +1,8 @@
 package com.spring.myweb.User.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletRequest;
@@ -34,11 +37,16 @@ public class UserController {
 	@Autowired
 	RegisterAgreementService registerService;
 	
-	@RequestMapping(value = "/insertProc.do", method=RequestMethod.GET)
-	public String insertUser(Model model,UserVO vo) {
-		int success = userService.insertUser(vo);
-		if(success==1) {
+	@RequestMapping(value = "/insertProc.do")
+	public String insertUser(HttpSession session, Model model,UserVO vo,HttpServletRequest request) {
+		
+		int result = 0;
+		result = userService.insertUser(vo);
+		if(result ==1 ) {
+			session.setAttribute("user", vo);
 			model.addAttribute("user",vo);
+		}else {
+			System.out.println("FAIL");
 		}
 		return "login/main/mother";
 	}
@@ -63,6 +71,7 @@ public class UserController {
 	public String loginUser(HttpSession session, Model model,String id, ServletRequest request, HttpServletResponse response, boolean rememberId) {
 		System.out.println("User login service");
 		UserVO vo = userService.select(id);
+		
 		model.addAttribute("user",vo);
 		session.setAttribute("user", vo);
 		
@@ -73,6 +82,9 @@ public class UserController {
 			Cookie cookie = new Cookie("id", id);
 			cookie.setMaxAge(0);
 			response.addCookie(cookie);
+		}
+		if(vo.getUser_type()==1) {
+			return "redirect:/user.mdo";
 		}
 		return "login/main/mother";
 	}
@@ -156,10 +168,55 @@ public class UserController {
 	    return result;
 	}
 	
-//	@RequestMapping(value = "/emailCheck.do" , method = RequestMethod.POST)
-//	public @ResponseBody int emailCheck(@ModelAttribute("vo") UserVO vo , Model model) throws Exception{
-//	    int result = userService.emailCheck(vo.getEmail());
-//	    return result;
-//	}
+	@RequestMapping(value = "/emailCheck.do" , method = RequestMethod.POST)
+	public @ResponseBody int emailCheck(@ModelAttribute("vo") UserVO vo , Model model) throws Exception{
+	    int result = userService.emailCheck(vo.getEmail());
+	    return result;
+	}
 	
+	@RequestMapping(value = "/nicknameCheck.do" , method = RequestMethod.POST)
+	public @ResponseBody int nicknameCheck(@ModelAttribute("vo") UserVO vo , Model model) throws Exception{
+	    int result = userService.nicknameCheck(vo.getNickname());
+	    return result;
+	}
+	
+	@RequestMapping(value = "/phoneCheck.do" , method = RequestMethod.POST)
+	public @ResponseBody int phoneCheck(@ModelAttribute("vo") UserVO vo , Model model) throws Exception{
+	    int result = userService.phoneCheck(vo.getPhone());
+	    return result;
+	}
+	@RequestMapping(value="/userVerify.do")
+	public String userVerify() {
+		return "login/mypage/userVerify";
+	}
+	
+	@RequestMapping(value="/verify.do")
+	public String verify(HttpServletRequest request, HttpSession session, Model model) {
+		UserVO vo = (UserVO) session.getAttribute("kakaoUser");
+		String strDate = request.getParameter("birth");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		try {
+			date = sdf.parse(strDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		vo.setBirth(date);
+		vo.setAvailable(1);
+		int result = 0;
+		result = userService.reloadUser(vo);
+		if(result ==1 ) {
+			session.setAttribute("kakaoUser", vo);
+			model.addAttribute("kakaoUser",vo);
+		}else {
+			System.out.println("FAIL");
+		}
+		
+		return "login/mypage/verify";
+	}
+	
+	@RequestMapping(value="/profileEdit.do")
+	public String profileEdit() {
+		return "login/mypage/profileEdit";
+	}
 }

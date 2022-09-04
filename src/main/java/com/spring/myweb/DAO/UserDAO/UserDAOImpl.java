@@ -51,6 +51,34 @@ public class UserDAOImpl implements UserDAO{
 		success = session.update("userDB.locationInsert",vo);
 		return success;
 	}
+
+	@Override
+	public int emailCheck(String email) {
+		int result = 0;
+		result = session.selectOne("userDB.emailCheck",email);
+		return result;
+	}
+
+	@Override
+	public int nicknameCheck(String nickname) {
+		int result = 0;
+		result = session.selectOne("userDB.nicknameCheck",nickname);
+		return result;
+	}
+
+	@Override
+	public int phoneCheck(String phone) {
+		int result = 0;
+		result = session.selectOne("userDB.phoneCheck",phone);
+		return result;
+	}
+
+	@Override
+	public int reloadUser(UserVO vo) {
+		int success = 0;
+		success = session.update("userDB.reloadUser",vo);
+		return success;
+	}
 	
 
 }

@@ -2,6 +2,7 @@ package com.spring.myweb.VO.UserVO;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -12,6 +13,7 @@ public class UserVO {
 	private String password;
 	private String name;
 	private String nickname;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birth;
 	private String email;
 	private String phone;
@@ -24,4 +26,6 @@ public class UserVO {
 	private int msg_agree;
 	private int user_type;
 	private String profile_image;
+	private int available;
+
 }

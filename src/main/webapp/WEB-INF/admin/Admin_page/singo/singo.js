@@ -17,13 +17,9 @@ $(function(){
 		
 		var suspectId = $(this).children(".suspect_id").text();
 		var singoId = $(this).children(".singo_id").text();
-		var page = $(this).find(".page").text();
-		var content = $(this).find(".content").text();
 		
 		$("#singo_id").text(singoId);
 		$("#suspect_id").text(suspectId);
-		$("#singo_page").text(page);
-		$("#singo_content").text(content);
 		
 	});
 	
@@ -32,18 +28,6 @@ $(function(){
 	});
 	$("#home").mouseleave(function(){
 		$(this).css({"color": "black", "font-weight":"normal"});
-	});
-	
-	$(function() {
-		$('#example1').DataTable({
-			"paging" : true,
-			"lengthChange" : false,
-			"searching" : false,
-			"ordering" : true,
-			"info" : true,
-			"autoWidth" : false,
-			"responsive" : true,
-		});
 	});
 	
 });

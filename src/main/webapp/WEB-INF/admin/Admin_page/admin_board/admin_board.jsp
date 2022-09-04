@@ -74,7 +74,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach var="user" items="${admin }">
+                  <c:forEach var="user" items="${sms }">
                   <c:set var="join_type" value="${user.join_type }"/>
                   	<c:choose>
                   		<c:when test="${user.join_type == 1 }">

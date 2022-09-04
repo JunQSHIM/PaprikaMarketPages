@@ -49,7 +49,8 @@
 						</div>
 						<div class="input-group form-group">
 							<input type="text" name="nickname" placeholder="닉네임"
-								style="width: 400px;">
+								style="width: 400px;" oninput="checkNickname()">
+							<div id="result7"></div>
 						</div>
 						<div class="input-group form-group">
 							<input type="text" name="email" placeholder="이메일"
@@ -58,17 +59,22 @@
 							<div id="result6"></div>
 						</div>
 						<div class="input-group form-group">
+							<input type="date" name="birth" style="width: 400px;">
+							<div id="result9"></div>
+						</div>
+						<div class="input-group form-group">
 							<input type="text" name="phone" placeholder="전화번호를 -없이 입력해주세요."
-								style="width: 400px;" id="phoneCheck">
-							<div id="result5"></div>
+								style="width: 400px;" id="phoneCheck" oninput="checkPhone()">
+							<div id="result5"></div><br>
+							<div id="result8"></div>
 						</div>
 						<section id="fregister_private">
 							<fieldset class="fregister_agree2 checks2">
 								<input type="checkbox" name="smsagree" value="1" id="smsagree" checked>
 								<label for="smsagree">SMS 수신 동의<span>(선택)</span></label>
 							</fieldset>
-
 						</section>
+						<input type="hidden" name="profile_image" value="/myweb/login/images/profile.png">
 						<div class="form-group">
 							<input type="button" id="registerButton" value="회원가입"
 								class="btn float-left login_btn"> <input type="reset"

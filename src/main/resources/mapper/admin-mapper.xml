@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="adminDB">
+	<!--user 테이블 전체 불러오기 -->
 	<select id="selectUserAll" resultType="UserVO">
 		select * from user;
 	</select>
+	
+	<!-- sms페이지 필요한 컬럼만 불러오기 -->
 	<select id="selectUserSms" resultType="UserSmsVO">
 		select user_seq,join_type,id,name,phone,email,msg_agree from user;
 	</select>
+	<!-- 신고 상품 리뷰 불러오기 -->
+	<select id="selectReviewSingo" resultType="ReviewSingoVO">
+		select re.id as user_id, us.id as user_singo_id, re.review_seq, re.report_content, re.report_date, re.state from
+		(select u.id, r.user_singo_seq user_seq, r.review_seq, r.report_content, r.report_date, r.state from review_reports r
+				left join user u
+				on r.user_seq=u.user_seq
+		) re
+		left join user us
+		on re.user_seq = us.user_seq;
+	</select>
 	
+	<select id="selectAgreement" parameterType="int" resultType="RegisterAgreeVO">
+		select * from agreement where agreement_seq=#{agreement_seq}
+	</select>
+	<select id="selectAgreementAll" resultType="RegisterAgreeVO">
+		select * from agreement;
+	</select>
+	
+	<select id="selectAgreement" parameterType="int" resultType="RegisterAgreeVO">
+		select * from agreement where agreement_seq=#{agreement_seq}
+	</select>
+	<select id="selectAgreementAll" resultType="RegisterAgreeVO">
+		select * from agreement;
+	</select>
 </mapper>

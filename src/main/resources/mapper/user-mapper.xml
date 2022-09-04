@@ -75,6 +75,11 @@
 		update user set location1=#{location1},location2=#{location2} where id=#{id}
 	</update>
 	
+	<update id="updateProfile" parameterType="UserVO">
+		update user set password=#{password}, nickname=#{nickname} where id=#{id}
+	</update>
+	
+	
 	<update id="reloadUser" parameterType="UserVO">
 		update user set birth=#{birth}, available=#{available} where id=#{id}
 	</update>

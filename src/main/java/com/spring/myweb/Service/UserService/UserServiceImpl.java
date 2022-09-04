@@ -264,4 +264,9 @@ public class UserServiceImpl implements UserService{
 		return userDAO.reloadUser(vo);
 	}
 	
+	@Override
+	public int updateProfile(UserVO vo) {
+		return userDAO.updateProfile(vo);
+	}
+	
 }

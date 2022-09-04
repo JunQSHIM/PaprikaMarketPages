@@ -21,4 +21,5 @@ public interface UserService {
 	public int nicknameCheck(String nickname);
 	public int phoneCheck(String phone);
 	public int reloadUser(UserVO vo);
+	public int updateProfile(UserVO vo);
 }

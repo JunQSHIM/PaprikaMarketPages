@@ -48,7 +48,7 @@ public class UserController {
 		}else {
 			System.out.println("FAIL");
 		}
-		return "login/main/mother";
+		return "redirect:main.do";
 	}
 	@RequestMapping(value="/insert.do")
 	public String insert(Model model) {
@@ -68,9 +68,13 @@ public class UserController {
 		return rememberId;
 	}
 	@RequestMapping(value="/loginProc.do", method=RequestMethod.GET)
-	public String loginUser(HttpSession session, Model model,String id, ServletRequest request, HttpServletResponse response, boolean rememberId) {
+	public String loginUser(HttpSession session, Model model,String id, String password, ServletRequest request, HttpServletResponse response, boolean rememberId) {
 		System.out.println("User login service");
 		UserVO vo = userService.select(id);
+		
+		if(vo==null||(!vo.getPassword().equals(password))) {
+			return "redirect:/login.do";
+		}
 		
 		model.addAttribute("user",vo);
 		session.setAttribute("user", vo);
@@ -86,6 +90,8 @@ public class UserController {
 		if(vo.getUser_type()==1) {
 			return "redirect:/user.mdo";
 		}
+		
+		
 		return "login/main/mother";
 	}
 	// 카카오 로그인창 호출
@@ -219,4 +225,23 @@ public class UserController {
 	public String profileEdit() {
 		return "login/mypage/profileEdit";
 	}
+	
+	@RequestMapping(value="/mypageProc.do")
+	public String editProfile(UserVO vo, String id, Model model, HttpSession session) {
+		int success = 0;
+		UserVO vo2 = (UserVO)model.getAttribute("user");
+		id = vo2.getId();
+		vo.setId(id);
+		success = userService.updateProfile(vo);
+		if(success == 1) {
+			System.out.println("success");
+			model.addAttribute("user", vo);
+			session.setAttribute("user", vo);
+		}else {
+			System.out.println("fail");
+		}
+		return "redirect:mypage.do";
+	}
+	
+	
 }

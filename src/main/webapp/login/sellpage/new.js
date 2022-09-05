@@ -199,19 +199,19 @@ jQuery(document).ready(function() {
 // 폼 유효성 검사
 function Checkform() {
 
-    if(sellBoard.prod_title.value == "" ) {
+    if(post.post_title.value == "" ) {
         alert("제목을 입력하세요.");
-        sellBoard.prod_title.focus();
+        post.post_title.focus();
         return false;
     }
-    if(sellBoard.price.value == "" ) {
-    	sellBoard.price.focus();
+    if(post.price.value == "" ) {
+    	post.price.focus();
         alert("가격을 입력하세요.");
         return false;
     }
     
-    if(sellBoard.prod_content.value == "" ) {
-    	sellBoard.prod_content.focus();
+    if(post.post_content.value == "" ) {
+    	post.post_content.focus();
         alert("내용을 입력하세요.");
         return false;
     }
@@ -219,8 +219,8 @@ function Checkform() {
 
 // 판매하기 제목 글자 수 제한
 function titleChk(){
-	var obj = document.sellBoard;
-	if(obj.prod_title.value.length < 2 || obj.prod_title.value.length > 40){
+	var obj = document.post;
+	if(obj.post_title.value.length < 2 || obj.post_title.value.length > 40){
 		document.getElementById("titlebox").style.borderColor = "red";
 		document.getElementById("titleChk").innerHTML=('<span style="color: red;">제목은 2자 이상 입력하세요.</span>');
 		return;
@@ -248,8 +248,9 @@ $('#prod_title').keyup(function (e){
 });
 
 function handleOnChange(e) {
-	  const value = e.value;
-	  // 데이터 출력
+	  const value = $("#selectbox option:selected").text();
+	  
 	  document.getElementById("result_category").innerText
 	    = value;
 	}
+

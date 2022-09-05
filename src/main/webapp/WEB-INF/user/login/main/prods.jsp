@@ -18,9 +18,9 @@
 					</div> 
 					<div class="sell_product_cart">
 					
-					<c:forEach items="${board }" var="boardList">
+					<c:forEach items="${post }" var="post">
 						<div class="sell_product_board">
-							<a class="sell_board" href="sellDetail.do?prod_seq=${boardList.prod_seq}">
+							<a class="sell_board" href="postDetail.do?post_seq=${post.post_seq}">
 								<div class="sell_image">
 									<img src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/김채원.jpg" width="194" height="194">
 									<span class="image_span">
@@ -29,10 +29,10 @@
 									<div class="inner_sell_image"></div>
 								</div>
 								<div class="sell_product_detail">
-									<div class="sell_product_title">${boardList.prod_title }</div>
+									<div class="sell_product_title">${post.post_title }</div>
 									<div class="sell_product_price">
 										<div class="sell_product_price_1">
-										${boardList.price }
+										${post.price }
 										</div>
 										<div class="sell_product_time">
 											<span>8시간 전</span>
@@ -41,7 +41,7 @@
 								</div>
 								<div class="sell_location">
 									<img src="/myweb/login/images/jjim_icon/location.png" width="15" height="17" alt="위치">
-									${boardList.location }
+									${post.location }
 								</div>
 							</a>
 						</div>

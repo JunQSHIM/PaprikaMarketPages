@@ -199,13 +199,13 @@
 				</div>
 					<div class="grid_6 prod_info">
 					<div class="item" id="detail">
-						<div id="title">${board.prod_title }<br>${board.price }<br></div>
+						<div id="title">${post.post_title }<br>${post.price }원<br></div>
 						<hr style="border: 0.3px solid lightgray;">
 					</div>
 					<div class="item">
  
-					<button>♥36</button> | <button>⊙${board.count}</button> | <span>⏲${board.upload_date} </span> | <button class="openBtn">신고하기</button><br>
-						<a href="sellDelete.do?prod_seq=${board.prod_seq }" role="button">삭제</a>
+					<button>♥36</button> | <button>⊙${post.cnt}</button> | <span>⏲${post.upload_date} </span> | <button class="openBtn">신고하기</button><br>
+						<a href="postDelete.do?post_seq=${post.post_seq }" role="button">삭제</a>
 						<br>
 					</div>
 					<br>
@@ -256,7 +256,7 @@
 						<div class="grid_8">
 							<div class="item" id="product_info">상품정보<hr style="border:1px solid gray;">
 							<div id="product_desc">
-								${board.prod_content}
+								${post.post_content}
 							</div>
 						</div>
 					</div>
@@ -266,7 +266,7 @@
 								<img src="/myweb/login/images/dklogo.png">
 							</div>
 							<div id="nickname">
-								${board.nickname}
+								${post.nickname}
 							</div>
 							<div id="follow">
 								<button>팔로우</button>

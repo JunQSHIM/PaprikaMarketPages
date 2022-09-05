@@ -25,49 +25,49 @@ public class SellBoardController {
 	private BoardService boardService;
 	
 	// 메인 페이지에서 판매 중인 상품 목록 불러오기
-	@RequestMapping(value="/list.do", method = RequestMethod.GET)
-	public String boardList(Model model, SellBoardVO vo) {
-		System.out.println("boardList Service");
-		List<SellBoardVO> list = boardService.boardList();
-		model.addAttribute("board",list);
-		return "redirect:main.do";
-	}
+//	@RequestMapping(value="/list.do", method = RequestMethod.GET)
+//	public String boardList(Model model, SellBoardVO vo) {
+//		System.out.println("boardList Service");
+//		List<SellBoardVO> list = boardService.boardList();
+//		model.addAttribute("board",list);
+//		return "redirect:main.do";
+//	}
 	
 	// 판매하기 등록하기 페이지 이동
-	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
-	public String getCreate(Model model, CategoryVO vo) throws Exception {
-		System.out.println("판매하기 접속함");
-		List<CategoryVO> list = boardService.categoryList();
-		model.addAttribute("category",list);
-		return "login/sell";
-	}
+//	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
+//	public String getCreate(Model model, CategoryVO vo) throws Exception {
+//		System.out.println("판매하기 접속함");
+//		List<CategoryVO> list = boardService.categoryList();
+//		model.addAttribute("category",list);
+//		return "login/sell";
+//	}
 	
 	// 판매하기 등록 프로세스
-	@RequestMapping(value = "/createProc.do", method =RequestMethod.GET)
-	public String insertSell(Model model, SellBoardVO vo){
-		System.out.println("판매하기 등록함");
-		int success = boardService.insertSell(vo);
-		if(success == 1) {
-			model.addAttribute("board",vo);
-		}
-		return "redirect:main.do";
-	}
+//	@RequestMapping(value = "/createProc.do", method =RequestMethod.GET)
+//	public String insertSell(Model model, SellBoardVO vo){
+//		System.out.println("판매하기 등록함");
+//		int success = boardService.insertSell(vo);
+//		if(success == 1) {
+//			model.addAttribute("board",vo);
+//		}
+//		return "redirect:main.do";
+//	}
 	//글 상세보기
-	@RequestMapping(value = "/sellDetail.do", method = RequestMethod.GET)
-	public String getDetail(Model model, int prod_seq){
-		System.out.println("상세보기 페이지 이동");
-		boardService.viewCount(prod_seq); // 조회수 증가
-		SellBoardVO vo = boardService.sellDetail(prod_seq);
-		model.addAttribute("board", vo);
-		return "login/product&purchase/product_detail";
-	}
-	
-	@RequestMapping(value = "/sellDelete.do", method = RequestMethod.GET)
-	public String sellDelete(int prod_seq) throws Exception{
-		System.out.println("판매하기 삭제됨.");
-		boardService.sellDelete(prod_seq);
-		return "redirect:main.do";
-	}
+//	@RequestMapping(value = "/sellDetail.do", method = RequestMethod.GET)
+//	public String getDetail(Model model, int prod_seq){
+//		System.out.println("상세보기 페이지 이동");
+//		boardService.viewCount(prod_seq); // 조회수 증가
+//		SellBoardVO vo = boardService.sellDetail(prod_seq);
+//		model.addAttribute("board", vo);
+//		return "login/product&purchase/product_detail";
+//	}
+//	
+//	@RequestMapping(value = "/sellDelete.do", method = RequestMethod.GET)
+//	public String sellDelete(int prod_seq) throws Exception{
+//		System.out.println("판매하기 삭제됨.");
+//		boardService.sellDelete(prod_seq);
+//		return "redirect:main.do";
+//	}
 	
 	
 

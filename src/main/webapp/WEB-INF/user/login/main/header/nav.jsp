@@ -51,12 +51,9 @@
 			<div class="row grid_4 bts">
 
 				<div class="nav_btn">
-<<<<<<< HEAD
 					<a class="mystore" href="create.do" onclick="post_check()">
-=======
 					<!--  	<a class="sell_btn" href="/myweb/login/sell.jsp">-->
-					<a class="mystore" onclick="panme_chk()">
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
+	
 						<div class="btn_img">
 							<img src="/myweb/login/images/sell_list.png" width="23"
 								height="24">

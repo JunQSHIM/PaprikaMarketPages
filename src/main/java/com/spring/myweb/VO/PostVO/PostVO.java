@@ -1,6 +1,6 @@
 package com.spring.myweb.VO.PostVO;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 import lombok.Data;
 
@@ -16,7 +16,7 @@ public class PostVO {
 	private String location;
 	private int category_seq;
 	private int cnt;
-	private Date upload_date;
+	private Timestamp upload_date;
 	private int sell_status;
 	private int status;
 

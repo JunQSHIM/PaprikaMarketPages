@@ -215,6 +215,11 @@ function Checkform() {
         alert("내용을 입력하세요.");
         return false;
     }
+    if($("select[name=category_seq]").val() == ""){
+        alert("카테고리를 선택하세요.");
+        $("#selectbox").focus();
+        return false;
+    }
 }
 
 // 판매하기 제목 글자 수 제한

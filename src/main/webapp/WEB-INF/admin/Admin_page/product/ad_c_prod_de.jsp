@@ -41,7 +41,7 @@
 						<div class="grid_10 read">
 							<div class="grid_4 pics">
 
-								<img class="grid_4" src="anya.jpg">
+								<img class="grid_4" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/김채원.jpg">
 
 							</div>
 							<div class="grid_6 texts">
@@ -49,7 +49,7 @@
 								<div class="innertext">
 									<div class="row grid_5 user">
 										<div class="grid_1 psa">
-											<img class="grid_1" src="anya.jpg">
+											<img class="grid_1" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/김채원.jpg">
 										</div>
 										<div class="grid_2 name">
 											<h3>

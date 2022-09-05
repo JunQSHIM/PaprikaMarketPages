@@ -5,7 +5,6 @@
 	<select id="selectUserAll" resultType="UserVO">
 		select * from user;
 	</select>
-	
 	<!-- sms페이지 필요한 컬럼만 불러오기 -->
 	<select id="selectUserSms" resultType="UserSmsVO">
 		select user_seq,join_type,id,name,phone,email,msg_agree from user;
@@ -20,12 +19,18 @@
 		left join user us
 		on re.user_seq = us.user_seq;
 	</select>
-	
+	<!-- 약관동의 -->
 	<select id="selectAgreement" parameterType="int" resultType="RegisterAgreeVO">
 		select * from agreement where agreement_seq=#{agreement_seq}
 	</select>
 	<select id="selectAgreementAll" resultType="RegisterAgreeVO">
 		select * from agreement;
 	</select>
+	
+		<!-- 신고 삭제 처리 -->
+	<delete id="deleteSingoPage">
+		delete from productReview where review_seq = #{sing_page};
+	</delete>
+	
 	
 </mapper>

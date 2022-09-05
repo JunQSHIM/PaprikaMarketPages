@@ -79,6 +79,13 @@ public class UserDAOImpl implements UserDAO{
 		success = session.update("userDB.reloadUser",vo);
 		return success;
 	}
+
+	@Override
+	public int updateProfile(UserVO vo) {
+		int success = 0;
+		success = session.update("userDB.updateProfile",vo);
+		return success;
+	}
 	
 
 }

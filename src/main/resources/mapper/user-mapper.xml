@@ -72,13 +72,11 @@
 		post_seq = #{post_seq};
 	</select>
 	
-	
 	<!-- 상품 등록 상세	보기 -->
 	<select id="postDetail" parameterType="int"
 		resultType="PostVO">
 		select * from post where post_seq = #{post_seq};
 	</select>
-	
 	
 
 	<!-- 조회수 증가 -->
@@ -110,6 +108,12 @@
 		location1=#{location1},location2=#{location2} where id=#{id}
 	</update>
 
+	
+	<update id="updateProfile" parameterType="UserVO">
+		update user set password=#{password}, nickname=#{nickname} where id=#{id}
+	</update>
+	
+	
 	<update id="reloadUser" parameterType="UserVO">
 		update user set
 		birth=#{birth}, available=#{available} where id=#{id}

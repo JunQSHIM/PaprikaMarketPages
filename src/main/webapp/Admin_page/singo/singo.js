@@ -25,6 +25,10 @@ $(function(){
 		$("#singo_page").text(page);
 		$("#singo_content").text(content);
 		
+		if(isNaN(page)){
+			console.log("1");
+			$(".btns").toggleClass("hide");
+		}
 	});
 	
 	$("#home").hover(function(){

@@ -54,8 +54,18 @@
 											<td>${singo.type }</td>
 											<td class="singo_id">${singo.user_id }</td>
 											<td class="suspect_id">${singo.user_singo_id }</td>
-											<td>${state } <p class="page hide">${singo.review_seq }</p><p class="content hide">${singo.report_content }</p></td>
-											
+											<td>${state }
+												<c:choose>
+													<c:when test="${singo.review_seq == 0 }">
+														<c:set var="pagenum" value="삭제된 페이지 입니다."/>
+													</c:when>
+													<c:when test="${singo.review_seq != 0 }">
+														<c:set var="pagenum" value="${singo.review_seq }"/>
+													</c:when>
+												</c:choose>
+												<p class="page hide">${pagenum }</p>
+												<p class="content hide">${singo.report_content }</p>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -73,10 +83,10 @@
 								<div class="con">
 									<p id="suspect_id">피신고자</p>
 									<p id="singo_page">신고당한 페이지</p>
-								</div>
+									</div>
 								<div class="btns">
 									<button>블라인드</button>
-									<button>삭제</button>
+									<button id="deleteBtn">삭제</button>
 								</div>
 							</div>
 						</div>
@@ -97,3 +107,9 @@
 			</div>
 		</div>
 	</section>
+<script>
+
+$("#deleteBtn").click(function(){
+	location.replace('deleteSingoPage.mdo?singo_page='+ singo_page);
+});
+</script>

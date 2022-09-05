@@ -13,6 +13,10 @@
 <meta charset="UTF-8">
 <title>nav</title>
 <script type="text/javascript">
+	function search() {
+
+	}
+
 	function panme_chk() {
 		let id = "${user.id}"
 		if (id == "") {
@@ -22,6 +26,24 @@
 			location.href = "create.do"
 		}
 
+	}
+	function sangjum_chk() {
+		let id = "${user.id}"
+		if (id == "") {
+			alert("상점 페이지는 로그인 후 사용하실 수 있습니다.");
+			location.href = "login.do";
+		} else {
+			location.href = "create.do"
+		}
+	}
+	function talk_chk() {
+		let id = "${user.id}"
+		if (id == "") {
+			alert("채팅 기능은 로그인 후 사용하실 수 있습니다.");
+			location.href = "login.do";
+		} else {
+			location.href = "create.do"
+		}
 	}
 </script>
 </head>
@@ -45,15 +67,17 @@
 			</div>
 			<div class="grid_6 search">
 				<div class="search_text">
-					<input type="text" placeholder="상품명, 지역명, @상점명 입력"><a>검색</a>
+					<input type="text" placeholder="상품명, 지역명, @상점명 입력"
+						onkeypress="if(event.keyCode == 13){search()}"><a
+						onclick="search()">검색</a>
 				</div>
 			</div>
 			<div class="row grid_4 bts">
 
 				<div class="nav_btn">
+
 					<a class="mystore" href="create.do" onclick="post_check()">
 					<!--  	<a class="sell_btn" href="/myweb/login/sell.jsp">-->
-	
 						<div class="btn_img">
 							<img src="/myweb/login/images/sell_list.png" width="23"
 								height="24">
@@ -62,7 +86,7 @@
 					</a>
 				</div>
 				<div class="nav_btn_1">
-					<a class="mystore" href="/myweb/login/myProductCart.jsp">
+					<a class="mystore" onclick="sangjum_chk()">
 						<div class="btn_img">
 							<img src="/myweb/login/images/mystore.png" width="23" height="24">
 						</div>
@@ -70,7 +94,7 @@
 					</a>
 				</div>
 				<div class="nav_btn">
-					<a class="chat" href="/myweb/login/chatpage.jsp">
+					<a class="chat" onclick="talk_chk()">
 						<div class="btn_img">
 							<img src="/myweb/login/images/chatting.png" width="23"
 								height="24">

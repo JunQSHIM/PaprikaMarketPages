@@ -1,15 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <!-- <script src="/myweb/login/main/header/js/nav.js"></script> -->
-<link rel="stylesheet" type="text/css" href="/myweb/login/main/header/css/nav.css">
+<link rel="stylesheet" type="text/css"
+	href="/myweb/login/main/header/css/nav.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/css/grid.css">
 <script src="/myweb/login/main/header/js/nav.js"></script>
-<head> 
+<head>
 <meta charset="UTF-8">
 <title>nav</title>
+<script type="text/javascript">
+	function panme_chk() {
+		let id = "${user.id}"
+		if (id == "") {
+			alert("판매하기 페이지는 로그인 후 사용하실 수 있습니다.");
+			location.href = "login.do";
+		} else {
+			location.href = "create.do"
+		}
+
+	}
+</script>
 </head>
 <body>
 	<div class="grid_12 nav">
@@ -23,7 +36,8 @@
 					</button>
 				</div>
 				<div class="grid_2 logo">
-					<img src="/myweb/login/images/dklogo.png" width="120%" onclick="location.href='main.do'">
+					<img src="/myweb/login/images/dklogo.png" width="120%"
+						onclick="location.href='main.do'">
 				</div>
 
 
@@ -36,10 +50,11 @@
 			<div class="row grid_4 bts">
 
 				<div class="nav_btn">
-				<!--  	<a class="sell_btn" href="/myweb/login/sell.jsp">-->
-					<a class="mystore" href="create.do">
+					<!--  	<a class="sell_btn" href="/myweb/login/sell.jsp">-->
+					<a class="mystore" onclick="panme_chk()">
 						<div class="btn_img">
-							<img src="/myweb/login/images/sell_list.png" width="23" height="24">
+							<img src="/myweb/login/images/sell_list.png" width="23"
+								height="24">
 						</div>
 						<div class="btn_words">판매하기</div>
 					</a>
@@ -55,7 +70,8 @@
 				<div class="nav_btn">
 					<a class="chat" href="/myweb/login/chatpage.jsp">
 						<div class="btn_img">
-							<img src="/myweb/login/images/chatting.png" width="23" height="24">
+							<img src="/myweb/login/images/chatting.png" width="23"
+								height="24">
 						</div>
 						<div class="btn_words">파프리카톡</div>
 					</a>

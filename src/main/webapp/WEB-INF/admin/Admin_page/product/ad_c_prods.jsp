@@ -65,12 +65,12 @@
 										<tr>
 										
 											<td><div class="pic">
-													<a href="prod_de.mdo?prod_seq=${boardList.prod_seq}"><img src="/myweb/Admin_page/product/anya.jpg"
+													<a href="prod_de.mdo?prod_seq=${boardList.prod_seq}"><img src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/김채원.jpg"
 														width="80px"></a>
 												</div></td>
 											<td><a href="prod_de.mdo?prod_seq=${boardList.prod_seq}">${boardList.prod_title }</a></td>
-											<td id="seller"><a href="/WEB-INF/admin/Admin_page/member/ad_memde.jsp">${boardList.nickname }</a></td>
-											<td id="buyer"><a href="/WEB-INF/admin/Admin_page/ad_memde.jsp">Null</a></td>
+											<td id="seller"><a href="memde.mdo">${boardList.nickname }</a></td>
+											<td id="buyer"><a href="memde.mdo">Null</a></td>
 											<td>${boardList.upload_date }</td>
 											<td>${boardList.nickname }</td>
 											<td>152</td>

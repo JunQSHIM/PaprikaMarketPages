@@ -38,6 +38,15 @@ public class AdminProdController {
 		model.addAttribute("board", vo);
 		return "Admin_page/product/ad_prod_de";
 	}
+	
+	//회원 상세 페이지 이동
+	@RequestMapping(value = "/memde.mdo", method = RequestMethod.GET)
+	public String memde() {
+		System.out.println("관리자가 회원정보 페이지로 접속함");
+		return "Admin_page/member/ad_memde";
+	}
+	
+	
 
 	//관리자 상품 삭제
 	@RequestMapping(value = "/prodel.mdo", method = RequestMethod.GET)

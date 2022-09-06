@@ -9,7 +9,8 @@
 		select * from user where id=#{value}
 	</select>
 	<select id="idCheck" parameterType="String" resultType="int">
-		select count(*) from user where id = #{id}
+		select
+		count(*) from user where id = #{id}
 	</select>
 	<select id="emailCheck" parameterType="String" resultType="int">
 		select count(*) from user where email = #{email}
@@ -53,38 +54,42 @@
 		delete from product where
 		prod_seq = #{prod_seq};
 	</select>
-	
+
 	<!-- 상품 리스트 -->
 	<select id="postList" resultType="PostVO">
-		select * from post order by post_seq desc;
+		select * from post order by
+		post_seq desc;
 	</select>
 
 	<!-- 상품 등록 -->
 	<select id="post" resultType="PostVO">
-		insert into post(user_seq, nickname, post_title,post_content,price,location,
-		category_seq, upload_date)
-		values(#{user_seq},#{nickname},#{post_title}, #{post_content}, #{price},'서울',#{category_seq},now());
+		insert into post(user_seq,
+		nickname, post_title,post_content,price,location,
+		category_seq,
+		upload_date)
+		values(#{user_seq},#{nickname},#{post_title},
+		#{post_content}, #{price},'서울',#{category_seq},now());
 	</select>
-	
+
 	<!-- 판매상품 삭제하기 -->
 	<select id="postDelete" resultType="PostVO">
 		delete from post where
 		post_seq = #{post_seq};
 	</select>
-	
-	<!-- 상품 등록 상세	보기 -->
-	<select id="postDetail" parameterType="int"
-		resultType="PostVO">
-		select * from post where post_seq = #{post_seq};
+
+	<!-- 상품 등록 상세 보기 -->
+	<select id="postDetail" parameterType="int" resultType="PostVO">
+		select *
+		from post where post_seq = #{post_seq};
 	</select>
-	
+
 
 	<!-- 조회수 증가 -->
 	<update id="viewCount">
 		update post set cnt = cnt + 1 where post_seq =
 		#{post_seq};
 	</update>
-	
+
 	<!-- 카테고리 리스트 -->
 	<select id="categoryList" resultType="CategoryVO">
 		select * from category;
@@ -108,12 +113,13 @@
 		location1=#{location1},location2=#{location2} where id=#{id}
 	</update>
 
-	
+
 	<update id="updateProfile" parameterType="UserVO">
-		update user set password=#{password}, nickname=#{nickname} where id=#{id}
+		update user set
+		password=#{password}, nickname=#{nickname} where id=#{id}
 	</update>
-	
-	
+
+
 	<update id="reloadUser" parameterType="UserVO">
 		update user set
 		birth=#{birth}, available=#{available} where id=#{id}

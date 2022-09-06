@@ -8,6 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>AdminLTE 3 | DataTables</title>
 	<link rel="stylesheet" type="text/css" href="adminBoardContent.css">
+	<script type="text/javascript">
+	function boardDelete() {
+		window.location.href='boarddel.mdo?board_seq=${board.board_seq}';
+	}
+	</script>
 </head>
 <body class="hold-transition sidebar-mini">
   <!-- Content Wrapper. Contains page content -->
@@ -48,18 +53,19 @@
 								<img src="https://d1unjqcospf8gs.cloudfront.net/assets/users/default_profile_80-0443429487fdc2277fc8f9dd1eca6fb8b678862f593e21222ba9f6592b99ad14.png">
 							</div>
 							<div id="writer_name">
-								<div id="nickname">김유신</div>
+								글 제목 : ${board.title }
+								<div id="nickname">l</div>
 								<div id="region_name">구로구 오류동</div>
 							</div>
 						</div>
 					</div>
 					<div id="content_detail">
 						<p>
-							오류동역 주차장 앞 길에 강아지 한 마리가 힘 없이 고개만 들고 누워있네요. 길강아지는 아닌거 같은데,, 버려진 강아지가 아니길 바라며 얼른 주인 찾아갔으면 좋겠어요.
+							 ${board.content }
 						</p>
 					</div>
 					<div id="buttonWrap">
-						<button class="deleteButton">게시물 삭제</button>
+						<button class="deleteButton" onclick="boardDelete()">게시물 삭제</button>
 					</div>
 				</div>
 				<!-- /.content_mainForm -->

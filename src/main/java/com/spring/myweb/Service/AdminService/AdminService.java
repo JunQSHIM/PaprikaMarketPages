@@ -14,4 +14,6 @@ public interface AdminService {
 	public List<ReviewSingoVO> selectReviewSingo();
 	public void deleteSingoPage(int singo_page);
 	public List<BoardVO> selectBoardAll();
+	public BoardVO boardDetail(int board_seq);
+	public void boardDelete(int board_seq);
 }

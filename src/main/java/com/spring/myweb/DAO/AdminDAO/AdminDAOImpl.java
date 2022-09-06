@@ -47,6 +47,18 @@ public class AdminDAOImpl implements AdminDAO {
 		return boardList;
 	}
 
+	@Override
+	public BoardVO boardDetail(int board_seq) {
+		BoardVO bde = session.selectOne("adminDB.boardDetail", board_seq); 
+		return bde;
+	}
+
+	@Override
+	public void boardDelete(int board_seq) {
+		session.delete("adminDB.boardDelete", board_seq); 
+		
+	}
+
 	
 
 }

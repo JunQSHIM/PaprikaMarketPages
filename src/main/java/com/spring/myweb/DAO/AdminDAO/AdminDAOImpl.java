@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 import com.spring.myweb.VO.UserVO.UserVO;
@@ -33,6 +34,17 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<ReviewSingoVO> selectSingoReview() {
 		List<ReviewSingoVO> reviewSingoList = session.selectList("adminDB.selectReviewSingo");
 		return reviewSingoList;
+	}
+
+	@Override
+	public void deleteSingoPage(int singo_page) {
+		session.delete("adminDB.deleteSingoPage", singo_page);
+	}
+
+	@Override
+	public List<BoardVO> selectBoardAll() {
+		List<BoardVO> boardList = session.selectList("adminDB.selectBoardAll");
+		return boardList;
 	}
 
 	

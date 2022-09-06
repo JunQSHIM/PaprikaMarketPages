@@ -92,7 +92,7 @@
 						</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item"><a
-									href="/myweb/Admin_page/admin_page_board/article_manage.jsp"
+									href="board.mdo"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>게시물 관리</p>
 								</a></li>

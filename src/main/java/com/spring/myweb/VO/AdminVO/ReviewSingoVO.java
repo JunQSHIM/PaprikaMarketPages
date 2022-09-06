@@ -13,4 +13,5 @@ public class ReviewSingoVO {
 	private String report_content;
 	private Date report_date;
 	private int state;
+	private String review_content;
 }

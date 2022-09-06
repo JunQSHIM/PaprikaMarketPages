@@ -11,14 +11,26 @@
 	</select>
 	<!-- 신고 상품 리뷰 불러오기 -->
 	<select id="selectReviewSingo" resultType="ReviewSingoVO">
-		select re.id as user_id, us.id as user_singo_id, re.review_seq, re.report_content, re.report_date, re.state from
-		(select u.id, r.user_singo_seq user_seq, r.review_seq, r.report_content, r.report_date, r.state from review_reports r
-				left join user u
-				on r.user_seq=u.user_seq
-		) re
-		left join user us
-		on re.user_seq = us.user_seq;
+		select rev.user_id as user_id,  rev.user_singo_id as user_singo_id, rev.review_seq, rev.report_content, rev.report_date, rev.state, prod.review_content as review_content from
+		(select re.id as user_id, us.id as user_singo_id, re.review_seq as review_seq, re.report_content as report_content, re.report_date as report_date, re.state as state from
+			(select u.id, r.user_singo_seq user_seq, r.review_seq, r.report_content, r.report_date, r.state from review_reports r
+					left join user u
+					on r.user_seq=u.user_seq
+			) re
+			left join user us
+		on re.user_seq = us.user_seq
+        ) rev
+		left join productReview	prod
+		on rev.review_seq = prod.review_seq;
 	</select>
+	
+	<!-- 신고 게시판 불러오기 -->
+	<select id="selecBoardSingo" resultType="ReviewSingoVO">
+
+	</select>
+	
+	
+	
 	<!-- 약관동의 -->
 	<select id="selectAgreement" parameterType="int" resultType="RegisterAgreeVO">
 		select * from agreement where agreement_seq=#{agreement_seq}
@@ -32,5 +44,9 @@
 		delete from productReview where review_seq = #{sing_page};
 	</delete>
 	
-	
+	<!-- 게시판 관리 -->
+		<!-- 게시판 목록 불러오기 -->
+	<select id="selectBoardAll" resultType="BoardVO">
+		select * from board;
+	</select>
 </mapper>

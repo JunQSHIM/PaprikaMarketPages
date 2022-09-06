@@ -17,17 +17,22 @@ $(function(){
 		
 		var suspectId = $(this).children(".suspect_id").text();
 		var singoId = $(this).children(".singo_id").text();
-		var page = $(this).find(".page").text();
+		var pageSeq = $(this).find(".page_seq").text();
+		var pageContent = $(this).find(".page_content").text();
 		var content = $(this).find(".content").text();
+		
+		console.log(pageSeq);
 		
 		$("#singo_id").text(singoId);
 		$("#suspect_id").text(suspectId);
-		$("#singo_page").text(page);
+		$("#singo_seq").text(pageSeq);
+		$("#singo_page").text(pageContent);
 		$("#singo_content").text(content);
 		
-		if(isNaN(page)){
-			console.log("1");
-			$(".btns").toggleClass("hide");
+		if(isNaN(pageSeq)){
+			$(".btns").addClass("hide");
+		}else{
+			$(".btns").removeClass("hide");
 		}
 	});
 	

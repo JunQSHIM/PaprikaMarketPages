@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.myweb.DAO.AdminDAO.AdminDAO;
+import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 import com.spring.myweb.VO.UserVO.UserVO;
@@ -32,4 +33,14 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.selectSingoReview();
 	}
 
+	@Override
+	public void deleteSingoPage(int singo_page) {
+		adminDAO.deleteSingoPage(singo_page);
+	}
+
+	@Override
+	public List<BoardVO> selectBoardAll() {
+		return adminDAO.selectBoardAll();
+	}
+	
 }

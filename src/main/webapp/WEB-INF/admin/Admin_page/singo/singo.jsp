@@ -58,13 +58,17 @@
 												<c:choose>
 													<c:when test="${singo.review_seq == 0 }">
 														<c:set var="pagenum" value="삭제된 페이지 입니다."/>
+														<c:set var="pageContent" value="삭제된 페이지 입니다."/>
 													</c:when>
 													<c:when test="${singo.review_seq != 0 }">
 														<c:set var="pagenum" value="${singo.review_seq }"/>
+														<c:set var="pageContent" value="${singo.review_content }"/>
 													</c:when>
 												</c:choose>
-												<p class="page hide">${pagenum }</p>
+												<p class="page_seq hide">${pagenum }</p>
+												<p class="page_content hide">${pageContent }</p>
 												<p class="content hide">${singo.report_content }</p>
+												
 											</td>
 										</tr>
 									</c:forEach>
@@ -82,7 +86,8 @@
 							<div class="card-body">
 								<div class="con">
 									<p id="suspect_id">피신고자</p>
-									<p id="singo_page">신고당한 페이지</p>
+									<p id="singo_page"></p>
+									<p id="singo_seq" class="hide"></p>
 									</div>
 								<div class="btns">
 									<button>블라인드</button>
@@ -110,6 +115,6 @@
 <script>
 
 $("#deleteBtn").click(function(){
-	location.replace('deleteSingoPage.mdo?singo_page='+ singo_page);
+	location.replace('deleteSingoPage.mdo?singo_page='+ page);
 });
 </script>

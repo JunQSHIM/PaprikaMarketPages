@@ -47,6 +47,8 @@
 	<!-- 게시판 관리 -->
 		<!-- 게시판 목록 불러오기 -->
 	<select id="selectBoardAll" resultType="BoardVO">
-		select * from board;
+		select b.board_seq as board_seq, u.id as user_id, b.photo as photo, b.title as title, b.content as content, b.upload_date as upload_date, b.cnt as cnt, b.status as status from board b
+		inner join user u
+		on u.user_seq = b.user_seq;
 	</select>
 </mapper>

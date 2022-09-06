@@ -52,7 +52,7 @@
 							<th><input type="checkbox" class="adminArticleBtn"></th>
 							<td>${board.board_seq}</td>
 							<td><a href="adminBoardContent.jsp">${board.title }</a></td>
-							<td>${board.user_seq }</td>
+							<td>${board.user_id }</td>
 							<td>${board.upload_date }</td>
 							<td>${board.cnt }</td>
 						</tr>

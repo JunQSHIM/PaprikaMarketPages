@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="admin_board.js"></script>
+
 
 <title>AdminPage</title>
 
@@ -25,5 +25,6 @@
 		</div>
 		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_footer.jsp"%>
 	</div>	
+	<script type="text/javascript" src="/myweb/Admin_page/admin_page_board/admin_board.js"></script>
 </body>
 </html>

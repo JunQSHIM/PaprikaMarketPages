@@ -22,8 +22,8 @@
 	</header>
 	
 	<article class="container_12">
-		<jsp:include page="/login/main/category.jsp"></jsp:include>
-		<jsp:include page="/login/slider/slider.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/category.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/slider/slider.jsp"></jsp:include>
 	</article>
 	<article class="container_12">
 	
@@ -60,7 +60,7 @@
 	<%@include file="/WEB-INF/user/login/main/prods.jsp"%>
 	</article>
 	<footer class="container_12">
-		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
 </html>

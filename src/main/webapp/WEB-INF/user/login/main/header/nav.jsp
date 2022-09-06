@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <!-- <script src="/myweb/login/main/header/js/nav.js"></script> -->
@@ -17,16 +18,7 @@
 
 	}
 
-	function panme_chk() {
-		let id = "${user.id}"
-		if (id == "") {
-			alert("판매하기 페이지는 로그인 후 사용하실 수 있습니다.");
-			location.href = "login.do";
-		} else {
-			location.href = "create.do"
-		}
-
-	}
+	
 	function sangjum_chk() {
 		let id = "${user.id}"
 		if (id == "") {

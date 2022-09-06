@@ -63,7 +63,7 @@
 	<select id="post" resultType="PostVO">
 		insert into post(user_seq, nickname, post_title,post_content,price,location,
 		category_seq, upload_date)
-		values(#{user_seq},'닉네임123',#{post_title}, #{post_content}, #{price},'서울',#{category_seq},now());
+		values(#{user_seq},#{nickname},#{post_title}, #{post_content}, #{price},'서울',#{category_seq},now());
 	</select>
 	
 	<!-- 판매상품 삭제하기 -->

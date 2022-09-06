@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/header/css/category.css">
@@ -10,7 +11,7 @@
 </head>
 <body>
 	<div id="categories">
-		<form action="/myweb/login/main/mother.jsp" name="category">
+		<form action="/WEB-INF/user/login/main/mother.jsp" name="category">
 			<ul id="result1">
 				<li><button onclick="ctProduct()" name="product"
 						value="디지털기기">

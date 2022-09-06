@@ -14,8 +14,9 @@
 </head>
 <body>
 <form enctype="multipart/form-data" action="createProc.do"
-			name="post" method="post" onsubmit="Checkform()">
+			name="post" method="post">
 			<input type="hidden" name="user_seq" value=${user.user_seq }>
+			<input type="hidden" name="nickname" value=${user.nickname }>
 		<div class="grid_12 newinfo">
 			<div class="newinfo_1">
 				<div class="grid_2 newinfo_1_1">기본정보</div>
@@ -188,13 +189,13 @@
 
 		<div class="row container_12">
 			<div class="grid_12 form-group">
-				<button type="submit" class="new_btn">상품 등록</button>
+				<button type="submit" class="new_btn" >상품 등록</button>
 			</div>
 		</div>
 		
 	</form>
 
-
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.891.0.min.js"></script>
 	<script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript"

@@ -1,5 +1,7 @@
 package com.spring.myweb.User.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,6 +18,8 @@ import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.PostService.PostService;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.awss3.service.AwsS3Service;
+import com.spring.myweb.awss3.vo.PostPhotoVO;
 
 @Controller
 @SessionAttributes("post")
@@ -23,65 +27,66 @@ public class PostConroller {
 
 	@Autowired
 	private PostService postService;
-	
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String postList(Model model, PostVO vo) {
 		System.out.println("Post Service");
 		List<PostVO> list = postService.postList();
-		model.addAttribute("post",list);
-		return "login/main/prods";
+		model.addAttribute("post", list);
+		return "login/main/mother";
 	}
-	
+
 	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
 	public String getCreate(HttpSession session, Model model, CategoryVO vo, UserVO uvo) {
 		System.out.println("판매하기 접속함");
-		uvo = (UserVO)session.getAttribute("user");
+		uvo = (UserVO) session.getAttribute("user");
 		System.out.println(uvo);
-		if(uvo != null) {
-			System.out.println(uvo.toString());
+		if (uvo != null) {
 			List<CategoryVO> list = postService.categoryList();
-			model.addAttribute("category",list);
+			model.addAttribute("category", list);
 			return "login/sell";
 		} else {
 			return "redirect:login.do";
 		}
 	}
-	
+
 	@RequestMapping(value = "/createProc.do")
-	public String post(Model model, PostVO vo) {
+	public String post(Model model, PostVO vo, PostPhotoVO pvo) {
 		System.out.println("글 등록");
+		// 이미지 등록
+		try {
+			String key = pvo.getOrigin_file_name().getOriginalFilename();
+			InputStream is = pvo.getOrigin_file_name().getInputStream();
+			String contentType = pvo.getOrigin_file_name().getContentType();
+			long contentLength = pvo.getOrigin_file_name().getSize();
+			AwsS3Service awsS3 = AwsS3Service.getinstance();
+			awsS3.upload(is, key, contentType, contentLength);
+			System.out.println("main 업로드 완료");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		int success = postService.insertPost(vo);
-		if(success == 1) {
+		if (success == 1) {
 			model.addAttribute("post", vo);
 		}
 		return "redirect:main.do";
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/postDelete.do", method = RequestMethod.GET)
 	public String postDelete(int post_seq) throws Exception {
 		System.out.println("글 삭제");
 		postService.postDelete(post_seq);
 		return "redirect:main.do";
 	}
-	
+
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
 	public String getDetail(Model model, int post_seq) {
 		System.out.println("상세보기");
-		postService.viewCount(post_seq);
+		postService.viewCount(post_seq); // 조회수
 		PostVO vo = postService.postDetail(post_seq);
-		model.addAttribute("post",vo);
+		model.addAttribute("post", vo);
 		return "login/product&purchase/product_detail";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

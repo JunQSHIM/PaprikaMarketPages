@@ -77,8 +77,7 @@
 	
 	<!-- 게시판 삭제 -->
 	<select id="boardDelete" resultType="BoardVO">
-		delete from board where
-		board_seq = #{board_seq};
+		delete from board where board_seq = #{board_seq};
 	</select>
 
 </mapper>

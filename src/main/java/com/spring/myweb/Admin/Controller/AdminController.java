@@ -104,6 +104,6 @@ public class AdminController {
 	public String boarddel(int board_seq) throws Exception {
 		System.out.println("관리자가 게시글을 삭제했습니다.");
 		adminService.boardDelete(board_seq);
-		return "redirect:/boardde.mdo";
+		return "redirect:/board.mdo";
 	}
 }

@@ -51,8 +51,8 @@
 						<tr>
 							<th><input type="checkbox" class="adminArticleBtn"></th>
 							<td>${board.board_seq}</td>
-							<td><a href="adminBoardContent.jsp">${board.title }</a></td>
-							<td>${board.user_seq }</td>
+							<td><a href="boardde.mdo?board_seq=${board.board_seq}">${board.title }</a></td>
+							<td><a href="memde.mdo">${board.user_id }</a></td>
 							<td>${board.upload_date }</td>
 							<td>${board.cnt }</td>
 						</tr>

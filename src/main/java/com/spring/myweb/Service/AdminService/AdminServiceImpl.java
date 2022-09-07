@@ -17,19 +17,19 @@ public class AdminServiceImpl implements AdminService {
 
 	@Inject
 	private AdminDAO adminDAO;
-	
+
 	@Override
 	public List<UserVO> selectAll() {
 		return adminDAO.selectAll();
 	}
-	
+
 	@Override
 	public List<UserSmsVO> selectSmsAll() {
 		return adminDAO.selectSmsAll();
 	}
-	
+
 	@Override
-	public List<ReviewSingoVO> selectReviewSingo(){
+	public List<ReviewSingoVO> selectReviewSingo() {
 		return adminDAO.selectSingoReview();
 	}
 
@@ -42,5 +42,15 @@ public class AdminServiceImpl implements AdminService {
 	public List<BoardVO> selectBoardAll() {
 		return adminDAO.selectBoardAll();
 	}
-	
+
+	@Override
+	public BoardVO boardDetail(int board_seq) {
+		return adminDAO.boardDetail(board_seq);
+	}
+
+	@Override
+	public void boardDelete(int board_seq) {
+		adminDAO.boardDelete(board_seq);
+	}
+
 }

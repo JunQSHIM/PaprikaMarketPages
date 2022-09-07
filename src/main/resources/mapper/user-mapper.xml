@@ -89,6 +89,11 @@
 	<select id="categoryList" resultType="CategoryVO">
 		select * from category;
 	</select>
+	
+	<!-- 카테고리별 상품 보기 -->
+	<select id="categoryDetail" parameterType="int" resultType="CategoryVO">
+		select * from category where category_seq = #{category_seq};
+	</select>
 
 	<!-- 정보 찾기 -->
 	<select id="findKakao" parameterType="java.util.HashMap"

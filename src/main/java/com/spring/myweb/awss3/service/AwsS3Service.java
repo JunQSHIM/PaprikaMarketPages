@@ -2,9 +2,12 @@ package com.spring.myweb.awss3.service;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.SdkClientException;
@@ -61,7 +64,6 @@ public class AwsS3Service {
 
 		uploadToS3(new PutObjectRequest(this.bucket, key, is, objectMetadata));
 	}
-
 	
 	
 	private void uploadToS3(PutObjectRequest putObjectRequest) {

@@ -12,6 +12,8 @@ public interface PostService {
 	public void postDelete(int post_seq); // 글 삭제
 	public PostVO postDetail(int post_seq); // 글 상세
 	public void viewCount(int post_seq); // 조회수 증가
+	public CategoryVO categoryDetail(int category_seq); // 카테고리별 상품 보기
+
 
 
 

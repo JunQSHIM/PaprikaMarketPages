@@ -242,6 +242,7 @@ $(document).ready(function() {
 	});
 });
 
+
 // 판매하기 제목 글자 수 제한
 function titleChk() {
 	var obj = document.post;
@@ -278,5 +279,3 @@ function handleOnChange(e) {
 
 	document.getElementById("result_category").innerText = value;
 }
-
-

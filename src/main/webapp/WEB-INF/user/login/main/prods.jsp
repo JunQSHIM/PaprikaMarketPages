@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	<link rel="stylesheet" type="text/css" href="/myweb/login/myProductCart/myProductCart.css">
 					<div class="productPage">
 		
@@ -32,10 +33,10 @@
 									<div class="sell_product_title">${post.post_title }</div>
 									<div class="sell_product_price">
 										<div class="sell_product_price_1">
-										${post.price }
+										<fmt:formatNumber value="${post.price }" pattern="###,###,###"/>
 										</div>
 										<div class="sell_product_time">
-											<span>8시간 전</span>
+											<span>${post.upload_date }</span>
 										</div>
 									</div>
 								</div>

@@ -47,4 +47,10 @@ public class PostServiceImpl implements PostService {
 		postDao.viewCount(post_seq);
 	}
 
+	@Override
+	public CategoryVO categoryDetail(int category_seq) {
+		
+		return postDao.categoryDetail(category_seq);
+	}
+
 }

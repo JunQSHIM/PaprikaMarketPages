@@ -34,7 +34,7 @@
 								<div class="file_1">
 								
 									<input type="file" name="origin_file_name" multiple="multiple"
-										class="form-control user_picked_files" />
+										id="origin_file" class="form-control user_picked_files" />
 									</div>
 							</div>
 						</div>
@@ -109,7 +109,7 @@
 			</div>
 			<div class="grid_10 newdata">
 				<div class="pri">
-					<input type="text" id="price" name="price"
+					<input type="text" id="price" name="price" maxlength="9"
 						placeholder=" 숫자만 입력해주세요." onkeydown="chkNum()"> 원
 				</div>
 			</div>

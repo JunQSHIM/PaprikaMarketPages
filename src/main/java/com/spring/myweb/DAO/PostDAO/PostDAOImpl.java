@@ -52,4 +52,10 @@ public class PostDAOImpl implements PostDAO {
 		session.update("userDB.viewCount",post_seq);
 	}
 
+	@Override
+	public CategoryVO categoryDetail(int category_seq) {
+		CategoryVO vDetail = session.selectOne("userDB.categoryDetail", category_seq);
+		return vDetail;
+	}
+
 }

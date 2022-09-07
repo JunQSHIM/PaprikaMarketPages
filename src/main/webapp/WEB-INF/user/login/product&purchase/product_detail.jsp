@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,144 +21,8 @@
 	String id = request.getParameter("id");
 	String p = request.getParameter("product");
 %>
-<script>
-	function ctProduct(){
-		theForm.submit();
-	}
-	$(document).ready(function(){
-		$("#showCategory").mouseenter(function(){
-			$("#result1").show();
-		});
-		$("#category").mouseleave(function(){
-			$("#result1").hide();
-		});
-		
-		$("#top").click(function() {
-			//$('html, body').animate({scrollTop:0}, '1000');
-			$('html, body').scrollTop(0);
-		});
-		
-	});
-	$(document).ready(function(){
-		$('.slider').bxSlider({
-		        auto: true, 
-		        mode:'horizontal',
-		        minSlides: 1,
-		        maxSlides: 5,
-		        slideWidth: 155,
-		        slideMargin: 0,
-		        captions:true
-	    });
-		$('.slider2').bxSlider({
-	        auto: true, 
-	        mode:'horizontal',
-	        minSlides: 1,
-	        maxSlides: 2,
-	        slideWidth: 130,
-	        slideMargin: 5,
-	        captions:true
-    });
-    });
-	function login()  {
-		 window.location.href ='/login.do';
-	}	
-	function register()  {
-		 window.location.href ='/register.do';
-	}
-	function main(){
-		window.location.href = '/main.do';
-	}
-	function mypage(){
-		window.location.href = '/mypage.do';
-	}
-	function zoom(){
-		$("#picture").style.width = "800px";
-	}
-	function zoom(url){
-		var image = document.getElementById("image");
-		var source = image.src;
-	    window.open(source,'new','width=800, height=600, scrollbars=yes');
-	} 
-	
-	$(function () {
-		let num = 0;
-		let imageName = ["check.png", "uncheck.png"];
-		$("#jjim").click(function() {
-			if(num == 1){
-				$("#status").attr("src","/myweb/login/images/"+ imageName[num]);
-				$("#status").fadeIn(1200);
-				$("#status").fadeOut(2000);
-				$("#jjim").html('찜');
-				num=0;
-			}else{
-				$("#status").attr("src","/myweb/login/images/"+ imageName[num]);
-				$("#status").fadeIn(1200);
-				$("#status").fadeOut(2000);
-				$("#jjim").html('♥찜');
-				num++;	
-			}
-		});
-	});
-	/** 결제 **/
-    // 결제 금액, 구매자의 이름, 이메일
-    const priceAmount = "100000";
-    const buyerMemberEmail = "uusin@gmail.com";
-    const buyerMemberName = "김유신(부산)";
-    // const form = document.getElementById("payment");
 
-    console.log(priceAmount);
-    console.log(buyerMemberName);
-    console.log(buyerMemberEmail);
-    const IMP = window.IMP;
-    IMP.init('imp62063820');
 
-    function requestPay() {
-        // IMP.request_pay(param, callback) 결제창 호출
-        IMP.request_pay({ // param
-            pg: "html5_inicis",
-            pay_method: "card",
-            merchant_uid: 'cart_' + new Date().getTime(),
-            name: "자석펫",
-            amount: priceAmount,
-            buyer_email: buyerMemberEmail,
-            buyer_name: buyerMemberName,
-
-        }, function (rsp) { // callback
-
-            /** 결제 검증 **/
-            $.ajax({
-                type: 'POST',
-                url: '/verifyIamport/'+rsp.imp_uid,
-                beforeSend: function(xhr){
-                    xhr.setRequestHeader(header, token);
-                }
-            }).done(function(result){
-                // rsp.paid_amount와 result.response.amount(서버 검증) 비교 후 로직 실행
-                if(rsp.paid_amount === result.response.amount){
-                    alert("결제가 완료되었습니다.");
-                    $.ajax({
-                        type:'POST',
-                        url:'/lecture/payment',
-                        beforeSend: function(xhr){
-                            xhr.setRequestHeader(header, token);
-                        }
-                    }).done(function() {
-                        window.location.reload();
-                    }).fail(function(error){
-                            alert(JSON.stringify(error));
-                    })
-                } else{
-                    alert("결제에 실패했습니다."+"에러코드 : "+rsp.error_code+"에러 메시지 : "+rsp.error_message);
-
-                }
-            })
-        });
-    };
-    
-   
-    
-    
-</script>
 </head>
 <body>
 	<header>
@@ -198,13 +63,14 @@
 					<button type="button" onclick = "zoom()">+확대</button>
 				</div>
 					<div class="grid_6 prod_info">
-					<div class="item" id="detail">
-						<div id="title">${post.post_title }<br>${post.price }원<br></div>
-						<hr style="border: 0.3px solid lightgray;">
+					<div class="item" id="detail" style="border-bottom: 1px solid rgb(238, 238, 238)">
+						<div id="title">${post.post_title }</div>
+						<div class="post_price"><div class="postPrice"><fmt:formatNumber value="${post.price }" pattern="###,###,###"/><span>원</span></div></div>
+						
 					</div>
 					<div class="item">
  
-					<button>♥36</button> | <button>⊙${post.cnt}</button> | <span>⏲${post.upload_date} </span> | <button class="openBtn">신고하기</button><br>
+					<div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/main/heart.png" width="16" height="16">36</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/main/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/main/clock.png" width="16" height="16">${post.upload_date}</div><div class="etc_items"><button class="openBtn">신고하기</button></div></div>
 						<a href="postDelete.do?post_seq=${post.post_seq }" role="button">삭제</a>
 						<br>
 					</div>
@@ -307,18 +173,7 @@
 		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
-<script>
-  const open = () => {
-    document.querySelector(".modal").classList.remove("hidden");
-  }
 
-  const close = () => {
-    document.querySelector(".modal").classList.add("hidden");
-  }
 
-  document.querySelector(".openBtn").addEventListener("click", open);
-  document.querySelector(".closeBtn").addEventListener("click", close);
-  document.querySelector(".bg").addEventListener("click", close);
-
-</script>
+<script type="text/javascript" src="/myweb/login/product&purchase/product_detail.js"></script>
 </html>

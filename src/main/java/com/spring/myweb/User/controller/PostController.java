@@ -23,7 +23,7 @@ import com.spring.myweb.awss3.vo.PostPhotoVO;
 
 @Controller
 @SessionAttributes("post")
-public class PostConroller {
+public class PostController {
 
 	@Autowired
 	private PostService postService;
@@ -53,6 +53,7 @@ public class PostConroller {
 	@RequestMapping(value = "/createProc.do")
 	public String post(Model model, PostVO vo, PostPhotoVO pvo) {
 		System.out.println("글 등록");
+		
 		// 이미지 등록
 		try {
 			String key = pvo.getOrigin_file_name().getOriginalFilename();
@@ -61,7 +62,7 @@ public class PostConroller {
 			long contentLength = pvo.getOrigin_file_name().getSize();
 			AwsS3Service awsS3 = AwsS3Service.getinstance();
 			awsS3.upload(is, key, contentType, contentLength);
-			System.out.println("main 업로드 완료");
+			System.out.println("이미지 업로드 완료");
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -87,6 +88,15 @@ public class PostConroller {
 		PostVO vo = postService.postDetail(post_seq);
 		model.addAttribute("post", vo);
 		return "login/product&purchase/product_detail";
+	}
+	
+	// 테스트 중
+	@RequestMapping(value = "/category.do", method = RequestMethod.GET)
+	public String categoryDetail(Model model, int category_seq) {
+		System.out.println("카테고리 리스트");
+		CategoryVO vo =postService.categoryDetail(category_seq);
+		model.addAttribute("list", vo);
+		return "login/main/mother";
 	}
 
 }

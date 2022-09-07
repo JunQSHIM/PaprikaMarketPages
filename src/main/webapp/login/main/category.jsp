@@ -16,7 +16,7 @@
 						value="디지털기기">
 						<img src="/myweb/login/images/ct_icon/digital.png" />디지털기기/가전
 					</button>
-				<li><button onclick="ctProduct()" name="product"
+				<li><button onclick="c()" name="product"
 						value="가구/인테리어">
 						<img src="/myweb/login/images/ct_icon/interior.png" />가구/인테리어
 					</button>

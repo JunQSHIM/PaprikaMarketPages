@@ -129,7 +129,7 @@
 						혹시 <a href="https://help.bunjang.co.kr/notice/607" target="_blank">카카오톡
 							ID</a> 를 적으셨나요?
 					</div>
-					<div class="counter">
+					<div class="counter"> 
 						<span id="currentMsgLen" style="padding-left: 60;">0</span>/1000자
 					</div>
 				</div>

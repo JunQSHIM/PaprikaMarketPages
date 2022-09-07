@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.myweb.Service.AdminService.AdminService;
+import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
+import com.spring.myweb.VO.AdminVO.BoardSingoVO;
 import com.spring.myweb.VO.AdminVO.BoardVO;
+import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
-
-import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
@@ -56,22 +57,33 @@ public class AdminController {
 		return "Admin_page/admin_board/ad_board";
 	}
 
-	// 약관 관리
+	// 약관 불러오기
 	@RequestMapping(value = "/admin_list.mdo")
-	public String adminList(Model model) {
-		List<RegisterAgreementVO> agreementList = agreementService.selectAll();
+	public String adminList(Model model,int agreement_seq) {
+		RegisterAgreementVO agreementList = agreementService.select(agreement_seq);
 		model.addAttribute("newest", agreementList);
 		return "Admin_page/admin_list/agreement";
 	}
-
-	// 신고 관리
-	@RequestMapping(value = "/singo.mdo", method = RequestMethod.GET)
-	public String singoAdmin(Model model) {
-		System.out.println("관리자 페이지 singo목록");
-		List<ReviewSingoVO> reviewsingo = adminService.selectReviewSingo();
-		model.addAttribute("review", reviewsingo);
-		return "Admin_page/singo/ad_singo_list";
+	//약관 수정
+	@RequestMapping(value = "/edit_agreement.mdo")
+	public String editagreement(Model model, RegisterAgreementVO vo) {
+		System.out.println("수정...");
+		agreementService.update(vo);
+		return "redirect:admin_list.mdo?agreement_seq=1";
 	}
+
+	//신고 관리
+		@RequestMapping(value = "/singo.mdo", method=RequestMethod.GET)
+		public String singoAdmin(Model model) {
+			System.out.println("관리자 페이지 singo목록");
+			List<BoardSingoVO> boardsingo = adminService.selectBoardSingo();
+			List<ReviewSingoVO> reviewsingo = adminService.selectReviewSingo();
+			List<PostSingoVO> postsingo = adminService.selectPostSingo();
+			model.addAttribute("review", reviewsingo);
+			model.addAttribute("board", boardsingo);
+			model.addAttribute("post", postsingo);
+			return "Admin_page/singo/ad_singo_list";
+		}
 
 	// 신고된 페이지 관리
 	@RequestMapping(value = "/deleteSingoPage.mdo", method = RequestMethod.GET)
@@ -82,11 +94,11 @@ public class AdminController {
 	}
 
 	// 게시판 관리
-	@RequestMapping(value = "/board.mdo", method = RequestMethod.GET)
+	@RequestMapping(value = "/board.mdo", method=RequestMethod.GET)
 	public String boardAdmin(Model model) {
-		System.out.println("관리자가 게시판관리 목록 접속");
+		System.out.println("관리자 페이지 게시판목록");
 		List<BoardVO> board = adminService.selectBoardAll();
-		model.addAttribute("board", board);
+		model.addAttribute("board",board);
 		return "Admin_page/admin_page_board/article_manage";
 	}
 

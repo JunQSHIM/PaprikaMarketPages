@@ -91,7 +91,7 @@
 							class="btn login_btn">
 					</div>
 					<div class="btn register_btn">
-						<a href="insert.do">회원가입</a>
+						<a href="insert.do?agreement_seq=1">회원가입</a>
 					</div>
 					<div class="btn register_btn">
 						<a href="#">비밀번호 찾기</a>

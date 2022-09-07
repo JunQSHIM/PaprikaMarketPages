@@ -5,13 +5,13 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class PostSingoVO {
-	private String type="post";
+public class BoardSingoVO {
+	private String type="board";
 	private String user_id;
 	private String user_singo_id;
-	private int post_seq;
+	private int board_seq;
 	private String report_content;
 	private Date report_date;
 	private int state;
-	private String post_content;
+	private String board_content;
 }

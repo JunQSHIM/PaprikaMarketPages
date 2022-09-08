@@ -102,7 +102,6 @@ public class PostController {
 	public String categoryDetail(Model model, int category_seq) {
 		System.out.println("카테고리 리스트");
 		List<PostVO> vo =postService.categoryDetail(category_seq);
-		
 		model.addAttribute("post", vo);
 		return "login/main/mother";
 	}

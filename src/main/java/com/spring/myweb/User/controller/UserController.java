@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,14 +34,25 @@ import com.spring.myweb.VO.UserVO.UserVO;
 public class UserController {
 	
 	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
 	UserService userService;
 
 	@Autowired
 	RegisterAgreementService registerService;
 	
+	@RequestMapping(value="/")
+	public String mainPage(){
+		return "redirect:main.do";
+	}
+	
 	@RequestMapping(value = "/insertProc.do")
 	public String insertUser(HttpSession session, Model model,UserVO vo,HttpServletRequest request) {
-		
+		System.out.println("암호화 전 : " + vo.getPassword());
+		String securePwd = passwordEncoder.encode(vo.getPassword());
+		vo.setPassword(securePwd);
+		System.out.println("암호화 후 : " + vo.getPassword());
 		int result = 0;
 		result = userService.insertUser(vo);
 		if(result ==1 ) {
@@ -60,25 +73,25 @@ public class UserController {
 	public String insert2() {
 		return "login/login&register/register";
 	}
-	@RequestMapping(value="/login.do")
-	public String login() {
+	
+	@GetMapping(value = "/loginForm.do")
+	public String loginForm() {
 		return "login/login&register/login";
 	}
 	private boolean rememberId(boolean rememberId) {
 		return rememberId;
 	}
-	@RequestMapping(value="/loginProc.do", method=RequestMethod.GET)
+	@RequestMapping(value="/login.do")
 	public String loginUser(HttpSession session, Model model,String id, String password, ServletRequest request, HttpServletResponse response, boolean rememberId) {
 		System.out.println("User login service");
 		UserVO vo = userService.select(id);
-		
-		if(vo==null||(!vo.getPassword().equals(password))) {
-			return "redirect:/login.do";
+		System.out.println("FFF");
+		if(passwordEncoder.matches(password,vo.getPassword())){
+			session.setAttribute("user", vo);
+			model.addAttribute("user",vo);
+		}else {
+			System.out.println("FIALS");
 		}
-		
-		model.addAttribute("user",vo);
-		session.setAttribute("user", vo);
-		
 		if(rememberId(rememberId)) {
 			Cookie cookie = new Cookie("id", id);
 			response.addCookie(cookie);
@@ -87,10 +100,6 @@ public class UserController {
 			cookie.setMaxAge(0);
 			response.addCookie(cookie);
 		}
-		if(vo.getUser_type()==1) {
-			return "redirect:/user.mdo";
-		}
-		
 		
 		return "login/main/mother";
 	}
@@ -229,11 +238,18 @@ public class UserController {
 	@RequestMapping(value="/mypageProc.do")
 	public String editProfile(UserVO vo, String id, Model model, HttpSession session) {
 		int success = 0;
+		
 		UserVO vo2 = (UserVO)model.getAttribute("user");
 		id = vo2.getId();
 		vo.setId(id);
+		String securePwd = passwordEncoder.encode(vo.getPassword());
+		System.out.println(vo.getPassword());
+		vo.setPassword(securePwd);
 		success = userService.updateProfile(vo);
+		System.out.println(vo.toString());
+		System.out.println(vo2.toString());
 		if(success == 1) {
+			vo = userService.select(vo.getId());
 			System.out.println("success");
 			model.addAttribute("user", vo);
 			session.setAttribute("user", vo);
@@ -242,6 +258,5 @@ public class UserController {
 		}
 		return "redirect:mypage.do";
 	}
-	
 	
 }

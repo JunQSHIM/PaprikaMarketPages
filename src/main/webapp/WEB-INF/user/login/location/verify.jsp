@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
 <script src="/myweb/login/main/main.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -128,6 +130,7 @@
 		</div>
 		<div id="locations">
 			<form action="location.do" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<c:choose>
 				<c:when test="${kakaoUser.id ne null}">
 					<input type="hidden" name="id" value="${kakaoUser.id }">

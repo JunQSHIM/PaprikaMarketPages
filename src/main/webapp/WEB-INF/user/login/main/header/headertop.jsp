@@ -23,7 +23,7 @@
 					<button type="button" onclick="location.href='mypage.do'">마이페이지</button>
 				</c:when>
 				<c:otherwise> 
-					<button type="button" onclick="location.href='login.do'">로그인</button>
+					<button type="button" onclick="location.href='loginForm.do'">로그인</button>
 					<button type="button" onclick="location.href='insert.do'">회원가입</button>
 				</c:otherwise>
 			</c:choose> 

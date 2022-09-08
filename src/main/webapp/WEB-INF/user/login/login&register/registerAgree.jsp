@@ -25,8 +25,9 @@ request.setCharacterEncoding("UTF-8");
 	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 	crossorigin="anonymous">
 <!--Custom styles-->
-<link rel="stylesheet" type="text/css"
-	href="/myweb/login/login&register/css/registerAgree.css">
+<link rel="stylesheet" type="text/css" href="/myweb/login/login&register/css/registerAgree.css">
+<script type="text/javascript" src="/myweb/login/login&register/js/registerAgree.js"></script>
+
 </head>
 <body>
 	<div align="center" style="margin-top: 40px;">
@@ -44,7 +45,7 @@ request.setCharacterEncoding("UTF-8");
 					<form name="fregister" id="fregister" action="registerAgree.do"
 						onsubmit="return fregister_submit(this);" method="POST"
 						autocomplete="off">
-
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<div id="fregister_chkall" class="checks2">
 							<input type="checkbox" name="chk_all" value="1"
 								class="agreeBtnAll" id="chk_all"> <label for="chk_all">회원가입
@@ -79,8 +80,5 @@ request.setCharacterEncoding("UTF-8");
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript"
-		src="/myweb/login/login&register/js/registerAgree.js"></script>
-
 </body>
 </html>

@@ -5,9 +5,12 @@
 
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
-		<param-name>contextConfigLocation</param-name> 
-		<param-value>classpath:applicationContext.xml</param-value>
-	</context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>
+		classpath:applicationContext.xml
+		/WEB-INF/config/context-security.xml
+	</param-value>
+</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
@@ -27,6 +30,16 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+    
+	<filter>        
+		<filter-name>springSecurityFilterChain</filter-name>        
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>    
+	</filter>     
+	<filter-mapping>          
+		<filter-name>springSecurityFilterChain</filter-name>        
+		<url-pattern>/*</url-pattern>    
+	</filter-mapping> 
 
 	<!-- Processes application Users -->
 	<servlet>
@@ -60,6 +73,6 @@
 		<url-pattern>*.mdo</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
-    	<welcome-file>./WEB-INF/user/login/main/mother.jsp</welcome-file>
+    	<welcome-file>myweb/main.do</welcome-file>
   	</welcome-file-list>
 </web-app>

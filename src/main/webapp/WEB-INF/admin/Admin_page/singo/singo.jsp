@@ -72,6 +72,70 @@
 											</td>
 										</tr>
 									</c:forEach>
+									<c:forEach var="singo" items="${board }">
+										<c:choose>
+											<c:when test="${singo.state == 0 }">
+												<c:set var="state" value="처리완료"></c:set>
+											</c:when>
+											<c:when test="${singo.state == 1 }">
+												<c:set var="state" value="처리중"></c:set>
+											</c:when>
+										</c:choose>
+										<tr class="singo_btn">
+											<td>${singo.report_date }</td>
+											<td>${singo.type }</td>
+											<td class="singo_id">${singo.user_id }</td>
+											<td class="suspect_id">${singo.user_singo_id }</td>
+											<td>${state }
+												<c:choose>
+													<c:when test="${singo.board_seq == 0 }">
+														<c:set var="pagenum" value="삭제된 페이지 입니다."/>
+														<c:set var="pageContent" value="삭제된 페이지 입니다."/>
+													</c:when>
+													<c:when test="${singo.board_seq != 0 }">
+														<c:set var="pagenum" value="${singo.board_seq }"/>
+														<c:set var="pageContent" value="${singo.board_content }"/>
+													</c:when>
+												</c:choose>
+												<p class="page_seq hide">${pagenum }</p>
+												<p class="page_content hide">${pageContent }</p>
+												<p class="content hide">${singo.report_content }</p>
+												
+											</td>
+										</tr>
+									</c:forEach>
+									<c:forEach var="singo" items="${post }">
+										<c:choose>
+											<c:when test="${singo.state == 0 }">
+												<c:set var="state" value="처리완료"></c:set>
+											</c:when>
+											<c:when test="${singo.state == 1 }">
+												<c:set var="state" value="처리중"></c:set>
+											</c:when>
+										</c:choose>
+										<tr class="singo_btn">
+											<td>${singo.report_date }</td>
+											<td>${singo.type }</td>
+											<td class="singo_id">${singo.user_id }</td>
+											<td class="suspect_id">${singo.user_singo_id }</td>
+											<td>${state }
+												<c:choose>
+													<c:when test="${singo.post_seq == 0 }">
+														<c:set var="pagenum" value="삭제된 페이지 입니다."/>
+														<c:set var="pageContent" value="삭제된 페이지 입니다."/>
+													</c:when>
+													<c:when test="${singo.post_seq != 0 }">
+														<c:set var="pagenum" value="${singo.post_seq }"/>
+														<c:set var="pageContent" value="${singo.post_content }"/>
+													</c:when>
+												</c:choose>
+												<p class="page_seq hide">${pagenum }</p>
+												<p class="page_content hide">${pageContent }</p>
+												<p class="content hide">${singo.report_content }</p>
+												
+											</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>

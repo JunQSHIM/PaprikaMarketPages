@@ -13,9 +13,13 @@
 		<typeAlias alias="ReviewSingoVO" type="com.spring.myweb.VO.AdminVO.ReviewSingoVO" />
 		<typeAlias alias="BoardVO" type="com.spring.myweb.VO.AdminVO.BoardVO" />
 		<typeAlias alias="PostVO" type="com.spring.myweb.VO.PostVO.PostVO"/>
+<<<<<<< HEAD
 		<typeAlias alias="PostPhotoVO" type="com.spring.myweb.awss3.vo.PostPhotoVO"/>
+=======
+		<typeAlias alias="BoardSingoVO" type="com.spring.myweb.VO.AdminVO.BoardSingoVO" />
+		<typeAlias alias="PostSingoVO" type="com.spring.myweb.VO.AdminVO.PostSingoVO"/>
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 	</typeAliases>
-		
 	
 	<mappers>
 		<!-- <mapper resource="mappings/board-mapping.xml" /> -->

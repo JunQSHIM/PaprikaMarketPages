@@ -116,17 +116,24 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a
-							href="/myweb/Admin_page/admin_banner/admin_banner.jsp"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>배너 이미지 변경</p>
-						</a></li>
-						<li class="nav-item"><a
-							href="/myweb/Admin_page/pages/charts/flot.html" class="nav-link">
+						<li class="nav-item">
+							<a href="/myweb/Admin_page/admin_banner/admin_banner.jsp" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
-								<p>로고 변경</p>
-						</a></li>
-
+								<p>배너 이미지 변경</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="/myweb/Admin_page/pages/charts/flot.html" class="nav-link">
+									<i class="far fa-circle nav-icon"></i>
+									<p>로고 변경</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="admin_list.mdo?agreement_seq=1" class="nav-link">
+									<i class="far fa-circle nav-icon"></i>
+									<p>약관 변경</p>
+							</a>
+						</li>
 					</ul></li>
 				<li class="nav-item"><a href="/myweb/Admin_page/chart/chart.jsp" class="nav-link"> <i
 						class="nav-icon fas fa-tree"></i>

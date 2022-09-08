@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -68,7 +70,8 @@
 				<h3 align="center">로그인</h3>
 			</div>
 			<div class="card-body">
-				<form action="loginProc.do" name="login">
+				<form action="login.do" name="login" method="post">
+    			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -91,7 +94,7 @@
 							class="btn login_btn">
 					</div>
 					<div class="btn register_btn">
-						<a href="insert.do">회원가입</a>
+						<a href="insert.do?agreement_seq=1">회원가입</a>
 					</div>
 					<div class="btn register_btn">
 						<a href="#">비밀번호 찾기</a>
@@ -105,6 +108,7 @@
 							width="83%" height="50px" />
 						</a>
 					</div>
+					${ERRORMSG }
 				</form>
 			</div>
 

@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
@@ -13,7 +15,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <!--Custom styles-->
 <link rel="stylesheet" type="text/css" href="/myweb/login/login&register/styles.css">
-
 <script type="text/javascript" src="/myweb/login/login&register/js/register.js"></script>
 </head>
 <body>
@@ -29,6 +30,7 @@
 				</div>
 				<div class="card-body">
 					<form action="insertProc.do" name="register" id="register">
+	    			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<div class="input-group form-group">
 							<input type="text" name="id" placeholder="아이디"
 								style="width: 400px;" oninput="checkId()">

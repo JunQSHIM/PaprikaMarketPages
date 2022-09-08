@@ -119,7 +119,7 @@ function toProfileEdit() {
 							<b>생년월일</b><fmt:formatDate value="${user.birth}" pattern="yyyy-MM-dd"/>
 						</c:when>
 						<c:when test="${kakaoUser.available eq 0}"><b>본인인증</b><a href="/myweb/userVerify.do" style="cursor: pointer;" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">본인인증이 필요합니다.</a></c:when>
-						<c:otherwise><b>생년월일</b><fmt:formatDate value="${kakaoUser.birth}" pattern="yyyy-MM-dd"/></c:otherwise>
+						<c:otherwise><b>생년월일</b><fmt:formatDate value="${kakaoUser.birth}" pattern="yyyy-MM-dd"/>&nbsp;&nbsp;&nbsp;<a href="/myweb/userVerify.do" style="cursor: pointer;" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">생년월일변경하기</a></c:otherwise>
 						</c:choose>
 						</div>
 					</div>

@@ -23,8 +23,13 @@ public class RegisterAgreementDAOImpl implements RegisterAgreementDAO{
 
 	@Override
 	public RegisterAgreementVO select(int agreement_seq) {
-		RegisterAgreementVO agreement = session.selectOne("adminDB.selectAgreement",agreement_seq);
+		RegisterAgreementVO agreement = session.selectOne("adminDB.selectAgreement", agreement_seq);
 		return agreement;
+	}
+
+	@Override
+	public void update(RegisterAgreementVO vo) {
+		session.update("adminDB.updateAgreement", vo);
 	}
 
 }

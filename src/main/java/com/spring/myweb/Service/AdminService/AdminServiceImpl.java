@@ -7,7 +7,9 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.myweb.DAO.AdminDAO.AdminDAO;
+import com.spring.myweb.VO.AdminVO.BoardSingoVO;
 import com.spring.myweb.VO.AdminVO.BoardVO;
+import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 import com.spring.myweb.VO.UserVO.UserVO;
@@ -17,22 +19,33 @@ public class AdminServiceImpl implements AdminService {
 
 	@Inject
 	private AdminDAO adminDAO;
-
+	
 	@Override
 	public List<UserVO> selectAll() {
 		return adminDAO.selectAll();
 	}
-
+	
 	@Override
 	public List<UserSmsVO> selectSmsAll() {
 		return adminDAO.selectSmsAll();
 	}
-
+	
 	@Override
-	public List<ReviewSingoVO> selectReviewSingo() {
+	public List<ReviewSingoVO> selectReviewSingo(){
 		return adminDAO.selectSingoReview();
 	}
 
+	@Override
+	public List<BoardSingoVO> selectBoardSingo() {
+		return adminDAO.selectSingoBoard();
+	}
+	
+	@Override
+	public List<PostSingoVO> selectPostSingo() {
+		return adminDAO.selectSingoPost();
+	}
+	
+	
 	@Override
 	public void deleteSingoPage(int singo_page) {
 		adminDAO.deleteSingoPage(singo_page);

@@ -25,5 +25,10 @@ public class RegisterAgreementServiceImpl implements RegisterAgreementService{
 		return agreementDAO.select(agreement_seq);
 	}
 
+	@Override
+	public void update(RegisterAgreementVO vo) {
+		agreementDAO.update(vo);
+	}
+
 }
 

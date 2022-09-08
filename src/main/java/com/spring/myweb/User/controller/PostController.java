@@ -41,15 +41,11 @@ public class PostController {
 	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
 	public String getCreate(HttpSession session, Model model, CategoryVO vo, UserVO uvo) {
 		System.out.println("판매하기 접속함");
-		uvo = (UserVO) session.getAttribute("user");
-		System.out.println(uvo);
 		if (uvo != null) {
 			List<CategoryVO> list = postService.categoryList();
 			model.addAttribute("category", list);
-			return "login/sell";
-		} else {
-			return "redirect:login.do";
 		}
+		return "login/sell";
 	}
 
 	@RequestMapping(value = "/createProc.do")
@@ -87,7 +83,7 @@ public class PostController {
 		postService.postDelete(post_seq);
 		return "redirect:main.do";
 	}
-
+ 
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
 	public String getDetail(Model model, int post_seq) {
 		System.out.println("상세보기");

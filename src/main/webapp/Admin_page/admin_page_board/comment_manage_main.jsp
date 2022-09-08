@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | DataTables</title>
  <link rel="stylesheet" type="text/css" href="comment_manage.css">
-<script type="text/javascript" src="admin_board.js"></script>
+<script type="text/javascript" src="/myweb/Admin_Page/admin_page_board/admin_board.js"></script>
 
 </head>
 <body class="hold-transition sidebar-mini">

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,9 @@
 </head>
 <body>
 <form enctype="multipart/form-data" action="createProc.do"
-			id="sellBoard" name="sellBoard" method="get" onsubmit="Checkform()">
+			name="post" method="post">
+			<input type="hidden" name="user_seq" value=${user.user_seq }>
+			<input type="hidden" name="nickname" value=${user.nickname }>
 		<div class="grid_12 newinfo">
 			<div class="newinfo_1">
 				<div class="grid_2 newinfo_1_1">기본정보</div>
@@ -29,7 +34,7 @@
 								<div class="file_1">
 								
 									<input type="file" name="origin_file_name" multiple="multiple"
-										class="form-control user_picked_files" />
+										id="origin_file" class="form-control user_picked_files" />
 									</div>
 							</div>
 						</div>
@@ -57,7 +62,7 @@
 				</div>
 				<div class="grid_10 newdata">
 					<div class="titlebox" id="titlebox">
-						<input type="text" id="prod_title" name="prod_title" placeholder="상품 제목을 입력해주세요."  maxlength="40" onkeyup="titleChk();">
+						<input type="text" id="prod_title" name="post_title" placeholder="상품 제목을 입력해주세요."  maxlength="40" onkeyup="titleChk();">
 						<a href="#">거래금지 품목</a>
 					</div>
 					<div id="titleCnt">
@@ -72,12 +77,14 @@
 					카테고리 <span>*</span>
 				</div>
 				<div class="grid_10 newdata">
-					<select id="selectbox" onchange="handleOnChange(this)" name="selectBox">
+					<select id="selectbox" onchange="handleOnChange(this)" name="category_seq">
 						<option disabled selected>카테고리선택&nbsp;&nbsp;▼</option>
 						<c:forEach items="${category }" var="category">
-						<option value="${category.category_name }">${category.category_name }</option>
+						<option value="${category.category_seq }">${category.category_name }</option>
 						</c:forEach>
 					</select>
+				
+					
 				<div class="cate_value"><span><b>선택한 카테고리 : &nbsp; </b></span><div id='result_category'></div></div>	
 				</div>
 			</div>
@@ -89,8 +96,8 @@
 					<button type="button" onclick="#">내위치</button>
 					<button type="button" onclick="#">최근 지역</button>
 					<button type="button" onclick="#">주소 검색</button>
-					<button type="button" onclick="#">지역설정안함</button>
-					<input readonly value=" &nbsp;지역설정안함">
+					<button type="buttonclick="#">지역설정안함</button>
+					<input readonly valon" ue=" &nbsp;지역설정안함">
 				</div>
 			</div>
 
@@ -102,7 +109,7 @@
 			</div>
 			<div class="grid_10 newdata">
 				<div class="pri">
-					<input type="text" id="price" name="price"
+					<input type="text" id="price" name="price" maxlength="9"
 						placeholder=" 숫자만 입력해주세요." onkeydown="chkNum()"> 원
 				</div>
 			</div>
@@ -115,14 +122,14 @@
 				<div class="textbox">
 					<textarea class="text_area" rows="6"
 						placeholder="여러 장의 상품 사진과 구입 연도, 브랜드, 사용감, 하자 유무 등 구매자에게 필요한 정보를 꼭 포함해 주세요. (10자 이상)&#13;안전하고 건전한 거래 환경을 위해 과학기술정보통신부, 한국인터넷진흥원과 번개장터(주)가 함께 합니다."
-						name="prod_content"
-						onkeyup="chkMsgLength(1000,prod_content,currentMsgLen);"></textarea>
+						name="post_content"
+						onkeyup="chkMsgLength(1000,post_content,currentMsgLen);"></textarea>
 					<br>
 					<div class="hoxy">
 						혹시 <a href="https://help.bunjang.co.kr/notice/607" target="_blank">카카오톡
 							ID</a> 를 적으셨나요?
 					</div>
-					<div class="counter">
+					<div class="counter"> 
 						<span id="currentMsgLen" style="padding-left: 60;">0</span>/1000자
 					</div>
 				</div>
@@ -182,13 +189,13 @@
 
 		<div class="row container_12">
 			<div class="grid_12 form-group">
-				<button type="submit" class="new_btn">상품 등록</button>
+				<button type="submit" class="new_btn" >상품 등록</button>
 			</div>
 		</div>
 		
 	</form>
 
-
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.891.0.min.js"></script>
 	<script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript"

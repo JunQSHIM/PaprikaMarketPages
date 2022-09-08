@@ -9,3 +9,13 @@ $(document).ready(function() {
 		}
 	});
 }); //네비바 상단고정
+
+function post_check(){ 
+	
+   // var uid = sessionStorage.getItem("us//er");
+   // console.log(uid);
+
+   //  if(uid == null){ 
+   //     alert("로그인이 필요한 항목입니다.","회원 가입 또는 로그인을 해주세요", "error"); 
+    // }
+}   

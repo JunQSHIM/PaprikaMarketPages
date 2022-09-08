@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+#deleteBtn {
+ border:none;
+ float:right;
+ margin-bottom: 5px;
+}
+
+#total_article {
+	display: inline-block;
+}

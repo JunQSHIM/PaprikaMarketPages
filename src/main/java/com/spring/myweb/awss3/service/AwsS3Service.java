@@ -1,9 +1,13 @@
-package com.spring.myweb.awss3;
+package com.spring.myweb.awss3.service;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.SdkClientException;
@@ -19,7 +23,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 @Service
-public class AwsS3 {
+public class AwsS3Service {
 	
 	private AmazonS3 s3Client;
 	
@@ -28,15 +32,15 @@ public class AwsS3 {
 	private Regions clientRegion = Regions.AP_NORTHEAST_2;
 	private String bucket = "paprikaproject";
 
-	private AwsS3() {
+	private AwsS3Service() {
 		createS3Client();
 	}
 
-	static private AwsS3 instance = null;
+	static private AwsS3Service instance = null;
 
-	public static AwsS3 getinstance() {
+	public static AwsS3Service getinstance() {
 		if (instance == null) {
-			return new AwsS3();
+			return new AwsS3Service();
 		} else {
 			return instance;
 		}
@@ -60,7 +64,8 @@ public class AwsS3 {
 
 		uploadToS3(new PutObjectRequest(this.bucket, key, is, objectMetadata));
 	}
-
+	
+	
 	private void uploadToS3(PutObjectRequest putObjectRequest) {
 		try {
 			this.s3Client.putObject(putObjectRequest);
@@ -108,4 +113,8 @@ public class AwsS3 {
 			e.printStackTrace();
 		}
 	}
+	//랜덤파일 이름 생성
+	 private String randomFileName(File file, String dirName) {
+	        return dirName + "/" + UUID.randomUUID() + file.getName();
+	    }
 }

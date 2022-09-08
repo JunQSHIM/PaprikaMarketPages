@@ -4,58 +4,100 @@
 	<select id="selectUserAll" resultType="UserVO">
 		select * from user;
 	</select>
-	<select id="selectUser" parameterType="string" resultType="UserVO">
+	<select id="selectUser" parameterType="string"
+		resultType="UserVO">
 		select * from user where id=#{value}
 	</select>
 	<select id="idCheck" parameterType="String" resultType="int">
-        select count(*) from user where id = #{id}
-    </select>
-   	<select id="emailCheck" parameterType="String" resultType="int">
-        select count(*) from user where email = #{email}
-    </select>
-    <!-- 닉네임 중복체 -->
-    <select id="nicknameCheck" parameterType="String" resultType="int">
-    	select count(*) from user where nickname = #{nickname}
-    </select>
-   	<select id="phoneCheck" parameterType="String" resultType="int">
-    	select count(*) from user where phone = #{phone}
-    </select>
+		select
+		count(*) from user where id = #{id}
+	</select>
+	<select id="emailCheck" parameterType="String" resultType="int">
+		select count(*) from user where email = #{email}
+	</select>
+	<!-- 닉네임 중복체 -->
+	<select id="nicknameCheck" parameterType="String"
+		resultType="int">
+		select count(*) from user where nickname = #{nickname}
+	</select>
+	<select id="phoneCheck" parameterType="String" resultType="int">
+		select count(*) from user where phone = #{phone}
+	</select>
 	<select id="insertUser">
 		insert into
 		user(id,name,password,nickname,email,birth,phone,msg_agree,available,profile_image)
 		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image});
 	</select>
-	<!-- 메인 화면에 나오는 판매중인 상품 -->
+	<!-- 게시판 -->
 	<select id="boardList" resultType="SellBoardVO">
 		select * from product order by
 		prod_seq desc;
 	</select>
-	<!-- 판매하기 글 쓰기 -->
+	<!-- 게시판 글 쓰기 -->
 	<select id="insertSell" resultType="SellBoardVO">
 		insert into
-		product(nickname,location, prod_title, prod_content, price, category_seq,
+		product(nickname,location, prod_title, prod_content, price,
+		category_seq,
 		upload_date, status)
-		values('닉네임1234','서울',#{prod_title},#{prod_content},#{price},${category_seq},now(),1);
+		values('닉네임1234','서울',#{prod_title},#{prod_content},#{price},(select
+		category_name from category where category_seq =
+		#{category_seq}),now(),1);
 	</select>
 
-	<!-- 판매중인 상품 상세보기 -->
+	<!-- 게시판 상품 상세보기 -->
 	<select id="sellDetail" parameterType="int"
 		resultType="SellBoardVO">
 		select * from product where prod_seq = #{prod_seq};
 	</select>
-	<!-- 판매상품 삭제하기 -->
+	<!-- 게시판 삭제하기 -->
 	<select id="sellDelete" resultType="SellBoardVO">
 		delete from product where
 		prod_seq = #{prod_seq};
 	</select>
-	
+
+	<!-- 상품 리스트 -->
+	<select id="postList" resultType="PostVO">
+		select * from post order by
+		post_seq desc;
+	</select>
+
+	<!-- 상품 등록 -->
+	<select id="post" resultType="PostVO">
+		insert into post(user_seq,
+		nickname, post_title,post_content,price,location,
+		category_seq,
+		upload_date)
+		values(#{user_seq},#{nickname},#{post_title},
+		#{post_content}, #{price},'서울',#{category_seq},now());
+	</select>
+
+	<!-- 판매상품 삭제하기 -->
+	<select id="postDelete" resultType="PostVO">
+		delete from post where
+		post_seq = #{post_seq};
+	</select>
+
+	<!-- 상품 등록 상세 보기 -->
+	<select id="postDetail" parameterType="int" resultType="PostVO">
+		select *
+		from post where post_seq = #{post_seq};
+	</select>
+
+
 	<!-- 조회수 증가 -->
 	<update id="viewCount">
-		update product set count = count + 1 where prod_seq = #{prod_seq};
+		update post set cnt = cnt + 1 where post_seq =
+		#{post_seq};
 	</update>
+
 	<!-- 카테고리 리스트 -->
 	<select id="categoryList" resultType="CategoryVO">
 		select * from category;
+	</select>
+	
+	<!-- 카테고리별 상품 보기 -->
+	<select id="categoryDetail" parameterType="int" resultType="CategoryVO">
+		select * from category where category_seq = #{category_seq};
 	</select>
 
 	<!-- 정보 찾기 -->
@@ -70,17 +112,21 @@
 		user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image,available)
 		values(#{email},#{nickname},'1234','1111-01-01',#{nickname},#{email},'010-1234-1234',0,1,#{profile_image},1)
 	</insert>
-	
+
 	<update id="locationInsert" parameterType="UserVO">
-		update user set location1=#{location1},location2=#{location2} where id=#{id}
+		update user set
+		location1=#{location1},location2=#{location2} where id=#{id}
 	</update>
-	
+
+
 	<update id="updateProfile" parameterType="UserVO">
-		update user set password=#{password}, nickname=#{nickname} where id=#{id}
+		update user set
+		password=#{password}, nickname=#{nickname} where id=#{id}
 	</update>
-	
-	
+
+
 	<update id="reloadUser" parameterType="UserVO">
-		update user set birth=#{birth}, available=#{available} where id=#{id}
+		update user set
+		birth=#{birth}, available=#{available} where id=#{id}
 	</update>
 </mapper>

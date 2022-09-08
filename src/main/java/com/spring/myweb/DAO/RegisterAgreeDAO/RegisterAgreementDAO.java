@@ -8,4 +8,5 @@ import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
 public interface RegisterAgreementDAO {
 	public List<RegisterAgreementVO> selectAll();
 	public RegisterAgreementVO select(int agreement_seq);
+	public void update(RegisterAgreementVO vo);
 }

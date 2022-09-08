@@ -64,8 +64,8 @@ public class UserController {
 		return "redirect:main.do";
 	}
 	@RequestMapping(value="/insert.do")
-	public String insert(Model model) {
-		List<RegisterAgreementVO> list = registerService.selectAll();
+	public String insert(Model model, int agreement_seq) {
+		RegisterAgreementVO list = registerService.select(agreement_seq);
 		model.addAttribute("newest",list);
 		return "login/login&register/registerAgree";
 	}

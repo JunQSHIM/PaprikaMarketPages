@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/header/css/category.css">
@@ -10,64 +11,65 @@
 </head>
 <body>
 	<div id="categories">
-		<form action="/myweb/login/main/mother.jsp" name="category">
+		<form action="main.do" name="category">
 			<ul id="result1">
-				<li><button onclick="ctProduct()" name="product"
-						value="디지털기기">
+				<li><button onclick="ctProduct()" name="category_seq" 
+						value="1">
 						<img src="/myweb/login/images/ct_icon/digital.png" />디지털기기/가전
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="가구/인테리어">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="2">
 						<img src="/myweb/login/images/ct_icon/interior.png" />가구/인테리어
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="유아동/유아도서">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="3">
 						<img src="/myweb/login/images/ct_icon/baby.png" />유아동/유아도서
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="생활/가공식품">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="4">
 						<img src="/myweb/login/images/ct_icon/life.png" />생활/가공식품
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="스포츠/레저">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="5">
 						<img src="/myweb/login/images/ct_icon/sport.png" />스포츠/레저
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="여성잡화">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="6">
 						<img src="/myweb/login/images/ct_icon/waccessories.png" />여성잡화
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="여성의류">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="7">
 						<img src="/myweb/login/images/ct_icon/wclothes.png" />여성의류
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="남성패션/잡화">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="8">
 						<img src="/myweb/login/images/ct_icon/mclothes.png" />남성패션/잡화
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="게임/취미">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="9">
 						<img src="/myweb/login/images/ct_icon/game.png" />게임/취미
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="뷰티/미용">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="10">
 						<img src="/myweb/login/images/ct_icon/beauty.png" />뷰티/미용
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="반려동물용품">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="11">
 						<img src="/myweb/login/images/ct_icon/pet.png" />반려동물용품
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="도서/티켓/음반">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="12">
 						<img src="/myweb/login/images/ct_icon/ticket.png" />도서/티켓/음반
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="기타 중고물품">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="13">
 						<img src="/myweb/login/images/ct_icon/etc.png" />기타 중고물품
 					</button>
-				<li><button onclick="ctProduct()" name="product"
-						value="삽니다">
+				<li><button onclick="ctProduct()" name="category_seq"
+						value="14">
 						<img src="/myweb/login/images/ct_icon/buyproduct.png" />삽니다
 					</button>
+					
 			</ul>
 		</form>
 	</div>

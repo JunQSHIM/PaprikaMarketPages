@@ -11,19 +11,83 @@
 	</select>
 	<!-- 신고 상품 리뷰 불러오기 -->
 	<select id="selectReviewSingo" resultType="ReviewSingoVO">
-		select re.id as user_id, us.id as user_singo_id, re.review_seq, re.report_content, re.report_date, re.state from
-		(select u.id, r.user_singo_seq user_seq, r.review_seq, r.report_content, r.report_date, r.state from review_reports r
-				left join user u
-				on r.user_seq=u.user_seq
-		) re
-		left join user us
-		on re.user_seq = us.user_seq;
+		select rev.user_id as user_id,  rev.user_singo_id as user_singo_id, rev.review_seq, rev.report_content, rev.report_date, rev.state, prod.review_content as review_content from
+		(select re.id as user_id, us.id as user_singo_id, re.review_seq as review_seq, re.report_content as report_content, re.report_date as report_date, re.state as state from
+			(select u.id, r.user_singo_seq user_seq, r.review_seq, r.report_content, r.report_date, r.state from review_reports r
+					left join user u
+					on r.user_seq=u.user_seq
+			) re
+			left join user us
+		on re.user_seq = us.user_seq
+        ) rev
+		left join productReview	prod
+		on rev.review_seq = prod.review_seq;
 	</select>
 	
+	<!-- 신고 게시판 불러오기 -->
+	<select id="selectBoardSingo" resultType="BoardSingoVO">
+		select b.user_id as user_id,  b.user_singo_id as user_singo_id, b.board_seq, b.report_content, b.report_date, b.state, board.content as board_content from
+		(select b.id as user_id, u.id as user_singo_id, b.board_seq as board_seq, b.report_content as report_content, b.report_date as report_date, b.status as state from
+			(select u.id as id, b.user_singo_seq user_seq, b.board_seq, b.report_content, b.report_date, b.status from board_reports b
+					left join user u
+					on b.user_seq=u.user_seq
+			) b
+			left join user u
+		on b.user_seq = u.user_seq
+        ) b
+		left join board
+		on b.board_seq = board.board_seq;
+	</select>
+	
+	<!-- 상품 신고 불러오기 -->
+	<select id="selectPostSingo" resultType="PostSingoVO">
+		select p.user_id as user_id,  p.user_singo_id as user_singo_id, p.post_seq, p.report_content, p.report_date, p.state, post.post_content as post_content  from
+		(select p.id as user_id, u.id as user_singo_id, p.post_seq as post_seq, p.report_content as report_content, p.report_date as report_date, p.status as state from
+			(select u.id as id, p.user_singo_seq user_seq, p.post_seq, p.report_content, p.report_date, p.status from post_reports p
+					left join user u
+					on p.user_seq=u.user_seq
+			) p
+			left join user u
+		on p.user_seq = u.user_seq
+        ) p
+		left join post
+		on p.post_seq = post.post_seq;
+	</select>
+	
+	
+	<!-- 약관동의 -->
 	<select id="selectAgreement" parameterType="int" resultType="RegisterAgreeVO">
-		select * from agreement where agreement_seq=#{agreement_seq}
+		select * from agreement where agreement_seq=#{agreement_seq};
 	</select>
 	<select id="selectAgreementAll" resultType="RegisterAgreeVO">
-		select * from agreement;
+		select * from agreement ;
 	</select>
+	<update id="updateAgreement">
+		update agreement set register_agreement = #{register_agreement}, p_agreement = #{p_agreement} where agreement_seq=1;
+	</update>
+	
+		<!-- 신고 삭제 처리 -->
+	<delete id="deleteSingoPage">
+		delete from productReview where review_seq = #{sing_page};
+	</delete>
+	
+	<!-- 게시판 관리 -->
+		<!-- 게시판 목록 불러오기 -->
+	<select id="selectBoardAll" resultType="BoardVO">
+		select b.board_seq as board_seq, u.id as user_id, b.photo as photo, b.title as title, b.content as content, b.upload_date as upload_date, b.cnt as cnt, b.status as status
+		from board b
+		inner join user u
+		on u.user_seq = b.user_seq;
+	</select>
+	
+	<!-- 게시판 내용 불러오기 -->
+	<select id="boardDetail" resultType="BoardVO" parameterType="int">
+		select * from board where board_seq = #{board_seq};
+	</select>
+	
+	<!-- 게시판 삭제 -->
+	<select id="boardDelete" resultType="BoardVO">
+		delete from board where board_seq = #{board_seq};
+	</select>
+
 </mapper>

@@ -7,32 +7,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AdminLTE 3 | DataTables</title>
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
-<!-- Google Font: Source Sans Pro -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-<!-- Font Awesome -->
-<link rel="stylesheet"
-	href="/myweb/Admin_page/plugins/fontawesome-free/css/all.min.css">
-<!-- DataTables -->
-<link rel="stylesheet"
-	href="/myweb/Admin_page/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet"
-	href="/myweb/Admin_page/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<link rel="stylesheet"
-	href="/myweb/Admin_page/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-<!-- Theme style -->
-<link rel="stylesheet"
-	href="/myweb/Admin_page/dist/css/adminlte.min.css">
-<link rel="stylesheet" type="text/css" href="admins.css">
 <link rel="stylesheet" href="qna_list.css" type="text/css">
 <link rel="stylesheet" href="/myweb/Admin_page/admin_list/agreement.css" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-function update(){
-	 window.location.href ='/myweb/Admin_page/admin_list/edit_agreement.jsp';
-}
+	function defaults(){
+		location.href="admin_list.mdo?agreement_seq=2"
+	}
 </script>
 </head>
 <body>
@@ -55,35 +35,34 @@ function update(){
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
+							<form action="edit_agreement.mdo?agreement_seq=1" method="post">
 							<div class="card-header">
 								<div style="float: right;">
-									<button onclick="update()">수정</button>
+									<button type="submit">수정</button>
+									<button type="button" onclick="defaults()">기본 값 불러오기</button>
 								</div>
 							</div>
 							<div class="card-body">
-								<c:forEach var="agreement" items="${newest}">
 								<h4 align="left">회원가입 약관 동의</h4>
-								<div id="register_agreement">
-								<c:if test="${agreement.register_agreement ne null}">
-									<textarea id="register_agreement" readonly>${agreement.register_agreement}</textarea>
-								</c:if>
-								<c:if test="${agreement.register_agreement eq null }">
-									<textarea id="register_agreement" readonly>회원가입 약관 등록이 필요합니다!</textarea>
-								</c:if>
-								</div>
-								</c:forEach>
-								<c:forEach var="agreement" items="${newest}">
-								<h4 align="left">회원가입 약관 동의</h4>
-								<div id="register_agreement">
-								<c:if test="${agreement.p_agreement ne null}">
-									<textarea id="register_agreement" readonly>${agreement.p_agreement}</textarea>
-								</c:if>
-								<c:if test="${agreement.register_agreement eq null }">
-									<textarea id="register_agreement" readonly>회원가입 약관 등록이 필요합니다!</textarea>
-								</c:if>
-								</div>
-								</c:forEach>
+									<div id="register_agreement">
+										<c:if test="${newest.register_agreement ne null }">
+											<textarea name="register_agreement" id="register_agreement">${newest.register_agreement }</textarea>
+										</c:if>
+										<c:if test="${newest.register_agreement eq null }">
+											<textarea name="register_agreement" id="register_agreement" >회원가입 약관 등록이 필요합니다!</textarea>
+										</c:if>
+										</div>
+										<h4 align="left">개인정보 수집 동의</h4>
+										<div id="pInfo_agreement">
+										<c:if test="${newest.p_agreement ne null }">
+											<textarea name="p_agreement" id="pInfo_agreement" >${newest.p_agreement }</textarea>
+										</c:if>
+										<c:if test="${newest.p_agreement eq null }">
+											<textarea name="p_agreement" id="pInfo_agreement">개인정보 수집 약관 등록이 필요합니다!</textarea>
+										</c:if>
+									</div>
 							</div>
+							</form>
 					<!-- /.card-body -->
 				</div>
 				<!-- /.card -->
@@ -96,39 +75,6 @@ function update(){
 	</section>
 		<!-- /.content -->
 	</div>
-	<!-- Control Sidebar -->
-	<aside class="control-sidebar control-sidebar-dark">
-		<!-- Control sidebar content goes here -->
-	</aside>
-	<!-- /.control-sidebar -->
-	<!-- ./wrapper -->
-	<script src="/myweb/Admin_page/plugins/jquery/jquery.min.js"></script>
-	<!-- Bootstrap 4 -->
-	<script
-		src="/myweb/Admin_page/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- DataTables  & Plugins -->
-	<script
-		src="/myweb/Admin_page/plugins/datatables/jquery.dataTables.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-	<script src="/myweb/Admin_page/plugins/jszip/jszip.min.js"></script>
-	<script src="/myweb/Admin_page/plugins/pdfmake/pdfmake.min.js"></script>
-	<script src="/myweb/Admin_page/plugins/pdfmake/vfs_fonts.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="/myweb/Admin_page/dist/js/adminlte.min.js"></script>
+	
 </body>
 </html>	

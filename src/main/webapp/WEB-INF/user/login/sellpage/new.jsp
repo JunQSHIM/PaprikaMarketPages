@@ -33,8 +33,8 @@
 							<div class="file_0">
 								<div class="file_1">
 								
-									<input type="file" name="origin_file_name" multiple="multiple"
-										id="origin_file" class="form-control user_picked_files" />
+									<input type="file" name="origin_file_name" multiple="multiple" onchange="fileCheck(this)"
+										id="origin_file" class="form-control user_picked_files" accept="image/jpg,image/png,image/jpeg"/>
 									</div>
 							</div>
 						</div>
@@ -195,6 +195,7 @@
 		
 	</form>
 
+
 	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.891.0.min.js"></script>
 	<script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -206,5 +207,6 @@
 		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 		crossorigin="anonymous"></script>
 	<script src="/myweb/login/sellpage/new.js"></script>
+
 </body>
 </html>

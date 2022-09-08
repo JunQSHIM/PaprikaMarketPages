@@ -48,9 +48,24 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public CategoryVO categoryDetail(int category_seq) {
+	public List<PostVO> categoryDetail(int category_seq) {
 		
 		return postDao.categoryDetail(category_seq);
+	}
+
+	@Override
+	public CategoryVO categoryName(int category_seq) {
+		return postDao.categoryName(category_seq);
+	}
+
+	@Override
+	public int count() throws Exception {
+		return postDao.count();
+	}
+
+	@Override
+	public List<PostVO> listPage(int displayPost, int postNum) throws Exception {
+		return postDao.listPage(displayPost, postNum);
 	}
 
 }

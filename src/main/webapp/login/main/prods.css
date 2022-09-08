@@ -19,7 +19,15 @@ div {
 	margin: 0 0 0 10px;
 	overflow: hidden;
 }
-
+.sell_image img{
+	width: 100%;
+    position: absolute;
+    transition: opacity 0.2s ease-in-out 0s;
+    opacity: 1;
+    object-fit: cover;
+    vertical-align: bottom;
+    border-style: none;
+}
 .text .price {
 	font-size: 0.6rem;
 }

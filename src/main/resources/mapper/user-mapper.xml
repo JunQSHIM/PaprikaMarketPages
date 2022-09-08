@@ -57,7 +57,8 @@
 
 	<!-- 상품 리스트 -->
 	<select id="postList" resultType="PostVO">
-		select * from post order by
+		select * from post where
+		category_seq = #{category_seq} order by
 		post_seq desc;
 	</select>
 
@@ -83,6 +84,12 @@
 		from post where post_seq = #{post_seq};
 	</select>
 
+	<!-- 사진 등록 -->
+	<select id="insertPhoto" resultType="PostPhotoVO">
+		insert into
+		post_photo(post_seq, origin_file_name, save_file_name, create_time)
+		values(#{post_seq},#{origin_file_name},#{save_file_name}, now());
+	</select>
 
 	<!-- 조회수 증가 -->
 	<update id="viewCount">
@@ -94,10 +101,27 @@
 	<select id="categoryList" resultType="CategoryVO">
 		select * from category;
 	</select>
-	
+
 	<!-- 카테고리별 상품 보기 -->
-	<select id="categoryDetail" parameterType="int" resultType="CategoryVO">
-		select * from category where category_seq = #{category_seq};
+	<select id="categoryDetail" parameterType="int"
+		resultType="PostVO">
+		select * from post where category_seq = #{category_seq}
+		order by category_seq desc;
+	</select>
+
+	<!-- 카테고리 이름 -->
+	<select id="categoryName" resultType="CategoryVO">
+		select category_name where category_seq = #{category_seq};
+	</select>
+	
+	<!-- 게시물 총 개수 -->
+	<select id="count" resultType="int">
+		select count(post_seq) from post;
+	</select>
+	
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="listPage" parameterType="hashMap" resultType="PostVO">
+	select * from post order by post_seq desc limit #{displayPost}, #{postNum}
 	</select>
 
 	<!-- 정보 찾기 -->

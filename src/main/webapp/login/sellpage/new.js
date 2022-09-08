@@ -1,9 +1,8 @@
-
 //글자수가 넘어서면 메시지를 뿌리고 최대 문자수만큼 글자를 자른다
 
 function chkMsgLength(intMax, objMsg, st) {
 	var length = lengthMsg(objMsg.value);
-	st.innerHTML = length;//현재 byte수를 넣는다
+	st.innerHTML = length;// 현재 byte수를 넣는다
 	if (length > intMax) {
 		alert("최대 " + intMax + "byte이므로 초과된 글자수는 자동으로 삭제됩니다.\n");
 		objMsg.value = objMsg.value.replace(/\r\n$/, "");
@@ -55,19 +54,19 @@ function assertMsg(intMax, objMsg, st) {
 		nbytes += inc;
 		msg += ch;
 	}
-	st.innerHTML = nbytes; //현재 byte수를 넣는다
+	st.innerHTML = nbytes; // 현재 byte수를 넣는다
 	return msg;
 }
 
-//사진 업로드
+// 사진 업로드
 jQuery(document)
 		.ready(
 				function() {
 
 					var storedFiles = [];
-					//$('.cvf_order').hide();
+					// $('.cvf_order').hide();
 
-					// Apply sort function 
+					// Apply sort function
 					function cvf_reload_order() {
 						var order = $('.cvf_uploaded_files').sortable(
 								'toArray', {
@@ -94,7 +93,7 @@ jQuery(document)
 								ui.item.toggleClass('highlight');
 							},
 							update : function() {
-								//cvf_reload_order();
+								// cvf_reload_order();
 							},
 							create : function() {
 								var list = this;
@@ -167,7 +166,7 @@ jQuery(document)
 							}
 						}
 
-						//cvf_reload_order();
+						// cvf_reload_order();
 
 					});
 
@@ -177,7 +176,8 @@ jQuery(document)
 						e.preventDefault();
 						cvf_reload_order();
 
-						//$(".cvf_uploaded_files").html('<p><img src = "loading.gif" class = "loader" /></p>');
+						// $(".cvf_uploaded_files").html('<p><img src =
+						// "loading.gif" class = "loader" /></p>');
 						var data = new FormData();
 
 						var items_array = $('.cvf_hidden_field').val();
@@ -195,8 +195,10 @@ jQuery(document)
 							processData : false,
 							cache : false,
 							success : function(response, textStatus, jqXHR) {
-								//$(".cvf_uploaded_files").html('');                                               
-								//bootbox.alert('<br /><p class = "bg-success">File(s) uploaded successfully.</p>');
+								// $(".cvf_uploaded_files").html('');
+								// bootbox.alert('<br /><p class =
+								// "bg-success">File(s) uploaded
+								// successfully.</p>');
 								alert(jqXHR.responseText);
 							}
 						});
@@ -205,35 +207,48 @@ jQuery(document)
 				});
 
 // 폼 유효성 검사
-
 $(document).ready(function() {
-	//  문자열 검사를 시작합니다
+	// 문자열 검사를 시작합니다
 	$("form").on("submit", function() {
+
+		if (post.origin_file_name.value == "") {
+			post.origin_file_name.focus();
+			alert("이미지를 선택하세요.");
+			return false;
+		}
+		
 		if (post.post_title.value == "") {
 			alert("제목을 입력하세요.");
 			post.post_title.focus();
 			return false;
 		}
+		if ($("#selectbox").val() == "") {
+			alert("카테고리를 입력하세요.");
+			$("#selectbox").focus();
+			return false;
+		}
+//		if (post.category_seq.value == "") {
+//			post.category_seq.focus();
+//			alert("카테고리를 선택하세요.");
+//			return false;
+//
+//		}
 		if (post.post_title.value.length < 2) {
 			alert("제목을 2자 이상 입력하세요.");
 			post.post_title.focus();
 			return false;
 		}
 		
+
 		if (post.price.value == "") {
 			post.price.focus();
 			alert("가격을 입력하세요.");
-			return false;
+			return false; 
 		}
 
 		if (post.post_content.value == "") {
 			post.post_content.focus();
 			alert("내용을 입력하세요.");
-			return false;
-		}
-		if (post.category_seq.value == "") {
-			post.category_seq.focus();
-			alert("카테고리를 선택하세요.");
 			return false;
 		} else {
 			return true;
@@ -241,7 +256,6 @@ $(document).ready(function() {
 
 	});
 });
-
 
 // 판매하기 제목 글자 수 제한
 function titleChk() {
@@ -255,7 +269,7 @@ function titleChk() {
 		document.getElementById("titleChk").innerHTML = ('<span></span>');
 	}
 }
-//숫자만 입력되게 하기
+// 숫자만 입력되게 하기
 function chkNum() {
 	if (!((event.keyCode >= 48 && event.keyCode <= 57)
 			|| (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 8)) {
@@ -268,7 +282,7 @@ $("#price").on('input', function() {
 	$(this).val($(this).val().replace(/[^0-9]/g, ""));
 });
 
-//글자수 실시간 카운팅
+// 글자수 실시간 카운팅
 $('#prod_title').keyup(function(e) {
 	var content = $(this).val();
 	$('#counter').html(content.length + " / 40");
@@ -279,3 +293,26 @@ function handleOnChange(e) {
 
 	document.getElementById("result_category").innerText = value;
 }
+
+// 이미지만 넣을 수 있게
+function fileCheck(obj) {
+	pathpoint = obj.value.lastIndexOf('.');
+	filepoint = obj.value.substring(pathpoint + 1, obj.length);
+	filetype = filepoint.toLowerCase();
+	if (filetype == 'jpg' || filetype == 'jpeg' || filetype == 'png'
+			|| filetype == 'bmp') {
+
+	} else {
+		alert('이미지 파일만 선택할 수 있습니다.')
+		parentObj = obj.parentNode
+		node = parentObj.replaceChild(obj.cloneNode(true), obj);
+		return false;
+	}
+	if (filetype == 'bmp') {
+		upload = confirm('bmp 파일은 웹상에서 사용하기엔 적절한 포맷이 아닙니다.\n 드래도 계속 하시겠습니까?');
+		if (!upload)
+			return false;
+	}
+}
+
+

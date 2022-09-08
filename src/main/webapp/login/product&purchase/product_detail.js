@@ -122,7 +122,7 @@
                         window.location.reload();
                     }).fail(function(error){
                             alert(JSON.stringify(error));
-                    })
+                })
                 } else{
                     alert("결제에 실패했습니다."+"에러코드 : "+rsp.error_code+"에러 메시지 : "+rsp.error_message);
 
@@ -130,6 +130,12 @@
             })
         });
     };
+    $(document).ready(function(){
+        $('.lgWppt').bxSlider();
+        slideWidth: 150
+        slideHeight:150
+        infiniteLoop:false
+      });
     
     
     // 모달창

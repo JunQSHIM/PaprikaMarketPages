@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="categories">
-		<form action="main.do" name="category">
+		<form action="category.do" method="get" name="category">
 			<ul id="result1">
 				<li><button onclick="ctProduct()" name="category_seq" 
 						value="1">

@@ -13,6 +13,7 @@
 		<typeAlias alias="ReviewSingoVO" type="com.spring.myweb.VO.AdminVO.ReviewSingoVO" />
 		<typeAlias alias="BoardVO" type="com.spring.myweb.VO.AdminVO.BoardVO" />
 		<typeAlias alias="PostVO" type="com.spring.myweb.VO.PostVO.PostVO"/>
+		<typeAlias alias="PostPhotoVO" type="com.spring.myweb.awss3.vo.PostPhotoVO"/>
 	</typeAliases>
 		
 	

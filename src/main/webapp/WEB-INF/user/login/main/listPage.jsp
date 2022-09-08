@@ -26,19 +26,23 @@
 	</article>
 	<article class="container_12">
 
+
+
+
 		<%@include file="/WEB-INF/user/login/main/prods.jsp"%>
+
 	</article>
-<div>
+	<div>
 		<c:if test="${prev}">
 			<span>[ <a href="category.do?num=${startPageNum - 1}">이전</a> ]
 			</span>
 		</c:if>
 
-		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
-			<span> <c:if test="${select != page}">
-					<a href="category.do?num=${page}">${page}</a>
-				</c:if> <c:if test="${select == page}">
-					<b>${page}</b>
+		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+			<span> <c:if test="${select != num}">
+					<a href="category.do?num=${num}">${num}</a>
+				</c:if> <c:if test="${select == num}">
+					<b>${num}</b>
 				</c:if>
 			</span>
 		</c:forEach>

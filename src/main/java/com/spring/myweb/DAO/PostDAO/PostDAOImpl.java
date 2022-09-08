@@ -1,5 +1,6 @@
 package com.spring.myweb.DAO.PostDAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -53,9 +54,28 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
-	public CategoryVO categoryDetail(int category_seq) {
-		CategoryVO vDetail = session.selectOne("userDB.categoryDetail", category_seq);
+	public List<PostVO> categoryDetail(int category_seq) {
+		List<PostVO> vDetail = session.selectList("userDB.categoryDetail", category_seq);
 		return vDetail;
+	}
+
+	@Override
+	public CategoryVO categoryName(int category_seq) {
+		CategoryVO detail = session.selectOne("userDB.categoryName", category_seq);
+		return detail;
+	}
+
+	@Override
+	public int count() throws Exception {
+		return session.selectOne("userDB.count");
+	}
+
+	@Override
+	public List<PostVO> listPage(int displayPost, int postNum) throws Exception {
+		HashMap<String, Integer> data = new HashMap<String, Integer>();
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+		return session.selectList("userDB.listPage", data);
 	}
 
 }

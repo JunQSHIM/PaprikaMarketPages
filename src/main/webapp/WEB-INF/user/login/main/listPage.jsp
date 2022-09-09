@@ -34,13 +34,13 @@
 	</article>
 	<div>
 		<c:if test="${prev}">
-			<span>[ <a href="category.do?num=${startPageNum - 1}">이전</a> ]
+			<span>[ <a href="listPage.do?num=${startPageNum - 1}">이전</a> ]
 			</span>
 		</c:if>
 
 		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
 			<span> <c:if test="${select != num}">
-					<a href="category.do?num=${num}">${num}</a>
+					<a href="listPage.do?num=${num}">${num}</a>
 				</c:if> <c:if test="${select == num}">
 					<b>${num}</b>
 				</c:if>
@@ -48,7 +48,7 @@
 		</c:forEach>
 
 		<c:if test="${next}">
-			<span>[ <a href="category.do?num=${endPageNum + 1}">다음</a> ]
+			<span>[ <a href="listPage.do?num=${endPageNum + 1}">다음</a> ]
 			</span>
 		</c:if>
 	</div>

@@ -57,8 +57,7 @@
 
 	<!-- 상품 리스트 -->
 	<select id="postList" resultType="PostVO">
-		select * from post where
-		category_seq = #{category_seq} order by
+		select * from post order by
 		post_seq desc;
 	</select>
 
@@ -117,6 +116,10 @@
 	<!-- 게시물 총 개수 -->
 	<select id="count" resultType="int">
 		select count(post_seq) from post;
+	</select>
+	
+	<select id="countCate" resultType="int">
+		select count(post_seq) from (select * from post where category_seq = #{category_seq});
 	</select>
 	
 	<!-- 게시물 목록 + 페이징 -->

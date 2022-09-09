@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
+import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PostService.PostService;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.UserVO.UserVO;
@@ -31,10 +32,17 @@ public class PostController {
 	private PostService postService;
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String postList(Model model, PostVO vo) {
+	public String postList(Model model, PostVO vo, @RequestParam(value= "num", required = false) int num) throws Exception {
 		System.out.println("Post Service");
-		List<PostVO> list = postService.postList();
-		model.addAttribute("post", list);
+		System.out.println("페이징");
+		PageVO page = new PageVO();
+		page.setNum(num);
+		page.setCount(postService.count());  
+		List<PostVO> list = postService.listPage(page.getDisplayPost(), page.getPostNum());
+		model.addAttribute("page", page);
+		model.addAttribute("select", num);
+		model.addAttribute("list", list);
+	
 		return "login/main/mother";
 	}
 
@@ -101,7 +109,7 @@ public class PostController {
 		model.addAttribute("post", vo);
 		return "login/main/mother";
 	}
-
+/*
 	@RequestMapping(value = "/listPage.do", method = RequestMethod.GET)
 	public String getlistPage(Model model, @RequestParam("num") int num) throws Exception {
 		System.out.println("페이징");
@@ -139,4 +147,5 @@ public class PostController {
 		model.addAttribute("list", list);
 		return "login/main/listPage";
 	}
+	*/
 }

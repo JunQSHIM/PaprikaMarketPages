@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-=======
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,26 +30,7 @@
 
 		<%@include file="/WEB-INF/user/login/main/prods.jsp"%>
 	</article>
-<div>
-		<c:if test="${prev}">
-			<span>[ <a href="category.do?num=${startPageNum - 1}">이전</a> ]
-			</span>
-		</c:if>
 
-		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
-			<span> <c:if test="${select != page}">
-					<a href="category.do?num=${page}">${page}</a>
-				</c:if> <c:if test="${select == page}">
-					<b>${page}</b>
-				</c:if>
-			</span>
-		</c:forEach>
-
-		<c:if test="${next}">
-			<span>[ <a href="category.do?num=${endPageNum + 1}">다음</a> ]
-			</span>
-		</c:if>
-	</div>
 	<footer class="container_12">
 		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>

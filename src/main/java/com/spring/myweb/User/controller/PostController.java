@@ -1,27 +1,27 @@
 package com.spring.myweb.User.controller;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.PageVO.PageVO;
-import com.spring.myweb.VO.PostService.PostService;
+import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.UserVO.UserVO;
-import com.spring.myweb.awss3.service.AwsS3Service;
 import com.spring.myweb.awss3.vo.PostPhotoVO;
 
 @Controller
@@ -57,31 +57,35 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/createProc.do")
-	public String post(Model model, PostVO vo, PostPhotoVO pvo) {
+	public String post(Model model, PostVO vo, @RequestParam(value="origin_file_name", required=false)List<MultipartFile> img, PostPhotoVO pvo, PhotoVO photo) {
 		System.out.println("글 등록");
 		
-		// 이미지 등록
-		try {
-			String key = pvo.getOrigin_file_name().getOriginalFilename();
-			InputStream is = pvo.getOrigin_file_name().getInputStream();
-			String contentType = pvo.getOrigin_file_name().getContentType();
-			
-			String fileName = UUID.randomUUID() + "-" + key; // 파일이름 랜덤 생성
-			long contentLength = pvo.getOrigin_file_name().getSize();
-			AwsS3Service awsS3 = AwsS3Service.getinstance();
-		
-			awsS3.upload(is, fileName, contentType, contentLength);
-				
-		
-			System.out.println("이미지 업로드 완료");
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		// 상품 등록
 		int success = postService.insertPost(vo);
 		if (success == 1) {
 			model.addAttribute("post", vo);
 		}
+		int post_seq = postService.post_seq(vo.getUser_seq());
+		//이미지 등록
+		
+		
+		Map<String, String> names = postService.uploadImg(img);
+		
+		Iterator<Entry<String, String>> entries = names.entrySet().iterator();
+		while(entries.hasNext()){
+		    Map.Entry<String, String> entry = entries.next();
+		    String origin_file_name = entry.getKey();
+			String save_file_name = entry.getValue();
+	
+			photo.setPost_seq(post_seq);
+			photo.setO_name(origin_file_name);
+			photo.setS_name(save_file_name);
+			
+			postService.insertPhoto(photo);
+		}
+		
+		
+		
 		return "redirect:main.do";
 	}
 

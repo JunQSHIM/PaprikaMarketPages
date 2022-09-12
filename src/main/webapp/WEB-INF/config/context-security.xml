@@ -11,6 +11,7 @@
 	  <security:intercept-url pattern="/login.do" access="hasRole('ROLE_USER')" />
   	  <security:intercept-url pattern="/mypageProc.do" access="hasRole('ROLE_USER')" />
   	  <security:intercept-url pattern="/create.do" access="hasRole('ROLE_USER')" />
+  	  <security:intercept-url pattern="/createProc.do" access="hasRole('ROLE_USER')" />
 	  <security:intercept-url pattern="/user.mdo" access="hasRole('ROLE_ADMIN')" />
 		
 	    <security:form-login
@@ -27,6 +28,8 @@
 	  logout-success-url="/main.do"
 	  invalidate-session="true"        
 	  delete-cookies="JSESSIONID"/>
+	  
+	  <security:csrf disabled="true"/>
 	</security:http>
 	
 	<security:jdbc-user-service data-source-ref="dataSource" id="userService"

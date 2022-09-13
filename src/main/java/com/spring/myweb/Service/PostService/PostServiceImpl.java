@@ -12,7 +12,6 @@ import com.spring.myweb.DAO.PostDAO.PostDAO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
-import com.spring.myweb.awss3.vo.PostPhotoVO;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -101,11 +100,17 @@ public class PostServiceImpl implements PostService {
 	public void insertPhoto(PhotoVO vo) {
 		postDao.insertPhoto(vo);
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 	@Override
 	public void deleteImage(int post_seq) {
 		postDao.deleteImage(post_seq);
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 }

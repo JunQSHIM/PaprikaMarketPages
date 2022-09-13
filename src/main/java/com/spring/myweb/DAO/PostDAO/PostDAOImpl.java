@@ -11,7 +11,6 @@ import java.util.UUID;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
@@ -76,8 +75,17 @@ public class PostDAOImpl implements PostDAO {
 	@Override
 	public void postDelete(int post_seq) {
 		session.delete("userDB.postDelete", post_seq);
-		
 	}
+	
+	@Override
+	public void deleteImage(int post_seq) {
+		List<String> name= session.selectList("userDB.selectPhoto", post_seq);
+		for(String fileName : name) {
+			amazonS3.deleteObject(new DeleteObjectRequest(this.bucket, fileName));
+		}
+		session.delete("userDB.deletePhoto", post_seq);
+	}
+
 
 	@Override
 	public PostVO postDetail(int post_seq) {
@@ -179,15 +187,6 @@ public class PostDAOImpl implements PostDAO {
 	    }
 	}
 
-	@Override
-	public void deleteImage(int post_seq) {
-		List<String> name= session.selectList("userDB.selectPhoto", post_seq);
-		for(String fileName : name) {
-			amazonS3.deleteObject(new DeleteObjectRequest(bucket, fileName));
-		}
-		session.delete("userDB.deletePhoto", post_seq);
-	}
-	
 	@Override
 	public int post_seq(int user_seq) {
 		return session.selectOne("userDB.selectPostUser" ,user_seq);

@@ -107,7 +107,6 @@
 		select saved_file_name from post_photo where post_seq = #{post_seq} order by create_time desc limit 0,1;
 	</select>
 	
-	
 	<delete id="deletePhoto">
 		delete from post_photo where post_seq = #{post_seq};
 	</delete>

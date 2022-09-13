@@ -104,15 +104,9 @@ public class PostController {
 	@RequestMapping(value = "/postDelete.do", method = RequestMethod.GET)
 	public String postDelete(int post_seq) throws Exception {
 		System.out.println("글 삭제");
-		postService.postDelete(post_seq);
-<<<<<<< HEAD
-		return "redirect:create.do";
-=======
-		
-		
 		postService.deleteImage(post_seq);
-		return "redirect:main.do";
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
+		postService.postDelete(post_seq);
+		return "redirect:create.do";
 	}
  
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)

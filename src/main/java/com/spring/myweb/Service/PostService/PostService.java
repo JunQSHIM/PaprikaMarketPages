@@ -8,7 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
-import com.spring.myweb.awss3.vo.PostPhotoVO;
 
 public interface PostService {
 	public List<PostVO> postList(); // 글 목록

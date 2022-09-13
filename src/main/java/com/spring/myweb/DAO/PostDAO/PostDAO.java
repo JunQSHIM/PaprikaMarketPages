@@ -8,14 +8,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
-import com.spring.myweb.awss3.vo.PostPhotoVO;
 
 public interface PostDAO {
 	public List<PostVO> postList(); // 글 목록
 	public int insertPost(PostVO vo); // 글쓰기
 	public PostVO postDetail(int post_seq); // 글 상세
 	public List<String> photoDetail(int post_seq);//사진불러오기
-	public String photoOne(int post_seq);//사진불러오기
+	public String photoOne(int post_seq);//사진 하나불러오기
 	
 	public List<CategoryVO> categoryList(); // 카테고리 보이기
 	public void viewCount(int post_seq); // 조회수 증가

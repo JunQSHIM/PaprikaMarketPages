@@ -113,6 +113,13 @@ public class PostDAOImpl implements PostDAO {
 		data.put("postNum", postNum);
 		return session.selectList("userDB.listPage", data);
 	}
+	
+	
+	@Override
+	public void updatePost(PostVO vo) {
+		session.update("userDB.updatePost", vo);
+		
+	}
 	// 이미지 다수 등록
 	
 	@Override
@@ -169,5 +176,6 @@ public class PostDAOImpl implements PostDAO {
 	public void insertPhoto(PhotoVO vo) {
 		session.selectList("userDB.insertPhoto",vo);
 	}
+	
 
 }

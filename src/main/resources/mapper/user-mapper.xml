@@ -77,6 +77,13 @@
 		post_seq = #{post_seq};
 	</select>
 
+	<!-- 판매상품 수정하기 -->
+	<select id="updatePost" resultType="PostVO">
+		update post set post_title =
+		#{post_title}, price = #{price}, post_content=#{post_content},
+		upload_date = now() where post_seq = #{post_seq};
+	</select>
+
 	<!-- 상품 등록 상세 보기 -->
 	<select id="postDetail" parameterType="int" resultType="PostVO">
 		select *
@@ -85,12 +92,15 @@
 
 	<!-- 사진등록 -->
 	<insert id="insertPhoto" parameterType="PhotoVO">
-		insert into post_photo (post_seq, origin_file_name, saved_file_name, create_time)
-		values (#{post_seq}, #{o_name}, #{s_name}, now());
+		insert into post_photo
+		(post_seq, origin_file_name, saved_file_name, create_time)
+		values
+		(#{post_seq}, #{o_name}, #{s_name}, now());
 	</insert>
 	<!-- 최신 상품 등록 페이지 번호 추출 -->
 	<select id="selectPostUser" resultType="int">
-		select post_seq from post where user_seq = #{user_seq} order by upload_date desc limit 0,1;
+		select post_seq from post
+		where user_seq = #{user_seq} order by upload_date desc limit 0,1;
 	</select>
 
 	<!-- 조회수 증가 -->
@@ -113,21 +123,24 @@
 
 	<!-- 카테고리 이름 -->
 	<select id="categoryName" resultType="CategoryVO">
-		select category_name where category_seq = #{category_seq};
+		select category_name where
+		category_seq = #{category_seq};
 	</select>
-	
+
 	<!-- 게시물 총 개수 -->
 	<select id="count" resultType="int">
 		select count(post_seq) from post;
 	</select>
-	
+
 	<select id="countCate" resultType="int">
-		select count(post_seq) from (select * from post where category_seq = #{category_seq});
+		select count(post_seq) from
+		(select * from post where category_seq = #{category_seq});
 	</select>
-	
+
 	<!-- 게시물 목록 + 페이징 -->
-	<select id="listPage" parameterType="hashMap" resultType="PostVO">
-	select * from post order by post_seq desc limit #{displayPost}, #{postNum}
+	<select id="listPage" parameterType="hashMap"
+		resultType="PostVO">
+		select * from post order by post_seq desc limit #{displayPost}, #{postNum}
 	</select>
 
 	<!-- 정보 찾기 -->

@@ -73,6 +73,12 @@ public class PostServiceImpl implements PostService {
 	}
 	
 	@Override
+	public void updatePost(PostVO vo) {
+		postDao.updatePost(vo);
+		
+	}
+	
+	@Override
 	public Map<String, String> uploadImg(List<MultipartFile> img) {
 		return postDao.uploadImg(img);
 	}
@@ -86,5 +92,6 @@ public class PostServiceImpl implements PostService {
 	public void insertPhoto(PhotoVO vo) {
 		postDao.insertPhoto(vo);
 	}
+
 
 }

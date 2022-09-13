@@ -47,11 +47,13 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
-	public String getCreate(HttpSession session, Model model, CategoryVO vo, UserVO uvo) {
+	public String getCreate(HttpSession session, Model model, CategoryVO vo, UserVO uvo, PostVO pvo){
 		System.out.println("판매하기 접속함");
 		if (uvo != null) {
 			List<CategoryVO> list = postService.categoryList();
-			model.addAttribute("category", list);
+			List<PostVO> plist = postService.postList();
+			model.addAttribute("plist", plist); // 글 목록
+			model.addAttribute("category", list); // 카테고리 리스트
 		}
 		return "login/sell";
 	}
@@ -83,9 +85,6 @@ public class PostController {
 			
 			postService.insertPhoto(photo);
 		}
-		
-		
-		
 		return "redirect:main.do";
 	}
 
@@ -93,7 +92,7 @@ public class PostController {
 	public String postDelete(int post_seq) throws Exception {
 		System.out.println("글 삭제");
 		postService.postDelete(post_seq);
-		return "redirect:main.do";
+		return "redirect:create.do";
 	}
  
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
@@ -113,6 +112,23 @@ public class PostController {
 		model.addAttribute("post", vo);
 		return "login/main/mother";
 	}
+	
+	// 판매하기 수정페이지 이동
+	@RequestMapping(value = "/updatePost.do")
+	public String getUpdate(int post_seq, Model model) throws Exception{
+		System.out.println("수정하기");
+		PostVO vo = postService.postDetail(post_seq);
+		model.addAttribute("vo",vo);
+		return"login/update";
+	}
+	
+	@RequestMapping(value = "/updateProc.do")
+	public String postUpdate(PostVO vo) throws Exception{
+		System.out.println("수정완료");
+		postService.updatePost(vo);
+		return "redirect:main.do?num=1";
+	}
+
 /*
 	@RequestMapping(value = "/listPage.do", method = RequestMethod.GET)
 	public String getlistPage(Model model, @RequestParam("num") int num) throws Exception {

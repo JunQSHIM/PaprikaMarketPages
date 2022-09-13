@@ -21,7 +21,7 @@ public interface PostDAO {
 	public CategoryVO categoryName(int category_seq); //카테고리 이름
 	public int count() throws Exception; // 게시물 총 개수
 	public List<PostVO> listPage(int displayPost, int postNum) throws Exception; // 게시물 목록 + 페이징
-	
+	public void updatePost(PostVO vo);// 판매하기 수정하기
 	
 	public Map<String, String> uploadImg(List<MultipartFile> img);//이미지 다수 등록
 	public void insertPhoto(PhotoVO vo);//DB에 저장

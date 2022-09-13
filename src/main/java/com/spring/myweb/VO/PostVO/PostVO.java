@@ -2,8 +2,6 @@ package com.spring.myweb.VO.PostVO;
 
 import java.util.Date;
 
-import lombok.Data;
-
 
 public class PostVO {
 	

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,37 +60,23 @@
 						<div class="control">관리</div>
 					</div>
 
+				<c:forEach items="${ plist}" var="plist">
 					<div class="sell-products">
 						<div class="img">
 							<img src="images/jjim_icon/santiago.png" alt="img">
 						</div>
 						<div class="state">판매 완료</div>
-						<div class="product-name">레고</div>
-						<div class="price">700,000원</div>
+						<div class="product-name" name="post_title">${plist.post_title }</div>
+						<div class="price" name="price"><fmt:formatNumber value="${plist.price }" pattern="###,###,###"/></div>
 						<div class="jjim">♥</div>
-						<div class="date">22-08-02</div>
+						<div class="date" name="upload_date">${plist.upload_date }</div>
 						<div class="control">
-							<button>수정</button>
-							<button>삭제</button>
+							<button onclick="location.href='updatePost.do?post_seq=${plist.post_seq }'">수정</button>
+							<button onclick="location.href='postDelete.do?post_seq=${plist.post_seq }'">삭제</button>
 							<button>중지</button>
 						</div>
 					</div>
-
-					<div class="sell-products">
-						<div class="img">
-							<img src="images/jjim_icon/travis.png" alt="img">
-						</div>
-						<div class="state">판매 중</div>
-						<div class="product-name">신발</div>
-						<div class="price">1700,000원</div>
-						<div class="jjim">♥</div>
-						<div class="date">22-08-02</div>
-						<div class="control">
-							<button>수정</button>
-							<button>삭제</button>
-							<button>중지</button>
-						</div>
-					</div>
+						</c:forEach>
 				</div>
 			</div>
 			<div id="sell-list">

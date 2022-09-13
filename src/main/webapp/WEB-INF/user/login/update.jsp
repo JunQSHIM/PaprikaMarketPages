@@ -17,7 +17,7 @@
 
 	<article class="container_12">
 		<jsp:include page="/WEB-INF/user/login/main/category.jsp"></jsp:include>
-		<jsp:include page="/WEB-INF/user/login/sellpage/sellpage.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/sellpage/update_prods.jsp"></jsp:include>
 	</article>
 	
 	<footer class="container_12">

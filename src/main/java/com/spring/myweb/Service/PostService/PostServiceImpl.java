@@ -45,6 +45,15 @@ public class PostServiceImpl implements PostService {
 	public PostVO postDetail(int post_seq) {
 		return postDao.postDetail(post_seq);
 	}
+	
+	@Override
+	public List<String> photoDetail(int post_seq) {
+		return postDao.photoDetail(post_seq);
+	}
+	@Override
+	public String photoOne(int post_seq) {
+		return postDao.photoOne(post_seq);
+	}
 
 	@Override
 	public void viewCount(int post_seq) {
@@ -92,6 +101,14 @@ public class PostServiceImpl implements PostService {
 	public void insertPhoto(PhotoVO vo) {
 		postDao.insertPhoto(vo);
 	}
+<<<<<<< HEAD
 
 
+=======
+	@Override
+	public void deleteImage(int post_seq) {
+		postDao.deleteImage(post_seq);
+	}
+	
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 }

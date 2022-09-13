@@ -60,7 +60,7 @@
 		select * from post order by
 		post_seq desc;
 	</select>
-
+	
 	<!-- 상품 등록 -->
 	<select id="post" resultType="PostVO">
 		insert into post(user_seq,
@@ -89,7 +89,7 @@
 		select *
 		from post where post_seq = #{post_seq};
 	</select>
-
+	
 	<!-- 사진등록 -->
 	<insert id="insertPhoto" parameterType="PhotoVO">
 		insert into post_photo
@@ -97,6 +97,21 @@
 		values
 		(#{post_seq}, #{o_name}, #{s_name}, now());
 	</insert>
+	
+	<!-- 사진 선택 -->
+	<select id="selectPhoto" resultType="String">
+		select saved_file_name from post_photo where post_seq = #{post_seq};
+	</select>
+	<!-- 미리보기 사진  -->
+	<select id="selectOnePhoto" resultType="String">
+		select saved_file_name from post_photo where post_seq = #{post_seq} order by create_time desc limit 0,1;
+	</select>
+	
+	
+	<delete id="deletePhoto">
+		delete from post_photo where post_seq = #{post_seq};
+	</delete>
+	
 	<!-- 최신 상품 등록 페이지 번호 추출 -->
 	<select id="selectPostUser" resultType="int">
 		select post_seq from post

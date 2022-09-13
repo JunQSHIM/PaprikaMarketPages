@@ -14,6 +14,9 @@ public interface PostDAO {
 	public List<PostVO> postList(); // 글 목록
 	public int insertPost(PostVO vo); // 글쓰기
 	public PostVO postDetail(int post_seq); // 글 상세
+	public List<String> photoDetail(int post_seq);//사진불러오기
+	public String photoOne(int post_seq);//사진불러오기
+	
 	public List<CategoryVO> categoryList(); // 카테고리 보이기
 	public void viewCount(int post_seq); // 조회수 증가
 	public void postDelete(int post_seq); // 글 삭제
@@ -26,4 +29,5 @@ public interface PostDAO {
 	public Map<String, String> uploadImg(List<MultipartFile> img);//이미지 다수 등록
 	public void insertPhoto(PhotoVO vo);//DB에 저장
 	public int post_seq(int user_seq);//최신 상품 등록 페이지
+	public void deleteImage(int post_seq);//사진 삭제
 }

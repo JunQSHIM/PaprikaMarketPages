@@ -16,6 +16,8 @@ public interface PostService {
 	public List<CategoryVO> categoryList(); // 카테고리 보이기
 	public void postDelete(int post_seq); // 글 삭제
 	public PostVO postDetail(int post_seq); // 글 상세
+	public List<String> photoDetail(int post_seq);//사진 불러오기
+	public String photoOne(int post_seq);//사진 불러오기
 	public void viewCount(int post_seq); // 조회수 증가
 	public List<PostVO> categoryDetail(int category_seq); // 카테고리별 상품 보기
 	public CategoryVO categoryName(int category_seq); //카테고리 이름
@@ -26,6 +28,7 @@ public interface PostService {
 	public Map<String, String> uploadImg(List<MultipartFile> img);//이미지 다수 등록
 	public void insertPhoto(PhotoVO vo);//DB에 저장
 	public int post_seq(int user_seq);//최신 상품 등록 페이지 불러오기
+	public void deleteImage(int post_seq);//사진 삭제
 
 
 

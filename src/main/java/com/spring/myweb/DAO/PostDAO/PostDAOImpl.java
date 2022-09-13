@@ -2,6 +2,7 @@ package com.spring.myweb.DAO.PostDAO;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,7 +84,23 @@ public class PostDAOImpl implements PostDAO {
 		PostVO detail = session.selectOne("userDB.postDetail",post_seq);
 		return detail;
 	}
-
+	
+	@Override
+	public List<String> photoDetail(int post_seq) {
+		List<String> names = session.selectList("userDB.selectPhoto",post_seq);
+		List<String> photoNames = new ArrayList<String>();
+		
+		for(String name : names) {
+			photoNames.add(name);
+		}
+		return photoNames;
+	}
+	@Override
+	public String photoOne(int post_seq) {
+		String name = session.selectOne("userDB.selectOnePhoto", post_seq);
+		return name;
+	}
+	
 	@Override
 	public void viewCount(int post_seq) {
 		session.update("userDB.viewCount",post_seq);
@@ -150,11 +167,6 @@ public class PostDAOImpl implements PostDAO {
 	        return fileNameList;
 	    }
 
-	
-	public void deleteImage(String fileName) {
-	    amazonS3.deleteObject(new DeleteObjectRequest(bucket, fileName));
-	}
-	
 	private String createFileName(String fileName) {
 	    return UUID.randomUUID().toString().concat(getFileExtension(fileName));
 	}
@@ -168,6 +180,15 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
+	public void deleteImage(int post_seq) {
+		List<String> name= session.selectList("userDB.selectPhoto", post_seq);
+		for(String fileName : name) {
+			amazonS3.deleteObject(new DeleteObjectRequest(bucket, fileName));
+		}
+		session.delete("userDB.deletePhoto", post_seq);
+	}
+	
+	@Override
 	public int post_seq(int user_seq) {
 		return session.selectOne("userDB.selectPostUser" ,user_seq);
 	}
@@ -177,5 +198,8 @@ public class PostDAOImpl implements PostDAO {
 		session.selectList("userDB.insertPhoto",vo);
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 }

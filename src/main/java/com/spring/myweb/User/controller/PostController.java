@@ -1,5 +1,6 @@
 package com.spring.myweb.User.controller;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -38,11 +39,22 @@ public class PostController {
 		PageVO page = new PageVO();
 		page.setNum(num);
 		page.setCount(postService.count());  
+		List<Integer> post_seq = new ArrayList<Integer>();
 		List<PostVO> list = postService.listPage(page.getDisplayPost(), page.getPostNum());
+		for(PostVO post : list) {
+			post_seq.add(post.getPost_seq());
+		}
+		
+		List<String> photoNames = new ArrayList<String>();
+		for(int post_num : post_seq) {
+			photoNames.add(postService.photoOne(post_num));
+			System.out.println(postService.photoOne(post_num));
+		}
+		
 		model.addAttribute("page", page);
 		model.addAttribute("select", num);
 		model.addAttribute("list", list);
-	
+		model.addAttribute("photo", photoNames);
 		return "login/main/mother";
 	}
 
@@ -67,10 +79,8 @@ public class PostController {
 		}
 		int post_seq = postService.post_seq(vo.getUser_seq());
 		//이미지 등록
-		
-		
 		Map<String, String> names = postService.uploadImg(img);
-		
+		//저장이름, 랜덤이름 db에 저장
 		Iterator<Entry<String, String>> entries = names.entrySet().iterator();
 		while(entries.hasNext()){
 		    Map.Entry<String, String> entry = entries.next();
@@ -79,20 +89,23 @@ public class PostController {
 	
 			photo.setPost_seq(post_seq);
 			photo.setO_name(origin_file_name);
-			photo.setS_name(save_file_name);
+			photo.setS_name("https://paprikaproject.s3.ap-northeast-2.amazonaws.com/" + save_file_name);
 			
 			postService.insertPhoto(photo);
 		}
-		
-		
-		
 		return "redirect:main.do";
 	}
+	
+	
+	
 
 	@RequestMapping(value = "/postDelete.do", method = RequestMethod.GET)
 	public String postDelete(int post_seq) throws Exception {
 		System.out.println("글 삭제");
 		postService.postDelete(post_seq);
+		
+		
+		postService.deleteImage(post_seq);
 		return "redirect:main.do";
 	}
  
@@ -102,6 +115,9 @@ public class PostController {
 		postService.viewCount(post_seq); // 조회수
 		PostVO vo = postService.postDetail(post_seq);
 		model.addAttribute("post", vo);
+		//이미지 불러오기
+		List<String> photoName = postService.photoDetail(post_seq);
+		model.addAttribute("name", photoName);
 		return "login/product&purchase/product_detail";
 	}
 	

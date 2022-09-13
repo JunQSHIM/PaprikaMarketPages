@@ -59,8 +59,9 @@
 				<div class="cTZOqF">
 					<div class="kjooeF">
 						<div class="lgWppt">
-						<img src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/김채원.jpg" id="image" class="cGrdGT">
-						<img src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/960d6b2a-73db-47c2-8b35-721de9b933f1-김채원1.jpg" id="image" class="cGrdGT">
+							<c:forEach items="${name }" var="photo" varStatus="status">
+								<img src="${status.current}" id="image" class="cGrdGT">
+							</c:forEach>
 						</div>	
 					</div>
 				</div>

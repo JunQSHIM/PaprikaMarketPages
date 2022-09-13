@@ -1,14 +1,33 @@
 package com.spring.myweb.DAO.PostDAO;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
+import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 
 @Repository
@@ -16,7 +35,24 @@ public class PostDAOImpl implements PostDAO {
 	
 	@Inject
 	private SqlSession session;
+	
+	private AmazonS3 amazonS3;
+	final private String accessKey = "AKIAVHPIWTHZMPXQY7WW";	
+	final private String secretKey = "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";
+	private Regions clientRegion = Regions.AP_NORTHEAST_2;
+	private String bucket = "paprikaproject";
 
+	private PostDAOImpl() {
+		createS3Client();
+	}
+	private void createS3Client() {
+		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
+		this.amazonS3 = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
+				.withRegion(clientRegion).build();
+
+	}
+	
+	
 	@Override
 	public int insertPost(PostVO vo) {
 		int success = 0;
@@ -76,6 +112,62 @@ public class PostDAOImpl implements PostDAO {
 		data.put("displayPost", displayPost);
 		data.put("postNum", postNum);
 		return session.selectList("userDB.listPage", data);
+	}
+	// 이미지 다수 등록
+	
+	@Override
+	public Map<String, String> uploadImg(List<MultipartFile> img) {
+		
+		Map<String, String> fileNameList = new HashMap<>();
+		
+		 img.forEach(file -> {
+			 	String orgName = file.getOriginalFilename();
+	            String fileName = createFileName(orgName);
+	            ObjectMetadata objectMetadata = new ObjectMetadata();
+	            objectMetadata.setContentLength(file.getSize());
+	            objectMetadata.setContentType(file.getContentType());
+
+	            try(InputStream inputStream = file.getInputStream()) {
+	                amazonS3.putObject(new PutObjectRequest(bucket, fileName, inputStream, objectMetadata)
+	                        .withCannedAcl(CannedAccessControlList.PublicRead));
+	            } catch(IOException e) {
+	                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
+	            }
+
+	            fileNameList.put(orgName,fileName);
+	        });
+
+	
+				System.out.println("이미지 업로드 완료");
+	        
+	        return fileNameList;
+	    }
+
+	
+	public void deleteImage(String fileName) {
+	    amazonS3.deleteObject(new DeleteObjectRequest(bucket, fileName));
+	}
+	
+	private String createFileName(String fileName) {
+	    return UUID.randomUUID().toString().concat(getFileExtension(fileName));
+	}
+	
+	private String getFileExtension(String fileName) {
+	    try {
+	        return fileName.substring(fileName.lastIndexOf("."));
+	} catch (StringIndexOutOfBoundsException e) {
+	    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "잘못된 형식의 파일(" + fileName + ") 입니다.");
+	    }
+	}
+
+	@Override
+	public int post_seq(int user_seq) {
+		return session.selectOne("userDB.selectPostUser" ,user_seq);
+	}
+
+	@Override
+	public void insertPhoto(PhotoVO vo) {
+		session.selectList("userDB.insertPhoto",vo);
 	}
 
 }

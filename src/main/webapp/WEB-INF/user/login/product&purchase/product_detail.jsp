@@ -60,7 +60,7 @@
 					<div class="kjooeF">
 						<div class="lgWppt">
 						<img src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/김채원.jpg" id="image" class="cGrdGT">
-						<img src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/<img src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/김채원.jpg" id="image" class="cGrdGT">" id="image" class="cGrdGT">
+						<img src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/960d6b2a-73db-47c2-8b35-721de9b933f1-김채원1.jpg" id="image" class="cGrdGT">
 						</div>	
 					</div>
 				</div>
@@ -77,26 +77,33 @@
 					<div class="item">
  
 					<div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/main/heart.png" width="16" height="16">36</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/main/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/main/clock.png" width="16" height="16">${post.upload_date}</div><div class="etc_items"><button class="openBtn">신고하기</button></div></div>
-						<a href="postDelete.do?post_seq=${post.post_seq }" role="button">삭제</a>
-						<br>
 					</div>
-					<br>
-						<div class="grid_2" id="info">
-							<ul>
-								<li>상품상태</li>
-								<li>교환여부</li>
-								<li>배송비</li>
-								<li>거래지역</li>
-							</ul>
+						<div class="ipQCCP" id="info">
+						<div class="prod_status">
+							<div class="prod_status_2">
+								상품상태
+							</div>
+							<div class="prod_status_3">중고</div>
 						</div>
-						<div class="grid_3" id="info_ans">
-						<ul>
-							<li>중고</li>
-							<li>교환불가능</li>
-							<li>배송비포함</li>
-							<li>전국</li>
-						</ul>
-					</div>
+						<div class="prod_status">
+							<div class="prod_status_2">
+								교환여부
+							</div>
+							<div class="prod_status_3">교환불가능</div>
+						</div>				
+						<div class="prod_status">
+							<div class="prod_status_2">
+								배송비
+							</div>
+							<div class="prod_status_3">배송비 별도</div>
+						</div>				
+						<div class="prod_status">
+							<div class="prod_status_2">
+								거래지역
+							</div>
+							<div class="prod_status_3">전국</div>
+						</div>						
+						</div>
 					<div class="item_btn" id="func">
 						<button id="jjim" type="button">찜</button>
 						<button>연락하기</button>

@@ -131,10 +131,11 @@
         });
     };
     $(document).ready(function(){
-        $('.lgWppt').bxSlider();
-        slideWidth: 150
-        slideHeight:150
-        infiniteLoop:false
+        $('.lgWppt').bxSlider({
+        	auto:false,
+            infiniteLoop:false
+        });
+        
       });
     
     

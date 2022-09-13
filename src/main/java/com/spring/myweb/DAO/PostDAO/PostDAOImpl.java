@@ -197,9 +197,4 @@ public class PostDAOImpl implements PostDAO {
 	public void insertPhoto(PhotoVO vo) {
 		session.selectList("userDB.insertPhoto",vo);
 	}
-	
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 }

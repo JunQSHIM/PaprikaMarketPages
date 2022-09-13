@@ -60,10 +60,10 @@
 						<div class="control">관리</div>
 					</div>
 
-				<c:forEach items="${ plist}" var="plist">
+				<c:forEach items="${ plist}" var="plist" varStatus="status">
 					<div class="sell-products">
 						<div class="img">
-							<img src="images/jjim_icon/santiago.png" alt="img">
+							<img src="${photo[status.index] }" alt="img" name="post_seq">
 						</div>
 						<div class="state">판매 완료</div>
 						<div class="product-name" name="post_title">${plist.post_title }</div>
@@ -72,7 +72,7 @@
 						<div class="date" name="upload_date">${plist.upload_date }</div>
 						<div class="control">
 							<button onclick="location.href='updatePost.do?post_seq=${plist.post_seq }'">수정</button>
-							<button onclick="location.href='postDelete.do?post_seq=${plist.post_seq }'">삭제</button>
+							<button onclick="location.href='postDelete.do?post_seq=${plist.post_seq }'" id="delOk">삭제</button>
 							<button>중지</button>
 						</div>
 					</div>

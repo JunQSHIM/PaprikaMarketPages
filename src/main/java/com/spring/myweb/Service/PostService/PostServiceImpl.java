@@ -101,14 +101,11 @@ public class PostServiceImpl implements PostService {
 	public void insertPhoto(PhotoVO vo) {
 		postDao.insertPhoto(vo);
 	}
-<<<<<<< HEAD
 
-
-=======
 	@Override
 	public void deleteImage(int post_seq) {
 		postDao.deleteImage(post_seq);
 	}
 	
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
+
 }

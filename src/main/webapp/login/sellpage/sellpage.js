@@ -9,6 +9,18 @@ $(document).ready(function(){
 });
 
 
+$(function(){
+		$('#delOk').click(function(){
+			if(!confirm('정말로 삭제하시겠습니까?')){
+				return true;
+				
+			}else {
+				return false;
+			}
+		});
+});
+
+
 //sellpage
 $(function() {
 	$("#submit").click(function() {

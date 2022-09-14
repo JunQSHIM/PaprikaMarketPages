@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags"  prefix="spring"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,7 +104,7 @@
 
 					<br> <br>
 					<div class="button-login" align="center">
-						<a id="kakao-login-btn"	class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=808d349080855e826b4c4cb8c77a836d&redirect_uri=http://localhost:8080/myweb/kakaoLogin.do&response_type=code">
+						<a id="kakao-login-btn"	class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=<spring:eval expression="@property['KAKAO_REST_API_KEY']"/>&redirect_uri=http://localhost:8080/myweb/kakaoLogin.do&response_type=code">
 						<img
 							src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
 							width="83%" height="50px" />

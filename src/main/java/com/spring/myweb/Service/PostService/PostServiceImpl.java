@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.DAO.PostDAO.PostDAO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
+import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 
@@ -18,7 +19,7 @@ public class PostServiceImpl implements PostService {
 
 	@Inject
 	private PostDAO postDao;
-	
+
 	@Override
 	public int insertPost(PostVO vo) {
 		return postDao.insertPost(vo);
@@ -37,18 +38,19 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public void postDelete(int post_seq) {
 		postDao.postDelete(post_seq);
-		
+
 	}
 
 	@Override
 	public PostVO postDetail(int post_seq) {
 		return postDao.postDetail(post_seq);
 	}
-	
+
 	@Override
 	public List<String> photoDetail(int post_seq) {
 		return postDao.photoDetail(post_seq);
 	}
+
 	@Override
 	public String photoOne(int post_seq) {
 		return postDao.photoOne(post_seq);
@@ -61,7 +63,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public List<PostVO> categoryDetail(int category_seq) {
-		
+
 		return postDao.categoryDetail(category_seq);
 	}
 
@@ -79,13 +81,13 @@ public class PostServiceImpl implements PostService {
 	public List<PostVO> listPage(int displayPost, int postNum) throws Exception {
 		return postDao.listPage(displayPost, postNum);
 	}
-	
+
 	@Override
 	public void updatePost(PostVO vo) {
 		postDao.updatePost(vo);
-		
+
 	}
-	
+
 	@Override
 	public Map<String, String> uploadImg(List<MultipartFile> img) {
 		return postDao.uploadImg(img);
@@ -100,9 +102,32 @@ public class PostServiceImpl implements PostService {
 	public void insertPhoto(PhotoVO vo) {
 		postDao.insertPhoto(vo);
 	}
+
 	@Override
 	public void deleteImage(int post_seq) {
 		postDao.deleteImage(post_seq);
 	}
-	
+
+	// 좋아요
+	@Override
+	public int likeCount(LikeVO vo) {
+		return postDao.likeCount(vo);
+	}
+
+	@Override
+	public int likeGetInfo(LikeVO vo) {
+		return postDao.likeGetInfo(vo);
+	}
+
+	@Override
+	public void likeinsert(LikeVO vo) {
+		postDao.likeinsert(vo);
+
+	}
+
+	@Override
+	public void likeupdate(LikeVO vo) {
+		postDao.likeupdate(vo);
+	}
+
 }

@@ -17,6 +17,7 @@
 		<typeAlias alias="PhotoVO" type="com.spring.myweb.VO.PhotoVO.PhotoVO"/>
 		<typeAlias alias="BoardSingoVO" type="com.spring.myweb.VO.AdminVO.BoardSingoVO" />
 		<typeAlias alias="PostSingoVO" type="com.spring.myweb.VO.AdminVO.PostSingoVO"/>
+		<typeAlias alias="LikeVO" type="com.spring.myweb.VO.LikeVO.LikeVO"/>
 		<typeAlias alias="PayVO" type="com.spring.myweb.VO.AdminVO.PayVO.PayVO"/>
 	</typeAliases>
 	

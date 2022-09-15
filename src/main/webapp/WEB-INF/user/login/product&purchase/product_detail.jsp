@@ -65,7 +65,12 @@ $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, to
 			</div>
 			</div>
 			<div class="detailContent">
+<<<<<<< HEAD
+			<input type="hidden" id="user_seq" name="user_seq" value="${user.user_seq }">
+			<input type="hidden" id="post_seq" name="post_seq" value="${post.post_seq }">
+=======
 			<div class="row grid_12">
+>>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 				<div class="grid_4 item" id="picture">
 				<div class="cTZOqF">
 					<div class="kjooeF">
@@ -117,7 +122,16 @@ $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, to
 						</div>						
 						</div>
 					<div class="item_btn" id="func">
-						<button id="jjim" type="button">찜</button>
+						<c:choose>
+						<c:when test="${like == 0}">
+							<button type="button"class="btn btn-light" id="jjim">찜</button>
+							<input type="hidden" id="likecheck" value="${like }">
+						</c:when>					
+						<c:when test="${like == 1}">
+							<button type="button" class="btn btn-danger" id="jjim">찜</button>
+							<input type="hidden" id="likecheck" value="${like }">
+						</c:when>
+					</c:choose>			
 						<button>연락하기</button>
 						<button onclick="requestPay()">바로구매</button>
 					</div>

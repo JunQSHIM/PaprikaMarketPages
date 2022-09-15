@@ -9,3 +9,7 @@ $(document).ready(function() {
 		}
 	});
 }); //네비바 상단고정
+
+function search() {
+
+}

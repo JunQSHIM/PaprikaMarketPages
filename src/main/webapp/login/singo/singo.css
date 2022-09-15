@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-<<<<<<< HEAD
  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
 	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
@@ -16,9 +15,6 @@
 }
 
 .singo_board body, input, textarea, select {
-=======
-.singo_board body, input, textarea, select, button {
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     direction: ltr;

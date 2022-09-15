@@ -12,17 +12,17 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/header/header.jsp"></jsp:include>
 	</header>
 
 	<article class="container_12">
-		<jsp:include page="/login/main/category.jsp"></jsp:include>
-		<jsp:include page="/login/myProductCart/myProductCart.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/category.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/myProductCart/myProductCart.jsp"></jsp:include>
 		
 	</article>
 	
 	<footer class="container_12">
-		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
 </html>

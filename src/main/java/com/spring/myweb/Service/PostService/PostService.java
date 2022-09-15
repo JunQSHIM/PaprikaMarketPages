@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
+import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 
@@ -29,6 +30,10 @@ public interface PostService {
 	public int post_seq(int user_seq);//최신 상품 등록 페이지 불러오기
 	public void deleteImage(int post_seq);//사진 삭제
 
+	public int likeCount(LikeVO vo); // 좋아요 갯수
+	public int likeGetInfo(LikeVO vo); // 좋아요 하기
+	public void likeinsert(LikeVO vo);
+	public void likeupdate(LikeVO vo);
 
 
 }

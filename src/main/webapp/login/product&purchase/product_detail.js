@@ -56,6 +56,7 @@
 	    window.open(source,'new','width=800, height=600, scrollbars=yes');
 	} 
 	
+	/*	
 	var post_seq = document.getElementById("post_seq").value;
 	
 	$(function () {
@@ -76,7 +77,76 @@
 				num++;	
 			}
 		});
+	}); 
+	
+	$(document).on("click", "#jjim", function() {
+		   console.log($("#user_seq").val());
+		   $.ajax({
+		      url: "/likeupdate.do",
+		      method: "get",
+		      data: {
+		         user_seq: Number($("#user_seq").val())
+		      },
+		      dataType: "json",
+		      success: function(re) {
+		         console.log(re + "suc")
+		      },
+		      error: function(re) {
+		      
+		         if (re.responseText.trim() == "fail") {
+		            alert("로그인 후 진행해주세요");
+		         } else {
+		            if (re.responseText.trim() == "no") {
+		               alert("이미 추가되었습니다.");
+		            }
+		         }
+		      }
+		   })
+		})*/
+$('#jjim').click(function(){
+		likeupdate();
+		console.log($("#user_seq").val());
+		console.log($("#post_seq").val());
+		
 	});
+	
+	function likeupdate(){
+		var root = getContextPath(),
+		likeurl = "/likeupdate.do",
+		user_seq = $('#user_seq').val(),
+		post_seq = $('#post_seq').val(),
+		likeCnt = $('#likecheck').val(),
+		data = {"user_seq" : user_seq,
+				"post_seq" : post_seq,
+				"likeCnt" : likeCnt};
+		console.log($("#likecheck").val());
+	$.ajax({
+		url : root + likeurl,
+		type : 'PUT',
+		contentType: 'application/json',
+		data : JSON.stringify(data),
+		success : function(result){
+			console.log("수정" + result.result);
+			if(likeCnt == 1){
+				console.log("좋아요 취소");
+				 $('#likecheck').val(0);
+				 $('#jjim').attr('class','btn btn-light');
+			}else if(likeCnt == 0){
+				console.log("좋아요!");
+				$('#likecheck').val(1);
+				$('#jjim').attr('class','btn btn-danger');
+			}
+		}, error : function(result){
+			console.log("에러" + result.result)
+		}
+		
+		});
+	};
+	
+	function getContextPath() {
+	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+	} 
 	/** 결제 * */
     // 결제 금액, 구매자의 이름, 이메일
     const priceAmount = "10";
@@ -102,7 +172,6 @@
             buyer_name: buyerMemberName,
 
         }, function (rsp) { // callback
-<<<<<<< HEAD
 
             /** 결제 검증 * */
             $.ajax({
@@ -136,9 +205,9 @@
     $(document).ready(function(){
         $('.lgWppt').bxSlider({
         	auto:false,
-            infiniteLoop:false
+            infiniteLoop:false,
+            controls:false     
         });
-        
       });
     
     

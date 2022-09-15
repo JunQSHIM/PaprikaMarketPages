@@ -1,15 +1,21 @@
 package com.spring.myweb.Admin.Controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.myweb.Service.AdminService.AdminService;
+import com.spring.myweb.Service.AdminService.PayService.PayService;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.AdminVO.BoardSingoVO;
@@ -17,6 +23,7 @@ import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
+import com.spring.myweb.VO.AdminVO.PayVO.PayVO;
 import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
@@ -29,6 +36,9 @@ public class AdminController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	PayService payService;
 
 	@Autowired
 	RegisterAgreementService agreementService;
@@ -117,5 +127,89 @@ public class AdminController {
 		System.out.println("관리자가 게시글을 삭제했습니다.");
 		adminService.boardDelete(board_seq);
 		return "redirect:/board.mdo";
+	}
+	
+	//관리자 목록보기
+	@RequestMapping(value="adminList.mdo")
+	public String adminList(Model model){
+		List<UserVO> list = adminService.adminList();
+		model.addAttribute("adminList",list);
+		return "Admin_page/admin_list/admin_list";
+	}
+	
+	//관리자 권한 설정하기 
+	@RequestMapping(value="adminAuthority.mdo")
+	public String adminAuthority(Model model){
+		List<UserVO> list = adminService.adminList();
+		model.addAttribute("adminList",list);
+		return "Admin_page/admin_list/admin_authority";
+	}
+	
+	//관리자 권한 추가창으로 이동하기 
+	@RequestMapping(value="giveAdmin.mdo")
+	public String giveAdmin() {
+		return "Admin_page/admin_list/add";
+	}
+	
+	//관리자 권한 추가창에서 아이디로 회원 검색
+	@RequestMapping(value="checkId.mdo")
+	public @ResponseBody UserVO checkId(@ModelAttribute("vo") UserVO vo ,String id) throws Exception{
+		vo = userService.select(id);
+		return vo;
+	}
+	
+	@RequestMapping(value="giveAdmin.mdo", method=RequestMethod.POST)
+	public String giveAdminAuthority(String id, UserVO vo) {
+		System.out.println(id);
+		int result = adminService.giveAdmin(id);
+		if(result ==1 ) {
+			vo = userService.select(id);
+			System.out.println(vo.toString());
+		}
+		return "Admin_page/admin_list/add";
+	}
+	
+	//관리자 권한 수정 및 삭제 
+	@RequestMapping(value="editAdmin.mdo")
+	public String updateAdmin(Model model) {
+		List<UserVO> list = adminService.adminList();
+		model.addAttribute("adminList",list);
+		return "Admin_page/admin_list/edit";
+	}
+	
+	//관리자 권한 수정 및 삭제 
+	@RequestMapping(value="editAdmin.mdo", method=RequestMethod.POST)
+	public String editAdmin(UserVO vo, String id, String stat, Model model) {
+		int idx = 0;
+		String[] ids = id.split(",");
+		String[] stats = stat.split(",");
+		for(int i=0; i<stats.length; i++) {
+			if(stats[i].equals("delete")) {
+				idx = i;
+			}
+		}
+		id = ids[idx];
+		System.out.println(id);
+		int result = adminService.deleteAdmin(id);
+		if(result ==1 ) {
+			vo = userService.select(id);
+			System.out.println(vo.toString());
+		}
+		return "redirect:adminList.mdo";
+	}
+	
+	//qna 
+	@RequestMapping(value="qna.mdo")
+	public String qna() {
+		return "Admin_page/admin_list/qna";
+	}
+	
+	//pay
+	@RequestMapping(value="pay.mdo")
+	public String pay(Model model) {
+		System.out.println("처리할 파프리카 페이목록");
+		List<PayVO> vo = payService.payList();
+		model.addAttribute("payList", vo);
+		return "Admin_page/admin_list/pay";
 	}
 }

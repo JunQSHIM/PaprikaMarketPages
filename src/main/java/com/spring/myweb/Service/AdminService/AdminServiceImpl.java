@@ -66,4 +66,21 @@ public class AdminServiceImpl implements AdminService {
 		adminDAO.boardDelete(board_seq);
 	}
 
+	@Override
+	public List<UserVO> adminList() {
+		return adminDAO.selectAdmin();
+	}
+	 
+	@Override
+	public int giveAdmin(String id) {
+		int result = adminDAO.giveAdmin(id);
+		return result;
+	}
+
+	@Override
+	public int deleteAdmin(String id) {
+		int result = adminDAO.deleteAdmin(id);
+		return result;
+	}
+
 }

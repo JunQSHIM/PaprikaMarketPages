@@ -73,6 +73,24 @@ public class AdminDAOImpl implements AdminDAO {
 		
 	}
 
+	@Override
+	public List<UserVO> selectAdmin() {
+		List<UserVO> list = session.selectList("adminDB.adminList");
+		return list;
+	}
+
+	@Override
+	public int giveAdmin(String id) {
+		int result = session.update("adminDB.giveAdmin",id);
+		return result;
+	}
+	
+	@Override
+	public int deleteAdmin(String id) {
+		int result = session.update("adminDB.deleteAdmin",id);
+		return result;
+	}
+
 	
 
 }

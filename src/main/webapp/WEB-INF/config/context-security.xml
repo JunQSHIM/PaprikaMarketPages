@@ -8,6 +8,8 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 		<security:http auto-config="true" use-expressions="true">
 	  <security:intercept-url pattern="/registerAgree.do" access="permitAll" />
+  	  <security:intercept-url pattern="/findPassword.do" access="permitAll" />
+  	  <security:intercept-url pattern="/idCheck.do" access="permitAll" />
 	  <security:intercept-url pattern="/login.do" access="hasRole('ROLE_USER')" />
   	  <security:intercept-url pattern="/mypageProc.do" access="hasRole('ROLE_USER')" />
   	  <security:intercept-url pattern="/create.do" access="hasRole('ROLE_USER')" />
@@ -20,7 +22,8 @@
       login-page="/loginForm.do"
       default-target-url="/main.do" 
       always-use-default-target="true"
-	  authentication-success-handler-ref="loginSuccessHandler" />
+	  authentication-success-handler-ref="loginSuccessHandler"
+	  authentication-failure-handler-ref="loginFailureHandler" />
 	  
 	   <security:logout
 	  logout-url="/logout.do"
@@ -54,8 +57,8 @@
 	<bean id="loginFailureHandler" class="com.spring.myweb.security.config.LoginFailureHandler">
 		<property name="id" value="id"/>
 		<property name="password" value="password"/>
-		<property name="defaultFailureUrl" value="/login.do"/>
-		<property name="errormsg" value="ERRORMSG"/>
+		<property name="defaultFailureUrl" value="/loginForm.do"/>
+		<property name="errormsg" value="errormsg"/>
 	</bean>
 	
 	

@@ -20,4 +20,7 @@ public interface AdminService {
 	public List<BoardVO> selectBoardAll();
 	public BoardVO boardDetail(int board_seq);
 	public void boardDelete(int board_seq);
+	public List<UserVO> adminList();
+	public int giveAdmin(String id);
+	public int deleteAdmin(String id);
 }

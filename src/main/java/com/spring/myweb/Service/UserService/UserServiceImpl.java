@@ -7,18 +7,22 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.spring.myweb.DAO.UserDAO.UserDAO;
+import com.spring.myweb.MailUtil.MailHandler;
+import com.spring.myweb.MailUtil.TempKey;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Service
@@ -26,6 +30,12 @@ public class UserServiceImpl implements UserService{
 
 	@Inject
 	private UserDAO userDAO;
+	
+	@Autowired
+    JavaMailSender mailSender;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public List<UserVO> selectAll() {
@@ -38,7 +48,27 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int insertUser(UserVO vo) {
+	public int insertUser(UserVO vo) throws Exception{
+		String mail_key = new TempKey().getKey(30,false); //랜덤키 길이 설정
+        vo.setMail_key(mail_key);
+
+        //회원가입
+        userDAO.insertUser(vo);
+        userDAO.updateMailKey(vo);
+
+        //회원가입 완료하면 인증을 위한 이메일 발송
+        MailHandler sendMail = new MailHandler(mailSender);
+        sendMail.setSubject("[PaprikaMarket 인증메일 입니다.]"); //메일제목
+        sendMail.setText(
+                "<h1>PaprikaMarket 메일인증</h1>" +
+                "<br>PaprikaMarket에 오신것을 환영합니다!" +
+                "<br>아래 [이메일 인증 확인]을 눌러주세요." +
+                "<br><a href='http://localhost:8080/myweb/registerEmail.do?email=" + vo.getEmail() +
+                "&mail_key=" + mail_key +
+                "' target='_blank'>이메일 인증 확인</a>");
+        sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
+        sendMail.setTo(vo.getEmail());
+        sendMail.send();
 		return userDAO.insertUser(vo);
 	}
 
@@ -190,6 +220,10 @@ public class UserServiceImpl implements UserService{
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
 			userInfo.put("profile_image", img_url);
+			String password = "PASSWORD";
+	        System.out.println(password);
+	        password = passwordEncoder.encode(password);
+	        userInfo.put("password",password);
 			System.out.println(userInfo.get("profile_image"));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -268,5 +302,42 @@ public class UserServiceImpl implements UserService{
 	public int updateProfile(UserVO vo) {
 		return userDAO.updateProfile(vo);
 	}
-	
+
+	@Override
+	public int updateMailKey(UserVO vo) throws Exception {
+		return userDAO.updateMailKey(vo);
+	}
+
+	@Override
+	public int updateMailAuth(UserVO vo) throws Exception {
+		return userDAO.updateMailAuth(vo);
+	}
+
+	@Override
+	public int emailAuthFail(String id) throws Exception {
+		 return userDAO.emailAuthFail(id);
+	}
+
+	@Override
+	public int updatePw(UserVO vo) throws Exception {
+		String mail_key = new TempKey().getKey(30,false); //랜덤키 길이 설정
+		vo.setPassword(mail_key);
+		System.out.println("DDDDD"+vo.getPassword()); 
+        //회원가입 완료하면 인증을 위한 이메일 발송
+        MailHandler sendMail = new MailHandler(mailSender);
+        sendMail.setSubject("[PaprikaMarket 임시비밀번호 입니다.]"); //메일제목
+        sendMail.setText(
+                "<h1>PaprikaMarket 임시비밀번호</h1>" +
+                "<br>아래 [임시비밀번호]로 로그인 후 마이페이지에서 수정바랍니다." +
+                "<br>" + vo.getPassword());
+        sendMail.setFrom("junkyu970307@gmail.com", "PaprikaMarket");
+        System.out.println("암호화 전 : " + vo.getPassword());
+		String securePwd = passwordEncoder.encode(vo.getPassword());
+		vo.setPassword(securePwd);
+		System.out.println("암호화 후 : " + vo.getPassword());
+        sendMail.setTo(vo.getEmail());
+        sendMail.send();
+		return userDAO.updatePw(vo);
+	}
+
 }

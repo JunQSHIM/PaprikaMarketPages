@@ -17,6 +17,7 @@ public interface PostDAO {
 	public List<String> photoDetail(int post_seq);//사진불러오기
 	public String photoOne(int post_seq);//사진 하나불러오기
 	
+	
 	public List<CategoryVO> categoryList(); // 카테고리 보이기
 	public void viewCount(int post_seq); // 조회수 증가
 	public void postDelete(int post_seq); // 글 삭제

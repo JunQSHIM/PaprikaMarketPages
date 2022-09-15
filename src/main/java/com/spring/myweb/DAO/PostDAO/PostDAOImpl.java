@@ -11,6 +11,7 @@ import java.util.UUID;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,17 +39,17 @@ public class PostDAOImpl implements PostDAO {
 	private SqlSession session;
 
 	private AmazonS3 amazonS3;
-	final private String accessKey = "AKIAVHPIWTHZMPXQY7WW";
-	final private String secretKey = "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";
 	private Regions clientRegion = Regions.AP_NORTHEAST_2;
-	private String bucket = "paprikaproject";
+	
+	@Value("#{s3['cloud.aws.s3.bucket']}")
+	private String bucket;
 
-	private PostDAOImpl() {
-		createS3Client();
+	private PostDAOImpl(@Value("#{s3['cloud.aws.credentials.access-key']}")String accessKey, @Value("#{s3['cloud.aws.credentials.secret-key']}")String sercretKey) {
+		createS3Client(accessKey,sercretKey);
 	}
 
-	private void createS3Client() {
-		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
+	private void createS3Client(String accessKey, String sercretKey) {
+		AWSCredentials credentials = new BasicAWSCredentials(accessKey, sercretKey);
 		this.amazonS3 = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
 				.withRegion(clientRegion).build();
 

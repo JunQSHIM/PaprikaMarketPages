@@ -3,7 +3,7 @@
 
 ### Eclipse ###
 api.properties
-application-s3.properties
+s3.properties
 database.properties
 
 .project

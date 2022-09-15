@@ -6,7 +6,10 @@ api.properties
 application-s3.properties
 database.properties
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a3fee4f4b27901f4ee980cbac6a6fce92fa565ae
 .metadata
 bin/
 tmp/

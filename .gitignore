@@ -6,12 +6,6 @@ api.properties
 application-s3.properties
 database.properties
 
-# Compiled source #
-###################
-.project
-.settings
-.classpath
-*/target/*
 
 .metadata
 bin/

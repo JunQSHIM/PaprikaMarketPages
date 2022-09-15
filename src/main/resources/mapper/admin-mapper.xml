@@ -119,4 +119,15 @@
 	<update id="deleteAdmin">
 		update user set user_type=0, authority='ROLE_USER' where id=#{id}
 	</update>
+	
+	<!--배너 관리  -->
+	<select id="bannerList" resultType="BannerVO">
+		select * from banner;
+	</select>
+	
+	<insert id="insertBanner">
+		insert into
+		banner ( title, content, origin_file_name, saved_file_name, create_time)
+		values (#{title}, #{content}, #{origin_file_name}, #{saved_file_name}, now());
+	</insert>
 </mapper>

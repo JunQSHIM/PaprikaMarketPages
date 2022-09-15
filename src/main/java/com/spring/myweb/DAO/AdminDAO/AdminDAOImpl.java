@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.AdminVO.BoardSingoVO;
 import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
@@ -89,6 +90,17 @@ public class AdminDAOImpl implements AdminDAO {
 	public int deleteAdmin(String id) {
 		int result = session.update("adminDB.deleteAdmin",id);
 		return result;
+	}
+
+	@Override
+	public List<BannerVO> bannerList() {
+		List<BannerVO> bannerImgs = session.selectList("adminDB.bannerList");
+		return bannerImgs;
+	}
+
+	@Override
+	public void abbBanner(BannerVO vo) {
+		session.insert("insertBanner", vo);
 	}
 
 	

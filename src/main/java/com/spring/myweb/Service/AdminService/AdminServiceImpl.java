@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.myweb.DAO.AdminDAO.AdminDAO;
+import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.AdminVO.BoardSingoVO;
 import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
@@ -82,5 +83,15 @@ public class AdminServiceImpl implements AdminService {
 		int result = adminDAO.deleteAdmin(id);
 		return result;
 	}
+	@Override
+	public List<BannerVO> bannerList() {
+		return adminDAO.bannerList();
+	}
+
+	@Override
+	public void addBanner(BannerVO vo) {
+		adminDAO.abbBanner(vo);
+	}
+
 
 }

@@ -1,9 +1,9 @@
 package com.spring.myweb.Admin.Controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,13 +11,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.AdminService.PayService.PayService;
+import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
+import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.AdminVO.BoardSingoVO;
 import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
@@ -39,6 +43,11 @@ public class AdminController {
 	
 	@Autowired
 	PayService payService;
+
+	@Autowired
+	PostService postService;
+	
+	
 
 	@Autowired
 	RegisterAgreementService agreementService;
@@ -212,4 +221,43 @@ public class AdminController {
 		model.addAttribute("payList", vo);
 		return "Admin_page/admin_list/pay";
 	}
+	
+	//배너 관리
+		@RequestMapping(value = "banner.mdo" )
+		public String bannerList(Model model) {
+			System.out.println("관리자 배너관리 접속");
+			List<BannerVO> banner = adminService.bannerList();
+			model.addAttribute("banner", banner);
+			return "Admin_page/admin_banner/admin_banner";
+		}
+		
+		@RequestMapping(value = "addbanner.mdo" )
+		public String addbanner(Model model) {
+			return "Admin_page/admin_banner/register_banner";
+		}
+		
+		@RequestMapping(value = "addbannerProc.mdo" )
+		public String addbannerProc(BannerVO vo, @RequestParam(value = "chooseFile") List<MultipartFile> img, @RequestParam(value = "title")String title, @RequestParam(value = "content")String content) {
+			System.out.println("관리자 배너추가");
+			
+
+			Map<String, String> names = postService.uploadImg(img,"Banner/");
+			// 저장이름, 랜덤이름 db에 저장
+			Iterator<Entry<String, String>> entries = names.entrySet().iterator();
+			while (entries.hasNext()) {
+				Map.Entry<String, String> entry = entries.next();
+				String origin_file_name = entry.getKey();
+				String save_file_name = entry.getValue();
+				
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setOrigin_file_name(origin_file_name);
+				vo.setSaved_file_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/Banner/" + save_file_name);
+
+				adminService.addBanner(vo);
+			}
+		
+			return "redirect:banner.mdo";
+	
+		}
 }

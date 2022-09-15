@@ -110,7 +110,7 @@
 						<a href="/myweb/login/login&register/registerAgree.jsp">회원가입</a>
 					</div>
 					<div class="btn register_btn">
-						<a href="#">비밀번호 찾기</a>
+						<a href="/findPassword.do">비밀번호 찾기</a>
 					</div>
 
 					<br> <br>

@@ -21,4 +21,8 @@ public interface AdminDAO {
 	public List<BoardVO> selectBoardAll();// 게시판 불러오기
 	public BoardVO boardDetail(int board_seq); // 게시판 상세보기
 	public void boardDelete(int board_seq);
+	
+	public List<UserVO> selectAdmin(); //관리자 명단 불러오기
+	public int giveAdmin(String id); //관리자 권한 주기
+	public int deleteAdmin(String id); //관리자 권한 삭제
 }

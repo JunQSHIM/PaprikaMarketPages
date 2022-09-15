@@ -9,8 +9,7 @@
 		select * from user where id=#{value}
 	</select>
 	<select id="idCheck" parameterType="String" resultType="int">
-		select
-		count(*) from user where id = #{id}
+		select count(*) from user where id = #{id}
 	</select>
 	<select id="emailCheck" parameterType="String" resultType="int">
 		select count(*) from user where email = #{email}
@@ -26,7 +25,8 @@
 	<select id="insertUser">
 		insert into
 		user(id,name,password,nickname,email,birth,phone,msg_agree,available,profile_image)
-		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image});
+		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image})
+		ON DUPLICATE KEY UPDATE id= #{id};
 	</select>
 	<!-- 게시판 -->
 	<select id="boardList" resultType="SellBoardVO">
@@ -166,8 +166,8 @@
 	<!-- 정보 저장 -->
 	<insert id="kakaoInsert" parameterType="java.util.HashMap">
 		insert into
-		user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image,available)
-		values(#{email},#{nickname},'1234','1111-01-01',#{nickname},#{email},'010-1234-1234',0,1,#{profile_image},1)
+		user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image,available,mail_auth)
+		values(#{email},#{nickname},#{password},'1111-01-01',#{nickname},#{email},'PHONE',0,1,#{profile_image},1,1)
 	</insert>
 
 	<update id="locationInsert" parameterType="UserVO">
@@ -186,4 +186,20 @@
 		update user set
 		birth=#{birth}, available=#{available} where id=#{id}
 	</update>
+	
+	<update id="updatePw" >
+		update user set password = #{password} where email = #{email}
+	</update>
+	
+	<update id="updateMailKey" parameterType="UserVO">
+    	update user set mail_key=#{mail_key} where email=#{email}
+	</update>
+	
+	<update id="updateMailAuth" parameterType="UserVO">
+    	update user set mail_auth=1 where email=#{email} and mail_key=#{mail_key}
+	</update>
+	
+	<select id="emailAuthFail" parameterType="String" resultType="int">
+    	select count(*) from user where id=#{id} and mail_auth=1
+	</select>
 </mapper>

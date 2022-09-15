@@ -62,7 +62,6 @@
 										<tr>
 											<th>유저번호</th>
 											<th>아이디</th>
-											<th>비밀번호</th>
 											<th>이름</th>
 											<th>닉네임</th>
 											<th>생년월일</th>
@@ -79,7 +78,6 @@
 											<tr>
 												<td>${user.user_seq }</td>
 												<td>${user.id }</td>
-												<td>${user.password }</td>
 												<td>${user.name }</td>
 												<td>${user.nickname }</td>
 												<td><fmt:formatDate value="${user.birth}" pattern="yyyy-MM-dd"/></td>

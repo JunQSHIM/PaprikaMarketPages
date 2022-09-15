@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -17,6 +19,7 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 
+import com.spring.myweb.DAO.UserDAO.MailException;
 import com.spring.myweb.DAO.UserDAO.UserDAO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
@@ -38,12 +41,25 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		UserVO vo = dao.select(authentication.getName());
+		try {
+			if(vo == null) {
+				throw new BadCredentialsException(defaultUrl);
+			}
+			if(vo.getMail_auth()==0) {
+				throw new DisabledException(defaultUrl);
+			}
+			if(vo.getJoin_type()==1) {
+				throw new DisabledException(defaultUrl);
+			}
+		}catch(MailException e) {
+			e.printStackTrace();
+		}
 		System.out.println(authentication);
 		System.out.println("로그인 된 유저VO : " + vo.toString());
 		HttpSession session = request.getSession();
 		session.setAttribute("user", vo);
 		session.setMaxInactiveInterval(TIME);
-
+		
 		System.out.println(vo.toString());
 		
 		if (vo.getUser_type()==1) {

@@ -15,9 +15,20 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 <title>Main Page</title>
-
+<%
+	request.setCharacterEncoding("UTF-8");
+	String id = request.getParameter("id");
+	String p = request.getParameter("product");
+%>
 </head>
+<script>
+var token = $("meta[name='_csrf']").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content");
+$(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, token); });
+</script>
 <body>
 	<header>
 		<jsp:include page="/WEB-INF/user/login/main/header/header.jsp"></jsp:include>
@@ -54,7 +65,7 @@
 			</div>
 			</div>
 			<div class="detailContent">
-			
+			<div class="row grid_12">
 				<div class="grid_4 item" id="picture">
 				<div class="cTZOqF">
 					<div class="kjooeF">
@@ -179,8 +190,7 @@
 			</div>
 			</div>
 		</div>
-		
-		
+		<input type="hidden" value="${post.post_seq }" id="post_seq" name="post_seq">
 		<%@ include file="/login/singo/singo.jsp" %>
 	</article>
 	<div style="margin-bottom:40px;"></div>
@@ -188,7 +198,6 @@
 		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
-
 
 <script type="text/javascript" src="/myweb/login/product&purchase/product_detail.js"></script>
 </html>

@@ -182,7 +182,7 @@
 					<li class="nav-item"><a href="#" class="nav-link"> <i
 							class="nav-icon fas fa-edit"></i>
 							<p>
-								관리자 등록 <i class="fas fa-angle-left right"></i>
+								관리자 업무 <i class="fas fa-angle-left right"></i>
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
@@ -198,7 +198,10 @@
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
 									<p>QnA</p>
 							</a></li>
-
+							<li class="nav-item"><a href="pages/forms/editors.html"
+								class="nav-link"> <i class="far fa-circle nav-icon"></i>
+									<p>파프리카페이</p>
+							</a></li>
 						</ul></li>
 
 				</ul>

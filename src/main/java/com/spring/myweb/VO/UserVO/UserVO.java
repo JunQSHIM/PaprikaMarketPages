@@ -27,5 +27,7 @@ public class UserVO {
 	private int user_type;
 	private String profile_image;
 	private int available;
+	private String mail_key;
+	private int mail_auth;
 
 }

@@ -56,6 +56,8 @@
 	    window.open(source,'new','width=800, height=600, scrollbars=yes');
 	} 
 	
+	var post_seq = document.getElementById("post_seq").value;
+	
 	$(function () {
 		let num = 0;
 		let imageName = ["check.png", "uncheck.png"];
@@ -77,11 +79,11 @@
 	});
 	/** 결제 * */
     // 결제 금액, 구매자의 이름, 이메일
-    const priceAmount = "100000";
+    const priceAmount = "10";
     const buyerMemberEmail = "uusin@gmail.com";
     const buyerMemberName = "김유신(부산)";
     // const form = document.getElementById("payment");
-
+	
     console.log(priceAmount);
     console.log(buyerMemberName);
     console.log(buyerMemberEmail);
@@ -100,6 +102,7 @@
             buyer_name: buyerMemberName,
 
         }, function (rsp) { // callback
+<<<<<<< HEAD
 
             /** 결제 검증 * */
             $.ajax({

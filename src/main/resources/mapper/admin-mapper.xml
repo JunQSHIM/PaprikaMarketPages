@@ -89,5 +89,34 @@
 	<select id="boardDelete" resultType="BoardVO">
 		delete from board where board_seq = #{board_seq};
 	</select>
-
+	
+	<!-- 파프리카 페이 처리 목록 불러오기 -->
+	<select id="payList" resultType="PayVO">
+		select * from pay
+	</select>
+	
+	<!-- status를 1로 바꿈 ==> 처리가 완료된 업 -->
+	<update id="statusUpdate">
+		update pay set status=1 where status=0
+	</update>
+	
+	<!-- 처리완료된 업무 삭제 -->
+	<delete id="payDelete">
+		delete from pay where status=1
+	</delete>
+	
+	<!-- 관리자목록 불러오기 -->
+	<select id="adminList" resultType="UserVO">
+		select * from user where user_type=1 order by user_seq
+	</select>
+	
+	<!-- 관리자로 권한 주기 -->
+	<update id="giveAdmin" parameterType="string">
+		update user set user_type=1, authority='ROLE_ADMIN' where id=#{id}
+	</update>
+	
+	<!-- 관리자로 권한 내리기 -->
+	<update id="deleteAdmin">
+		update user set user_type=0, authority='ROLE_USER' where id=#{id}
+	</update>
 </mapper>

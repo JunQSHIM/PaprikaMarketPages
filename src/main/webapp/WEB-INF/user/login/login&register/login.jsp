@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags"  prefix="spring"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,7 +99,7 @@
 						<a href="insert.do?agreement_seq=1">회원가입</a>
 					</div>
 					<div class="btn register_btn">
-						<a href="#">비밀번호 찾기</a>
+						<a href="findPassword.do">비밀번호 찾기</a>
 					</div>
 
 					<br> <br>
@@ -110,7 +110,11 @@
 							width="83%" height="50px" />
 						</a>
 					</div>
-					${ERRORMSG }
+					<%-- <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION }">
+						<p style="color:red; font-weight:bold;"> login Failed : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message }</p>
+						<c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session" />
+					</c:if> --%>
+					${errormsg}
 				</form>
 			</div>
 

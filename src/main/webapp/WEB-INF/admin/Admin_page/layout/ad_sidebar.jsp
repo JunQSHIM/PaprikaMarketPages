@@ -18,7 +18,10 @@
 					class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block ad_name">김유신</a>
+				<a href="/myweb/mypage.do" class="d-block ad_name">${user.name }</a>
+			</div>
+			<div class="info">
+				<a href="/myweb/logout.do">로그아웃</a>
 			</div>
 		</div>
 
@@ -142,26 +145,30 @@
 				<li class="nav-item"><a href="#" class="nav-link"> <i
 						class="nav-icon fas fa-edit"></i>
 						<p>
-							관리자 등록 <i class="fas fa-angle-left right"></i>
+							관리자 업무 <i class="fas fa-angle-left right"></i>
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item"><a
-							href="/myweb/Admin_page/admin_list/admin_list.jsp"
+							href="adminList.mdo"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>관리자 목록</p>
 						</a></li>
 						<li class="nav-item"><a
-							href="/myweb/Admin_page/admin_list/admin_authority.jsp"
+							href="adminAuthority.mdo"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>관리자 권한 위임 및 해임</p>
 						</a></li>
 						<li class="nav-item"><a
-							href="/myweb/Admin_page/admin_list/qna.jsp" class="nav-link">
+							href="qna.mdo" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
 								<p>QnA</p>
 						</a></li>
-
+						<li class="nav-item"><a
+							href="pay.mdo" class="nav-link">
+								<i class="far fa-circle nav-icon"></i>
+								<p>파프리카페이</p>
+						</a></li>
 					</ul></li>
 
 			</ul>

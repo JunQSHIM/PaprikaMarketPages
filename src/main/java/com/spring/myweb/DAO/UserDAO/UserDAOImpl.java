@@ -2,6 +2,7 @@ package com.spring.myweb.DAO.UserDAO;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -86,6 +87,26 @@ public class UserDAOImpl implements UserDAO{
 		success = session.update("userDB.updateProfile",vo);
 		return success;
 	}
-	
 
+	@Override
+	public int updateMailKey(UserVO vo) throws Exception {
+		return session.update("userDB.updateMailKey", vo);
+	}
+
+	@Override
+	public int updateMailAuth(UserVO vo) throws Exception {
+		return session.update("userDB.updateMailAuth", vo);
+	}
+
+	@Override
+	public int emailAuthFail(String id) throws Exception {
+		return session.selectOne("userDB.emailAuthFail", id);
+	}
+
+	@Override
+	public int updatePw(UserVO vo) throws Exception {
+		return session.update("userDB.updatePw",vo);
+	}
+
+	
 }

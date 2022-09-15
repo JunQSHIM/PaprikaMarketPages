@@ -27,17 +27,18 @@ import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
+import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 
 @Repository
 public class PostDAOImpl implements PostDAO {
-	
+
 	@Inject
 	private SqlSession session;
-	
+
 	private AmazonS3 amazonS3;
-	final private String accessKey = "AKIAVHPIWTHZMPXQY7WW";	
+	final private String accessKey = "AKIAVHPIWTHZMPXQY7WW";
 	final private String secretKey = "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";
 	private Regions clientRegion = Regions.AP_NORTHEAST_2;
 	private String bucket = "paprikaproject";
@@ -45,24 +46,24 @@ public class PostDAOImpl implements PostDAO {
 	private PostDAOImpl() {
 		createS3Client();
 	}
+
 	private void createS3Client() {
 		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 		this.amazonS3 = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
 				.withRegion(clientRegion).build();
 
 	}
-	
-	
+
 	@Override
 	public int insertPost(PostVO vo) {
 		int success = 0;
-		session.insert("userDB.post",vo);
+		session.insert("userDB.post", vo);
 		return success;
 	}
 
 	@Override
 	public List<PostVO> postList() {
-		List<PostVO> postList =session.selectList("userDB.postList");
+		List<PostVO> postList = session.selectList("userDB.postList");
 		return postList;
 	}
 
@@ -76,42 +77,42 @@ public class PostDAOImpl implements PostDAO {
 	public void postDelete(int post_seq) {
 		session.delete("userDB.postDelete", post_seq);
 	}
-	
+
 	@Override
 	public void deleteImage(int post_seq) {
-		List<String> name= session.selectList("userDB.selectPhoto", post_seq);
-		for(String fileName : name) {
+		List<String> name = session.selectList("userDB.selectDelete", post_seq);
+		for (String fileName : name) {
 			amazonS3.deleteObject(new DeleteObjectRequest(this.bucket, fileName));
 		}
 		session.delete("userDB.deletePhoto", post_seq);
 	}
 
-
 	@Override
 	public PostVO postDetail(int post_seq) {
-		PostVO detail = session.selectOne("userDB.postDetail",post_seq);
+		PostVO detail = session.selectOne("userDB.postDetail", post_seq);
 		return detail;
 	}
-	
+
 	@Override
 	public List<String> photoDetail(int post_seq) {
-		List<String> names = session.selectList("userDB.selectPhoto",post_seq);
+		List<String> names = session.selectList("userDB.selectPhoto", post_seq);
 		List<String> photoNames = new ArrayList<String>();
-		
-		for(String name : names) {
+
+		for (String name : names) {
 			photoNames.add(name);
 		}
 		return photoNames;
 	}
+
 	@Override
 	public String photoOne(int post_seq) {
 		String name = session.selectOne("userDB.selectOnePhoto", post_seq);
 		return name;
 	}
-	
+
 	@Override
 	public void viewCount(int post_seq) {
-		session.update("userDB.viewCount",post_seq);
+		session.update("userDB.viewCount", post_seq);
 	}
 
 	@Override
@@ -138,62 +139,82 @@ public class PostDAOImpl implements PostDAO {
 		data.put("postNum", postNum);
 		return session.selectList("userDB.listPage", data);
 	}
-	
-	
+
 	@Override
 	public void updatePost(PostVO vo) {
 		session.update("userDB.updatePost", vo);
-		
+
 	}
 	// 이미지 다수 등록
-	
+
 	@Override
 	public Map<String, String> uploadImg(List<MultipartFile> img) {
-		
+
 		Map<String, String> fileNameList = new HashMap<>();
-		
-		 img.forEach(file -> {
-			 	String orgName = file.getOriginalFilename();
-	            String fileName = createFileName(orgName);
-	            ObjectMetadata objectMetadata = new ObjectMetadata();
-	            objectMetadata.setContentLength(file.getSize());
-	            objectMetadata.setContentType(file.getContentType());
 
-	            try(InputStream inputStream = file.getInputStream()) {
-	                amazonS3.putObject(new PutObjectRequest(bucket, fileName, inputStream, objectMetadata)
-	                        .withCannedAcl(CannedAccessControlList.PublicRead));
-	            } catch(IOException e) {
-	                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
-	            }
+		img.forEach(file -> {
+			String orgName = file.getOriginalFilename();
+			String fileName = createFileName(orgName);
+			ObjectMetadata objectMetadata = new ObjectMetadata();
+			objectMetadata.setContentLength(file.getSize());
+			objectMetadata.setContentType(file.getContentType());
 
-	            fileNameList.put(orgName,fileName);
-	        });
+			try (InputStream inputStream = file.getInputStream()) {
+				amazonS3.putObject(new PutObjectRequest(bucket, fileName, inputStream, objectMetadata)
+						.withCannedAcl(CannedAccessControlList.PublicRead));
+			} catch (IOException e) {
+				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
+			}
 
-	
-				System.out.println("이미지 업로드 완료");
-	        
-	        return fileNameList;
-	    }
+			fileNameList.put(orgName, fileName);
+		});
+
+		System.out.println("이미지 업로드 완료");
+
+		return fileNameList;
+	}
 
 	private String createFileName(String fileName) {
-	    return UUID.randomUUID().toString().concat(getFileExtension(fileName));
+		return UUID.randomUUID().toString().concat(getFileExtension(fileName));
 	}
-	
+
 	private String getFileExtension(String fileName) {
-	    try {
-	        return fileName.substring(fileName.lastIndexOf("."));
-	} catch (StringIndexOutOfBoundsException e) {
-	    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "잘못된 형식의 파일(" + fileName + ") 입니다.");
-	    }
+		try {
+			return fileName.substring(fileName.lastIndexOf("."));
+		} catch (StringIndexOutOfBoundsException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "잘못된 형식의 파일(" + fileName + ") 입니다.");
+		}
 	}
 
 	@Override
 	public int post_seq(int user_seq) {
-		return session.selectOne("userDB.selectPostUser" ,user_seq);
+		return session.selectOne("userDB.selectPostUser", user_seq);
 	}
 
 	@Override
 	public void insertPhoto(PhotoVO vo) {
-		session.selectList("userDB.insertPhoto",vo);
+		session.selectList("userDB.insertPhoto", vo);
+	}
+
+	// 좋아요 관련 DAOImpl
+	@Override
+	public int likeCount(LikeVO vo) {
+		return session.selectOne("userDB.likeCount", vo);
+	}
+
+	@Override
+	public int likeGetInfo(LikeVO vo) {
+		return session.selectOne("userDB.likeGetInfo", vo);
+	}
+
+	@Override
+	public void likeinsert(LikeVO vo) {
+		session.insert("userDB.likeInsert", vo);
+
+	}
+
+	@Override
+	public void likeupdate(LikeVO vo) {
+		session.update("userDB.likeUpdate", vo);
 	}
 }

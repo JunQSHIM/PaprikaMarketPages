@@ -14,29 +14,24 @@
 <meta charset="UTF-8">
 <title>nav</title>
 <script type="text/javascript">
-	function search() {
-
+function sangjum_chk() {
+	let id = "${user.id}"
+	if (id == "") {
+		alert("상점 페이지는 로그인 후 사용하실 수 있습니다.");
+		location.href = "loginForm.do";
+	} else {
+		location.href = "myProductCart.do"
 	}
-
-	
-	function sangjum_chk() {
-		let id = "${user.id}"
-		if (id == "") {
-			alert("상점 페이지는 로그인 후 사용하실 수 있습니다.");
-			location.href = "login.do";
-		} else {
-			location.href = "create.do"
-		}
+}
+function talk_chk() {
+	let id = "${user.id}"
+	if (id == "") {
+		alert("채팅 기능은 로그인 후 사용하실 수 있습니다.");
+		location.href = "login.do";
+	} else {
+		location.href = "create.do"
 	}
-	function talk_chk() {
-		let id = "${user.id}"
-		if (id == "") {
-			alert("채팅 기능은 로그인 후 사용하실 수 있습니다.");
-			location.href = "login.do";
-		} else {
-			location.href = "create.do"
-		}
-	}
+}
 </script>
 </head>
 <body>

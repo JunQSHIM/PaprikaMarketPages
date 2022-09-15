@@ -6,6 +6,9 @@ api.properties
 application-s3.properties
 database.properties
 
+.project
+.classpath
+.settings
 .metadata
 bin/
 tmp/

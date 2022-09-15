@@ -2,6 +2,7 @@ package com.spring.myweb.DAO.AdminDAO;
 
 import java.util.List;
 
+import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.AdminVO.BoardSingoVO;
 import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
@@ -25,4 +26,7 @@ public interface AdminDAO {
 	public List<UserVO> selectAdmin(); //관리자 명단 불러오기
 	public int giveAdmin(String id); //관리자 권한 주기
 	public int deleteAdmin(String id); //관리자 권한 삭제
+	
+	public List<BannerVO> bannerList();//배너 리스트
+	public void abbBanner(BannerVO vo);//배너 저장
 }

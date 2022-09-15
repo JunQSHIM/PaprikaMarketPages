@@ -2,6 +2,7 @@ package com.spring.myweb.Service.AdminService;
 
 import java.util.List;
 
+import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.AdminVO.BoardSingoVO;
 import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
@@ -23,4 +24,7 @@ public interface AdminService {
 	public List<UserVO> adminList();
 	public int giveAdmin(String id);
 	public int deleteAdmin(String id);
+	
+	public List<BannerVO> bannerList();//배너관리
+	public void addBanner(BannerVO vo);//배너 추가
 }

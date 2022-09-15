@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.PostService.PostService;
+import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.PageVO.PageVO;
@@ -35,6 +37,9 @@ public class PostController {
 
 	@Autowired
 	private PostService postService;
+
+	@Autowired
+	private AdminService adminService;
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String postList(Model model, PostVO vo, PageVO pvo) throws Exception {
@@ -63,6 +68,11 @@ public class PostController {
 		model.addAttribute("select", num);
 		model.addAttribute("list", list);
 		model.addAttribute("photo", photoNames);
+		
+		//슬라이더 이미지
+		List<BannerVO> banner= adminService.bannerList();
+		model.addAttribute("banner", banner);
+		
 		return "login/main/mother";
 	}
 
@@ -108,7 +118,7 @@ public class PostController {
 		}
 		int post_seq = postService.post_seq(vo.getUser_seq());
 		// 이미지 등록
-		Map<String, String> names = postService.uploadImg(img);
+		Map<String, String> names = postService.uploadImg(img, "post/");
 		// 저장이름, 랜덤이름 db에 저장
 		Iterator<Entry<String, String>> entries = names.entrySet().iterator();
 		while (entries.hasNext()) {
@@ -118,7 +128,7 @@ public class PostController {
 
 			photo.setPost_seq(post_seq);
 			photo.setO_name(origin_file_name);
-			photo.setS_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/" + save_file_name);
+			photo.setS_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/" + save_file_name);
 
 			postService.insertPhoto(photo);
 		}
@@ -246,26 +256,5 @@ public class PostController {
 		return "login/myProductCart";
 	}
 
-	/*
-	 * @RequestMapping(value = "/listPage.do", method = RequestMethod.GET) public
-	 * String getlistPage(Model model, @RequestParam("num") int num) throws
-	 * Exception { System.out.println("페이징"); // 게시물 총 개수 int count =
-	 * postService.count(); // 한페이지에 출력할 게시물 수 int postNum = 5; // 하단 페이지 번호([게시물 총
-	 * 갯수 ÷ 한 페이지에 출력할 개수] 의 올림) int pageNum =
-	 * (int)Math.ceil((double)count/postNum); // 출력할 게시물 int displayPost = (num -1)
-	 * * postNum; //한번에 표시할 페이징 번호의 갯수 int pageNum_cnt = 3; //표시되는 페이지 번호 중 마지막 번호
-	 * int endPageNum = (int)(Math.ceil((double)num / (double)pageNum_cnt) *
-	 * pageNum_cnt); // 표시되는 페이지 번호 중 첫번째 번호 int startPageNum = endPageNum -
-	 * (pageNum_cnt - 1); // 마지막 번호 재계산 int endPageNum_tmp =
-	 * (int)(Math.ceil((double)count / (double)pageNum_cnt)); if(endPageNum >
-	 * endPageNum_tmp) { endPageNum = endPageNum_tmp; } boolean prev = startPageNum
-	 * == 1 ? false : true; boolean next = endPageNum * pageNum_cnt >= count ? false
-	 * : true; // 시작 및 끝 번호 model.addAttribute("startPageNum", startPageNum);
-	 * model.addAttribute("endPageNum", endPageNum); // 이전 및 다음
-	 * model.addAttribute("prev", prev); model.addAttribute("next", next); // 현재 페이지
-	 * model.addAttribute("select", num); List<PostVO> list =
-	 * postService.listPage(displayPost, postNum);
-	 * model.addAttribute("pageNum",pageNum); model.addAttribute("list", list);
-	 * return "login/main/listPage"; }
-	 */
+	
 }

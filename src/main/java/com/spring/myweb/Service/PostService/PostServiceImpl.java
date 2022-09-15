@@ -89,8 +89,8 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public Map<String, String> uploadImg(List<MultipartFile> img) {
-		return postDao.uploadImg(img);
+	public Map<String, String> uploadImg(List<MultipartFile> img, String place) {
+		return postDao.uploadImg(img, place);
 	}
 
 	@Override

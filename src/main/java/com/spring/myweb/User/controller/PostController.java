@@ -171,6 +171,14 @@ public class PostController {
 
 		return "login/main/mother";
 	}
+	
+	@RequestMapping(value = "/purchased.do", method = RequestMethod.GET)
+	public String purchased(Model model, int post_seq) {
+		System.out.println("구매완료");
+		PostVO vo = postService.postDetail(post_seq);
+		
+		return "login/product&purchase/purchased";
+	}
 
 	// 판매하기 수정페이지 이동
 	@RequestMapping(value = "/updatePost.do")

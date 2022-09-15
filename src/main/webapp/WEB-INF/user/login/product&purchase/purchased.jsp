@@ -15,8 +15,6 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
-<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 <title>Main Page</title>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -24,68 +22,44 @@
 	String p = request.getParameter("product");
 %>
 </head>
-<script>
-var token = $("meta[name='_csrf']").attr("content");
-var header = $("meta[name='_csrf_header']").attr("content");
-$(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, token); });
-</script>
 <body>
 	<header>
 		<jsp:include page="/WEB-INF/user/login/main/header/header.jsp"></jsp:include>
 	</header>
 	<article class="container_12">
 		<jsp:include page="/WEB-INF/user/login/main/category.jsp"></jsp:include>
-		
 	</article>
 	<article class="container_12">
-		
-			<div class="detail_body">
-			
-			<div>
-				<div id="productPage">
+			<div id="productPage">
 			<div id="productList">
 				홈 > 
-				<select onchange="if(this.value) location.href=(this.value);" name="category_seq">
+				<select onchange="if(this.value) location.href=(this.value);">
 					<option selected disabled>카테고리</option>
-					<option value="category.do?category_seq=1">디지털기기</option>
-					<option value="category.do?category_seq=2">가구/인테리어</option>
-					<option value="category.do?category_seq=3">유아동/유아도서</option>
-					<option value="category.do?category_seq=4">생활/가공식품</option>
-					<option value="category.do?category_seq=5">스포츠/레저</option>
-					<option value="category.do?category_seq=6">여성잡화</option>
-					<option value="category.do?category_seq=7">여성의류</option>
-					<option value="category.do?category_seq=8">남성패션/잡화</option>
-					<option value="category.do?category_seq=9">게임/취미</option>
-					<option value="category.do?category_seq=10">뷰티/미용</option>
-					<option value="category.do?category_seq=11">반려동물용품</option>
-					<option value="category.do?category_seq=12">도서/티켓/음반</option>
-					<option value="category.do?category_seq=13">기타 중고물품</option>
-					<option value="category.do?category_seq=14">삽니다</option>
+					<option value="mother.jsp?product=디지털기기">디지털기기</option>
+					<option value="mother.jsp?product=생활가전">생활가전</option>
+					<option value="mother.jsp?product=가구/인테리어">가구/인테리어</option>
+					<option value="mother.jsp?product=유아동">유아동</option>
+					<option value="mother.jsp?product=유아도서">유아도서</option>
+					<option value="mother.jsp?product=생활/가공식품">생활/가공식품</option>
+					<option value="mother.jsp?product=스포츠/레저">스포츠/레저</option>
+					<option value="mother.jsp?product=여성잡화">여성잡화</option>
+					<option value="mother.jsp?product=여성의류">여성의류</option>
+					<option value="mother.jsp?product=남성패션/잡화">남성패션/잡화</option>
+					<option value="mother.jsp?product=게임/취미">게임/취미</option>
+					<option value="mother.jsp?product=뷰티/미용">뷰티/미용</option>
+					<option value="mother.jsp?product=반려동물용품">반려동물용품</option>
+					<option value="mother.jsp?product=도서/티켓/음반">도서/티켓/음반</option>
+					<option value="mother.jsp?product=식물">식물</option>
+					<option value="mother.jsp?product=기타 중고물품">기타 중고물품</option>
+					<option value="mother.jsp?product=삽니다">삽니다</option>
 				</select>
 			</div>
-			</div>
-			<div class="detailContent">
-<<<<<<< HEAD
-			<input type="hidden" id="user_seq" name="user_seq" value="${user.user_seq }">
-			<input type="hidden" id="post_seq" name="post_seq" value="${post.post_seq }">
-=======
 			<div class="row grid_12">
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 				<div class="grid_4 item" id="picture">
-				<div class="cTZOqF">
-					<div class="kjooeF">
-						<div class="lgWppt">
-							<c:forEach items="${name }" var="photo" varStatus="status">
-								<img src="${status.current}" id="image" class="cGrdGT">
-							</c:forEach>
-						</div>	
-					</div>
-				</div>
-				<div class="zoomBtn">
+					<img src="/myweb/login/images/camera.png" id="image">
 					<button type="button" onclick = "zoom()">+확대</button>
 				</div>
-				</div>
-					<div class="prod_info">
+					<div class="grid_6 prod_info">
 					<div class="item" id="detail" style="border-bottom: 1px solid rgb(238, 238, 238)">
 						<div id="title">${post.post_title }</div>
 						<div class="post_price"><div class="postPrice"><fmt:formatNumber value="${post.price }" pattern="###,###,###"/><span>원</span></div></div>
@@ -94,51 +68,14 @@ $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, to
 					<div class="item">
  
 					<div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/main/heart.png" width="16" height="16">36</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/main/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/main/clock.png" width="16" height="16">${post.upload_date}</div><div class="etc_items"><button class="openBtn">신고하기</button></div></div>
+						<a href="postDelete.do?post_seq=${post.post_seq }" role="button">삭제</a>
+						<br>
 					</div>
-						<div class="ipQCCP" id="info">
-						<div class="prod_status">
-							<div class="prod_status_2">
-								상품상태
-							</div>
-							<div class="prod_status_3">중고</div>
-						</div>
-						<div class="prod_status">
-							<div class="prod_status_2">
-								교환여부
-							</div>
-							<div class="prod_status_3">교환불가능</div>
-						</div>				
-						<div class="prod_status">
-							<div class="prod_status_2">
-								배송비
-							</div>
-							<div class="prod_status_3">배송비 별도</div>
-						</div>				
-						<div class="prod_status">
-							<div class="prod_status_2">
-								거래지역
-							</div>
-							<div class="prod_status_3">전국</div>
-						</div>						
-						</div>
+					<br>
 					<div class="item_btn" id="func">
-						<c:choose>
-						<c:when test="${like == 0}">
-							<button type="button"class="btn btn-light" id="jjim">찜</button>
-							<input type="hidden" id="likecheck" value="${like }">
-						</c:when>					
-						<c:when test="${like == 1}">
-							<button type="button" class="btn btn-danger" id="jjim">찜</button>
-							<input type="hidden" id="likecheck" value="${like }">
-						</c:when>
-					</c:choose>			
-						<button>연락하기</button>
-						<button onclick="requestPay()">바로구매</button>
+						<span>구매가 완료된 상품입니다.</span>
 					</div>
-					<div><img id="status"></div>
 					</div>
-					
-				</div>
 				</div>
 				<div class="clear"></div>
 				<div class="grid_12 item2">
@@ -204,7 +141,6 @@ $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, to
 			</div>
 			</div>
 		</div>
-		<input type="hidden" value="${post.post_seq }" id="post_seq" name="post_seq">
 		<%@ include file="/login/singo/singo.jsp" %>
 	</article>
 	<div style="margin-bottom:40px;"></div>
@@ -212,6 +148,7 @@ $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, to
 		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
+
 
 <script type="text/javascript" src="/myweb/login/product&purchase/product_detail.js"></script>
 </html>

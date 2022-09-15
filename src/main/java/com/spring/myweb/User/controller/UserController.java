@@ -3,7 +3,6 @@ package com.spring.myweb.User.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
@@ -24,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.myweb.MailUtil.MailHandler;
+import com.spring.myweb.MailUtil.TempKey;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
@@ -48,23 +49,33 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/insertProc.do")
-	public String insertUser(HttpSession session, Model model,UserVO vo,HttpServletRequest request) {
+	public String insertUser(HttpSession session, Model model,UserVO vo,HttpServletRequest request) throws Exception{
 		System.out.println("암호화 전 : " + vo.getPassword());
 		String securePwd = passwordEncoder.encode(vo.getPassword());
 		vo.setPassword(securePwd);
 		System.out.println("암호화 후 : " + vo.getPassword());
 		int result = 0;
 		result = userService.insertUser(vo);
+		
 		if(result ==1 ) {
 			session.setAttribute("user", vo);
 			model.addAttribute("user",vo);
 		}else {
 			System.out.println("FAIL");
 		}
-		return "redirect:main.do";
+		return "login/login&register/emailVerify";
+		
 	}
+	
+	@GetMapping("/registerEmail.do")
+	public String emailConfirm(UserVO vo)throws Exception{
+	    userService.updateMailAuth(vo);
+	    return "login/login&register/emailAuthSuccess";
+	}
+	
 	@RequestMapping(value="/insert.do")
-	public String insert(Model model, int agreement_seq) {
+	public String insert(Model model) {
+		int agreement_seq = 1;
 		RegisterAgreementVO list = registerService.select(agreement_seq);
 		model.addAttribute("newest",list);
 		return "login/login&register/registerAgree";
@@ -74,7 +85,7 @@ public class UserController {
 		return "login/login&register/register";
 	}
 	
-	@GetMapping(value = "/loginForm.do")
+	@RequestMapping(value = "/loginForm.do")
 	public String loginForm() {
 		return "login/login&register/login";
 	}
@@ -82,15 +93,14 @@ public class UserController {
 		return rememberId;
 	}
 	@RequestMapping(value="/login.do")
-	public String loginUser(HttpSession session, Model model,String id, String password, ServletRequest request, HttpServletResponse response, boolean rememberId) {
+	public String loginUser(HttpSession session, Model model,String id, String password, ServletRequest request, HttpServletResponse response, boolean rememberId) throws Exception {
 		System.out.println("User login service");
 		UserVO vo = userService.select(id);
-		System.out.println("FFF");
 		if(passwordEncoder.matches(password,vo.getPassword())){
 			session.setAttribute("user", vo);
 			model.addAttribute("user",vo);
 		}else {
-			System.out.println("FIALS");
+			System.out.println("FAILS");
 		}
 		if(rememberId(rememberId)) {
 			Cookie cookie = new Cookie("id", id);
@@ -176,8 +186,21 @@ public class UserController {
 		}
 		return "login/location/verify";
 	}
-	
-	@RequestMapping(value = "/idCheck.do" , method = RequestMethod.POST)
+	@RequestMapping(value="/idEmailCheck.do")
+	public @ResponseBody int idEmailCheck(@ModelAttribute("vo") UserVO vo ,String id, Model model) throws Exception{
+		int result = 0;
+		System.out.println(id);
+		UserVO vo2 = userService.select(id);
+		System.out.println(vo2.getEmail());
+		System.out.println(vo.getEmail());
+		if(vo.getEmail().equals(vo2.getEmail())) {
+			result = 1;
+		}else {
+			result = 0;
+		}
+		return result;
+	}
+	@RequestMapping(value = "/idCheck.do")
 	public @ResponseBody int idCheck(@ModelAttribute("vo") UserVO vo , Model model) throws Exception{
 	    int result = userService.idCheck(vo.getId());
 	    return result;
@@ -258,5 +281,23 @@ public class UserController {
 		}
 		return "redirect:mypage.do";
 	}
+	
+	@RequestMapping(value="/findPassword.do")
+	public String findPasswordForm() {
+		return "login/login&register/findPassword";
+	}
+	
+	@RequestMapping(value="/findPassword.do", method = RequestMethod.POST)
+	public String findPassword(UserVO vo) throws Exception {
+		System.out.println(vo.getId());
+		System.out.println(vo.getEmail());
+		int success = 0;
+		success = userService.updatePw(vo);
+		if(success == 1) {
+			System.out.println("success");
+		}
+		return "login/login&register/findPasswordVerify";
+	}
+	
 	
 }

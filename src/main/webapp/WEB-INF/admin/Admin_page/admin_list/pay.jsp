@@ -10,14 +10,12 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
-
 		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_layout.jsp"%>
-
 		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
+		<div class="content-wrapper" style="background-color: white;">
 			<!-- Main content -->
 			<section class="content">
-				<%@ include file="/WEB-INF/admin/Admin_page/admin_list/add_form.jsp" %>
+				<%@include file="payForm.jsp" %>
 			</section>
 			<!-- /.content -->
 		</div>

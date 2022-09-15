@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AdminLTE 3 | DataTables</title>
-
+<script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -26,100 +26,73 @@
 <!-- Theme style -->
 <link rel="stylesheet"
 	href="/myweb/Admin_page/dist/css/adminlte.min.css">
+<link rel="stylesheet" type="text/css" href="admins.css">
+<script>
+</script>
 </head>
 <body>
-
-	<!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<div class="container-fluid">
 				<div class="row mb-2">
-					
 					<div class="col-sm-6">
-						
+						<h1>파프리카페이</h1>
 					</div>
 				</div>
 			</div>
 			<!-- /.container-fluid -->
 		</section>
-
 		<!-- Main content -->
 		<section class="content">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12">
-
-
 						<div class="card">
-							<div class="card-header">
-								<h3 class="card-title">회원 목록</h3>
-							</div>
 							<!-- /.card-header -->
+							<div class="card-header">
+								<b>직거래 대기 -> 구매예약은 했으나 아직 직거래 전 단계<br>
+								<b>직거래 완료 -> 구매예약 후 직거래에서 판매자와 구매자 모두 동의한 상태<br>
+								<b>거래 실패 -> 구매예약 후 직거래에서 거래가 성립되지 않음.
+							</div>
 							<div class="card-body">
+							<form action="payConfirm.mdo" method="post">
 								<table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>유저번호</th>
-											<th>아이디</th>
-											<th>이름</th>
-											<th>닉네임</th>
-											<th>생년월일</th>
-											<th>이메일</th>
-											<th>전화번호</th>
-											<th>지역</th>
-											<th>신고받은횟수</th>
-											<th>회원가입경로</th>
-											<th>수신동의</th>
+											<th>판매자</th>
+											<th>구매자</th>
+											<th>판매물품 링크</th>
+											<th>현황</th>
+											<th>판매자 qr</th>
+											<th>구매자 qr</th>
+											<th>처리</th>
 										</tr>
 									</thead>
-									<tbody>
-										<c:forEach var="user" items="${list }">
-											<tr>
-												<td>${user.user_seq }</td>
-												<td>${user.id }</td>
-												<td>${user.name }</td>
-												<td>${user.nickname }</td>
-												<td><fmt:formatDate value="${user.birth}" pattern="yyyy-MM-dd"/></td>
-												<td>${user.email }</td>
-												<td>${user.phone }</td>
-												<td>
-													<c:choose>
-														<c:when test="${empty user.location1 }">
-															동네인증이 필요한 회원입니다.
-														</c:when>
-														<c:otherwise>
-															${user.location1 } / ${user.location2 }
-														</c:otherwise>
-													</c:choose>
-												</td>
-												<td>${user.rep_no }</td>
-												<td>
-													<c:choose>
-														<c:when test="${user.join_type eq 0}">
-															일반회원가입
-														</c:when>
-														<c:otherwise>
-															SNS회원가입
-														</c:otherwise>
-													</c:choose>
-												</td>
-												<td>
-													<c:choose>
-														<c:when test="${user.msg_agree eq 0}">
-															O
-														</c:when>
-														<c:otherwise>
-															X
-														</c:otherwise>
-													</c:choose>
-												</td>
-											</tr>
+									<tbody id="infoData">
+										<c:forEach var="payList" items="${payList }">
+										<tr>
+											<td>${payList.sellerId }</td>
+											<td>${payList.buyerId }</td>
+											<td>${payList.post_seq }</td>
+											<td>${payList.process }</td>
+											<td>${payList.sellerQr }</td>
+											<td>${payList.buyerQr }</td>
+											<td><c:choose>
+												<c:when test="${payList.status eq 0 }">
+													처리중
+												</c:when>
+												<c:otherwise>
+													처리완료
+												</c:otherwise>
+											</c:choose></td>
+										</tr>
 										</c:forEach>
-
 									</tbody>
-
 								</table>
+								<input type="submit" value="처리된 일 삭제하기">
+								</form>
 							</div>
 							<!-- /.card-body -->
 						</div>
@@ -133,6 +106,11 @@
 		</section>
 		<!-- /.content -->
 	</div>
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
 	<!-- ./wrapper -->
 	<script src="/myweb/Admin_page/plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap 4 -->
@@ -163,28 +141,12 @@
 	<!-- AdminLTE App -->
 	<script src="/myweb/Admin_page/dist/js/adminlte.min.js"></script>
 
-	<!-- Page specific script -->
-	<script>
-		$(function() {
-			$("#example1").DataTable(
-					{
-						"responsive" : true,
-						"lengthChange" : false,
-						"autoWidth" : false,
-						"buttons" : [ "copy", "csv", "excel", "pdf", "print",
-								"colvis" ]
-					}).buttons().container().appendTo(
-					'#example1_wrapper .col-md-6:eq(0)');
-			$('#example2').DataTable({
-				"paging" : true,
-				"lengthChange" : false,
-				"searching" : false,
-				"ordering" : true,
-				"info" : true,
-				"autoWidth" : false,
-				"responsive" : true,
-			});
-		});
-	</script>
 </body>
 </html>
+
+
+
+
+
+
+

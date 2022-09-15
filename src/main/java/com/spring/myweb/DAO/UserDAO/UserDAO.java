@@ -17,4 +17,8 @@ public interface UserDAO {
 	public int phoneCheck(String phone);
 	public int reloadUser(UserVO vo);
 	public int updateProfile(UserVO vo);
+	int updateMailKey(UserVO vo) throws Exception;
+	int updateMailAuth(UserVO vo) throws Exception;
+	int emailAuthFail(String id) throws Exception;
+	int updatePw(UserVO vo) throws Exception;
 }

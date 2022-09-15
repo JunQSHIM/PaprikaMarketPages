@@ -50,7 +50,14 @@
 								<div class="sell_image">
 										<img src="${photo[status.index] }" width="194" height="194">
 									<span class="image_span">
+										<c:choose>
+									<c:when test="${post.pay_check == 1 }">
 										<img src="/myweb/login/images/jjim_icon/pay.svg" alt="페이 가능">
+									</c:when>
+              				 		<c:when test="${post.pay_check == 0 }">
+               							<img src="/myweb/login/images/jjim_icon/pay.svg" style="visibility: hidden;" alt="페이 가능">
+               						</c:when>
+								</c:choose>
 									</span>
 									<div class="inner_sell_image"></div>
 								</div>
@@ -67,7 +74,7 @@
 								</div>
 								<div class="sell_location">
 									<img src="/myweb/login/images/jjim_icon/location.png" width="15" height="17" alt="위치">
-									${post.location }
+									${post.location1 }
 								</div>
 							</a>
 						</div>

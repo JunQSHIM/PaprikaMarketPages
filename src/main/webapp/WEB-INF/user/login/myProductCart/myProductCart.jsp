@@ -72,7 +72,15 @@
 								<div class="sell_image">
 									<img src="${photo[status.index] }" width="194" height="194">
 									<span class="image_span">
+								<c:choose>
+									<c:when test="${post.pay_check == 1 }">
 										<img src="/myweb/login/images/jjim_icon/pay.svg" alt="페이 가능">
+									</c:when>
+              				 		<c:when test="${post.pay_check == 0 }">
+               							<img src="/myweb/login/images/jjim_icon/pay.svg" style="visibility: hidden;" alt="페이 가능">
+               						</c:when>
+								</c:choose>
+									
 									</span>
 									<div class="inner_sell_image"></div>
 								</div>
@@ -89,68 +97,11 @@
 								</div>
 								<div class="sell_location">
 									<img src="/myweb/login/images/jjim_icon/location.png" width="15" height="17" alt="위치">
-									${post.location }
+									${post.location1 }
 								</div>
 							</a>
 						</div>
 						</c:forEach>
-						<div class="sell_product_board">
-							<a class="sell_board" href="#">
-								<div class="sell_image">
-									<img src="/myweb/login/images/jjim_icon/travis.png" width="194" height="194">
-									<div class="reservation">
-										<div>예약</div>
-										<img src="/myweb/login/images/jjim_icon/reservation.png" width="11" height="11" alt="판매 불가 아이콘">
-										<div>완료</div>
-									</div>
-									<div class="inner_sell_image"></div>
-								</div>
-								<div class="sell_product_detail">
-									<div class="sell_product_title">스파이 패밀리-아냐</div>
-									<div class="sell_product_price">
-										<div class="sell_product_price_1">
-											150,000
-										</div>
-										<div class="sell_product_time">
-											<span>8시간 전</span>
-										</div>
-									</div>
-								</div>
-								<div class="sell_location">
-									<img src="/myweb/login/images/jjim_icon/location.png" width="15" height="17" alt="위치">
-									전국
-								</div>
-							</a>
-						</div>
-						
-						<div class="sell_product_board">
-							<a class="sell_board" href="#">
-								<div class="sell_image">
-									<img src="/myweb/login/images/jjim_icon/santiago.png" width="194" height="194">
-									<div class="reservation">
-										<div>판매</div>
-										<img src="/myweb/login/images/jjim_icon/reservation.png" width="11" height="11" alt="판매 불가 아이콘">
-										<div>완료</div>
-									</div>
-									<div class="inner_sell_image"></div>
-								</div>
-								<div class="sell_product_detail">
-									<div class="sell_product_title">스파이 패밀리-아냐</div>
-									<div class="sell_product_price">
-										<div class="sell_product_price_1">
-											150,000
-										</div>
-										<div class="sell_product_time">
-											<span>8시간 전</span>
-										</div>
-									</div>
-								</div>
-								<div class="sell_location">
-									<img src="/myweb/login/images/jjim_icon/location.png" width="15" height="17" alt="위치">
-									전국
-								</div>
-							</a>
-						</div>
 						
 					</div>
 					<div class="bottom_space"></div>

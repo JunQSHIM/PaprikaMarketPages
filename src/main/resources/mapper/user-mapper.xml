@@ -64,11 +64,11 @@
 	<!-- 상품 등록 -->
 	<select id="post" resultType="PostVO">
 		insert into post(user_seq,
-		nickname, post_title,post_content,price,location,
+		nickname, post_title,post_content,price,location1, location2,
 		category_seq,
-		upload_date)
+		upload_date, pay_check, prod_status)
 		values(#{user_seq},#{nickname},#{post_title},
-		#{post_content}, #{price},'서울',#{category_seq},now());
+		#{post_content}, #{price},(select location1 from user where user_seq = #{user_seq}),(select location2 from user where user_seq = #{user_seq}),#{category_seq},now(),#{pay_check}, #{prod_status});
 	</select>
 
 	<!-- 판매상품 삭제하기 -->

@@ -15,24 +15,37 @@
 		});
 		
 	});
+	
+	 $(document).ready(function(){
+	        $('.lgWppt').bxSlider({
+	        	auto:false,
+	            infiniteLoop:false,
+	            controls:false     
+	        });
+	      });
+	
 	$(document).ready(function(){
 		$('.slider').bxSlider({
-		        auto: true, 
+				auto:false,
+				pager:false,
 		        mode:'horizontal',
+		        infiniteLoop:false,
 		        minSlides: 1,
 		        maxSlides: 5,
-		        slideWidth: 155,
+		        slideWidth:270,
 		        slideMargin: 0,
-		        captions:true
+		        controls:false 
 	    });
 		$('.slider2').bxSlider({
-	        auto: true, 
+			auto:false,
+			pager:false,
 	        mode:'horizontal',
+	        infiniteLoop:false,
 	        minSlides: 1,
 	        maxSlides: 2,
-	        slideWidth: 130,
-	        slideMargin: 5,
-	        captions:true
+	        slideWidth:155,
+	        slideMargin: 0,
+	        controls:false 
     });
     });
 	function login()  {
@@ -48,7 +61,7 @@
 		window.location.href = '/mypage.do';
 	}
 	function zoom(){
-		$("#picture").style.width = "800px";
+		$("#image").style.width = "800px";
 	}
 	function zoom(url){
 		var image = document.getElementById("image");
@@ -56,7 +69,7 @@
 	    window.open(source,'new','width=800, height=600, scrollbars=yes');
 	} 
 	
-	/*	
+	
 	var post_seq = document.getElementById("post_seq").value;
 	
 	$(function () {
@@ -78,7 +91,7 @@
 			}
 		});
 	}); 
-	
+	/*	
 	$(document).on("click", "#jjim", function() {
 		   console.log($("#user_seq").val());
 		   $.ajax({
@@ -102,7 +115,7 @@
 		         }
 		      }
 		   })
-		})*/
+		})
 $('#jjim').click(function(){
 		likeupdate();
 		console.log($("#user_seq").val());
@@ -112,32 +125,34 @@ $('#jjim').click(function(){
 	
 	function likeupdate(){
 		var root = getContextPath(),
-		likeurl = "/likeupdate.do",
-		user_seq = $('#user_seq').val(),
-		post_seq = $('#post_seq').val(),
-		likeCnt = $('#likecheck').val(),
+		likeurl = "/likeupdate.do";
+		user_seq = Number($('#user_seq').val());
+		post_seq = Number($('#post_seq').val());
+		likeCnt = Number($('#likecheck').val());
 		data = {"user_seq" : user_seq,
 				"post_seq" : post_seq,
 				"likeCnt" : likeCnt};
 		console.log($("#likecheck").val());
 	$.ajax({
-		url : root + likeurl,
-		type : 'PUT',
-		contentType: 'application/json',
-		data : JSON.stringify(data),
+		url :"/myweb"+likeurl,
+		type : 'get',
+		dataType: 'json',
+		data : data,
 		success : function(result){
-			console.log("수정" + result.result);
+			console.log("수정" + result);
 			if(likeCnt == 1){
 				console.log("좋아요 취소");
 				 $('#likecheck').val(0);
-				 $('#jjim').attr('class','btn btn-light');
+				 $('#jjim').html('♥찜');
 			}else if(likeCnt == 0){
 				console.log("좋아요!");
 				$('#likecheck').val(1);
-				$('#jjim').attr('class','btn btn-danger');
+				$('#jjim').html('찜');
 			}
 		}, error : function(result){
-			console.log("에러" + result.result)
+			console.log( result);
+			//console.log(data);
+			//console.log(url);
 		}
 		
 		});
@@ -146,7 +161,7 @@ $('#jjim').click(function(){
 	function getContextPath() {
 	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
 	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
-	} 
+	} */
 	/** 결제 * */
     // 결제 금액, 구매자의 이름, 이메일
     const priceAmount = "10";

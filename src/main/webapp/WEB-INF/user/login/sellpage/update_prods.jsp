@@ -153,24 +153,16 @@
 			</div>
 		</div>
 
-		<div class="grid_12 fastsell">
-			<div class="grid_2 fastsell_1">빠른 판매</div>
-			<div class="grid_10 fastsell_2">
-				내 상품에 안전결제 배지가 표시돼요 <a href="#">자세히</a>
-			</div>
-			<div class="clear"></div>
-		</div>
-
-		<div class="grid_2 explain">옵션</div>
+		<div class="grid_2 explain">안전 결제 선택</div>
 		<div class="grid_10 newdata">
 
 			<div class="option">
-				<label><input id="bunPayFilter" type="checkbox">안전결제
+				<label><input id="bunPayFilter" type="checkbox" name="pay_check" value="1">안전결제
 					환영</label>
 			</div>
 			<ul class="opt">
 				<li>
-					<p>안전결제(번개페이) 요청을 거절하지 않는 대신 혜택을 받을 수 있어요.</p>
+					<p>안전결제(카카오페이) 요청을 거절하지 않는 대신 혜택을 받을 수 있어요.</p>
 					<p>
 						<small>거절 시, <a
 							href="https://help.bunjang.co.kr/faq/3/415" target="_blank">이용
@@ -179,13 +171,9 @@
 					</p>
 				</li>
 				<li>
-					<p>내 상품을 먼저 보여주는 전용 필터로 더 빠르게 판매할 수 있어요.</p>
-				</li>
-				<li>
-					<p>번개페이 배지로 더 많은 관심을 받을 수 있어요.</p>
+					내 상품에 카카오톡 배지가 표시돼요 <a href="#">자세히</a>
 				</li>
 			</ul>
-			<div>* 번개페이 배지와 전용 필터 기능은 앱 또는 모바일 웹에서만 볼 수 있어요.</div>
 		</div>
 
 

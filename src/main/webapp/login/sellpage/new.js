@@ -227,12 +227,12 @@ $(document).ready(function() {
 			$("#selectbox").focus();
 			return false;
 		}
-//		if (post.category_seq.value == "") {
-//			post.category_seq.focus();
-//			alert("카테고리를 선택하세요.");
-//			return false;
+// if (post.category_seq.value == "") {
+// post.category_seq.focus();
+// alert("카테고리를 선택하세요.");
+// return false;
 //
-//		}
+// }
 		if (post.post_title.value.length < 2) {
 			alert("제목을 2자 이상 입력하세요.");
 			post.post_title.focus();
@@ -309,10 +309,12 @@ function fileCheck(obj) {
 		return false;
 	}
 	if (filetype == 'bmp') {
-		upload = confirm('bmp 파일은 웹상에서 사용하기엔 적절한 포맷이 아닙니다.\n 드래도 계속 하시겠습니까?');
+		upload = confirm('bmp 파일은 웹상에서 사용하기엔 적절한 포맷이 아닙니다.\n 그래도 계속 하시겠습니까?');
 		if (!upload)
 			return false;
 	}
 }
+
+
 
 

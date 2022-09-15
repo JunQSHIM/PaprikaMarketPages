@@ -11,13 +11,44 @@ public class PostVO {
 	private String post_title;
 	private String post_content;
 	private int price;
-	private String location;
+	private String location1;
+	private String location2;
 	private int category_seq;
 	private int cnt;
+	private int prod_status;
+
+	public int getProd_status() {
+		return prod_status;
+	}
+	public void setProd_status(int prod_status) {
+		this.prod_status = prod_status;
+	}
+	public void setUpload_date(String upload_date) {
+		this.upload_date = upload_date;
+	}
+	public String getLocation1() {
+		return location1;
+	}
+	public void setLocation1(String location1) {
+		this.location1 = location1;
+	}
+	public String getLocation2() {
+		return location2;
+	}
+	public void setLocation2(String location2) {
+		this.location2 = location2;
+	}
 	private String upload_date;
 	private int sell_status;
 	private int status;
+	private int pay_check;
 	
+	public int getPay_check() {
+		return pay_check;
+	}
+	public void setPay_check(int pay_check) {
+		this.pay_check = pay_check;
+	}
 	public int getPost_seq() {
 		return post_seq;
 	}
@@ -54,12 +85,7 @@ public class PostVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
+
 	public int getCategory_seq() {
 		return category_seq;
 	}
@@ -91,14 +117,15 @@ public class PostVO {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+
 	@Override
 	public String toString() {
 		return "PostVO [post_seq=" + post_seq + ", user_seq=" + user_seq + ", nickname=" + nickname + ", post_title="
-				+ post_title + ", post_content=" + post_content + ", price=" + price + ", location=" + location
-				+ ", category_seq=" + category_seq + ", cnt=" + cnt + ", upload_date=" + upload_date + ", sell_status="
-				+ sell_status + ", status=" + status + "]";
+				+ post_title + ", post_content=" + post_content + ", price=" + price + ", location1=" + location1
+				+ ", location2=" + location2 + ", category_seq=" + category_seq + ", cnt=" + cnt + ", upload_date="
+				+ upload_date + ", sell_status=" + sell_status + ", status=" + status + ", pay_check=" + pay_check
+				+ "]";
 	}
-	
 	
 
 }

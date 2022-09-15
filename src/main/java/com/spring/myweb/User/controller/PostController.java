@@ -12,11 +12,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -69,7 +71,7 @@ public class PostController {
 	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
 	public String getCreate(HttpSession session, Model model, CategoryVO vo, UserVO uvo, PostVO pvo) {
 		System.out.println("판매하기 접속함");
-		if (uvo != null) {
+		
 			List<CategoryVO> list = postService.categoryList();
 			List<PostVO> plist = postService.postList();
 			List<Integer> post_seq = new ArrayList<Integer>();
@@ -90,7 +92,6 @@ public class PostController {
 
 			// 이미지 보이기
 			model.addAttribute("photo", photoNames);
-		}
 
 		return "login/sell";
 	}
@@ -123,6 +124,13 @@ public class PostController {
 			postService.insertPhoto(photo);
 		}
 		return "redirect:main.do";
+	}
+	
+	// 카카오 페이 체크박스, 상품 상태 라디오버튼
+	@RequestMapping("/payCheck.do")
+	@ResponseBody
+	public void payCheck(PostVO vo) {
+		postService.insertPost(vo);
 	}
 
 	@RequestMapping(value = "/postDelete.do", method = RequestMethod.GET)
@@ -200,18 +208,16 @@ public class PostController {
 	}
 
 	// 좋아요 컨트롤러
-	@PutMapping("/likeupdate.do")
-	public Map<String, String> likeUpdate(@RequestBody LikeVO vo) {
-		Map<String, String> map = new HashMap<String, String>();
-
-		try {
+	@GetMapping("/likeupdate.do")
+	@ResponseBody
+	public String likeUpdate(LikeVO vo) {
+		System.out.println("바보승택"+vo);
+		
+			String re="";
 			postService.likeupdate(vo);
-			map.put("result", "success");
-		} catch (Exception e) {
-			e.printStackTrace();
-			map.put("result", "fail");
-		}
-		return map;
+			re="success";
+	
+		return re;
 	}
 
 	// 내상품 보기

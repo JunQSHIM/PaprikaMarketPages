@@ -17,6 +17,7 @@
 <form enctype="multipart/form-data" action="createProc.do"
 			name="post" method="post">
 			<sec:csrfInput/>
+			<input type="hidden" name="location1" value=${user.location1 }>
 			<input type="hidden" name="user_seq" value=${user.user_seq }>
 			<input type="hidden" name="nickname" value=${user.nickname }>
 		<div class="grid_12 newinfo">
@@ -80,7 +81,7 @@
 				</div>
 				<div class="grid_10 newdata">
 					<select id="selectbox" onchange="handleOnChange(this)" name="category_seq">
-						<option disabled selected>카테고리선택&nbsp;&nbsp;▼</option>
+						<option value="none" disabled selected>카테고리선택&nbsp;&nbsp;▼</option>
 						<c:forEach items="${category }" var="category">
 						<option value="${category.category_seq }">${category.category_name }</option>
 						</c:forEach>
@@ -206,7 +207,7 @@ function checkboxArr() {   
 		 $.ajax({    
 			url: '/payCheck.do',
 			type: 'post',
-			dataType: 'json',
+			dataType: 'text',
 			data: {
 				valueArrTest: checkArr
 				}
@@ -223,7 +224,7 @@ function radioArr() {   
 		 $.ajax({    
 			url: '/payCheck.do',
 			type: 'post',
-			dataType: 'json',
+			dataType: 'text',
 			data: {
 				valueArrTest: radioArr
 				}

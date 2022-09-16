@@ -161,7 +161,6 @@ $('#jjim').click(function(){
 	function getContextPath() {
 	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
 	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
-<<<<<<< HEAD
 	} */
 	/** 결제 * */
     // 결제 금액, 구매자의 이름, 이메일

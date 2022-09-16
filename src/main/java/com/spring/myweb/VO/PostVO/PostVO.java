@@ -16,6 +16,10 @@ public class PostVO {
 	private int category_seq;
 	private int cnt;
 	private int prod_status;
+	private String upload_date;
+	private int sell_status;
+	private int status;
+	private int pay_check;
 
 	public int getProd_status() {
 		return prod_status;
@@ -23,9 +27,7 @@ public class PostVO {
 	public void setProd_status(int prod_status) {
 		this.prod_status = prod_status;
 	}
-	public void setUpload_date(String upload_date) {
-		this.upload_date = upload_date;
-	}
+	
 	public String getLocation1() {
 		return location1;
 	}
@@ -38,10 +40,6 @@ public class PostVO {
 	public void setLocation2(String location2) {
 		this.location2 = location2;
 	}
-	private String upload_date;
-	private int sell_status;
-	private int status;
-	private int pay_check;
 	
 	public int getPay_check() {
 		return pay_check;

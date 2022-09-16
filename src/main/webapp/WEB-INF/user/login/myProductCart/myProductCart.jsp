@@ -65,6 +65,7 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="sell_product_cart">
 					<c:forEach items="${list }" var="post" varStatus="status">
 						<div class="sell_product_board">

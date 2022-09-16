@@ -211,39 +211,39 @@ $(document).ready(function() {
 	// 문자열 검사를 시작합니다
 	$("form").on("submit", function() {
 
+		if (post.location1.value == "") {
+			alert("동네인증이 필요합니다.");
+			return false;
+		}
+
 		if (post.origin_file_name.value == "") {
 			post.origin_file_name.focus();
 			alert("이미지를 선택하세요.");
 			return false;
 		}
-		
+
 		if (post.post_title.value == "") {
 			alert("제목을 입력하세요.");
 			post.post_title.focus();
 			return false;
 		}
-		if ($("#selectbox").val() == "") {
-			alert("카테고리를 입력하세요.");
-			$("#selectbox").focus();
+
+		if (post.category_seq.value == "none") {
+			post.category_seq.focus();
+			alert("카테고리를 선택하세요.");
 			return false;
+
 		}
-// if (post.category_seq.value == "") {
-// post.category_seq.focus();
-// alert("카테고리를 선택하세요.");
-// return false;
-//
-// }
 		if (post.post_title.value.length < 2) {
 			alert("제목을 2자 이상 입력하세요.");
 			post.post_title.focus();
 			return false;
 		}
-		
 
 		if (post.price.value == "") {
 			post.price.focus();
 			alert("가격을 입력하세요.");
-			return false; 
+			return false;
 		}
 
 		if (post.post_content.value == "") {
@@ -314,7 +314,3 @@ function fileCheck(obj) {
 			return false;
 	}
 }
-
-
-
-

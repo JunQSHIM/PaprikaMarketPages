@@ -43,7 +43,7 @@
 		category_name from category where category_seq =
 		#{category_seq}),now(),1);
 	</select>
-
+	
 	<!-- 게시판 상품 상세보기 -->
 	<select id="sellDetail" parameterType="int"
 		resultType="SellBoardVO">
@@ -70,7 +70,7 @@
 		values(#{user_seq},#{nickname},#{post_title},
 		#{post_content}, #{price},(select location1 from user where user_seq = #{user_seq}),(select location2 from user where user_seq = #{user_seq}),#{category_seq},now(),#{pay_check}, #{prod_status});
 	</select>
-
+	
 	<!-- 판매상품 삭제하기 -->
 	<select id="postDelete" resultType="PostVO">
 		delete from post where
@@ -80,7 +80,7 @@
 	<!-- 판매상품 수정하기 -->
 	<select id="updatePost" resultType="PostVO">
 		update post set post_title =
-		#{post_title}, price = #{price}, post_content=#{post_content},
+		#{post_title}, price = #{price}, post_content=#{post_content}, prod_status = #{prod_status}, 
 		upload_date = now() where post_seq = #{post_seq};
 	</select>
 

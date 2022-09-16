@@ -36,4 +36,7 @@ public interface PostDAO {
 	public int likeGetInfo(LikeVO vo); // 좋아요 하기
 	public void likeinsert(LikeVO vo);
 	public void likeupdate(LikeVO vo);
+	
+	
+	
 }

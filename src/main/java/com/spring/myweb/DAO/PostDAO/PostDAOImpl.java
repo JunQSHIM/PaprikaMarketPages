@@ -218,4 +218,7 @@ public class PostDAOImpl implements PostDAO {
 	public void likeupdate(LikeVO vo) {
 		session.update("userDB.likeUpdate", vo);
 	}
+
+
+
 }

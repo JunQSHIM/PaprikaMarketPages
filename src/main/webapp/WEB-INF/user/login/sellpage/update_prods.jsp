@@ -14,11 +14,12 @@
 	type="text/css">
 </head>
 <body>
-<form enctype="multipart/form-data" action="updateProc.do"
+<form enctype="multipart/form-data" action="createProc.do"
 			name="post" method="post">
 			<sec:csrfInput/>
-			<input type="hidden" name="user_seq" value=${vo.user_seq }>
-			<input type="hidden" name="nickname" value=${vo.nickname }>
+			<input type="hidden" name="location1" value=${user.location1 }>
+			<input type="hidden" name="user_seq" value=${user.user_seq }>
+			<input type="hidden" name="nickname" value=${user.nickname }>
 		<div class="grid_12 newinfo">
 			<div class="newinfo_1">
 				<div class="grid_2 newinfo_1_1">기본정보</div>
@@ -80,7 +81,7 @@
 				</div>
 				<div class="grid_10 newdata">
 					<select id="selectbox" onchange="handleOnChange(this)" name="category_seq">
-						<option disabled selected>카테고리선택&nbsp;&nbsp;▼</option>
+						<option value="none" disabled selected>카테고리선택&nbsp;&nbsp;▼</option>
 						<c:forEach items="${category }" var="category">
 						<option value="${category.category_seq }">${category.category_name }</option>
 						</c:forEach>
@@ -90,20 +91,6 @@
 				<div class="cate_value"><span><b>선택한 카테고리 : &nbsp; </b></span><div id='result_category'></div></div>	
 				</div>
 			</div>
-			<div class="grid_12 location">
-				<div class="grid_2 explain">
-					거래지역 <span>*</span>
-				</div>
-				<div class="grid_10 newdata">
-					<button type="button" onclick="#">내위치</button>
-					<button type="button" onclick="#">최근 지역</button>
-					<button type="button" onclick="#">주소 검색</button>
-					<button type="buttonclick="#">지역설정안함</button>
-					<input readonly valon" ue=" &nbsp;지역설정안함">
-				</div>
-			</div>
-
-
 		</div>
 		<div class="grid_12 new_price">
 			<div class="grid_2 explain">
@@ -112,7 +99,28 @@
 			<div class="grid_10 newdata">
 				<div class="pri">
 					<input type="text" id="price" name="price" maxlength="9"
-						placeholder=" 숫자만 입력해주세요." onkeydown="chkNum()" value="${vo.price }"> 원
+						placeholder=" 숫자만 입력해주세요." onkeydown="chkNum()"value="${vo.price }"> 원
+				</div>
+			</div>
+		</div>
+		<div class="grid_12 new_price">
+			<div class="grid_2 explain">
+				상태 <span>*</span>
+			</div>
+			<div class="grid_10 newdata">
+				<div class="pri">
+				<div class="statusBtn" id="align">
+				<c:choose>
+					<c:when test="${vo.prod_status == 0 }">
+						<input type="radio" id="usedBtn" name="prod_status" value="0" checked> <label for="usedBtn" class="used">중고상품</label>	
+						<input type="radio" id="newProdBtn" name="prod_status" value="1"> <label for="newProdBtn" class="newProd">새상품</label>
+					</c:when>
+					<c:when test="${vo.prod_status == 1 }">
+						<input type="radio" id="usedBtn" name="prod_status" value="0" > <label for="usedBtn" class="used">중고상품</label>	
+						<input type="radio" id="newProdBtn" name="prod_status" value="1" checked> <label for="newProdBtn" class="newProd">새상품</label>
+					</c:when>
+				</c:choose>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -125,7 +133,7 @@
 					<textarea class="text_area" rows="6"
 						placeholder="여러 장의 상품 사진과 구입 연도, 브랜드, 사용감, 하자 유무 등 구매자에게 필요한 정보를 꼭 포함해 주세요. (10자 이상)&#13;안전하고 건전한 거래 환경을 위해 과학기술정보통신부, 한국인터넷진흥원과 번개장터(주)가 함께 합니다."
 						name="post_content"
-						onkeyup="chkMsgLength(1000,post_content,currentMsgLen);"> ${vo.post_content }</textarea>
+						onkeyup="chkMsgLength(1000,post_content,currentMsgLen);">${vo.post_content }</textarea>
 					<br>
 					<div class="hoxy">
 						혹시 <a href="https://help.bunjang.co.kr/notice/607" target="_blank">카카오톡
@@ -157,8 +165,16 @@
 		<div class="grid_10 newdata">
 
 			<div class="option">
-				<label><input id="bunPayFilter" type="checkbox" name="pay_check" value="1">안전결제
-					환영</label>
+			<c:choose>
+				<c:when test="${vo.pay_check == 1 }">
+					<label><input id="bunPayFilter" type="checkbox" name="pay_check" value="1" checked>안전결제
+						환영</label>
+				</c:when>
+				<c:when test="${vo.pay_check == 0 }">
+					<label><input id="bunPayFilter" type="checkbox" name="pay_check" value="1">안전결제
+						환영</label>
+				</c:when>
+			</c:choose>
 			</div>
 			<ul class="opt">
 				<li>
@@ -171,7 +187,7 @@
 					</p>
 				</li>
 				<li>
-					내 상품에 카카오톡 배지가 표시돼요 <a href="#">자세히</a>
+					내 상품에 안전결제 배지가 표시돼요 <a href="#">자세히</a>
 				</li>
 			</ul>
 		</div>
@@ -179,7 +195,8 @@
 
 		<div class="row container_12">
 			<div class="grid_12 form-group">
-				<button type="submit" class="new_btn" >상품 수정</button>
+				<button type="button" class="new_btn" >수정 취소</button>
+				<button type="submit" class="new_btn" id="cancel_btn" >상품 수정</button>
 			</div>
 		</div>
 		
@@ -197,6 +214,39 @@
 		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 		crossorigin="anonymous"></script>
 	<script src="/myweb/login/sellpage/new.js"></script>
-
+<script>
+function checkboxArr() {   
+	var checkArr = [];     // 배열 초기화   
+	$("input[name='pay_check']:checked").each(function(i)) {     
+		checkArr.push($(this).val());  
+		// 체크된 것만 값을 뽑아서 배열에 push   
+		 }  
+		 $.ajax({    
+			url: '/payCheck.do',
+			type: 'post',
+			dataType: 'text',
+			data: {
+				valueArrTest: checkArr
+				}
+		});
+		}
+</script>
+<script>
+function radioArr() {   
+	var radioArr = [];     // 배열 초기화   
+	$("input[name='prod_status']:checked").each(function(i)) {     
+		radioArr.push($(this).val());  
+		// 체크된 것만 값을 뽑아서 배열에 push   
+		 }  
+		 $.ajax({    
+			url: '/payCheck.do',
+			type: 'post',
+			dataType: 'text',
+			data: {
+				valueArrTest: radioArr
+				}
+		});
+		}   
+</script>
 </body>
 </html>

@@ -47,7 +47,9 @@ public class PostController {
 	public String postList(Model model, PostVO vo, PageVO pvo) throws Exception {
 		System.out.println("Post Service");
 		System.out.println("페이징");
-
+		
+		
+		
 		if (pvo.getNum() == 0) {
 			pvo.setNum(1);
 		}
@@ -59,13 +61,12 @@ public class PostController {
 		for (PostVO post : list) {
 			post_seq.add(post.getPost_seq());
 		}
-
 		List<String> photoNames = new ArrayList<String>();
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
 			System.out.println(postService.photoOne(post_num));
 		}
-
+		
 		model.addAttribute("page", pvo);
 		model.addAttribute("select", num);
 		model.addAttribute("list", list);
@@ -210,6 +211,7 @@ public class PostController {
 		return "login/update";
 	}
 
+	// 수정하기 폼
 	@RequestMapping(value = "/updateProc.do")
 	public String postUpdate(PostVO vo) throws Exception {
 		System.out.println("수정완료");
@@ -229,6 +231,7 @@ public class PostController {
 	
 		return re;
 	}
+	
 
 	// 내상품 보기
 	@RequestMapping(value = "/myProductCart.do", method = RequestMethod.GET)

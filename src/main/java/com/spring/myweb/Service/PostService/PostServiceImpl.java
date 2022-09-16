@@ -130,4 +130,7 @@ public class PostServiceImpl implements PostService {
 		postDao.likeupdate(vo);
 	}
 
+	
+
+
 }

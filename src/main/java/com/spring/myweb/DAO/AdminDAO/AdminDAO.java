@@ -3,6 +3,7 @@ package com.spring.myweb.DAO.AdminDAO;
 import java.util.HashMap;
 import java.util.List;
 
+import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.AdminVO.BoardSingoVO;
 import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
@@ -29,6 +30,7 @@ public interface AdminDAO {
 	public List<UserVO> selectAdmin(); //관리자 명단 불러오기
 	public int giveAdmin(String id); //관리자 권한 주기
 	public int deleteAdmin(String id); //관리자 권한 삭제
+<<<<<<< HEAD
 	public List<QnaVO> selectQnaCate(); //Qna 카테고리 이름 불러오기
 	public List<QnaQuestionsVO> selectQuestions(); //Qna의 카테고리별 Questions가져오기
 	public List<QnaAnswersVO> selectAnswers(); //Qna의 카테고리별 Questions별 Answers 가져오기
@@ -52,5 +54,11 @@ public interface AdminDAO {
 	public void deleteQ(HashMap<String, Object> qnas); //q 삭제
 	public void deleteA(HashMap<String, Object> qnas); //a 삭제
 	public int checkQ(String question);//질문답변 추가시 기존 질문이 있는지 체크
+=======
+	
+	public List<BannerVO> bannerList();//배너 리스트
+	public void abbBanner(BannerVO vo);//배너 저장
+	public void bannerDelete(int banner_seq);
+>>>>>>> 1a1100c0c92a2945e1990a99839d8724d609b0fd
 }
 

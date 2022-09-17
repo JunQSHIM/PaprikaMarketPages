@@ -3,6 +3,7 @@ package com.spring.myweb.Service.AdminService;
 import java.util.HashMap;
 import java.util.List;
 
+import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.AdminVO.BoardSingoVO;
 import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
@@ -27,6 +28,7 @@ public interface AdminService {
 	public List<UserVO> adminList();
 	public int giveAdmin(String id);
 	public int deleteAdmin(String id);
+<<<<<<< HEAD
 	public List<QnaVO> selectQnaCate(); 
 	public List<QnaQuestionsVO> selectQuestions(); 
 	public List<QnaAnswersVO> selectAnswers(); 
@@ -50,4 +52,8 @@ public interface AdminService {
 	public void deleteQ(HashMap<String, Object> qnas); //q 삭제
 	public void deleteA(HashMap<String, Object> qnas); //a 삭제
 	public int checkQ(String question);
+	
+	public List<BannerVO> bannerList();//배너관리
+	public void addBanner(BannerVO vo);//배너 추가
+	public void bannerDelete(int banner_seq);//배너 삭제
 }

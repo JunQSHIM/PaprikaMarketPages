@@ -12,7 +12,7 @@
 	<div class="wrapper">
 		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_layout.jsp"%>
 		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper" style="background-color: white;">
+		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
 				<%@include file="edit_form.jsp" %>
@@ -21,6 +21,5 @@
 		</div>
 		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_footer.jsp"%>
 	</div>
-	
 </body>
 </html>

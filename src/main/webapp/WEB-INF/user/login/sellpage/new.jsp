@@ -17,6 +17,7 @@
 <form enctype="multipart/form-data" action="createProc.do"
 			name="post" method="post">
 			<sec:csrfInput/>
+			<input type="hidden" name="location1" value=${user.location1 }>
 			<input type="hidden" name="user_seq" value=${user.user_seq }>
 			<input type="hidden" name="nickname" value=${user.nickname }>
 		<div class="grid_12 newinfo">
@@ -80,7 +81,7 @@
 				</div>
 				<div class="grid_10 newdata">
 					<select id="selectbox" onchange="handleOnChange(this)" name="category_seq">
-						<option disabled selected>카테고리선택&nbsp;&nbsp;▼</option>
+						<option value="none" disabled selected>카테고리선택&nbsp;&nbsp;▼</option>
 						<c:forEach items="${category }" var="category">
 						<option value="${category.category_seq }">${category.category_name }</option>
 						</c:forEach>
@@ -90,20 +91,6 @@
 				<div class="cate_value"><span><b>선택한 카테고리 : &nbsp; </b></span><div id='result_category'></div></div>	
 				</div>
 			</div>
-			<div class="grid_12 location">
-				<div class="grid_2 explain">
-					거래지역 <span>*</span>
-				</div>
-				<div class="grid_10 newdata">
-					<button type="button" onclick="#">내위치</button>
-					<button type="button" onclick="#">최근 지역</button>
-					<button type="button" onclick="#">주소 검색</button>
-					<button type="buttonclick="#">지역설정안함</button>
-					<input readonly valon" ue=" &nbsp;지역설정안함">
-				</div>
-			</div>
-
-
 		</div>
 		<div class="grid_12 new_price">
 			<div class="grid_2 explain">
@@ -113,6 +100,19 @@
 				<div class="pri">
 					<input type="text" id="price" name="price" maxlength="9"
 						placeholder=" 숫자만 입력해주세요." onkeydown="chkNum()"> 원
+				</div>
+			</div>
+		</div>
+		<div class="grid_12 new_price">
+			<div class="grid_2 explain">
+				상태 <span>*</span>
+			</div>
+			<div class="grid_10 newdata">
+				<div class="pri">
+				<div class="statusBtn" id="align">
+				<input type="radio" id="usedBtn" name="prod_status" value="0" checked> <label for="usedBtn" class="used">중고상품</label>	
+				<input type="radio" id="newProdBtn" name="prod_status" value="1"> <label for="newProdBtn" class="newProd">새상품</label>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -153,24 +153,16 @@
 			</div>
 		</div>
 
-		<div class="grid_12 fastsell">
-			<div class="grid_2 fastsell_1">빠른 판매</div>
-			<div class="grid_10 fastsell_2">
-				내 상품에 안전결제 배지가 표시돼요 <a href="#">자세히</a>
-			</div>
-			<div class="clear"></div>
-		</div>
-
-		<div class="grid_2 explain">옵션</div>
+		<div class="grid_2 explain">안전 결제 선택</div>
 		<div class="grid_10 newdata">
 
 			<div class="option">
-				<label><input id="bunPayFilter" type="checkbox">안전결제
+				<label class="chk_box"><input id="bunPayFilter" id="agree" type="checkbox" name="pay_check" value="1">안전결제
 					환영</label>
 			</div>
 			<ul class="opt">
 				<li>
-					<p>안전결제(번개페이) 요청을 거절하지 않는 대신 혜택을 받을 수 있어요.</p>
+					<p>안전결제(카카오페이) 요청을 거절하지 않는 대신 혜택을 받을 수 있어요.</p>
 					<p>
 						<small>거절 시, <a
 							href="https://help.bunjang.co.kr/faq/3/415" target="_blank">이용
@@ -179,13 +171,9 @@
 					</p>
 				</li>
 				<li>
-					<p>내 상품을 먼저 보여주는 전용 필터로 더 빠르게 판매할 수 있어요.</p>
-				</li>
-				<li>
-					<p>번개페이 배지로 더 많은 관심을 받을 수 있어요.</p>
+					내 상품에 안전결제 배지가 표시돼요 <a href="#">자세히</a>
 				</li>
 			</ul>
-			<div>* 번개페이 배지와 전용 필터 기능은 앱 또는 모바일 웹에서만 볼 수 있어요.</div>
 		</div>
 
 
@@ -209,6 +197,39 @@
 		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 		crossorigin="anonymous"></script>
 	<script src="/myweb/login/sellpage/new.js"></script>
-
+<script>
+function checkboxArr() {   
+	var checkArr = [];     // 배열 초기화   
+	$("input[name='pay_check']:checked").each(function(i)) {     
+		checkArr.push($(this).val());  
+		// 체크된 것만 값을 뽑아서 배열에 push   
+		 }  
+		 $.ajax({    
+			url: '/payCheck.do',
+			type: 'post',
+			dataType: 'text',
+			data: {
+				valueArrTest: checkArr
+				}
+		});
+		}
+</script>
+<script>
+function radioArr() {   
+	var radioArr = [];     // 배열 초기화   
+	$("input[name='prod_status']:checked").each(function(i)) {     
+		radioArr.push($(this).val());  
+		// 체크된 것만 값을 뽑아서 배열에 push   
+		 }  
+		 $.ajax({    
+			url: '/payCheck.do',
+			type: 'post',
+			dataType: 'text',
+			data: {
+				valueArrTest: radioArr
+				}
+		});
+		}
+</script>
 </body>
 </html>

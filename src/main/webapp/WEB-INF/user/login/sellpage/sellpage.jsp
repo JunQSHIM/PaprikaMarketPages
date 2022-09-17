@@ -72,7 +72,7 @@
 						<div class="date" name="upload_date">${plist.upload_date }</div>
 						<div class="control">
 							<button onclick="location.href='updatePost.do?post_seq=${plist.post_seq }'">수정</button>
-							<button onclick="location.href='postDelete.do?post_seq=${plist.post_seq }'" id="delOk">삭제</button>
+							<button onclick="location.href='postDelete.do?post_seq=${plist.post_seq }',removeCheck()" >삭제</button>
 							<button>중지</button>
 						</div>
 					</div>

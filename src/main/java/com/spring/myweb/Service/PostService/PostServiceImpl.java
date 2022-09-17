@@ -89,8 +89,8 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public Map<String, String> uploadImg(List<MultipartFile> img) {
-		return postDao.uploadImg(img);
+	public Map<String, String> uploadImg(List<MultipartFile> img, String place) {
+		return postDao.uploadImg(img, place);
 	}
 
 	@Override
@@ -129,5 +129,18 @@ public class PostServiceImpl implements PostService {
 	public void likeupdate(LikeVO vo) {
 		postDao.likeupdate(vo);
 	}
+
+	@Override
+	public List<PostVO> catePage(int displayPost, int postNum, int category_seq) throws Exception {
+		return postDao.catePage(displayPost, postNum, category_seq);
+	}
+
+	@Override
+	public int countCate(int category_seq) throws Exception {
+		return postDao.countCate(category_seq);
+	}
+
+	
+
 
 }

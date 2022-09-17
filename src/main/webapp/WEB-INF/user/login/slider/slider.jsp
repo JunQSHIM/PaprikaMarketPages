@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,17 +14,15 @@
 </head>
 <body>
 	<div class="productPage">
+	<c:if test="${param.category_seq == null }">
 		<div class="slider">
-			<div>
-				<img src="/myweb/login/slider/images/slider1.jpg">
-			</div>
-			<div>
-				<img src="/myweb/login/slider/images/slider2.jpg">
-			</div>
-			<div>
-				<img src="/myweb/login/slider/images/slider3.jpg">
-			</div>
+			<c:forEach items="${banner }" var="banner">
+				<div>
+					<img src="${banner.saved_file_name }">
+				</div>
+			</c:forEach>
 		</div>
+	</c:if>
 	</div>
 </body>
 </html>

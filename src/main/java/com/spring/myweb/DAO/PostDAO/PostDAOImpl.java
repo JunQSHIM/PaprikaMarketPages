@@ -11,6 +11,7 @@ import java.util.UUID;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,17 +39,17 @@ public class PostDAOImpl implements PostDAO {
 	private SqlSession session;
 
 	private AmazonS3 amazonS3;
-	final private String accessKey = "AKIAVHPIWTHZMPXQY7WW";
-	final private String secretKey = "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";
 	private Regions clientRegion = Regions.AP_NORTHEAST_2;
-	private String bucket = "paprikaproject";
+	
+	@Value("#{s3['cloud.aws.s3.bucket']}")
+	private String bucket;
 
-	private PostDAOImpl() {
-		createS3Client();
+	private PostDAOImpl(@Value("#{s3['cloud.aws.credentials.access-key']}")String accessKey, @Value("#{s3['cloud.aws.credentials.secret-key']}")String sercretKey) {
+		createS3Client(accessKey,sercretKey);
 	}
 
-	private void createS3Client() {
-		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
+	private void createS3Client(String accessKey, String sercretKey) {
+		AWSCredentials credentials = new BasicAWSCredentials(accessKey, sercretKey);
 		this.amazonS3 = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
 				.withRegion(clientRegion).build();
 
@@ -148,7 +149,7 @@ public class PostDAOImpl implements PostDAO {
 	// 이미지 다수 등록
 
 	@Override
-	public Map<String, String> uploadImg(List<MultipartFile> img) {
+	public Map<String, String> uploadImg(List<MultipartFile> img, String place) {
 
 		Map<String, String> fileNameList = new HashMap<>();
 
@@ -160,7 +161,7 @@ public class PostDAOImpl implements PostDAO {
 			objectMetadata.setContentType(file.getContentType());
 
 			try (InputStream inputStream = file.getInputStream()) {
-				amazonS3.putObject(new PutObjectRequest(bucket, fileName, inputStream, objectMetadata)
+				amazonS3.putObject(new PutObjectRequest(bucket, place+fileName, inputStream, objectMetadata)
 						.withCannedAcl(CannedAccessControlList.PublicRead));
 			} catch (IOException e) {
 				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
@@ -217,4 +218,21 @@ public class PostDAOImpl implements PostDAO {
 	public void likeupdate(LikeVO vo) {
 		session.update("userDB.likeUpdate", vo);
 	}
+
+	@Override
+	public List<PostVO> catePage(int displayPost, int postNum, int category_seq) throws Exception {
+		HashMap<String, Integer> data = new HashMap<String, Integer>();
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+		data.put("category_seq", category_seq);
+		return session.selectList("userDB.catePage", data);
+	}
+
+	@Override
+	public int countCate(int category_seq) throws Exception {
+		return session.selectOne("userDB.countCate",category_seq);
+	}
+
+
+
 }

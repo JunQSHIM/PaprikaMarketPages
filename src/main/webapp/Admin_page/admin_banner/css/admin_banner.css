@@ -304,3 +304,18 @@ element.style {
 .text-center {
     text-align: center;
 }
+.card-head{
+	display :flex;
+	flex-direction: row;
+	justify-content: space-between;
+    align-items: center;
+}
+.banner-title{
+	text-align: center;
+	padding-left:10px;
+	padding-top:10px;
+}
+.banner-content{
+	text-align: center;
+	padding-top:10px;
+}

@@ -6,30 +6,30 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.spring.myweb.DAO.SellBoardDAO.SellBoardDAO;
+import com.spring.myweb.DAO.UserboardDAO.UserBoardDAO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
-import com.spring.myweb.VO.SellboardVO.SellBoardVO;
+import com.spring.myweb.VO.UserBoardVO.UserBoardVO;
 
 @Service
-public class BoardServiceImpl implements BoardService {
+public class UserBoardServiceImpl implements UserBoardService {
 
 	@Inject
-	private SellBoardDAO boardDAO;
+	private UserBoardDAO boardDAO;
 
 	@Override
-	public List<SellBoardVO> boardList() {
+	public List<UserBoardVO> boardList() {
 		return boardDAO.boardList();
 	}
 
 	@Override
-	public int insertSell(SellBoardVO vo) {
-		return boardDAO.insertSell(vo);
+	public int insertBoard(UserBoardVO vo) {
+		return boardDAO.insertBoard(vo);
 
 	}
 
 	@Override
-	public SellBoardVO sellDetail(int prod_seq) {
-		return boardDAO.sellDetail(prod_seq);
+	public UserBoardVO boardDetail(int board_seq) {
+		return boardDAO.boardDetail(board_seq);
 	}
 
 	@Override
@@ -46,6 +46,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<CategoryVO> categoryList() {
 		return boardDAO.categoryList();
+	}
+
+	@Override
+	public int board_seq(int user_seq) {
+		return boardDAO.board_seq(user_seq);
 	}
 
 }

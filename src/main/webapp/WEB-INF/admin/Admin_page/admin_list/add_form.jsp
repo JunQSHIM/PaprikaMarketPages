@@ -111,10 +111,3 @@ $(document).ready(function(){
 		<!-- /.content -->
 </body>
 </html>
-
-
-
-
-
-
-

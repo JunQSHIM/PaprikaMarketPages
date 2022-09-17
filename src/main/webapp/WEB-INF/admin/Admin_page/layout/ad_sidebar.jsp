@@ -120,15 +120,9 @@
 				</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="/myweb/Admin_page/admin_banner/admin_banner.jsp" class="nav-link">
+							<a href="banner.mdo" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
 								<p>배너 이미지 변경</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="/myweb/Admin_page/pages/charts/flot.html" class="nav-link">
-									<i class="far fa-circle nav-icon"></i>
-									<p>로고 변경</p>
 							</a>
 						</li>
 						<li class="nav-item">

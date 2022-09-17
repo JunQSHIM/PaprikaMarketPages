@@ -25,9 +25,13 @@ public interface PostDAO {
 	public CategoryVO categoryName(int category_seq); //카테고리 이름
 	public int count() throws Exception; // 게시물 총 개수
 	public List<PostVO> listPage(int displayPost, int postNum) throws Exception; // 게시물 목록 + 페이징
+	
+	public int countCate(int category_seq) throws Exception;// 카테고리별 게시물 개수
+	public List<PostVO> catePage(int displayPost, int postNum, int category_seq) throws Exception; // 카테고리별 페이징
 	public void updatePost(PostVO vo);// 판매하기 수정하기
 	
-	public Map<String, String> uploadImg(List<MultipartFile> img);//이미지 다수 등록
+	
+	public Map<String, String> uploadImg(List<MultipartFile> img, String place);//이미지 다수 등록
 	public void insertPhoto(PhotoVO vo);//DB에 저장
 	public int post_seq(int user_seq);//최신 상품 등록 페이지
 	public void deleteImage(int post_seq);//사진 삭제
@@ -36,4 +40,7 @@ public interface PostDAO {
 	public int likeGetInfo(LikeVO vo); // 좋아요 하기
 	public void likeinsert(LikeVO vo);
 	public void likeupdate(LikeVO vo);
+	
+	
+	
 }

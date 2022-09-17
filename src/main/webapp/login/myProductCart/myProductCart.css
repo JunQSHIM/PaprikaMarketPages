@@ -105,6 +105,10 @@ a {
 	margin-left: 4px;
 }
 
+.digital_category:hover{
+	color:red;
+}
+
 .review_product {
 	flex: 1 1 0%;
 	-webkit-box-align: center;

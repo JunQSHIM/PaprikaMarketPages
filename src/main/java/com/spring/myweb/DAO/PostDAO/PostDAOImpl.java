@@ -29,6 +29,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
+import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 
@@ -129,8 +130,8 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
-	public int count() throws Exception {
-		return session.selectOne("userDB.count");
+	public int count(PageVO vo) throws Exception {
+		return session.selectOne("userDB.count", vo);
 	}
 
 	@Override

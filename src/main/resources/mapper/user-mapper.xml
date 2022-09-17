@@ -66,9 +66,9 @@
 		insert into post(user_seq,
 		nickname, post_title,post_content,price,location1, location2,
 		category_seq,
-		upload_date, pay_check, prod_status)
+		upload_date, create_date, pay_check, prod_status)
 		values(#{user_seq},#{nickname},#{post_title},
-		#{post_content}, #{price},(select location1 from user where user_seq = #{user_seq}),(select location2 from user where user_seq = #{user_seq}),#{category_seq},now(),#{pay_check}, #{prod_status});
+		#{post_content}, #{price},(select location1 from user where user_seq = #{user_seq}),(select location2 from user where user_seq = #{user_seq}),#{category_seq},now(),now(),#{pay_check}, #{prod_status});
 	</select>
 	
 	<!-- 판매상품 삭제하기 -->
@@ -80,8 +80,8 @@
 	<!-- 판매상품 수정하기 -->
 	<select id="updatePost" resultType="PostVO">
 		update post set post_title =
-		#{post_title}, price = #{price}, post_content=#{post_content}, prod_status = #{prod_status}, 
-		upload_date = now() where post_seq = #{post_seq};
+		#{post_title}, price = #{price}, post_content=#{post_content}, prod_status = #{prod_status}, upload_date = now()
+		create_date = now() where post_seq = #{post_seq};
 	</select>
 
 	<!-- 상품 등록 상세 보기 -->
@@ -183,20 +183,32 @@
 		category_seq = #{category_seq};
 	</select>
 
-	<!-- 게시물 총 개수 -->
-	<select id="count" resultType="int">
-		select count(post_seq) from post;
-	</select>
 
 	<!-- 카테고리별 게시물 수 -->
 	<select id="countCate" resultType="int">
 		select count(post_seq) from post where category_seq = #{category_seq};
 	</select>
 
+	<!-- 게시물 총 개수 -->
+	<select id="count" resultType="int">
+		select count(*) from post
+        
+        <if test="keyword != null">
+            where post_title like concat('%',#{keyword},'%')
+        </if>
+	</select>
+	
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="listPage" parameterType="hashMap"
 		resultType="PostVO">
-		select * from post order by post_seq desc limit #{displayPost}, #{postNum}
+		select * from (
+                select post_seq, post_title, price, upload_date, pay_check, location1  
+                from post
+                <if test="keyword != null">
+           			 where ${post_title} like concat('%',#{keyword},'%')
+       			</if>
+                order by post_seq desc) as T1
+        		limit #{displayPost},#{postNum}
 	</select>
 	
 	<!-- 카테고리 목록 + 페이징 -->

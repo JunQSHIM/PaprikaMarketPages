@@ -44,24 +44,29 @@ public class PostController {
 	private AdminService adminService;
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String postList(Model model, PostVO vo, PageVO pvo) throws Exception {
-		if (pvo.getNum() == 0) {
-			pvo.setNum(1);
+	public String postList(Model model, PageVO page) throws Exception {
+		if (page.getNum() == 0) {
+			page.setNum(1);
 		}
 
-		int num = pvo.getNum();
-		pvo.setCount(postService.count());
+		int num = page.getNum();
+		
 		List<Integer> post_seq = new ArrayList<Integer>();
-		List<PostVO> list = postService.listPage(pvo.getDisplayPost(), pvo.getPostNum());
+		
+		
+		List<PostVO> list = postService.listPage(page.getDisplayPost(), page.getPostNum());
 		for (PostVO post : list) {
 			post_seq.add(post.getPost_seq());
 		}
+		
 		List<String> photoNames = new ArrayList<String>();
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
 		}
 		
-		model.addAttribute("page", pvo);
+		page.setCount(postService.count(page));
+		
+		model.addAttribute("page", page);
 		model.addAttribute("select", num);
 		model.addAttribute("list", list);
 		model.addAttribute("photo", photoNames);
@@ -251,7 +256,7 @@ public class PostController {
 	// 내상품 보기
 	@RequestMapping(value = "/myProductCart.do", method = RequestMethod.GET)
 	public String myList(Model model, PostVO vo, PageVO pvo, CategoryVO cvo) throws Exception {
-		int total = postService.count();
+		int total = postService.count(pvo);
 		// 페이징
 		if (pvo.getNum() == 0) {
 			pvo.setNum(1);
@@ -260,7 +265,7 @@ public class PostController {
 		
 		
 		int num = pvo.getNum();
-		pvo.setCount(postService.count());
+		pvo.setCount(postService.count(pvo));
 		List<Integer> post_seq = new ArrayList<Integer>();
 		List<PostVO> list = postService.listPage(pvo.getDisplayPost(), pvo.getPostNum());
 		for (PostVO post : list) {

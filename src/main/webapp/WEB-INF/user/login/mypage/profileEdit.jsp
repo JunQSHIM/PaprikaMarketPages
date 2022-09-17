@@ -27,7 +27,7 @@ function toMypage() {
 	</header>
 	
 	<article class="container_12">
-		<jsp:include page="/login/main/category.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/category.jsp"></jsp:include>
 	</article>
 	<article class="container_12">
 

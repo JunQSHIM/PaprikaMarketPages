@@ -15,13 +15,13 @@
 	</header>
 
 	<article class="container_12">
-		<jsp:include page="/login/main/category.jsp"></jsp:include>
-		<jsp:include page="/login/review_product/review_product.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/category.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/review_product/review_product.jsp"></jsp:include>
 		
 	</article>
 	
 	<footer class="container_12">
-		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
 </html>

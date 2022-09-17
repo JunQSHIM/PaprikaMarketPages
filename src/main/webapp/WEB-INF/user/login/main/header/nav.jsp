@@ -13,26 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <title>nav</title>
-<script type="text/javascript">
-function sangjum_chk() {
-	let id = "${user.id}"
-	if (id == "") {
-		alert("상점 페이지는 로그인 후 사용하실 수 있습니다.");
-		location.href = "loginForm.do";
-	} else {
-		location.href = "myProductCart.do"
-	}
-}
-function talk_chk() {
-	let id = "${user.id}"
-	if (id == "") {
-		alert("채팅 기능은 로그인 후 사용하실 수 있습니다.");
-		location.href = "login.do";
-	} else {
-		location.href = "create.do"
-	}
-}
-</script>
+
 </head>
 <body>
 	<div class="grid_12 nav">
@@ -49,14 +30,13 @@ function talk_chk() {
 					<img src="/myweb/login/images/dklogo.png" width="120%"
 						onclick="location.href='main.do'">
 				</div>
-
+			
 
 			</div>
 			<div class="grid_6 search">
 				<div class="search_text">
 					<input type="text" placeholder="상품명, 지역명, @상점명 입력"
-						onkeypress="if(event.keyCode == 13){search()}"><a
-						onclick="search()">검색</a>
+						name="keyword" value="${page.keyword }"><a type="button">검색</a>
 				</div>
 			</div>
 			<div class="row grid_4 bts">
@@ -98,6 +78,42 @@ function talk_chk() {
 	<div class="grid_12">
 		<hr id="mainLine">
 	</div>
+	
+	<form id="moveForm" method="get">
+				<input type="hidden" name="keyword" value="${page.keyword }">
+				<input type="hidden" name="num" value="${page.num }">
+	</form>
+	<script type="text/javascript">
+	$(".search_text a").on("click", function(e){
+        e.preventDefault();
+        let val = $("input[name='keyword']").val();
+        let moveForm =$("#moveForm");
+        console.log(val);
+        moveForm.find("input[name='keyword']").val(val);
+        console.log(val);
+        moveForm.find("input[name='num']").val(1);
+        moveForm.submit();
+    });
+	
+	function sangjum_chk() {
+		let id = "${user.id}"
+		if (id == "") {
+			alert("상점 페이지는 로그인 후 사용하실 수 있습니다.");
+			location.href = "loginForm.do";
+		} else {
+			location.href = "myProductCart.do"
+		}
+	}
+	function talk_chk() {
+		let id = "${user.id}"
+		if (id == "") {
+			alert("채팅 기능은 로그인 후 사용하실 수 있습니다.");
+			location.href = "login.do";
+		} else {
+			location.href = "create.do"
+		}
+	}
+	</script>
 
 </body>
 </html>

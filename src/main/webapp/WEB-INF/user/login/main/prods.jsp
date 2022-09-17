@@ -10,20 +10,91 @@
 				홈 > 
 				<select onchange="if(this.value) location.href=(this.value);" name="category_seq">
 					<option selected disabled>카테고리선택&nbsp;&nbsp;▼</option>
+					
+					<c:if test="${param.category_seq == 1 }">
+					<option value="category.do?category_seq=1" selected>디지털기기</option>
+					</c:if>
+					<c:if test="${param.category_seq != 1 }">
 					<option value="category.do?category_seq=1">디지털기기</option>
+					</c:if>
+					<c:if test="${param.category_seq == 2 }">
+					<option value="category.do?category_seq=2" selected>가구/인테리어</option>
+					</c:if>
+					<c:if test="${param.category_seq != 2 }">
 					<option value="category.do?category_seq=2">가구/인테리어</option>
-					<option value="category.do?category_seq=3">유아동/유아도서</option>
+					</c:if>
+					<c:if test="${param.category_seq == 3 }">
+					<option value="category.do?category_seq=3" selected>유아동/유아도서</option>
+					</c:if>
+					<c:if test="${param.category_seq != 3 }">
+					<option value="category.do?category_seq=3" >유아동/유아도서</option>
+					</c:if>
+					<c:if test="${param.category_seq == 4 }">
+					<option value="category.do?category_seq=4" selected>생활/가공식품</option>
+					</c:if>
+					<c:if test="${param.category_seq != 4 }">
 					<option value="category.do?category_seq=4">생활/가공식품</option>
+					</c:if>
+					<c:if test="${param.category_seq == 5 }">
+					<option value="category.do?category_seq=5" selected>스포츠/레저</option>
+					</c:if>
+					<c:if test="${param.category_seq != 5 }">
 					<option value="category.do?category_seq=5">스포츠/레저</option>
+					</c:if>
+					<c:if test="${param.category_seq == 6 }">
+					<option value="category.do?category_seq=6" selected>여성잡화</option>
+					</c:if>
+					<c:if test="${param.category_seq != 6 }">
 					<option value="category.do?category_seq=6">여성잡화</option>
+					</c:if>
+					<c:if test="${param.category_seq == 7 }">
+					<option value="category.do?category_seq=7" selected>여성의류</option>
+					</c:if>
+					<c:if test="${param.category_seq != 7 }">
 					<option value="category.do?category_seq=7">여성의류</option>
+					</c:if>
+					<c:if test="${param.category_seq == 8 }">
+					<option value="category.do?category_seq=8" selected>남성패션/잡화</option>
+					</c:if>
+					<c:if test="${param.category_seq != 8 }">
 					<option value="category.do?category_seq=8">남성패션/잡화</option>
+					</c:if>
+					<c:if test="${param.category_seq == 9 }">
+					<option value="category.do?category_seq=9" selected>게임/취미</option>
+					</c:if>
+					<c:if test="${param.category_seq != 9 }">
 					<option value="category.do?category_seq=9">게임/취미</option>
+					</c:if>
+					<c:if test="${param.category_seq == 10 }">
+					<option value="category.do?category_seq=10" selected>뷰티/미용</option>
+					</c:if>
+					<c:if test="${param.category_seq != 10 }">
 					<option value="category.do?category_seq=10">뷰티/미용</option>
+					</c:if>
+					<c:if test="${param.category_seq == 11}">
+					<option value="category.do?category_seq=11" selected>반려동물용품</option>
+					</c:if>
+					<c:if test="${param.category_seq != 11}">
 					<option value="category.do?category_seq=11">반려동물용품</option>
+					</c:if>
+					<c:if test="${param.category_seq == 12}">
+					<option value="category.do?category_seq=12" selected>도서/티켓/음반</option>
+					</c:if>
+					<c:if test="${param.category_seq != 12}">
 					<option value="category.do?category_seq=12">도서/티켓/음반</option>
+					</c:if>
+					<c:if test="${param.category_seq == 13 }">
+					<option value="category.do?category_seq=13" selected>기타 중고물품</option>
+					</c:if>
+					<c:if test="${param.category_seq != 13 }">
 					<option value="category.do?category_seq=13">기타 중고물품</option>
+					</c:if>
+					<c:if test="${param.category_seq == 14 }">
+					<option value="category.do?category_seq=14" selected>삽니다</option>
+					</c:if>
+					<c:if test="${param.category_seq != 14 }">
 					<option value="category.do?category_seq=14">삽니다</option>
+					</c:if>
 				</select>
 			</div>
 			</c:if>
@@ -125,9 +196,11 @@
 						</c:forEach>
 						</c:when>
 						</c:choose>
+						
 						<c:if test="${param.category_seq == null }">
 						<c:forEach items="${list }" var="post" varStatus="status">
 						<div class="sell_product_board">
+						
 							<a class="sell_board" href="postDetail.do?post_seq=${post.post_seq}">
 								<div class="sell_image">
 										<img src="${photo[status.index] }" width="194" height="194">

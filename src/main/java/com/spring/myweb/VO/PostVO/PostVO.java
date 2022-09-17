@@ -17,6 +17,7 @@ public class PostVO {
 	private int cnt;
 	private int prod_status;
 	private String upload_date;
+	private Date create_date;
 	private int sell_status;
 	private int status;
 	private int pay_check;
@@ -102,6 +103,13 @@ public class PostVO {
 	}
 	public void setUpload_date(Date upload_date) {
 		this.upload_date = Time.calculateTime(upload_date);
+	}
+	
+	public Date getCreate_date() {
+		return create_date;
+	}
+	public void setCreate_date(Date create_date) {
+		this.create_date = create_date;
 	}
 	public int getSell_status() {
 		return sell_status;

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.myweb.DAO.PostDAO.PostDAO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
+import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 
@@ -73,8 +74,8 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public int count() throws Exception {
-		return postDao.count();
+	public int count(PageVO vo) throws Exception {
+		return postDao.count(vo);
 	}
 
 	@Override

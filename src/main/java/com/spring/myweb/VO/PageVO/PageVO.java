@@ -27,6 +27,15 @@ public class PageVO {
 	// 표시되는 페이지 번호 중 첫번째 번호
 	private int startPageNum;
 	
+	// 검색하기 
+	private String keyword;
+	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	// 이전 및 다음 
 	private boolean prev;
 	private boolean next;
@@ -95,5 +104,11 @@ public class PageVO {
 		 displayPost = (num - 1) * postNum;
 		 
 		}
+	@Override
+	public String toString() {
+		return "PageVO [num=" + num + ", count=" + count + ", postNum=" + postNum + ", pageNum=" + pageNum
+				+ ", displayPost=" + displayPost + ", pageNumCnt=" + pageNumCnt + ", endPageNum=" + endPageNum
+				+ ", startPageNum=" + startPageNum + ", keyword=" + keyword + ", prev=" + prev + ", next=" + next + "]";
+	}
 	
 }

@@ -21,7 +21,7 @@
 	</article>
 	
 	<footer class="container_12">
-		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
 </html>

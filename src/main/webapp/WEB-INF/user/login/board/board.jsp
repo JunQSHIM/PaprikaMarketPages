@@ -59,7 +59,7 @@
 		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
 	</header>
 	<article class="container_12">
-		<jsp:include page="/login/main/category.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/category.jsp"></jsp:include>
 	</article>
 	<article class="container_12">
 		<div id="board_list">
@@ -287,7 +287,7 @@
 	</div>
 	<div style="margin-bottom:40px;"></div>
 	<footer class="container_12">
-		<jsp:include page="/login/main/footer/footer1.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
 </html>

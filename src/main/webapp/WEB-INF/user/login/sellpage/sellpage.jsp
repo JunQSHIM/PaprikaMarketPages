@@ -69,7 +69,7 @@
 						<div class="product-name" name="post_title">${plist.post_title }</div>
 						<div class="price" name="price"><fmt:formatNumber value="${plist.price }" pattern="###,###,###"/></div>
 						<div class="jjim">♥</div>
-						<div class="date" name="upload_date">${plist.upload_date }</div>
+						<div class="date" name="create_date"><fmt:formatDate value="${plist.create_date }" pattern="yyyy-MM-dd HH:mm:ss"/> </div>
 						<div class="control">
 							<button onclick="location.href='updatePost.do?post_seq=${plist.post_seq }'">수정</button>
 							<button onclick="location.href='postDelete.do?post_seq=${plist.post_seq }',removeCheck()" >삭제</button>
@@ -77,6 +77,7 @@
 						</div>
 					</div>
 						</c:forEach>
+						
 				</div>
 			</div>
 			<div id="sell-list">

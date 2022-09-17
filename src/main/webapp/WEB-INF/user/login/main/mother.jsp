@@ -27,7 +27,6 @@
 		<jsp:include page="/WEB-INF/user/login/slider/slider.jsp"></jsp:include>
 	</article>
 	<article class="container_12">
-
 		<%@include file="/WEB-INF/user/login/main/prods.jsp"%>
 	</article>
 

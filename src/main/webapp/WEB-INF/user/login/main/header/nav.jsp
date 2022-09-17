@@ -61,7 +61,7 @@
 					</a>
 				</div>
 				<div class="nav_btn">
-					<a class="chat" onclick="talk_chk()">
+					<a class="chat" onclick="location.href='boardlist.do'">
 						<div class="btn_img">
 							<img src="/myweb/login/images/chatting.png" width="23"
 								height="24">

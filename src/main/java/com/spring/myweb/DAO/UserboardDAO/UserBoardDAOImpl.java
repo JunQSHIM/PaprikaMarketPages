@@ -1,4 +1,4 @@
-package com.spring.myweb.DAO.SellBoardDAO;
+package com.spring.myweb.DAO.UserboardDAO;
 
 import java.util.List;
 
@@ -6,32 +6,33 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
-import com.spring.myweb.VO.SellboardVO.SellBoardVO;
+import com.spring.myweb.VO.UserBoardVO.UserBoardVO;
 
 @Repository
-public class SellBoardDAOImpl implements SellBoardDAO {
+public class UserBoardDAOImpl implements UserBoardDAO {
 	
 	@Inject
 	private SqlSession session;
 
 	@Override
-	public List<SellBoardVO> boardList() {
-		List<SellBoardVO> sellList=session.selectList("userDB.boardList");
+	public List<UserBoardVO> boardList() {
+		List<UserBoardVO> sellList=session.selectList("userDB.boardList");
 		return sellList;
 	}
 
 	@Override
-	public int insertSell(SellBoardVO vo) {
+	public int insertBoard(UserBoardVO vo) {
 		int success = 0;
-		session.insert("userDB.insertSell", vo);
+		session.insert("userDB.insertboard", vo);
 		return success;
 	}
 
 	@Override
-	public SellBoardVO sellDetail(int prod_seq) {
-		SellBoardVO detail = session.selectOne("userDB.sellDetail", prod_seq);
+	public UserBoardVO boardDetail(int board_seq) {
+		UserBoardVO detail = session.selectOne("userDB.boardDetail", board_seq);
 		return detail;
 	}
 
@@ -50,6 +51,11 @@ public class SellBoardDAOImpl implements SellBoardDAO {
 	public List<CategoryVO> categoryList() {
 		List<CategoryVO> cList = session.selectList("userDB.categoryList");
 		return cList;
+	}
+
+	@Override
+	public int board_seq(int user_seq) {
+		return session.selectOne("userDB.selectBoardNew", user_seq);
 	}
 
 }

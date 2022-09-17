@@ -40,13 +40,13 @@ $(document).ready(function(){
 						$('#infoData').append("<td><select name='role'><option value='Super Admin'>SuperAdmin</option><option value='Administrator'>Administrator</option><option value='Editor'>Editor</option></select></td></tr>")	
 					}
 				}
-			}
+			},
+			error:function(request, status, error) {
+		        alert("status : " + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+	       }
 		});
 	});
 });
-var token = $("meta[name='_csrf']").attr("content");
-var header = $("meta[name='_csrf_header']").attr("content");
-$(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, token); });
 </script>
 </head>
 <body>
@@ -111,10 +111,3 @@ $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, to
 		<!-- /.content -->
 </body>
 </html>
-
-
-
-
-
-
-

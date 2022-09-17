@@ -14,7 +14,6 @@
 	href="/myweb/Admin_page/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
  <link rel="stylesheet" type="text/css" href="/myweb/Admin_page/admin_board/admin_board.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="/myweb/Admin_page/admin_board/admin_board.js"></script>
 
 </head>
@@ -117,28 +116,5 @@
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
- 
-<script>
-		$(function() {
-			$("#example1").DataTable(
-					{
-						"responsive" : true,
-						"lengthChange" : false,
-						"autoWidth" : false,
-						"buttons" : [ "copy", "csv", "excel", "pdf", "print",
-								"colvis" ]
-					}).buttons().container().appendTo(
-					'#example1_wrapper .col-md-6:eq(0)');
-			$('#example2').DataTable({
-				"paging" : true,
-				"lengthChange" : false,
-				"searching" : false,
-				"ordering" : true,
-				"info" : true,
-				"autoWidth" : false,
-				"responsive" : true,
-			});
-		});
-	</script>
 </body>
 </html>

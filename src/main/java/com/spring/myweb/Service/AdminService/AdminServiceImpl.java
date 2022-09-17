@@ -93,7 +93,6 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public List<QnaVO> selectQnaCate() {
 		return adminDAO.selectQnaCate();
 	}

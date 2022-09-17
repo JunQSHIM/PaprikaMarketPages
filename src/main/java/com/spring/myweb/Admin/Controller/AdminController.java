@@ -1,14 +1,11 @@
 package com.spring.myweb.Admin.Controller;
 
-<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.List;
-=======
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
->>>>>>> 1a1100c0c92a2945e1990a99839d8724d609b0fd
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -124,7 +124,6 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public List<QnaVO> selectQnaCate() {
 		List<QnaVO> list = session.selectList("adminDB.selectQnaCategory");
 		return list;

@@ -28,7 +28,6 @@ public interface AdminService {
 	public List<UserVO> adminList();
 	public int giveAdmin(String id);
 	public int deleteAdmin(String id);
-<<<<<<< HEAD
 	public List<QnaVO> selectQnaCate(); 
 	public List<QnaQuestionsVO> selectQuestions(); 
 	public List<QnaAnswersVO> selectAnswers(); 

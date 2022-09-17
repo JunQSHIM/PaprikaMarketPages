@@ -1,9 +1,7 @@
 package com.spring.myweb.Admin.Controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +22,9 @@ import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 import com.spring.myweb.VO.AdminVO.PayVO.PayVO;
+import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
+import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
+import com.spring.myweb.VO.QnaVO.QnaVO;
 import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
@@ -200,8 +201,188 @@ public class AdminController {
 	
 	//qna 
 	@RequestMapping(value="qna.mdo")
-	public String qna() {
+	public String qna(Model model) {
+		List<QnaVO> qnaList = adminService.selectQnaCate();
+		List<QnaQuestionsVO> questionsList = adminService.selectQuestions();
+		List<QnaAnswersVO> answersList = adminService.selectAnswers();
+
+		model.addAttribute("qnaList",qnaList);
+		model.addAttribute("qList",questionsList);
+		model.addAttribute("aList",answersList);
+
 		return "Admin_page/admin_list/qna";
+	}
+	
+	//qna 추가
+	@RequestMapping(value="addQna.mdo")
+	public String addQna(Model model) {
+		List<QnaVO> qnaList = adminService.selectQnaCate();
+		List<QnaQuestionsVO> questionsList = adminService.selectQuestions();
+		List<QnaAnswersVO> answersList = adminService.selectAnswers();
+
+		model.addAttribute("qnaList",qnaList);
+		model.addAttribute("qList",questionsList);
+		model.addAttribute("aList",answersList);
+		return "Admin_page/admin_list/addQna";
+	}
+	
+	@RequestMapping(value="catePopUp.mdo")
+	public String catePopUp() {
+		return "Admin_page/admin_list/catePopUp";
+	}
+	
+	@RequestMapping(value="catePopUp.mdo", method=RequestMethod.POST)
+	public String addCate(String qna_title) {
+		System.out.println(qna_title);
+		int result = adminService.insertQnaCate(qna_title);
+		if(result == 1) {
+			System.out.println("Succ");
+		}
+		return "Admin_page/admin_list/catePopUpConfirm";
+	}
+	@RequestMapping(value="qPopUp.mdo")
+	public String qPopUp(Model model) {
+		List<QnaVO> qnaList = adminService.selectQnaCate();
+		model.addAttribute("qnaList",qnaList);
+		return "Admin_page/admin_list/qPopUp";
+	}
+	
+	@RequestMapping(value="qPopUp.mdo", method=RequestMethod.POST)
+	public String qPopUpConfirm(String qna_title, String question, String[] answer,HashMap<String,String> qnas) {
+		System.out.println(qna_title);
+		System.out.println(question);
+		qnas.put("qna_title", qna_title);
+		qnas.put("question", question);
+		int result1 = 0;
+		if(adminService.checkQ(question)<1) {
+			result1 = adminService.insertQ(qnas);
+			if(result1 == 1) {
+				System.out.println("Succ");
+			}
+		}
+		for(int i=0; i<answer.length; i++) {
+			qnas.put("answer", answer[i]);
+			int result2 = 0;
+			result2 = adminService.insertA(qnas);
+			if(result2==1) {
+				System.out.println("Succ");
+			}
+			qnas.remove("answer",answer[i]);
+		}
+		return "Admin_page/admin_list/qPopUpConfirm";
+	}
+	
+	//Qna 삭제 및 수정 
+	@RequestMapping(value="updateQna.mdo")
+	public String updateQna(Model model) {
+		List<QnaVO> qnaList = adminService.selectQnaCate();
+		List<QnaQuestionsVO> questionsList = adminService.selectQuestions();
+		List<QnaAnswersVO> answersList = adminService.selectAnswers();
+
+		model.addAttribute("qnaList",qnaList);
+		model.addAttribute("qList",questionsList);
+		model.addAttribute("aList",answersList);
+		return "Admin_page/admin_list/editQna";
+	}
+	
+	@RequestMapping(value="updateCatePopUp.mdo")
+	public String catePopUp(Model model) {
+		List<QnaVO> qnaList = adminService.selectQnaCate();
+		model.addAttribute("qnaList",qnaList);
+		return "Admin_page/admin_list/updateCatePopUp";
+	}
+	
+	@RequestMapping(value="updateCatePopUp.mdo", method=RequestMethod.POST)
+	public String updateCatePopUp(Model model, QnaVO vo, String qna_title) {
+		System.out.println(qna_title);
+		vo = adminService.selectCateStr(qna_title);
+		model.addAttribute("qnaCate",vo);
+		return "Admin_page/admin_list/updateCatePopUp";
+	}
+	
+	@RequestMapping(value="updateCatePopUpConfirm.mdo")
+	public String updateCatePopUpConfirm(Model model, int qna_seq, QnaVO vo, String qna_title, HashMap<String, Object> qnas) {
+		qnas.put("qna_seq",vo.getQna_seq());
+		qnas.put("qna_title", qna_title);
+		if(qna_title.equals("")){
+			adminService.deleteQna(qnas);
+			return "Admin_page/admin_list/updateCatePopUpConfirm";
+		}
+		vo = adminService.selectCate(qna_seq);
+		System.out.println(vo.toString());
+		int result1 = adminService.updateQnaCateofQ(qnas);
+		int result2 = adminService.updateQnaCate(qnas);
+		if(result1==1 && result2==1) {
+			System.out.println("Succ");
+		}else {
+			System.out.println("Fail");
+		}
+		return "Admin_page/admin_list/updateCatePopUpConfirm";
+	}
+	
+	//QnA 수정
+	@RequestMapping(value="updateQPopUp.mdo")
+	public String updateQPopUp(Model model) {
+		List<QnaVO> qnaList = adminService.selectQnaCate();
+		List<QnaQuestionsVO> questionsList = adminService.selectQuestions();
+		List<QnaAnswersVO> answersList = adminService.selectAnswers();
+
+		model.addAttribute("qnaList",qnaList);
+		model.addAttribute("qList",questionsList);
+		model.addAttribute("aList",answersList);
+		return "Admin_page/admin_list/updateQPopUp";
+	}
+	
+	@RequestMapping(value="qList.mdo")
+	public @ResponseBody List<QnaQuestionsVO> qList(String qna_title) throws Exception{
+		List<QnaQuestionsVO> qList = adminService.bringQ(qna_title);
+		return qList;
+	}
+	
+	@RequestMapping(value="aList.mdo")
+	public @ResponseBody List<QnaAnswersVO> aList(String question) throws Exception{
+		System.out.println(question);
+		List<QnaAnswersVO> aList = adminService.bringA(question);
+		return aList;
+	}
+	
+	@RequestMapping(value="updateQPopUpConfirm.mdo")
+	public String updateQConfirm(String qna_title, String question, String answer, Model model) {
+		System.out.println(question);
+		System.out.println(answer);
+		model.addAttribute("question",question);
+		model.addAttribute("answer",answer);
+		QnaQuestionsVO qVO = adminService.selectQStr(question);
+		QnaAnswersVO aVO = adminService.selectAStr(answer);
+		model.addAttribute("q_seq",qVO.getQ_seq());
+		model.addAttribute("a_seq",aVO.getA_seq());
+		return "Admin_page/admin_list/updateQPopUpConfirm";
+	}
+	
+	@RequestMapping(value="updateQPopUpConfirmed.mdo")
+	public String updateQConfirmed(HashMap<String, Object> qnas, int q_seq, int a_seq, String question, String answer, Model model) {
+		qnas.put("q_seq", q_seq);
+		qnas.put("question", question);
+		qnas.put("a_seq", a_seq);
+		qnas.put("answer", answer);
+		if(question.equals("")) {
+			adminService.deleteQ(qnas);
+			if(answer.equals("")) {
+				adminService.deleteA(qnas);
+			}
+			return "Admin_page/admin_list/updateQPopUpConfirmed";
+		}
+		if(answer.equals("")) {
+			adminService.deleteA(qnas);
+			return "Admin_page/admin_list/updateQPopUpConfirmed";
+		}
+		int result1 = adminService.updateQofA(qnas);
+		int result2 = adminService.updateA(qnas);
+		int result3 = adminService.updateQ(qnas);
+		if(result1 == 1 && result2 == 1 && result3 == 1) {
+			System.out.println("SUCC");
+		}
+		return "Admin_page/admin_list/updateQPopUpConfirmed";
 	}
 	
 	//pay

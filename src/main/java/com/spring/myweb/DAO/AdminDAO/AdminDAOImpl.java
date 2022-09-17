@@ -1,5 +1,6 @@
 package com.spring.myweb.DAO.AdminDAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,6 +13,9 @@ import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
+import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
+import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
+import com.spring.myweb.VO.QnaVO.QnaVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Repository
@@ -90,6 +94,152 @@ public class AdminDAOImpl implements AdminDAO {
 		int result = session.update("adminDB.deleteAdmin",id);
 		return result;
 	}
+
+	@Override
+	public List<QnaVO> selectQnaCate() {
+		List<QnaVO> list = session.selectList("adminDB.selectQnaCategory");
+		return list;
+	}
+
+	@Override
+	public List<QnaQuestionsVO> selectQuestions() {
+		List<QnaQuestionsVO> list = session.selectList("adminDB.selectQuestions");
+		return list;
+	}
+
+	@Override
+	public List<QnaAnswersVO> selectAnswers() {
+		List<QnaAnswersVO> list = session.selectList("adminDB.selectAnswers");
+		return list;
+	}
+
+	@Override
+	public int insertQnaCate(String qna_title) {
+		int result = 0;
+		result = session.insert("adminDB.addQnaCate",qna_title);
+		return result;
+	}
+
+	@Override
+	public int insertQ(HashMap<String, String> qnas) {
+		int result = 0;
+		result = session.insert("adminDB.addQ",qnas);
+		return result;
+	}
+
+	@Override
+	public int insertA(HashMap<String, String> qnas) {
+		int result = 0;
+		result = session.insert("adminDB.addA",qnas);
+		return result;
+	}
+
+	@Override
+	public int updateQnaCate(HashMap<String, Object> qnas) {
+		int result = 0;
+		result = session.update("adminDB.updateQnaCate",qnas);
+		return result;
+	}
+
+	@Override
+	public int updateQ(HashMap<String, Object> qnas) {
+		int result = 0;
+		result = session.update("adminDB.updateQ",qnas);
+		return result;
+	}
+
+	@Override
+	public int updateA(HashMap<String, Object> qnas) {
+		int result = 0;
+		result = session.update("adminDB.updateA",qnas);
+		return result;
+	}
+
+	@Override
+	public QnaVO selectCateStr(String qna_title) {
+		QnaVO vo = session.selectOne("adminDB.selectCateStr",qna_title);
+		return vo;
+	}
+
+	@Override
+	public QnaQuestionsVO selectQStr(String question) {
+		QnaQuestionsVO vo = session.selectOne("adminDB.selectQStr",question);
+		return vo;
+	}
+
+	@Override
+	public QnaAnswersVO selectAStr(String answer) {
+		QnaAnswersVO vo = session.selectOne("adminDB.selectAStr",answer);
+		return vo;
+	}
+	
+	@Override
+	public QnaVO selectCate(int qna_seq) {
+		QnaVO vo = session.selectOne("adminDB.selectCate",qna_seq);
+		return vo;
+	}
+
+	@Override
+	public QnaQuestionsVO selectQ(int q_seq) {
+		QnaQuestionsVO vo = session.selectOne("adminDB.selectQ",q_seq);
+		return vo;
+	}
+
+	@Override
+	public QnaAnswersVO selectA(int a_seq) {
+		QnaAnswersVO vo = session.selectOne("adminDB.selectA",a_seq);
+		return vo;
+	}
+	
+
+	@Override
+	public List<QnaQuestionsVO> bringQ(String qna_title) {
+		List<QnaQuestionsVO> qlist = session.selectList("adminDB.bringQ",qna_title);
+		return qlist;
+	}
+
+	@Override
+	public List<QnaAnswersVO> bringA(String question) {
+		List<QnaAnswersVO> alist = session.selectList("adminDB.bringA",question);
+		return alist;
+	}
+
+	@Override
+	public int updateQofA(HashMap<String, Object> qnas) {
+		int result = 0;
+		result = session.update("adminDB.updateQofA",qnas);
+		return result;
+	}
+
+	@Override
+	public int updateQnaCateofQ(HashMap<String, Object> qnas) {
+		int result = 0;
+		result = session.update("adminDB.updateQnaCateofQ",qnas);
+		return result;
+	}
+
+	@Override
+	public void deleteQna(HashMap<String, Object> qnas) {
+		session.delete("adminDB.deleteQna",qnas);
+	}
+
+	@Override
+	public void deleteQ(HashMap<String, Object> qnas) {
+		session.delete("adminDB.deleteQ",qnas);
+	}
+
+	@Override
+	public void deleteA(HashMap<String, Object> qnas) {
+		session.delete("adminDB.deleteA",qnas);
+	}
+
+	@Override
+	public int checkQ(String question) {
+		int result = 0;
+		result = session.selectOne("adminDB.checkQ",question);
+		return result;
+	}
+
 
 	
 

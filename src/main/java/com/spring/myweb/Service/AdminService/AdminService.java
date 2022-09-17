@@ -1,5 +1,6 @@
 package com.spring.myweb.Service.AdminService;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.spring.myweb.VO.AdminVO.BoardSingoVO;
@@ -7,6 +8,9 @@ import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
+import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
+import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
+import com.spring.myweb.VO.QnaVO.QnaVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 
@@ -23,4 +27,27 @@ public interface AdminService {
 	public List<UserVO> adminList();
 	public int giveAdmin(String id);
 	public int deleteAdmin(String id);
+	public List<QnaVO> selectQnaCate(); 
+	public List<QnaQuestionsVO> selectQuestions(); 
+	public List<QnaAnswersVO> selectAnswers(); 
+	public int insertQnaCate(String qna_title); //Qna 카테고리추가
+	public int insertQ(HashMap<String, String> qnas); //Qna Question 추가
+	public int insertA(HashMap<String, String> qnas); //Qna Answer 추가
+	public int updateQnaCate(HashMap<String, Object> qnas); //Qna 카테고리 업데이트
+	public int updateQ(HashMap<String, Object> qnas); //Qna Q 업데이트
+	public int updateA(HashMap<String, Object> qnas); //Qna A 업데이트
+	public QnaVO selectCateStr(String qna_title); //Qna Cate seq불러오기
+	public QnaQuestionsVO selectQStr(String question); //Question_seq 불러오기
+	public QnaAnswersVO selectAStr(String answer); //Answer_seq 불러오기
+	public QnaVO selectCate(int qna_seq); //Qna Cate seq불러오기
+	public QnaQuestionsVO selectQ(int q_seq); //Question_seq 불러오기
+	public QnaAnswersVO selectA(int a_seq); //Answer_seq 불러오기
+	public List<QnaQuestionsVO> bringQ(String qna_title);
+	public List<QnaAnswersVO> bringA(String question);
+	public int updateQofA(HashMap<String, Object> qnas);
+	public int updateQnaCateofQ(HashMap<String, Object> qnas); //변경될 카테고리명으로 질문의 카테고리명들 수정
+	public void deleteQna(HashMap<String, Object> qnas); //qna 삭제
+	public void deleteQ(HashMap<String, Object> qnas); //q 삭제
+	public void deleteA(HashMap<String, Object> qnas); //a 삭제
+	public int checkQ(String question);
 }

@@ -3,6 +3,7 @@ package com.spring.myweb.User.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
@@ -23,10 +24,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.myweb.MailUtil.MailHandler;
-import com.spring.myweb.MailUtil.TempKey;
+import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
+import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
+import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
+import com.spring.myweb.VO.QnaVO.QnaVO;
 import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
@@ -39,6 +42,9 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	AdminService adminService;
 
 	@Autowired
 	RegisterAgreementService registerService;
@@ -297,6 +303,18 @@ public class UserController {
 			System.out.println("success");
 		}
 		return "login/login&register/findPasswordVerify";
+	}
+	
+	@RequestMapping(value="/qna.do")
+	public String qna(Model model){
+		List<QnaVO> qnaList = adminService.selectQnaCate();
+		List<QnaQuestionsVO> questionsList = adminService.selectQuestions();
+		List<QnaAnswersVO> answersList = adminService.selectAnswers();
+
+		model.addAttribute("qnaList",qnaList);
+		model.addAttribute("qList",questionsList);
+		model.addAttribute("aList",answersList);
+		return "login/main/footer/qna";
 	}
 	
 	

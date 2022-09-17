@@ -19,6 +19,10 @@
 		<typeAlias alias="PostSingoVO" type="com.spring.myweb.VO.AdminVO.PostSingoVO"/>
 		<typeAlias alias="LikeVO" type="com.spring.myweb.VO.LikeVO.LikeVO"/>
 		<typeAlias alias="PayVO" type="com.spring.myweb.VO.AdminVO.PayVO.PayVO"/>
+		<typeAlias alias="QnaVO" type="com.spring.myweb.VO.QnaVO.QnaVO"/>
+		<typeAlias alias="QnaQuestionsVO" type="com.spring.myweb.VO.QnaVO.QnaQuestionsVO"/>
+		<typeAlias alias="QnaAnswersVO" type="com.spring.myweb.VO.QnaVO.QnaAnswersVO"/>
+		
 	</typeAliases>
 	
 	<mappers>

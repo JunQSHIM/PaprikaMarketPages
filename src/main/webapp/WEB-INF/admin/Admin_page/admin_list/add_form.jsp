@@ -111,10 +111,3 @@ $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, to
 		<!-- /.content -->
 </body>
 </html>
-
-
-
-
-
-
-

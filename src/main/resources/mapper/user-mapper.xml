@@ -205,6 +205,7 @@
         </if>
 	</select>
 	
+	<!-- 페이징은 검색되는데(검색된 게시물 숫자에 맞게 페이징이 됨) 리스트를 못 불러온다.  -->
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="listPage" parameterType="hashMap"
 		resultType="PostVO">

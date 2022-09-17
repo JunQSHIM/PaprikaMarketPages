@@ -107,7 +107,7 @@
 	
 	<!-- 관리자목록 불러오기 -->
 	<select id="adminList" resultType="UserVO">
-		select * from user where user_type=1 order by user_seq
+		select * from user where user_type != 0 order by user_seq;
 	</select>
 	
 	<!-- 관리자로 권한 주기 -->
@@ -130,4 +130,13 @@
 		banner ( title, content, origin_file_name, saved_file_name, create_time)
 		values (#{title}, #{content}, #{origin_file_name}, #{saved_file_name}, now());
 	</insert>
+	
+	<delete id="deleteBanner">
+		delete from banner where banner_seq = #{banner_seq};
+	</delete>
+	
+	<select id="selectDeleteBanner" resultType="String">
+	select substring_index (saved_file_name, '/' ,-2) as saved_file_name from
+	(select saved_file_name from banner where banner_seq = #{banner_seq})banner_name;
+	</select>
 </mapper>

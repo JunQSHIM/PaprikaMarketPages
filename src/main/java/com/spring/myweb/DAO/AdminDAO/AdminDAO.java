@@ -29,4 +29,5 @@ public interface AdminDAO {
 	
 	public List<BannerVO> bannerList();//배너 리스트
 	public void abbBanner(BannerVO vo);//배너 저장
+	public void bannerDelete(int banner_seq);
 }

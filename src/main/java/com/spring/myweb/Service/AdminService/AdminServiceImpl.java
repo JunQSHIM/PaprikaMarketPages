@@ -93,5 +93,8 @@ public class AdminServiceImpl implements AdminService {
 		adminDAO.abbBanner(vo);
 	}
 
-
+	@Override
+	public void bannerDelete(int banner_seq) {
+		adminDAO.bannerDelete(banner_seq);
+	}
 }

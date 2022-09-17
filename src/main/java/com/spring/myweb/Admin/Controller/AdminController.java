@@ -260,4 +260,12 @@ public class AdminController {
 			return "redirect:banner.mdo";
 	
 		}
+		//배너 삭제
+		@RequestMapping(value = "deletebanner.mdo" )
+		public String bannerDelete(Model model, int banner_seq) {
+			adminService.bannerDelete(banner_seq);
+			
+			return "redirect:banner.mdo";
+		}
+		
 }

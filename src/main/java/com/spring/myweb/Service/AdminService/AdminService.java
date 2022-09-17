@@ -27,4 +27,5 @@ public interface AdminService {
 	
 	public List<BannerVO> bannerList();//배너관리
 	public void addBanner(BannerVO vo);//배너 추가
+	public void bannerDelete(int banner_seq);//배너 삭제
 }

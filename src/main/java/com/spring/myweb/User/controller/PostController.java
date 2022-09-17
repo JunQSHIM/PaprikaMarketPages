@@ -60,7 +60,7 @@ public class PostController {
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
 		}
-		
+
 		model.addAttribute("page", pvo);
 		model.addAttribute("select", num);
 		model.addAttribute("list", list);
@@ -121,7 +121,8 @@ public class PostController {
 			Map.Entry<String, String> entry = entries.next();
 			String origin_file_name = entry.getKey();
 			String save_file_name = entry.getValue();
-
+			
+			photo.setPhoto_table("post_photo");
 			photo.setPost_seq(post_seq);
 			photo.setO_name(origin_file_name);
 			photo.setS_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/" + save_file_name);
@@ -257,8 +258,6 @@ public class PostController {
 			pvo.setNum(1);
 		}
 
-		
-		
 		int num = pvo.getNum();
 		pvo.setCount(postService.count());
 		List<Integer> post_seq = new ArrayList<Integer>();

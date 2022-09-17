@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+			
 			<div class="productPage">
 			<div class="favorite_body">
 				<div class="jjim_list">
@@ -67,6 +68,7 @@
 					</div>
 					
 					<div class="sell_product_cart">
+					
 					<c:forEach items="${list }" var="post" varStatus="status">
 						<div class="sell_product_board">
 							<a class="sell_board" href="postDetail.do?post_seq=${post.post_seq}">

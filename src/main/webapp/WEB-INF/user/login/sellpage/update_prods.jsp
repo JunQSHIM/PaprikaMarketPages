@@ -37,7 +37,7 @@
 								<div class="file_1">
 								
 									<input type="file" name="origin_file_name" multiple="multiple" onchange="fileCheck(this)"
-										id="origin_file" class="form-control user_picked_files" accept="image/jpg,image/png,image/jpeg"/>
+										id="origin_file" class="form-control user_picked_files" accept="image/jpg,image/png,image/jpeg" >
 									</div>
 							</div>
 						</div>
@@ -45,8 +45,13 @@
 							<img src="login/images/regpic.png" alt="이미지등록" onclick="#">
 
 						</div>
-						<ul class="cvf_uploaded_files"></ul>
-
+						<ul class="cvf_uploaded_files">
+						<c:if test="${not empty photo }">
+							<c:forEach items="${photo }" var="photo">
+								<li file=""><img class="img-thumb" src="${photo.index }"><a href = '#' class = 'cvf_delete_image' title = 'Cancel'><img class = 'delete-btn' src = '/myweb/login/images/delete-btn.png' /></a></li>
+							</c:forEach>
+						</c:if>
+						</ul>
 					</div>
 					<div class="clear grid_9 warn">
 						<b>* 상품 이미지는 640x640에 최적화 되어 있습니다.</b> <br> - 상품 이미지는 PC에서는
@@ -83,7 +88,7 @@
 					<select id="selectbox" onchange="handleOnChange(this)" name="category_seq">
 						<option value="none" disabled selected>카테고리선택&nbsp;&nbsp;▼</option>
 						<c:forEach items="${category }" var="category">
-						<option value="${category.category_seq }">${category.category_name }</option>
+							<option value="${category.category_seq }">${category.category_name }</option>
 						</c:forEach>
 					</select>
 				

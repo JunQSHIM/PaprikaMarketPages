@@ -157,7 +157,7 @@
 		<div class="grid_10 newdata">
 
 			<div class="option">
-				<label><input id="bunPayFilter" type="checkbox" name="pay_check" value="1">안전결제
+				<label class="chk_box"><input id="bunPayFilter" id="agree" type="checkbox" name="pay_check" value="1">안전결제
 					환영</label>
 			</div>
 			<ul class="opt">

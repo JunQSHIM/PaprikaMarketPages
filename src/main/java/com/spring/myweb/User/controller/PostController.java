@@ -45,11 +45,6 @@ public class PostController {
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String postList(Model model, PostVO vo, PageVO pvo) throws Exception {
-		System.out.println("Post Service");
-		System.out.println("페이징");
-		
-		
-		
 		if (pvo.getNum() == 0) {
 			pvo.setNum(1);
 		}
@@ -64,7 +59,6 @@ public class PostController {
 		List<String> photoNames = new ArrayList<String>();
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
-			System.out.println(postService.photoOne(post_num));
 		}
 		
 		model.addAttribute("page", pvo);
@@ -183,11 +177,32 @@ public class PostController {
 
 	// 카테고리 별 목록 나오게 하기.
 	@RequestMapping(value = "/category.do", method = RequestMethod.GET)
-	public String categoryDetail(Model model, int category_seq) {
+	public String categoryDetail(Model model, int category_seq, PostVO vo, PageVO pvo) throws Exception {
 		System.out.println("카테고리 리스트");
-		List<PostVO> vo = postService.categoryDetail(category_seq);
-		model.addAttribute("post", vo);
-
+		
+		if (pvo.getNum() == 0) {
+			pvo.setNum(1);
+		}
+		
+		int num = pvo.getNum();
+		pvo.setCount(postService.countCate(category_seq));
+		List<Integer> post_seq = new ArrayList<Integer>();
+		List<PostVO> list = postService.catePage(pvo.getDisplayPost(), pvo.getPostNum(), category_seq);
+		
+		
+		for (PostVO post : list) {
+			post_seq.add(post.getPost_seq());
+		}
+		List<String> photoNames = new ArrayList<String>();
+		for (int post_num : post_seq) {
+			photoNames.add(postService.photoOne(post_num));
+			System.out.println(postService.photoOne(post_num));
+		}
+		
+		model.addAttribute("page", pvo);
+		model.addAttribute("select", num);
+		model.addAttribute("ct", list);
+		model.addAttribute("photo", photoNames);
 		return "login/main/mother";
 	}
 	
@@ -242,6 +257,8 @@ public class PostController {
 			pvo.setNum(1);
 		}
 
+		
+		
 		int num = pvo.getNum();
 		pvo.setCount(postService.count());
 		List<Integer> post_seq = new ArrayList<Integer>();

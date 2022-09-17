@@ -219,6 +219,20 @@ public class PostDAOImpl implements PostDAO {
 		session.update("userDB.likeUpdate", vo);
 	}
 
+	@Override
+	public List<PostVO> catePage(int displayPost, int postNum, int category_seq) throws Exception {
+		HashMap<String, Integer> data = new HashMap<String, Integer>();
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+		data.put("category_seq", category_seq);
+		return session.selectList("userDB.catePage", data);
+	}
+
+	@Override
+	public int countCate(int category_seq) throws Exception {
+		return session.selectOne("userDB.countCate",category_seq);
+	}
+
 
 
 }

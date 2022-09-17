@@ -221,6 +221,7 @@ $(document).ready(function() {
 			alert("이미지를 선택하세요.");
 			return false;
 		}
+		
 
 		if (post.post_title.value == "") {
 			alert("제목을 입력하세요.");
@@ -234,6 +235,7 @@ $(document).ready(function() {
 			return false;
 
 		}
+		
 		if (post.post_title.value.length < 2) {
 			alert("제목을 2자 이상 입력하세요.");
 			post.post_title.focus();

@@ -130,6 +130,16 @@ public class PostServiceImpl implements PostService {
 		postDao.likeupdate(vo);
 	}
 
+	@Override
+	public List<PostVO> catePage(int displayPost, int postNum, int category_seq) throws Exception {
+		return postDao.catePage(displayPost, postNum, category_seq);
+	}
+
+	@Override
+	public int countCate(int category_seq) throws Exception {
+		return postDao.countCate(category_seq);
+	}
+
 	
 
 

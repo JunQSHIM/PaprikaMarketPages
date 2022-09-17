@@ -174,7 +174,7 @@
 	<select id="categoryDetail" parameterType="int"
 		resultType="PostVO">
 		select * from post where category_seq = #{category_seq}
-		order by category_seq desc;
+		order by post_seq desc;
 	</select>
 
 	<!-- 카테고리 이름 -->
@@ -188,15 +188,21 @@
 		select count(post_seq) from post;
 	</select>
 
+	<!-- 카테고리별 게시물 수 -->
 	<select id="countCate" resultType="int">
-		select count(post_seq) from
-		(select * from post where category_seq = #{category_seq});
+		select count(post_seq) from post where category_seq = #{category_seq};
 	</select>
 
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="listPage" parameterType="hashMap"
 		resultType="PostVO">
 		select * from post order by post_seq desc limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 카테고리 목록 + 페이징 -->
+	<select id="catePage" parameterType="hashMap"
+		resultType="PostVO">
+		select * from post where category_seq = #{category_seq} order by post_seq desc limit #{displayPost}, #{postNum}
 	</select>
 
 	<!-- 정보 찾기 -->

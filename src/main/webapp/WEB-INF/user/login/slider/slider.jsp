@@ -14,6 +14,7 @@
 </head>
 <body>
 	<div class="productPage">
+	<c:if test="${param.category_seq == null }">
 		<div class="slider">
 			<c:forEach items="${banner }" var="banner">
 				<div>
@@ -21,6 +22,7 @@
 				</div>
 			</c:forEach>
 		</div>
+	</c:if>
 	</div>
 </body>
 </html>

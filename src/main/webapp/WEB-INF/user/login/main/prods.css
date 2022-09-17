@@ -1,10 +1,7 @@
 @charset "UTF-8";
 
-div {
-	
-	box-sizing: border-box;
-}
- 
+
+
 .pic {
 	width: 200px;
 	height: 150px;

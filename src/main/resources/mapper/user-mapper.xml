@@ -29,31 +29,38 @@
 		ON DUPLICATE KEY UPDATE id= #{id};
 	</select>
 	<!-- 게시판 -->
-	<select id="boardList" resultType="SellBoardVO">
-		select * from product order by
-		prod_seq desc;
+	<select id="boardList" resultType="UserBoardVO">
+		select * from board order by
+		board_seq desc;
 	</select>
 	<!-- 게시판 글 쓰기 -->
-	<select id="insertSell" resultType="SellBoardVO">
+	<select id="insertboard" resultType="UserBoardVO">
 		insert into
-		product(nickname,location, prod_title, prod_content, price,
-		category_seq,
-		upload_date, status)
-		values('닉네임1234','서울',#{prod_title},#{prod_content},#{price},(select
-		category_name from category where category_seq =
-		#{category_seq}),now(),1);
+		board(user_seq, title, content, upload_date)
+		values(#{user_seq}, #{title}, #{content},now());
 	</select>
-	
+
 	<!-- 게시판 상품 상세보기 -->
-	<select id="sellDetail" parameterType="int"
-		resultType="SellBoardVO">
-		select * from product where prod_seq = #{prod_seq};
+	<select id="boardDetail" parameterType="int"
+		resultType="UserBoardVO">
+		select * from board where board_seq = #{board_seq};
 	</select>
 	<!-- 게시판 삭제하기 -->
-	<select id="sellDelete" resultType="SellBoardVO">
+	<select id="boardDelete" resultType="UserBoardVO">
 		delete from product where
 		prod_seq = #{prod_seq};
 	</select>
+	
+	<!-- 미리보기 사진  게시판-->
+	<select id="selectOnePhotoBoard" resultType="String">
+		select saved_file_name from board_photo where board_seq = #{board_seq} order by create_time desc limit 0,1;
+	</select>
+	
+	<select id="selectBoardNew" resultType="int">
+		select board_seq from board
+		where user_seq = #{user_seq} order by upload_date desc limit 0,1;
+	</select>
+	
 
 	<!-- 상품 리스트 -->
 	<select id="postList" resultType="PostVO">
@@ -92,7 +99,7 @@
 	
 	<!-- 사진등록 -->
 	<insert id="insertPhoto" parameterType="PhotoVO">
-		insert into post_photo
+		insert into ${photo_table}	
 		(post_seq, origin_file_name, saved_file_name, create_time)
 		values
 		(#{post_seq}, #{o_name}, #{s_name}, now());
@@ -104,8 +111,8 @@
 	</select>
 	
 	<select id="selectDelete" resultType="String">
-		select substr((select saved_file_name from
-		post_photo where post_seq = #{post_seq}), 55);
+		select substring_index (saved_file_name, '/' ,-2) as saved_file_name from
+		(select saved_file_name from post_photo where post_seq =${post_seq})photo_name;
 	</select>
 	
 	<!-- 미리보기 사진  -->

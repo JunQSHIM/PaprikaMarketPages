@@ -58,10 +58,10 @@
 							<img src="${photo[status.index] }" alt="img" name="post_seq">
 						</div>
 						<div class="state"><div id="show-state">
-						<select name="count" id="count">
-							<option value="#">판매중</option>
-							<option value="#">예약중</option>
-							<option value="#">판매완료</option>
+						<select name="sell_status" id="count">
+							<option value="0">판매중</option>
+							<option value="1">예약중</option>
+							<option value="2">판매완료</option>
 						</select>
 					</div></div>
 						<div class="product-name" name="post_title">${plist.post_title }</div>
@@ -143,6 +143,22 @@
 	<script type="text/javascript">
 	//	var value_str = document.getElementById("select_value")
 	//	alert(value_str.options[value_str.selectedIndex].text + "상품 상태가 변경되었습니다.")
+	// 거래 상태 자바스트립트
+function checkboxArr() {   
+	var sellArr = [];     // 배열 초기화   
+	$("input[name='sell_status']:checked").each(function(i)) {     
+		sellArr.push($(this).val());  
+		// 체크된 것만 값을 뽑아서 배열에 push   
+		 }  
+		 $.ajax({    
+			url: '/payCheck.do',
+			type: 'post',
+			dataType: 'json',
+			data: {
+				valueArrTest: sellArr
+				}
+		});
+		}
 	</script>
 </body>
 </html>

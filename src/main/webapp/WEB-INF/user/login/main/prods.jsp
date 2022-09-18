@@ -242,7 +242,7 @@
 	<div class="pagingBody">
 	 	<div class= "paging">
 		<c:if test="${page.prev}">
-			<a href="category.do?category_seq=${param.category_seq }&num=${page.startPageNum - 1}"> ◀ </a>
+			<a href="category.do?category_seq=${param.category_seq }&num=${page.startPageNum - 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12" class="prev"></a>
 			
 		</c:if>
 	
@@ -256,7 +256,7 @@
 		</c:forEach>
 
 		<c:if test="${page.next}">
-			<a href="category.do?category_seq=${param.category_seq }&num=${page.endPageNum + 1}">▶</a>
+			<a href="category.do?category_seq=${param.category_seq }&num=${page.endPageNum + 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12"></a>
 			
 		</c:if>
 		</div>
@@ -270,13 +270,23 @@
 	<div class="pagingBody">
 	 	<div class= "paging">
 		<c:if test="${page.prev}">
-			<a href="main.do?num=${page.startPageNum - 1}"> ◀ </a>
+		<c:if test="${page.keyword == null }">
+			<a href="main.do?num=${page.startPageNum - 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12" class="prev"></a>
+		</c:if>
+		<c:if test="${page.keyword != null }">
+			<a href="main.do?keyword=${page.keyword }&num=${page.startPageNum - 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12" class="prev"></a>
+		</c:if>
 			
 		</c:if>
 	
 		<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
 			<c:if test="${select != num}">
-					<a href="main.do?num=${num}" class="present_page">${num}</a>
+					<c:if test="${page.keyword == null }">
+						<a href="main.do?num=${num}" class="present_page">${num}</a>
+					</c:if>
+					<c:if test="${page.keyword != null }">
+						<a href="main.do?keyword=${page.keyword }&num=${num}" class="present_page">${num}</a>
+					</c:if>
 				</c:if> <c:if test="${select == num}">
 					<b>${num}</b>
 				</c:if>
@@ -284,8 +294,12 @@
 		</c:forEach>
 
 		<c:if test="${page.next}">
-			<a href="main.do?num=${page.endPageNum + 1}">▶</a>
-			
+		<c:if test="${page.keyword == null }">
+			<a href="main.do?num=${page.endPageNum + 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12"></a>
+		</c:if>	
+		<c:if test="${page.keyword != null }">
+			<a href="main.do?keyword=${page.keyword }&num=${page.endPageNum + 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12"></a>
+		</c:if>
 		</c:if>
 		</div>
 	</div>

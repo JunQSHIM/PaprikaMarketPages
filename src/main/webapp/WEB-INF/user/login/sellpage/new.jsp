@@ -198,6 +198,8 @@
 		crossorigin="anonymous"></script>
 	<script src="/myweb/login/sellpage/new.js"></script>
 <script>
+
+//카카오페이 체크박스 자바스크립트
 function checkboxArr() {   
 	var checkArr = [];     // 배열 초기화   
 	$("input[name='pay_check']:checked").each(function(i)) {     
@@ -207,14 +209,13 @@ function checkboxArr() {   
 		 $.ajax({    
 			url: '/payCheck.do',
 			type: 'post',
-			dataType: 'text',
+			dataType: 'json',
 			data: {
 				valueArrTest: checkArr
 				}
 		});
 		}
-</script>
-<script>
+// 상품 상태 라디오버튼 자바스크립트
 function radioArr() {   
 	var radioArr = [];     // 배열 초기화   
 	$("input[name='prod_status']:checked").each(function(i)) {     
@@ -224,12 +225,14 @@ function radioArr() {   
 		 $.ajax({    
 			url: '/payCheck.do',
 			type: 'post',
-			dataType: 'text',
+			dataType: 'json',
 			data: {
 				valueArrTest: radioArr
 				}
 		});
 		}
+
 </script>
+
 </body>
 </html>

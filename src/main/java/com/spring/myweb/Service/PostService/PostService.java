@@ -23,7 +23,7 @@ public interface PostService {
 	public List<PostVO> categoryDetail(int category_seq); // 카테고리별 상품 보기
 	public CategoryVO categoryName(int category_seq); //카테고리 이름
 	public int count(PageVO vo) throws Exception; // 게시물 총 개수
-	public List<PostVO> listPage(int displayPost, int postNum) throws Exception; // 게시물 목록 + 페이징
+	public List<PostVO> listPage(PageVO vo) throws Exception; // 게시물 목록 + 페이징
 	public void updatePost(PostVO vo);// 판매하기 수정하기
 	
 	public int countCate(int category_seq) throws Exception;// 카테고리별 게시물 개수

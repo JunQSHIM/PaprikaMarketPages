@@ -83,6 +83,7 @@
 
 .article_photo img {
 	width: 100%;
+	object-fit: cover;
 }
 
 .article_title {
@@ -92,6 +93,15 @@
 .article_content {
 	font-size: 16px;
 	margin: 15px 0 0;
+	
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3; /* 라인수 */
+	-webkit-box-orient: vertical;
+	word-wrap:break-word; 
+	line-height: 1.2em;
+	height: 3.6em; 
 }
 
 .region {
@@ -152,54 +162,45 @@
 	background-color: orange;
 }
 
-#paging_button {
-	display: flex;
-	margin-top: 10px;
+ .pagingBody{
+ 	display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin-bottom: 100px;
+ }
+ 
+ .paging{
+    display: flex;
+ }
+ 
+ .paging a {
+    width: 33px;
+    height: 33px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 12px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    border-radius: 2px;
+    color: rgb(155, 153, 169);
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.page_wrap {
-	text-align:center;
-	font-size:0;
-	margin-left: auto;
-	margin-right: auto;
- }
-.page_nation {
-	display:inline-block;
-}
-.page_nation .none {
-	display:none;
-}
-.page_nation a {
-	display:block;
-	margin:0 3px;
-	float:left;
-	border:1px solid #e6e6e6;
-	width:28px;
-	height:28px;
-	line-height:28px;
-	text-align:center;
-	background-color:#fff;
-	font-size:13px;
-	color:#999999;
-	text-decoration:none;
-}
-.num:hover {
-	color: white;
-	background-color: orange;
-}
-.page_nation .arrow {
-	border:1px solid #ccc;
-}
-.page_nation .prev {
-	background:#f8f8f8 url('/myweb/login/main/images/page_prev.png') no-repeat center center;
-	margin-right:7px;
-}
-.page_nation .next {
-	background:#f8f8f8 url('/myweb/login/main/images/page_next.png') no-repeat center center;
-	margin-left:7px;
-}
-.page_nation a.active {
-	background-color:orange;
-	color:#fff;
-	border:1px solid #e6e6e6;
+.paging b{
+    width: 33px;
+    height: 33px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 12px;
+    border: 1px solid orange;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    background: orange;
 }

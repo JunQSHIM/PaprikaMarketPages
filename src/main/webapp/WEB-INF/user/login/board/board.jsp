@@ -5,8 +5,6 @@
 <head>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
 <script src="/myweb/login/main/main.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/board/board.css">
 <script type="text/javascript" src="/myweb/login/board/board.js"></script>
@@ -14,11 +12,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Main Page</title>
-<script>
-	function toWritePage(){
-		window.location.href = '/myweb/login/board_write/write.jsp';
-	}
-</script>
 </head>
 <body>
 	<header>
@@ -44,15 +37,16 @@
 					<button type="submit">검색</button>
 				</div>
 				
-				<c:forEach items="${board }" var="board">
+				<c:forEach items="${board }" var="board" varStatus="status">
 				<article class="article">
-					<a class="article_link" href="/myweb/login/board/board_content.jsp">
+					<a class="article_link" href="boardDetail.do?board_seq=${board.board_seq }">
 						<div class="article_photo">
-							<img id="article_thumbnail" src="${board_photo }">
+							<img id="article_thumbnail" src="${photo[status.index] }">
 						</div>
 						<p class="article_title">${board.title }</p>
 						<p class="article_content">${board.content }</p>
 						<span class="article_comment_info">
+							<span>작성자 : ${board.nickname }</span>
 							<span class="article_comment">
 								<img class="chat_icon" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/message-78e946f283b8e1e127133cbdc4195faaed6bd0e45cf697eb3430030d40329d38.svg">
 								${reply }
@@ -64,20 +58,34 @@
 			</div>
 			<div id="write_button_wrap">
 				<button id="write_button" onclick="location.href='insertboard.do'">글 작성하기</button>
+				<button id="myboard_button" onclick="location.href='myboard.do?user_seq=${user.user_seq}'">내 게시글 보기</button>
+				<button id="myboard_button" onclick="location.href='boardlist.do'">전체 보기</button>
+				
+				
 			</div>
 		</div>
 	</article>
-	<div id="paging_button">
-		<div class="page_wrap">
-		   <div class="page_nation">
-		      <a class="arrow prev" href="#"></a>
-		      <a class="active num" href="#">1</a>
-		      <a class="num" href="#">2</a>
-		      <a class="num" href="#">3</a>
-		      <a class="num" href="#">4</a>
-		      <a class="num" href="#">5</a>
-		      <a class="arrow next" href="#"></a>
-		   </div>
+	<br>
+	<div class="pagingBody">
+	 	<div class= "paging">
+		<c:if test="${page.prev}">
+			<a href="boardlist.do?&num=${page.startPageNum - 1}"> ◀ </a>
+			
+		</c:if>
+	
+		<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+			<c:if test="${select != num}">
+					<a href="boardlist.do?&num=${num}" class="present_page">${num}</a>
+				</c:if> <c:if test="${select == num}">
+					<b>${num}</b>
+				</c:if>
+			
+		</c:forEach>
+
+		<c:if test="${page.next}">
+			<a href="boardlist.do?num=${page.endPageNum + 1}">▶</a>
+			
+		</c:if>
 		</div>
 	</div>
 	<div style="margin-bottom:40px;"></div>

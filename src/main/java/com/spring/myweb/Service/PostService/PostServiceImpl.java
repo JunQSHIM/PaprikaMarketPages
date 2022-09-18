@@ -79,8 +79,8 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<PostVO> listPage(int displayPost, int postNum) throws Exception {
-		return postDao.listPage(displayPost, postNum);
+	public List<PostVO> listPage(PageVO vo) throws Exception {
+		return postDao.listPage(vo);
 	}
 
 	@Override

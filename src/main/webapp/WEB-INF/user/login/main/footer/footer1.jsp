@@ -28,14 +28,10 @@
 			<ul class="footer-links">
 				<li><a href="#">공지사항</a></li>
 				<li><a href="#">1:1문의하기</a></li>
-<<<<<<< HEAD
-				<li><a href="/myweb/login/main/footer/qna.jsp">자주 문는 질문</a></li>
-=======
 				<li><a href="/myweb/qna.do">자주 문는 질문</a></li>
 				<li><a href="#">333</a></li>
 				<li><a href="#">444</a></li>
 				<li><a href="#">555</a></li>
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 			</ul>
 		</div>
 		<div class="grid_2 qlink">

@@ -48,13 +48,16 @@ public class PostController {
 		if (page.getNum() == 0) {
 			page.setNum(1);
 		}
-
-		int num = page.getNum();
 		
+		page.setCount(postService.count(page));
+		
+		int num = page.getNum();
+		System.out.println(page.getCount());
 		List<Integer> post_seq = new ArrayList<Integer>();
 		
 		
-		List<PostVO> list = postService.listPage(page.getDisplayPost(), page.getPostNum());
+		List<PostVO> list = postService.listPage(page);
+		System.out.println(list);
 		for (PostVO post : list) {
 			post_seq.add(post.getPost_seq());
 		}
@@ -63,15 +66,9 @@ public class PostController {
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
 		}
-<<<<<<< HEAD
 		
-		page.setCount(postService.count(page));
 		
 		model.addAttribute("page", page);
-=======
-
-		model.addAttribute("page", pvo);
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 		model.addAttribute("select", num);
 		model.addAttribute("list", list);
 		model.addAttribute("photo", photoNames);
@@ -132,7 +129,6 @@ public class PostController {
 			String origin_file_name = entry.getKey();
 			String save_file_name = entry.getValue();
 			
-			photo.setPhoto_table("post_photo");
 			photo.setPost_seq(post_seq);
 			photo.setO_name(origin_file_name);
 			photo.setS_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/" + save_file_name);
@@ -271,7 +267,7 @@ public class PostController {
 		int num = pvo.getNum();
 		pvo.setCount(postService.count(pvo));
 		List<Integer> post_seq = new ArrayList<Integer>();
-		List<PostVO> list = postService.listPage(pvo.getDisplayPost(), pvo.getPostNum());
+		List<PostVO> list = postService.listPage(pvo);
 		for (PostVO post : list) {
 			post_seq.add(post.getPost_seq());
 		}

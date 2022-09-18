@@ -11,7 +11,7 @@
 		<div class="container_12">
 			<jsp:include page="/WEB-INF/user/login/main/header/headertop.jsp"></jsp:include>
 			<jsp:include page="/WEB-INF/user/login/main/header/nav.jsp"></jsp:include>
-			<jsp:include page="/login/main/header/ban.jsp"></jsp:include>
+			<jsp:include page="/WEB-INF/user/login/main/header/ban.jsp"></jsp:include>
 		</div>
 </body>
 </html>

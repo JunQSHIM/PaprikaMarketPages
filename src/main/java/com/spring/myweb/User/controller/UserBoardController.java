@@ -1,5 +1,6 @@
 package com.spring.myweb.User.controller;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.BoardService.UserBoardService;
 import com.spring.myweb.Service.PostService.PostService;
+import com.spring.myweb.VO.PageVO.UserBoardPageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.UserBoardVO.UserBoardVO;
 
@@ -30,9 +32,30 @@ public class UserBoardController {
 	
 	//userboard list 출력
 	@RequestMapping(value="/boardlist.do")
-	public String boardList(Model model, UserBoardVO vo) {
-		List<UserBoardVO> list = boardService.boardList();
-		model.addAttribute("board",list);
+	public String boardList(Model model, UserBoardVO vo, UserBoardPageVO pvo) throws Exception {
+		if (pvo.getNum() == 0) {
+			pvo.setNum(1);
+		}
+
+		int num = pvo.getNum();
+		pvo.setCount(boardService.count(vo.getUser_seq()));
+		System.out.println(vo.getUser_seq());
+		System.out.println(boardService.count(vo.getUser_seq()));
+		List<Integer> board_seq = new ArrayList<Integer>();
+		List<UserBoardVO> list = boardService.listPage(pvo);
+		for (UserBoardVO post : list) {
+			board_seq.add(post.getBoard_seq());
+			post.setNickname(boardService.findNickname(post.getUser_seq()));
+		}
+		List<String> photoNames = new ArrayList<String>();
+		for (int board_num : board_seq) {
+			photoNames.add(boardService.photoOne(board_num));
+		}
+		
+		model.addAttribute("page", pvo);
+		model.addAttribute("select", num);
+		model.addAttribute("board", list);
+		model.addAttribute("photo", photoNames);
 		return "login/board/board";
 	}
 	
@@ -43,10 +66,9 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping(value = "/insertboardProc.do")
-	public String insertProc(Model model, UserBoardVO vo, @RequestParam(value = "file_1", required = false)List<MultipartFile> img_1, @RequestParam(value = "file_2", required = false)List<MultipartFile> img_2, PhotoVO photo) {
+	public String insertProc(Model model, UserBoardVO vo, @RequestParam(value = "file")List<MultipartFile> img, PhotoVO photo) {
 		boardService.insertBoard(vo);
-		Map<String, String> img_1_name = postService.uploadImg(img_1, "board/");
-		Map<String, String> img_2_name = postService.uploadImg(img_2, "board/");
+		Map<String, String> img_1_name = postService.uploadImg(img, "board/");
 		
 		int board_seq = boardService.board_seq(vo.getUser_seq());
 		
@@ -60,44 +82,53 @@ public class UserBoardController {
 			photo.setO_name(origin_file_name);
 			photo.setS_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/board/" + save_file_name);
 
-			postService.insertPhoto(photo);
+			boardService.insertPhoto(photo);
 		}
-			Iterator<Entry<String, String>> entries_2 = img_2_name.entrySet().iterator();
-			while (entries_2.hasNext()) {
-				Map.Entry<String, String> entry = entries_2.next();
-				String origin_file_name = entry.getKey();
-				String save_file_name = entry.getValue();
-
-				photo.setPost_seq(board_seq);
-				photo.setO_name(origin_file_name);
-				photo.setS_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/board/" + save_file_name);
-
-				postService.insertPhoto(photo);
-		}
+		
 		return "redirect:boardlist.do";
 	}
 	
-	// 판매하기 등록 프로세스
-//	@RequestMapping(value = "/createProc.do", method =RequestMethod.GET)
-//	public String insertSell(Model model, SellBoardVO vo){
-//		System.out.println("판매하기 등록함");
-//		int success = boardService.insertSell(vo);
-//		if(success == 1) {
-//			model.addAttribute("board",vo);
-//		}
-//		return "redirect:main.do";
-//	}
+	//userboard list 출력
+		@RequestMapping(value="/myboard.do")
+		public String myboardList(Model model, UserBoardVO vo, UserBoardPageVO pvo) throws Exception {
+			if (pvo.getNum() == 0) {
+				pvo.setNum(1);
+			}
+
+			int num = pvo.getNum();
+			pvo.setCount(boardService.count(vo.getUser_seq()));
+
+			List<Integer> board_seq = new ArrayList<Integer>();
+			List<UserBoardVO> list = boardService.listPage(pvo);
+			for (UserBoardVO post : list) {
+				board_seq.add(post.getBoard_seq());
+				post.setNickname(boardService.findNickname(post.getUser_seq()));
+			}
+			List<String> photoNames = new ArrayList<String>();
+			for (int board_num : board_seq) {
+				photoNames.add(boardService.photoOne(board_num));
+			}
+			model.addAttribute("page", pvo);
+			model.addAttribute("select", num);
+			model.addAttribute("board", list);
+			model.addAttribute("photo", photoNames);
+			return "login/board/board";
+		}
+	
+
 	//글 상세보기
-//	@RequestMapping(value = "/sellDetail.do", method = RequestMethod.GET)
-//	public String getDetail(Model model, int prod_seq){
-//		System.out.println("상세보기 페이지 이동");
-//		boardService.viewCount(prod_seq); // 조회수 증가
-//		SellBoardVO vo = boardService.sellDetail(prod_seq);
-//		model.addAttribute("board", vo);
-//		return "login/product&purchase/product_detail";
-//	}
-//	
-//	@RequestMapping(value = "/sellDelete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/boardDetail.do")
+	public String getDetail(Model model, int board_seq){
+		boardService.viewCount(board_seq); // 조회수 증가
+		UserBoardVO vo = boardService.boardDetail(board_seq);
+		String photo = boardService.photoOne(board_seq);
+		vo.setNickname(boardService.findNickname(vo.getUser_seq()));
+		model.addAttribute("board", vo);
+		model.addAttribute("photo", photo);
+		return "login/board/board_content";
+	}
+
+	//	@RequestMapping(value = "/sellDelete.do", method = RequestMethod.GET)
 //	public String sellDelete(int prod_seq) throws Exception{
 //		System.out.println("판매하기 삭제됨.");
 //		boardService.sellDelete(prod_seq);

@@ -135,11 +135,8 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
-	public List<PostVO> listPage(int displayPost, int postNum) throws Exception {
-		HashMap<String, Integer> data = new HashMap<String, Integer>();
-		data.put("displayPost", displayPost);
-		data.put("postNum", postNum);
-		return session.selectList("userDB.listPage", data);
+	public List<PostVO> listPage(PageVO vo) throws Exception {
+		return session.selectList("userDB.listPage", vo);
 	}
 
 	@Override

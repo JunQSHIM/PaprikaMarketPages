@@ -28,17 +28,20 @@
 		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image})
 		ON DUPLICATE KEY UPDATE id= #{id};
 	</select>
-	<!-- 게시판 -->
-	<select id="boardList" resultType="UserBoardVO">
-		select * from board order by
-		board_seq desc;
-	</select>
+	
 	<!-- 게시판 글 쓰기 -->
 	<select id="insertboard" resultType="UserBoardVO">
 		insert into
 		board(user_seq, title, content, upload_date)
 		values(#{user_seq}, #{title}, #{content},now());
 	</select>
+	<!-- 게시판 사진 등록 -->
+	<insert id="insertboardPhoto" parameterType="PhotoVO">
+		insert into board_photo	
+		(board_seq, origin_file_name, saved_file_name, create_time)
+		values
+		(#{post_seq}, #{o_name}, #{s_name}, now());
+	</insert>
 
 	<!-- 게시판 상품 상세보기 -->
 	<select id="boardDetail" parameterType="int"
@@ -56,11 +59,35 @@
 		select saved_file_name from board_photo where board_seq = #{board_seq} order by create_time desc limit 0,1;
 	</select>
 	
+		<!-- 사진 불러오기 게시판 -->
+	<select id="selectboardPhoto" resultType="String">
+		select saved_file_name from board_photo where board_seq = #{board_seq};
+	</select>
+	
+	<!-- 최신 게시판 -->
 	<select id="selectBoardNew" resultType="int">
 		select board_seq from board
 		where user_seq = #{user_seq} order by upload_date desc limit 0,1;
 	</select>
 	
+	<!-- 게시판 총 개수 -->
+	<select id="countBoard" resultType="int">
+		select count(board_seq) from board
+			<if test="user_seq != 0">
+				where user_seq=#{user_seq}
+			</if>
+	</select>
+	
+	<!-- 게시판 목록 + 페이징 -->
+	<select id="listBoardPage" parameterType="UserBoardPageVO" resultType="UserBoardVO">
+		select * from board
+			<if test="user_seq != 0">
+				where user_seq=#{user_seq}
+			</if>
+		order by board_seq desc limit #{displayPost}, #{postNum}
+	</select>
+
+
 
 	<!-- 상품 리스트 -->
 	<select id="postList" resultType="PostVO">
@@ -99,7 +126,7 @@
 	
 	<!-- 사진등록 -->
 	<insert id="insertPhoto" parameterType="PhotoVO">
-		insert into ${photo_table}	
+		insert into post_photo	
 		(post_seq, origin_file_name, saved_file_name, create_time)
 		values
 		(#{post_seq}, #{o_name}, #{s_name}, now());
@@ -207,13 +234,13 @@
 	
 	<!-- 페이징은 검색되는데(검색된 게시물 숫자에 맞게 페이징이 됨) 리스트를 못 불러온다.  -->
 	<!-- 게시물 목록 + 페이징 -->
-	<select id="listPage" parameterType="hashMap"
+	<select id="listPage" parameterType="PageVO"
 		resultType="PostVO">
 		select * from (
                 select post_seq, post_title, price, upload_date, pay_check, location1  
                 from post
                 <if test="keyword != null">
-           			 where ${post_title} like concat('%',#{keyword},'%')
+           			 where post_title like concat('%',#{keyword},'%')
        			</if>
                 order by post_seq desc) as T1
         		limit #{displayPost},#{postNum}
@@ -269,5 +296,8 @@
 	
 	<select id="emailAuthFail" parameterType="String" resultType="int">
     	select count(*) from user where id=#{id} and mail_auth=1
+	</select>
+	<select id="findNickName" parameterType="int" resultType="String">
+		select nickname from user where user_seq=${user_seq};
 	</select>
 </mapper>

@@ -126,10 +126,10 @@
                   <button>연락하기</button>
                <c:choose>
                <c:when test="${post.pay_check == 1 }">
-                  <button onclick="requestPay()" >바로구매</button>
+                  <button onclick="location.href='javascript:showPopUp()'" >바로구매</button>
                </c:when>
                <c:when test="${post.pay_check == 0 }">
-               		<button onclick="requestPay()" style="visibility: hidden;">바로구매</button>
+               		<button onclick="" style="visibility: hidden;">바로구매</button>
                </c:when>
 				</c:choose>
                </div>

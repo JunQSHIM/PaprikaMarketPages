@@ -138,6 +138,19 @@ public class UserController {
 		model.addAttribute("user",userService.select((String)session.getAttribute("id")));
 		return "login/mypage/mypage";
 	}
+	
+	@RequestMapping(value="/mypage.do", method=RequestMethod.POST)
+	public String mypage(Model model, String pay) throws Exception{
+		System.out.println("파프리카 페이 사용하기");
+		UserVO vo = (UserVO)model.getAttribute("user");
+		vo.setPay(pay);
+		int result = userService.updatePay(vo);
+		if(result == 1) {
+			System.out.println("Succ");
+		}
+		return "login/mypage/mypage";
+	}
+	
 	@RequestMapping(value="/main.do")
 	public String main() {
 		return "login/main/mother";
@@ -317,5 +330,11 @@ public class UserController {
 		return "login/main/footer/qna";
 	}
 	
+	@RequestMapping(value="/pay.do")
+	public String pay(Model model){
+		UserVO vo = (UserVO)model.getAttribute("user");
+		model.addAttribute("user",vo);
+		return "login/mypage/pay";
+	}
 	
 }

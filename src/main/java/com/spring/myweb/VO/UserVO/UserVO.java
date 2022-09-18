@@ -29,5 +29,6 @@ public class UserVO {
 	private int available;
 	private String mail_key;
 	private int mail_auth;
+	private String pay;
 
 }

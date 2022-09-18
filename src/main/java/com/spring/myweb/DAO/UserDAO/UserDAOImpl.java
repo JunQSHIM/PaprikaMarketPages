@@ -108,5 +108,10 @@ public class UserDAOImpl implements UserDAO{
 		return session.update("userDB.updatePw",vo);
 	}
 
+	@Override
+	public int updatePay(UserVO vo) throws Exception {
+		return session.update("userDB.updatePay",vo);
+	}
+
 	
 }

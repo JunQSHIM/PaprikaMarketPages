@@ -300,4 +300,9 @@
 	<select id="findNickName" parameterType="int" resultType="String">
 		select nickname from user where user_seq=${user_seq};
 	</select>
+	
+	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
+	<update id="updatePay">
+		update user set pay=#{pay} where id=#{id}
+	</update>
 </mapper>

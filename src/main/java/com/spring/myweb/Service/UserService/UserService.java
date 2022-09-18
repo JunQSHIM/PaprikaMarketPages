@@ -26,4 +26,5 @@ public interface UserService {
 	int updateMailAuth(UserVO vo) throws Exception;
 	int emailAuthFail(String id) throws Exception;
 	int updatePw(UserVO vo) throws Exception;
+	int updatePay(UserVO vo) throws Exception;
 }

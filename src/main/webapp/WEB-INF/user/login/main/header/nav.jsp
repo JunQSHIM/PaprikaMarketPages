@@ -36,7 +36,7 @@
 			<div class="grid_6 search">
 				<div class="search_text">
 					<input type="text" placeholder="상품명, 지역명, @상점명 입력"
-						name="keyword" value="${page.keyword }"><a type="button">검색</a>
+						name="keyword" value="${page.keyword }"><a type="button"><img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/search.png" width="50" height="25"></a>
 				</div>
 			</div>
 			<div class="row grid_4 bts">

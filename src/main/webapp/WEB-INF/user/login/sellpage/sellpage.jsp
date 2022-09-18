@@ -39,15 +39,7 @@
 						</select>
 					</div>
 
-					<div id="show-state">
-						<select name="count" id="count">
-							<option value="#">전체</option>
-							<option value="#">판매중</option>
-							<option value="#">예약중</option>
-							<option value="#">판매완료</option>
-							<option value="#">판매대기</option>
-						</select>
-					</div>
+					
 				</div>
 				<div id="control-main">
 					<div id="title">
@@ -65,7 +57,13 @@
 						<div class="img">
 							<img src="${photo[status.index] }" alt="img" name="post_seq">
 						</div>
-						<div class="state">판매 완료</div>
+						<div class="state"><div id="show-state">
+						<select name="count" id="count">
+							<option value="#">판매중</option>
+							<option value="#">예약중</option>
+							<option value="#">판매완료</option>
+						</select>
+					</div></div>
 						<div class="product-name" name="post_title">${plist.post_title }</div>
 						<div class="price" name="price"><fmt:formatNumber value="${plist.price }" pattern="###,###,###"/></div>
 						<div class="jjim">♥</div>
@@ -142,5 +140,9 @@
 
 		</div>
 	</div>
+	<script type="text/javascript">
+	//	var value_str = document.getElementById("select_value")
+	//	alert(value_str.options[value_str.selectedIndex].text + "상품 상태가 변경되었습니다.")
+	</script>
 </body>
 </html>

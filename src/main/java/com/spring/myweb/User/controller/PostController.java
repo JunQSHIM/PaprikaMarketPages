@@ -1,7 +1,6 @@
 package com.spring.myweb.User.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,15 +60,11 @@ public class PostController {
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
 		}
-<<<<<<< HEAD
 		
 		page.setCount(postService.count(page));
 		
 		model.addAttribute("page", page);
-=======
 
-		model.addAttribute("page", pvo);
->>>>>>> branch 'main' of https://github.com/JunQSHIM/PaprikaMarketPages.git
 		model.addAttribute("select", num);
 		model.addAttribute("list", list);
 		model.addAttribute("photo", photoNames);

@@ -7,7 +7,9 @@ div {
 .nav {
 	z-index: 999;
 }
-
+.search_text img{
+	margin-bottom: 5px;
+}
 .search button {
 	border: 0px; 
 	background-color : rgba( 0, 0, 0, 0);

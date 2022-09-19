@@ -4,7 +4,6 @@ import java.util.Date;
 
 
 public class PostVO {
-	
 	private int post_seq;
 	private int user_seq;
 	private String nickname;

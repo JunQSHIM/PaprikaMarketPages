@@ -32,12 +32,14 @@
 						<div class="card">
 							<!-- /.card-header -->
 							<div class="card-header">
-								<b>직거래 대기 -> 구매예약은 했으나 아직 직거래 전 단계<br>
+								<b>구매예약 대기 -> 구매예약확인 후 구매예약으로 변경</b>
+								<b>구매예약 -> 구매자가 송금완료한 상태</b>
+								<b>직거래 대기 -> 구매예약은 했으나 아직 직거래 약속을 잡지 않은 단계<br>
 								<b>직거래 완료 -> 구매예약 후 직거래에서 판매자와 구매자 모두 동의한 상태<br>
 								<b>거래 실패 -> 구매예약 후 직거래에서 거래가 성립되지 않음.
 							</div>
 							<div class="card-body">
-							<form action="payConfirm.mdo" method="post">
+							<form action="pay.mdo" method="post">
 								<table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr>
@@ -52,26 +54,62 @@
 									</thead>
 									<tbody id="infoData">
 										<c:forEach var="payList" items="${payList }">
+										<input type="hidden" name="pay_seq" value="${payList.pay_seq }">
 										<tr>
-											<td>${payList.sellerId }</td>
-											<td>${payList.buyerId }</td>
-											<td><a href="/myweb/postDetail.do?post_seq=${payList.post_seq }">상품으로 이동</a></td>
-											<td>${payList.process }</td>
-											<td>${payList.sellerQr }</td>
-											<td>${payList.buyerQr }</td>
-											<td><c:choose>
-												<c:when test="${payList.status eq 0 }">
-													처리중
-												</c:when>
-												<c:otherwise>
+											<td>
+												${payList.sellerId }
+												<input type="hidden" name="sellerId" value="${payList.sellerId }">
+											</td>
+											<td>
+												${payList.buyerId }
+												<input type="hidden" name="buyerId" value="${payList.buyerId }">
+											</td>
+											<td>
+												<a href="/myweb/postDetail.do?post_seq=${payList.post_seq }">상품으로 이동</a>	
+												<input type="hidden" name="post_seq" value="${payList.post_seq }">
+											</td>
+											<td>
+											<select name="process">
+												<option value="0" <c:if test="${payList.process eq 0 }"> selected="selected"</c:if>>
+													구매예약 대기
+												</option>
+												<option value="1" <c:if test="${payList.process eq 1 }"> selected="selected"</c:if>>
+													구매예약
+												</option>
+												<option value="2" <c:if test="${payList.process eq 2 }"> selected="selected"</c:if>>
+													직거래 대기
+												</option>
+												<option value="3" <c:if test="${payList.process eq 3 }"> selected="selected"</c:if>>
+													직거래 완료
+												</option>
+												<option value="4" <c:if test="${payList.process eq 4 }"> selected="selected"</c:if>>
+													거래 실패
+												</option>
+											</select>
+											</td>
+											<td>
+												${payList.sellerQr }
+												<input type="hidden" name="selllerQr" value="${payList.sellerQr }">
+											</td>
+											<td>
+												${payList.buyerQr }
+												<input type="hidden" name="buyerQr" value="${payList.buyerQr }">
+											</td>
+											<td>
+											<select name="status">
+												<option value="1" <c:if test="${payList.status eq 1 }"> selected="selected"</c:if>>
+													처리 중 
+												</option> 
+												<option value="2" <c:if test="${payList.status eq 2 }"> selected="selected"</c:if>>
 													처리완료
-												</c:otherwise>
-											</c:choose></td>
+												</option>
+											</select>
+											</td>
 										</tr>
 										</c:forEach>
 									</tbody>
 								</table>
-								<input type="submit" value="처리된 일 삭제하기">
+								<input type="submit" value="완료">
 								</form>
 							</div>
 							<!-- /.card-body -->

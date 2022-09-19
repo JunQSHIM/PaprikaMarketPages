@@ -14,6 +14,7 @@ import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
+import com.spring.myweb.VO.AdminVO.PayVO.PayVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
@@ -215,5 +216,10 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void bannerDelete(int banner_seq) {
 		adminDAO.bannerDelete(banner_seq);
+	}
+
+	@Override
+	public int updatePay(HashMap<String, Object> vo) {
+		return adminDAO.updatePay(vo);
 	}
 }

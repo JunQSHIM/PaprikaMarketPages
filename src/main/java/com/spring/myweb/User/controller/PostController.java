@@ -168,7 +168,7 @@ public class PostController {
 		lvo.setUser_seq(uvo.getUser_seq());
 		int like = 0;
 		
-		uvo = (UserVO)session.getAttribute("user");
+		
 		System.out.println(uvo.toString());
 		
 		int check = postService.likeCount(lvo);
@@ -187,15 +187,16 @@ public class PostController {
 		// 이미지 불러오기
 		List<String> photoName = postService.photoDetail(post_seq);
 		model.addAttribute("name", photoName);
+		
 		if(vo.getPay_status()==1) {
-			
+			uvo = (UserVO)session.getAttribute("user");
 			vo.setPay_status(2);
 			int result1 = postService.updatePayStatus(vo);
 			if(result1==1) {
 				System.out.println("구매예약 대기 신청 -> 확인완료");
 			}
 			info.put("sellerId", vo.getNickname());
-			info.put("buyerId", uvo.getId());
+			info.put("buyerId", uvo.getNickname());
 			info.put("post_seq", vo.getPost_seq());
 			info.put("process", 0);
 			info.put("sellerQr", vo.getPay());

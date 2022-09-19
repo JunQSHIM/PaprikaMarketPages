@@ -407,6 +407,37 @@ public class AdminController {
 		return "Admin_page/admin_list/pay";
 	}
 	
+	//pay
+	@RequestMapping(value="pay.mdo", method=RequestMethod.POST)
+	public String payConfirm(Model model,HashMap<String, Object> vo, String[] process, String[] status, String[] pay_seq) {
+		System.out.println("수정된 파프리카 페이목록");
+		for(int i=0; i<pay_seq.length; i++) {
+			System.out.println("cc");
+			vo.put("process", process[i]);
+			vo.put("status", status[i]);
+			vo.put("pay_seq", pay_seq[i]);
+			int result = adminService.updatePay(vo);
+			if(result==1) {
+				System.out.println("SUCC");
+				vo.remove("process");
+				vo.remove("status");
+				vo.remove("pay_seq");
+			}
+		}
+		
+		List<PayVO> vo1 = payService.payList();
+		model.addAttribute("payList", vo1);
+		return "Admin_page/admin_list/pay";
+	}
+	
+	@RequestMapping(value="payForm.mdo")
+	public String payForm(Model model) {
+		System.out.println("처리할 파프리카 페이목록");
+		List<PayVO> vo = payService.payList();
+		model.addAttribute("payList", vo);
+		return "Admin_page/admin_list/payFormList";
+	}
+	
 	//배너 관리
 		@RequestMapping(value = "banner.mdo" )
 		public String bannerList(Model model) {

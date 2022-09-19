@@ -50,8 +50,17 @@
 	</select>
 	<!-- 게시판 삭제하기 -->
 	<select id="boardDelete" resultType="UserBoardVO">
-		delete from product where
-		prod_seq = #{prod_seq};
+		delete from board where
+		board_seq = #{board_seq};
+	</select>
+	<!-- 사진삭제 게시판 -->
+	<delete id="deletePhotoBoard">
+		delete from board_photo where board_seq = #{board_seq};
+	</delete>
+	
+	<select id="selectDeleteBoard" resultType="String">
+		select substring_index (saved_file_name, '/' ,-2) as saved_file_name from
+		(select saved_file_name from board_photo where board_seq =${board_seq})photo_name;
 	</select>
 	
 	<!-- 미리보기 사진  게시판-->
@@ -87,6 +96,11 @@
 		order by board_seq desc limit #{displayPost}, #{postNum}
 	</select>
 
+	<!-- 게시판 수정 -->
+	<update id="updateBoard" parameterType="UserBoardVO">
+		update board set title =#{title}, content = #{content}
+		where board_seq = #{board_seq};
+	</update>
 
 
 	<!-- 상품 리스트 -->

@@ -7,11 +7,13 @@
 <script src="/myweb/login/main/main.js"></script>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/board/board.css">
-<script type="text/javascript" src="/myweb/login/board/board.js"></script>
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Main Page</title>
+<script>
+var link =  document.location.href;
+
+</script>
 </head>
 <body>
 	<header>
@@ -39,7 +41,7 @@
 				
 				<c:forEach items="${board }" var="board" varStatus="status">
 				<article class="article">
-					<a class="article_link" href="boardDetail.do?board_seq=${board.board_seq }">
+					<a class="article_link" href="boardDetail.do?user_seq=${user.user_seq }&board_seq=${board.board_seq }">
 						<div class="article_photo">
 							<img id="article_thumbnail" src="${photo[status.index] }">
 						</div>
@@ -58,7 +60,7 @@
 			</div>
 			<div id="write_button_wrap">
 				<button id="write_button" onclick="location.href='insertboard.do'">글 작성하기</button>
-				<button id="myboard_button" onclick="location.href='myboard.do?user_seq=${user.user_seq}'">내 게시글 보기</button>
+				<button id="myboard_button" onclick="location.href='myboard.do?user_seq=${user.user_seq}&mypage=y'">내 게시글 보기</button>
 				<button id="myboard_button" onclick="location.href='boardlist.do'">전체 보기</button>
 				
 				
@@ -66,28 +68,56 @@
 		</div>
 	</article>
 	<br>
-	<div class="pagingBody">
-	 	<div class= "paging">
-		<c:if test="${page.prev}">
-			<a href="boardlist.do?&num=${page.startPageNum - 1}"> ◀ </a>
-			
-		</c:if>
-	
-		<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
-			<c:if test="${select != num}">
-					<a href="boardlist.do?&num=${num}" class="present_page">${num}</a>
-				</c:if> <c:if test="${select == num}">
-					<b>${num}</b>
+	<c:choose>
+		<c:when test="${param.mypage eq 'y'}">
+			<div class="pagingBody">
+			 	<div class= "paging">
+				<c:if test="${page.prev}">
+					<a href="myboard.do?user_seq=${user.user_seq}&num=${page.startPageNum - 1}&mypage=y"> ◀ </a>
+					
 				</c:if>
 			
-		</c:forEach>
-
-		<c:if test="${page.next}">
-			<a href="boardlist.do?num=${page.endPageNum + 1}">▶</a>
+				<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+					<c:if test="${select != num}">
+							<a href="myboard.do?user_seq=${user.user_seq}&num=${num}&mypage=y" class="present_page">${num}</a>
+						</c:if> <c:if test="${select == num}">
+							<b>${num}</b>
+						</c:if>
+					
+				</c:forEach>
 			
-		</c:if>
-		</div>
-	</div>
+				<c:if test="${page.next}">
+					<a href="myboard.do?user_seq=${user.user_seq}&num=${page.endPageNum + 1}&mypage=y">▶</a>
+					
+				</c:if>
+				</div>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="pagingBody">
+			 	<div class= "paging">
+				<c:if test="${page.prev}">
+					<a href="boardlist.do?&num=${page.startPageNum - 1}"> ◀ </a>
+					
+				</c:if>
+			
+				<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+					<c:if test="${select != num}">
+							<a href="boardlist.do?&num=${num}" class="present_page">${num}</a>
+						</c:if> <c:if test="${select == num}">
+							<b>${num}</b>
+						</c:if>
+					
+				</c:forEach>
+			
+				<c:if test="${page.next}">
+					<a href="boardlist.do?num=${page.endPageNum + 1}">▶</a>
+					
+				</c:if>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
 	<div style="margin-bottom:40px;"></div>
 	<footer class="container_12">
 		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>

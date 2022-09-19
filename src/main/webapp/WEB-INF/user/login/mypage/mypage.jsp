@@ -70,9 +70,11 @@ function toProfileEdit() {
 					<c:choose>
 						<c:when test="${user.nickname ne null }">
 							${user.nickname }
+							&nbsp;&nbsp;<c:if test="${user.pay ne null }">&#127818;</c:if>
 						</c:when>
 						<c:otherwise>
 							${kakaoUser.nickname }
+							&nbsp;&nbsp;<c:if test="${user.pay ne null }">&#127818;</c:if>
 						</c:otherwise>
 					</c:choose>
 					</div>
@@ -99,7 +101,6 @@ function toProfileEdit() {
 						</div>
 					</div>
 					<div id="myLoc">
-						
 						<b>내 동네</b>
 						<c:choose>
 							<c:when test="${user.location1 ne null and kakaoUser.location1 eq null }">
@@ -129,6 +130,7 @@ function toProfileEdit() {
 				<div id="edit_button">
 					<button type="button" onclick=toProfileEdit()>프로필 수정</button>
 					<button type="button" onclick="location.href='location.do'">동네 인증하기</button>
+					<button type="button" onclick="location.href='pay.do'">파프리카 페이 사용하기</button>
 				</div>
 			</div>
 			<div id="eval_and_review">

@@ -9,7 +9,8 @@
 		select * from user where id=#{value}
 	</select>
 	<select id="idCheck" parameterType="String" resultType="int">
-		select count(*) from user where id = #{id}
+		select
+		count(*) from user where id = #{id}
 	</select>
 	<select id="emailCheck" parameterType="String" resultType="int">
 		select count(*) from user where email = #{email}
@@ -28,19 +29,23 @@
 		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image})
 		ON DUPLICATE KEY UPDATE id= #{id};
 	</select>
-	
+
 	<!-- 게시판 글 쓰기 -->
 	<select id="insertboard" resultType="UserBoardVO">
 		insert into
-		board(user_seq, title, content, upload_date)
-		values(#{user_seq}, #{title}, #{content},now());
+		board(user_seq,
+		title, content, upload_date)
+		values(#{user_seq}, #{title},
+		#{content},now());
 	</select>
 	<!-- 게시판 사진 등록 -->
 	<insert id="insertboardPhoto" parameterType="PhotoVO">
-		insert into board_photo	
+		insert into
+		board_photo
 		(board_seq, origin_file_name, saved_file_name, create_time)
 		values
-		(#{post_seq}, #{o_name}, #{s_name}, now());
+		(#{post_seq},
+		#{o_name}, #{s_name}, now());
 	</insert>
 
 	<!-- 게시판 상품 상세보기 -->
@@ -53,37 +58,42 @@
 		delete from product where
 		prod_seq = #{prod_seq};
 	</select>
-	
-	<!-- 미리보기 사진  게시판-->
+
+	<!-- 미리보기 사진 게시판 -->
 	<select id="selectOnePhotoBoard" resultType="String">
-		select saved_file_name from board_photo where board_seq = #{board_seq} order by create_time desc limit 0,1;
+		select
+		saved_file_name from board_photo where board_seq = #{board_seq} order
+		by create_time desc limit 0,1;
 	</select>
-	
-		<!-- 사진 불러오기 게시판 -->
+
+	<!-- 사진 불러오기 게시판 -->
 	<select id="selectboardPhoto" resultType="String">
-		select saved_file_name from board_photo where board_seq = #{board_seq};
+		select saved_file_name
+		from board_photo where board_seq = #{board_seq};
 	</select>
-	
+
 	<!-- 최신 게시판 -->
 	<select id="selectBoardNew" resultType="int">
-		select board_seq from board
+		select board_seq from
+		board
 		where user_seq = #{user_seq} order by upload_date desc limit 0,1;
 	</select>
-	
+
 	<!-- 게시판 총 개수 -->
 	<select id="countBoard" resultType="int">
 		select count(board_seq) from board
-			<if test="user_seq != 0">
-				where user_seq=#{user_seq}
-			</if>
+		<if test="user_seq != 0">
+			where user_seq=#{user_seq}
+		</if>
 	</select>
-	
+
 	<!-- 게시판 목록 + 페이징 -->
-	<select id="listBoardPage" parameterType="UserBoardPageVO" resultType="UserBoardVO">
+	<select id="listBoardPage" parameterType="UserBoardPageVO"
+		resultType="UserBoardVO">
 		select * from board
-			<if test="user_seq != 0">
-				where user_seq=#{user_seq}
-			</if>
+		<if test="user_seq != 0">
+			where user_seq=#{user_seq}
+		</if>
 		order by board_seq desc limit #{displayPost}, #{postNum}
 	</select>
 
@@ -94,17 +104,21 @@
 		select * from post order by
 		post_seq desc;
 	</select>
-	
+
 	<!-- 상품 등록 -->
 	<select id="post" resultType="PostVO">
 		insert into post(user_seq,
 		nickname, post_title,post_content,price,location1, location2,
 		category_seq,
-		upload_date, create_date, pay_check, prod_status)
+		upload_date, create_date, pay_check, prod_status, pay)
 		values(#{user_seq},#{nickname},#{post_title},
-		#{post_content}, #{price},(select location1 from user where user_seq = #{user_seq}),(select location2 from user where user_seq = #{user_seq}),#{category_seq},now(),now(),#{pay_check}, #{prod_status});
+		#{post_content},
+		#{price},(select location1 from user where user_seq =
+		#{user_seq}),(select location2 from user where user_seq =
+		#{user_seq}),#{category_seq},now(),now(),#{pay_check}, #{prod_status},
+		#{pay});
 	</select>
-	
+
 	<!-- 판매상품 삭제하기 -->
 	<select id="postDelete" resultType="PostVO">
 		delete from post where
@@ -114,8 +128,10 @@
 	<!-- 판매상품 수정하기 -->
 	<select id="updatePost" resultType="PostVO">
 		update post set post_title =
-		#{post_title}, price = #{price}, post_content=#{post_content}, prod_status = #{prod_status}, upload_date = now()
-		create_date = now() where post_seq = #{post_seq};
+		#{post_title}, price = #{price}, post_content=#{post_content},
+		prod_status = #{prod_status}, upload_date = now()
+		create_date = now()
+		where post_seq = #{post_seq};
 	</select>
 
 	<!-- 상품 등록 상세 보기 -->
@@ -123,34 +139,40 @@
 		select *
 		from post where post_seq = #{post_seq};
 	</select>
-	
+
 	<!-- 사진등록 -->
 	<insert id="insertPhoto" parameterType="PhotoVO">
-		insert into post_photo	
+		insert into post_photo
 		(post_seq, origin_file_name, saved_file_name, create_time)
 		values
 		(#{post_seq}, #{o_name}, #{s_name}, now());
 	</insert>
-	
+
 	<!-- 사진 선택 -->
 	<select id="selectPhoto" resultType="String">
-		select saved_file_name from post_photo where post_seq = #{post_seq};
+		select saved_file_name from
+		post_photo where post_seq = #{post_seq};
 	</select>
-	
+
 	<select id="selectDelete" resultType="String">
-		select substring_index (saved_file_name, '/' ,-2) as saved_file_name from
-		(select saved_file_name from post_photo where post_seq =${post_seq})photo_name;
+		select substring_index
+		(saved_file_name, '/' ,-2) as saved_file_name from
+		(select
+		saved_file_name from post_photo where post_seq
+		=${post_seq})photo_name;
 	</select>
-	
-	<!-- 미리보기 사진  -->
+
+	<!-- 미리보기 사진 -->
 	<select id="selectOnePhoto" resultType="String">
-		select saved_file_name from post_photo where post_seq = #{post_seq} order by create_time desc limit 0,1;
+		select saved_file_name
+		from post_photo where post_seq = #{post_seq} order by create_time desc
+		limit 0,1;
 	</select>
-	
+
 	<delete id="deletePhoto">
 		delete from post_photo where post_seq = #{post_seq};
 	</delete>
-	
+
 	<!-- 최신 상품 등록 페이지 번호 추출 -->
 	<select id="selectPostUser" resultType="int">
 		select post_seq from post
@@ -161,7 +183,8 @@
 	<!-- 좋아요 눌렀는지 안 눌렀는지 -->
 	<select id="likeCount" parameterType="LikeVO" resultType="int">
 		select
-		count(likeCnt) from likePost where post_seq = #{post_seq} and user_seq =
+		count(likeCnt) from likePost where post_seq = #{post_seq} and user_seq
+		=
 		#{user_seq};
 	</select>
 	<!-- 좋아요 없는 경우 -->
@@ -179,18 +202,27 @@
 	<!-- 좋아요 누르기 -->
 	<update id="likeUpdate" parameterType="LikeVO">
 		update likePost set
-		<include refid="cal"></include>
-		where post_seq = #{post_seq} and user_seq = #{user_seq};
-	</update>
-	
-	<sql id="cal">
-		<if test="likeCnt == 1">
+		<if test="count == 1">
 			likeCnt = 0
 		</if>
-		<if test="likeCnt == 0">
+		<if test="count == 0">
 			likeCnt = likeCnt + 1
 		</if>
-	</sql>
+		where post_seq = #{post_seq} and user_seq = #{user_seq};
+	</update>
+
+	<!-- 좋아요 눌린 개수 -->
+	<select id="allLike" parameterType="LikeVO" resultType="int">
+
+		select
+		count(likeCnt) from (select * from likePost where post_seq =
+		#{post_seq}) as lk where likeCnt = 1;
+	</select>
+
+	<!-- 찜목록 -->
+	<select id="jjimCart" parameterType="LikeVO" resultType="int">
+		select count(user_seq) from (select * from likePost where user_seq = #{user_seq}) as lk where likeCnt =1;
+	</select>
 
 
 	<!-- 조회수 증가 -->
@@ -220,75 +252,80 @@
 
 	<!-- 카테고리별 게시물 수 -->
 	<select id="countCate" resultType="int">
-		select count(post_seq) from post where category_seq = #{category_seq};
+		select count(post_seq) from
+		post where category_seq = #{category_seq};
 	</select>
 
 	<!-- 게시물 총 개수 -->
 	<select id="count" resultType="int">
 		select count(*) from post
-        
-        <if test="keyword != null">
-            where post_title like concat('%',#{keyword},'%')
-        </if>
+
+		<if test="keyword != null">
+			where post_title like concat('%',#{keyword},'%')
+		</if>
 
 	</select>
-	
-	<!-- 페이징은 검색되는데(검색된 게시물 숫자에 맞게 페이징이 됨) 리스트를 못 불러온다.  -->
+
 	<!-- 게시물 목록 + 페이징 -->
-	<select id="listPage" parameterType="PageVO"
-		resultType="PostVO">
+	<select id="listPage" parameterType="PageVO" resultType="PostVO">
 		select * from (
-                select post_seq, post_title, price, upload_date, pay_check, location1  
-                from post
-                
-                <if test="keyword != null">
-           			 where post_title like concat('%',#{keyword},'%')
-       			</if>
-       			
-                order by post_seq desc) as T1
-        		limit #{displayPost},#{postNum}
+		select post_seq, post_title, price, upload_date,
+		pay_check, location1
+		from post
+
+		<if test="keyword != null">
+			where post_title like concat('%',#{keyword},'%')
+		</if>
+
+		order by post_seq desc) as T1
+		limit #{displayPost},#{postNum}
 	</select>
-	
+
 	<!-- 내상품 총 개수 -->
 	<select id="myCount" resultType="int">
 		select count(*) from post
-		  <if test="user_seq != null">
-                	where user_seq = #{user_seq}
-          </if>
-        
-        <!--
-        <if test="keyword != null">
-            where post_title like concat('%',#{keyword},'%')
-        </if>
-          -->
-          
+		<if test="user_seq != null">
+			where user_seq = #{user_seq}
+		</if>
+
 	</select>
 	<!-- 내 상품 목록 -->
 	<select id="myPageList" parameterType="PageVO"
 		resultType="PostVO">
 		select * from (
-                select post_seq, post_title, price, upload_date, pay_check, location1  
-                from post
-                <if test="user_seq != null">
-                	where user_seq = #{user_seq}
-                </if>
-                
-             <!--    <if test="keyword != null">
-           			 where post_title like concat('%',#{keyword},'%')
-       			</if> --> 
-       			
-                order by post_seq desc) as T1
-        		limit #{displayPost},#{postNum}
+		select post_seq, post_title, price, upload_date,
+		pay_check, location1
+		from post
+		<if test="user_seq != null">
+			where user_seq = #{user_seq}
+		</if>
+		<if test="sort == null">
+			order by post_seq desc
+		</if>
+		<if test="sort == 1">
+			order by post_seq desc
+		</if>
+		<if test="sort == 2">
+
+		</if>
+		<if test="sort == 3">
+			order by price ASC
+		</if>
+		<if test="sort == 4">
+			order by price desc
+		</if>
+		) as T1
+		limit #{displayPost},#{postNum}
 	</select>
-	
-	
-	
-	
-	
+
+
+
+
 	<!-- 카테고리 목록 + 페이징 -->
 	<select id="catePage" parameterType="hashMap"
 		resultType="PostVO">
-		select * from post where category_seq = #{category_seq} order by post_seq desc limit #{displayPost}, #{postNum}
+		select * from post where category_seq = #{category_seq}
+		order by post_seq desc limit #{displayPost}, #{postNum}
 	</select>
 
 	<!-- 정보 찾기 -->
@@ -320,23 +357,50 @@
 		update user set
 		birth=#{birth}, available=#{available} where id=#{id}
 	</update>
-	
-	<update id="updatePw" >
-		update user set password = #{password} where email = #{email}
+
+	<update id="updatePw">
+		update user set password = #{password}
+		where email =
+		#{email}
 	</update>
-	
+
 	<update id="updateMailKey" parameterType="UserVO">
-    	update user set mail_key=#{mail_key} where email=#{email}
+		update user set
+		mail_key=#{mail_key} where email=#{email}
 	</update>
-	
+
 	<update id="updateMailAuth" parameterType="UserVO">
-    	update user set mail_auth=1 where email=#{email} and mail_key=#{mail_key}
+		update user set
+		mail_auth=1 where email=#{email} and mail_key=#{mail_key}
 	</update>
-	
-	<select id="emailAuthFail" parameterType="String" resultType="int">
-    	select count(*) from user where id=#{id} and mail_auth=1
+
+	<select id="emailAuthFail" parameterType="String"
+		resultType="int">
+		select count(*) from user where id=#{id} and mail_auth=1
 	</select>
-	<select id="findNickName" parameterType="int" resultType="String">
+	<select id="findNickName" parameterType="int"
+		resultType="String">
 		select nickname from user where user_seq=${user_seq};
 	</select>
+
+	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
+	<update id="updatePay">
+		update user set pay=#{pay} where id=#{id}
+	</update>
+
+	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
+	<update id="updatePayPost">
+		update post set pay=#{pay} where nickname=#{nickname}
+	</update>
+
+	<update id="updatePayStatus">
+		update post set pay_status=#{pay_status} where
+		post_seq=#{post_seq};
+	</update>
+
+	<insert id="insertPPKPay">
+		insert into pay(sellerId, buyerId, post_seq, process,
+		sellerQr, buyerQr, status)
+		values(#{sellerId},#{buyerId},#{post_seq},#{process},#{sellerQr},#{buyerQr},1)
+	</insert>
 </mapper>

@@ -344,6 +344,10 @@ a {
 	border-right: 1px solid rgb(204, 204, 204);
 }
 
+.non_select_array:hover{
+	color:rgb(247, 47, 51);
+}
+
 .sell_product_board:nth-last-child(-n+5):nth-child(5n+1),
 	.sell_product_board:nth-last-child(-n+5):nth-child(5n+1) ~
 	.sell_product_board {

@@ -77,7 +77,7 @@
                </div>
                <div class="item">
  
-               <div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/heart.png" width="16" height="16">36</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/clock.png" width="16" height="16">${post.upload_date}</div><div class="etc_items"><button class="openBtn">신고하기</button></div></div>
+               <div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/heart.png" width="16" height="16">${allLike }</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/clock.png" width="16" height="16">${post.upload_date}</div><div class="etc_items"><button class="openBtn">신고하기</button></div></div>
                </div>
                   <div class="ipQCCP" id="info">
                   <div class="prod_status">
@@ -128,16 +128,16 @@
 							<input type="hidden" id="likecheck" value="${like }">
 						</c:when>					
 						<c:when test="${like ==1}">
-							<button type="button" id="likebtn">찜</button>
+							<button type="button" id="likebtn" class="">♥찜</button>
 							<input type="hidden" id="likecheck" value="${like }">
 						</c:when>
 					</c:choose>			
                   <button>연락하기</button>
                <c:choose>
-               <c:when test="${post.pay_check == 1 }">
-                  <button onclick="location.href='javascript:showPopUp()'" >바로구매</button>
+               <c:when test="${post.pay_check == 1 and post.nickname ne user.nickname}">
+                  <button onclick="showPopUp()" >바로구매</button>
                </c:when>
-               <c:when test="${post.pay_check == 0 }">
+               <c:when test="${post.pay_check == 0 or post.nickname eq user.nickname}">
                		<button onclick="" style="visibility: hidden;">바로구매</button>
                </c:when>
 				</c:choose>
@@ -181,7 +181,6 @@
                         ${post.nickname}
                      </div>
                      <div id="follow">
-                        
                         <button onclick="location.href='myProductCart.do'">상점가기</button>
                      </div>
                      <div id="rt_img">

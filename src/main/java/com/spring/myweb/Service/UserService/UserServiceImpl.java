@@ -340,4 +340,9 @@ public class UserServiceImpl implements UserService{
 		return userDAO.updatePw(vo);
 	}
 
+	@Override
+	public int updatePay(UserVO vo) throws Exception {
+		return userDAO.updatePay(vo);
+	}
+
 }

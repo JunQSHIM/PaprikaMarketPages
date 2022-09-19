@@ -1,5 +1,6 @@
 package com.spring.myweb.Service.PostService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +42,12 @@ public interface PostService {
 	public int likeGetInfo(LikeVO vo); // 좋아요 하기
 	public void likeinsert(LikeVO vo);
 	public void likeupdate(LikeVO vo);
+	public int allLike(LikeVO vo); // 좋아요 개수
+	public int jjimCart(LikeVO vo); // 찜목록 개수
 
+	public int updatePayPost(PostVO vo);
+	public int updatePayStatus(PostVO vo);
 	
+	public int insertPPKPay(HashMap<String, Object> vo);
 
 }

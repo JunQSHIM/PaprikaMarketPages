@@ -1,5 +1,6 @@
 package com.spring.myweb.DAO.PostDAO;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,11 +41,17 @@ public interface PostDAO {
 	public int post_seq(int user_seq);//최신 상품 등록 페이지
 	public void deleteImage(int post_seq);//사진 삭제
 	
-	public int likeCount(LikeVO vo); // 좋아요 갯수
+	// 좋아요 구현 DAO
+	public int likeCount(LikeVO vo); //
 	public int likeGetInfo(LikeVO vo); // 좋아요 하기
 	public void likeinsert(LikeVO vo);
 	public void likeupdate(LikeVO vo);
+	public int allLike(LikeVO vo); // 좋아요 개수
+	public int jjimCart(LikeVO vo); // 찜목록 개수
 	
+	public int updatePayPost(PostVO vo); //유저의 파프리카페이 링크를 포스트에도 저장
+	public int updatePayStatus(PostVO vo); //구매 예약 대기 완료 변경해주는것 
 	
+	public int insertPPKPay(HashMap<String,Object> vo); //구매예약시 정보들을 관리자에게 전달
 	
 }

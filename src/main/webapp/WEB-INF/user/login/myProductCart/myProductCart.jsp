@@ -51,16 +51,16 @@
 								<span class="sell_cart_4_span">${total } 개</span>
 							</div>
 							<div class="array">
-								<a class="select_array">
+								<a class="non_select_array" type="button" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}&num=${select }&sort=1'">
 									최신순
 								</a>
-								<a class="non_select_array">
+								<a class="non_select_array" type="button" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}&num=${select }&sort=2'">
 									인기순
 								</a>
-								<a class="non_select_array">
+								<a class="non_select_array" type="button" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}&num=${select }&sort=3'">
 									저가순
 								</a>
-								<a class="non_select_array">
+								<a class="non_select_array" type="button" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}&num=${select }&sort=4'">
 								고가순
 								</a>
 							</div>

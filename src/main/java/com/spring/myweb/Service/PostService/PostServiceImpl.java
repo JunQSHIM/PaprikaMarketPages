@@ -1,5 +1,6 @@
 package com.spring.myweb.Service.PostService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -128,6 +129,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public void likeupdate(LikeVO vo) {
+		System.out.println(vo);
 		postDao.likeupdate(vo);
 	}
 
@@ -149,6 +151,30 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<PostVO> myPageList(PageVO vo) throws Exception {
 		return postDao.myPageList(vo);
+	}
+	@Override
+	public int updatePayPost(PostVO vo) {
+		return postDao.updatePayPost(vo);
+	}
+
+	@Override
+	public int updatePayStatus(PostVO vo) {
+		return postDao.updatePayStatus(vo);
+	}
+
+	@Override
+	public int insertPPKPay(HashMap<String, Object> vo) {
+		return postDao.insertPPKPay(vo);
+	}
+
+	@Override
+	public int allLike(LikeVO vo) {
+		return postDao.allLike(vo);
+	}
+
+	@Override
+	public int jjimCart(LikeVO vo) {
+		return postDao.jjimCart(vo);
 	}
 
 	

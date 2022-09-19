@@ -20,6 +20,7 @@
 			<input type="hidden" name="location1" value=${user.location1 }>
 			<input type="hidden" name="user_seq" value=${user.user_seq }>
 			<input type="hidden" name="nickname" value=${user.nickname }>
+			<input type="hidden" name="pay" value=${user.pay }>
 		<div class="grid_12 newinfo">
 			<div class="newinfo_1">
 				<div class="grid_2 newinfo_1_1">기본정보</div>

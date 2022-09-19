@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <script src="/myweb/login/main/header/js/ban.js"></script>
@@ -14,7 +15,7 @@
 				<div class="wishlist">
 					<div class="jjim_text">찜한 상품</div>
 					<div class="jjim_heart">
-						<a href="jjim_cart.jsp"> ♥ 2</a>
+						<a href="jjim_cart.jsp">${jjimCart}</a>
 					</div>
 				</div>
 				<div class="recent">
@@ -29,5 +30,10 @@
 
 
 		</div>
+		
+		<script type="text/javascript">
+		
+		
+		</script>
 </body>
 </html>

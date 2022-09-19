@@ -32,10 +32,28 @@ $(document).ready(function(){
 	});
 });
 function addCate(){
-	window.open('/myweb/catePopUp.mdo', '카테고리 추가', 'width=300, height=300')
+	var width = 500;
+	var height = 500;
+	
+	//pc화면기준 가운데 정렬
+	var left = (window.screen.width / 2) - (width/2);
+	var top = (window.screen.height / 4);
+	
+    	//윈도우 속성 지정
+	var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes';
+	window.open('/myweb/catePopUp.mdo', '카테고리 추가', windowStatus);
 }
 function addQ(){
-	window.open('/myweb/qPopUp.mdo', '카테고리 추가', 'width=300, height=300')
+	var width = 500;
+	var height = 500;
+	
+	//pc화면기준 가운데 정렬
+	var left = (window.screen.width / 2) - (width/2);
+	var top = (window.screen.height / 4);
+	
+    	//윈도우 속성 지정
+	var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes';
+	window.open('/myweb/qPopUp.mdo', '카테고리 추가', windowStatus);
 }
 </script>
 </head>

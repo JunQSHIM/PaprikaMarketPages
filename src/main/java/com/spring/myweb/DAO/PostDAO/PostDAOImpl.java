@@ -219,7 +219,8 @@ public class PostDAOImpl implements PostDAO {
 
 	@Override
 	public void likeupdate(LikeVO vo) {
-
+		System.out.println("user" + vo.getUser_seq());
+		System.out.println("post" + vo.getPost_seq());
 		session.update("userDB.likeUpdate", vo);
 	}
 
@@ -241,10 +242,33 @@ public class PostDAOImpl implements PostDAO {
 	public int myCount(PageVO vo) throws Exception {
 		return session.selectOne("userDB.myCount", vo);
 	}
+	public int updatePayPost(PostVO vo) {
+		return session.update("userDB.updatePayPost",vo);
+	}
+
+	@Override
+	public int updatePayStatus(PostVO vo) {
+		return session.update("userDB.updatePayStatus",vo);
+	}
+
+	@Override
+	public int insertPPKPay(HashMap<String, Object> vo) {
+		return session.insert("userDB.insertPPKPay",vo);
+	}
 
 	@Override
 	public List<PostVO> myPageList(PageVO vo) throws Exception {
 		return session.selectList("userDB.myPageList", vo);
+	}
+
+	@Override
+	public int allLike(LikeVO vo) {
+		return session.selectOne("userDB.allLike", vo);
+	}
+
+	@Override
+	public int jjimCart(LikeVO vo) {
+		return session.selectOne("userDB.jjimCart", vo);
 	}
 
 }

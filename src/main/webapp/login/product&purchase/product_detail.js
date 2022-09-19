@@ -96,28 +96,19 @@
 	});
 	
 	function likeupdate(){
-		var root = getContextPath(),
-		likeurl = "/likeupdate.do",
-		user_seq = $('#user_seq').val(),
-		post_seq = $('#post_seq').val(),
-		count = $('#likecheck').val(),
-		data = {"user_seq" : user_seq,
-				"post_seq" : post_seq,
-				"count" : count};
-		console.log(user_seq);
-		console.log(post_seq);
 	$.ajax({
-		url : root + likeurl,
+		url : "/myweb/likeupdate.do",
 		type : 'post',
-		contentType: 'application/json',
-		data : JSON.stringify(data),
+		data : {user_seq : Number($('#user_seq').val()),
+			post_seq : Number($('#post_seq').val()),
+			count : Number($('#likecheck').val())},
 		success : function(result){
 			console.log("수정" + result.result);
-			if(count == 1){
+			if(Number($('#likecheck').val()) == 1){
 				console.log("좋아요 취소");
 				 $('#likecheck').val(0);
 				 $('#likebtn').html('찜');
-			}else if(count == 0){
+			}else if(Number($('#likecheck').val()) == 0){
 				console.log("좋아요!");
 				$('#likecheck').val(1);
 				$('#likebtn').html('♥찜');
@@ -128,12 +119,6 @@
 		
 		});
 	};
-	
-	function getContextPath() {
-	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
-	} 
-
 	/** 결제 * */
     // 결제 금액, 구매자의 이름, 이메일
     const priceAmount = "10";
@@ -154,10 +139,9 @@
       var title = '카카오 송금';
       var status = "width=370, height=600, top=100, left=600";
       	window.open(url,title,status);
-      }
+     }
     
     function showPopUp() {
-    	
     	//창 크기 지정
     	var width = 500;
     	var height = 500;
@@ -168,15 +152,12 @@
     	
         	//윈도우 속성 지정
     	var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes';
-    	
         	//연결하고싶은url
-        	const url = "https://fintastic.kakao.com/connect/money-transaction/link?qr_uuid=9fd90854-0e87-44cc-8b9d-913ffd34408b";
+        	const url = "/myweb/ppkPayPopUp.do";
 
     	//등록된 url 및 window 속성 기준으로 팝업창을 연다.
     	window.open(url, "hello popup", windowStatus);
-    }
-    
-    
+    }    
     // 모달창
     const open = () => {
         document.querySelector(".modal").classList.remove("hidden");

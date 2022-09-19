@@ -161,7 +161,7 @@
 	<!-- 좋아요 눌렀는지 안 눌렀는지 -->
 	<select id="likeCount" parameterType="LikeVO" resultType="int">
 		select
-		count(*) from likePost where post_seq = #{post_seq} and user_seq =
+		count(likeCnt) from likePost where post_seq = #{post_seq} and user_seq =
 		#{user_seq};
 	</select>
 	<!-- 좋아요 없는 경우 -->
@@ -230,6 +230,7 @@
         <if test="keyword != null">
             where post_title like concat('%',#{keyword},'%')
         </if>
+
 	</select>
 	
 	<!-- 페이징은 검색되는데(검색된 게시물 숫자에 맞게 페이징이 됨) 리스트를 못 불러온다.  -->
@@ -239,12 +240,50 @@
 		select * from (
                 select post_seq, post_title, price, upload_date, pay_check, location1  
                 from post
+                
                 <if test="keyword != null">
            			 where post_title like concat('%',#{keyword},'%')
        			</if>
+       			
                 order by post_seq desc) as T1
         		limit #{displayPost},#{postNum}
 	</select>
+	
+	<!-- 내상품 총 개수 -->
+	<select id="myCount" resultType="int">
+		select count(*) from post
+		  <if test="user_seq != null">
+                	where user_seq = #{user_seq}
+          </if>
+        
+        <!--
+        <if test="keyword != null">
+            where post_title like concat('%',#{keyword},'%')
+        </if>
+          -->
+          
+	</select>
+	<!-- 내 상품 목록 -->
+	<select id="myPageList" parameterType="PageVO"
+		resultType="PostVO">
+		select * from (
+                select post_seq, post_title, price, upload_date, pay_check, location1  
+                from post
+                <if test="user_seq != null">
+                	where user_seq = #{user_seq}
+                </if>
+                
+             <!--    <if test="keyword != null">
+           			 where post_title like concat('%',#{keyword},'%')
+       			</if> --> 
+       			
+                order by post_seq desc) as T1
+        		limit #{displayPost},#{postNum}
+	</select>
+	
+	
+	
+	
 	
 	<!-- 카테고리 목록 + 페이징 -->
 	<select id="catePage" parameterType="hashMap"

@@ -141,6 +141,16 @@ public class PostServiceImpl implements PostService {
 		return postDao.countCate(category_seq);
 	}
 
+	@Override
+	public int myCount(PageVO vo) throws Exception {
+		return postDao.myCount(vo);
+	}
+
+	@Override
+	public List<PostVO> myPageList(PageVO vo) throws Exception {
+		return postDao.myPageList(vo);
+	}
+
 	
 
 

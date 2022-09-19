@@ -1,6 +1,7 @@
 package com.spring.myweb.User.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -41,66 +42,62 @@ public class PostController {
 	private AdminService adminService;
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String postList(Model model, PageVO page) throws Exception {
+	public String postList(Model model, PostVO vo, PageVO page) throws Exception {
+
 		if (page.getNum() == 0) {
 			page.setNum(1);
 		}
-		
-		page.setCount(postService.count(page));
-		
+		int total = postService.count(page);
+		page.setCount(total);
+
 		int num = page.getNum();
-		System.out.println(page.getCount());
 		List<Integer> post_seq = new ArrayList<Integer>();
-		
-		
+
 		List<PostVO> list = postService.listPage(page);
-		System.out.println(list);
 		for (PostVO post : list) {
 			post_seq.add(post.getPost_seq());
 		}
-		
+
 		List<String> photoNames = new ArrayList<String>();
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
 		}
-		
-		
+
 		model.addAttribute("page", page);
 		model.addAttribute("select", num);
 		model.addAttribute("list", list);
 		model.addAttribute("photo", photoNames);
-		
-		//슬라이더 이미지
-		List<BannerVO> banner= adminService.bannerList();
+
+		// 슬라이더 이미지
+		List<BannerVO> banner = adminService.bannerList();
 		model.addAttribute("banner", banner);
-		
+
 		return "login/main/mother";
 	}
 
 	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
 	public String getCreate(HttpSession session, Model model, CategoryVO vo, UserVO uvo, PostVO pvo) {
-		System.out.println("판매하기 접속함");
-		
-			List<CategoryVO> list = postService.categoryList();
-			List<PostVO> plist = postService.postList();
-			List<Integer> post_seq = new ArrayList<Integer>();
 
-			for (PostVO post : plist) {
-				post_seq.add(post.getPost_seq());
-			}
+		List<CategoryVO> list = postService.categoryList();
+		List<PostVO> plist = postService.postList();
+		List<Integer> post_seq = new ArrayList<Integer>();
 
-			List<String> photoNames = new ArrayList<String>();
-			for (int post_num : post_seq) {
-				photoNames.add(postService.photoOne(post_num));
-			}
-			// 글 목록
-			model.addAttribute("plist", plist);
+		for (PostVO post : plist) {
+			post_seq.add(post.getPost_seq());
+		}
 
-			// 카테고리 리스트
-			model.addAttribute("category", list);
+		List<String> photoNames = new ArrayList<String>();
+		for (int post_num : post_seq) {
+			photoNames.add(postService.photoOne(post_num));
+		}
+		// 글 목록
+		model.addAttribute("plist", plist);
 
-			// 이미지 보이기
-			model.addAttribute("photo", photoNames);
+		// 카테고리 리스트
+		model.addAttribute("category", list);
+
+		// 이미지 보이기
+		model.addAttribute("photo", photoNames);
 
 		return "login/sell";
 	}
@@ -109,7 +106,6 @@ public class PostController {
 	public String post(Model model, PostVO vo,
 			@RequestParam(value = "origin_file_name", required = false) List<MultipartFile> img, PostPhotoVO pvo,
 			PhotoVO photo) {
-		System.out.println("글 등록");
 
 		// 상품 등록
 		int success = postService.insertPost(vo);
@@ -125,7 +121,7 @@ public class PostController {
 			Map.Entry<String, String> entry = entries.next();
 			String origin_file_name = entry.getKey();
 			String save_file_name = entry.getValue();
-			
+
 			photo.setPost_seq(post_seq);
 			photo.setO_name(origin_file_name);
 			photo.setS_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/" + save_file_name);
@@ -134,7 +130,7 @@ public class PostController {
 		}
 		return "redirect:main.do";
 	}
-	
+
 	// 카카오 페이 체크박스, 상품 상태 라디오버튼
 	@RequestMapping("/payCheck.do")
 	@ResponseBody
@@ -151,26 +147,27 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
-	public String getDetail(Model model, int post_seq, UserVO uvo, LikeVO lvo) {
-		System.out.println("상세보기");
-		postService.viewCount(post_seq); // 조회수
+	public String getDetail(Model model, int post_seq, UserVO uvo, PostVO vo, HttpSession session) {
 		// 좋아요
-		lvo.setPost_seq(post_seq);
-		lvo.setUser_seq(uvo.getUser_seq());
+		LikeVO likeVO = new LikeVO();
+		likeVO.setPost_seq(vo.getPost_seq());
+		// System.out.println(vo.getPost_seq());
+		likeVO.setUser_seq(uvo.getUser_seq());
+		// System.out.println(vo.getUser_seq());
 
 		int like = 0;
-
-		int check = postService.likeCount(lvo);
-
+		int check = postService.likeCount(likeVO);
 		if (check == 0) {
-			postService.likeinsert(lvo);
+			postService.likeinsert(likeVO);
 		} else if (check == 1) {
-			like = postService.likeGetInfo(lvo);
+			like = postService.likeGetInfo(likeVO);
 		}
 
 		model.addAttribute("like", like);
 
-		PostVO vo = postService.postDetail(post_seq);
+		postService.viewCount(post_seq); // 조회수
+
+		vo = postService.postDetail(post_seq);
 		model.addAttribute("post", vo);
 
 		// 이미지 불러오기
@@ -183,38 +180,36 @@ public class PostController {
 	@RequestMapping(value = "/category.do", method = RequestMethod.GET)
 	public String categoryDetail(Model model, int category_seq, PostVO vo, PageVO pvo) throws Exception {
 		System.out.println("카테고리 리스트");
-		
+
 		if (pvo.getNum() == 0) {
 			pvo.setNum(1);
 		}
-		
+
 		int num = pvo.getNum();
 		pvo.setCount(postService.countCate(category_seq));
 		List<Integer> post_seq = new ArrayList<Integer>();
 		List<PostVO> list = postService.catePage(pvo.getDisplayPost(), pvo.getPostNum(), category_seq);
-		
-		
+
 		for (PostVO post : list) {
 			post_seq.add(post.getPost_seq());
 		}
 		List<String> photoNames = new ArrayList<String>();
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
-			System.out.println(postService.photoOne(post_num));
 		}
-		
+
 		model.addAttribute("page", pvo);
 		model.addAttribute("select", num);
 		model.addAttribute("ct", list);
 		model.addAttribute("photo", photoNames);
 		return "login/main/mother";
 	}
-	
+
 	@RequestMapping(value = "/purchased.do", method = RequestMethod.GET)
 	public String purchased(Model model, int post_seq) {
 		System.out.println("구매완료");
 		PostVO vo = postService.postDetail(post_seq);
-		
+
 		return "login/product&purchase/purchased";
 	}
 
@@ -239,41 +234,53 @@ public class PostController {
 	}
 
 	// 좋아요 컨트롤러
-	@GetMapping("/likeupdate.do")
+	@RequestMapping("/likeupdate.do")
 	@ResponseBody
-	public String likeUpdate(LikeVO vo) {
-		System.out.println("바보승택"+vo);
-		
-			String re="";
+	public Map<String, String> likeupdate(LikeVO vo) {
+		Map<String, String> map = new HashMap<String, String>();
+
+		try {
 			postService.likeupdate(vo);
-			re="success";
-	
-		return re;
+			map.put("result", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("result", "fail");
+		}
+
+		System.out.println("js post" + vo.getPost_seq());
+		System.out.println("js user" + vo.getUser_seq());
+
+		return map;
 	}
-	
 
 	// 내상품 보기
 	@RequestMapping(value = "/myProductCart.do", method = RequestMethod.GET)
 	public String myList(Model model, PostVO vo, PageVO pvo, CategoryVO cvo) throws Exception {
-		int total = postService.count(pvo);
+		int total = postService.myCount(pvo);
+
 		// 페이징
 		if (pvo.getNum() == 0) {
 			pvo.setNum(1);
 		}
 
+		pvo.setCount(total);
 		int num = pvo.getNum();
-		pvo.setCount(postService.count(pvo));
+
 		List<Integer> post_seq = new ArrayList<Integer>();
-		List<PostVO> list = postService.listPage(pvo);
+		List<PostVO> list = postService.myPageList(pvo);
 		for (PostVO post : list) {
 			post_seq.add(post.getPost_seq());
 		}
+		System.out.println(list);
+		System.out.println(pvo.getDisplayPost());
+		System.out.println(pvo.getPageNum());
+		System.out.println(pvo.getCount());
 
 		List<String> photoNames = new ArrayList<String>();
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
-			System.out.println(postService.photoOne(post_num));
 		}
+
 		List<CategoryVO> clist = postService.categoryList();
 		model.addAttribute("total", total);
 		model.addAttribute("clist", clist);
@@ -284,5 +291,4 @@ public class PostController {
 		return "login/myProductCart";
 	}
 
-	
 }

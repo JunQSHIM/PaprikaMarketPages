@@ -58,7 +58,7 @@
 							<img src="${photo[status.index] }" alt="img" name="post_seq">
 						</div>
 						<div class="state"><div id="show-state">
-						<select name="sell_status" id="count">
+						<select name="sell_status" id="select_value">
 							<option value="0">판매중</option>
 							<option value="1">예약중</option>
 							<option value="2">판매완료</option>
@@ -141,8 +141,12 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	//	var value_str = document.getElementById("select_value")
-	//	alert(value_str.options[value_str.selectedIndex].text + "상품 상태가 변경되었습니다.")
+	$(document).ready(function(){
+		var value_str = document.getElementById("select_value")
+		if(value_str.options[value_str.selectedIndex].text == "판매완료"){
+		alert("상품 상태가 변경되었습니다.")
+		}
+	    });
 	// 거래 상태 자바스트립트
 function checkboxArr() {   
 	var sellArr = [];     // 배열 초기화   

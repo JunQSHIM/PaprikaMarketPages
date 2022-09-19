@@ -116,51 +116,19 @@
 						</div>
 						</c:forEach>
 						
-						
-						<div class="sell_product_board">
-							<a class="sell_board" href="#">
-								<div class="sell_image">
-									<img src="./images/jjim_icon/santiago.png" width="194" height="194">
-									<div class="reservation">
-										<div>판매</div>
-										<img src="/myweb/login/images/jjim_icon/reservation.png" width="11" height="11" alt="판매 불가 아이콘">
-										<div>완료</div>
-									</div>
-									<div class="inner_sell_image"></div>
-								</div>
-								<div class="sell_product_detail">
-									<div class="sell_product_title">스파이 패밀리-아냐</div>
-									<div class="sell_product_price">
-										<div class="sell_product_price_1">
-											150,000
-										</div>
-										<div class="sell_product_time">
-											<span>8시간 전</span>
-										</div>
-									</div>
-								</div>
-								<div class="sell_location">
-									<img src="./images/jjim_icon/location.png" width="15" height="17" alt="위치">
-									전국
-								</div>
-							</a>
-						</div>
-						
-						
-						
 					</div>
 					<div class="bottom_space"></div>
 				</div>
 					<div class="pagingBody">
 	 	<div class= "paging">
 		<c:if test="${page.prev}">
-			<a href="myProductCart.do?num=${page.startPageNum - 1}"> ◀ </a>
+			<a href="myProductCart.do?user_seq=${user.user_seq }&num=${page.startPageNum - 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12" class="prev"></a>
 			
 		</c:if>
 	
 		<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
 			<c:if test="${select != num}">
-					<a href="myProductCart.do?num=${num}" class="present_page">${num}</a>
+					<a href="myProductCart.do?user_seq=${user.user_seq }&num=${num}" class="present_page">${num}</a>
 				</c:if>
 			<c:if test="${select == num}"><b>${num}</b>
 				</c:if>
@@ -168,7 +136,7 @@
 		</c:forEach>
 
 		<c:if test="${page.next}">
-			<a href="myProductCart.do?num=${page.endPageNum + 1}">▶</a>
+			<a href="myProductCart.do?user_seq=${user.user_seq }&num=${page.endPageNum + 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12"></a>
 			
 		</c:if>
 		</div>

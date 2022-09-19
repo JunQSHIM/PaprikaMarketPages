@@ -31,6 +31,9 @@ public interface PostDAO {
 	public List<PostVO> catePage(int displayPost, int postNum, int category_seq) throws Exception; // 카테고리별 페이징
 	public void updatePost(PostVO vo);// 판매하기 수정하기
 	
+	public int myCount(PageVO vo) throws Exception; // 내상품 갯수
+	public List<PostVO> myPageList(PageVO vo) throws Exception;// 내상품 목록
+	
 	
 	public Map<String, String> uploadImg(List<MultipartFile> img, String place);//이미지 다수 등록
 	public void insertPhoto(PhotoVO vo);//DB에 저장

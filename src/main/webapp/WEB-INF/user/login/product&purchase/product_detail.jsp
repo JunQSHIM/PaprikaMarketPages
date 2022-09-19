@@ -122,7 +122,16 @@
                   </div>
                  
                <div class="item_btn" id="func">
-                <button type="button" id="jjim">찜</button>
+                <c:choose>
+						<c:when test="${like ==0}">
+							<button type="button" id="likebtn">찜</button>
+							<input type="hidden" id="likecheck" value="${like }">
+						</c:when>					
+						<c:when test="${like ==1}">
+							<button type="button" id="likebtn">찜</button>
+							<input type="hidden" id="likecheck" value="${like }">
+						</c:when>
+					</c:choose>			
                   <button>연락하기</button>
                <c:choose>
                <c:when test="${post.pay_check == 1 }">
@@ -133,7 +142,6 @@
                </c:when>
 				</c:choose>
                </div>
-               
             </div>
             </div>
             <div class="clear"></div>
@@ -202,7 +210,7 @@
          
                </div>
                </div>
-      <%@ include file="/login/singo/singo.jsp" %>
+      <%@ include file="/WEB-INF/user/login/singo/singo.jsp" %>
    </article>
    <div style="margin-bottom:40px;"></div>
    <footer class="container_12">

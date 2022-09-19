@@ -296,9 +296,7 @@ public class PostController {
 	public String ppkPopUp(Model model) {
 		System.out.println("구매버튼 클릭");
 		PostVO pvo = (PostVO)model.getAttribute("post");
-		UserVO uvo = (UserVO)model.getAttribute("user");
 		System.out.println(pvo.toString());
-		System.out.println(uvo.toString());
 		return "login/product&purchase/ppkPopUp";
 	}
 

@@ -46,9 +46,9 @@ public class AdminProdController {
 
 	//관리자 상품 삭제
 	@RequestMapping(value = "/prodel.mdo", method = RequestMethod.GET)
-	public String sellDelete(int prod_seq) throws Exception {
+	public String sellDelete(int board_seq) throws Exception {
 		System.out.println("관리자가 상품 삭제함");
-		boardService.sellDelete(prod_seq);
+		boardService.deleteBoard(board_seq);
 		return "redirect:prods.mdo";
 	}
 }

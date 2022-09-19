@@ -1,6 +1,5 @@
 package com.spring.myweb.Service.BoardService;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -36,8 +35,8 @@ public class UserBoardServiceImpl implements UserBoardService {
 	}
 
 	@Override
-	public void sellDelete(int prod_seq) {
-		boardDAO.sellDelete(prod_seq);
+	public void deleteBoard(int board_seq) {
+		boardDAO.deleteBoard(board_seq);
 
 	}
 
@@ -82,6 +81,16 @@ public class UserBoardServiceImpl implements UserBoardService {
 	@Override
 	public String findNickname(int user_seq) {
 		return boardDAO.findNickname(user_seq);
+	}
+
+	@Override
+	public void updateBoard(UserBoardVO vo) {
+		boardDAO.updateBoard(vo);
+	}
+
+	@Override
+	public void deleteImage(int board_seq) {
+		boardDAO.deleteImage(board_seq);
 	}
 
 

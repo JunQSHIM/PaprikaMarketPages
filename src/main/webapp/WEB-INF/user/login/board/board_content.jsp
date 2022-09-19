@@ -45,11 +45,15 @@
 				</div>
 			</div>
 		</div>
+		<c:set var="user_seq" value="${user.user_seq }"/>
+		<c:set var="buser_seq" value="${board.user_seq }"/>
+		<c:if test="${ user_seq == buser_seq }">
 		<div id="buttons">
-			<button>수정</button>
-			<button>삭제</button>
+			<button onclick="location.href='updateboard.do?board_seq=${board.board_seq}'">수정</button>
+			<button onclick="location.href='deleteboard.do?board_seq=${board.board_seq}'">삭제</button>
 			<button onclick="location.href='boardlist.do'">목록</button>
 		</div>
+		</c:if>
 	</article>
 	<div style="margin-bottom: 40px;"></div>	<footer class="container_12">
 		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>

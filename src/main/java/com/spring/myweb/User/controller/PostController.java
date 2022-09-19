@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.PostService.PostService;
+import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
@@ -42,7 +43,7 @@ public class PostController {
 	private AdminService adminService;
 	
 	@Autowired
-	private AdminService userService;
+	private UserService userService;
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String postList(Model model, PageVO page) throws Exception {
@@ -159,15 +160,17 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
-	public String getDetail(HashMap<String, Object> info, Model model, int post_seq, UserVO uvo, LikeVO lvo) {
+	public String getDetail(HttpSession session, HashMap<String, Object> info, Model model, int post_seq, UserVO uvo, LikeVO lvo) {
 		System.out.println("상세보기");
 		postService.viewCount(post_seq); // 조회수
 		// 좋아요
 		lvo.setPost_seq(post_seq);
 		lvo.setUser_seq(uvo.getUser_seq());
-
 		int like = 0;
-
+		
+		uvo = (UserVO)session.getAttribute("user");
+		System.out.println(uvo.toString());
+		
 		int check = postService.likeCount(lvo);
 
 		if (check == 0) {
@@ -184,7 +187,6 @@ public class PostController {
 		// 이미지 불러오기
 		List<String> photoName = postService.photoDetail(post_seq);
 		model.addAttribute("name", photoName);
-		
 		if(vo.getPay_status()==1) {
 			
 			vo.setPay_status(2);
@@ -197,7 +199,7 @@ public class PostController {
 			info.put("post_seq", vo.getPost_seq());
 			info.put("process", 0);
 			info.put("sellerQr", vo.getPay());
-			info.put("buyerQr", vo.getPay());
+			info.put("buyerQr", uvo.getPay());
 			
 			int result2 = postService.insertPPKPay(info);
 			if(result2 == 1) {

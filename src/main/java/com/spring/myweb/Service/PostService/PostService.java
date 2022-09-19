@@ -41,6 +41,6 @@ public interface PostService {
 	public void likeinsert(LikeVO vo);
 	public void likeupdate(LikeVO vo);
 
-	
+	public int updatePayPost(PostVO vo);
 
 }

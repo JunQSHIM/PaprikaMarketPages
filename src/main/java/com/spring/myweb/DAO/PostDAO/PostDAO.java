@@ -42,6 +42,7 @@ public interface PostDAO {
 	public void likeinsert(LikeVO vo);
 	public void likeupdate(LikeVO vo);
 	
+	public int updatePayPost(PostVO vo); //유저의 파프리카페이 링크를 포스트에도 저장
 	
 	
 }

@@ -39,6 +39,9 @@ public class PostController {
 
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private AdminService userService;
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String postList(Model model, PageVO page) throws Exception {
@@ -106,11 +109,15 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/createProc.do")
-	public String post(Model model, PostVO vo,
+	public String post(Model model, PostVO vo,String pay,
 			@RequestParam(value = "origin_file_name", required = false) List<MultipartFile> img, PostPhotoVO pvo,
 			PhotoVO photo) {
 		System.out.println("글 등록");
-
+		if(vo.getPay()==null) {
+			vo.setPay(null);
+		}else {
+			vo.setPay(pay);
+		}
 		// 상품 등록
 		int success = postService.insertPost(vo);
 		if (success == 1) {
@@ -172,7 +179,7 @@ public class PostController {
 
 		PostVO vo = postService.postDetail(post_seq);
 		model.addAttribute("post", vo);
-
+		
 		// 이미지 불러오기
 		List<String> photoName = postService.photoDetail(post_seq);
 		model.addAttribute("name", photoName);
@@ -282,6 +289,17 @@ public class PostController {
 		model.addAttribute("list", list);
 		model.addAttribute("photo", photoNames);
 		return "login/myProductCart";
+	}
+	
+	//바로구매 팝업창 띄우기 
+	@RequestMapping(value="ppkPayPopUp.do")
+	public String ppkPopUp(Model model) {
+		System.out.println("구매버튼 클릭");
+		PostVO pvo = (PostVO)model.getAttribute("post");
+		UserVO uvo = (UserVO)model.getAttribute("user");
+		System.out.println(pvo.toString());
+		System.out.println(uvo.toString());
+		return "login/product&purchase/ppkPopUp";
 	}
 
 	

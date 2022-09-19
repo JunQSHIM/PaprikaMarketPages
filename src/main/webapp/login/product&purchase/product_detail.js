@@ -182,10 +182,9 @@ $('#jjim').click(function(){
       var title = '카카오 송금';
       var status = "width=370, height=600, top=100, left=600";
       	window.open(url,title,status);
-      }
+     }
     
     function showPopUp() {
-    	
     	//창 크기 지정
     	var width = 500;
     	var height = 500;
@@ -196,15 +195,12 @@ $('#jjim').click(function(){
     	
         	//윈도우 속성 지정
     	var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes';
-    	
         	//연결하고싶은url
-        	const url = "https://fintastic.kakao.com/connect/money-transaction/link?qr_uuid=9fd90854-0e87-44cc-8b9d-913ffd34408b";
+        	const url = "/myweb/ppkPayPopUp.do";
 
     	//등록된 url 및 window 속성 기준으로 팝업창을 연다.
     	window.open(url, "hello popup", windowStatus);
-    }
-    
-    
+    }    
     // 모달창
     const open = () => {
         document.querySelector(".modal").classList.remove("hidden");

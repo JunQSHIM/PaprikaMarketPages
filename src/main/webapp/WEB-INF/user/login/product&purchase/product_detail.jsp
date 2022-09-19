@@ -125,10 +125,10 @@
                 <button type="button" id="jjim">찜</button>
                   <button>연락하기</button>
                <c:choose>
-               <c:when test="${post.pay_check == 1 }">
-                  <button onclick="location.href='javascript:showPopUp()'" >바로구매</button>
+               <c:when test="${post.pay_check == 1 and post.nickname ne user.nickname}">
+                  <button onclick="showPopUp()" >바로구매</button>
                </c:when>
-               <c:when test="${post.pay_check == 0 }">
+               <c:when test="${post.pay_check == 0 or post.nickname eq user.nickname}">
                		<button onclick="" style="visibility: hidden;">바로구매</button>
                </c:when>
 				</c:choose>
@@ -173,7 +173,6 @@
                         ${post.nickname}
                      </div>
                      <div id="follow">
-                        
                         <button onclick="location.href='myProductCart.do'">상점가기</button>
                      </div>
                      <div id="rt_img">

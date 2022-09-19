@@ -21,6 +21,7 @@ public class PostVO {
 	private int sell_status;
 	private int status;
 	private int pay_check;
+	private String pay;
 
 	public int getProd_status() {
 		return prod_status;
@@ -123,15 +124,22 @@ public class PostVO {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
+	public String getPay() {
+		return pay;
+	}
+	public void setPay(String pay) {
+		this.pay = pay;
+	}
+	public void setUpload_date(String upload_date) {
+		this.upload_date = upload_date;
+	}
 	@Override
 	public String toString() {
 		return "PostVO [post_seq=" + post_seq + ", user_seq=" + user_seq + ", nickname=" + nickname + ", post_title="
 				+ post_title + ", post_content=" + post_content + ", price=" + price + ", location1=" + location1
-				+ ", location2=" + location2 + ", category_seq=" + category_seq + ", cnt=" + cnt + ", upload_date="
-				+ upload_date + ", sell_status=" + sell_status + ", status=" + status + ", pay_check=" + pay_check
-				+ "]";
+				+ ", location2=" + location2 + ", category_seq=" + category_seq + ", cnt=" + cnt + ", prod_status="
+				+ prod_status + ", upload_date=" + upload_date + ", create_date=" + create_date + ", sell_status="
+				+ sell_status + ", status=" + status + ", pay_check=" + pay_check + ", pay=" + pay + "]";
 	}
-	
 
 }

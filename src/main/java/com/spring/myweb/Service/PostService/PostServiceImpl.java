@@ -141,6 +141,11 @@ public class PostServiceImpl implements PostService {
 		return postDao.countCate(category_seq);
 	}
 
+	@Override
+	public int updatePayPost(PostVO vo) {
+		return postDao.updatePayPost(vo);
+	}
+
 	
 
 

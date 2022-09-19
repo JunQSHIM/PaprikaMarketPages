@@ -231,6 +231,11 @@ public class PostDAOImpl implements PostDAO {
 		return session.selectOne("userDB.countCate",category_seq);
 	}
 
+	@Override
+	public int updatePayPost(PostVO vo) {
+		return session.update("userDB.updatePayPost",vo);
+	}
+
 
 
 }

@@ -100,9 +100,9 @@
 		insert into post(user_seq,
 		nickname, post_title,post_content,price,location1, location2,
 		category_seq,
-		upload_date, create_date, pay_check, prod_status)
+		upload_date, create_date, pay_check, prod_status, pay)
 		values(#{user_seq},#{nickname},#{post_title},
-		#{post_content}, #{price},(select location1 from user where user_seq = #{user_seq}),(select location2 from user where user_seq = #{user_seq}),#{category_seq},now(),now(),#{pay_check}, #{prod_status});
+		#{post_content}, #{price},(select location1 from user where user_seq = #{user_seq}),(select location2 from user where user_seq = #{user_seq}),#{category_seq},now(),now(),#{pay_check}, #{prod_status}, #{pay});
 	</select>
 	
 	<!-- 판매상품 삭제하기 -->
@@ -305,4 +305,10 @@
 	<update id="updatePay">
 		update user set pay=#{pay} where id=#{id}
 	</update>
+	
+	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
+	<update id="updatePayPost">
+		update post set pay=#{pay} where nickname=#{nickname}
+	</update>
+	
 </mapper>

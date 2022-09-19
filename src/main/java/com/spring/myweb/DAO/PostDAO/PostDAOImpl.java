@@ -236,6 +236,16 @@ public class PostDAOImpl implements PostDAO {
 		return session.update("userDB.updatePayPost",vo);
 	}
 
+	@Override
+	public int updatePayStatus(PostVO vo) {
+		return session.update("userDB.updatePayStatus",vo);
+	}
+
+	@Override
+	public int insertPPKPay(HashMap<String, Object> vo) {
+		return session.insert("userDB.insertPPKPay",vo);
+	}
+
 
 
 }

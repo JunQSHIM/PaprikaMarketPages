@@ -1,5 +1,6 @@
 package com.spring.myweb.DAO.PostDAO;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,6 +44,8 @@ public interface PostDAO {
 	public void likeupdate(LikeVO vo);
 	
 	public int updatePayPost(PostVO vo); //유저의 파프리카페이 링크를 포스트에도 저장
+	public int updatePayStatus(PostVO vo); //구매 예약 대기 완료 변경해주는것 
 	
+	public int insertPPKPay(HashMap<String,Object> vo); //구매예약시 정보들을 관리자에게 전달
 	
 }

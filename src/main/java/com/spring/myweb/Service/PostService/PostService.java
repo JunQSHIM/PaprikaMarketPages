@@ -1,5 +1,6 @@
 package com.spring.myweb.Service.PostService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,5 +43,8 @@ public interface PostService {
 	public void likeupdate(LikeVO vo);
 
 	public int updatePayPost(PostVO vo);
+	public int updatePayStatus(PostVO vo);
+	
+	public int insertPPKPay(HashMap<String, Object> vo);
 
 }

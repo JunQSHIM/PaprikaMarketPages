@@ -22,6 +22,7 @@ public class PostVO {
 	private int status;
 	private int pay_check;
 	private String pay;
+	private int pay_status;
 
 	public int getProd_status() {
 		return prod_status;
@@ -140,6 +141,12 @@ public class PostVO {
 				+ ", location2=" + location2 + ", category_seq=" + category_seq + ", cnt=" + cnt + ", prod_status="
 				+ prod_status + ", upload_date=" + upload_date + ", create_date=" + create_date + ", sell_status="
 				+ sell_status + ", status=" + status + ", pay_check=" + pay_check + ", pay=" + pay + "]";
+	}
+	public int getPay_status() {
+		return pay_status;
+	}
+	public void setPay_status(int pay_status) {
+		this.pay_status = pay_status;
 	}
 
 }

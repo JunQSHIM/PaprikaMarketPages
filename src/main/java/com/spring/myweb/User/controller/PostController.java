@@ -1,6 +1,7 @@
 package com.spring.myweb.User.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -158,7 +159,7 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
-	public String getDetail(Model model, int post_seq, UserVO uvo, LikeVO lvo) {
+	public String getDetail(HashMap<String, Object> info, Model model, int post_seq, UserVO uvo, LikeVO lvo) {
 		System.out.println("상세보기");
 		postService.viewCount(post_seq); // 조회수
 		// 좋아요
@@ -183,6 +184,27 @@ public class PostController {
 		// 이미지 불러오기
 		List<String> photoName = postService.photoDetail(post_seq);
 		model.addAttribute("name", photoName);
+		
+		if(vo.getPay_status()==1) {
+			
+			vo.setPay_status(2);
+			int result1 = postService.updatePayStatus(vo);
+			if(result1==1) {
+				System.out.println("구매예약 대기 신청 -> 확인완료");
+			}
+			info.put("sellerId", vo.getNickname());
+			info.put("buyerId", uvo.getId());
+			info.put("post_seq", vo.getPost_seq());
+			info.put("process", 0);
+			info.put("sellerQr", vo.getPay());
+			info.put("buyerQr", vo.getPay());
+			
+			int result2 = postService.insertPPKPay(info);
+			if(result2 == 1) {
+				System.out.println("구매예약 완료 -> 관리자에게 전달");
+			}
+			
+		}
 		return "login/product&purchase/product_detail";
 	}
 
@@ -291,12 +313,17 @@ public class PostController {
 		return "login/myProductCart";
 	}
 	
-	//바로구매 팝업창 띄우기 
+	//바로구매 팝업창 띄우기 post db에 pay_status 추가했음 0-판매 1-구매예약대기 2-구매예약 3-구매완료
 	@RequestMapping(value="ppkPayPopUp.do")
 	public String ppkPopUp(Model model) {
 		System.out.println("구매버튼 클릭");
 		PostVO pvo = (PostVO)model.getAttribute("post");
 		System.out.println(pvo.toString());
+		pvo.setPay_status(1); //구매예약 대기로 변경 
+		int result = postService.updatePayStatus(pvo);
+		if(result==1) {
+			System.out.println("SUCC");
+		}
 		return "login/product&purchase/ppkPopUp";
 	}
 

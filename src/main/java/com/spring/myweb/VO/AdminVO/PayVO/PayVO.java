@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class PayVO {
 	
+	private int pay_seq;
 	private String sellerId;
 	private String buyerId;
 	private int post_seq;

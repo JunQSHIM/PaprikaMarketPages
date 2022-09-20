@@ -95,14 +95,9 @@
 		select * from pay
 	</select>
 	
-	<!-- status를 1로 바꿈 ==> 처리가 완료된 업 -->
-	<update id="statusUpdate">
-		update pay set status=1 where status=0
-	</update>
-	
 	<!-- 처리완료된 업무 삭제 -->
 	<delete id="payDelete">
-		delete from pay where status=1
+		delete from pay where status=2
 	</delete>
 	
 	<!-- 관리자목록 불러오기 -->
@@ -231,4 +226,8 @@
 	select substring_index (saved_file_name, '/' ,-2) as saved_file_name from
 	(select saved_file_name from banner where banner_seq = #{banner_seq})banner_name;
 	</select>
+	
+	<update id="updatePay">
+		update pay set process=#{process}, status=#{status} where pay_seq=#{pay_seq}
+	</update>
 </mapper>

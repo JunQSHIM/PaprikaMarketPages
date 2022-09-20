@@ -287,4 +287,9 @@ public class AdminDAOImpl implements AdminDAO {
 		session.delete("adminDB.deleteBanner",banner_seq);
 	}
 
+	@Override
+	public int updatePay(HashMap<String, Object> vo) {
+		return session.update("adminDB.updatePay",vo);
+	}
+
 }

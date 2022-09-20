@@ -17,11 +17,12 @@
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-				<%@ include file="/WEB-INF/admin/Admin_page/admin_list/payList.jsp" %>
+				<%@include file="/WEB-INF/admin/Admin_page/admin_banner/ad_banner.jsp"%>
 			</section>
 			<!-- /.content -->
 		</div>
 		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_footer.jsp"%>
 	</div>
+
 </body>
 </html>

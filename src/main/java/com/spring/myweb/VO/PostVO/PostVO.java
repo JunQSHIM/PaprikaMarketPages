@@ -4,7 +4,6 @@ import java.util.Date;
 
 
 public class PostVO {
-	
 	private int post_seq;
 	private int user_seq;
 	private String nickname;
@@ -131,7 +130,9 @@ public class PostVO {
 	public void setPay(String pay) {
 		this.pay = pay;
 	}
-
+	public void setUpload_date(String upload_date) {
+		this.upload_date = upload_date;
+	}
 	@Override
 	public String toString() {
 		return "PostVO [post_seq=" + post_seq + ", user_seq=" + user_seq + ", nickname=" + nickname + ", post_title="

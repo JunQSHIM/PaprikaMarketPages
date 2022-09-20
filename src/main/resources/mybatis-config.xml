@@ -25,7 +25,6 @@
 		<typeAlias alias="BannerVO" type="com.spring.myweb.VO.AdminVO.BannerVO"/>
 		<typeAlias alias="PageVO" type="com.spring.myweb.VO.PageVO.PageVO"/>
 		<typeAlias alias="UserBoardPageVO" type="com.spring.myweb.VO.PageVO.UserBoardPageVO"/>
-		
 	</typeAliases>
 	
 	<mappers>

@@ -5,13 +5,13 @@
 
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
-	<param-name>contextConfigLocation</param-name>
-	<param-value>
-		classpath:applicationContext.xml
-		/WEB-INF/config/context-security.xml
-		/WEB-INF/config/email-context.xml
-	</param-value>
-</context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:applicationContext.xml
+			/WEB-INF/config/context-security.xml
+			/WEB-INF/config/email-context.xml
+		</param-value>
+	</context-param>
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -50,6 +50,7 @@
 			<param-value>/WEB-INF/config/user-context.xml</param-value>
 		</init-param>
 		<load-on-startup>0</load-on-startup>
+		<async-supported>true</async-supported>
 	</servlet>
 		
 	<servlet-mapping>
@@ -66,6 +67,7 @@
 			<param-value>/WEB-INF/config/admin-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
 	</servlet>
 		
 	<servlet-mapping>
@@ -75,4 +77,5 @@
 	<welcome-file-list>
     	<welcome-file>myweb/main.do</welcome-file>
   	</welcome-file-list>
+  	
 </web-app>

@@ -9,8 +9,10 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -66,7 +68,7 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping(value = "/insertboardProc.do")
-	public String insertProc(Model model, UserBoardVO vo, @RequestParam(value = "file")List<MultipartFile> img, PhotoVO photo) {
+	public String insertProc(Model model, UserBoardVO vo, @RequestParam(value = "file",required=false)List<MultipartFile> img, PhotoVO photo) {
 		boardService.insertBoard(vo);
 		Map<String, String> img_1_name = postService.uploadImg(img, "board/");
 		
@@ -128,14 +130,50 @@ public class UserBoardController {
 		return "login/board/board_content";
 	}
 
-	//	@RequestMapping(value = "/sellDelete.do", method = RequestMethod.GET)
-//	public String sellDelete(int prod_seq) throws Exception{
-//		System.out.println("판매하기 삭제됨.");
-//		boardService.sellDelete(prod_seq);
-//		return "redirect:main.do";
-//	}
+	//글 삭제
+	@RequestMapping(value = "/deleteboard.do")
+	public String deleteBoard(int board_seq) throws Exception{
+		boardService.deleteImage(board_seq);
+		boardService.deleteBoard(board_seq);
+		return "redirect:boardlist.do";
+	}
+	//글 수정 창
+	@RequestMapping(value = "/updateboard.do")
+	public String updateBoard(Model model, int board_seq){
+		UserBoardVO vo = boardService.boardDetail(board_seq);
+		vo.setBoard_seq(board_seq);
+		String photo = boardService.photoOne(board_seq);
+		vo.setNickname(boardService.findNickname(vo.getUser_seq()));
+		model.addAttribute("board", vo);
+		model.addAttribute("photo", photo);
+		return "login/board_write/update";
+	}
+	//글 수정
+	@RequestMapping(value = "/updateboardProc.do")
+	public String updateBoardProc(UserBoardVO vo, @RequestParam(value = "file",required=false)List<MultipartFile> img, PhotoVO photo){
+	System.out.println(vo.getBoard_seq());
+	boardService.deleteImage(vo.getBoard_seq());
 	
+	Map<String, String> img_1_name = postService.uploadImg(img, "board/");
 	
+	int board_seq = boardService.board_seq(vo.getUser_seq());
+	
+	Iterator<Entry<String, String>> entries = img_1_name.entrySet().iterator();
+	while (entries.hasNext()) {
+		Map.Entry<String, String> entry = entries.next();
+		String origin_file_name = entry.getKey();
+		String save_file_name = entry.getValue();
 
+		photo.setPost_seq(board_seq);
+		photo.setO_name(origin_file_name);
+		photo.setS_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/board/" + save_file_name);
+
+		boardService.insertPhoto(photo);
+	}
+	
+	boardService.updateBoard(vo);
+	return "redirect:myboard.do";
+	}
+	
 
 }

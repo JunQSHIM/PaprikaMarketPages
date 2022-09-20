@@ -1,3 +1,4 @@
+
 package com.spring.myweb.User.controller;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,18 +47,19 @@ public class PostController {
 	private UserService userService;
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String postList(Model model, PostVO vo, PageVO page) throws Exception {
-
+	public String postList(Model model, PageVO page) throws Exception {
 		if (page.getNum() == 0) {
 			page.setNum(1);
 		}
-		int total = postService.count(page);
-		page.setCount(total);
+
+		page.setCount(postService.count(page));
 
 		int num = page.getNum();
+		System.out.println(page.getCount());
 		List<Integer> post_seq = new ArrayList<Integer>();
 
 		List<PostVO> list = postService.listPage(page);
+		System.out.println(list);
 		for (PostVO post : list) {
 			post_seq.add(post.getPost_seq());
 		}
@@ -81,6 +83,7 @@ public class PostController {
 
 	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
 	public String getCreate(HttpSession session, Model model, CategoryVO vo, UserVO uvo, PostVO pvo) {
+		System.out.println("판매하기 접속함");
 
 		List<CategoryVO> list = postService.categoryList();
 		List<PostVO> plist = postService.postList();
@@ -110,7 +113,6 @@ public class PostController {
 	public String post(Model model, PostVO vo, String pay,
 			@RequestParam(value = "origin_file_name", required = false) List<MultipartFile> img, PostPhotoVO pvo,
 			PhotoVO photo) {
-
 		System.out.println("글 등록");
 		if (vo.getPay() == null) {
 			vo.setPay(null);
@@ -158,47 +160,42 @@ public class PostController {
 
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
 	public String getDetail(HttpSession session, HashMap<String, Object> info, Model model, int post_seq, UserVO uvo,
-			PostVO vo) {
+			LikeVO lvo) {
 		System.out.println("상세보기");
-
 		postService.viewCount(post_seq); // 조회수
-
 		// 좋아요
-		LikeVO likeVO = new LikeVO();
-		likeVO.setPost_seq(vo.getPost_seq());
-		likeVO.setUser_seq(uvo.getUser_seq());
+		lvo.setPost_seq(post_seq);
+		lvo.setUser_seq(uvo.getUser_seq());
 		int like = 0;
-		int check = postService.likeCount(likeVO);
-		int allLike = postService.allLike(likeVO);
-		
 
-		uvo = (UserVO) session.getAttribute("user");
+		System.out.println(uvo.toString());
+
+		int check = postService.likeCount(lvo);
 
 		if (check == 0) {
-			postService.likeinsert(likeVO);
+			postService.likeinsert(lvo);
 		} else if (check == 1) {
-			like = postService.likeGetInfo(likeVO);
+			like = postService.likeGetInfo(lvo);
 		}
 
-		model.addAttribute("like", like); // 좋아요 누르기
-		model.addAttribute("allLike", allLike); // 좋아요 갯수 카운트
-		
+		model.addAttribute("like", like);
 
-		vo = postService.postDetail(post_seq);
+		PostVO vo = postService.postDetail(post_seq);
 		model.addAttribute("post", vo);
 
 		// 이미지 불러오기
 		List<String> photoName = postService.photoDetail(post_seq);
 		model.addAttribute("name", photoName);
-		if (vo.getPay_status() == 1) {
 
+		if (vo.getPay_status() == 1) {
+			uvo = (UserVO) session.getAttribute("user");
 			vo.setPay_status(2);
 			int result1 = postService.updatePayStatus(vo);
 			if (result1 == 1) {
 				System.out.println("구매예약 대기 신청 -> 확인완료");
 			}
 			info.put("sellerId", vo.getNickname());
-			info.put("buyerId", uvo.getId());
+			info.put("buyerId", uvo.getNickname());
 			info.put("post_seq", vo.getPost_seq());
 			info.put("process", 0);
 			info.put("sellerQr", vo.getPay());
@@ -213,46 +210,10 @@ public class PostController {
 		return "login/product&purchase/product_detail";
 	}
 
-	// 좋아요 컨트롤러
-	@PostMapping("/likeupdate.do")
-	@ResponseBody
-	public Map<String, String> likeupdate(LikeVO vo) {
-		Map<String, String> map = new HashMap<String, String>();
-
-		try {
-			postService.likeupdate(vo);
-			map.put("result", "success");
-		} catch (Exception e) {
-			e.printStackTrace();
-			map.put("result", "fail");
-		}
-		return map;
-	}
-
-	// 찜목록
-	@RequestMapping(value = "/jjim.do")
-	public String jjimCart(Model model, LikeVO vo, UserVO uvo, HttpSession session) {
-		vo.setPost_seq(vo.getPost_seq());
-		vo.setUser_seq(uvo.getUser_seq());
-		int like = 0;
-		int check = postService.likeCount(vo);
-		int jjimCart = postService.jjimCart(vo);
-
-		uvo = (UserVO) session.getAttribute("user");
-
-		if (check == 0) {
-			postService.likeinsert(vo);
-		} else if (check == 1) {
-			like = postService.likeGetInfo(vo);
-		}
-		model.addAttribute("jjimCart", jjimCart);
-		model.addAttribute("like", like);
-		return "login/main/header/ban";
-	}
-
 	// 카테고리 별 목록 나오게 하기.
 	@RequestMapping(value = "/category.do", method = RequestMethod.GET)
 	public String categoryDetail(Model model, int category_seq, PostVO vo, PageVO pvo) throws Exception {
+		System.out.println("카테고리 리스트");
 
 		if (pvo.getNum() == 0) {
 			pvo.setNum(1);
@@ -269,6 +230,7 @@ public class PostController {
 		List<String> photoNames = new ArrayList<String>();
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
+			System.out.println(postService.photoOne(post_num));
 		}
 
 		model.addAttribute("page", pvo);
@@ -306,22 +268,32 @@ public class PostController {
 		return "redirect:main.do";
 	}
 
+	// 좋아요 컨트롤러
+	@GetMapping("/likeupdate.do")
+	@ResponseBody
+	public String likeUpdate(LikeVO vo) {
+		System.out.println("바보승택" + vo);
+
+		String re = "";
+		postService.likeupdate(vo);
+		re = "success";
+
+		return re;
+	}
+
 	// 내상품 보기
 	@RequestMapping(value = "/myProductCart.do", method = RequestMethod.GET)
 	public String myList(Model model, PostVO vo, PageVO pvo, CategoryVO cvo) throws Exception {
-		int total = postService.myCount(pvo);
-
+		int total = postService.count(pvo);
 		// 페이징
 		if (pvo.getNum() == 0) {
 			pvo.setNum(1);
 		}
 
-		pvo.setSort(pvo.getSort()); // 정렬
-		pvo.setCount(total);
 		int num = pvo.getNum();
-
+		pvo.setCount(postService.count(pvo));
 		List<Integer> post_seq = new ArrayList<Integer>();
-		List<PostVO> list = postService.myPageList(pvo);
+		List<PostVO> list = postService.listPage(pvo);
 		for (PostVO post : list) {
 			post_seq.add(post.getPost_seq());
 		}
@@ -329,8 +301,8 @@ public class PostController {
 		List<String> photoNames = new ArrayList<String>();
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
+			System.out.println(postService.photoOne(post_num));
 		}
-
 		List<CategoryVO> clist = postService.categoryList();
 		model.addAttribute("total", total);
 		model.addAttribute("clist", clist);

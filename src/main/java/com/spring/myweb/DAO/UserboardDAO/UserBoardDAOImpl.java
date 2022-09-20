@@ -1,14 +1,22 @@
 package com.spring.myweb.DAO.UserboardDAO;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.PageVO.UserBoardPageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
@@ -16,6 +24,23 @@ import com.spring.myweb.VO.UserBoardVO.UserBoardVO;
 
 @Repository
 public class UserBoardDAOImpl implements UserBoardDAO {
+	
+	private AmazonS3 amazonS3;
+	private Regions clientRegion = Regions.AP_NORTHEAST_2;
+	
+	@Value("#{s3['cloud.aws.s3.bucket']}")
+	private String bucket;
+
+	private UserBoardDAOImpl(@Value("#{s3['cloud.aws.credentials.access-key']}")String accessKey, @Value("#{s3['cloud.aws.credentials.secret-key']}")String sercretKey) {
+		createS3Client(accessKey,sercretKey);
+	}
+
+	private void createS3Client(String accessKey, String sercretKey) {
+		AWSCredentials credentials = new BasicAWSCredentials(accessKey, sercretKey);
+		this.amazonS3 = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
+				.withRegion(clientRegion).build();
+
+	}
 	
 	@Inject
 	private SqlSession session;
@@ -40,9 +65,12 @@ public class UserBoardDAOImpl implements UserBoardDAO {
 	}
 
 	@Override
-	public void sellDelete(int prod_seq) {
-		session.delete("userDB.sellDelete", prod_seq); 
-		
+	public void deleteBoard(int board_seq) {
+		List<String> name = session.selectList("userDB.selectDeleteBoard", board_seq);
+		for (String fileName : name) {
+			amazonS3.deleteObject(new DeleteObjectRequest(this.bucket, fileName));
+		}
+		session.delete("userDB.boardDelete", board_seq); 
 	}
 
 	@Override
@@ -96,5 +124,20 @@ public class UserBoardDAOImpl implements UserBoardDAO {
 	@Override
 	public String findNickname(int user_seq) {
 		return session.selectOne("userDB.findNickName", user_seq);
+	}
+
+	@Override
+	public void deleteImage(int board_seq) {
+		List<String> name = session.selectList("userDB.selectDeleteBoard", board_seq);
+		for (String fileName : name) {
+			amazonS3.deleteObject(new DeleteObjectRequest(this.bucket, fileName));
+		}
+		session.delete("userDB.deletePhotoBoard", board_seq);
+	}
+
+	@Override
+	public void updateBoard(UserBoardVO vo) {
+		session.update("userDB.updateBoard", vo);
+		
 	}
 }

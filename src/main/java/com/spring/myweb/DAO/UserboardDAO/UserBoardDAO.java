@@ -16,14 +16,18 @@ public interface UserBoardDAO {
 	
 	public int insertBoard(UserBoardVO vo); // 쓰기
 	public UserBoardVO boardDetail(int board_seq); // 글 상세보기
-	public void sellDelete(int prod_seq);// 글 삭제
+	public void deleteBoard(int board_seq);// 글 삭제
+	public void deleteImage(int board_seq);//사진 삭제
+
+	public void updateBoard(UserBoardVO vo);//게시판 업데이트
+	
 	public void viewCount(int prod_seq); // 조회수 증가
 	public List<CategoryVO> categoryList(); // 카테고리 보이기
 	public int board_seq(int board_seq);//최신 등록 게시물 번호 조회
 	public int count(int user_seq) throws Exception; // 게시물 총 개수
 	public List<UserBoardVO> listPage(UserBoardPageVO vo) throws Exception;
 	public String findNickname(int user_seq);//이름 찾기
-
+	
 
 
 }

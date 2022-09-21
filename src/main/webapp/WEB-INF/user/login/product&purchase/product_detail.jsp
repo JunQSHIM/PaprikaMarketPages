@@ -137,7 +137,7 @@
                   <button>연락하기</button>
                <c:choose>
                <c:when test="${post.pay_check == 1 and post.nickname ne user.nickname}">
-                  <button onclick="showPopUp()" >바로구매</button>
+                  <button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
                </c:when>
                <c:when test="${post.pay_check == 0 or post.nickname eq user.nickname}">
                		<button onclick="" style="visibility: hidden;">바로구매</button>

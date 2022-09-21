@@ -415,11 +415,6 @@
 	<update id="updatePay">
 		update user set pay=#{pay} where id=#{id}
 	</update>
-
-	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
-	<update id="updatePay">
-		update user set pay=#{pay}, KID=#{KID} where id=#{id}
-	</update>
 	
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
 	<update id="updatePayPost">

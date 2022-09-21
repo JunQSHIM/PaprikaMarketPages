@@ -198,26 +198,6 @@ public class PostController {
 		List<String> photoName = postService.photoDetail(post_seq);
 		model.addAttribute("name", photoName);
 
-		if (vo.getPay_status() == 1) {
-			uvo = (UserVO) session.getAttribute("user");
-			vo.setPay_status(2);
-			int result1 = postService.updatePayStatus(vo);
-			if (result1 == 1) {
-				System.out.println("구매예약 대기 신청 -> 확인완료");
-			}
-			info.put("sellerId", vo.getNickname());
-			info.put("buyerId", uvo.getNickname());
-			info.put("post_seq", vo.getPost_seq());
-			info.put("process", 0);
-			info.put("sellerQr", vo.getPay());
-			info.put("buyerQr", uvo.getPay());
-
-			int result2 = postService.insertPPKPay(info);
-			if (result2 == 1) {
-				System.out.println("구매예약 완료 -> 관리자에게 전달");
-			}
-
-		}
 		return "login/product&purchase/product_detail";
 	}
 
@@ -281,7 +261,6 @@ public class PostController {
 	public String purchased(Model model, int post_seq) {
 		System.out.println("구매완료");
 		PostVO vo = postService.postDetail(post_seq);
-
 		return "login/product&purchase/purchased";
 	}
 
@@ -419,14 +398,46 @@ public class PostController {
 
 	// 바로구매 팝업창 띄우기 post db에 pay_status 추가했음 0-판매 1-구매예약대기 2-구매예약 3-구매완료
 	@RequestMapping(value = "ppkPayPopUp.do")
-	public String ppkPopUp(Model model) {
+	public String ppkPopUp(Model model,UserVO uvo, HttpSession session, HashMap<String, Object> info) {
 		System.out.println("구매버튼 클릭");
 		PostVO pvo = (PostVO) model.getAttribute("post");
+		
 		System.out.println(pvo.toString());
-		pvo.setPay_status(1); // 구매예약 대기로 변경
-		int result = postService.updatePayStatus(pvo);
-		if (result == 1) {
-			System.out.println("SUCC");
+		
+		if(pvo.getPay_status()==2) {
+			model.addAttribute("message","이미 구매 예약이 된 상품입니다.");
+		}else {
+			pvo.setPay_status(1); // 구매예약 대기로 변경
+			int result = postService.updatePayStatus(pvo);
+			if (result == 1) {
+				System.out.println("SUCC");
+				model.addAttribute("message","구매예약 되셨습니다! 아래 qr링크로 3일내 송금이 되지 않을시에는 예약이 취소되니 주의해주세요!");
+				if (pvo.getPay_status() == 1) {
+					uvo = (UserVO) session.getAttribute("user");
+					pvo.setPay_status(2);
+					int result1 = postService.updatePayStatus(pvo);
+					if (result1 == 1) {
+						System.out.println("구매예약 대기 신청 -> 확인완료");
+					}
+					info.put("sellerId", pvo.getNickname());
+					info.put("buyerId", uvo.getNickname());
+					info.put("post_seq", pvo.getPost_seq());
+					info.put("process", 0);
+					info.put("sellerQr", pvo.getPay());
+					info.put("buyerQr", uvo.getPay());
+
+					int result2 = postService.insertPPKPay(info);
+					if (result2 == 1) {
+						System.out.println("구매예약 완료 -> 관리자에게 전달");
+					}
+
+				}
+				pvo.setPay_status(2);
+				result = postService.updatePayStatus(pvo);
+				if(result==1) {
+					System.out.println("구매예약으로 변경");
+				}
+			}
 		}
 		return "login/product&purchase/ppkPopUp";
 	}

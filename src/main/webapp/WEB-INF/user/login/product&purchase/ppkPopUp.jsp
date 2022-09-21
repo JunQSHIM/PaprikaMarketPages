@@ -8,8 +8,15 @@
 </head>
 <body>
 <script>
-alert("구매예약 되셨습니다! 아래 qr링크로 3일내 송금이 되지 않을시에는 예약이 취소되니 주의해주세요!");
+	var message = "<c:out value='${message}'/>";
+	var mes = message.substr(14);
+	const ms = mes.split("'");
+	alert(ms[0]);
 	//창 크기 지정
+	if(ms[0] == "이미 구매 예약이 된 상품입니다."){
+		opener.parent.location.reload();
+		window.close();
+	}
 	var width = 500;
 	var height = 500;
 	//pc화면기준 가운데 정렬
@@ -21,6 +28,7 @@ alert("구매예약 되셨습니다! 아래 qr링크로 3일내 송금이 되지
 	const url = "https://fintastic.kakao.com/connect/money-transaction/link?qr_uuid=9fd90854-0e87-44cc-8b9d-913ffd34408b";
 	//등록된 url 및 window 속성 기준으로 팝업창을 연다.
 	window.open(url, "hello popup", windowStatus);
+	
 </script>
 </body>
 </html>

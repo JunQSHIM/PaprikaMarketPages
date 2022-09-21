@@ -17,7 +17,6 @@ $(document).ready(function(){
 });
 var sock = new SockJS("/myweb/echo");
 sock.onmessage = function(e){
-	alert("알림:"+e.data);
 	$("#noticeList").append(e.data);
 }
 sock.onclose = function(){
@@ -52,9 +51,8 @@ sock.onclose = function(){
 				</c:otherwise>
 			</c:choose> 
 		</div>
-		<div id="noticeList" style="z-index: 0; position: absolute; background-color: red; width:300px;">
+		<div id="noticeList" style="z-index: 0; position: absolute; background-color:orange; width:300px;">
 			<ul id="nList">
-				<li>3asfdadsfadsfasdf</li>
 			</ul>
 		</div>
 	</div>

@@ -51,10 +51,9 @@ public class EchoHandler extends TextWebSocketHandler{
 				String post_seq = strs[3];
 				logger.info("length 성공?"+cmd);
 				
-				//WebSocketSession sellerSession = userSessionsMap.get(sellerId);
+				WebSocketSession sellerSession = userSessionsMap.get(sellerId);
 				WebSocketSession mySession = userSessionsMap.get(currentUserName(session));
-				logger.info("boardWriterSession="+userSessionsMap.get(buyerId));
-				logger.info("boardWirterSession"+mySession);
+
 //				
 //				//댓글
 				if ("reply".equals(cmd) && mySession != null) {
@@ -107,25 +106,20 @@ public class EchoHandler extends TextWebSocketHandler{
 ////				}
 //				
 //				//페이
-				else if("pay".equals(cmd)) {
+				else if("pay".equals(cmd) && sellerSession != null) {
 					logger.info("파프리카 페이되나?");
-					logger.info("result=board="+sellerId+"//"+buyerId+"//"+post_seq+"////");
 					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+post_seq+"를 구매예약했습니다.");
-					//replyWriter=댓글작성자 , boardWriter=좋아요누른사람 
 					TextMessage tmpMsg = new TextMessage(buyerId + "님이 "
-							+ "<a href='/myweb/post_detail.do?post_seq="+post_seq+"'  style=\"color: black\"><strong>"
+							+ "<a href='/myweb/postDetail.do?post_seq="+post_seq+"'  style=\"color: black\"><strong>"
 							+ "상품을" +"</strong> 구매예약했습니다.</a>");
 					System.out.println(tmpMsg);
 					TextMessage msg2 = new TextMessage(sellerId+"님의 상품을 예약했습니다.");
 					mySession.sendMessage(msg2);
-//					if(sellerSession.equals(null)) {
-//						System.out.println("단방향");
-//					}else {
-//						sellerSession.sendMessage(tmpMsg);
-//					}
-					mySession.sendMessage(tmpMsg);
+					sellerSession.sendMessage(tmpMsg);
 				}
 				
+				//찜 신고 채팅 찜한상품이 구매완료가 됨 
+				//후기 리뷰 
 				
 //				//댓글DEV
 //				else if("commentDev".equals(cmd) && replyWriterSession != null) {
@@ -157,7 +151,7 @@ public class EchoHandler extends TextWebSocketHandler{
 			System.out.println("NULL ID");
 			return mid;
 		}
-		String mid = loginUser.getId();
+		String mid = loginUser.getNickname();
 		System.out.println(mid);
 		return mid;
 		

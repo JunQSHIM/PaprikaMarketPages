@@ -271,4 +271,15 @@ public class PostDAOImpl implements PostDAO {
 		return session.selectOne("userDB.jjimCart", vo);
 	}
 
+	@Override
+	public List<PostVO> jjimList(PageVO vo) throws Exception {
+		List<PostVO> jjimList = session.selectList("userDB.jjimList", vo);
+		return jjimList;
+	}
+
+	@Override
+	public void jjimDelete(LikeVO vo) {
+		session.delete("userDB.jjimDelete", vo);
+	}
+
 }

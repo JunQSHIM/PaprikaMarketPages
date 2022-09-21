@@ -44,6 +44,8 @@ public interface PostService {
 	public void likeupdate(LikeVO vo);
 	public int allLike(LikeVO vo); // 좋아요 개수
 	public int jjimCart(LikeVO vo); // 찜목록 개수
+	public List<PostVO> jjimList(PageVO vo) throws Exception; // 찜한 게시물 목록
+	public void jjimDelete(LikeVO lvo);// 찜 목록 삭제
 
 	public int updatePayPost(PostVO vo);
 	public int updatePayStatus(PostVO vo);

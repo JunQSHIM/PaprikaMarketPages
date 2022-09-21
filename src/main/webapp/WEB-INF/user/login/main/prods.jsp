@@ -165,7 +165,7 @@
 								<div class="sell_image">
 										<img src="${photo[status.index] }" width="194" height="194">
 									<span class="image_span">
-										<c:choose>
+								<c:choose>
 									<c:when test="${post.pay_check == 1 }">
 										<img src="/myweb/login/images/jjim_icon/pay.svg" alt="페이 가능">
 									</c:when>

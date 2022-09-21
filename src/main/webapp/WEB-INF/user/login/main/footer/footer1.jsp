@@ -29,9 +29,7 @@
 				<li><a href="#">공지사항</a></li>
 				<li><a href="#">1:1문의하기</a></li>
 				<li><a href="/myweb/qna.do">자주 문는 질문</a></li>
-				<li><a href="#">333</a></li>
-				<li><a href="#">444</a></li>
-				<li><a href="#">555</a></li>
+
 			</ul>
 		</div>
 		<div class="grid_2 qlink">

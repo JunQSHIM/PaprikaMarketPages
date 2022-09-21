@@ -17,7 +17,7 @@
 					<div class="jjim_list_1">
 					 	<a class="sell_product">상품 <span class="sell_product_span">${total }</span></a>
 					 	<a class="review_product" href="/myweb/login/review_product.jsp">상품후기 <span class="review_product_span">5</span></a>
-					 	<a class="jjim_product" href="/myweb/login/jjim_cart.jsp">찜 <span class="jjim_product_span">2</span></a>
+					 	<a class="jjim_product" href="favorite.do?user_seq=${user.user_seq }">찜 <span class="jjim_product_span">${jjimCart }</span></a>
 					 </div>
 				</div>
 			</div>
@@ -120,7 +120,7 @@
 					<div class="bottom_space"></div>
 				</div>
 					<div class="pagingBody">
-	 	<div class= "paging">
+	 		<div class= "paging">
 		<c:if test="${page.prev}">
 			<a href="myProductCart.do?user_seq=${user.user_seq }&num=${page.startPageNum - 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12" class="prev"></a>
 			

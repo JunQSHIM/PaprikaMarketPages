@@ -221,8 +221,39 @@
 
 	<!-- 찜목록 -->
 	<select id="jjimCart" parameterType="LikeVO" resultType="int">
-		select count(user_seq) from (select * from likePost where user_seq = #{user_seq}) as lk where likeCnt =1;
+		<!-- select count(user_seq) from (select * from likePost where user_seq 
+			= #{user_seq}) as lk where likeCnt =1; -->
+		select count(*) from likePost a, post b where a.post_seq = b.post_seq
+		and likeCnt = 1 and a.user_seq = #{user_seq};
 	</select>
+
+	<!-- 찜한 게시판 불러오기 -->
+	<select id="jjimList" parameterType="PageVO" resultType="PostVO">
+		select *
+		from likePost a, post b where a.post_seq = b.post_seq and likeCnt = 1
+		and a.user_seq = #{user_seq}
+		<if test="sort == null">
+			order by b.post_seq desc
+		</if>
+		<if test="sort == 1">
+			order by b.post_seq desc
+		</if>
+		<if test="sort == 2">
+		
+		</if>
+		<if test="sort == 3">
+			order by b.price ASC
+		</if>
+		<if test="sort == 4">
+			order by b.price desc
+		</if>
+		limit #{displayPost}, #{postNum};
+	</select>
+	
+	<!-- 찜 목록 삭제 -->
+	<delete id="jjimDelete" parameterType="LikeVO">
+		delete from likePost where post_seq = #{post_seq} and user_seq=#{user_seq};
+	</delete>
 
 
 	<!-- 조회수 증가 -->
@@ -317,9 +348,6 @@
 		) as T1
 		limit #{displayPost},#{postNum}
 	</select>
-
-
-
 
 	<!-- 카테고리 목록 + 페이징 -->
 	<select id="catePage" parameterType="hashMap"

@@ -15,7 +15,13 @@
 				<div class="wishlist">
 					<div class="jjim_text">찜한 상품</div>
 					<div class="jjim_heart">
-						<a href="jjim_cart.jsp">${jjimCart}</a>
+					<c:if test="${user.user_seq == null}">
+						<a href="#" class="jjimBtn"><img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/noJjim.png" width="9" height="9"><span style="color:#c8c8c8;"> 0 </span></a>
+					</c:if>
+					
+					<c:if test="${user.user_seq != null }">
+						<a href="favorite.do?user_seq=${user.user_seq }" class="jjimBtn"><img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/jjim.png" width="9" height="9"><span>${jjimCart}</span></a>
+					</c:if>
 					</div>
 				</div>
 				<div class="recent">

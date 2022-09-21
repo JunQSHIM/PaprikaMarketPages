@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +45,20 @@ public class PostController {
 	@Autowired
 	private AdminService adminService;
 
-	@Autowired
-	private UserService userService;
-
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String postList(Model model, PageVO page) throws Exception {
+	public String postList(Model model, PageVO page, LikeVO lvo, UserVO uvo, HttpSession session) throws Exception {
+		uvo = (UserVO) session.getAttribute("user");
 		if (page.getNum() == 0) {
 			page.setNum(1);
 		}
+		int jjimCart;
+		if (uvo == null) {
+			jjimCart = 0;
+		} else {
+			lvo.setUser_seq(uvo.getUser_seq());
+		}
+		
+		jjimCart = postService.jjimCart(lvo);
 
 		page.setCount(postService.count(page));
 
@@ -70,6 +77,7 @@ public class PostController {
 			photoNames.add(postService.photoOne(post_num));
 		}
 
+		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("page", page);
 		model.addAttribute("select", num);
 		model.addAttribute("list", list);
@@ -172,6 +180,8 @@ public class PostController {
 		System.out.println(uvo.toString());
 
 		int check = postService.likeCount(lvo);
+		int jjimCart = postService.jjimCart(lvo);
+		int allLike = postService.allLike(lvo);
 
 		if (check == 0) {
 			postService.likeinsert(lvo);
@@ -180,7 +190,8 @@ public class PostController {
 		}
 
 		model.addAttribute("like", like);
-
+		model.addAttribute("jjimCart", jjimCart);
+		model.addAttribute("allLike",allLike);
 		PostVO vo = postService.postDetail(post_seq);
 		model.addAttribute("post", vo);
 
@@ -210,7 +221,7 @@ public class PostController {
 		}
 		return "login/product&purchase/product_detail";
 	}
-	
+
 	// 좋아요 컨트롤러
 	@PostMapping("/likeupdate.do")
 	@ResponseBody
@@ -227,36 +238,24 @@ public class PostController {
 		return map;
 	}
 
-	// 찜목록
-	@RequestMapping(value = "/jjim.do")
-	public String jjimCart(Model model, LikeVO vo, UserVO uvo, HttpSession session) {
-		vo.setPost_seq(vo.getPost_seq());
-		vo.setUser_seq(uvo.getUser_seq());
-		int like = 0;
-		int check = postService.likeCount(vo);
-		int jjimCart = postService.jjimCart(vo);
-
-		uvo = (UserVO) session.getAttribute("user");
-
-		if (check == 0) {
-			postService.likeinsert(vo);
-		} else if (check == 1) {
-			like = postService.likeGetInfo(vo);
-		}
-		model.addAttribute("jjimCart", jjimCart);
-		model.addAttribute("like", like);
-		return "login/main/header/ban";
-	}
-
 	// 카테고리 별 목록 나오게 하기.
 	@RequestMapping(value = "/category.do", method = RequestMethod.GET)
-	public String categoryDetail(Model model, int category_seq, PostVO vo, PageVO pvo) throws Exception {
-		System.out.println("카테고리 리스트");
+	public String categoryDetail(HttpSession session, Model model, int category_seq, PostVO vo, PageVO pvo, LikeVO lvo, UserVO uvo) throws Exception {
+		int jjimCart;
+		uvo=(UserVO)session.getAttribute("user");
 
 		if (pvo.getNum() == 0) {
 			pvo.setNum(1);
 		}
 
+		if (uvo == null) {
+			jjimCart = 0;
+		} else {
+			lvo.setUser_seq(uvo.getUser_seq());
+		}
+		
+		jjimCart = postService.jjimCart(lvo);
+		
 		int num = pvo.getNum();
 		pvo.setCount(postService.countCate(category_seq));
 		List<Integer> post_seq = new ArrayList<Integer>();
@@ -271,6 +270,7 @@ public class PostController {
 			System.out.println(postService.photoOne(post_num));
 		}
 
+		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("page", pvo);
 		model.addAttribute("select", num);
 		model.addAttribute("ct", list);
@@ -288,11 +288,12 @@ public class PostController {
 
 	// 판매하기 수정페이지 이동
 	@RequestMapping(value = "/updatePost.do")
-	public String getUpdate(int post_seq, Model model) throws Exception {
+	public String getUpdate(int post_seq, Model model, LikeVO lvo) throws Exception {
 		System.out.println("수정하기");
 		PostVO vo = postService.postDetail(post_seq);
 		List<CategoryVO> category = postService.categoryList();
-
+		int jjimCart = postService.jjimCart(lvo);
+		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("category", category);
 		model.addAttribute("vo", vo);
 		return "login/update";
@@ -306,42 +307,116 @@ public class PostController {
 		return "redirect:main.do";
 	}
 
-
-
 	// 내상품 보기
-		@RequestMapping(value = "/myProductCart.do", method = RequestMethod.GET)
-		public String myList(Model model, PostVO vo, PageVO pvo, CategoryVO cvo) throws Exception {
-			int total = postService.myCount(pvo);
+	@RequestMapping(value = "/myProductCart.do", method = RequestMethod.GET)
+	public String myList(Model model, PostVO vo, PageVO pvo, CategoryVO cvo, LikeVO lvo) throws Exception {
+		int total = postService.myCount(pvo);
+		int jjimCart = postService.jjimCart(lvo);
 
-			// 페이징
-			if (pvo.getNum() == 0) {
-				pvo.setNum(1);
-			}
-
-			pvo.setSort(pvo.getSort()); // 정렬
-			pvo.setCount(total);
-			int num = pvo.getNum();
-
-			List<Integer> post_seq = new ArrayList<Integer>();
-			List<PostVO> list = postService.myPageList(pvo);
-			for (PostVO post : list) {
-				post_seq.add(post.getPost_seq());
-			}
-
-			List<String> photoNames = new ArrayList<String>();
-			for (int post_num : post_seq) {
-				photoNames.add(postService.photoOne(post_num));
-			}
-
-			List<CategoryVO> clist = postService.categoryList();
-			model.addAttribute("total", total);
-			model.addAttribute("clist", clist);
-			model.addAttribute("page", pvo);
-			model.addAttribute("select", num);
-			model.addAttribute("list", list);
-			model.addAttribute("photo", photoNames);
-			return "login/myProductCart";
+		// 페이징
+		if (pvo.getNum() == 0) {
+			pvo.setNum(1);
 		}
+
+		pvo.setSort(pvo.getSort()); // 정렬
+		pvo.setCount(total);
+		int num = pvo.getNum();
+
+		List<Integer> post_seq = new ArrayList<Integer>();
+		List<PostVO> list = postService.myPageList(pvo);
+		for (PostVO post : list) {
+			post_seq.add(post.getPost_seq());
+		}
+
+		List<String> photoNames = new ArrayList<String>();
+		for (int post_num : post_seq) {
+			photoNames.add(postService.photoOne(post_num));
+		}
+
+		List<CategoryVO> clist = postService.categoryList();
+		model.addAttribute("jjimCart", jjimCart);
+		model.addAttribute("total", total);
+		model.addAttribute("clist", clist);
+		model.addAttribute("page", pvo);
+		model.addAttribute("select", num);
+		model.addAttribute("list", list);
+		model.addAttribute("photo", photoNames);
+		return "login/myProductCart";
+	}
+	
+	//찜목록 페이지
+	@RequestMapping(value = "/favorite.do")
+	public String getFavorite(Model model, PageVO pvo, LikeVO lvo, UserVO uvo, HttpSession session) throws Exception{
+		int jjimCart;
+		int total = postService.myCount(pvo);
+		uvo=(UserVO)session.getAttribute("user");
+		
+		if (uvo == null) {
+			jjimCart = 0;
+		} else {
+			lvo.setUser_seq(uvo.getUser_seq());
+		}
+		
+		jjimCart = postService.jjimCart(lvo);
+		if (pvo.getNum() == 0) {
+			pvo.setNum(1);
+		}
+
+		pvo.setSort(pvo.getSort()); // 정렬
+		
+		pvo.setCount(jjimCart);
+		int num = pvo.getNum();
+
+		List<Integer> post_seq = new ArrayList<Integer>();
+		
+		List<PostVO> list = postService.jjimList(pvo);
+		System.out.println(list);
+		for (PostVO post : list) {
+			post_seq.add(post.getPost_seq());
+		
+		}
+
+		List<String> photoNames = new ArrayList<String>();
+		for (int post_num : post_seq) {
+			photoNames.add(postService.photoOne(post_num));
+		}
+		
+		model.addAttribute("total",total);
+		model.addAttribute("jjimCart",jjimCart);
+		model.addAttribute("page", pvo);
+		model.addAttribute("select", num);
+		model.addAttribute("list", list);
+		model.addAttribute("photo", photoNames);
+		return "login/jjim_cart";
+	}
+	
+	//찜 삭제
+	@RequestMapping(value = "/jjimDelete.do")
+	@ResponseBody
+	public void jjimDelete(HttpServletRequest request, HttpSession session,UserVO uvo, LikeVO vo, String[] valueArr) {
+		uvo = (UserVO)session.getAttribute("user");
+		
+		int[] num = new int[valueArr.length];
+		for(int i=0; i < valueArr.length; i++) {
+			num[i] = Integer.parseInt(valueArr[i]);
+		}
+		
+		for(int n : num) {
+			vo.setUser_seq(uvo.getUser_seq());
+			vo.setPost_seq(n);
+			
+			System.out.println(n);
+			postService.jjimDelete(vo);
+		}
+		
+	}
+	
+	//신고하기
+	@RequestMapping(value = "/report.do")
+	@ResponseBody
+	public void report() {
+		
+	}
 
 	// 바로구매 팝업창 띄우기 post db에 pay_status 추가했음 0-판매 1-구매예약대기 2-구매예약 3-구매완료
 	@RequestMapping(value = "ppkPayPopUp.do")

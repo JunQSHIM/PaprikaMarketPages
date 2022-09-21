@@ -177,6 +177,17 @@ public class PostServiceImpl implements PostService {
 		return postDao.jjimCart(vo);
 	}
 
+	@Override
+	public List<PostVO> jjimList(PageVO vo) throws Exception {
+		return postDao.jjimList(vo);
+	}
+
+	@Override
+	public void jjimDelete(LikeVO vo) {
+		postDao.jjimDelete(vo);
+		
+	}
+
 	
 
 

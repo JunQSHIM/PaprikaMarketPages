@@ -17,7 +17,7 @@ $(document).ready(function(){
 });
 var sock = new SockJS("/myweb/echo");
 sock.onmessage = function(e){
-	$("#noticeList").append(e.data);
+	$("#noticeList").append("<li>"+e.data+"</li>");
 }
 sock.onclose = function(){
 	alert("quit");

@@ -38,41 +38,47 @@ public class EchoHandler extends TextWebSocketHandler{
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		String msg = message.getPayload();
-		System.out.println("fjfj");
 		System.out.println("msg="+msg);
 		if (StringUtils.isNotEmpty(msg)) {
 			logger.info("if문 들어옴?");
 			String[] strs = msg.split(",");
 			if(strs != null && strs.length > 1) {
-				
 				String cmd = strs[0];
 				String sellerId = strs[1];
 				String buyerId = strs[2];
-				String post_seq = strs[3];
+				String seq = strs[3];
 				logger.info("length 성공?"+cmd);
 				
 				WebSocketSession sellerSession = userSessionsMap.get(sellerId);
 				WebSocketSession mySession = userSessionsMap.get(currentUserName(session));
-
+				  
 //				
-//				//댓글
-				if ("reply".equals(cmd) && mySession != null) {
-					logger.info("onmessage되나?");
-					TextMessage tmpMsg = new TextMessage(buyerId + "님이 "
-							+ "<a href='/board/readView?bno=style=\"color: black\">"
-							+ " 에 댓글을 달았습니다!</a>");
-					mySession.sendMessage(tmpMsg);
-				}
 //				//찜
-////				else if("scrap".equals(cmd) && boardWriterSession != null) {
-////					//replyWriter = 스크랩누른사람 , boardWriter = 게시글작성자
-////					TextMessage tmpMsg = new TextMessage(replyWriter + "님이 "
-////							+ "<a href='/board/readView?bno=" + bno + "&bgno="+bgno+"'  style=\"color: black\"><strong>"
-////							+ title+"</strong>에 찜을 눌렀습니다!</a>");
-////
-////					boardWriterSession.sendMessage(tmpMsg);
-////					
-////				}
+				if ("jjim".equals(cmd) && sellerSession != null) {
+					logger.info("찜");
+					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+seq+"를 찜했습니다.");
+					TextMessage tmpMsg = new TextMessage(buyerId + "님이 "
+							+ "<a href='/myweb/favorite.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
+							+ "상품을" +"</strong> 찜했습니다.</a>");
+					System.out.println(tmpMsg);
+					TextMessage msg2 = new TextMessage(sellerId+"님의 상품을 찜했습니다.");
+					mySession.sendMessage(msg2);
+					sellerSession.sendMessage(tmpMsg);
+				}
+				
+				//찜 취소
+				else if("jjimCancel".equals(cmd) && sellerSession != null) {
+					logger.info("찜");
+					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+seq+"를 찜했습니다.");
+					TextMessage tmpMsg = new TextMessage(buyerId + "님이 "
+							+ "<a href='/myweb/favorite.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
+							+ "상품</strong> 찜하기를 취소했습니다.</a>");
+					System.out.println(tmpMsg);
+					TextMessage msg2 = new TextMessage(sellerId+"님의 상품 찜하기를 취소했습니다.");
+					mySession.sendMessage(msg2);
+					sellerSession.sendMessage(tmpMsg);
+				}
+//				
 //				//좋아요
 //				else if("like".equals(cmd) && boardWriterSession != null) {
 //					//replyWriter = 좋아요누른사람 , boardWriter = 게시글작성자
@@ -108,12 +114,25 @@ public class EchoHandler extends TextWebSocketHandler{
 //				//페이
 				else if("pay".equals(cmd) && sellerSession != null) {
 					logger.info("파프리카 페이되나?");
-					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+post_seq+"를 구매예약했습니다.");
+					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+seq+"를 구매예약했습니다.");
 					TextMessage tmpMsg = new TextMessage(buyerId + "님이 "
-							+ "<a href='/myweb/postDetail.do?post_seq="+post_seq+"'  style=\"color: black\"><strong>"
+							+ "<a href='/myweb/postDetail.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
 							+ "상품을" +"</strong> 구매예약했습니다.</a>");
 					System.out.println(tmpMsg);
 					TextMessage msg2 = new TextMessage(sellerId+"님의 상품을 예약했습니다.");
+					mySession.sendMessage(msg2);
+					sellerSession.sendMessage(tmpMsg);
+				}
+				
+				//페이취소
+				else if("payCancel".equals(cmd) && sellerSession != null) {
+					logger.info("파프리카 페이 취소");
+					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+seq+"를 구매를 취소했습니다.");
+					TextMessage tmpMsg = new TextMessage(buyerId + "님이 "
+							+ "<a href='/myweb/postDetail.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
+							+ "상품을" +"</strong> 구매를 취소했습니다.</a>");
+					System.out.println(tmpMsg);
+					TextMessage msg2 = new TextMessage(sellerId+"님의 상품을 예약 취소했습니다.");
 					mySession.sendMessage(msg2);
 					sellerSession.sendMessage(tmpMsg);
 				}

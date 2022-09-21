@@ -24,6 +24,8 @@ $(document).ready(function() {
 					"color" : "rgb(136, 136, 136)"
 				}).prop("disabled", true);
 			}
+			
+			
 		});
 		// 모든 체크박스를 클릭하면 버튼 활성화시키기
 		$('.article_select1').click(function() {
@@ -105,6 +107,7 @@ function jjimDelete() {
 	}
 
 }
+
 
 function myProductCart() {
 	window.location.href = 'myProductCart.jsp';

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.PostService.PostService;
-import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
@@ -175,9 +173,7 @@ public class PostController {
 		lvo.setPost_seq(post_seq);
 		lvo.setUser_seq(uvo.getUser_seq());
 		int like = 0;
-
-		System.out.println(uvo.toString());
-
+		
 		int check = postService.likeCount(lvo);
 		int jjimCart = postService.jjimCart(lvo);
 		int allLike = postService.allLike(lvo);
@@ -452,6 +448,40 @@ public class PostController {
 		System.out.println(pvo.toString());
 		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
 		System.out.println(msg);
+		return msg;
+	}
+	
+	// 바로 구매 클릭시 알림에 값넘겨주는 역할
+	@RequestMapping(value = "/cancelPayNotice.do")
+	public @ResponseBody String cancelPayNotice(HttpSession session, Model model, String cmd) {
+		System.out.println("페이 알람으로 값 넘겨주자.");
+		System.out.println(cmd);
+		PostVO pvo = (PostVO) model.getAttribute("post");
+		UserVO uvo = (UserVO) session.getAttribute("user");
+		System.out.println(pvo.toString());
+		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+		System.out.println(msg);
+		return msg;
+	}
+	
+	//찜 누르면 알림에 넘겨줌
+	@RequestMapping(value="/addJjimNotice.do")
+	public @ResponseBody String addJjimNotice(HttpSession session, Model model, String cmd) {
+		System.out.println("찜 목록으로 값 넘겨주자.");
+		System.out.println(cmd);
+		UserVO uvo = (UserVO)session.getAttribute("user");
+		PostVO pvo = (PostVO) model.getAttribute("post");
+		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+		return msg;
+	}
+	//찜 누르면 알림에 넘겨줌
+	@RequestMapping(value="/cancelJjimNotice.do")
+	public @ResponseBody String cancelJjimNotice(HttpSession session, Model model, String cmd) {
+		System.out.println("찜 취소 값 넘겨주자.");
+		System.out.println(cmd);
+		UserVO uvo = (UserVO)session.getAttribute("user");
+		PostVO pvo = (PostVO) model.getAttribute("post");
+		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
 		return msg;
 	}
 

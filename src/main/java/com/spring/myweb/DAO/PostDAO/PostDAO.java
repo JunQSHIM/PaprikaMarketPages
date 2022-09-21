@@ -33,15 +33,24 @@ public interface PostDAO {
 	public void updatePost(PostVO vo);// 판매하기 수정하기
 	
 	
+	public int myCount(PageVO vo) throws Exception; // 내상품 갯수
+	public List<PostVO> myPageList(PageVO vo) throws Exception;// 내상품 목록
+	
+	
 	public Map<String, String> uploadImg(List<MultipartFile> img, String place);//이미지 다수 등록
 	public void insertPhoto(PhotoVO vo);//DB에 저장
 	public int post_seq(int user_seq);//최신 상품 등록 페이지
 	public void deleteImage(int post_seq);//사진 삭제
 	
-	public int likeCount(LikeVO vo); // 좋아요 갯수
+	// 좋아요 구현 DAO
+	public int likeCount(LikeVO vo); //
 	public int likeGetInfo(LikeVO vo); // 좋아요 하기
 	public void likeinsert(LikeVO vo);
 	public void likeupdate(LikeVO vo);
+	public int allLike(LikeVO vo); // 좋아요 개수
+	public int jjimCart(LikeVO vo); // 찜목록 개수
+	public List<PostVO> jjimList(PageVO vo) throws Exception; // 찜한 게시물 목록
+	public void jjimDelete(LikeVO vo);// 찜 목록 삭제
 	
 	public int updatePayPost(PostVO vo); //유저의 파프리카페이 링크를 포스트에도 저장
 	public int updatePayStatus(PostVO vo); //구매 예약 대기 완료 변경해주는것 

@@ -51,14 +51,26 @@
 						<div class="btn_words">판매하기</div>
 					</a>
 				</div>
+				<c:if test="${user.user_seq == null }">
 				<div class="nav_btn_1">
-					<a class="mystore" onclick="sangjum_chk()">
+					<a class="mystore" onclick="sangjum_chk();">
 						<div class="btn_img">
 							<img src="/myweb/login/images/mystore.png" width="23" height="24">
 						</div>
 						<div class="btn_words">상 점</div>
 					</a>
 				</div>
+				</c:if>
+				<c:if test="${user.user_seq != null }">
+				<div class="nav_btn_1">
+					<a class="mystore" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}'">
+						<div class="btn_img">
+							<img src="/myweb/login/images/mystore.png" width="23" height="24">
+						</div>
+						<div class="btn_words">상 점</div>
+					</a>
+				</div>
+				</c:if>
 				<div class="nav_btn">
 					<a class="chat" onclick="location.href='boardlist.do'">
 						<div class="btn_img">
@@ -95,12 +107,12 @@
     });
 	
 	function sangjum_chk() {
-		let id = "${user.id}"
+		let id = "${user.user_seq}"
+		var seq = "<c:out value='${user.user_seq}'/>"
+		console.log(seq);
 		if (id == "") {
-			alert("상점 페이지는 로그인 후 사용하실 수 있습니다.");
+			alert("상점은 로그인 후 사용하실 수 있습니다.");
 			location.href = "loginForm.do";
-		} else {
-			location.href = "myProductCart.do"
 		}
 	}
 	function talk_chk() {

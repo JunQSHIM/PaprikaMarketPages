@@ -17,7 +17,7 @@
 					<div class="jjim_list_1">
 					 	<a class="sell_product">상품 <span class="sell_product_span">${total }</span></a>
 					 	<a class="review_product" href="/myweb/login/review_product.jsp">상품후기 <span class="review_product_span">5</span></a>
-					 	<a class="jjim_product" href="/myweb/login/jjim_cart.jsp">찜 <span class="jjim_product_span">2</span></a>
+					 	<a class="jjim_product" href="favorite.do?user_seq=${user.user_seq }">찜 <span class="jjim_product_span">${jjimCart }</span></a>
 					 </div>
 				</div>
 			</div>
@@ -51,16 +51,16 @@
 								<span class="sell_cart_4_span">${total } 개</span>
 							</div>
 							<div class="array">
-								<a class="select_array">
+								<a class="non_select_array" type="button" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}&num=${select }&sort=1'">
 									최신순
 								</a>
-								<a class="non_select_array">
+								<a class="non_select_array" type="button" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}&num=${select }&sort=2'">
 									인기순
 								</a>
-								<a class="non_select_array">
+								<a class="non_select_array" type="button" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}&num=${select }&sort=3'">
 									저가순
 								</a>
-								<a class="non_select_array">
+								<a class="non_select_array" type="button" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}&num=${select }&sort=4'">
 								고가순
 								</a>
 							</div>
@@ -116,51 +116,19 @@
 						</div>
 						</c:forEach>
 						
-						
-						<div class="sell_product_board">
-							<a class="sell_board" href="#">
-								<div class="sell_image">
-									<img src="./images/jjim_icon/santiago.png" width="194" height="194">
-									<div class="reservation">
-										<div>판매</div>
-										<img src="/myweb/login/images/jjim_icon/reservation.png" width="11" height="11" alt="판매 불가 아이콘">
-										<div>완료</div>
-									</div>
-									<div class="inner_sell_image"></div>
-								</div>
-								<div class="sell_product_detail">
-									<div class="sell_product_title">스파이 패밀리-아냐</div>
-									<div class="sell_product_price">
-										<div class="sell_product_price_1">
-											150,000
-										</div>
-										<div class="sell_product_time">
-											<span>8시간 전</span>
-										</div>
-									</div>
-								</div>
-								<div class="sell_location">
-									<img src="./images/jjim_icon/location.png" width="15" height="17" alt="위치">
-									전국
-								</div>
-							</a>
-						</div>
-						
-						
-						
 					</div>
 					<div class="bottom_space"></div>
 				</div>
 					<div class="pagingBody">
-	 	<div class= "paging">
+	 		<div class= "paging">
 		<c:if test="${page.prev}">
-			<a href="myProductCart.do?num=${page.startPageNum - 1}"> ◀ </a>
+			<a href="myProductCart.do?user_seq=${user.user_seq }&num=${page.startPageNum - 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12" class="prev"></a>
 			
 		</c:if>
 	
 		<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
 			<c:if test="${select != num}">
-					<a href="myProductCart.do?num=${num}" class="present_page">${num}</a>
+					<a href="myProductCart.do?user_seq=${user.user_seq }&num=${num}" class="present_page">${num}</a>
 				</c:if>
 			<c:if test="${select == num}"><b>${num}</b>
 				</c:if>
@@ -168,7 +136,7 @@
 		</c:forEach>
 
 		<c:if test="${page.next}">
-			<a href="myProductCart.do?num=${page.endPageNum + 1}">▶</a>
+			<a href="myProductCart.do?user_seq=${user.user_seq }&num=${page.endPageNum + 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12"></a>
 			
 		</c:if>
 		</div>

@@ -12,14 +12,12 @@
 <link rel="stylesheet" type="text/css" href="/myweb/login/product&purchase/ctProduct.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/product&purchase/product_detail.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/singo/modal.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Main Page</title>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
-<script>
-//댓글 등록
 
-</script>
 </head>
 <body>
    <header>
@@ -31,10 +29,13 @@
    </article>
    <article class="container_12">
       
-         <div id="productPage">
+         <div class="detail_body">
+         
+         <div>
+            <div id="productPage">
          <div id="productList">
-				홈 >
-				<select onchange="if(this.value) location.href=(this.value);" name="category_seq">
+            홈 > 
+            <select onchange="if(this.value) location.href=(this.value);" name="category_seq">
                <option selected disabled>카테고리</option>
                <option value="category.do?category_seq=1">디지털기기</option>
                <option value="category.do?category_seq=2">가구/인테리어</option>
@@ -55,8 +56,8 @@
          </div>
          <div class="detailContent">
          <input type="hidden" id="user_seq" name="user_seq" value="${user.user_seq }">
-         <input type="hidden" name="post_seq" id="post_seq" name="post_seq" value="${post.post_seq }">
-			<div class="grid_4 item" id="picture">
+         <input type="hidden" id="post_seq" name="post_seq" value="${post.post_seq }">
+            <div class="grid_4 item" id="picture">
             <div class="cTZOqF">
                <div class="kjooeF">
                   <div class="lgWppt">
@@ -74,10 +75,11 @@
                <div class="item" id="detail" style="border-bottom: 1px solid rgb(238, 238, 238)">
                   <div id="title">${post.post_title }</div>
                   <div class="post_price"><div class="postPrice"><fmt:formatNumber value="${post.price }" pattern="###,###,###"/><span>원</span></div></div>
+                  
                </div>
                <div class="item">
  
-               <div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/heart.png" width="16" height="16">36</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/clock.png" width="16" height="16">${post.upload_date}</div><div class="etc_items"><button class="openBtn">신고하기</button></div></div>
+               <div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/heart.png" width="16" height="16">${allLike }</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/clock.png" width="16" height="16">${post.upload_date}</div><div class="etc_items"><button class="openBtn">신고하기</button></div></div>
                </div>
                   <div class="ipQCCP" id="info">
                   <div class="prod_status">
@@ -102,6 +104,7 @@
                   <c:choose>
                   <c:when test="${empty post.location2 }">
                   <div class="prod_status">
+                 
                      <div class="prod_status_2">
                         거래지역2
                      </div>
@@ -121,18 +124,26 @@
                   </div>
                  
                <div class="item_btn" id="func">
-               <button type="button" id="jjim">찜</button>
+                <c:choose>
+						<c:when test="${like ==0}">
+							<button type="button" id="likebtn">찜</button>
+							<input type="hidden" id="likecheck" value="${like }">
+						</c:when>					
+						<c:when test="${like ==1}">
+							<button type="button" id="likebtn" class="">♥찜</button>
+							<input type="hidden" id="likecheck" value="${like }">
+						</c:when>
+					</c:choose>			
                   <button>연락하기</button>
                <c:choose>
                <c:when test="${post.pay_check == 1 and post.nickname ne user.nickname}">
-                  <button onclick="showPopUp();add_pay_notice()" >바로구매</button>
+                  <button onclick="showPopUp()" >바로구매</button>
                </c:when>
                <c:when test="${post.pay_check == 0 or post.nickname eq user.nickname}">
                		<button onclick="" style="visibility: hidden;">바로구매</button>
                </c:when>
-			   </c:choose>
+				</c:choose>
                </div>
-               
             </div>
             </div>
             <div class="clear"></div>
@@ -200,14 +211,13 @@
          
                </div>
                </div>
-      <%@ include file="/login/singo/singo.jsp" %>
+      <%@ include file="/WEB-INF/user/login/singo/singo.jsp" %>
    </article>
    <div style="margin-bottom:40px;"></div>
    <footer class="container_12">
       <jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
    </footer>
 </body>
-
 
 <script type="text/javascript" src="/myweb/login/product&purchase/product_detail.js"></script>
 </html>

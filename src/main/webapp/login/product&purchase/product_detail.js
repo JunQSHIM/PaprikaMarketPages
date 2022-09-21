@@ -71,7 +71,7 @@
 	
 	
 	var post_seq = document.getElementById("post_seq").value;
-	
+/*	
 	$(function () {
 		let num = 0;
 		let imageName = ["check.png", "uncheck.png"];
@@ -90,78 +90,35 @@
 				num++;	
 			}
 		});
-	}); 
-	/*	
-	$(document).on("click", "#jjim", function() {
-		   console.log($("#user_seq").val());
-		   $.ajax({
-		      url: "/likeupdate.do",
-		      method: "get",
-		      data: {
-		         user_seq: Number($("#user_seq").val())
-		      },
-		      dataType: "json",
-		      success: function(re) {
-		         console.log(re + "suc")
-		      },
-		      error: function(re) {
-		      
-		         if (re.responseText.trim() == "fail") {
-		            alert("로그인 후 진행해주세요");
-		         } else {
-		            if (re.responseText.trim() == "no") {
-		               alert("이미 추가되었습니다.");
-		            }
-		         }
-		      }
-		   })
-		})
-$('#jjim').click(function(){
+	}); */
+	$('#likebtn').click(function(){
 		likeupdate();
-		console.log($("#user_seq").val());
-		console.log($("#post_seq").val());
-		
 	});
 	
 	function likeupdate(){
-		var root = getContextPath(),
-		likeurl = "/likeupdate.do";
-		user_seq = Number($('#user_seq').val());
-		post_seq = Number($('#post_seq').val());
-		likeCnt = Number($('#likecheck').val());
-		data = {"user_seq" : user_seq,
-				"post_seq" : post_seq,
-				"likeCnt" : likeCnt};
-		console.log($("#likecheck").val());
 	$.ajax({
-		url :"/myweb"+likeurl,
-		type : 'get',
-		dataType: 'json',
-		data : data,
+		url : "/myweb/likeupdate.do",
+		type : 'post',
+		data : {user_seq : Number($('#user_seq').val()),
+			post_seq : Number($('#post_seq').val()),
+			count : Number($('#likecheck').val())},
 		success : function(result){
-			console.log("수정" + result);
-			if(likeCnt == 1){
+			console.log("수정" + result.result);
+			if(Number($('#likecheck').val()) == 1){
 				console.log("좋아요 취소");
 				 $('#likecheck').val(0);
-				 $('#jjim').html('♥찜');
-			}else if(likeCnt == 0){
+				 $('#likebtn').html('찜');
+			}else if(Number($('#likecheck').val()) == 0){
 				console.log("좋아요!");
 				$('#likecheck').val(1);
-				$('#jjim').html('찜');
+				$('#likebtn').html('♥찜');
 			}
 		}, error : function(result){
-			console.log( result);
-			//console.log(data);
-			//console.log(url);
+			console.log("에러" + result.result)
 		}
 		
 		});
 	};
-	
-	function getContextPath() {
-	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
-	} */
 	/** 결제 * */
     // 결제 금액, 구매자의 이름, 이메일
     const priceAmount = "10";

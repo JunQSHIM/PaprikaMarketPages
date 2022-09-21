@@ -7,7 +7,9 @@ div {
 .productPage {
 	margin-top: 30px;
 }
-
+.prev{
+	transform: rotate(180deg);
+}
 .jjim_list_1 {
 	display: flex;
 	height: 50px;
@@ -98,8 +100,6 @@ a {
     color: rgb(255, 255, 255);
     background: orange;
 }
-
-
 
 .sell_product_span {
 	margin-left: 4px;
@@ -340,6 +340,10 @@ a {
 	width: 1px;
 	height: 12px;
 	border-right: 1px solid rgb(204, 204, 204);
+}
+
+.non_select_array:hover{
+	color:rgb(247, 47, 51);
 }
 
 .sell_product_board:nth-last-child(-n+5):nth-child(5n+1),

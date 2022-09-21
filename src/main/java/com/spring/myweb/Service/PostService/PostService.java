@@ -30,7 +30,8 @@ public interface PostService {
 	public int countCate(int category_seq) throws Exception;// 카테고리별 게시물 개수
 	public List<PostVO> catePage(int displayPost, int postNum, int category_seq) throws Exception; // 카테고리별 페이징
 	
-	
+	public int myCount(PageVO vo) throws Exception; // 내상품 갯수
+	public List<PostVO> myPageList(PageVO vo) throws Exception;// 내상품 목록
 	
 	public Map<String, String> uploadImg(List<MultipartFile> img, String place);//이미지 다수 등록
 	public void insertPhoto(PhotoVO vo);//DB에 저장
@@ -41,6 +42,10 @@ public interface PostService {
 	public int likeGetInfo(LikeVO vo); // 좋아요 하기
 	public void likeinsert(LikeVO vo);
 	public void likeupdate(LikeVO vo);
+	public int allLike(LikeVO vo); // 좋아요 개수
+	public int jjimCart(LikeVO vo); // 찜목록 개수
+	public List<PostVO> jjimList(PageVO vo) throws Exception; // 찜한 게시물 목록
+	public void jjimDelete(LikeVO lvo);// 찜 목록 삭제
 
 	public int updatePayPost(PostVO vo);
 	public int updatePayStatus(PostVO vo);

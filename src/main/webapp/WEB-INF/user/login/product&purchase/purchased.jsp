@@ -141,7 +141,7 @@
 			</div>
 			</div>
 		</div>
-		<%@ include file="/login/singo/singo.jsp" %>
+		<%@ include file="/WEB-INF/user/login/singo/singo.jsp" %>
 	</article>
 	<div style="margin-bottom:40px;"></div>
 	<footer class="container_12">

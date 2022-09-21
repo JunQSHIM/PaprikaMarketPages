@@ -129,6 +129,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public void likeupdate(LikeVO vo) {
+		System.out.println(vo);
 		postDao.likeupdate(vo);
 	}
 
@@ -143,6 +144,15 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
+	public int myCount(PageVO vo) throws Exception {
+		return postDao.myCount(vo);
+	}
+
+	@Override
+	public List<PostVO> myPageList(PageVO vo) throws Exception {
+		return postDao.myPageList(vo);
+	}
+	@Override
 	public int updatePayPost(PostVO vo) {
 		return postDao.updatePayPost(vo);
 	}
@@ -155,6 +165,27 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public int insertPPKPay(HashMap<String, Object> vo) {
 		return postDao.insertPPKPay(vo);
+	}
+
+	@Override
+	public int allLike(LikeVO vo) {
+		return postDao.allLike(vo);
+	}
+
+	@Override
+	public int jjimCart(LikeVO vo) {
+		return postDao.jjimCart(vo);
+	}
+
+	@Override
+	public List<PostVO> jjimList(PageVO vo) throws Exception {
+		return postDao.jjimList(vo);
+	}
+
+	@Override
+	public void jjimDelete(LikeVO vo) {
+		postDao.jjimDelete(vo);
+		
 	}
 
 	

@@ -41,12 +41,13 @@ public class PostDAOImpl implements PostDAO {
 
 	private AmazonS3 amazonS3;
 	private Regions clientRegion = Regions.AP_NORTHEAST_2;
-	
+
 	@Value("#{s3['cloud.aws.s3.bucket']}")
 	private String bucket;
 
-	private PostDAOImpl(@Value("#{s3['cloud.aws.credentials.access-key']}")String accessKey, @Value("#{s3['cloud.aws.credentials.secret-key']}")String sercretKey) {
-		createS3Client(accessKey,sercretKey);
+	private PostDAOImpl(@Value("#{s3['cloud.aws.credentials.access-key']}") String accessKey,
+			@Value("#{s3['cloud.aws.credentials.secret-key']}") String sercretKey) {
+		createS3Client(accessKey, sercretKey);
 	}
 
 	private void createS3Client(String accessKey, String sercretKey) {
@@ -159,7 +160,7 @@ public class PostDAOImpl implements PostDAO {
 			objectMetadata.setContentType(file.getContentType());
 
 			try (InputStream inputStream = file.getInputStream()) {
-				amazonS3.putObject(new PutObjectRequest(bucket, place+fileName, inputStream, objectMetadata)
+				amazonS3.putObject(new PutObjectRequest(bucket, place + fileName, inputStream, objectMetadata)
 						.withCannedAcl(CannedAccessControlList.PublicRead));
 			} catch (IOException e) {
 				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
@@ -192,28 +193,34 @@ public class PostDAOImpl implements PostDAO {
 
 	@Override
 	public void insertPhoto(PhotoVO vo) {
+
 		session.selectList("userDB.insertPhoto", vo);
 	}
 
 	// 좋아요 관련 DAOImpl
 	@Override
 	public int likeCount(LikeVO vo) {
+
 		return session.selectOne("userDB.likeCount", vo);
 	}
 
 	@Override
 	public int likeGetInfo(LikeVO vo) {
+
 		return session.selectOne("userDB.likeGetInfo", vo);
 	}
 
 	@Override
 	public void likeinsert(LikeVO vo) {
+
 		session.insert("userDB.likeInsert", vo);
 
 	}
 
 	@Override
 	public void likeupdate(LikeVO vo) {
+		System.out.println("user" + vo.getUser_seq());
+		System.out.println("post" + vo.getPost_seq());
 		session.update("userDB.likeUpdate", vo);
 	}
 
@@ -228,10 +235,13 @@ public class PostDAOImpl implements PostDAO {
 
 	@Override
 	public int countCate(int category_seq) throws Exception {
-		return session.selectOne("userDB.countCate",category_seq);
+		return session.selectOne("userDB.countCate", category_seq);
 	}
 
 	@Override
+	public int myCount(PageVO vo) throws Exception {
+		return session.selectOne("userDB.myCount", vo);
+	}
 	public int updatePayPost(PostVO vo) {
 		return session.update("userDB.updatePayPost",vo);
 	}
@@ -246,6 +256,30 @@ public class PostDAOImpl implements PostDAO {
 		return session.insert("userDB.insertPPKPay",vo);
 	}
 
+	@Override
+	public List<PostVO> myPageList(PageVO vo) throws Exception {
+		return session.selectList("userDB.myPageList", vo);
+	}
 
+	@Override
+	public int allLike(LikeVO vo) {
+		return session.selectOne("userDB.allLike", vo);
+	}
+
+	@Override
+	public int jjimCart(LikeVO vo) {
+		return session.selectOne("userDB.jjimCart", vo);
+	}
+
+	@Override
+	public List<PostVO> jjimList(PageVO vo) throws Exception {
+		List<PostVO> jjimList = session.selectList("userDB.jjimList", vo);
+		return jjimList;
+	}
+
+	@Override
+	public void jjimDelete(LikeVO vo) {
+		session.delete("userDB.jjimDelete", vo);
+	}
 
 }

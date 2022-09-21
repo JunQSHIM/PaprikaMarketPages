@@ -8,6 +8,8 @@ div {
 	margin-top: 30px;
 }
 
+
+
 .jjim_list_1 {
 	display: flex;
 	height: 50px;
@@ -334,10 +336,13 @@ a {
 	vertical-align: baseline;
 	text-size-adjust: 100%;
 	overflow: hidden;
+
 }
 
 .jjim_image>img {
-	height: 100%;
+	height:100%;
+	width:100%;
+	object-fit:cover;
 }
 
 img {
@@ -469,4 +474,51 @@ input[type="checkbox"]:checked {
 input[type="checkbox"]:checked::before {
 	border-radius: 2px;
 	transform: scale(1) translate(-50%, -50%)
+}
+
+.non_select_array:hover{
+	color:rgb(247, 47, 51);
+}
+.pagingBody{
+ 	display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin-bottom: 100px;
+    margin-top:50px;
+ }
+ 
+ .paging{
+    display: flex;
+ }
+ 
+ .paging a {
+    width: 33px;
+    height: 33px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 12px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    border-radius: 2px;
+    color: rgb(155, 153, 169);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.paging b{
+    width: 33px;
+    height: 33px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 12px;
+    border: 1px solid orange;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    background: orange;
 }

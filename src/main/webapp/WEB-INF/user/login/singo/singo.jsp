@@ -17,15 +17,16 @@
 					<div class="singo_titles">
 						<div class="singo_title">신고하기</div>
 						<button class="closeBtn">
-							<img src="/myweb/paprika/images/close.png" width="24" height="24">
+							<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/close.png" width="24" height="24">
 						</button>
 					</div>
+				<form>
 					<div class="singo">
 						<div class="singo_list">
 							<div class="singo_list_1">
 								<span>광고 (상점 및 타사이트 홍보, 상품도배)</span>
 								<button type="button" id="btn1">
-									<img src="/myweb/paprika/images/dropdown.png" width="13" height="8"
+									<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/singo.png" width="13" height="8"
 										alt="화살표 아이콘" id="img1">
 								</button>
 							</div>
@@ -42,7 +43,7 @@
 							<div class="singo_list_1">
 								<span>상품 정보 부정확 (상품명, 이미지, 가격, 태그 등)</span>
 								<button type="button" id="btn2">
-									<img src="/myweb/paprika/images/dropdown.png" width="13" height="8"
+									<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/singo.png" width="13" height="8"
 										alt="화살표 아이콘">
 								</button>
 							</div>
@@ -59,7 +60,7 @@
 							<div class="singo_list_1">
 								<span>거래 금지 품목</span>
 								<button type="button" id="btn3">
-									<img src="/myweb/paprika/images/dropdown.png" width="13" height="8"
+									<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/singo.png" width="13" height="8"
 										alt="화살표 아이콘" onclick="buttonClicked()">
 								</button>
 							</div>
@@ -104,7 +105,7 @@
 							<div class="singo_list_1">
 								<span>안전결제 허위매물(안전결제 표시 상품 안전결제 거부)</span>
 								<button type="button" id="btn4">
-									<img src="/myweb/paprika/images/dropdown.png" width="13" height="8"
+									<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/singo.png" width="13" height="8"
 										alt="화살표 아이콘">
 								</button>
 							</div>
@@ -124,7 +125,7 @@
 							<div class="singo_list_1">
 								<span>사기의심(외부채널 유도)</span>
 								<button type="button" id="btn5">
-									<img src="/myweb/paprika/images/dropdown.png" width="13" height="8"
+									<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/singo.png" width="13" height="8"
 										alt="화살표 아이콘">
 								</button>
 							</div>
@@ -141,7 +142,7 @@
 							<div class="singo_list_1">
 								<span>기타(사유)</span>
 								<button type="button" id="btn6">
-									<img src="/myweb/paprika/images/dropdown.png" width="13" height="8"
+									<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/singo.png" width="13" height="8"
 										alt="화살표 아이콘">
 								</button>
 							</div>
@@ -155,6 +156,7 @@
 							</div>
 						</div>
 					</div>
+				</form>
 				</div>
 			</div>
 			

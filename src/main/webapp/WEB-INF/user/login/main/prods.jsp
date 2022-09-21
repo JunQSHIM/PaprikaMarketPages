@@ -165,7 +165,7 @@
 								<div class="sell_image">
 										<img src="${photo[status.index] }" width="194" height="194">
 									<span class="image_span">
-										<c:choose>
+								<c:choose>
 									<c:when test="${post.pay_check == 1 }">
 										<img src="/myweb/login/images/jjim_icon/pay.svg" alt="페이 가능">
 									</c:when>
@@ -201,7 +201,7 @@
 						<c:forEach items="${list }" var="post" varStatus="status">
 						<div class="sell_product_board">
 						
-							<a class="sell_board" href="postDetail.do?post_seq=${post.post_seq}">
+							<a class="sell_board" href="postDetail.do?post_seq=${post.post_seq}&user_seq=${user.user_seq}">
 								<div class="sell_image">
 										<img src="${photo[status.index] }" width="194" height="194">
 									<span class="image_span">

@@ -3,6 +3,19 @@
 	float: right;
 	
 }
+
+.jjim_heart img {
+    margin-right: 5px;
+    vertical-align: bottom;
+    border-style: none;
+}
+
+.jjim_heart span {
+	margin-top: 20px;
+
+    border-style: none;
+}
+
 .banner {
 	position: absolute;
     width: 90px;

@@ -13,7 +13,6 @@
 <head>
 <meta charset="UTF-8">
 <title>nav</title>
-
 </head>
 <body>
 	<div class="grid_12 nav">

@@ -47,8 +47,8 @@ function payForm(){
 								<table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>판매자</th>
-											<th>구매자</th>
+											<th>판매자(카카오톡이름)</th>
+											<th>구매자(카카오톡이름)</th>
 											<th>판매물품 링크</th>
 											<th>현황</th>
 											<th>판매자 qr</th>
@@ -59,8 +59,8 @@ function payForm(){
 									<tbody id="infoData">
 										<c:forEach var="payList" items="${payList }">
 										<tr>
-											<td>${payList.sellerId }</td>
-											<td>${payList.buyerId }</td>
+											<td>${payList.sellerId }(${payList.sellerKID })</td>
+											<td>${payList.buyerId }(${payList.buyerKID })</td>
 											<td><a href="/myweb/postDetail.do?post_seq=${payList.post_seq }" target="_blank">상품으로 이동</a></td>
 											<td>
 											<c:choose>

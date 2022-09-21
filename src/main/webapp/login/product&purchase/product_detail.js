@@ -183,7 +183,27 @@ $('#jjim').click(function(){
       var status = "width=370, height=600, top=100, left=600";
       	window.open(url,title,status);
      }
-    
+     
+   	function add_pay_notice(){
+   		console.log("fj");
+   		var cmd = 'pay';
+		$.ajax({
+			url: '/myweb/addPayNotice.do',
+			type: 'post',
+			data: { 
+				'cmd': cmd
+			},
+			success: function(data) {
+				alert(data);
+				if(sock){
+					sock.send(data);
+				}
+			},
+			error: function (e) {
+		      	console.log(e.responseText);
+			}
+		});
+   	}
     function showPopUp() {
     	//창 크기 지정
     	var width = 500;

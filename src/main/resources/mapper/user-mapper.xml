@@ -4,9 +4,11 @@
 	<select id="selectUserAll" resultType="UserVO">
 		select * from user;
 	</select>
-	<select id="selectUser" parameterType="string"
-		resultType="UserVO">
+	<select id="selectUser" parameterType="string" resultType="UserVO">
 		select * from user where id=#{value}
+	</select>
+	<select id="selectUserbySeq" parameterType="int" resultType="UserVO">
+		select * from user where user_seq=#{user_seq};
 	</select>
 	<select id="idCheck" parameterType="String" resultType="int">
 		select count(*) from user where id = #{id}
@@ -319,7 +321,7 @@
 	
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
 	<update id="updatePay">
-		update user set pay=#{pay} where id=#{id}
+		update user set pay=#{pay}, KID=#{KID} where id=#{id}
 	</update>
 	
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
@@ -332,7 +334,7 @@
 	</update>
 	
 	<insert id="insertPPKPay">
-		insert into pay(pay_seq,sellerId, buyerId, post_seq, process, sellerQr, buyerQr, status)
-		values(#{pay_seq},#{sellerId},#{buyerId},#{post_seq},#{process},#{sellerQr},#{buyerQr},1)
+		insert into pay(pay_seq,sellerId, buyerId, post_seq, process, sellerQr, buyerQr, status, sellerKID, buyerKID)
+		values(#{pay_seq},#{sellerId},#{buyerId},#{post_seq},#{process},#{sellerQr},#{buyerQr},1,#{sellerKID},#{buyerKID})
 	</insert>
 </mapper>

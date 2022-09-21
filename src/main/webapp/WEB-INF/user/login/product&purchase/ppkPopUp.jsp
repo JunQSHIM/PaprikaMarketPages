@@ -9,7 +9,6 @@
 <body>
 <script>
 alert("구매예약 되셨습니다! 아래 qr링크로 3일내 송금이 되지 않을시에는 예약이 취소되니 주의해주세요!");
-opener.document.location.reload();
 	//창 크기 지정
 	var width = 500;
 	var height = 500;

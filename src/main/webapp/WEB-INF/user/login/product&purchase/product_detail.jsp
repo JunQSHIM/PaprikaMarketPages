@@ -17,63 +17,8 @@
 <title>Main Page</title>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 <script>
-   var socket = null;
-   connect();
+//댓글 등록
 
-   function connect() {
-      
-      // egov-com-sevlet.xml에서 mapping path에 걸려 웹소켓 핸들러가 요청을 처리
-      var ws = new WebSocket('ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/websocket.do');		   
-      socket = ws;
-      
-      // 연결 성공시
-      ws.onopen = function() {
-         console.log('Info: connection opened.');
-      };
-
-      // 응답 메세지 수진 부분 
-      ws.onmessage = function(event) {
-         
-         var gUserId = $("#userSessionId").val();
-         var sm = event.data;
-         
-         // 로그인한 사용자에겐 알림이 가지않도록 하기 위함.
-         if(sm != gUserId){
-            var websocketQna =  document.getElementById("websocketQna");
-            websocketQna.style.display = "block"; 
-            
-            // setTimeout을 주어 3초만 화면에 출력 
-            setTimeout(function(){ 
-               websocketQna.style.display = "none"; 
-            }, 3000); //3000 : 3초 
-         }
-      };
-      // 연결 종료시 
-      ws.onclose = function(event) {
-         console.log('Info: connection closed');
-      };
-      // 에러 발생시
-      ws.onerror = function(err) {
-         console.log('Error:', err);
-      };
-   }
-   // 제일 먼저 실행 되는 부분.
-   $(document).ready(function() {
-      // 버튼을 클릭 시 이벤트 
-      $('#alertQnaOk').on('click', function(evt) {
-         // 현재 로그인 한 sessionId를 가져오기 위함.
-         var gUserId = $("#userSessionId").val();
-         // form 안에 있는 input 등 전송할 수 있는 동작을 중단
-         evt.preventDefault();
-         // readyState 1일때 webSocket객체 이벤트를 발생시킨다.
-         if (socket.readyState !== 1)
-            return;
-         // 세션값을 보낸다. 
-         socket.send(gUserId);
-         $('#alertQna').css('display', 'none');
-      });
-      socket.onclose();
-   });
 </script>
 </head>
 <body>
@@ -110,8 +55,8 @@
          </div>
          <div class="detailContent">
          <input type="hidden" id="user_seq" name="user_seq" value="${user.user_seq }">
-         <input type="hidden" id="post_seq" name="post_seq" value="${post.post_seq }">
-            <div class="grid_4 item" id="picture">
+         <input type="hidden" name="post_seq" id="post_seq" name="post_seq" value="${post.post_seq }">
+			<div class="grid_4 item" id="picture">
             <div class="cTZOqF">
                <div class="kjooeF">
                   <div class="lgWppt">
@@ -180,7 +125,7 @@
                   <button>연락하기</button>
                <c:choose>
                <c:when test="${post.pay_check == 1 and post.nickname ne user.nickname}">
-                  <button onclick="showPopUp()" >바로구매</button>
+                  <button onclick="showPopUp();add_pay_notice()" >바로구매</button>
                </c:when>
                <c:when test="${post.pay_check == 0 or post.nickname eq user.nickname}">
                		<button onclick="" style="visibility: hidden;">바로구매</button>

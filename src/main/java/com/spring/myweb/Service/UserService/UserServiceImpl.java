@@ -345,4 +345,9 @@ public class UserServiceImpl implements UserService{
 		return userDAO.updatePay(vo);
 	}
 
+	@Override
+	public UserVO selectByUserSeq(int user_seq) {
+		return userDAO.selectByUserSeq(user_seq);
+	}
+
 }

@@ -113,5 +113,10 @@ public class UserDAOImpl implements UserDAO{
 		return session.update("userDB.updatePay",vo);
 	}
 
+	@Override
+	public UserVO selectByUserSeq(int user_seq) {
+		return session.selectOne("userDB.selectUserbySeq",user_seq);
+	}
+
 	
 }

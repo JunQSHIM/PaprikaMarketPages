@@ -201,12 +201,14 @@ public class PostController {
 			info.put("process", 0);
 			info.put("sellerQr", vo.getPay());
 			info.put("buyerQr", uvo.getPay());
+			info.put("buyerKID", uvo.getKID());
+			UserVO sellerVO = userService.selectByUserSeq(vo.getUser_seq());
+			info.put("sellerKID", sellerVO.getKID());
 			
 			int result2 = postService.insertPPKPay(info);
 			if(result2 == 1) {
 				System.out.println("구매예약 완료 -> 관리자에게 전달");
 			}
-			
 		}
 		return "login/product&purchase/product_detail";
 	}
@@ -328,6 +330,19 @@ public class PostController {
 			System.out.println("SUCC");
 		}
 		return "login/product&purchase/ppkPopUp";
+	}
+	
+	//바로 구매 클릭시 알림에 값넘겨주는 역할
+	@RequestMapping(value="/addPayNotice.do")
+	public @ResponseBody String addPayNotice(HttpSession session, Model model, String cmd) {
+		System.out.println("페이 알람으로 값 넘겨주자.");
+		System.out.println(cmd);
+		PostVO pvo = (PostVO)model.getAttribute("post");
+		UserVO uvo = (UserVO)session.getAttribute("user");
+		System.out.println(pvo.toString());
+		String msg = cmd+","+pvo.getNickname()+","+uvo.getNickname()+","+pvo.getPost_seq();
+		System.out.println(msg);
+		return msg;
 	}
 
 	

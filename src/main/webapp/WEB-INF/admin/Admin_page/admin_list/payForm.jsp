@@ -43,8 +43,8 @@
 								<table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>판매자</th>
-											<th>구매자</th>
+											<th>판매자(카카오톡이름)</th>
+											<th>구매자(카카오톡이름)</th>
 											<th>판매물품 링크</th>
 											<th>현황</th>
 											<th>판매자 qr</th>
@@ -57,11 +57,11 @@
 										<input type="hidden" name="pay_seq" value="${payList.pay_seq }">
 										<tr>
 											<td>
-												${payList.sellerId }
+												${payList.sellerId }(${payList.sellerKID})
 												<input type="hidden" name="sellerId" value="${payList.sellerId }">
 											</td>
 											<td>
-												${payList.buyerId }
+												${payList.buyerId }(${payList.buyerKID })
 												<input type="hidden" name="buyerId" value="${payList.buyerId }">
 											</td>
 											<td>

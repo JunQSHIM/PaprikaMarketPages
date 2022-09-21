@@ -46,6 +46,7 @@
 		<h4>파프리카 페이 사용하기</h4>
 		<form action="mypage.do" method="post" name="ppkPay" id="payForm">
 		<input id="pay" type="text" name="pay" placeholder="qr을 입력해주세요.">
+		<input type="text" name="KID" placeholder="카카오페이에 설정되어있는 이름을 입력해주세요.">
 		<input id="send" type="submit" value="전송">
 		</form>
 		</div>

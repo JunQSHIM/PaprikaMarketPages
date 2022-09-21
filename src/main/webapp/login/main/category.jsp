@@ -69,7 +69,6 @@
 						value="14">
 						<img src="/myweb/login/images/ct_icon/buyproduct.png" />삽니다
 					</button>
-					
 			</ul>
 		</form>
 	</div>

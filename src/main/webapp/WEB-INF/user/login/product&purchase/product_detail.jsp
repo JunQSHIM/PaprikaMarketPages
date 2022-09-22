@@ -28,10 +28,7 @@
       
    </article>
    <article class="container_12">
-      
-         <div class="detail_body">
-         
-         <div>
+
             <div id="productPage">
          <div id="productList">
             홈 > 
@@ -79,7 +76,16 @@
                </div>
                <div class="item">
  
-               <div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/heart.png" width="16" height="16">${allLike }</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/clock.png" width="16" height="16">${post.upload_date}</div><div class="etc_items"><button class="openBtn">신고하기</button></div></div>
+               <div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/heart.png" width="16" height="16">${allLike }</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/clock.png" width="16" height="16">${post.upload_date}</div>
+             
+              <c:if test="${report == 1 }">
+               <div class="etc_items"><button class="openBtn">신고하기</button></div>
+               </c:if>
+                <c:if test="${report == 0 }">
+               <div class="etc_items" style="color:red;">신고완료</div>
+               </c:if>
+               </div>
+               
                </div>
                   <div class="ipQCCP" id="info">
                   <div class="prod_status">

@@ -346,6 +346,10 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public void withdrawal(UserVO vo) throws Exception {
+		userDAO.withdrawal(vo);
+		}
+		
 	public UserVO selectByUserSeq(int user_seq) {
 		return userDAO.selectByUserSeq(user_seq);
 	}

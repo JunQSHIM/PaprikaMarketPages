@@ -62,7 +62,7 @@
 </head>
 <body>
 	<div align="center" style="margin-top: 70px; margin-bottom: 20px;">
-		<a href="/myweb/login/main/mother.jsp"> <img
+		<a href="main.do"> <img
 			src="/myweb/login/images/dklogo.png" width="26%">
 		</a>
 	</div>

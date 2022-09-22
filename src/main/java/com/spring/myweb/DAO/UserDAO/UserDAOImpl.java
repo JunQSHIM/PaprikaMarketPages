@@ -114,6 +114,10 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
+	public void withdrawal(UserVO vo) throws Exception {
+		session.delete("userDB.withdrawal", vo);
+		}
+		
 	public UserVO selectByUserSeq(int user_seq) {
 		return session.selectOne("userDB.selectUserbySeq",user_seq);
 	}

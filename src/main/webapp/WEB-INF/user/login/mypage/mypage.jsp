@@ -131,6 +131,7 @@ function toProfileEdit() {
 					<button type="button" onclick=toProfileEdit()>프로필 수정</button>
 					<button type="button" onclick="location.href='location.do'">동네 인증하기</button>
 					<button type="button" onclick="location.href='pay.do'">파프리카 페이 사용하기</button>
+					<button type="button" onclick="location.href='withdrawalView.do?user_seq=${user.user_seq}'">회원탈퇴</button>
 				</div>
 			</div>
 			<div id="eval_and_review">

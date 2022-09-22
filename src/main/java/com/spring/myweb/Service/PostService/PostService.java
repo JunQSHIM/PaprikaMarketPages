@@ -11,6 +11,7 @@ import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 
 public interface PostService {
 	public List<PostVO> postList(); // 글 목록
@@ -46,7 +47,11 @@ public interface PostService {
 	public int jjimCart(LikeVO vo); // 찜목록 개수
 	public List<PostVO> jjimList(PageVO vo) throws Exception; // 찜한 게시물 목록
 	public void jjimDelete(LikeVO lvo);// 찜 목록 삭제
-
+	
+	public int postReport(ReportVO vo); // 신고하기
+	public List<ReportVO> reportStatus(ReportVO vo); // 신고 했는지 안했는지
+	public void withdrawalPost(int user_seq); // 회원탈퇴를 위한 게시판 삭제
+	
 	public int updatePayPost(PostVO vo);
 	public int updatePayStatus(PostVO vo);
 	

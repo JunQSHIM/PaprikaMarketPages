@@ -27,5 +27,6 @@ public interface UserService {
 	int emailAuthFail(String id) throws Exception;
 	int updatePw(UserVO vo) throws Exception;
 	int updatePay(UserVO vo) throws Exception;
+	public void withdrawal(UserVO vo) throws Exception; // 회원탈퇴
 	public UserVO selectByUserSeq(int user_seq);
 }

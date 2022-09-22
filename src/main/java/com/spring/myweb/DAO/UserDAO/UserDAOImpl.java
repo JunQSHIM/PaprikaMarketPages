@@ -113,5 +113,11 @@ public class UserDAOImpl implements UserDAO{
 		return session.update("userDB.updatePay",vo);
 	}
 
+	@Override
+	public void withdrawal(UserVO vo) throws Exception {
+		session.delete("userDB.withdrawal", vo);
+		
+	}
+
 	
 }

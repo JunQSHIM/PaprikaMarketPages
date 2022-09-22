@@ -32,6 +32,7 @@ import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 import com.spring.myweb.awss3.vo.PostPhotoVO;
 
@@ -169,9 +170,15 @@ public class PostController {
 
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
 	public String getDetail(HttpSession session, HashMap<String, Object> info, Model model, int post_seq, UserVO uvo,
-			LikeVO lvo) {
-		System.out.println("상세보기");
+			LikeVO lvo, ReportVO rvo) {
 		postService.viewCount(post_seq); // 조회수
+		System.out.println(rvo);
+		int report = 0;
+		if(postService.reportStatus(rvo).isEmpty()){
+			report = 1;
+		}
+		System.out.println("dd"+ postService.reportStatus(rvo));
+		System.out.println("rere" + report);
 		// 좋아요
 		lvo.setPost_seq(post_seq);
 		lvo.setUser_seq(uvo.getUser_seq());
@@ -188,7 +195,7 @@ public class PostController {
 		} else if (check == 1) {
 			like = postService.likeGetInfo(lvo);
 		}
-
+		model.addAttribute("report",report);
 		model.addAttribute("like", like);
 		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("allLike",allLike);
@@ -225,7 +232,7 @@ public class PostController {
 	// 좋아요 컨트롤러
 	@PostMapping("/likeupdate.do")
 	@ResponseBody
-	public Map<String, String> likeupdate(LikeVO vo) {
+	public Map<String, String> likeupdate(LikeVO vo){
 		Map<String, String> map = new HashMap<String, String>();
 
 		try {
@@ -405,7 +412,6 @@ public class PostController {
 			vo.setUser_seq(uvo.getUser_seq());
 			vo.setPost_seq(n);
 			
-			System.out.println(n);
 			postService.jjimDelete(vo);
 		}
 		
@@ -414,8 +420,8 @@ public class PostController {
 	//신고하기
 	@RequestMapping(value = "/report.do")
 	@ResponseBody
-	public void report() {
-		
+	public void report(ReportVO vo) {
+		postService.postReport(vo);
 	}
 
 	// 바로구매 팝업창 띄우기 post db에 pay_status 추가했음 0-판매 1-구매예약대기 2-구매예약 3-구매완료

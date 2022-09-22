@@ -29,6 +29,10 @@
 		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image})
 		ON DUPLICATE KEY UPDATE id= #{id};
 	</select>
+	
+	<delete id="withdrawal">
+		delete from user where id = #{id} and password = #{password};
+	</delete>
 
 	<!-- 게시판 글 쓰기 -->
 	<select id="insertboard" resultType="UserBoardVO">
@@ -57,6 +61,21 @@
 	<select id="boardDelete" resultType="UserBoardVO">
 		delete from product where
 		prod_seq = #{prod_seq};
+	</select>
+	
+	<!-- 회원 탈퇴를 위한 판매하기 삭제 -->
+	<select id="withdrawalPost" resultType="PostVO">
+		delete from post where user_seq = #{user_seq};
+	</select>
+	
+		<!-- 사진삭제 게시판 -->
+	<delete id="deletePhotoBoard">
+		delete from board_photo where board_seq = #{board_seq};
+	</delete>
+	
+	<select id="selectDeleteBoard" resultType="String">
+		select substring_index (saved_file_name, '/' ,-2) as saved_file_name from
+		(select saved_file_name from board_photo where board_seq =${board_seq})photo_name;
 	</select>
 
 	<!-- 미리보기 사진 게시판 -->
@@ -230,7 +249,8 @@
 	<!-- 찜한 게시판 불러오기 -->
 	<select id="jjimList" parameterType="PageVO" resultType="PostVO">
 		select *
-		from likePost a, post b where a.post_seq = b.post_seq and likeCnt = 1
+		from likePost a, post b where a.post_seq = b.post_seq and
+		likeCnt = 1
 		and a.user_seq = #{user_seq}
 		<if test="sort == null">
 			order by b.post_seq desc
@@ -239,7 +259,7 @@
 			order by b.post_seq desc
 		</if>
 		<if test="sort == 2">
-		
+
 		</if>
 		<if test="sort == 3">
 			order by b.price ASC
@@ -249,10 +269,11 @@
 		</if>
 		limit #{displayPost}, #{postNum};
 	</select>
-	
+
 	<!-- 찜 목록 삭제 -->
 	<delete id="jjimDelete" parameterType="LikeVO">
-		delete from likePost where post_seq = #{post_seq} and user_seq=#{user_seq};
+		delete from likePost where
+		post_seq = #{post_seq} and user_seq=#{user_seq};
 	</delete>
 
 
@@ -354,6 +375,18 @@
 		resultType="PostVO">
 		select * from post where category_seq = #{category_seq}
 		order by post_seq desc limit #{displayPost}, #{postNum}
+	</select>
+
+	<!-- 신고하기 -->
+	<insert id="postReport" parameterType="ReportVO">
+		insert into
+		post_reports(user_seq, user_singo_seq, post_seq, report_content,
+		report_date) values(#{user_seq}, #{user_singo_seq}, #{post_seq}, #{report_content}, now())
+	</insert>
+	
+	<!-- 신고했는지 안 했는지 -->
+	<select id="reportStatus" parameterType="ReportVO" resultType="ReportVO">
+		select * from post_reports where user_seq=#{user_seq} and post_seq = #{post_seq};
 	</select>
 
 	<!-- 정보 찾기 -->

@@ -161,7 +161,7 @@
 					<c:when test="${param.category_seq != null}">
 					<c:forEach items="${ct }" var="post" varStatus="status">
 						<div class="sell_product_board">
-							<a class="sell_board" href="postDetail.do?post_seq=${post.post_seq}">
+							<a class="sell_board" href="postDetail.do?post_seq=${post.post_seq}&user_seq=${user.user_seq}">
 								<div class="sell_image">
 										<img src="${photo[status.index] }" width="194" height="194">
 									<span class="image_span">
@@ -207,7 +207,7 @@
 									<span class="image_span">
 										<c:choose>
 									<c:when test="${post.pay_check == 1 }">
-										<img src="/myweb/login/images/jjim_icon/pay.svg" alt="페이 가능">
+										<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/kakao.png" width="60" height="30"alt="페이 가능">
 									</c:when>
               				 		<c:when test="${post.pay_check == 0 }">
                							<img src="/myweb/login/images/jjim_icon/pay.svg" style="visibility: hidden;" alt="페이 가능">

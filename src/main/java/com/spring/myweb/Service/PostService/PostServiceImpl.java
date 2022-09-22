@@ -15,6 +15,7 @@ import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -185,6 +186,22 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public void jjimDelete(LikeVO vo) {
 		postDao.jjimDelete(vo);
+		
+	}
+
+	@Override
+	public int postReport(ReportVO vo) {
+		return postDao.postReport(vo);
+	}
+
+	@Override
+	public List<ReportVO> reportStatus(ReportVO vo) {
+		return postDao.reportStatus(vo);
+	}
+
+	@Override
+	public void withdrawalPost(int user_seq) {
+		postDao.withdrawalPost(user_seq);
 		
 	}
 

@@ -345,4 +345,10 @@ public class UserServiceImpl implements UserService{
 		return userDAO.updatePay(vo);
 	}
 
+	@Override
+	public void withdrawal(UserVO vo) throws Exception {
+		userDAO.withdrawal(vo);
+		
+	}
+
 }

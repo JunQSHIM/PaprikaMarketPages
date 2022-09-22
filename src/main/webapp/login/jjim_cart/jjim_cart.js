@@ -85,6 +85,9 @@ function jjimDelete() {
 		alert("선택된 상품이 없습니다.")
 	} else {
 		var chk = confirm("정말 삭제하시겠습니까?");
+		if(!chk){
+			return false;
+		}
 		$.ajax({
 			url : "/myweb/jjimDelete.do",
 			type : 'GET',

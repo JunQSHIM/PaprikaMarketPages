@@ -30,5 +30,6 @@ public class UserVO {
 	private String mail_key;
 	private int mail_auth;
 	private String pay;
+	private String KID;
 
 }

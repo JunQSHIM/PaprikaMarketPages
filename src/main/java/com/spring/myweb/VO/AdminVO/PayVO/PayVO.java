@@ -13,4 +13,6 @@ public class PayVO {
 	private String sellerQr;
 	private String buyerQr;
 	private int status;
+	private String sellerKID;
+	private String buyerKID;
 }

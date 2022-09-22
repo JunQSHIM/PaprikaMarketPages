@@ -38,16 +38,6 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sessionFactory" />
 	</bean>
+	
 
-	<!-- 웹 소켓핸들러 -->
-	<websocket:handlers>
-		<websocket:mapping handler="WebSocketHandler" path="/websocket.do" />
-		<websocket:handshake-interceptors>
-			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
-		</websocket:handshake-interceptors>
-		<!-- <websocket:sockjs /> -->
-	</websocket:handlers>
-	<bean id="WebSocketHandler" class="com.spring.myweb.websocket.WebSocketHandler" />
-	
-	
 </beans>

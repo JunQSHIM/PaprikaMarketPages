@@ -108,10 +108,12 @@
 				console.log("좋아요 취소");
 				 $('#likecheck').val(0);
 				 $('#likebtn').html('찜');
+				 jjimNoticeCancel();
 			}else if(Number($('#likecheck').val()) == 0){
 				console.log("좋아요!");
 				$('#likecheck').val(1);
 				$('#likebtn').html('♥찜');
+				jjimNotice();
 			}
 		}, error : function(result){
 			console.log("에러" + result.result)
@@ -119,6 +121,48 @@
 		
 		});
 	};
+	
+	function jjimNotice(){
+				console.log("찜");
+		   		var cmd = 'jjim';
+				$.ajax({
+					url: '/myweb/addJjimNotice.do',
+					type: 'post',
+					data: {
+						'cmd': cmd
+					},
+					success: function(data) {
+						alert(data);
+						if(sock){
+							sock.send(data);
+						}
+					},
+					error: function (e) {
+				      	console.log(e.responseText);
+					}
+				});
+	}
+	
+	function jjimNoticeCancel(){
+				console.log("찜");
+		   		var cmd = 'jjimCancel';
+				$.ajax({
+					url: '/myweb/cancelJjimNotice.do',
+					type: 'post',
+					data: {
+						'cmd': cmd
+					},
+					success: function(data) {
+						alert(data);
+						if(sock){
+							sock.send(data);
+						}
+					},
+					error: function (e) {
+				      	console.log(e.responseText);
+					}
+				});
+	}
 	/** 결제 * */
     // 결제 금액, 구매자의 이름, 이메일
     const priceAmount = "10";
@@ -140,7 +184,50 @@
       var status = "width=370, height=600, top=100, left=600";
       	window.open(url,title,status);
      }
-    
+     
+   	function add_pay_notice(){
+   		console.log("fj");
+   		var cmd = 'pay';
+		$.ajax({
+			url: '/myweb/addPayNotice.do',
+			type: 'post',
+			data: { 
+				'cmd': cmd
+			},
+			success: function(data) {
+				alert(data);
+				if(sock){
+					sock.send(data);
+				}
+			},
+			error: function (e) {
+		      	console.log(e.responseText);
+			}
+		});
+   	}
+   	
+   	function cancel_pay_notice(){
+   		console.log("fj");
+   		var cmd = 'payCancel';
+		$.ajax({
+			url: '/myweb/cancelPayNotice.do',
+			type: 'post',
+			data: { 
+				'cmd': cmd
+			},
+			success: function(data) {
+				alert(data);
+				if(sock){
+					sock.send(data);
+				}
+			},
+			error: function (e) {
+		      	console.log(e.responseText);
+			}
+		});
+   	}
+   	
+   	
     function showPopUp() {
     	//창 크기 지정
     	var width = 500;

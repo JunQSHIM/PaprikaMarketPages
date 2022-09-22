@@ -12,6 +12,8 @@
 <link rel="stylesheet" type="text/css" href="/myweb/login/product&purchase/ctProduct.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/product&purchase/product_detail.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/singo/modal.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Main Page</title>
@@ -141,7 +143,7 @@
                   <button>연락하기</button>
                <c:choose>
                <c:when test="${post.pay_check == 1 and post.nickname ne user.nickname}">
-                  <button onclick="showPopUp()" >바로구매</button>
+                  <button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
                </c:when>
                <c:when test="${post.pay_check == 0 or post.nickname eq user.nickname}">
                		<button onclick="" style="visibility: hidden;">바로구매</button>

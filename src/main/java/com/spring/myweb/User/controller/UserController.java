@@ -157,11 +157,14 @@ public class UserController {
 		return "login/mypage/mypage";
 	}
 
-	@RequestMapping(value = "/mypage.do", method = RequestMethod.POST)
-	public String mypage(Model model, String pay) throws Exception {
+	
+	
+	@RequestMapping(value="/mypage.do", method=RequestMethod.POST)
+	public String mypage(Model model, String pay, String KID) throws Exception{
 		System.out.println("파프리카 페이 사용하기");
 		UserVO vo = (UserVO) model.getAttribute("user");
 		vo.setPay(pay);
+		vo.setKID(KID);
 		int result = userService.updatePay(vo);
 		if (result == 1) {
 			System.out.println("Succ");
@@ -386,4 +389,9 @@ public class UserController {
 		return "login/mypage/pay";
 	}
 
+	
+	@RequestMapping(value="/chat.do")
+	public String echo() {
+		return "sadf";
+	}
 }

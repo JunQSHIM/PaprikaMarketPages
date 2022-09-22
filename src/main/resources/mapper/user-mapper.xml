@@ -448,20 +448,38 @@
 	<update id="updatePay">
 		update user set pay=#{pay} where id=#{id}
 	</update>
-
+	
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
 	<update id="updatePayPost">
 		update post set pay=#{pay} where nickname=#{nickname}
 	</update>
-
+	
 	<update id="updatePayStatus">
-		update post set pay_status=#{pay_status} where
-		post_seq=#{post_seq};
+		update post set pay_status=#{pay_status} where post_seq=#{post_seq};
 	</update>
-
+	
 	<insert id="insertPPKPay">
-		insert into pay(sellerId, buyerId, post_seq, process,
-		sellerQr, buyerQr, status)
-		values(#{sellerId},#{buyerId},#{post_seq},#{process},#{sellerQr},#{buyerQr},1)
+		insert into pay(pay_seq,sellerId, buyerId, post_seq, process, sellerQr, buyerQr, status, sellerKID, buyerKID)
+		values(#{pay_seq},#{sellerId},#{buyerId},#{post_seq},#{process},#{sellerQr},#{buyerQr},1,#{sellerKID},#{buyerKID})
 	</insert>
+	
+	<!-- notice 불러오기 -->
+	<select id="selectNotice" resultType="NoticeVO">
+		select * from notice
+	</select>
+	
+	<!-- notice 추가하기 -->
+	<insert id="addNotice" parameterType="NoticeVO">
+		insert into notice values(#{notice_seq}, #{buyerId}, #{sellerId}, #{seq}, 1)
+	</insert>
+	
+	<!-- notice 삭제하기 -->
+	<delete id="deleteNotice">
+		delete from notice where read_notice=1
+	</delete>
+	
+	<!-- notice 읽음 처리-->
+	<update id="readNotice">
+		update notice set read_notice=1 where notice_seq=#{notice_seq}
+	</update>
 </mapper>

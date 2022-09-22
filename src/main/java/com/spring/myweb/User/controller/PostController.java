@@ -1,4 +1,3 @@
-
 package com.spring.myweb.User.controller;
 
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.PostService.PostService;
-import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
@@ -183,9 +180,7 @@ public class PostController {
 		lvo.setPost_seq(post_seq);
 		lvo.setUser_seq(uvo.getUser_seq());
 		int like = 0;
-
-		System.out.println(uvo.toString());
-
+		
 		int check = postService.likeCount(lvo);
 		int jjimCart = postService.jjimCart(lvo);
 		int allLike = postService.allLike(lvo);
@@ -206,26 +201,6 @@ public class PostController {
 		List<String> photoName = postService.photoDetail(post_seq);
 		model.addAttribute("name", photoName);
 
-		if (vo.getPay_status() == 1) {
-			uvo = (UserVO) session.getAttribute("user");
-			vo.setPay_status(2);
-			int result1 = postService.updatePayStatus(vo);
-			if (result1 == 1) {
-				System.out.println("구매예약 대기 신청 -> 확인완료");
-			}
-			info.put("sellerId", vo.getNickname());
-			info.put("buyerId", uvo.getNickname());
-			info.put("post_seq", vo.getPost_seq());
-			info.put("process", 0);
-			info.put("sellerQr", vo.getPay());
-			info.put("buyerQr", uvo.getPay());
-
-			int result2 = postService.insertPPKPay(info);
-			if (result2 == 1) {
-				System.out.println("구매예약 완료 -> 관리자에게 전달");
-			}
-
-		}
 		return "login/product&purchase/product_detail";
 	}
 
@@ -289,7 +264,6 @@ public class PostController {
 	public String purchased(Model model, int post_seq) {
 		System.out.println("구매완료");
 		PostVO vo = postService.postDetail(post_seq);
-
 		return "login/product&purchase/purchased";
 	}
 
@@ -426,16 +400,95 @@ public class PostController {
 
 	// 바로구매 팝업창 띄우기 post db에 pay_status 추가했음 0-판매 1-구매예약대기 2-구매예약 3-구매완료
 	@RequestMapping(value = "ppkPayPopUp.do")
-	public String ppkPopUp(Model model) {
+	public String ppkPopUp(Model model,UserVO uvo, HttpSession session, HashMap<String, Object> info) {
 		System.out.println("구매버튼 클릭");
 		PostVO pvo = (PostVO) model.getAttribute("post");
+		
 		System.out.println(pvo.toString());
-		pvo.setPay_status(1); // 구매예약 대기로 변경
-		int result = postService.updatePayStatus(pvo);
-		if (result == 1) {
-			System.out.println("SUCC");
+		
+		if(pvo.getPay_status()==2) {
+			model.addAttribute("message","이미 구매 예약이 된 상품입니다.");
+		}else {
+			pvo.setPay_status(1); // 구매예약 대기로 변경
+			int result = postService.updatePayStatus(pvo);
+			if (result == 1) {
+				System.out.println("SUCC");
+				model.addAttribute("message","구매예약 되셨습니다! 아래 qr링크로 3일내 송금이 되지 않을시에는 예약이 취소되니 주의해주세요!");
+				if (pvo.getPay_status() == 1) {
+					uvo = (UserVO) session.getAttribute("user");
+					pvo.setPay_status(2);
+					int result1 = postService.updatePayStatus(pvo);
+					if (result1 == 1) {
+						System.out.println("구매예약 대기 신청 -> 확인완료");
+					}
+					info.put("sellerId", pvo.getNickname());
+					info.put("buyerId", uvo.getNickname());
+					info.put("post_seq", pvo.getPost_seq());
+					info.put("process", 0);
+					info.put("sellerQr", pvo.getPay());
+					info.put("buyerQr", uvo.getPay());
+
+					int result2 = postService.insertPPKPay(info);
+					if (result2 == 1) {
+						System.out.println("구매예약 완료 -> 관리자에게 전달");
+					}
+
+				}
+				pvo.setPay_status(2);
+				result = postService.updatePayStatus(pvo);
+				if(result==1) {
+					System.out.println("구매예약으로 변경");
+				}
+			}
 		}
 		return "login/product&purchase/ppkPopUp";
+	}
+		
+	// 바로 구매 클릭시 알림에 값넘겨주는 역할
+	@RequestMapping(value = "/addPayNotice.do")
+	public @ResponseBody String addPayNotice(HttpSession session, Model model, String cmd) {
+		System.out.println("페이 알람으로 값 넘겨주자.");
+		System.out.println(cmd);
+		PostVO pvo = (PostVO) model.getAttribute("post");
+		UserVO uvo = (UserVO) session.getAttribute("user");
+		System.out.println(pvo.toString());
+		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+		System.out.println(msg);
+		return msg;
+	}
+	
+	// 바로 구매 클릭시 알림에 값넘겨주는 역할
+	@RequestMapping(value = "/cancelPayNotice.do")
+	public @ResponseBody String cancelPayNotice(HttpSession session, Model model, String cmd) {
+		System.out.println("페이 알람으로 값 넘겨주자.");
+		System.out.println(cmd);
+		PostVO pvo = (PostVO) model.getAttribute("post");
+		UserVO uvo = (UserVO) session.getAttribute("user");
+		System.out.println(pvo.toString());
+		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+		System.out.println(msg);
+		return msg;
+	}
+	
+	//찜 누르면 알림에 넘겨줌
+	@RequestMapping(value="/addJjimNotice.do")
+	public @ResponseBody String addJjimNotice(HttpSession session, Model model, String cmd) {
+		System.out.println("찜 목록으로 값 넘겨주자.");
+		System.out.println(cmd);
+		UserVO uvo = (UserVO)session.getAttribute("user");
+		PostVO pvo = (PostVO) model.getAttribute("post");
+		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+		return msg;
+	}
+	//찜 누르면 알림에 넘겨줌
+	@RequestMapping(value="/cancelJjimNotice.do")
+	public @ResponseBody String cancelJjimNotice(HttpSession session, Model model, String cmd) {
+		System.out.println("찜 취소 값 넘겨주자.");
+		System.out.println(cmd);
+		UserVO uvo = (UserVO)session.getAttribute("user");
+		PostVO pvo = (PostVO) model.getAttribute("post");
+		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+		return msg;
 	}
 
 }

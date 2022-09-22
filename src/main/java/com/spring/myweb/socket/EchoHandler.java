@@ -1,15 +1,16 @@
 package com.spring.myweb.socket;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -17,12 +18,18 @@ import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.spring.myweb.Service.NoticeService.NoticeService;
+import com.spring.myweb.VO.PostVO.Time;
 import com.spring.myweb.VO.UserVO.UserVO;
- 
+
 @RequestMapping("/echo")
 public class EchoHandler extends TextWebSocketHandler{
 	private static final Logger logger = LoggerFactory.getLogger(WebSocketHandler.class);
 
+	@Autowired
+	NoticeService noticeService;
+	
+	
 	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 	// 1:1로 할 경우
 	private Map<String, WebSocketSession> userSessionsMap = new HashMap<String, WebSocketSession>();
@@ -51,32 +58,64 @@ public class EchoHandler extends TextWebSocketHandler{
 				
 				WebSocketSession sellerSession = userSessionsMap.get(sellerId);
 				WebSocketSession mySession = userSessionsMap.get(currentUserName(session));
-				  
-//				
-//				//찜
+				
+				
+				//찜
 				if ("jjim".equals(cmd) && sellerSession != null) {
+			        Date now = new Date();
+			        String nowTime = Time.calculateTime(now);
 					logger.info("찜");
 					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+seq+"를 찜했습니다.");
-					TextMessage tmpMsg = new TextMessage(buyerId + "님이 "
+					TextMessage sellerMsg = new TextMessage(buyerId + "님이 "
 							+ "<a href='/myweb/favorite.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
-							+ "상품을" +"</strong> 찜했습니다.</a>");
-					System.out.println(tmpMsg);
-					TextMessage msg2 = new TextMessage(sellerId+"님의 상품을 찜했습니다.");
-					mySession.sendMessage(msg2);
-					sellerSession.sendMessage(tmpMsg);
+							+ "상품을" +"</strong> 찜했습니다.</a>  ["+nowTime+"]");
+					TextMessage buyerMsg = new TextMessage(sellerId+"님의 상품을 찜했습니다.["+nowTime+"]");
+					mySession.sendMessage(buyerMsg);
+					sellerSession.sendMessage(sellerMsg);
+					String action = "찜했습니다.";
+					String messageFrom = "/myweb/postDetail.do?post_seq=";
+					//DB에 저장
+					HashMap<String, Object> info = new HashMap<>();
+					info.put("buyerId", buyerId);
+					info.put("sellerId", sellerId);
+					info.put("seq", Integer.parseInt(seq));
+					info.put("read_notice", 0);
+					info.put("messageFrom", messageFrom);
+					info.put("action", action);
+					int result = noticeService.addNotice(info);
+					if(result == 1) {
+						logger.info("알림 저장 완료(찜)");
+					}
+					
 				}
 				
 				//찜 취소
 				else if("jjimCancel".equals(cmd) && sellerSession != null) {
+					Date now = new Date();
+			        String nowTime = Time.calculateTime(now);
 					logger.info("찜");
 					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+seq+"를 찜했습니다.");
-					TextMessage tmpMsg = new TextMessage(buyerId + "님이 "
+					TextMessage sellerMsg = new TextMessage(buyerId + "님이 "
 							+ "<a href='/myweb/favorite.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
-							+ "상품</strong> 찜하기를 취소했습니다.</a>");
-					System.out.println(tmpMsg);
-					TextMessage msg2 = new TextMessage(sellerId+"님의 상품 찜하기를 취소했습니다.");
-					mySession.sendMessage(msg2);
-					sellerSession.sendMessage(tmpMsg);
+							+ "상품을</strong> 찜하기를 취소했습니다.</a> ["+nowTime+"]");
+					TextMessage buyerMsg = new TextMessage(sellerId+"님의 상품 찜하기를 취소했습니다. ["+nowTime+"]");
+					mySession.sendMessage(buyerMsg);
+					sellerSession.sendMessage(sellerMsg);
+					
+					String action = "찜하기를 취소했습니다.";
+					String messageFrom = "/myweb/postDetail.do?post_seq=";
+					//DB에 저장
+					HashMap<String, Object> info = new HashMap<>();
+					info.put("buyerId", buyerId);
+					info.put("sellerId", sellerId);
+					info.put("seq", Integer.parseInt(seq));
+					info.put("read_notice", 0);
+					info.put("messageFrom", messageFrom);
+					info.put("action", action);
+					int result = noticeService.addNotice(info);
+					if(result == 1) {
+						logger.info("알림 저장 완료(찜 취소)");
+					}
 				}
 //				
 //				//좋아요
@@ -111,33 +150,65 @@ public class EchoHandler extends TextWebSocketHandler{
 ////					
 ////				}
 //				
-//				//페이
+				//페이
 				else if("pay".equals(cmd) && sellerSession != null) {
+					Date now = new Date();
+			        String nowTime = Time.calculateTime(now);
 					logger.info("파프리카 페이되나?");
 					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+seq+"를 구매예약했습니다.");
-					TextMessage tmpMsg = new TextMessage(buyerId + "님이 "
+					TextMessage sellerMsg = new TextMessage(buyerId + "님이 "
 							+ "<a href='/myweb/postDetail.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
-							+ "상품을" +"</strong> 구매예약했습니다.</a>");
-					System.out.println(tmpMsg);
-					TextMessage msg2 = new TextMessage(sellerId+"님의 상품을 예약했습니다.");
-					mySession.sendMessage(msg2);
-					sellerSession.sendMessage(tmpMsg);
+							+ "상품을" +"</strong> 구매예약했습니다.</a> ["+nowTime+"]");
+					TextMessage buyerMsg = new TextMessage(sellerId+"님의 상품을 예약했습니다.["+nowTime+"]");
+					mySession.sendMessage(buyerMsg);
+					sellerSession.sendMessage(sellerMsg);
+					
+					String action = "구매 예약했습니다.";
+					String messageFrom = "/myweb/postDetail.do?post_seq=";
+					//DB에 저장
+					HashMap<String, Object> info = new HashMap<>();
+					info.put("buyerId", buyerId);
+					info.put("sellerId", sellerId);
+					info.put("seq", Integer.parseInt(seq));
+					info.put("read_notice", 0);
+					info.put("messageFrom", messageFrom);
+					info.put("action", action);
+					int result = noticeService.addNotice(info);
+					if(result == 1) {
+						logger.info("알림 저장 완료(구매예약대기)");
+					}
 				}
 				
 				//페이취소
 				else if("payCancel".equals(cmd) && sellerSession != null) {
+					Date now = new Date();
+			        String nowTime = Time.calculateTime(now);
 					logger.info("파프리카 페이 취소");
 					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+seq+"를 구매를 취소했습니다.");
-					TextMessage tmpMsg = new TextMessage(buyerId + "님이 "
+					TextMessage sellerMsg = new TextMessage(buyerId + "님이 "
 							+ "<a href='/myweb/postDetail.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
-							+ "상품을" +"</strong> 구매를 취소했습니다.</a>");
-					System.out.println(tmpMsg);
-					TextMessage msg2 = new TextMessage(sellerId+"님의 상품을 예약 취소했습니다.");
-					mySession.sendMessage(msg2);
-					sellerSession.sendMessage(tmpMsg);
+							+ "상품을" +"</strong> 구매를 취소했습니다.</a> ["+nowTime+"]");
+					TextMessage buyerMsg = new TextMessage(sellerId+"님의 상품을 예약 취소했습니다. ["+nowTime+"]");
+					mySession.sendMessage(buyerMsg);
+					sellerSession.sendMessage(sellerMsg);
+					
+					String action = "구매 예약을 취소했습니다.";
+					String messageFrom = "/myweb/postDetail.do?post_seq=";
+					//DB에 저장
+					HashMap<String, Object> info = new HashMap<>();
+					info.put("buyerId", buyerId);
+					info.put("sellerId", sellerId);
+					info.put("seq", Integer.parseInt(seq));
+					info.put("read_notice", 0);
+					info.put("messageFrom", messageFrom);
+					info.put("action", action);
+					int result = noticeService.addNotice(info);
+					if(result == 1) {
+						logger.info("알림 저장 완료(구매예약대기 취소)");
+					}
 				}
 				
-				//찜 신고 채팅 찜한상품이 구매완료가 됨 
+				// 신고 채팅 찜한상품이 구매완료가 됨 
 				//후기 리뷰 
 				
 //				//댓글DEV

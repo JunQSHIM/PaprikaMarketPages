@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.myweb.Service.AdminService.AdminService;
+import com.spring.myweb.Service.NoticeService.NoticeService;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
@@ -32,6 +33,7 @@ import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
 import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.noticeVO.NoticeVO;
 
 @Controller
 @SessionAttributes("user")
@@ -48,6 +50,9 @@ public class UserController {
 
 	@Autowired
 	RegisterAgreementService registerService;
+	
+	@Autowired
+	NoticeService noticeService;
 	
 	@RequestMapping(value="/")
 	public String mainPage(){
@@ -153,7 +158,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/main.do")
-	public String main() {
+	public String main(Model model) {
 		return "login/main/mother";
 	}
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)

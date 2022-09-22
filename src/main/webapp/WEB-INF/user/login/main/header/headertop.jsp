@@ -17,7 +17,7 @@ $(document).ready(function(){
 });
 var sock = new SockJS("/myweb/echo");
 sock.onmessage = function(e){
-	$("#noticeList").append("<li>"+e.data+"</li>");
+	$("#noticeList").prepend("<li>"+e.data+"</li>");
 }
 sock.onclose = function(){
 	alert("quit");
@@ -53,6 +53,9 @@ sock.onclose = function(){
 		</div>
 		<div id="noticeList" style="z-index: 0; position: absolute; background-color:orange; width:300px;">
 			<ul id="nList">
+				<c:forEach var="notice" items="${notice}">
+				<li>${notice.buyerId}님이 <a href="${notice.messageFrom }${notice.seq}" style="color:black;"><strong>상품을 ${notice.action }</strong></a>[${notice.sys_time }]
+				</c:forEach>
 			</ul>
 		</div>
 	</div>

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.AdminService.AdminService;
+import com.spring.myweb.Service.NoticeService.NoticeService;
 import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
@@ -30,6 +31,7 @@ import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.noticeVO.NoticeVO;
 import com.spring.myweb.awss3.vo.PostPhotoVO;
 
 @Controller
@@ -41,10 +43,18 @@ public class PostController {
 
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private NoticeService noticeService;
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String postList(Model model, PageVO page, LikeVO lvo, UserVO uvo, HttpSession session) throws Exception {
 		uvo = (UserVO) session.getAttribute("user");
+		if(uvo != null) {
+			List<NoticeVO> noticeList = noticeService.selectNotice(uvo.getNickname());
+			session.setAttribute("notice",noticeList);	
+		}
+		
 		if (page.getNum() == 0) {
 			page.setNum(1);
 		}

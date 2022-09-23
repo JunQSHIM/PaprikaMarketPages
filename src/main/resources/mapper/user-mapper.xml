@@ -122,8 +122,6 @@
 		order by board_seq desc limit #{displayPost}, #{postNum}
 	</select>
 
-
-
 	<!-- 상품 리스트 -->
 	<select id="postList" resultType="PostVO">
 		select * from post order by
@@ -512,5 +510,26 @@
 	<update id="readNotice">
 		update notice set read_notice=1 where
 		notice_seq=#{notice_seq}
+	</update>
+
+	
+	<!-- notice 불러오기 -->
+	<select id="selectNotice" resultType="NoticeVO">
+		select * from notice where sellerId=#{nickname} order by notice_seq desc;
+	</select>
+	
+	<!-- notice 추가하기 -->
+	<insert id="addNotice" parameterType="NoticeVO">
+		insert into notice values(#{notice_seq}, #{buyerId}, #{sellerId}, #{seq}, 0, #{messageFrom}, #{action}, now())
+	</insert>
+	
+	<!-- notice 삭제하기 0안읽음 1읽음-->
+	<delete id="deleteNotice">
+		delete from notice where read_notice=1
+	</delete>
+	
+	<!-- notice 읽음 처리-->
+	<update id="readNotice">
+		update notice set read_notice=1 where notice_seq=#{notice_seq}
 	</update>
 </mapper>

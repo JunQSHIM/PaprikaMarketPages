@@ -1,11 +1,11 @@
-package com.spring.myweb.DAO.NoticeDAO;
+package com.spring.myweb.Service.NoticeService;
 
 import java.util.HashMap;
 import java.util.List;
 
 import com.spring.myweb.VO.noticeVO.NoticeVO;
 
-public interface NoticeDAO {
+public interface NoticeService {
 	public List<NoticeVO> selectNotice(String id); //notice 목록 불러오기
 	public int addNotice(HashMap<String, Object> info); //notice 추가해주기
 	public void deleteNotice(); //notice 삭제하기

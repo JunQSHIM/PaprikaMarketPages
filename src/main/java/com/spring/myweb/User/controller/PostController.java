@@ -1,3 +1,4 @@
+
 package com.spring.myweb.User.controller;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.AdminService.AdminService;
+import com.spring.myweb.Service.NoticeService.NoticeService;
 import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
@@ -29,8 +31,8 @@ import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
-import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.noticeVO.NoticeVO;
 import com.spring.myweb.awss3.vo.PostPhotoVO;
 
 @Controller
@@ -42,10 +44,18 @@ public class PostController {
 
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private NoticeService noticeService;
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String postList(Model model, PageVO page, LikeVO lvo, UserVO uvo, HttpSession session) throws Exception {
 		uvo = (UserVO) session.getAttribute("user");
+		if(uvo != null) {
+			List<NoticeVO> noticeList = noticeService.selectNotice(uvo.getNickname());
+			session.setAttribute("notice",noticeList);	
+		}
+		
 		if (page.getNum() == 0) {
 			page.setNum(1);
 		}
@@ -167,13 +177,9 @@ public class PostController {
 
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
 	public String getDetail(HttpSession session, HashMap<String, Object> info, Model model, int post_seq, UserVO uvo,
-			LikeVO lvo, ReportVO rvo) {
+			LikeVO lvo) {
+		System.out.println("상세보기");
 		postService.viewCount(post_seq); // 조회수
-		
-		int report = 0;
-		if(postService.reportStatus(rvo).isEmpty()){
-			report = 1;
-		}
 		// 좋아요
 		lvo.setPost_seq(post_seq);
 		lvo.setUser_seq(uvo.getUser_seq());
@@ -188,7 +194,7 @@ public class PostController {
 		} else if (check == 1) {
 			like = postService.likeGetInfo(lvo);
 		}
-		model.addAttribute("report",report);
+
 		model.addAttribute("like", like);
 		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("allLike",allLike);
@@ -205,7 +211,7 @@ public class PostController {
 	// 좋아요 컨트롤러
 	@PostMapping("/likeupdate.do")
 	@ResponseBody
-	public Map<String, String> likeupdate(LikeVO vo){
+	public Map<String, String> likeupdate(LikeVO vo) {
 		Map<String, String> map = new HashMap<String, String>();
 
 		try {
@@ -277,7 +283,7 @@ public class PostController {
 		model.addAttribute("vo", vo);
 		return "login/update";
 	}
-	
+
 	// 수정하기 폼
 	@RequestMapping(value = "/updateProc.do")
 	public String postUpdate(PostVO vo) throws Exception {
@@ -322,6 +328,24 @@ public class PostController {
 		model.addAttribute("photo", photoNames);
 		return "login/myProductCart";
 	}
+	
+	// 상품후기 페이지 이동
+		@RequestMapping(value="reviewProductView.do")
+		public String reviewProductView(HttpSession session, Model model, UserVO uvo, LikeVO lvo, PageVO pvo) throws Exception{
+			uvo=(UserVO)session.getAttribute("user");
+			int total = postService.myCount(pvo);
+			int jjimCart;
+			if (uvo == null) {
+				jjimCart = 0;
+			} else {
+				lvo.setUser_seq(uvo.getUser_seq());
+			}
+			jjimCart = postService.jjimCart(lvo);
+			
+			model.addAttribute("total",total);
+			model.addAttribute("jjimCart",jjimCart);
+			return "login/review_product";
+		}
 	
 	//찜목록 페이지
 	@RequestMapping(value = "/favorite.do")
@@ -384,33 +408,17 @@ public class PostController {
 			vo.setUser_seq(uvo.getUser_seq());
 			vo.setPost_seq(n);
 			
+			System.out.println(n);
 			postService.jjimDelete(vo);
 		}
 		
-	}
-	// 상품후기 페이지 이동
-	@RequestMapping(value="reviewProductView.do")
-	public String reviewProductView(HttpSession session, Model model, UserVO uvo, LikeVO lvo, PageVO pvo) throws Exception{
-		uvo=(UserVO)session.getAttribute("user");
-		int total = postService.myCount(pvo);
-		int jjimCart;
-		if (uvo == null) {
-			jjimCart = 0;
-		} else {
-			lvo.setUser_seq(uvo.getUser_seq());
-		}
-		jjimCart = postService.jjimCart(lvo);
-		
-		model.addAttribute("total",total);
-		model.addAttribute("jjimCart",jjimCart);
-		return "login/review_product";
 	}
 	
 	//신고하기
 	@RequestMapping(value = "/report.do")
 	@ResponseBody
-	public void report(ReportVO vo) {
-		postService.postReport(vo);
+	public void report() {
+		
 	}
 
 	// 바로구매 팝업창 띄우기 post db에 pay_status 추가했음 0-판매 1-구매예약대기 2-구매예약 3-구매완료
@@ -458,52 +466,51 @@ public class PostController {
 		}
 		return "login/product&purchase/ppkPopUp";
 	}
+	// 바로 구매 클릭시 알림에 값넘겨주는 역할
+		@RequestMapping(value = "/addPayNotice.do")
+		public @ResponseBody String addPayNotice(HttpSession session, Model model, String cmd) {
+			System.out.println("페이 알람으로 값 넘겨주자.");
+			System.out.println(cmd);
+			PostVO pvo = (PostVO) model.getAttribute("post");
+			UserVO uvo = (UserVO) session.getAttribute("user");
+			System.out.println(pvo.toString());
+			String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+			System.out.println(msg);
+			return msg;
+		}
 		
-	// 바로 구매 클릭시 알림에 값넘겨주는 역할
-	@RequestMapping(value = "/addPayNotice.do")
-	public @ResponseBody String addPayNotice(HttpSession session, Model model, String cmd) {
-		System.out.println("페이 알람으로 값 넘겨주자.");
-		System.out.println(cmd);
-		PostVO pvo = (PostVO) model.getAttribute("post");
-		UserVO uvo = (UserVO) session.getAttribute("user");
-		System.out.println(pvo.toString());
-		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
-		System.out.println(msg);
-		return msg;
-	}
-	
-	// 바로 구매 클릭시 알림에 값넘겨주는 역할
-	@RequestMapping(value = "/cancelPayNotice.do")
-	public @ResponseBody String cancelPayNotice(HttpSession session, Model model, String cmd) {
-		System.out.println("페이 알람으로 값 넘겨주자.");
-		System.out.println(cmd);
-		PostVO pvo = (PostVO) model.getAttribute("post");
-		UserVO uvo = (UserVO) session.getAttribute("user");
-		System.out.println(pvo.toString());
-		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
-		System.out.println(msg);
-		return msg;
-	}
-	
-	//찜 누르면 알림에 넘겨줌
-	@RequestMapping(value="/addJjimNotice.do")
-	public @ResponseBody String addJjimNotice(HttpSession session, Model model, String cmd) {
-		System.out.println("찜 목록으로 값 넘겨주자.");
-		System.out.println(cmd);
-		UserVO uvo = (UserVO)session.getAttribute("user");
-		PostVO pvo = (PostVO) model.getAttribute("post");
-		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
-		return msg;
-	}
-	//찜 누르면 알림에 넘겨줌
-	@RequestMapping(value="/cancelJjimNotice.do")
-	public @ResponseBody String cancelJjimNotice(HttpSession session, Model model, String cmd) {
-		System.out.println("찜 취소 값 넘겨주자.");
-		System.out.println(cmd);
-		UserVO uvo = (UserVO)session.getAttribute("user");
-		PostVO pvo = (PostVO) model.getAttribute("post");
-		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
-		return msg;
-	}
+		// 바로 구매 클릭시 알림에 값넘겨주는 역할
+		@RequestMapping(value = "/cancelPayNotice.do")
+		public @ResponseBody String cancelPayNotice(HttpSession session, Model model, String cmd) {
+			System.out.println("페이 알람으로 값 넘겨주자.");
+			System.out.println(cmd);
+			PostVO pvo = (PostVO) model.getAttribute("post");
+			UserVO uvo = (UserVO) session.getAttribute("user");
+			System.out.println(pvo.toString());
+			String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+			System.out.println(msg);
+			return msg;
+		}
+		
+		//찜 누르면 알림에 넘겨줌
+		@RequestMapping(value="/addJjimNotice.do")
+		public @ResponseBody String addJjimNotice(HttpSession session, Model model, String cmd) {
+			System.out.println("찜 목록으로 값 넘겨주자.");
+			System.out.println(cmd);
+			UserVO uvo = (UserVO)session.getAttribute("user");
+			PostVO pvo = (PostVO) model.getAttribute("post");
+			String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+			return msg;
+		}
+		//찜 누르면 알림에 넘겨줌
+		@RequestMapping(value="/cancelJjimNotice.do")
+		public @ResponseBody String cancelJjimNotice(HttpSession session, Model model, String cmd) {
+			System.out.println("찜 취소 값 넘겨주자.");
+			System.out.println(cmd);
+			UserVO uvo = (UserVO)session.getAttribute("user");
+			PostVO pvo = (PostVO) model.getAttribute("post");
+			String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+			return msg;
+		}
 
-}
+	}

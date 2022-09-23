@@ -27,18 +27,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.Service.AdminService.AdminService;
+import com.spring.myweb.Service.NoticeService.NoticeService;
 import com.spring.myweb.Service.BoardService.UserBoardService;
 import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
-import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
 import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
-import com.spring.myweb.VO.UserBoardVO.UserBoardVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Controller
@@ -62,7 +61,10 @@ public class UserController {
 
 	@Autowired
 	RegisterAgreementService registerService;
-
+	
+	@Autowired
+	NoticeService noticeService;
+	
 	@RequestMapping(value = "/")
 	public String mainPage() {
 		return "redirect:main.do";
@@ -158,11 +160,6 @@ public class UserController {
 		model.addAttribute("user", userService.select((String) session.getAttribute("id")));
 		return "login/mypage/mypage";
 	}
-	
-	
-
-	
-	
 	@RequestMapping(value="/mypage.do", method=RequestMethod.POST)
 	public String mypage(Model model, String pay, String KID) throws Exception{
 		System.out.println("파프리카 페이 사용하기");
@@ -423,9 +420,10 @@ public class UserController {
 		return "login/mypage/pay";
 	}
 
-	
 	@RequestMapping(value="/chat.do")
 	public String echo() {
 		return "sadf";
 	}
+	
+		
 }

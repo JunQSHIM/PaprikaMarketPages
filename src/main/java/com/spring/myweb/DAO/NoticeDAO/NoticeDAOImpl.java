@@ -1,40 +1,44 @@
 package com.spring.myweb.DAO.NoticeDAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
-import com.spring.myweb.VO.NoticeVO.NoticeVO;
+import com.spring.myweb.VO.noticeVO.NoticeVO;
 
+@Repository
 public class NoticeDAOImpl implements NoticeDAO{
 
 	@Inject
 	private SqlSession session;
 	
 	@Override
-	public List<NoticeVO> selectNotice() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NoticeVO> selectNotice(String id) {
+		List<NoticeVO> noticeList = session.selectList("userDB.selectNotice",id);
+		return noticeList;
 	}
 
 	@Override
-	public int addNotice(NoticeVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int addNotice(HashMap<String, Object> info) {
+		int result = 0;
+		result = session.insert("userDB.addNotice",info);
+		return result;
 	}
 
 	@Override
-	public void deleteNotice(int read_notice) {
-		// TODO Auto-generated method stub
-		
+	public void deleteNotice() {
+		session.delete("userDB.deleteNotice");
 	}
 
 	@Override
 	public int updateNotice(int notice_seq) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		result = session.update("userDB.readNotice",notice_seq);
+		return result;
 	}
 
 }

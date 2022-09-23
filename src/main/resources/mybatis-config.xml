@@ -27,6 +27,8 @@
 		<typeAlias alias="UserBoardPageVO" type="com.spring.myweb.VO.PageVO.UserBoardPageVO"/>
 		<typeAlias alias="ReportVO" type="com.spring.myweb.VO.ReportVO.ReportVO"/>
 		<typeAlias alias="NoticeVO" type="com.spring.myweb.VO.NoticeVO.NoticeVO"/>
+		<typeAlias alias="WithdrawalVO" type="com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO"/>
+		<typeAlias alias="MyMannerVO" type="com.spring.myweb.VO.MyMannerVO.MyMannerVO"/>
 	</typeAliases>
 	
 	<mappers>

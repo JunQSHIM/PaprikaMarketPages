@@ -25,12 +25,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.BoardService.UserBoardService;
 import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.LikeVO.LikeVO;
+import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
@@ -156,6 +158,8 @@ public class UserController {
 		model.addAttribute("user", userService.select((String) session.getAttribute("id")));
 		return "login/mypage/mypage";
 	}
+	
+	
 
 	
 	
@@ -171,29 +175,59 @@ public class UserController {
 		}
 		return "login/mypage/mypage";
 	}
+	
+	//내가 받은 매너 평가 페이지 이동
+	@RequestMapping(value="mannerView.do")
+	public String mannerView() throws Exception {
+		return "login/mypage/mannerEval";
+	}
+	
+	// 구매 완료 후 매너평가 페이지
+	@RequestMapping(value="evaluationView.do")
+	public String evaluationView() throws Exception {
+		return "login/product&purchase/purchase";
+	}
+	
+	@RequestMapping(value = "evaluation.do")
+	public @ResponseBody int evaluation(HttpSession session, MyMannerVO vo) throws Exception {
+		UserVO uvo = (UserVO)session.getAttribute("user");
+		vo.setUser_seq(uvo.getUser_seq());
+		return userService.evaluation(vo);
+	}
 
 	// 회원탈퇴 페이지 이동
 	@RequestMapping(value = "/withdrawalView.do")
 	public String withdrawaView() throws Exception {
-		return "login/withdrawal";
+		return "login/quit";
 	}
-
+	//탈퇴사유
+	@RequestMapping(value = "/reason.do")
+	public @ResponseBody int Reason(HttpSession session, WithdrawalVO vo) throws Exception{
+		UserVO uvo = (UserVO)session.getAttribute("user");
+		vo.setUser_seq(uvo.getUser_seq());
+		return userService.WithdrawalReason(vo);
+	}
+	
 	// 회원탈퇴
 	@RequestMapping(value = "/withdrawal.do")
-	public String withdrawal(UserVO vo, RedirectAttributes rttr, HttpSession session, LikeVO lvo) throws Exception {
+	public ModelAndView withdrawal(Model model, UserVO vo, RedirectAttributes rttr,HttpServletRequest req,  HttpSession session, LikeVO lvo) throws Exception {
 		vo = (UserVO) session.getAttribute("user");
 		String password = vo.getPassword();
 
 		if (!(password.equals(password))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:withdrawalView.do";
+			ModelAndView mv = new ModelAndView("login/mypage/withdrawal");
+			return mv;
 		}
+		model.addAttribute("user", null);
+		ModelAndView mv = new ModelAndView("login/login&register/login");
 
 		userService.withdrawal(vo);
-		rttr.addFlashAttribute("msg", "이용해주셔서 감사합니다.");
+		session = req.getSession();
 		session.invalidate();
-		return "redirect:main.do";
+		return mv;
 	}
+	
+	
 
 	@RequestMapping(value = "/main.do")
 	public String main() {

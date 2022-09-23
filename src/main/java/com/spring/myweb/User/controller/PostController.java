@@ -169,13 +169,11 @@ public class PostController {
 	public String getDetail(HttpSession session, HashMap<String, Object> info, Model model, int post_seq, UserVO uvo,
 			LikeVO lvo, ReportVO rvo) {
 		postService.viewCount(post_seq); // 조회수
-		System.out.println(rvo);
+		
 		int report = 0;
 		if(postService.reportStatus(rvo).isEmpty()){
 			report = 1;
 		}
-		System.out.println("dd"+ postService.reportStatus(rvo));
-		System.out.println("rere" + report);
 		// 좋아요
 		lvo.setPost_seq(post_seq);
 		lvo.setUser_seq(uvo.getUser_seq());
@@ -279,7 +277,7 @@ public class PostController {
 		model.addAttribute("vo", vo);
 		return "login/update";
 	}
-
+	
 	// 수정하기 폼
 	@RequestMapping(value = "/updateProc.do")
 	public String postUpdate(PostVO vo) throws Exception {
@@ -389,6 +387,23 @@ public class PostController {
 			postService.jjimDelete(vo);
 		}
 		
+	}
+	// 상품후기 페이지 이동
+	@RequestMapping(value="reviewProductView.do")
+	public String reviewProductView(HttpSession session, Model model, UserVO uvo, LikeVO lvo, PageVO pvo) throws Exception{
+		uvo=(UserVO)session.getAttribute("user");
+		int total = postService.myCount(pvo);
+		int jjimCart;
+		if (uvo == null) {
+			jjimCart = 0;
+		} else {
+			lvo.setUser_seq(uvo.getUser_seq());
+		}
+		jjimCart = postService.jjimCart(lvo);
+		
+		model.addAttribute("total",total);
+		model.addAttribute("jjimCart",jjimCart);
+		return "login/review_product";
 	}
 	
 	//신고하기

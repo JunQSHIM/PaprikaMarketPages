@@ -130,6 +130,8 @@
                   </div>
                  
                <div class="item_btn" id="func">
+               <c:choose>
+                <c:when test="${post.nickname ne user.nickname}">
                 <c:choose>
 						<c:when test="${like ==0}">
 							<button type="button" id="likebtn">찜</button>
@@ -142,13 +144,23 @@
 					</c:choose>			
                   <button>연락하기</button>
                <c:choose>
-               <c:when test="${post.pay_check == 1 and post.nickname ne user.nickname}">
+               <c:when test="${post.pay_check == 1}">
                   <button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
                </c:when>
-               <c:when test="${post.pay_check == 0 or post.nickname eq user.nickname}">
+               <c:when test="${post.pay_check == 0 }">
                		<button onclick="" style="visibility: hidden;">바로구매</button>
                </c:when>
 				</c:choose>
+				</c:when>
+			</c:choose>
+               </div>
+               
+               <div class="item_btn" id="func">
+            <c:choose>
+                <c:when test="${post.nickname eq user.nickname}">
+					<a  class="myStoreBtn" href="myProductCart.do?user_seq=${user.user_seq}">내 상품 관리</a>
+               </c:when>
+			</c:choose>
                </div>
             </div>
             </div>

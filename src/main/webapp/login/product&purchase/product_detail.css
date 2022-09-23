@@ -12,6 +12,29 @@
     margin-bottom: 25px;
 }
 
+.item_btn > :last-child {
+    margin-right: 0px;
+}
+
+.item_btn > * {
+    flex: 1 1 0%;
+    font-weight: 600;
+    margin-right: 10px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 56px;
+    font-size: 18px;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.myStoreBtn {
+    background: orange;
+    border: 1px solid orange;
+    color: rgb(255, 255, 255);
+}
+
 .prod_status_2{
 	position: relative;
     width: 120px;

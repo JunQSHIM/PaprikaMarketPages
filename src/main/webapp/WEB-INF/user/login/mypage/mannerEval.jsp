@@ -5,16 +5,16 @@
 <html>
 <head>
 <script src="/myweb/login/js/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" type="text/css" href="mannerEval.css">
+<link rel="stylesheet" type="text/css" href="/myweb/login/mypage/mannerEval.css">
 <script src="/myweb/login/main/main.js"></script>
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <meta charset="UTF-8">
 <script> 
 function move() {
-	window.location.href = '/myweb/login/main/mother.jsp';
+	window.location.href = 'main.do';
 }
 function toMypage() {
-	window.location.href = '/myweb/login/mypage/mypage.jsp';
+	window.location.href = 'mypage.do';
 }
 
 $(document).ready(function(){
@@ -33,7 +33,7 @@ $(document).ready(function(){
 </head>
 <body>
 	<header>
-		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/header/header.jsp"></jsp:include>
 	</header>
 	
 	<article class="container_12">

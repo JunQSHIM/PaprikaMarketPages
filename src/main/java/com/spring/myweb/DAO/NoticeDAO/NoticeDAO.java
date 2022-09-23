@@ -2,7 +2,7 @@ package com.spring.myweb.DAO.NoticeDAO;
 
 import java.util.List;
 
-import com.spring.myweb.VO.noticeVO.NoticeVO;
+import com.spring.myweb.VO.NoticeVO.NoticeVO;
 
 public interface NoticeDAO {
 	public List<NoticeVO> selectNotice(); //notice 목록 불러오기

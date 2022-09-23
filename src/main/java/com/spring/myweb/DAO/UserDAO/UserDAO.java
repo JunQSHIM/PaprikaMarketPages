@@ -3,6 +3,8 @@ package com.spring.myweb.DAO.UserDAO;
 import java.util.HashMap;
 import java.util.List;
 
+import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
+import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 public interface UserDAO {
@@ -23,5 +25,7 @@ public interface UserDAO {
 	int updatePw(UserVO vo) throws Exception;
 	int updatePay(UserVO vo) throws Exception;
 	public void withdrawal(UserVO vo) throws Exception; // 회원탈퇴
+	public int WithdrawalReason(WithdrawalVO vo) throws Exception; // 탈퇴사유
+	public int evaluation(MyMannerVO vo) throws Exception; // 매너 평가 주기
 	public UserVO selectByUserSeq(int user_seq);
 }

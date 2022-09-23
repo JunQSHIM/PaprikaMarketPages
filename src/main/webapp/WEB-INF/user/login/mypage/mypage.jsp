@@ -31,7 +31,7 @@ $(function(){
 });
 
 function toMannerEval() {
-	window.location.href = '/myweb/login/mypage/mannerEval.jsp';
+	window.location.href = 'mannerView.do';
 }
 function toMyReview() {
 	window.location.href = '/myweb/login/mypage/myReview.jsp';

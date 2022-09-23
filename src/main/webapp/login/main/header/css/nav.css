@@ -116,12 +116,14 @@ div {
 .nav_btn {
 	width: 110px;
 	float: left;
+	cursor: pointer;
 }
 
 .nav_btn_1 {
 	margin: 0 27px;
 	width: 70px;
 	float: left;
+	cursor: pointer;
 }
 
 .bts {

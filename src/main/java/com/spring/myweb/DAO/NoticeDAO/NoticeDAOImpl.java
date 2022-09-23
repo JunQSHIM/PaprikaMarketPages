@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.spring.myweb.VO.noticeVO.NoticeVO;
+import com.spring.myweb.VO.NoticeVO.NoticeVO;
 
 public class NoticeDAOImpl implements NoticeDAO{
 

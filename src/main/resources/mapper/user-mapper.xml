@@ -396,8 +396,8 @@
 	<!-- 정보 저장 -->
 	<insert id="kakaoInsert" parameterType="java.util.HashMap">
 		insert into
-		user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image,available,mail_auth)
-		values(#{email},#{nickname},#{password},'1111-01-01',#{nickname},#{email},'PHONE',0,1,#{profile_image},1,1)
+		user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image,available,mail_auth,authority)
+		values(#{email},#{nickname},#{password},'1111-01-01',#{nickname},#{email},'PHONE',0,1,#{profile_image},1,1,'ROLE_USER')
 	</insert>
 
 	<update id="locationInsert" parameterType="UserVO">
@@ -444,7 +444,7 @@
 
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
 	<update id="updatePay">
-		update user set pay=#{pay} where id=#{id}
+		update user set pay=#{pay}, KID=#{KID} where id=#{id}
 	</update>
 	
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
@@ -463,7 +463,7 @@
 	
 	<!-- notice 불러오기 -->
 	<select id="selectNotice" resultType="NoticeVO">
-		select * from notice where sellerId=#{nickname} order by notice_seq desc;
+		<![CDATA[select * from notice where sellerId=#{nickname} or buyerId=#{nickname} order by notice_seq desc]]>
 	</select>
 	
 	<!-- notice 추가하기 -->
@@ -480,4 +480,6 @@
 	<update id="readNotice">
 		update notice set read_notice=1 where notice_seq=#{notice_seq}
 	</update>
+	
+	<!--  -->
 </mapper>

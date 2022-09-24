@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,6 +15,10 @@ import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -63,9 +68,10 @@ public class UserServiceImpl implements UserService{
                 "<h1>PaprikaMarket 메일인증</h1>" +
                 "<br>PaprikaMarket에 오신것을 환영합니다!" +
                 "<br>아래 [이메일 인증 확인]을 눌러주세요." +
-                "<br><a href='http://localhost:8080/myweb/registerEmail.do?email=" + vo.getEmail() +
+                "<br><a href='http://localhost:8080/myweb/rEmail.do?email=" + vo.getEmail() +
                 "&mail_key=" + mail_key +
                 "' target='_blank'>이메일 인증 확인</a>");
+        		
         sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
         sendMail.setTo(vo.getEmail());
         sendMail.send();
@@ -233,6 +239,12 @@ public class UserServiceImpl implements UserService{
 		UserVO result = userDAO.findkakao(userInfo);
 		// 위 코드는 먼저 정보가 저장되있는지 확인하는 코드.
 		System.out.println("S:" + result);
+
+		//Authentication auth = new UsernamePasswordAuthenticationToken(reqURL, result);
+		//System.out.println("AUTH = "+auth);
+        //SecurityContextHolder.getContext().setAuthentication(auth);
+		
+		
 		if(result==null) {
 		// result가 null이면 정보가 저장이 안되있는거므로 정보를 저장.
 			userDAO.kakaoinsert(userInfo);

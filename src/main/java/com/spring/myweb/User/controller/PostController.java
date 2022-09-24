@@ -130,6 +130,7 @@ public class PostController {
 			@RequestParam(value = "origin_file_name", required = false) List<MultipartFile> img, PostPhotoVO pvo,
 			PhotoVO photo) {
 		System.out.println("글 등록");
+		
 		if (vo.getPay() == null) {
 			vo.setPay(null);
 		} else {
@@ -177,6 +178,7 @@ public class PostController {
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
 	public String getDetail(HttpSession session, HashMap<String, Object> info, Model model, int post_seq, UserVO uvo,
 			LikeVO lvo) {
+		uvo = (UserVO)session.getAttribute("user");
 		System.out.println("상세보기");
 		postService.viewCount(post_seq); // 조회수
 		// 좋아요
@@ -228,7 +230,6 @@ public class PostController {
 	public String categoryDetail(HttpSession session, Model model, int category_seq, PostVO vo, PageVO pvo, LikeVO lvo, UserVO uvo) throws Exception {
 		int jjimCart;
 		uvo=(UserVO)session.getAttribute("user");
-
 		if (pvo.getNum() == 0) {
 			pvo.setNum(1);
 		}
@@ -410,7 +411,7 @@ public class PostController {
 		
 		System.out.println(pvo.toString());
 		
-		if(pvo.getPay_status()==2) {
+		if(pvo.getPay_status()==3) {
 			model.addAttribute("message","이미 구매 예약이 된 상품입니다.");
 		}else {
 			pvo.setPay_status(1); // 구매예약 대기로 변경
@@ -467,6 +468,7 @@ public class PostController {
 			System.out.println(cmd);
 			PostVO pvo = (PostVO) model.getAttribute("post");
 			UserVO uvo = (UserVO) session.getAttribute("user");
+			System.out.println(uvo.toString());
 			System.out.println(pvo.toString());
 			String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
 			System.out.println(msg);
@@ -480,7 +482,10 @@ public class PostController {
 			System.out.println(cmd);
 			UserVO uvo = (UserVO)session.getAttribute("user");
 			PostVO pvo = (PostVO) model.getAttribute("post");
+			System.out.println(uvo.toString());
+			System.out.println(pvo.toString());
 			String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+			System.out.println(msg);
 			return msg;
 		}
 		//찜 누르면 알림에 넘겨줌
@@ -490,6 +495,8 @@ public class PostController {
 			System.out.println(cmd);
 			UserVO uvo = (UserVO)session.getAttribute("user");
 			PostVO pvo = (PostVO) model.getAttribute("post");
+			System.out.println(uvo.toString());
+			System.out.println(pvo.toString());
 			String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
 			return msg;
 		}

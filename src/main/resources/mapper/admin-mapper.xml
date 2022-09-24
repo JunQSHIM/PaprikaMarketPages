@@ -7,7 +7,7 @@
 	</select>
 	<!-- sms페이지 필요한 컬럼만 불러오기 -->
 	<select id="selectUserSms" resultType="UserSmsVO">
-		select user_seq,join_type,id,name,phone,email,msg_agree from user;
+		select user_seq,join_type,id,name,phone,email,msg_agree,user_type from user;
 	</select>
 	<!-- 신고 상품 리뷰 불러오기 -->
 	<select id="selectReviewSingo" resultType="ReviewSingoVO">

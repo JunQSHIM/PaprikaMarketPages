@@ -72,18 +72,17 @@
 						</div>
 						<section id="fregister_private">
 							<fieldset class="fregister_agree2 checks2">
-								<input type="checkbox" name="smsagree" value="1" id="smsagree" checked>
-								<label for="smsagree">SMS 수신 동의<span>(선택)</span></label>
+								<input type="checkbox" name="msg_agree" value="1" id="msg_agree" checked>
+								<label for="msg_agree">SMS 수신 동의<span>(선택)</span></label>
 							</fieldset>
 						</section>
 						<input type="hidden" name="profile_image" value="/myweb/login/images/profile.png">
 						<div class="form-group">
-							<input type="button" id="registerButton" value="회원가입"
+							<input type="button" id="rBtn" value="회원가입"
 								class="btn float-left login_btn"> <input type="reset"
 								onClick="formReset()" value="취소"
 								class="btn float-right login_btn">
 						</div>
-						
 					</form>
 				</div>
 			</div>

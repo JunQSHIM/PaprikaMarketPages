@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>product detail</title>
-<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="/myweb/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
   // 1. 해당 name과 동일한 모든 체크박스 루프 > 체크된 체크박스만 해당 value 값 콘솔
   $("input[name='manner_eval']").each(function(){
@@ -22,10 +22,9 @@
   });
   
 </script>
-<link rel="stylesheet" type="text/css" href="../css/purchase.css">
+<link rel="stylesheet" type="text/css" href="/myweb/login/css/purchase.css">
 </head>
 <body>
-	<%@include file="../parts/mothertop.jsp"%>
 	<div>
 	<h2>구매가 완료되었습니다.</h2><br><br>
 	<form name="purchase" id="purchase" method="post" action="#">
@@ -65,6 +64,5 @@
 		</textarea>	
 	</form>
 	</div>
-	<%@include file="../parts/motherbottom.jsp"%>
 </body>
 </html>

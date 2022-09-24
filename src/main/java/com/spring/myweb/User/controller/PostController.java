@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.NoticeService.NoticeService;
 import com.spring.myweb.Service.PostService.PostService;
+import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
@@ -48,6 +49,9 @@ public class PostController {
 
 	@Autowired
 	private NoticeService noticeService;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String postList(Model model, PageVO page, LikeVO lvo, UserVO uvo, HttpSession session) throws Exception {

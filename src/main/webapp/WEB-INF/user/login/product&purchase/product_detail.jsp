@@ -158,7 +158,12 @@
 							<input type="hidden" id="likecheck" value="${like }">
 						</c:when>
 					</c:choose>			
-                  <button>연락하기</button>
+                  <button onclick="document.getElementById('chat').submit()">연락하기</button>
+	                  <form action="/myweb/createChat.cdo" id="chat" method="post">
+	                  	<input type="hidden" name="post_seq" value="${post.post_seq }">
+	                  	<input type="hidden" name="userNickName" value="${user.nickname }">
+	                  	<input type="hidden" name="post_user_seq" value="${post.user_seq }">
+	                  </form>
                <c:choose>
                <c:when test="${post.pay_check == 1}">
                   <button onclick="showPopUp(); add_pay_notice();" >바로구매</button>

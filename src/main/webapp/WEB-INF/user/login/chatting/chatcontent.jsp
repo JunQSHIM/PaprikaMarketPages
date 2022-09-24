@@ -1,81 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script src="https://kit.fontawesome.com/a75c39dc66.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
+<script>	
+  $( function() {
+	    $( "#datepicker" ).datepicker({
+	    	 showButtonPanel: true,
+	    });
+	    $( "#datepicker" ).datepicker( "option", "showAnim", "slide" );
+	  } );
+ </script>
 </head>
 <body>
 	<div class="chat-header clearfix">
-		<img
-			src="${param.chatimg }"
+		<img class="cimg"
+			src="${room.postPic }"
 			alt="avatar" />
 
 		<div class="chat-about">
-			<div class="chat-with">${param.chatname}</div>
-			<div class="chat-num-messages">already 1 902 messages</div>
+		<c:choose>
+			<c:when test="${room.masterNickname eq user.nickname }">
+				<div class="chat-with">${room.userNickname}</div>
+			</c:when>		
+			<c:otherwise>
+				<div class="chat-with">${room.masterNickname}</div>
+			</c:otherwise>
+		</c:choose>
+			<div class="chat-num-messages">${room.post_seq }</div>
 		</div>
-		<i class="fa fa-star"></i>
+		<form action="sellStatus.cdo" method="post">
+			<input type="text" id="datepicker">
+			<input type="hidden" id="post_seq" name="post_seq" value="${room.post_seq }">
+			<input type="submit" id="reserve" value="예약">
+		</form>
 	</div>
 	<!-- end chat-header -->
 
 	<div class="chat-history">
-		<ul>
-			<li class="clearfix">
-				<div class="message-data align-right">
-					<span class="message-data-time">10:10 AM, Today</span> &nbsp;
-					&nbsp; <span class="message-data-name">Olia</span> <i
-						class="fa fa-circle me"></i>
-
-				</div>
-				<div class="message other-message float-right">Hi Vincent, how
-					are you? How is the project coming along?</div>
-			</li>
-
-			<li>
-				<div class="message-data">
-					<span class="message-data-name"><i
-						class="fa fa-circle online"></i> Vincent</span> <span
-						class="message-data-time">10:12 AM, Today</span>
-				</div>
-				<div class="message my-message">Are we meeting today? Project
-					has been already finished and I have results to show you.</div>
-			</li>
-
-			<li class="clearfix">
-				<div class="message-data align-right">
-					<span class="message-data-time">10:14 AM, Today</span> &nbsp;
-					&nbsp; <span class="message-data-name">Olia</span> <i
-						class="fa fa-circle me"></i>
-
-				</div>
-				<div class="message other-message float-right">Well I am not
-					sure. The rest of the team is not here yet. Maybe in an hour or so?
-					Have you faced any problems at the last phase of the project?</div>
-			</li>
-
-			<li>
-				<div class="message-data">
-					<span class="message-data-name"><i
-						class="fa fa-circle online"></i> Vincent</span> <span
-						class="message-data-time">10:20 AM, Today</span>
-				</div>
-				<div class="message my-message">Actually everything was fine.
-					I'm very excited to show this to our team.</div>
-			</li>
-
-			<li>
-				<div class="message-data">
-					<span class="message-data-name"><i
-						class="fa fa-circle online"></i> Vincent</span> <span
-						class="message-data-time">10:31 AM, Today</span>
-				</div> <i class="fa fa-circle online"></i> <i class="fa fa-circle online"
-				style="color: #AED2A6"></i> <i class="fa fa-circle online"
-				style="color: #DAE9DA"></i>
-			</li>
-
+		<ul  id="history">
+	<c:forEach items="${chat }" var="chat">
+		<c:choose>
+			<c:when test="${chat.name eq user.nickname }">
+				<li>
+					<div class="message-data">
+						<span class="message-data-name"><i class="fa fa-circle online"></i>${chat.name }</span>
+							<span class="message-data-time"><fmt:formatDate value="${chat.time}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+					</div>
+					<div class="message my-message">${chat.message }</div>
+				</li>
+			</c:when>
+			<c:otherwise>
+				<li class="clearfix" >
+					<div class="message-data align-right">
+						<span class="message-data-time"><fmt:formatDate value="${chat.time}" pattern="yyyy-MM-dd HH:mm:ss"/></span> &nbsp;
+						&nbsp; <span class="message-data-name">${chat.name }</span> <i
+							class="fa fa-circle me"></i>
+	
+					</div>
+					<div class="message other-message float-right">${chat.message }</div>
+				</li>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+		</ul>
+		<ul id="realtime">
+			
 		</ul>
 
 	</div>
@@ -85,12 +80,32 @@
 		<textarea name="message-to-send" id="message-to-send"
 			placeholder="Type your message" rows="3"></textarea>
 
-		<i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp; <i
-			class="fa fa-file-image-o"></i>
-
-		<button>Send</button>
 	</div>
-	<!-- end chat-message -->
+	<ul>
+		<li class="tempRight display-none">
+			<div class="message-data">
+				<span class="message-data-name"><i
+					class="fa fa-circle online"></i></span> <span
+					class="message-data-time"></span>
+			</div>
+			<div class="message my-message"></div>
+		</li>
+	</ul>
+	<ul>
+		<li class="tempLeft clearfix display-none" >
+			<div class="message-data align-right">
+				<span class="message-data-time"></span> &nbsp;
+				&nbsp; <span class="message-data-name"></span> <i
+					class="fa fa-circle me"></i>
 
+			</div>
+			<div class="message other-message float-right"></div>
+		</li>
+	</ul>
+	
+	<!-- end chat-message -->
+<script>
+
+</script>
 </body>
 </html>

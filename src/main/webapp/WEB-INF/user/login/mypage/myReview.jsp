@@ -33,7 +33,7 @@ $(document).ready(function(){
 </head>
 <body>
 <header>
-		<jsp:include page="/login/main/header/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/user/login/main/header/header.jsp"></jsp:include>
 	</header>
 	
 	<article class="container_12">

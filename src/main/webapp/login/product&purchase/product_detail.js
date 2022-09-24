@@ -50,6 +50,9 @@
     });
 	function login()  {
 		 window.location.href ='/login.do';
+	}
+	function quit()  {
+		 alert("탈퇴한 회원입니다.")
 	}	
 	function register()  {
 		 window.location.href ='/register.do';
@@ -71,26 +74,7 @@
 	
 	
 	var post_seq = document.getElementById("post_seq").value;
-/*	
-	$(function () {
-		let num = 0;
-		let imageName = ["check.png", "uncheck.png"];
-		$("#jjim").click(function() {
-			if(num == 1){
-				$("#status").attr("src","/myweb/login/images/"+ imageName[num]);
-				$("#status").fadeIn(1200);
-				$("#status").fadeOut(2000);
-				$("#jjim").html('찜');
-				num=0;
-			}else{
-				$("#status").attr("src","/myweb/login/images/"+ imageName[num]);
-				$("#status").fadeIn(1200);
-				$("#status").fadeOut(2000);
-				$("#jjim").html('♥찜');
-				num++;	
-			}
-		});
-	}); */
+
 	$('#likebtn').click(function(){
 		likeupdate();
 	});

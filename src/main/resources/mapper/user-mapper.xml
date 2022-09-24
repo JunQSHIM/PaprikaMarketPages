@@ -29,9 +29,10 @@
 		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image})
 		ON DUPLICATE KEY UPDATE id= #{id};
 	</select>
-	
+
 	<delete id="withdrawal">
-		delete from user where id = #{id} and password = #{password};
+		delete from user where id = #{id} and password =
+		#{password};
 	</delete>
 
 	<!-- 게시판 글 쓰기 -->
@@ -62,20 +63,25 @@
 		delete from product where
 		prod_seq = #{prod_seq};
 	</select>
-	
+
 	<!-- 회원 탈퇴를 위한 판매하기 삭제 -->
 	<select id="withdrawalPost" resultType="PostVO">
-		delete from post where user_seq = #{user_seq};
+		delete from post where
+		user_seq = #{user_seq};
 	</select>
-	
-		<!-- 사진삭제 게시판 -->
+
+	<!-- 사진삭제 게시판 -->
 	<delete id="deletePhotoBoard">
-		delete from board_photo where board_seq = #{board_seq};
+		delete from board_photo where board_seq =
+		#{board_seq};
 	</delete>
-	
+
 	<select id="selectDeleteBoard" resultType="String">
-		select substring_index (saved_file_name, '/' ,-2) as saved_file_name from
-		(select saved_file_name from board_photo where board_seq =${board_seq})photo_name;
+		select substring_index
+		(saved_file_name, '/' ,-2) as saved_file_name from
+		(select
+		saved_file_name from board_photo where board_seq
+		=${board_seq})photo_name;
 	</select>
 
 	<!-- 미리보기 사진 게시판 -->
@@ -343,7 +349,7 @@
 	<select id="myPageList" parameterType="PageVO"
 		resultType="PostVO">
 		select * from (
-		select post_seq, post_title, price, upload_date,
+		select post_seq, post_title, price, create_date,
 		pay_check, location1
 		from post
 		<if test="user_seq != null">
@@ -379,14 +385,42 @@
 	<insert id="postReport" parameterType="ReportVO">
 		insert into
 		post_reports(user_seq, user_singo_seq, post_seq, report_content,
-		report_date) values(#{user_seq}, #{user_singo_seq}, #{post_seq}, #{report_content}, now())
+		report_date) values(#{user_seq}, #{user_singo_seq}, #{post_seq},
+		#{report_content}, now())
+		
 	</insert>
-	
+
 	<!-- 신고했는지 안 했는지 -->
-	<select id="reportStatus" parameterType="ReportVO" resultType="ReportVO">
-		select * from post_reports where user_seq=#{user_seq} and post_seq = #{post_seq};
+	<select id="reportStatus" parameterType="ReportVO"
+		resultType="ReportVO">
+		select * from post_reports where user_seq=#{user_seq} and
+		post_seq = #{post_seq};
 	</select>
 
+	<!-- 탈퇴사유 -->
+	<insert id="WithdrawalReason" parameterType="WithdrawalVO">
+		insert into
+		withdrawal(user_seq, withdrawal_content, withdrawal_date)
+		values(#{user_seq},#{withdrawal_content}, now());
+	</insert>
+
+	<!-- 매너 평가 하기 -->
+	<insert id="evaluation" parameterType="MyMannerVO">
+		insert into myManner
+		values(#{user_seq}, 289,
+		4,#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now());
+	</insert>
+	
+	<!-- 상품후기 리스트 -->
+	<select id="reviewList" resultType="MyMannerVO">
+		select * from myManner where sell_user_seq = #{sell_user_seq};
+	</select>
+	
+	<!--  상품 후기 개수 -->
+	<select id="reviewCount" resultType="int">
+		select count(*) from myManner where sell_user_seq = #{sell_user_seq}
+	</select>
+	
 	<!-- 정보 찾기 -->
 	<select id="findKakao" parameterType="java.util.HashMap"
 		resultType="UserVO">
@@ -404,7 +438,6 @@
 		update user set
 		location1=#{location1},location2=#{location2} where id=#{id}
 	</update>
-
 
 	<update id="updateProfile" parameterType="UserVO">
 		update user set
@@ -441,23 +474,31 @@
 		resultType="String">
 		select nickname from user where user_seq=${user_seq};
 	</select>
+	
+	
+	<!-- 신고 당한 횟수 -->
+	<update id = "repNo">
+		update user set rep_no = rep_no + 1 where user_seq = #{user_seq};
+	</update>
 
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
 	<update id="updatePay">
 		update user set pay=#{pay}, KID=#{KID} where id=#{id}
 	</update>
-	
+
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
 	<update id="updatePayPost">
 		update post set pay=#{pay} where nickname=#{nickname}
 	</update>
-	
+
 	<update id="updatePayStatus">
-		update post set pay_status=#{pay_status} where post_seq=#{post_seq};
+		update post set pay_status=#{pay_status} where
+		post_seq=#{post_seq};
 	</update>
-	
+
 	<insert id="insertPPKPay">
-		insert into pay(pay_seq,sellerId, buyerId, post_seq, process, sellerQr, buyerQr, status, sellerKID, buyerKID)
+		insert into pay(pay_seq,sellerId, buyerId, post_seq,
+		process, sellerQr, buyerQr, status, sellerKID, buyerKID)
 		values(#{pay_seq},#{sellerId},#{buyerId},#{post_seq},#{process},#{sellerQr},#{buyerQr},1,#{sellerKID},#{buyerKID})
 	</insert>
 	

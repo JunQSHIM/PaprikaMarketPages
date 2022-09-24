@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chatDB">
+	<!-- 채팅방 찾기 -->
+	<select id="selectRoom"  resultType="ChatRoom">
+		select roomId from chatroom where masterNickname=#{masterNickname} and userNickname = #{userNickname} and post_seq=#{post_seq};
+	</select>
+	<!-- 채팅방 찾기 -->
+	<select id="searchRoomId"  resultType="ChatRoom">
+		select * from chatroom where roomId=#{roomId};
+	</select>
+	
+	<!-- 채팅방 만들기-->
+	<insert id="createChat" parameterType="ChatRoom">
+		insert into chatroom (masterNickname, userNickname, postPic, post_seq, roomId) values(#{masterNickname}, #{userNickname}, #{postPic} ,#{post_seq},#{roomId});
+	</insert>
+	
+	<!-- 프로필 사진 불러오기 -->
+	<select id="findProfile" parameterType="String">
+		select saved_file_name from user_profile_photo where user_seq = #{user_seq};
+	</select>
+	
+	<!-- 채팅방 접속 -->
+	<update id="updateunReadCount">
+		update chatroom set unReadCount=#{unReadCount} where roomId = #{roomId} ;
+	</update>
+	
+	<!-- 구매채팅방 리스트 불러오기 -->
+	<select id="selectRoomListSell" parameterType="String" resultType="ChatRoom">
+		select * from chatroom where userNickname = #{userNickname};
+	</select>
+	<!-- 판매채팅방 리스트 불러오기 -->
+	<select id="selectRoomList" parameterType="String" resultType="ChatRoom">
+		select * from chatroom where masterNickname = #{userNickname};
+	</select>
+	
+	<!-- 메세지 리스트 불러오기 -->
+	<select id="messageList" parameterType="String" resultType="ChatMessage">
+		select * from chatmessage where roomId=#{roomId};
+	</select>
+	
+	<!-- 메시지 저장 -->
+	<insert id="insertMessage" parameterType="ChatMessage">
+		insert into chatmessage (roomId, sessionCount, name, message, time) values(#{roomId}, #{sessionCount}, #{name}, #{message},#{time} );
+	</insert>
+	
+	<!-- 구매 예약 -->
+	<update id="updateSellStatus">
+		update post set sell_status=#{sell_status} where post_seq=#{post_seq};
+	</update>
+	
+</mapper>

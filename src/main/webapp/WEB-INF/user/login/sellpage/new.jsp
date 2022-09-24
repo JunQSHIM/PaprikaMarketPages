@@ -138,21 +138,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="grid_12 tag">
-			<div class="grid_2 explain">연관태그</div>
-			<div class="grid_10 newdata">
-				<div class="tags">
-					<input type="text" placeholder="연관태그를 입력해주세요. (최대 5개)" name="tags">
-				</div>
-				<ul class="tagrule">
-					<li><p>- 태그는 띄어쓰기로 구분되며 최대 9자까지 입력할 수 있습니다.</p></li>
-					<li><p>- 태그는 검색의 부가정보로 사용 되지만, 검색 결과 노출을 보장하지는 않습니다.</p></li>
-					<li><p>- 검색 광고는 태그정보를 기준으로 노출됩니다.</p></li>
-					<li><p>- 상품과 직접 관련이 없는 다른 상품명, 브랜드, 스팸성 키워드 등을 입력하면 노출이
-							중단되거나 상품이 삭제될 수 있습니다.</p></li>
-				</ul>
-			</div>
-		</div>
 
 		<div class="grid_2 explain">안전 결제 선택</div>
 		<div class="grid_10 newdata">

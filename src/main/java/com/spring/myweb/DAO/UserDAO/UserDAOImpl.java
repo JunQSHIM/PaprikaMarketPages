@@ -9,6 +9,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
+import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Repository
@@ -113,6 +116,7 @@ public class UserDAOImpl implements UserDAO{
 		return session.update("userDB.updatePay",vo);
 	}
 
+	// 회원탈퇴
 	@Override
 	public void withdrawal(UserVO vo) throws Exception {
 		session.delete("userDB.withdrawal", vo);
@@ -120,6 +124,23 @@ public class UserDAOImpl implements UserDAO{
 		
 	public UserVO selectByUserSeq(int user_seq) {
 		return session.selectOne("userDB.selectUserbySeq",user_seq);
+	}
+
+	//탈퇴사유
+	@Override
+	public int WithdrawalReason(WithdrawalVO vo) throws Exception {
+		return session.insert("userDB.WithdrawalReason", vo);
+		
+	}
+
+	@Override
+	public int evaluation(MyMannerVO vo) throws Exception {
+		return session.insert("userDB.evaluation",vo);
+	}
+
+	@Override
+	public int repNo(int user_seq) throws Exception {
+		return session.update("userDB.repNo", user_seq);
 	}
 
 	

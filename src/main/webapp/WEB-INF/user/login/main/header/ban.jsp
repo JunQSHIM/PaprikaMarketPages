@@ -27,6 +27,7 @@
 				<div class="recent">
 					최근본상품<br> ........<br> <span class="recent_product">최근
 						본 상품<br>이<br> 없습니다.
+						<button onclick="location.href='evaluationView.do?user_seq=${user.user_seq}'">임시</button>
 					</span>
 				</div>
 				<div class="top" style="cursor: pointer">

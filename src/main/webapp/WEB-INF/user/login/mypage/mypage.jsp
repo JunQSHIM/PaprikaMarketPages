@@ -31,7 +31,7 @@ $(function(){
 });
 
 function toMannerEval() {
-	window.location.href = '/myweb/login/mypage/mannerEval.jsp';
+	window.location.href = 'mannerView.do';
 }
 function toMyReview() {
 	window.location.href = '/myweb/login/mypage/myReview.jsp';
@@ -64,14 +64,14 @@ function toProfileEdit() {
 							&nbsp;&nbsp;<c:if test="${user.pay ne null }">&#127818;</c:if>
 					</div>
 					<div id="function">	
-						<button type="button" id="sell" onclick=move()></button>
+						<button type="button" id="sell" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}'"></button>
 						<button type="button" id="buy" onclick=move()></button>
-						<button type="button" id="wishlist" onclick=move()></button>
+						<button type="button" id="wishlist" onclick="location.href='favorite.do?user_seq=${user.user_seq}'"></button>
 					</div>
 				</div>
 				<div id="temperature">
 					<div id="mannerTitle">매너온도</div>
-					<div id="mannerTemp">123</div>
+					<div id="mannerTemp">${user.temp }℃</div>
 					<div class="outterTempBar">
 						<div id="innerTempBar"></div>
 					</div>
@@ -122,11 +122,23 @@ function toProfileEdit() {
 			<div id="eval_and_review">
 				<div id="manner_eval">
 					<div id="manner_eval_head"><b onclick=toMannerEval()>받은 매너 평가 ></b></div>
-					<div id="manner_eval_list">받은 매너 칭찬이 아직 없어요</div>
+					<c:if test="${reviewCnt == 0 }">
+						<div id="manner_eval_list">받은 매너 칭찬이 아직 없어요</div>
+					</c:if>
+					<c:if test="${reviewCnt != 0 }">
+						<div id="manner_eval_list">받은 매너 평가 보러가기</div>
+					</c:if>
 				</div>
 				<div id="purchase_review">
-					<div id="review_list_head"><b onclick=toMyReview()>받은 거래 후기 ></b></div>
+					<div id="review_list_head"><b onclick="location.href='reviewProductView.do?user_seq=${user.user_seq}'">받은 거래 후기 ></b></div>
+					<c:if test="${reviewCnt == 0 }">
 					<div id="review_list">받은 거래 후기가 아직 없어요</div>
+					</c:if>
+					<c:if test="${reviewCnt != 0 }">
+					<div id="review_list">
+						${reviewCnt }건의 거래 후기가 있습니다.
+					</div>
+					</c:if>
 				</div>
 			</div>
 		</div>

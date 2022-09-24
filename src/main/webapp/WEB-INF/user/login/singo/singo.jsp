@@ -97,10 +97,6 @@
 								<div class="trade_list_1">
 									<button class="report_content" type="button" value="주류">주류</button>
 								</div>
-								<div class="trade_list_text">
-									<input type="text" placeholder="기타 (사유)" value="">
-									<button class="report_content" type="button">등록</button>
-								</div>
 							</div>
 						</div>
 						<div class="singo_list">
@@ -125,23 +121,6 @@
 						</div>
 						<div class="singo_list">
 							<div class="singo_list_1">
-								<span>사기의심(외부채널 유도)</span>
-								<button type="button" id="btn5">
-									<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/singo.png" width="13" height="8"
-										alt="화살표 아이콘">
-								</button>
-							</div>
-							<div class="prod_info_board" id="panel5">
-								<div class="prod_info_content">
-									<textarea
-										placeholder="신고 내용을 직접 작성해주세요.
-자세하게 적어주시면 신고처리에 큰 도움이 됩니다."></textarea>
-									<button type="button" onclick="textarea()">등록</button>
-								</div>
-							</div>
-						</div>
-						<div class="singo_list">
-							<div class="singo_list_1">
 								<span>기타(사유)</span>
 								<button type="button" id="btn6">
 									<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/singo.png" width="13" height="8"
@@ -150,10 +129,10 @@
 							</div>
 							<div class="prod_info_board" id="panel6">
 								<div class="prod_info_content">
-									<textarea
+									<textarea id="reportText2"
 										placeholder="신고 내용을 직접 작성해주세요.
 자세하게 적어주시면 신고처리에 큰 도움이 됩니다."></textarea>
-									<button type="button" class="report_content" >등록</button>
+									<button type="button" class="report_content" onclick="textarea2()" >등록</button>
 								</div>
 							</div>
 						</div>

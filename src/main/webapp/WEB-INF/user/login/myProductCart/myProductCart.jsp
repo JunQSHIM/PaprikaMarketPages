@@ -16,7 +16,7 @@
 				<div class="jjim_list">
 					<div class="jjim_list_1">
 					 	<a class="sell_product">상품 <span class="sell_product_span">${total }</span></a>
-					 	<a class="review_product" href="/myweb/login/review_product.jsp">상품후기 <span class="review_product_span">5</span></a>
+					 	<a class="review_product" href="reviewProductView.do?user_seq=${user.user_seq }">상품후기 <span class="review_product_span">${reviewCnt }</span></a>
 					 	<a class="jjim_product" href="favorite.do?user_seq=${user.user_seq }">찜 <span class="jjim_product_span">${jjimCart }</span></a>
 					 </div>
 				</div>
@@ -36,8 +36,8 @@
 							</div>
 							<div class="product_category_3">
 								<a class="all_category">전체</a>
-								<c:forEach items="${clist }" var="category">
-								<a class="digital_category" data-value="${category.category_seq }">${category.category_name }</a>
+								<c:forEach items="${clist }" var="clist">
+								<a class="digital_category" data-value="${clist.category_seq }">${clist.category_name }</a>
 								</c:forEach>
 							</div>
 						</div>
@@ -87,7 +87,7 @@
 									<span class="image_span">
 								<c:choose>
 									<c:when test="${post.pay_check == 1 }">
-										<img src="/myweb/login/images/jjim_icon/pay.svg" alt="페이 가능">
+										<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/kakao.png" width="60" height="30" alt="페이 가능">
 									</c:when>
               				 		<c:when test="${post.pay_check == 0 }">
                							<img src="/myweb/login/images/jjim_icon/pay.svg" style="visibility: hidden;" alt="페이 가능">

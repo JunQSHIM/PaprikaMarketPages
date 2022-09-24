@@ -22,6 +22,7 @@ public class UserVO {
 	private int rep_no;
 	private String fav_category;
 	private String fav_product;
+	private double temp;
 	private int join_type;
 	private int msg_agree;
 	private int user_type;

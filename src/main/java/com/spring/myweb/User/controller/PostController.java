@@ -340,43 +340,7 @@ public class PostController {
 		return "redirect:main.do";
 	}
 
-	// 내상품 보기
-	@RequestMapping(value = "/myProductCart.do", method = RequestMethod.GET)
-	public String myList(Model model, PostVO vo, PageVO pvo, CategoryVO cvo, LikeVO lvo) throws Exception {
-		int total = postService.myCount(pvo);
-		int jjimCart = postService.jjimCart(lvo);
-
-		// 페이징
-		if (pvo.getNum() == 0) {
-			pvo.setNum(1);
-		}
-
-		pvo.setSort(pvo.getSort()); // 정렬
-		pvo.setCount(total);
-		int num = pvo.getNum();
-
-		List<Integer> post_seq = new ArrayList<Integer>();
-		List<PostVO> list = postService.myPageList(pvo);
-		for (PostVO post : list) {
-			post_seq.add(post.getPost_seq());
-		}
-
-		List<String> photoNames = new ArrayList<String>();
-		for (int post_num : post_seq) {
-			photoNames.add(postService.photoOne(post_num));
-		}
-
-		List<CategoryVO> clist = postService.categoryList();
-		model.addAttribute("jjimCart", jjimCart);
-		model.addAttribute("total", total);
-		model.addAttribute("clist", clist);
-		model.addAttribute("page", pvo);
-		model.addAttribute("select", num);
-		model.addAttribute("list", list);
-		model.addAttribute("photo", photoNames);
-		return "login/myProductCart";
-	}
-
+	
 	// 찜목록 페이지
 	@RequestMapping(value = "/favorite.do")
 	public String getFavorite(Model model, PageVO pvo, LikeVO lvo, UserVO uvo, HttpSession session) throws Exception {

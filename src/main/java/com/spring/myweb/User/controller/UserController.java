@@ -499,23 +499,6 @@ public class UserController {
 		return "login/mypage/pay";
 	}
 
-	// 회원탈퇴
-	@RequestMapping(value = "/withdrawal.do")
-	public String withdrawal(UserVO vo, RedirectAttributes rttr, HttpSession session, LikeVO lvo) throws Exception {
-		vo = (UserVO) session.getAttribute("user");
-		String password = vo.getPassword();
-
-		if (!(password.equals(password))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:withdrawalView.do";
-		}
-
-		userService.withdrawal(vo);
-		rttr.addFlashAttribute("msg", "이용해주셔서 감사합니다.");
-		session.invalidate();
-		return "redirect:main.do";
-	}
-
 	// 알림 읽음 처리
 	@RequestMapping(value = "/readNotice.do")
 	public @ResponseBody int readNotice(String notice_seq) {

@@ -349,7 +349,7 @@
 	<select id="myPageList" parameterType="PageVO"
 		resultType="PostVO">
 		select * from (
-		select post_seq, post_title, price, upload_date,
+		select post_seq, post_title, price, create_date,
 		pay_check, location1
 		from post
 		<if test="user_seq != null">
@@ -387,6 +387,7 @@
 		post_reports(user_seq, user_singo_seq, post_seq, report_content,
 		report_date) values(#{user_seq}, #{user_singo_seq}, #{post_seq},
 		#{report_content}, now())
+		
 	</insert>
 
 	<!-- 신고했는지 안 했는지 -->
@@ -406,13 +407,18 @@
 	<!-- 매너 평가 하기 -->
 	<insert id="evaluation" parameterType="MyMannerVO">
 		insert into myManner
-		values(#{user_seq}, 3,
+		values(#{user_seq}, 289,
 		4,#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now());
 	</insert>
 	
 	<!-- 상품후기 리스트 -->
-	<select id="reviewProduct" parameterType="MyMannerVO" resultType="MyMannerVO">
-		select * from myManner where user_seq = #{user_seq};
+	<select id="reviewList" resultType="MyMannerVO">
+		select * from myManner where sell_user_seq = #{sell_user_seq};
+	</select>
+	
+	<!--  상품 후기 개수 -->
+	<select id="reviewCount" resultType="int">
+		select count(*) from myManner where sell_user_seq = #{sell_user_seq}
 	</select>
 	
 	<!-- 정보 찾기 -->
@@ -468,6 +474,12 @@
 		resultType="String">
 		select nickname from user where user_seq=${user_seq};
 	</select>
+	
+	
+	<!-- 신고 당한 횟수 -->
+	<update id = "repNo">
+		update user set rep_no = rep_no + 1 where user_seq = #{user_seq};
+	</update>
 
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
 	<update id="updatePay">
@@ -489,29 +501,6 @@
 		process, sellerQr, buyerQr, status, sellerKID, buyerKID)
 		values(#{pay_seq},#{sellerId},#{buyerId},#{post_seq},#{process},#{sellerQr},#{buyerQr},1,#{sellerKID},#{buyerKID})
 	</insert>
-
-	<!-- notice 불러오기 -->
-	<select id="selectNotice" resultType="NoticeVO">
-		select * from notice
-	</select>
-
-	<!-- notice 추가하기 -->
-	<insert id="addNotice" parameterType="NoticeVO">
-		insert into notice
-		values(#{notice_seq}, #{buyerId}, #{sellerId}, #{seq}, 1)
-	</insert>
-
-	<!-- notice 삭제하기 -->
-	<delete id="deleteNotice">
-		delete from notice where read_notice=1
-	</delete>
-
-	<!-- notice 읽음 처리 -->
-	<update id="readNotice">
-		update notice set read_notice=1 where
-		notice_seq=#{notice_seq}
-	</update>
-
 	
 	<!-- notice 불러오기 -->
 	<select id="selectNotice" resultType="NoticeVO">

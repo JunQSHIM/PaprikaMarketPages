@@ -42,7 +42,7 @@
 
 				<div class="nav_btn">
 
-					<a class="mystore" href="create.do" onclick="post_check()">
+					<a class="mystore" href="create.do?user_seq=${user.user_seq }" onclick="post_check()">
 					<!--  	<a class="sell_btn" href="/myweb/login/sell.jsp">-->
 						<div class="btn_img">
 							<img src="/myweb/login/images/sell_list.png" width="23"

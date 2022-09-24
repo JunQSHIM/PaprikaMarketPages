@@ -25,6 +25,7 @@ import com.spring.myweb.DAO.UserDAO.UserDAO;
 import com.spring.myweb.MailUtil.MailHandler;
 import com.spring.myweb.MailUtil.TempKey;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Service
@@ -365,5 +366,12 @@ public class UserServiceImpl implements UserService{
 	public int evaluation(MyMannerVO vo) throws Exception {
 		return userDAO.evaluation(vo);
 	}
+
+	@Override
+	public int repNo(int user_seq) throws Exception {
+		return userDAO.repNo(user_seq);
+	}
+
+	
 
 }

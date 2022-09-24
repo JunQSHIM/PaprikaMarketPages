@@ -34,6 +34,7 @@ import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementServic
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
@@ -61,10 +62,10 @@ public class UserController {
 
 	@Autowired
 	RegisterAgreementService registerService;
-	
+
 	@Autowired
 	NoticeService noticeService;
-	
+
 	@RequestMapping(value = "/")
 	public String mainPage() {
 		return "redirect:main.do";
@@ -156,12 +157,22 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/mypage.do")
-	public String mypage(Model model, HttpSession session) {
+	public String mypage(Model model, HttpSession session, UserVO uvo, PageVO page, LikeVO lvo) throws Exception {
+		uvo = (UserVO) session.getAttribute("user");
+		lvo.setUser_seq(uvo.getUser_seq());
+		int jjimCart = postService.jjimCart(lvo);
+		int reviewCnt = postService.reviewCount(uvo.getUser_seq());
+		List<MyMannerVO> manner = postService.reviewList(uvo.getUser_seq());
+
+		model.addAttribute("manner", manner);
+		model.addAttribute("reviewCnt", reviewCnt);
+		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("user", userService.select((String) session.getAttribute("id")));
 		return "login/mypage/mypage";
 	}
-	@RequestMapping(value="/mypage.do", method=RequestMethod.POST)
-	public String mypage(Model model, String pay, String KID) throws Exception{
+
+	@RequestMapping(value = "/mypage.do", method = RequestMethod.POST)
+	public String mypage(Model model, String pay, String KID) throws Exception {
 		System.out.println("파프리카 페이 사용하기");
 		UserVO vo = (UserVO) model.getAttribute("user");
 		vo.setPay(pay);
@@ -172,22 +183,34 @@ public class UserController {
 		}
 		return "login/mypage/mypage";
 	}
-	
-	//내가 받은 매너 평가 페이지 이동
-	@RequestMapping(value="mannerView.do")
-	public String mannerView() throws Exception {
+
+	// 내가 받은 매너 평가 페이지 이동
+	@RequestMapping(value = "mannerView.do")
+	public String mannerView(HttpSession session, Model model, UserVO uvo, LikeVO lvo) throws Exception {
+		uvo = (UserVO) session.getAttribute("user");
+		lvo.setUser_seq(uvo.getUser_seq());
+		int jjimCart = postService.jjimCart(lvo);
+		int reviewCnt = postService.reviewCount(uvo.getUser_seq());
+		List<MyMannerVO> manner = postService.reviewList(uvo.getUser_seq());
+
+		model.addAttribute("reviewCnt", reviewCnt);
+		model.addAttribute("jjimCart", jjimCart);
+		model.addAttribute("manner", manner);
 		return "login/mypage/mannerEval";
 	}
-	
+
 	// 구매 완료 후 매너평가 페이지
-	@RequestMapping(value="evaluationView.do")
-	public String evaluationView() throws Exception {
+	@RequestMapping(value = "evaluationView.do")
+	public String evaluationView(HttpSession session, Model model, UserVO uvo, LikeVO lvo) throws Exception {
+		uvo = (UserVO) session.getAttribute("user");
+		int jjimCart = postService.jjimCart(lvo);
+		model.addAttribute("jjimCart", jjimCart);
 		return "login/product&purchase/purchase";
 	}
-	
+
 	@RequestMapping(value = "evaluation.do")
 	public @ResponseBody int evaluation(HttpSession session, MyMannerVO vo) throws Exception {
-		UserVO uvo = (UserVO)session.getAttribute("user");
+		UserVO uvo = (UserVO) session.getAttribute("user");
 		vo.setUser_seq(uvo.getUser_seq());
 		return userService.evaluation(vo);
 	}
@@ -197,17 +220,19 @@ public class UserController {
 	public String withdrawaView() throws Exception {
 		return "login/quit";
 	}
-	//탈퇴사유
+
+	// 탈퇴사유
 	@RequestMapping(value = "/reason.do")
-	public @ResponseBody int Reason(HttpSession session, WithdrawalVO vo) throws Exception{
-		UserVO uvo = (UserVO)session.getAttribute("user");
+	public @ResponseBody int Reason(HttpSession session, WithdrawalVO vo) throws Exception {
+		UserVO uvo = (UserVO) session.getAttribute("user");
 		vo.setUser_seq(uvo.getUser_seq());
 		return userService.WithdrawalReason(vo);
 	}
-	
+
 	// 회원탈퇴
 	@RequestMapping(value = "/withdrawal.do")
-	public ModelAndView withdrawal(Model model, UserVO vo, RedirectAttributes rttr,HttpServletRequest req,  HttpSession session, LikeVO lvo) throws Exception {
+	public ModelAndView withdrawal(Model model, UserVO vo, RedirectAttributes rttr, HttpServletRequest req,
+			HttpSession session, LikeVO lvo) throws Exception {
 		vo = (UserVO) session.getAttribute("user");
 		String password = vo.getPassword();
 
@@ -223,8 +248,6 @@ public class UserController {
 		session.invalidate();
 		return mv;
 	}
-	
-	
 
 	@RequestMapping(value = "/main.do")
 	public String main() {
@@ -420,10 +443,9 @@ public class UserController {
 		return "login/mypage/pay";
 	}
 
-	@RequestMapping(value="/chat.do")
+	@RequestMapping(value = "/chat.do")
 	public String echo() {
 		return "sadf";
 	}
-	
-		
+
 }

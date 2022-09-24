@@ -43,23 +43,21 @@ function toMypage() {
 					<img id="profile_pic_update" src="/myweb/login/images/profile.png">
 				</div>
 				<div id="nickname_edit">
-					<input type="text" name="nickname" id="nickname" placeholder="새로운 닉네임" oninput="checkNickname()">
+					<div class="nicknameDiv"><input type="text" name="nickname" id="nickname" placeholder="새로운 닉네임" value="${user.nickname }" oninput="checkNickname()"></div>
 					<div id="result7"></div>
-					<input type="password" name="password" id="password" placeholder="새 비밀번호"><br><br>
-					<input type="password" name="repassword" id="passwordCheck" placeholder="비밀번호 확인">
-					<div id="result"></div>
+					<div class="nicknameDiv"><input type="password" name="password" id="password" placeholder="새 비밀번호"></div>
+					<div class="nicknameDiv"><input type="password" name="repassword" id="passwordCheck" placeholder="비밀번호 확인"></div>
+					<div><div id="result"></div>
 				</div>
 			</div>
 			<div id="upload_bottom">
 				<div id="upload_button">
 					<button id="upload" onclick=upload()>프로필 사진 수정</button>
-				</div>
-			</div>
-			<div id="toMypage">
-				<button type="button" id="editSubmit" value="수정하기">수정하기</button>
-				<div id="toMypage_button">
 					<button type="button" onclick=toMypage()>취소</button>
+					<button type="button" id="editSubmit" value="수정하기">수정하기</button>
 				</div>
+	
+			</div>
 			</div>
 			</form>
 		</div>

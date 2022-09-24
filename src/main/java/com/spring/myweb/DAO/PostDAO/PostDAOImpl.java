@@ -29,10 +29,12 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
+import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
+import com.spring.myweb.VO.UserVO.UserVO;
 
 @Repository
 public class PostDAOImpl implements PostDAO {
@@ -298,5 +300,21 @@ public class PostDAOImpl implements PostDAO {
 		session.delete("userDB.withdrawalPost", user_seq);
 		
 	}
+
+	@Override
+	public int repNo(ReportVO vo) throws Exception {
+		return session.update("userDB.repNo", vo);
+	}
+	
+	@Override
+	public List<MyMannerVO> reviewList(int user_seq) throws Exception {
+		return session.selectList("userDB.reviewList" , user_seq);
+	}
+
+	@Override
+	public int reviewCount(int user_seq) {
+		return session.selectOne("userDB.reviewCount", user_seq);
+	}
+
 
 }

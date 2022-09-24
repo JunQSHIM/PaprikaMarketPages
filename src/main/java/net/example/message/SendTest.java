@@ -15,8 +15,8 @@ public class SendTest {
 
 		// 4 params(to, from, type, text) are mandatory. must be filled
 		HashMap<String, String> params = new HashMap<String, String>();
-		params.put("to", "01000000000"); // 수신전화번호
-		params.put("from", "01000000000"); // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+		params.put("to", "01020676295"); // 수신전화번호
+		params.put("from", "01041250363"); // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
 		params.put("type", "SMS");
 		params.put("text", "Test 문자 메시지 발송");
 		params.put("app_version", "test app 1.2"); // application name and version

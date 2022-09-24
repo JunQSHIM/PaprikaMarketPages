@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 public interface UserDAO {
@@ -27,5 +28,7 @@ public interface UserDAO {
 	public void withdrawal(UserVO vo) throws Exception; // 회원탈퇴
 	public int WithdrawalReason(WithdrawalVO vo) throws Exception; // 탈퇴사유
 	public int evaluation(MyMannerVO vo) throws Exception; // 매너 평가 주기
+	
 	public UserVO selectByUserSeq(int user_seq);
+	public int repNo(int user_seq) throws Exception; // 신고 횟수 증가
 }

@@ -77,6 +77,32 @@
 						</c:forEach>
 						
 				</div>
+				
+				
+				<div class="pagingBody">
+	 		<div class= "paging">
+		<c:if test="${page.prev}">
+			<a href="create.do?user_seq=${user.user_seq }&num=${page.startPageNum - 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12" class="prev"></a>
+			
+		</c:if>
+	
+		<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+			<c:if test="${select != num}">
+					<a href="create.do?user_seq=${user.user_seq }&num=${num}" class="present_page">${num}</a>
+				</c:if>
+			<c:if test="${select == num}"><b>${num}</b>
+				</c:if>
+			
+		</c:forEach>
+
+		<c:if test="${page.next}">
+			<a href="create.do?user_seq=${user.user_seq }&num=${page.endPageNum + 1}"><img alt="페이징 화살표" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/next.svg" width="12" height="12"></a>
+			
+		</c:if>
+		</div>
+	</div>
+				
+				
 			</div>
 			<div id="sell-list">
 				<div id="control-head">

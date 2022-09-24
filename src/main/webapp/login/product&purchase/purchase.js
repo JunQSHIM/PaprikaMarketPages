@@ -182,20 +182,31 @@ $(document).ready(function() {
 		if (!$("input:checked[name='bad_manner']").is(":checked")) {
 			alert("하나 이상의 비매너를 평가해주세요.");
 			return false;
-		} else {
+		} 
+		
+		else {
+			var chk = confirm("매너 평가를 완료하셨습니까?");
+			var user_seq = $("#user_seq").val();
+			if (!chk) {
+				location.href = ("evaluationView.do?user_seq=" + user_seq);
+				return false
+			} else {
+				alert("매너평가를 완료하였습니다.")
+				location.href = "redirect:main.do";
+			}
 			return true;
 		}
 	});
 });
 
-function review1() {
-	var chk = confirm("매너 평가를 완료하셨습니까?");
-	var user_seq = $("#user_seq").val();
-	if (!chk) {
-		location.href = ("evaluationView.do?user_seq=" + user_seq);
-		return false
-	} else {
-		alert("매너평가를 완료하였습니다.")
-		location.href = "redirect:main.do";
-	}
-}
+//function review1() {
+//	var chk = confirm("매너 평가를 완료하셨습니까?");
+//	var user_seq = $("#user_seq").val();
+//	if (!chk) {
+//		location.href = ("evaluationView.do?user_seq=" + user_seq);
+//		return false
+//	} else {
+//		alert("매너평가를 완료하였습니다.")
+//		location.href = "redirect:main.do";
+//	}
+//}

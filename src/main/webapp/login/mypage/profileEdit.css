@@ -62,15 +62,19 @@ body,html{
 }
 
 .edit_detail{
-	margin: auto;
+	margin-top: 50px;
 	width: 1000px;
 	height: 600px;
 	background-color: rgba(0,0,0,0) !important;
 	border : 0px;
 }
+div .edit{
+	margin-top:30px;
+}
+
 
 #edit_head {
-	border-bottom: 2px solid orange;
+	margin-top:70px;
 	font-size: 25px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -85,10 +89,15 @@ body,html{
 
 #edit {
 	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	align-items: center;
 }
 
+
+
 #profile_pic {
-	width: 30%;
+	width: 200px;
 }
 #profile_pic img{
     height: 200px;
@@ -101,6 +110,8 @@ body,html{
 #my_pic {
 	display: none;
 }
+
+
 
 #nickname_edit button{
 	width:80px;
@@ -121,19 +132,23 @@ body,html{
 }
 #nickname_edit input {
 	font-size: 20px;
+	height:20px;
+	display: flex;
+	margin-bottom: 10px;
 }
 #nickname_edit {
-	width: 40%;
 	padding-left: 10px;
 	padding-top: 10px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
 }
 
 #upload_bottom {
+	margin-top:30px;
 	display: flex;
 	padding-bottom: 10px;
-}
-#upload_button {
-	width: 30%;
 }
 #upload_button button {
 	width:150px;
@@ -153,38 +168,9 @@ body,html{
     background-color: orange;
 }
 
-#toMypage button{
-	width:150px;
-	height:30px;
-	border: 1px solid orange;
-    background-color: rgba(0,0,0,0);
-    color: orange;
-	font : bold;
-	font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;  
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-#toMypage button:hover{
-	color:white;
-    background-color: orange;
-}
-#toMypage {
-	height:70px;
-	line-height:70px;
-	text-align: center;
-	border-bottom: 2px solid orange;
-	border-top: 2px solid orange;
-	display: flex;
-}
+
 #edit_submit {
 	width: 50%;
 	text-align: right;
 	padding-right: 5px;
-}
-#toMypage_button {
-	width: 50%;
-	text-align: left;
-	padding-left: 5px;
 }

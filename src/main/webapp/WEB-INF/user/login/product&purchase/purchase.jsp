@@ -70,7 +70,7 @@
 				</textarea>
 			</div>
 		</div>
-		<input type="submit" value="구매확인" id="confirm" onclick="review1();location.href='main.do'">
+		<input type="submit" value="구매확인" id="confirm" >
 		<input type="button" value="취소" id="confirm" onclick="noreview()">
 	</form>
 	</article>

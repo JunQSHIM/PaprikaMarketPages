@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Repository
@@ -135,6 +136,11 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public int evaluation(MyMannerVO vo) throws Exception {
 		return session.insert("userDB.evaluation",vo);
+	}
+
+	@Override
+	public int repNo(int user_seq) throws Exception {
+		return session.update("userDB.repNo", user_seq);
 	}
 
 	

@@ -11,4 +11,5 @@ public class UserSmsVO {
 	private String phone;
 	private String email;
 	private int msg_agree;
+	private int user_type;
 }

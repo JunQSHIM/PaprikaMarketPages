@@ -120,17 +120,14 @@ function checkNickname() {
 						if(!theForm.nickname.value){
 							document.getElementById('result7').innerHTML = '<font color="red">닉네임을 입력해주세요.</font>';
 							setOutline(theForm.nickname, "2px solid red");
-							target.disabled=true;
 						}else{
 							document.getElementById('result7').innerHTML = '<font color="green">사용가능한 닉네입니다.</font>';
 							setOutline(theForm.nickname, "2px solid green");
-							target.disabled = false;
 						}
 					}else { // cnt가 0일 경우 -> 이미 존재하는 아이디
 							document.getElementById('result7').innerHTML = '<font color="red">중복된 닉네임입니다.</font>';
 							setOutline(theForm.nickname, "2px solid red");
 							theForm.nickname.focus();
-							target.disabled = true;
 					} 
 					
 				},
@@ -140,15 +137,6 @@ function setOutline(objFormElement, color) {
 	if (objFormElement.style)
 		objFormElement.style.outline = color;
 }
-$("#editSubmit").click(function(){
-	var theForm = document.edit;
-	var nickname = theForm.nickname.value;
-	const target = document.getElementById("editSubmit");
-	if(!theForm.nickname.value){
-		target.disabled=true;
-	}
-	theForm.submit();
-});
 $("#passwordCheck").keyup(function() {
 	var theForm = document.edit;
 	var password = theForm.password.value;
@@ -157,14 +145,44 @@ $("#passwordCheck").keyup(function() {
 	if (repassword == password) {
 		setOutline(theForm.repassword,"2px solid green");
 		document.getElementById('result').innerHTML = '<font color="green">비밀번호가 일치합니다.</font>';
-		target.disabled = false;
 	} else if (!theForm.repassword.value|| repassword != password) {
 		setOutline(theForm.repassword,"2px solid red");
 		document.getElementById('result').innerHTML = '<font color="red">비밀번호가 일치하지 않습니다.</font>';
 		theForm.repassword.focus();
-		target.disabled = true;
 	}
 });
+var theForm = document.edit;
+function setOutline(objFormElement, color) {
+	if (objFormElement.style)
+		objFormElement.style.outline = color;
+}
+	$("#editSubmit").click(function() {
+		if (!theForm.nickname.value) {
+			setOutline(theForm.nickname, "2px solid red");
+			theForm.nickname.placeholder = '닉네임을 입력해주세요';
+			theForm.nickname.focus();
+			return;
+		} else {
+			setOutline(theForm.nickname, "1px solid black");
+		}
+		if (!theForm.password.value) {
+			setOutline(theForm.password, "2px solid red");
+			theForm.password.placeholder = '비밀번호를 입력해주세요';
+			theForm.password.focus();
+			return;
+		} else {
+			setOutline(theForm.password, "1px solid black");
+		}
+		if (!theForm.repassword.value) {
+			setOutline(theForm.repassword, "2px solid red");
+			theForm.repassword.placeholder = '비밀번호를 입력해주세요';
+			theForm.repassword.focus();
+			return;
+		} else {
+			setOutline(theForm.repassword, "1px solid black");
+		}
+		theForm.submit();
+	});
 </script>
 </body>
 </html>

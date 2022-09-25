@@ -165,6 +165,16 @@
 	                  	<input type="hidden" name="post_user_seq" value="${post.user_seq }">
 	                  </form>
                <c:choose>
+               <c:when test="${post.pay_check == 1 and post.nickname ne user.nickname}">
+               		<c:choose>
+               			<c:when test="${post.pay_status == 2 }">
+               				<button onclick="" type="button" width="80">구매예약상품</button>
+               			</c:when>
+               			<c:otherwise>
+               				<button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
+               			</c:otherwise>
+               		</c:choose>
+               	</c:when>
                <c:when test="${post.pay_check == 1}">
                   <button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
                </c:when>

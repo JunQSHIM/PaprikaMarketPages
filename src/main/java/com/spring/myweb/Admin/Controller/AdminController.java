@@ -1,13 +1,15 @@
 package com.spring.myweb.Admin.Controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -36,8 +38,12 @@ import com.spring.myweb.VO.QnaVO.QnaVO;
 import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
 @Controller
 @SessionAttributes("admin")
+@PropertySource(value= {"classpath:config/api.properties"})
 public class AdminController {
 
 	@Autowired
@@ -52,6 +58,11 @@ public class AdminController {
 	@Autowired
 	PostService postService;
 	
+	@Value("${SMS_API_KEY}")
+	private String api_key;
+	
+	@Value("${SMS_API_SECRET}")
+	private String api_secret;
 	
 
 	@Autowired
@@ -174,9 +185,11 @@ public class AdminController {
 	
 	@RequestMapping(value="giveAdmin.mdo", method=RequestMethod.POST)
 	public String giveAdminAuthority(String id, UserVO vo) {
+		System.out.println(id);
 		int result = adminService.giveAdmin(id);
 		if(result ==1 ) {
 			vo = userService.select(id);
+			System.out.println(vo.toString());
 		}
 		return "Admin_page/admin_list/add";
 	}
@@ -201,9 +214,11 @@ public class AdminController {
 			}
 		}
 		id = ids[idx];
+		System.out.println(id);
 		int result = adminService.deleteAdmin(id);
 		if(result ==1 ) {
 			vo = userService.select(id);
+			System.out.println(vo.toString());
 		}
 		return "redirect:adminList.mdo";
 	}
@@ -242,6 +257,7 @@ public class AdminController {
 	
 	@RequestMapping(value="catePopUp.mdo", method=RequestMethod.POST)
 	public String addCate(String qna_title) {
+		System.out.println(qna_title);
 		int result = adminService.insertQnaCate(qna_title);
 		if(result == 1) {
 			System.out.println("Succ");
@@ -257,6 +273,8 @@ public class AdminController {
 	
 	@RequestMapping(value="qPopUp.mdo", method=RequestMethod.POST)
 	public String qPopUpConfirm(String qna_title, String question, String[] answer,HashMap<String,String> qnas) {
+		System.out.println(qna_title);
+		System.out.println(question);
 		qnas.put("qna_title", qna_title);
 		qnas.put("question", question);
 		int result1 = 0;
@@ -300,6 +318,7 @@ public class AdminController {
 	
 	@RequestMapping(value="updateCatePopUp.mdo", method=RequestMethod.POST)
 	public String updateCatePopUp(Model model, QnaVO vo, String qna_title) {
+		System.out.println(qna_title);
 		vo = adminService.selectCateStr(qna_title);
 		model.addAttribute("qnaCate",vo);
 		return "Admin_page/admin_list/updateCatePopUp";
@@ -314,6 +333,7 @@ public class AdminController {
 			return "Admin_page/admin_list/updateCatePopUpConfirm";
 		}
 		vo = adminService.selectCate(qna_seq);
+		System.out.println(vo.toString());
 		int result1 = adminService.updateQnaCateofQ(qnas);
 		int result2 = adminService.updateQnaCate(qnas);
 		if(result1==1 && result2==1) {
@@ -345,12 +365,15 @@ public class AdminController {
 	
 	@RequestMapping(value="aList.mdo")
 	public @ResponseBody List<QnaAnswersVO> aList(String question) throws Exception{
+		System.out.println(question);
 		List<QnaAnswersVO> aList = adminService.bringA(question);
 		return aList;
 	}
 	
 	@RequestMapping(value="updateQPopUpConfirm.mdo")
 	public String updateQConfirm(String qna_title, String question, String answer, Model model) {
+		System.out.println(question);
+		System.out.println(answer);
 		model.addAttribute("question",question);
 		model.addAttribute("answer",answer);
 		QnaQuestionsVO qVO = adminService.selectQStr(question);
@@ -470,6 +493,47 @@ public class AdminController {
 			adminService.bannerDelete(banner_seq);
 			
 			return "redirect:banner.mdo";
+		}
+		
+		//메시지 쏘기
+
+		@RequestMapping(value="/sendMsg.mdo")
+		public @ResponseBody int sms(@RequestParam(value="info[]") List<String> info)  throws Exception{
+			System.out.println(info);
+			System.out.println(info.get(4));
+			System.out.println(info.get(0));
+			int cycle = info.size()/8;
+			int index = 0;
+			HashMap<String, String> params = new HashMap<String, String>();
+		    for(int i=0; i<cycle; i++) {
+		    	params.put("to", info.get(4+8*i)); // 수신전화번호
+				params.put("from", "01041250363"); // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+				params.put("type", "SMS");
+				String[] text = {"파프리카 마켓 회원가입을 축하합니다.","이 아이디는 신고횟수가 5회가 넘어 이용정지 되었으니 고객센터번호로 문의 바랍니다.","님에게 신고가 접수되었습니다. 현재 신고횟수="};
+				String msg = info.get(2)+"님!!";
+				if(info.get(7+8*i).equals("0")) {
+					msg += text[0];
+				}else if(info.get(7+8*i).equals("1")) {
+					msg += text[1];
+				}else {
+					msg += text[2];
+					int repNo = userService.select(info.get(2+8*i)).getRep_no();
+					msg += String.valueOf(repNo);
+				}
+				params.put("text", msg);
+				params.put("app_version", "test app 1.2"); // application name and version
+				
+				Message coolsms = new Message(api_key, api_secret);
+				
+				try {
+					JSONObject obj = (JSONObject) coolsms.send(params);
+					System.out.println(obj.toString());
+				} catch (CoolsmsException e) {
+					System.out.println(e.getMessage());
+					System.out.println(e.getCode());
+				}
+			}
+			return 1;
 		}
 		
 }

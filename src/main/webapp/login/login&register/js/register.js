@@ -28,7 +28,7 @@ function checkId() {
 					id : id
 				},
 				success : function(cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
-					const target = document.getElementById('registerButton');
+					const target = document.getElementById('rBtn');
 					if (cnt == 1) { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
 						document.getElementById('result3').innerHTML = '<font color="green">사용가능한 아이디 입니다.</font>';
 						setOutline(theForm.id, "2px solid green");
@@ -53,7 +53,7 @@ function checkEmail() {
 					email : email
 				},
 				success : function(cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
-					const target = document.getElementById('registerButton');
+					const target = document.getElementById('rBtn');
 					if (cnt == 0 && emailCheck == true){ 
 						if(email != ""){
 							document.getElementById('result6').innerHTML = '<font color="green">사용가능한 이메일입니다.</font>';
@@ -87,7 +87,7 @@ function checkNickname() {
 					nickname : nickname
 				},
 				success : function(cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
-					const target = document.getElementById('registerButton');
+					const target = document.getElementById('rBtn');
 					if (cnt == 0){ 
 							document.getElementById('result7').innerHTML = '<font color="green">사용가능한 닉네입니다.</font>';
 							setOutline(theForm.nickname, "2px solid green");
@@ -111,7 +111,7 @@ function checkPhone() {
 					phone : phone
 				},
 				success : function(cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
-					const target = document.getElementById('registerButton');
+					const target = document.getElementById('rBtn');
 					if (cnt == 0){ 
 							document.getElementById('result8').innerHTML = '<font color="green"></font>';
 							setOutline(theForm.phone, "2px solid green");
@@ -130,7 +130,7 @@ $(document)
 				function() {
 					var theForm = document.register;
 					const target = document
-							.getElementById('registerButton');
+							.getElementById('rBtn');
 					$("#passwordCheck")
 							.keyup(
 									function() {
@@ -187,7 +187,7 @@ $(document)
 											target.disabled = false;
 										}
 									});
-					$("#registerButton")
+					$("#rBtn")
 							.click(
 									function() {
 										if (!theForm.id.value) {

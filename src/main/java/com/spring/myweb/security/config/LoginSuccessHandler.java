@@ -1,13 +1,17 @@
 package com.spring.myweb.security.config;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.Authentication;
@@ -24,10 +28,13 @@ import com.spring.myweb.DAO.UserDAO.UserDAO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 import lombok.Data;
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Data
 public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 
+	
 	@Autowired
 	private UserDAO dao;
 	private static int TIME = 60 * 60 * 24; // 하루
@@ -54,11 +61,11 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		}catch(MailException e) {
 			e.printStackTrace();
 		}
+		System.out.println(authentication);
+		System.out.println("로그인 된 유저VO : " + vo.toString());
 		HttpSession session = request.getSession();
 		session.setAttribute("user", vo);
 		session.setMaxInactiveInterval(TIME);
-		
-		
 		if (vo.getUser_type()==1) {
 			redirectStratgy.sendRedirect(request, response, "/user.mdo");
 		} else {

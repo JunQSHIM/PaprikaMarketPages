@@ -45,7 +45,6 @@ public class EchoHandler extends TextWebSocketHandler{
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		String msg = message.getPayload();
-		System.out.println("msg="+msg);
 		if (StringUtils.isNotEmpty(msg)) {
 			logger.info("if문 들어옴?");
 			String[] strs = msg.split(",");
@@ -238,11 +237,9 @@ public class EchoHandler extends TextWebSocketHandler{
 		
 		if(loginUser == null) {
 			String mid = session.getId();
-			System.out.println("NULL ID");
 			return mid;
 		}
 		String mid = loginUser.getNickname();
-		System.out.println(mid);
 		return mid;
 		
 	}

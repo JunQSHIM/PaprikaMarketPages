@@ -41,8 +41,6 @@ public class UserBoardController {
 
 		int num = pvo.getNum();
 		pvo.setCount(boardService.count(vo.getUser_seq()));
-		System.out.println(vo.getUser_seq());
-		System.out.println(boardService.count(vo.getUser_seq()));
 		List<Integer> board_seq = new ArrayList<Integer>();
 		List<UserBoardVO> list = boardService.listPage(pvo);
 		for (UserBoardVO post : list) {
@@ -151,7 +149,6 @@ public class UserBoardController {
 	//글 수정
 	@RequestMapping(value = "/updateboardProc.do")
 	public String updateBoardProc(UserBoardVO vo, @RequestParam(value = "file",required=false)List<MultipartFile> img, PhotoVO photo){
-	System.out.println(vo.getBoard_seq());
 	boardService.deleteImage(vo.getBoard_seq());
 	
 	Map<String, String> img_1_name = postService.uploadImg(img, "board/");

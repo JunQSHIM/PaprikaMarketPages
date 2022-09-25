@@ -174,11 +174,9 @@ public class AdminController {
 	
 	@RequestMapping(value="giveAdmin.mdo", method=RequestMethod.POST)
 	public String giveAdminAuthority(String id, UserVO vo) {
-		System.out.println(id);
 		int result = adminService.giveAdmin(id);
 		if(result ==1 ) {
 			vo = userService.select(id);
-			System.out.println(vo.toString());
 		}
 		return "Admin_page/admin_list/add";
 	}
@@ -203,11 +201,9 @@ public class AdminController {
 			}
 		}
 		id = ids[idx];
-		System.out.println(id);
 		int result = adminService.deleteAdmin(id);
 		if(result ==1 ) {
 			vo = userService.select(id);
-			System.out.println(vo.toString());
 		}
 		return "redirect:adminList.mdo";
 	}
@@ -246,7 +242,6 @@ public class AdminController {
 	
 	@RequestMapping(value="catePopUp.mdo", method=RequestMethod.POST)
 	public String addCate(String qna_title) {
-		System.out.println(qna_title);
 		int result = adminService.insertQnaCate(qna_title);
 		if(result == 1) {
 			System.out.println("Succ");
@@ -262,8 +257,6 @@ public class AdminController {
 	
 	@RequestMapping(value="qPopUp.mdo", method=RequestMethod.POST)
 	public String qPopUpConfirm(String qna_title, String question, String[] answer,HashMap<String,String> qnas) {
-		System.out.println(qna_title);
-		System.out.println(question);
 		qnas.put("qna_title", qna_title);
 		qnas.put("question", question);
 		int result1 = 0;
@@ -307,7 +300,6 @@ public class AdminController {
 	
 	@RequestMapping(value="updateCatePopUp.mdo", method=RequestMethod.POST)
 	public String updateCatePopUp(Model model, QnaVO vo, String qna_title) {
-		System.out.println(qna_title);
 		vo = adminService.selectCateStr(qna_title);
 		model.addAttribute("qnaCate",vo);
 		return "Admin_page/admin_list/updateCatePopUp";
@@ -322,7 +314,6 @@ public class AdminController {
 			return "Admin_page/admin_list/updateCatePopUpConfirm";
 		}
 		vo = adminService.selectCate(qna_seq);
-		System.out.println(vo.toString());
 		int result1 = adminService.updateQnaCateofQ(qnas);
 		int result2 = adminService.updateQnaCate(qnas);
 		if(result1==1 && result2==1) {
@@ -354,15 +345,12 @@ public class AdminController {
 	
 	@RequestMapping(value="aList.mdo")
 	public @ResponseBody List<QnaAnswersVO> aList(String question) throws Exception{
-		System.out.println(question);
 		List<QnaAnswersVO> aList = adminService.bringA(question);
 		return aList;
 	}
 	
 	@RequestMapping(value="updateQPopUpConfirm.mdo")
 	public String updateQConfirm(String qna_title, String question, String answer, Model model) {
-		System.out.println(question);
-		System.out.println(answer);
 		model.addAttribute("question",question);
 		model.addAttribute("answer",answer);
 		QnaQuestionsVO qVO = adminService.selectQStr(question);

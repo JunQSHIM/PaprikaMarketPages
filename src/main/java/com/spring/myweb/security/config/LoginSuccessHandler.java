@@ -54,13 +54,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		}catch(MailException e) {
 			e.printStackTrace();
 		}
-		System.out.println(authentication);
-		System.out.println("로그인 된 유저VO : " + vo.toString());
 		HttpSession session = request.getSession();
 		session.setAttribute("user", vo);
 		session.setMaxInactiveInterval(TIME);
 		
-		System.out.println(vo.toString());
 		
 		if (vo.getUser_type()==1) {
 			redirectStratgy.sendRedirect(request, response, "/user.mdo");

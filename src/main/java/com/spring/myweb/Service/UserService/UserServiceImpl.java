@@ -104,7 +104,6 @@ public class UserServiceImpl implements UserService{
 	        
 			// 결과 코드가 200이라면 성공
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
 	        
 			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -114,7 +113,6 @@ public class UserServiceImpl implements UserService{
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
 	        
 			// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 			JsonParser parser = new JsonParser();
@@ -122,9 +120,6 @@ public class UserServiceImpl implements UserService{
 	        
 			access_Token = element.getAsJsonObject().get("access_token").getAsString();
 			refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-	        
-			System.out.println("access_token : " + access_Token);
-			System.out.println("refresh_token : " + refresh_Token);
 	        
 			br.close();
 			bw.close();
@@ -144,7 +139,6 @@ public class UserServiceImpl implements UserService{
 	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 	        
 	        int responseCode = conn.getResponseCode();
-	        System.out.println("responseCode : " + responseCode);
 	        
 	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        
@@ -154,7 +148,6 @@ public class UserServiceImpl implements UserService{
 	        while ((line = br.readLine()) != null) {
 	            result += line;
 	        }
-	        System.out.println(result);
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
@@ -170,7 +163,6 @@ public class UserServiceImpl implements UserService{
 	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 	        
 	        int responseCode = conn.getResponseCode();
-	        System.out.println("responseCode : " + responseCode);
 	        
 	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        
@@ -180,7 +172,6 @@ public class UserServiceImpl implements UserService{
 	        while ((line = br.readLine()) != null) {
 	            result += line;
 	        }
-	        System.out.println(result);
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
@@ -201,19 +192,16 @@ public class UserServiceImpl implements UserService{
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			String line = "";
 			String result = "";
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
 			String img_url="";
 			int start = result.indexOf("profile_image")+16;
 			int end = result.indexOf("thumbnail_image")-3;
 			img_url = result.substring(start,end);
-			System.out.println(img_url);
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
@@ -224,10 +212,8 @@ public class UserServiceImpl implements UserService{
 			userInfo.put("email", email);
 			userInfo.put("profile_image", img_url);
 			String password = "PASSWORD";
-	        System.out.println(password);
 	        password = passwordEncoder.encode(password);
 	        userInfo.put("password",password);
-			System.out.println(userInfo.get("profile_image"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -325,7 +311,6 @@ public class UserServiceImpl implements UserService{
 	public int updatePw(UserVO vo) throws Exception {
 		String mail_key = new TempKey().getKey(30,false); //랜덤키 길이 설정
 		vo.setPassword(mail_key);
-		System.out.println("DDDDD"+vo.getPassword()); 
         //회원가입 완료하면 인증을 위한 이메일 발송
         MailHandler sendMail = new MailHandler(mailSender);
         sendMail.setSubject("[PaprikaMarket 임시비밀번호 입니다.]"); //메일제목
@@ -334,10 +319,8 @@ public class UserServiceImpl implements UserService{
                 "<br>아래 [임시비밀번호]로 로그인 후 마이페이지에서 수정바랍니다." +
                 "<br>" + vo.getPassword());
         sendMail.setFrom("junkyu970307@gmail.com", "PaprikaMarket");
-        System.out.println("암호화 전 : " + vo.getPassword());
 		String securePwd = passwordEncoder.encode(vo.getPassword());
 		vo.setPassword(securePwd);
-		System.out.println("암호화 후 : " + vo.getPassword());
         sendMail.setTo(vo.getEmail());
         sendMail.send();
 		return userDAO.updatePw(vo);

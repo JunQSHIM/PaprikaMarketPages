@@ -31,7 +31,7 @@ sock.onclose = function(){
 				즐겨찾기
 			</span>
 	</div>
- </div>
+
 	<div class="button_part">
 		<div class="button_wrap" style="z-index: 1; position: relative;">
 			<c:choose>
@@ -59,4 +59,4 @@ sock.onclose = function(){
 			</ul>
 		</div>
 	</div>
-	
+ </div>	

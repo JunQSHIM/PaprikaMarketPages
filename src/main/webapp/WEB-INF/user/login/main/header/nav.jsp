@@ -10,6 +10,7 @@
 	href="/myweb/login/main/header/css/nav.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/css/grid.css">
 <script src="/myweb/login/main/header/js/nav.js"></script>
+<script src="https://kit.fontawesome.com/a75c39dc66.js" crossorigin="anonymous"></script>
 <head>
 <meta charset="UTF-8">
 <title>nav</title>
@@ -17,7 +18,7 @@
 <body>
 	<div class="grid_12 nav">
 		<div class="grid_12 nafix">
-			<div class="grid_4 loca">
+			<div class="loca">
 				<div class="row category_btn">
 					<button id="showCategory">
 						<div class="cb">
@@ -26,13 +27,13 @@
 					</button>
 				</div>
 				<div class="grid_2 logo">
-					<img src="/myweb/login/images/dklogo.png" width="120%"
+					<img id="logo" src="/myweb/login/images/dklogo.png" 
 						onclick="location.href='main.do'">
 				</div>
 			
 
 			</div>
-			<div class="grid_6 search">
+			<div class="grid_5 search">
 				<div class="search_text">
 					<input type="text" placeholder="상품명, 지역명, @상점명 입력"
 						name="keyword" value="${page.keyword }"><a type="button"><img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/search.png" width="50" height="25"></a>
@@ -41,9 +42,7 @@
 			<div class="row grid_4 bts">
 
 				<div class="nav_btn">
-
 					<a class="mystore" href="create.do?user_seq=${user.user_seq }" onclick="post_check()">
-					<!--  	<a class="sell_btn" href="/myweb/login/sell.jsp">-->
 						<div class="btn_img">
 							<img src="/myweb/login/images/sell_list.png" width="23"
 								height="24">
@@ -53,7 +52,7 @@
 				</div>
 				<c:if test="${user.user_seq == null }">
 				<div class="nav_btn_1">
-					<a class="mystore" onclick="sangjum_chk();">
+					<a class	="mystore" onclick="sangjum_chk();">
 						<div class="btn_img">
 							<img src="/myweb/login/images/mystore.png" width="23" height="24">
 						</div>
@@ -72,12 +71,18 @@
 				</div>
 				</c:if>
 				<div class="nav_btn">
-					<a class="chat" onclick="location.href='boardlist.do'">
+					<a class="chat" onclick="location.href='chat.cdo'">
 						<div class="btn_img">
 							<img src="/myweb/login/images/chatting.png" width="23"
 								height="24">
 						</div>
 						<div class="btn_words">파프리카톡</div>
+					</a>
+				</div>
+				<div class="nav_btn">
+					<a class="chat" onclick="location.href='boardlist.do'">
+							
+						<div class="btn_words"><i class="fa-solid fa-chalkboard fa-1.8x" ></i>자유게시판</div>
 					</a>
 				</div>
 			</div>

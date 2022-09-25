@@ -49,7 +49,6 @@ public class ChatService {
 	}
 
 	public void insertMessage(ChatMessage chatMessage) {
-		System.out.println(chatMessage);
 		chatDao.insertMessage(chatMessage);
 	}
 
@@ -59,7 +58,6 @@ public class ChatService {
 	
 	public List<ChatRoom> chatRoomListSell(String userNickname) {
 		List<ChatRoom> cList = chatDao.chatRoomListSell(userNickname);
-		System.out.println(cList);
 		return cList;
 	}
 

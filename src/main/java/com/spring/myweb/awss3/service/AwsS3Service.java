@@ -74,7 +74,6 @@ public class AwsS3Service {
 	private void uploadToS3(PutObjectRequest putObjectRequest) {
 		try {
 			this.s3Client.putObject(putObjectRequest);
-			System.out.println(String.format("[%s] upload complete", putObjectRequest.getKey()));
 		} catch (AmazonServiceException e) {
 			e.printStackTrace();
 		} catch (SdkClientException e) {
@@ -94,7 +93,6 @@ public class AwsS3Service {
 			// copy
 			this.s3Client.copyObject(copyObjectRequest);
 
-			System.out.printf(String.format("Finish copying [%s] to [%s]"), orgkey, copyKey);
 		} catch (AmazonServiceException e) {
 			e.printStackTrace();
 		} catch (SdkClientException e) {
@@ -111,7 +109,6 @@ public class AwsS3Service {
 			// Delete
 			this.s3Client.deleteObject(deleteObjectRequest);
 
-			System.out.printf(String.format("[%s] delete key"), key);
 		} catch (AmazonServiceException e) {
 			e.printStackTrace();
 		} catch (SdkClientException e) {

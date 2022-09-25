@@ -78,11 +78,9 @@ public class PostController {
 		page.setCount(postService.count(page));
 
 		int num = page.getNum();
-		System.out.println(page.getCount());
 		List<Integer> post_seq = new ArrayList<Integer>();
 
 		List<PostVO> list = postService.listPage(page);
-		System.out.println(list);
 		for (PostVO post : list) {
 			post_seq.add(post.getPost_seq());
 		}
@@ -317,7 +315,6 @@ public class PostController {
 		List<String> photoNames = new ArrayList<String>();
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
-			System.out.println(postService.photoOne(post_num));
 		}
 
 		model.addAttribute("jjimCart", jjimCart);
@@ -418,7 +415,6 @@ public class PostController {
 			vo.setUser_seq(uvo.getUser_seq());
 			vo.setPost_seq(n);
 
-			System.out.println(n);
 			postService.jjimDelete(vo);
 		}
 
@@ -457,9 +453,6 @@ public class PostController {
 			lvo.setUser_seq(uvo.getUser_seq());
 		}
 		mvo.setSell_user_seq(uvo.getUser_seq());
-		System.out.println("후기 받은 놈 : " + mvo.getSell_user_seq());
-		System.out.println("후기 준 게시판" + mvo.getPost_seq());
-		System.out.println("후기 준 놈 스퀀스 : " + mvo.getUser_seq());
 		int reviewCnt = postService.reviewCount(uvo.getUser_seq());
 		List<MyMannerVO> manner = postService.reviewList(uvo.getUser_seq());
 
@@ -476,10 +469,8 @@ public class PostController {
 	// 바로구매 팝업창 띄우기 post db에 pay_status 추가했음 0-판매 1-구매예약대기 2-구매예약 3-구매완료
 	@RequestMapping(value = "ppkPayPopUp.do")
 	public String ppkPopUp(Model model, UserVO uvo, HttpSession session, HashMap<String, Object> info) {
-		System.out.println("구매버튼 클릭");
 		PostVO pvo = (PostVO) model.getAttribute("post");
 
-		System.out.println(pvo.toString());
 
 		if (pvo.getPay_status() == 2) {
 			model.addAttribute("message", "이미 구매 예약이 된 상품입니다.");
@@ -487,7 +478,6 @@ public class PostController {
 			pvo.setPay_status(1); // 구매예약 대기로 변경
 			int result = postService.updatePayStatus(pvo);
 			if (result == 1) {
-				System.out.println("SUCC");
 				model.addAttribute("message", "구매예약 되셨습니다! 아래 qr링크로 3일내 송금이 되지 않을시에는 예약이 취소되니 주의해주세요!");
 				if (pvo.getPay_status() == 1) {
 					uvo = (UserVO) session.getAttribute("user");
@@ -523,12 +513,9 @@ public class PostController {
 	@RequestMapping(value = "/addPayNotice.do")
 	public @ResponseBody String addPayNotice(HttpSession session, Model model, String cmd) {
 		System.out.println("페이 알람으로 값 넘겨주자.");
-		System.out.println(cmd);
 		PostVO pvo = (PostVO) model.getAttribute("post");
 		UserVO uvo = (UserVO) session.getAttribute("user");
-		System.out.println(pvo.toString());
 		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
-		System.out.println(msg);
 		return msg;
 	}
 
@@ -536,12 +523,9 @@ public class PostController {
 	@RequestMapping(value = "/cancelPayNotice.do")
 	public @ResponseBody String cancelPayNotice(HttpSession session, Model model, String cmd) {
 		System.out.println("페이 알람으로 값 넘겨주자.");
-		System.out.println(cmd);
 		PostVO pvo = (PostVO) model.getAttribute("post");
 		UserVO uvo = (UserVO) session.getAttribute("user");
-		System.out.println(pvo.toString());
 		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
-		System.out.println(msg);
 		return msg;
 	}
 
@@ -549,7 +533,6 @@ public class PostController {
 	@RequestMapping(value = "/addJjimNotice.do")
 	public @ResponseBody String addJjimNotice(HttpSession session, Model model, String cmd) {
 		System.out.println("찜 목록으로 값 넘겨주자.");
-		System.out.println(cmd);
 		UserVO uvo = (UserVO) session.getAttribute("user");
 		PostVO pvo = (PostVO) model.getAttribute("post");
 		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();

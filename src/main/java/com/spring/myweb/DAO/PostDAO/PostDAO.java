@@ -13,7 +13,6 @@ import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
-import com.spring.myweb.VO.UserVO.UserVO;
 
 public interface PostDAO {
 	public List<PostVO> postList(); // 글 목록
@@ -59,6 +58,8 @@ public interface PostDAO {
 	public int postReport(ReportVO vo); // 신고하기
 	public List<ReportVO> reportStatus(ReportVO vo); // 신고 했는지 안했는지
 	public void withdrawalPost(int user_seq); // 회원탈퇴를 위한 게시판 삭제
+	
+	public ReportVO reportReason(HashMap<String,Object> info); //신고사유보려고
 	
 	public List<MyMannerVO> reviewList(int user_seq) throws Exception; // 상품 후기 리스트
 	public int reviewCount(int user_seq); // 받은 리뷰 개수

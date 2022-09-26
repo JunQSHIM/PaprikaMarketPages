@@ -27,6 +27,12 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
+	public UserVO selectByNickname(String nickname) {
+		UserVO user = session.selectOne("userDB.selectByNickname", nickname);
+		return user;
+	}
+	
+	@Override
 	public UserVO select(String id) {
 		UserVO user = session.selectOne("userDB.selectUser", id);
 		return user;

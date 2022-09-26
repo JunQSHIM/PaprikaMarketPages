@@ -223,38 +223,40 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/postDetail.do", method = RequestMethod.GET)
-	public String getDetail(HttpSession session, HashMap<String, Object> info, Model model, int post_seq, UserVO uvo,
-			LikeVO lvo) {
-		uvo = (UserVO) session.getAttribute("user");
-		System.out.println("상세보기");
-		postService.viewCount(post_seq); // 조회수
-		// 좋아요
-		lvo.setPost_seq(post_seq);
-		lvo.setUser_seq(uvo.getUser_seq());
-		int like = 0;
+	   public String getDetail(HttpSession session, HashMap<String, Object> info, Model model, int post_seq, UserVO uvo,
+	         LikeVO lvo, ReportVO rvo) {
+	      postService.viewCount(post_seq); // 조회수
+	      int report = 0;
+	      if (postService.reportStatus(rvo).isEmpty()) {
+	         report = 1;
+	      }
+	      // 좋아요
+	      lvo.setPost_seq(post_seq);
+	      lvo.setUser_seq(uvo.getUser_seq());
+	      int like = 0;
 
-		int check = postService.likeCount(lvo);
-		int jjimCart = postService.jjimCart(lvo);
-		int allLike = postService.allLike(lvo);
+	      int check = postService.likeCount(lvo);
+	      int jjimCart = postService.jjimCart(lvo);
+	      int allLike = postService.allLike(lvo);
 
-		if (check == 0) {
-			postService.likeinsert(lvo);
-		} else if (check == 1) {
-			like = postService.likeGetInfo(lvo);
-		}
+	      if (check == 0) {
+	         postService.likeinsert(lvo);
+	      } else if (check == 1) {
+	         like = postService.likeGetInfo(lvo);
+	      }
+	      model.addAttribute("report", report);
+	      model.addAttribute("like", like);
+	      model.addAttribute("jjimCart", jjimCart);
+	      model.addAttribute("allLike", allLike);
+	      PostVO vo = postService.postDetail(post_seq);
+	      model.addAttribute("post", vo);
 
-		model.addAttribute("like", like);
-		model.addAttribute("jjimCart", jjimCart);
-		model.addAttribute("allLike", allLike);
-		PostVO vo = postService.postDetail(post_seq);
-		model.addAttribute("post", vo);
+	      // 이미지 불러오기
+	      List<String> photoName = postService.photoDetail(post_seq);
+	      model.addAttribute("name", photoName);
 
-		// 이미지 불러오기
-		List<String> photoName = postService.photoDetail(post_seq);
-		model.addAttribute("name", photoName);
-
-		return "login/product&purchase/product_detail";
-	}
+	      return "login/product&purchase/product_detail";
+	   }
 
 	// 좋아요 컨트롤러
 	@PostMapping("/likeupdate.do")
@@ -548,6 +550,19 @@ public class PostController {
 	@RequestMapping(value = "/cancelJjimNotice.do")
 	public @ResponseBody String cancelJjimNotice(HttpSession session, Model model, String cmd) {
 		System.out.println("찜 취소 값 넘겨주자.");
+		System.out.println(cmd);
+		UserVO uvo = (UserVO) session.getAttribute("user");
+		PostVO pvo = (PostVO) model.getAttribute("post");
+		System.out.println(uvo.toString());
+		System.out.println(pvo.toString());
+		String msg = cmd + "," + pvo.getNickname() + "," + uvo.getNickname() + "," + pvo.getPost_seq();
+		return msg;
+	}
+	
+	//신고당하면 알림보내줌
+	@RequestMapping(value = "/sendReport.do")
+	public @ResponseBody String sendReport(HttpSession session, Model model, String cmd) {
+		System.out.println("신고당했음");
 		System.out.println(cmd);
 		UserVO uvo = (UserVO) session.getAttribute("user");
 		PostVO pvo = (PostVO) model.getAttribute("post");

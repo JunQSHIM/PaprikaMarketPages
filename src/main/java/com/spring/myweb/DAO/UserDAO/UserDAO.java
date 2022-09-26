@@ -10,6 +10,7 @@ import com.spring.myweb.VO.UserVO.UserVO;
 
 public interface UserDAO {
 	public List<UserVO> selectAll();
+	public UserVO selectByNickname(String nickname);
 	public UserVO select(String id);
 	public int insertUser(UserVO vo);
 	public void kakaoinsert(HashMap<String, Object> userInfo);

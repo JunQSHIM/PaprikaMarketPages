@@ -159,13 +159,9 @@ public class UserController {
 		return "login/login&register/login";
 	}
 
-	private boolean rememberId(boolean rememberId) {
-		return rememberId;
-	}
-
 	@RequestMapping(value = "/login.do")
 	public String loginUser(HttpSession session, Model model, String id, String password, ServletRequest request,
-			HttpServletResponse response, boolean rememberId) throws Exception {
+			HttpServletResponse response) throws Exception {
 		System.out.println("User login service");
 		UserVO vo = userService.select(id);
 		if (passwordEncoder.matches(password, vo.getPassword())) {
@@ -173,14 +169,6 @@ public class UserController {
 			model.addAttribute("user", vo);
 		} else {
 			System.out.println("FAILS");
-		}
-		if (rememberId(rememberId)) {
-			Cookie cookie = new Cookie("id", id);
-			response.addCookie(cookie);
-		} else {
-			Cookie cookie = new Cookie("id", id);
-			cookie.setMaxAge(0);
-			response.addCookie(cookie);
 		}
 
 		return "login/main/mother";

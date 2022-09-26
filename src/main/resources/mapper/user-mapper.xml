@@ -4,6 +4,9 @@
 	<select id="selectUserAll" resultType="UserVO">
 		select * from user;
 	</select>
+	<select id="selectByNickname" resultType="UserVO">
+		select * from user where nickname=#{nickname}
+	</select>
 	<select id="selectUser" parameterType="string"
 		resultType="UserVO">
 		select * from user where id=#{value}
@@ -387,8 +390,12 @@
 		post_reports(user_seq, user_singo_seq, post_seq, report_content,
 		report_date) values(#{user_seq}, #{user_singo_seq}, #{post_seq},
 		#{report_content}, now())
-		
 	</insert>
+	
+	<!-- 신고사유보기  -->
+	<select id="reportReason" resultType="ReportVO">
+		select * from post_reports where user_singo_seq=#{user_singo_seq} and user_seq=#{user_seq}
+	</select>
 
 	<!-- 신고했는지 안 했는지 -->
 	<select id="reportStatus" parameterType="ReportVO"

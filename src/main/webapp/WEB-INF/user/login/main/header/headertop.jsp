@@ -72,11 +72,25 @@ function readNotice(){
 				<c:forEach var="notice" items="${notice}">
 				<c:choose>
 					<c:when test="${notice.buyerId eq user.nickname }">
-						<li id="readNotice">${notice.sellerId }님의 <button style="background-color: rgba(0,0,0,0);" onclick="location.href='${notice.messageFrom}${notice.seq }'; readNotice()">상품을 </button>${notice.action } [${notice.sys_time }]</li>
+						<c:choose>
+							<c:when test="${notice.action eq '신고했습니다.' }">
+								<li id="readNotice">${notice.sellerId }님의  <button style="border: 0px;" onclick="location.href='/myweb/postDetail.do?post_seq=${notice.seq }'; readNotice()">상품을 신고했습니다.</button>${notice.messageFrom } [${notice.sys_time }]</li>
+							</c:when>
+							<c:otherwise>
+								<li id="readNotice">${notice.sellerId }님의 <button style="background-color: rgba(0,0,0,0);" onclick="location.href='${notice.messageFrom}${notice.seq }'; readNotice()">상품을 </button>${notice.action } [${notice.sys_time }]</li>
+							</c:otherwise>
+						</c:choose>
 						<input type="hidden" name="notice_seq" id="notice_seq" value="${notice.notice_seq }">
 					</c:when>
 					<c:when test="${notice.sellerId eq user.nickname }">
-						<li id="readNotice">${notice.buyerId }님이 <button style="border: 0px;" onclick="location.href='${notice.messageFrom}${notice.seq }'; readNotice()">상품을 </button>${notice.action } [${notice.sys_time }]</li>
+						<c:choose>
+							<c:when test="${notice.action eq '신고했습니다.' }">
+								<li id="readNotice">${notice.sellerId }님의  <button style="border: 0px;" onclick="location.href='/myweb/postDetail.do?post_seq=${notice.seq }'; readNotice()">상품이 신고당했습니다.</button>${notice.messageFrom } [${notice.sys_time }]</li>
+							</c:when>
+							<c:otherwise>
+								<li id="readNotice">${notice.buyerId }님이 <button style="border: 0px;" onclick="location.href='${notice.messageFrom}${notice.seq }'; readNotice()">상품을 </button>${notice.action } [${notice.sys_time }]</li>
+							</c:otherwise>
+						</c:choose>
 						<input type="hidden" name="notice_seq" id="notice_seq" value="${notice.notice_seq }">
 					</c:when>
 				</c:choose>

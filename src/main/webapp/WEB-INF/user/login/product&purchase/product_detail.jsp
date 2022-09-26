@@ -74,31 +74,30 @@
                   <div id="title">${post.post_title }</div>
                   <div class="post_price"><div class="postPrice"><fmt:formatNumber value="${post.price }" pattern="###,###,###"/><span>원</span></div>
                   <c:choose>
-									<c:when test="${post.pay_check == 1 }">
-										<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/kakao.png" width="100" height="50" alt="페이 가능">
-									</c:when>
-              				 		<c:when test="${post.pay_check == 0 }">
-               							<img src="/myweb/login/images/jjim_icon/pay.svg" style="visibility: hidden;" alt="페이 가능">
-               						</c:when>
-								</c:choose>
+                           <c:when test="${post.pay_check == 1 }">
+                              <img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/kakao.png" width="100" height="50" alt="페이 가능">
+                           </c:when>
+                                 <c:when test="${post.pay_check == 0 }">
+                                    <img src="/myweb/login/images/jjim_icon/pay.svg" style="visibility: hidden;" alt="페이 가능">
+                                 </c:when>
+                        </c:choose>
                   </div>
                   
                </div>
                <div class="item">
- 
                <div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/heart.png" width="16" height="16">${allLike }</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/clock.png" width="16" height="16">${post.upload_date}</div>
                <c:choose>
                 <c:when test="${post.user_seq ne user.user_seq}">
-             		<c:if test="${report == 1 }">
-               			<div class="etc_items"><button class="openBtn">신고하기</button></div>
-               		</c:if>
-               		<c:if test="${report == 0 }">
-               			<div class="etc_items" style="color:red;">신고완료</div>
-              		 </c:if>
-             	</c:when>
-             	 <c:when test="${post.user_seq eq user.user_seq}">
-             		<div class="etc_items"><button class="openBtn" style="visibility: hidden;">신고하기</button></div>
-             	</c:when>
+                   <c:if test="${report == 1 }">
+                        <div class="etc_items"><button class="openBtn">신고하기</button></div>
+                     </c:if>
+                     <c:if test="${report == 0 }">
+                        <div class="etc_items" style="color:red;">신고완료</div>
+                     </c:if>
+                </c:when>
+                <c:when test="${post.user_seq eq user.user_seq}">
+                   <div class="etc_items"><button class="openBtn" style="visibility: hidden;">신고하기</button></div>
+                </c:when>
              </c:choose>
                </div>
                
@@ -149,15 +148,15 @@
                <c:choose>
                 <c:when test="${post.user_seq ne user.user_seq}">
                 <c:choose>
-						<c:when test="${like ==0}">
-							<button type="button" id="likebtn">찜</button>
-							<input type="hidden" id="likecheck" value="${like }">
-						</c:when>					
-						<c:when test="${like ==1}">
-							<button type="button" id="likebtn" class="">♥찜</button>
-							<input type="hidden" id="likecheck" value="${like }">
-						</c:when>
-					</c:choose>			
+                  <c:when test="${like ==0}">
+                     <button type="button" id="likebtn">찜</button>
+                     <input type="hidden" id="likecheck" value="${like }">
+                  </c:when>               
+                  <c:when test="${like ==1}">
+                     <button type="button" id="likebtn" class="">♥찜</button>
+                     <input type="hidden" id="likecheck" value="${like }">
+                  </c:when>
+               </c:choose>         
                   <button onclick="document.getElementById('chat').submit()">연락하기</button>
 	                  <form action="/myweb/createChat.cdo" id="chat" method="post">
 	                  	<input type="hidden" name="post_seq" value="${post.post_seq }">
@@ -165,33 +164,22 @@
 	                  	<input type="hidden" name="post_user_seq" value="${post.user_seq }">
 	                  </form>
                <c:choose>
-               <c:when test="${post.pay_check == 1 and post.nickname ne user.nickname}">
-               		<c:choose>
-               			<c:when test="${post.pay_status == 2 }">
-               				<button onclick="" type="button" width="80">구매예약상품</button>
-               			</c:when>
-               			<c:otherwise>
-               				<button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
-               			</c:otherwise>
-               		</c:choose>
-               	</c:when>
                <c:when test="${post.pay_check == 1}">
                   <button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
                </c:when>
                <c:when test="${post.pay_check == 0 }">
-               		<button onclick="" style="visibility: hidden;">바로구매</button>
+                     <button onclick="" style="visibility: hidden;">바로구매</button>
                </c:when>
-				</c:choose>
-				</c:when>
-			</c:choose>
+            </c:choose>
+            </c:when>
+         </c:choose>
                </div>
-               
                <div class="item_btn" id="func">
             <c:choose>
                 <c:when test="${post.user_seq eq user.user_seq}">
-					<a  class="myStoreBtn" href="myProductCart.do?user_seq=${user.user_seq}">내 상품 관리</a>
+               <a  class="myStoreBtn" href="myProductCart.do?user_seq=${user.user_seq}">내 상품 관리</a>
                </c:when>
-			</c:choose>
+         </c:choose>
                </div>
             </div>
             </div>
@@ -272,6 +260,6 @@
       <jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
    </footer>
 </body>
-
 <script type="text/javascript" src="/myweb/login/product&purchase/product_detail.js"></script>
-</html>
+
+</html></html>

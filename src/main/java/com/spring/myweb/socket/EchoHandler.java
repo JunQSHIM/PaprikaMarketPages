@@ -19,8 +19,10 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.spring.myweb.Service.NoticeService.NoticeService;
 import com.spring.myweb.Service.PostService.PostService;
+import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.PostVO.Time;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @RequestMapping("/echo")
@@ -33,6 +35,8 @@ public class EchoHandler extends TextWebSocketHandler{
 	@Autowired
 	PostService postService;
 	
+	@Autowired
+	UserService userService;
 	
 	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 	// 1:1로 할 경우
@@ -106,7 +110,7 @@ public class EchoHandler extends TextWebSocketHandler{
 					logger.info(buyerId+"가 "+sellerId+"님의 상품번호 "+seq+"를 찜했습니다.");
 					if(sellerSession != null) {
 						TextMessage sellerMsg = new TextMessage(buyerId + "님이 "
-								+ "<a href='/myweb/favorite.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
+								+ "<a href='/myweb/postDetail.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
 								+ "상품을</strong> 찜하기를 취소했습니다.</a> ["+nowTime+"]");
 						TextMessage buyerMsg = new TextMessage(sellerId+"님의 상품 찜하기를 취소했습니다. ["+nowTime+"]");
 						mySession.sendMessage(buyerMsg);
@@ -217,6 +221,53 @@ public class EchoHandler extends TextWebSocketHandler{
 					int result = noticeService.addNotice(info);
 					if(result == 1) {
 						logger.info("알림 저장 완료(구매예약대기 취소)");
+					}
+				}
+				
+				//신고당함
+				else if("report".equals(cmd)) {
+					Date now = new Date();
+			        String nowTime = Time.calculateTime(now);
+					logger.info("신고");
+					logger.info(sellerId+"님의 상품번호 "+seq+" 신고당했습니다.");
+					PostVO vo = (PostVO)postService.postDetail(Integer.parseInt(seq));
+					
+					HashMap<String,Object> reportInfo = new HashMap<>();
+					
+					UserVO uvo2 = (UserVO)userService.selectByNickname(buyerId);
+					int reporter = uvo2.getUser_seq();
+					int reported = vo.getUser_seq();
+					System.out.println(reporter);
+					System.out.println(reported);
+					reportInfo.put("user_seq", reporter);
+					reportInfo.put("user_singo_seq", reported);
+					
+					ReportVO rvo = postService.reportReason(reportInfo);
+					System.out.println("신고내용 "+rvo.getReport_content());
+					
+					
+					if(sellerSession != null) {
+						logger.info("HIHI");
+						TextMessage sellerMsg = new TextMessage(sellerId + "님의 "
+								+ "<a href='/myweb/postDetail.do?post_seq="+seq+"'  style=\"color: black\"><strong>"
+								+ "상품이" +"</strong> 신고되었습니다.</a> ["+nowTime+"]");
+						TextMessage buyerMsg = new TextMessage(sellerId+"님의 상품을 신고했습니다. ["+nowTime+"]");
+						mySession.sendMessage(buyerMsg);
+						sellerSession.sendMessage(sellerMsg);
+					}
+					String action = "신고했습니다.";
+					String messageFrom = rvo.getReport_content();
+					//DB에 저장
+					HashMap<String, Object> info = new HashMap<>();
+					info.put("buyerId", buyerId);
+					info.put("sellerId", sellerId);
+					info.put("seq", Integer.parseInt(seq));
+					info.put("read_notice", 0);
+					info.put("messageFrom", messageFrom);
+					info.put("action", action);
+					int result = noticeService.addNotice(info);
+					if(result == 1) {
+						logger.info("알림 저장 완료(신고)");
 					}
 				}
 				

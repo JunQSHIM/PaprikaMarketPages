@@ -88,12 +88,15 @@ function toProfileEdit() {
 					<div id="myLoc">
 						<b>내 동네</b>
 						<c:choose>
-							<c:when test="${user.location1 ne null and kakaoUser.location1 ne null}">
-								${kakaoUser.location1 } / ${kakaoUser.location2 }
-							</c:when>
 							<c:when test="${user.location1 ne null }">
 								${user.location1 } / ${user.location2 }
 							</c:when>
+							<%-- <c:when test="${user.location1 ne null and kakaoUser.location1 ne null}">
+								${user.location1 } / ${user.location2 }
+							</c:when>
+							<c:when test="${user.location1 ne null and kakaoUser.location1 eq null}">
+								${user.location1 } / ${user.location2 }
+							</c:when> --%>
 							<c:otherwise>
 								동네 인증이 필요합니다!
 							</c:otherwise>

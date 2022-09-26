@@ -211,7 +211,6 @@
 		});
    	}
    	
-   	
     function showPopUp() {
     	//창 크기 지정
     	var width = 500;

@@ -1,17 +1,14 @@
 package com.spring.myweb.security.config;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.Authentication;
@@ -28,8 +25,6 @@ import com.spring.myweb.DAO.UserDAO.UserDAO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 import lombok.Data;
-import net.nurigo.java_sdk.api.Message;
-import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Data
 public class LoginSuccessHandler implements AuthenticationSuccessHandler{
@@ -43,6 +38,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 	private RequestCache reqCache = new HttpSessionRequestCache();
 	private RedirectStrategy redirectStratgy = new DefaultRedirectStrategy();
 
+	
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -58,6 +54,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 			if(vo.getJoin_type()==1) {
 				throw new DisabledException(defaultUrl);
 			}
+			if(vo.getRep_no()>=5) {
+				throw new DisabledException(defaultUrl);
+			}
 		}catch(MailException e) {
 			e.printStackTrace();
 		}
@@ -71,6 +70,17 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		} else {
 			resultRedirectStrategy(request, response, authentication);
 		}
+				
+		
+//		
+//		if (rememberId(rememberId)) {
+//			Cookie cookie = new Cookie("id", vo.getId());
+//			response.addCookie(cookie);
+//		} else {
+//			Cookie cookie = new Cookie("id", vo.getId());
+//			cookie.setMaxAge(0);
+//			response.addCookie(cookie);
+//		}
 		// 에러 세션 지우기
 		clearAuthenticationAttributes(request);
 
@@ -92,6 +102,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		if (session == null)
 			return;
 		session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+	}
+	
+	private boolean rememberId(boolean rememberId) {
+		return rememberId;
 	}
 
 }

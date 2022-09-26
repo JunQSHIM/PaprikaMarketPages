@@ -49,6 +49,11 @@ public class UserServiceImpl implements UserService{
 	public List<UserVO> selectAll() {
 		return userDAO.selectAll();
 	}
+	
+	@Override
+	public UserVO selectByNickname(String nickname) {
+		return userDAO.selectByNickname(nickname);
+	}
 
 	@Override
 	public UserVO select(String id) {

@@ -316,5 +316,10 @@ public class PostDAOImpl implements PostDAO {
 		return session.selectOne("userDB.reviewCount", user_seq);
 	}
 
+	@Override
+	public ReportVO reportReason(HashMap<String, Object> info) {
+		return session.selectOne("userDB.reportReason",info);
+	}
+
 
 }

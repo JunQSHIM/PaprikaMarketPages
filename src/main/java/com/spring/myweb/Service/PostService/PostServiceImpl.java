@@ -221,4 +221,9 @@ public class PostServiceImpl implements PostService {
 		return postDao.reviewCount(user_seq);
 	}
 
+	@Override
+	public ReportVO reportReason(HashMap<String, Object> info) {
+		return postDao.reportReason(info);
+	}
+
 }

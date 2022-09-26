@@ -222,8 +222,6 @@ public class PostDAOImpl implements PostDAO {
 
 	@Override
 	public void likeupdate(LikeVO vo) {
-		System.out.println("user" + vo.getUser_seq());
-		System.out.println("post" + vo.getPost_seq());
 		session.update("userDB.likeUpdate", vo);
 	}
 

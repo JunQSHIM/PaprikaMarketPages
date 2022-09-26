@@ -132,7 +132,6 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public void likeupdate(LikeVO vo) {
-		System.out.println(vo);
 		postDao.likeupdate(vo);
 	}
 

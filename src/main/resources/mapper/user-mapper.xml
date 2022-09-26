@@ -529,5 +529,8 @@
 		update notice set read_notice=1 where notice_seq=#{notice_seq}
 	</update>
 	
-	<!--  -->
+	<!-- 1:1문의하기 보내기 -->
+	<insert id="oneOnInsert">
+		insert into oneOnOne(user_seq, content, create_date) values(#{user_seq},#{content},now())
+	</insert>
 </mapper>

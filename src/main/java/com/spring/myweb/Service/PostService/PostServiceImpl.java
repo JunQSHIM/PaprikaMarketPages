@@ -13,6 +13,7 @@ import com.spring.myweb.DAO.PostDAO.PostDAO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
@@ -223,6 +224,11 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public ReportVO reportReason(HashMap<String, Object> info) {
 		return postDao.reportReason(info);
+	}
+
+	@Override
+	public int oneOnInsert(OneOnOneVO vo) throws Exception {
+		return postDao.oneOnInsert(vo);
 	}
 
 }

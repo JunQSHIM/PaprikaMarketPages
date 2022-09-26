@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
@@ -64,6 +65,8 @@ public interface PostService {
 	public int insertPPKPay(HashMap<String, Object> vo);
 	
 	public ReportVO reportReason(HashMap<String,Object> info); //신고사유보려고
+	
+	public int oneOnInsert(OneOnOneVO vo) throws Exception; // 1:1문의하기
 
 
 }

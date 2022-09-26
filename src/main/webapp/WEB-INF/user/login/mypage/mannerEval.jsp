@@ -60,11 +60,11 @@ $(document).ready(function(){
 			</c:if>
 				<c:if test="${reviewCnt != 0 }">
 				<div id="good_manner_detail">
-					<c:forEach items="${manner }" var="manner">
+					
 						<ul>
-							<li>${manner.manner_compliment }</li>
+							<li>상품 상태가 설명한 것과 같아요. ${mannerProd} </li>
 						</ul>
-					</c:forEach>
+					
 				</div>
 			</c:if>
 			</div>

@@ -32,6 +32,7 @@ import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 import com.spring.myweb.VO.AdminVO.PayVO.PayVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
@@ -534,6 +535,20 @@ public class AdminController {
 				}
 			}
 			return 1;
+		}
+		
+		@RequestMapping(value = "oneOnAdminView.mdo")
+		public String oneOnAdminView(Model model) {
+			List<OneOnOneVO> one = adminService.oneOnList();
+			 
+			for(OneOnOneVO vo : one) {
+				vo.setNickname(adminService.findUser(vo.getUser_seq()).getNickname());
+				vo.setId(adminService.findUser(vo.getUser_seq()).getId());
+				vo.setEmail(adminService.findUser(vo.getUser_seq()).getEmail());
+			}
+			
+			model.addAttribute("one", one);
+			return "Admin_page/admin_list/oneOnForm";
 		}
 		
 }

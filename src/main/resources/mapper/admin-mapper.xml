@@ -230,4 +230,15 @@
 	<update id="updatePay">
 		update pay set process=#{process}, status=#{status} where pay_seq=#{pay_seq}
 	</update>
+	
+	<!-- 1:1 문의 리스트 -->
+	<select id="oneOnList" resultType="OneOnOneVO">
+		select * from oneOnOne;
+	</select>
+	
+	<!-- 1:1 문의자 정보 추출 -->
+	<select id="findUser" resultType="OneOnOneVO">
+		select nickname, id, email from user where user_seq = #{user_seq}
+	</select>
+	
 </mapper>

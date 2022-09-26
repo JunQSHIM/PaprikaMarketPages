@@ -23,9 +23,9 @@
 	<article class="container_12">
 	<h2>구매가 완료되었습니다.</h2><br><br>
 	<form name="purchase" id="purchase" method="post" action="evaluation.do">
-	<input type="hidden" value="${user.user_seq }">
-	<input type="hidden" value="${post.post_seq }">
-	<input type="hidden" value="${post.user_seq }">
+	<input type="hidden" name="user_seq" value="${user.user_seq }">
+	<input type="hidden" name="post_seq" value="${post.post_seq }">
+	<input type="hidden" name="sell_user_seq" value="${post.user_seq }">
 	<div id="manner">
     <fieldset>
         <legend>매너온도 평가하기</legend>

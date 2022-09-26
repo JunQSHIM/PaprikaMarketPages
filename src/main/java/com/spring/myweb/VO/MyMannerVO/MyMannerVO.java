@@ -16,6 +16,10 @@ public class MyMannerVO {
 	private String bad_manner; // 비매너
 	private String manner_review; //후기작성
 	private String create_date; // 생성날짜
+	
+	private String nickname;
+	private String post_title;
+	
 	public int getUser_seq() {
 		return user_seq;
 	}
@@ -63,6 +67,25 @@ public class MyMannerVO {
 	}
 	public void setCreate_date(Date create_date) {
 		this.create_date = Time.calculateTime(create_date);
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getPost_title() {
+		return post_title;
+	}
+	public void setPost_title(String post_title) {
+		this.post_title = post_title;
+	}
+	@Override
+	public String toString() {
+		return "MyMannerVO [user_seq=" + user_seq + ", sell_user_seq=" + sell_user_seq + ", post_seq=" + post_seq
+				+ ", manner_temp=" + manner_temp + ", manner_compliment=" + manner_compliment + ", bad_manner="
+				+ bad_manner + ", manner_review=" + manner_review + ", create_date=" + create_date + ", nickname="
+				+ nickname + ", post_title=" + post_title + "]";
 	}
 	
 	

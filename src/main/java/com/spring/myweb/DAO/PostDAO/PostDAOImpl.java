@@ -30,6 +30,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
@@ -317,6 +318,11 @@ public class PostDAOImpl implements PostDAO {
 	@Override
 	public ReportVO reportReason(HashMap<String, Object> info) {
 		return session.selectOne("userDB.reportReason",info);
+	}
+
+	@Override
+	public int oneOnInsert(OneOnOneVO vo) throws Exception {
+		return session.insert("userDB.oneOnInsert", vo);
 	}
 
 

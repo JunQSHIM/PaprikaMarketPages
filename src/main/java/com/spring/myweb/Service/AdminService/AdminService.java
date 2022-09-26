@@ -9,6 +9,7 @@ import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
@@ -57,4 +58,8 @@ public interface AdminService {
 	public void bannerDelete(int banner_seq);//배너 삭제
 	
 	public int updatePay(HashMap<String, Object> vo);
+	
+	public List<OneOnOneVO> oneOnList(); // 1:1 문의 내역 불러오기
+	public OneOnOneVO findUser(int user_seq); // 문의한 사용자 정보 불러오기
+	public int oneStatus(int status);
 }

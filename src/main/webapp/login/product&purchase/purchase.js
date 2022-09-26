@@ -136,7 +136,7 @@ function review() {
 		data : {
 			user_seq : $('#user_seq').val(),
 			post_seq : $('#post_seq').val(),
-			user_singo_seq : $('#sell_user_seq').val(),
+			sell_user_seq : $('#sell_user_seq').val(),
 			review : text.value,
 		},
 		success : function(data) {

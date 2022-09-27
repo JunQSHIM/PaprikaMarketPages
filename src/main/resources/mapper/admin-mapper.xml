@@ -241,4 +241,21 @@
 		select nickname, id, email from user where user_seq = #{user_seq}
 	</select>
 	
+	<!-- 관리자 상품 목록 불러오기 -->
+	<select id="adminPost" resultType="PostVO">
+		select * from post order by post_seq desc;
+	</select>
+	
+	<!-- 상품 상세보기 -->
+	<select id="adminPostDetail" parameterType="int" resultType="PostVO">
+		select *
+		from post where post_seq = #{post_seq};
+	</select>
+	
+	<!-- 리뷰 목록 -->
+	<select id="adminReview" resultType="MyMannerVO">
+		select * from myManner;
+	</select>
+	
+	
 </mapper>

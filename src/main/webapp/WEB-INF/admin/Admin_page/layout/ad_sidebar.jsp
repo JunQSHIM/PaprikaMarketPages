@@ -83,9 +83,14 @@
 				</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item"><a
-							href="prods.mdo" class="nav-link">
+							href="adminPostView.mdo" class="nav-link">
 								<i class="nav-icon fas fa-tree"></i>
-								<p>상품 / 후기</p>
+								<p>상품 목록</p>
+						</a></li>
+						<li class="nav-item"><a
+							href="adminReview.mdo" class="nav-link">
+								<i class="nav-icon fas fa-tree"></i>
+								<p>후기 목록</p>
 						</a></li>
 						<li class="nav-item"><a href="#" class="nav-link"> <i
 								class="nav-icon fas fa-tree"></i>

@@ -325,5 +325,20 @@ public class PostDAOImpl implements PostDAO {
 		return session.insert("userDB.oneOnInsert", vo);
 	}
 
+	@Override
+	public String findReviewer(int post_seq) throws Exception {
+		return session.selectOne("userDB.findReviewer", post_seq);
+	}
+
+	@Override
+	public String Reviewer(int user_seq) throws Exception {
+		return session.selectOne("userDB.Reviewer", user_seq);
+	}
+
+	@Override
+	public void upPost(int post_seq) {
+		session.update("userDB.upPost",post_seq);
+	}
+
 
 }

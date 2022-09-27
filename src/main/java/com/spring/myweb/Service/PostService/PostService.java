@@ -36,6 +36,7 @@ public interface PostService {
 	
 	public int myCount(PageVO vo) throws Exception; // 내상품 갯수
 	public List<PostVO> myPageList(PageVO vo) throws Exception;// 내상품 목록
+	public void upPost(int post_seq); // 상품 맨 위로 올리기
 	
 	public Map<String, String> uploadImg(List<MultipartFile> img, String place);//이미지 다수 등록
 	public void insertPhoto(PhotoVO vo);//DB에 저장
@@ -67,6 +68,7 @@ public interface PostService {
 	public ReportVO reportReason(HashMap<String,Object> info); //신고사유보려고
 	
 	public int oneOnInsert(OneOnOneVO vo) throws Exception; // 1:1문의하기
-
+	public String findReviewer(int post_seq) throws Exception; // 리뷰 제목
+	public String Reviewer(int user_seq) throws Exception; // 리뷰 준 유저
 
 }

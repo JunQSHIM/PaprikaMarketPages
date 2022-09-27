@@ -43,23 +43,21 @@ function toMypage() {
 					<img id="profile_pic_update" src="/myweb/login/images/profile.png">
 				</div>
 				<div id="nickname_edit">
-					<input type="text" name="nickname" id="nickname" placeholder="새로운 닉네임" oninput="checkNickname()">
+					<div class="nicknameDiv"><input type="text" name="nickname" id="nickname" placeholder="새로운 닉네임" value="${user.nickname }" oninput="checkNickname()"></div>
 					<div id="result7"></div>
-					<input type="password" name="password" id="password" placeholder="새 비밀번호"><br><br>
-					<input type="password" name="repassword" id="passwordCheck" placeholder="비밀번호 확인">
-					<div id="result"></div>
+					<div class="nicknameDiv"><input type="password" name="password" id="password" placeholder="새 비밀번호"></div>
+					<div class="nicknameDiv"><input type="password" name="repassword" id="passwordCheck" placeholder="비밀번호 확인"></div>
+					<div><div id="result"></div>
 				</div>
 			</div>
 			<div id="upload_bottom">
 				<div id="upload_button">
 					<button id="upload" onclick=upload()>프로필 사진 수정</button>
-				</div>
-			</div>
-			<div id="toMypage">
-				<button type="button" id="editSubmit" value="수정하기">수정하기</button>
-				<div id="toMypage_button">
 					<button type="button" onclick=toMypage()>취소</button>
+					<button type="button" id="editSubmit" value="수정하기">수정하기</button>
 				</div>
+	
+			</div>
 			</div>
 			</form>
 		</div>
@@ -122,17 +120,14 @@ function checkNickname() {
 						if(!theForm.nickname.value){
 							document.getElementById('result7').innerHTML = '<font color="red">닉네임을 입력해주세요.</font>';
 							setOutline(theForm.nickname, "2px solid red");
-							target.disabled=true;
 						}else{
 							document.getElementById('result7').innerHTML = '<font color="green">사용가능한 닉네입니다.</font>';
 							setOutline(theForm.nickname, "2px solid green");
-							target.disabled = false;
 						}
 					}else { // cnt가 0일 경우 -> 이미 존재하는 아이디
 							document.getElementById('result7').innerHTML = '<font color="red">중복된 닉네임입니다.</font>';
 							setOutline(theForm.nickname, "2px solid red");
 							theForm.nickname.focus();
-							target.disabled = true;
 					} 
 					
 				},
@@ -142,15 +137,6 @@ function setOutline(objFormElement, color) {
 	if (objFormElement.style)
 		objFormElement.style.outline = color;
 }
-$("#editSubmit").click(function(){
-	var theForm = document.edit;
-	var nickname = theForm.nickname.value;
-	const target = document.getElementById("editSubmit");
-	if(!theForm.nickname.value){
-		target.disabled=true;
-	}
-	theForm.submit();
-});
 $("#passwordCheck").keyup(function() {
 	var theForm = document.edit;
 	var password = theForm.password.value;
@@ -159,14 +145,44 @@ $("#passwordCheck").keyup(function() {
 	if (repassword == password) {
 		setOutline(theForm.repassword,"2px solid green");
 		document.getElementById('result').innerHTML = '<font color="green">비밀번호가 일치합니다.</font>';
-		target.disabled = false;
 	} else if (!theForm.repassword.value|| repassword != password) {
 		setOutline(theForm.repassword,"2px solid red");
 		document.getElementById('result').innerHTML = '<font color="red">비밀번호가 일치하지 않습니다.</font>';
 		theForm.repassword.focus();
-		target.disabled = true;
 	}
 });
+var theForm = document.edit;
+function setOutline(objFormElement, color) {
+	if (objFormElement.style)
+		objFormElement.style.outline = color;
+}
+	$("#editSubmit").click(function() {
+		if (!theForm.nickname.value) {
+			setOutline(theForm.nickname, "2px solid red");
+			theForm.nickname.placeholder = '닉네임을 입력해주세요';
+			theForm.nickname.focus();
+			return;
+		} else {
+			setOutline(theForm.nickname, "1px solid black");
+		}
+		if (!theForm.password.value) {
+			setOutline(theForm.password, "2px solid red");
+			theForm.password.placeholder = '비밀번호를 입력해주세요';
+			theForm.password.focus();
+			return;
+		} else {
+			setOutline(theForm.password, "1px solid black");
+		}
+		if (!theForm.repassword.value) {
+			setOutline(theForm.repassword, "2px solid red");
+			theForm.repassword.placeholder = '비밀번호를 입력해주세요';
+			theForm.repassword.focus();
+			return;
+		} else {
+			setOutline(theForm.repassword, "1px solid black");
+		}
+		theForm.submit();
+	});
 </script>
 </body>
 </html>

@@ -159,6 +159,11 @@
 								<p>QnA</p>
 						</a></li>
 						<li class="nav-item"><a
+							href="oneOnAdminView.mdo" class="nav-link">
+								<i class="far fa-circle nav-icon"></i>
+								<p>1:1문의</p>
+						</a></li>
+						<li class="nav-item"><a
 							href="pay.mdo" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
 								<p>파프리카페이</p>

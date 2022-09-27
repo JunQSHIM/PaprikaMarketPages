@@ -13,7 +13,7 @@
 				<div class="jjim_list">
 					<div class="jjim_list_1">
 					 	<a class="sell_product"  href="myProductCart.jsp">상품 <span class="sell_product_span">3</span></a>
-					 	<a class="review_product">상품후기 <span class="review_product_span">5</span></a>
+					 	<a class="review_product">상품후기 <span class="review_product_span">${reviewCnt}</span></a>
 					 	<a class="jjim_product"  href="jjim_cart.jsp">찜 <span class="jjim_product_span">2</span></a>
 					 </div>
 				</div>

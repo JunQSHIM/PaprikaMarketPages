@@ -157,6 +157,7 @@
 						</div>
 					</div> 
 					<div class="sell_product_cart">
+					
 					<c:choose>
 					<c:when test="${param.category_seq != null}">
 					<c:forEach items="${ct }" var="post" varStatus="status">
@@ -167,7 +168,7 @@
 									<span class="image_span">
 								<c:choose>
 									<c:when test="${post.pay_check == 1 }">
-										<img src="/myweb/login/images/jjim_icon/pay.svg" alt="페이 가능">
+										<img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/kakao.png" width="60" height="30" alt="페이 가능">
 									</c:when>
               				 		<c:when test="${post.pay_check == 0 }">
                							<img src="/myweb/login/images/jjim_icon/pay.svg" style="visibility: hidden;" alt="페이 가능">

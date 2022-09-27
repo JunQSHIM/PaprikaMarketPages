@@ -57,36 +57,21 @@ function toProfileEdit() {
 				<img src="/myweb/login/images/pkIcon.png"><b>마이페이지</b>
 			</div>
 			<div id="profile">
-			<c:choose>
-				<c:when test="${kakaoUser ne null }">
-					<div id="profile_pic" style="background-image: url(${kakaoUser.profile_image});"></div>
-				</c:when>
-				<c:otherwise>
 					<div id="profile_pic" style="background-image: url(${user.profile_image});"></div>
-				</c:otherwise>
-			</c:choose>
 				<div id="nickname_and_button">
 					<div id="nickName">
-					<c:choose>
-						<c:when test="${user.nickname ne null }">
-							${user.nickname }
+					${user.nickname }
 							&nbsp;&nbsp;<c:if test="${user.pay ne null }">&#127818;</c:if>
-						</c:when>
-						<c:otherwise>
-							${kakaoUser.nickname }
-							&nbsp;&nbsp;<c:if test="${user.pay ne null }">&#127818;</c:if>
-						</c:otherwise>
-					</c:choose>
 					</div>
 					<div id="function">	
-						<button type="button" id="sell" onclick=move()></button>
+						<button type="button" id="sell" onclick="location.href='myProductCart.do?user_seq=${user.user_seq}'"></button>
 						<button type="button" id="buy" onclick=move()></button>
-						<button type="button" id="wishlist" onclick=move()></button>
+						<button type="button" id="wishlist" onclick="location.href='favorite.do?user_seq=${user.user_seq}'"></button>
 					</div>
 				</div>
 				<div id="temperature">
 					<div id="mannerTitle">매너온도</div>
-					<div id="mannerTemp">123</div>
+					<div id="mannerTemp">${user.temp }℃</div>
 					<div class="outterTempBar">
 						<div id="innerTempBar"></div>
 					</div>
@@ -103,12 +88,15 @@ function toProfileEdit() {
 					<div id="myLoc">
 						<b>내 동네</b>
 						<c:choose>
-							<c:when test="${user.location1 ne null and kakaoUser.location1 eq null }">
+							<c:when test="${user.location1 ne null }">
 								${user.location1 } / ${user.location2 }
 							</c:when>
-							<c:when test="${kakaoUser.location1 ne null and user.location1 eq null }">
-								${kakaoUser.location1 } / ${kakaoUser.location2 }
+							<%-- <c:when test="${user.location1 ne null and kakaoUser.location1 ne null}">
+								${user.location1 } / ${user.location2 }
 							</c:when>
+							<c:when test="${user.location1 ne null and kakaoUser.location1 eq null}">
+								${user.location1 } / ${user.location2 }
+							</c:when> --%>
 							<c:otherwise>
 								동네 인증이 필요합니다!
 							</c:otherwise>
@@ -116,10 +104,10 @@ function toProfileEdit() {
 						<br>
 						<div id="verifyBirth">
 						<c:choose>
-						<c:when test="${user.birth ne null}">
+						<c:when test="${user.join_type eq 0}">
 							<b>생년월일</b><fmt:formatDate value="${user.birth}" pattern="yyyy-MM-dd"/>
 						</c:when>
-						<c:when test="${kakaoUser.available eq 0}"><b>본인인증</b><a href="/myweb/userVerify.do" style="cursor: pointer;" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">본인인증이 필요합니다.</a></c:when>
+						<c:when test="${user.birth ne null and kakaoUser.available eq 0}"><b>본인인증</b><a href="/myweb/userVerify.do" style="cursor: pointer;" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">본인인증이 필요합니다.</a></c:when>
 						<c:otherwise><b>생년월일</b><fmt:formatDate value="${kakaoUser.birth}" pattern="yyyy-MM-dd"/>&nbsp;&nbsp;&nbsp;<a href="/myweb/userVerify.do" style="cursor: pointer;" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">생년월일변경하기</a></c:otherwise>
 						</c:choose>
 						</div>
@@ -137,11 +125,23 @@ function toProfileEdit() {
 			<div id="eval_and_review">
 				<div id="manner_eval">
 					<div id="manner_eval_head"><b onclick=toMannerEval()>받은 매너 평가 ></b></div>
-					<div id="manner_eval_list">받은 매너 칭찬이 아직 없어요</div>
+					<c:if test="${reviewCnt == 0 }">
+						<div id="manner_eval_list">받은 매너 칭찬이 아직 없어요</div>
+					</c:if>
+					<c:if test="${reviewCnt != 0 }">
+						<div id="manner_eval_list">받은 매너 평가 보러가기</div>
+					</c:if>
 				</div>
 				<div id="purchase_review">
-					<div id="review_list_head"><b onclick=toMyReview()>받은 거래 후기 ></b></div>
+					<div id="review_list_head"><b onclick="location.href='reviewProductView.do?user_seq=${user.user_seq}'">받은 거래 후기 ></b></div>
+					<c:if test="${reviewCnt == 0 }">
 					<div id="review_list">받은 거래 후기가 아직 없어요</div>
+					</c:if>
+					<c:if test="${reviewCnt != 0 }">
+					<div id="review_list">
+						${reviewCnt }건의 거래 후기가 있습니다.
+					</div>
+					</c:if>
 				</div>
 			</div>
 		</div>

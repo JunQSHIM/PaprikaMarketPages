@@ -12,10 +12,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.myweb.DAO.PostDAO.PostDAO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
+import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
+import com.spring.myweb.VO.UserVO.UserVO;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -130,7 +133,6 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public void likeupdate(LikeVO vo) {
-		System.out.println(vo);
 		postDao.likeupdate(vo);
 	}
 
@@ -202,7 +204,31 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public void withdrawalPost(int user_seq) {
 		postDao.withdrawalPost(user_seq);
-		
+	}
+	
+	@Override
+	public int repNo(ReportVO vo) throws Exception {
+		return postDao.repNo(vo);
+	}
+	
+	@Override
+	public List<MyMannerVO> reviewList(int user_seq) throws Exception {
+		return postDao.reviewList(user_seq);
+	}
+
+	@Override
+	public int reviewCount(int user_seq) {
+		return postDao.reviewCount(user_seq);
+	}
+
+	@Override
+	public ReportVO reportReason(HashMap<String, Object> info) {
+		return postDao.reportReason(info);
+	}
+
+	@Override
+	public int oneOnInsert(OneOnOneVO vo) throws Exception {
+		return postDao.oneOnInsert(vo);
 	}
 
 }

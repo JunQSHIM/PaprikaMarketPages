@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 @Repository
@@ -25,6 +26,12 @@ public class UserDAOImpl implements UserDAO{
 		return userList;
 	}
 
+	@Override
+	public UserVO selectByNickname(String nickname) {
+		UserVO user = session.selectOne("userDB.selectByNickname", nickname);
+		return user;
+	}
+	
 	@Override
 	public UserVO select(String id) {
 		UserVO user = session.selectOne("userDB.selectUser", id);
@@ -135,6 +142,11 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public int evaluation(MyMannerVO vo) throws Exception {
 		return session.insert("userDB.evaluation",vo);
+	}
+
+	@Override
+	public int repNo(int user_seq) throws Exception {
+		return session.update("userDB.repNo", user_seq);
 	}
 
 	

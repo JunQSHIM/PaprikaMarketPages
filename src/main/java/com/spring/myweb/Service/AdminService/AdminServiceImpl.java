@@ -15,6 +15,7 @@ import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 import com.spring.myweb.VO.AdminVO.PayVO.PayVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
@@ -221,5 +222,20 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int updatePay(HashMap<String, Object> vo) {
 		return adminDAO.updatePay(vo);
+	}
+
+	@Override
+	public List<OneOnOneVO> oneOnList() {
+		return adminDAO.oneOnList();
+	}
+
+	@Override
+	public OneOnOneVO findUser(int user_seq) {
+		return adminDAO.findUser(user_seq);
+	}
+
+	@Override
+	public int oneStatus(int status) {
+		return adminDAO.oneStatus(status);
 	}
 }

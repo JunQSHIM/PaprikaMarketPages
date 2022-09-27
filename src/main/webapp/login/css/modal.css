@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.modal1 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+.modal .bg1 {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modalBox1 {
+	position: absolute;
+	background-color: #fff;
+	width: 400px;
+	height: 200px;
+	padding: 15px;
+}
+
+
+.hidden1 {
+	display: none;
+}

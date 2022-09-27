@@ -54,6 +54,7 @@
          <div class="detailContent">
          <input type="hidden" id="user_seq" name="user_seq" value="${user.user_seq }">
          <input type="hidden" id="post_seq" name="post_seq" value="${post.post_seq }">
+
             <div class="grid_4 item" id="picture">
             <div class="cTZOqF">
                <div class="kjooeF">
@@ -71,19 +72,33 @@
                <div class="prod_info">
                <div class="item" id="detail" style="border-bottom: 1px solid rgb(238, 238, 238)">
                   <div id="title">${post.post_title }</div>
-                  <div class="post_price"><div class="postPrice"><fmt:formatNumber value="${post.price }" pattern="###,###,###"/><span>원</span></div></div>
+                  <div class="post_price"><div class="postPrice"><fmt:formatNumber value="${post.price }" pattern="###,###,###"/><span>원</span></div>
+                  <c:choose>
+                           <c:when test="${post.pay_check == 1 }">
+                              <img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/kakao.png" width="100" height="50" alt="페이 가능">
+                           </c:when>
+                                 <c:when test="${post.pay_check == 0 }">
+                                    <img src="/myweb/login/images/jjim_icon/pay.svg" style="visibility: hidden;" alt="페이 가능">
+                                 </c:when>
+                        </c:choose>
+                  </div>
                   
                </div>
                <div class="item">
- 
                <div class="etc"><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/heart.png" width="16" height="16">${allLike }</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/eye.png" width="21" height="13">${post.cnt}</div><div class="etc_items"><img alt="상품 상태 아이콘" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/clock.png" width="16" height="16">${post.upload_date}</div>
-             
-              <c:if test="${report == 1 }">
-               <div class="etc_items"><button class="openBtn">신고하기</button></div>
-               </c:if>
-                <c:if test="${report == 0 }">
-               <div class="etc_items" style="color:red;">신고완료</div>
-               </c:if>
+               <c:choose>
+                <c:when test="${post.user_seq ne user.user_seq}">
+                   <c:if test="${report == 1 }">
+                        <div class="etc_items"><button class="openBtn">신고하기</button></div>
+                     </c:if>
+                     <c:if test="${report == 0 }">
+                        <div class="etc_items" style="color:red;">신고완료</div>
+                     </c:if>
+                </c:when>
+                <c:when test="${post.user_seq eq user.user_seq}">
+                   <div class="etc_items"><button class="openBtn" style="visibility: hidden;">신고하기</button></div>
+                </c:when>
+             </c:choose>
                </div>
                
                </div>
@@ -131,36 +146,40 @@
                  
                <div class="item_btn" id="func">
                <c:choose>
-                <c:when test="${post.nickname ne user.nickname}">
+                <c:when test="${post.user_seq ne user.user_seq}">
                 <c:choose>
-						<c:when test="${like ==0}">
-							<button type="button" id="likebtn">찜</button>
-							<input type="hidden" id="likecheck" value="${like }">
-						</c:when>					
-						<c:when test="${like ==1}">
-							<button type="button" id="likebtn" class="">♥찜</button>
-							<input type="hidden" id="likecheck" value="${like }">
-						</c:when>
-					</c:choose>			
-                  <button>연락하기</button>
+                  <c:when test="${like ==0}">
+                     <button type="button" id="likebtn">찜</button>
+                     <input type="hidden" id="likecheck" value="${like }">
+                  </c:when>               
+                  <c:when test="${like ==1}">
+                     <button type="button" id="likebtn" class="">♥찜</button>
+                     <input type="hidden" id="likecheck" value="${like }">
+                  </c:when>
+               </c:choose>         
+                  <button onclick="document.getElementById('chat').submit()">연락하기</button>
+	                  <form action="/myweb/createChat.cdo" id="chat" method="post">
+	                  	<input type="hidden" name="post_seq" value="${post.post_seq }">
+	                  	<input type="hidden" name="userNickName" value="${user.nickname }">
+	                  	<input type="hidden" name="post_user_seq" value="${post.user_seq }">
+	                  </form>
                <c:choose>
                <c:when test="${post.pay_check == 1}">
                   <button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
                </c:when>
                <c:when test="${post.pay_check == 0 }">
-               		<button onclick="" style="visibility: hidden;">바로구매</button>
+                     <button onclick="" style="visibility: hidden;">바로구매</button>
                </c:when>
-				</c:choose>
-				</c:when>
-			</c:choose>
+            </c:choose>
+            </c:when>
+         </c:choose>
                </div>
-               
                <div class="item_btn" id="func">
             <c:choose>
-                <c:when test="${post.nickname eq user.nickname}">
-					<a  class="myStoreBtn" href="myProductCart.do?user_seq=${user.user_seq}">내 상품 관리</a>
+                <c:when test="${post.user_seq eq user.user_seq}">
+               <a  class="myStoreBtn" href="myProductCart.do?user_seq=${user.user_seq}">내 상품 관리</a>
                </c:when>
-			</c:choose>
+         </c:choose>
                </div>
             </div>
             </div>
@@ -201,7 +220,12 @@
                         ${post.nickname}
                      </div>
                      <div id="follow">
+                     <c:if test="${ post.user_seq == null }">
+                        <button onclick="quit()">상점가기</button>
+                     </c:if>
+                      <c:if test="${post.user_seq != null }">
                         <button onclick="location.href='myProductCart.do'">상점가기</button>
+                     </c:if>
                      </div>
                      <div id="rt_img">
                         <div class="slider2">
@@ -222,7 +246,7 @@
                         상점921호 ★★★★☆
                         <div style="background-color: rgb(0,0,0,0.08)">어차피 수십년전 제품들이라 재생만이라도 잘 되면 좋은데 재생잘되요</div>
                      </div>
-                     <div id="more_reivews"><button>후기더보기</button></div>
+                     <div id="more_reivews"><button onclick="location.href='reviewProductView.do?user_seq=${post.user_seq}'">후기더보기</button></div>
                   </div>
                </div>
             </div>
@@ -236,6 +260,6 @@
       <jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
    </footer>
 </body>
-
 <script type="text/javascript" src="/myweb/login/product&purchase/product_detail.js"></script>
-</html>
+
+</html></html>

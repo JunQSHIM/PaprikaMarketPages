@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
+import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
@@ -53,13 +55,20 @@ public interface PostDAO {
 	public List<PostVO> jjimList(PageVO vo) throws Exception; // 찜한 게시물 목록
 	public void jjimDelete(LikeVO vo);// 찜 목록 삭제
 	
+	public int repNo(ReportVO vo) throws Exception;
 	public int postReport(ReportVO vo); // 신고하기
 	public List<ReportVO> reportStatus(ReportVO vo); // 신고 했는지 안했는지
 	public void withdrawalPost(int user_seq); // 회원탈퇴를 위한 게시판 삭제
+	
+	public ReportVO reportReason(HashMap<String,Object> info); //신고사유보려고
+	
+	public List<MyMannerVO> reviewList(int user_seq) throws Exception; // 상품 후기 리스트
+	public int reviewCount(int user_seq); // 받은 리뷰 개수
 	
 	public int updatePayPost(PostVO vo); //유저의 파프리카페이 링크를 포스트에도 저장
 	public int updatePayStatus(PostVO vo); //구매 예약 대기 완료 변경해주는것 
 	
 	public int insertPPKPay(HashMap<String,Object> vo); //구매예약시 정보들을 관리자에게 전달
 	
+	public int oneOnInsert(OneOnOneVO vo) throws Exception; // 1:1문의하기
 }

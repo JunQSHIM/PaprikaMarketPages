@@ -53,14 +53,36 @@ $(document).ready(function(){
 			</ul>
 
 			<div id="tab-1" class="tab-content current">
+			<c:if test="${reviewCnt == 0 }">
 				<div id="good_manner_detail">
 					받은 매너 칭찬이 아직 없어요.
 				</div>
+			</c:if>
+				<c:if test="${reviewCnt != 0 }">
+				<div id="good_manner_detail">
+					
+						<ul>
+							<li>상품 상태가 설명한 것과 같아요. ${mannerProd} </li>
+						</ul>
+					
+				</div>
+			</c:if>
 			</div>
 			<div id="tab-2" class="tab-content">
+			<c:if test="${reviewCnt == 0 }">
 				<div id="bad_manner_detail">
 					받은 비매너가 아직 없어요.
 				</div>
+			</c:if>
+			<c:if test="${reviewCnt != 0 }">
+				<div id="bad_manner_detail">
+				<c:forEach items="${manner }" var="manner">
+					<ul>
+						<li>${manner.bad_manner }</li>
+					</ul>
+				</c:forEach>
+				</div>
+			</c:if>
 			</div>
 			<div id="tab-3" class="tab-content">
 				<div id="notice_detail">

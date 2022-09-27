@@ -4,6 +4,9 @@
 	<select id="selectUserAll" resultType="UserVO">
 		select * from user;
 	</select>
+	<select id="selectByNickname" resultType="UserVO">
+		select * from user where nickname=#{nickname}
+	</select>
 	<select id="selectUser" parameterType="string"
 		resultType="UserVO">
 		select * from user where id=#{value}
@@ -349,7 +352,7 @@
 	<select id="myPageList" parameterType="PageVO"
 		resultType="PostVO">
 		select * from (
-		select post_seq, post_title, price, upload_date,
+		select post_seq, post_title, price, create_date,
 		pay_check, location1
 		from post
 		<if test="user_seq != null">
@@ -388,6 +391,11 @@
 		report_date) values(#{user_seq}, #{user_singo_seq}, #{post_seq},
 		#{report_content}, now())
 	</insert>
+	
+	<!-- 신고사유보기  -->
+	<select id="reportReason" resultType="ReportVO">
+		select * from post_reports where user_singo_seq=#{user_singo_seq} and user_seq=#{user_seq}
+	</select>
 
 	<!-- 신고했는지 안 했는지 -->
 	<select id="reportStatus" parameterType="ReportVO"
@@ -406,13 +414,18 @@
 	<!-- 매너 평가 하기 -->
 	<insert id="evaluation" parameterType="MyMannerVO">
 		insert into myManner
-		values(#{user_seq}, 3,
+		values(#{user_seq}, 289,
 		4,#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now());
 	</insert>
 	
 	<!-- 상품후기 리스트 -->
-	<select id="reviewProduct" parameterType="MyMannerVO" resultType="MyMannerVO">
-		select * from myManner where user_seq = #{user_seq};
+	<select id="reviewList" resultType="MyMannerVO">
+		select * from myManner where sell_user_seq = #{sell_user_seq};
+	</select>
+	
+	<!--  상품 후기 개수 -->
+	<select id="reviewCount" resultType="int">
+		select count(*) from myManner where sell_user_seq = #{sell_user_seq}
 	</select>
 	
 	<!-- 정보 찾기 -->
@@ -424,8 +437,8 @@
 	<!-- 정보 저장 -->
 	<insert id="kakaoInsert" parameterType="java.util.HashMap">
 		insert into
-		user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image,available,mail_auth)
-		values(#{email},#{nickname},#{password},'1111-01-01',#{nickname},#{email},'PHONE',0,1,#{profile_image},1,1)
+		user(id,name,password,birth,nickname,email,phone,msg_agree,join_type,profile_image,available,mail_auth,authority)
+		values(#{email},#{nickname},#{password},'1111-01-01',#{nickname},#{email},'PHONE',0,1,#{profile_image},1,1,'ROLE_USER')
 	</insert>
 
 	<update id="locationInsert" parameterType="UserVO">
@@ -468,10 +481,16 @@
 		resultType="String">
 		select nickname from user where user_seq=${user_seq};
 	</select>
+	
+	
+	<!-- 신고 당한 횟수 -->
+	<update id = "repNo">
+		update user set rep_no = rep_no + 1 where user_seq = #{user_seq};
+	</update>
 
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
 	<update id="updatePay">
-		update user set pay=#{pay} where id=#{id}
+		update user set pay=#{pay}, KID=#{KID} where id=#{id}
 	</update>
 
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
@@ -490,10 +509,9 @@
 		values(#{pay_seq},#{sellerId},#{buyerId},#{post_seq},#{process},#{sellerQr},#{buyerQr},1,#{sellerKID},#{buyerKID})
 	</insert>
 
-
 	<!-- notice 불러오기 -->
 	<select id="selectNotice" resultType="NoticeVO">
-		select * from notice where sellerId=#{nickname} order by notice_seq desc;
+		<![CDATA[select * from notice where sellerId=#{nickname} or buyerId=#{nickname} order by notice_seq desc]]>
 	</select>
 	
 	<!-- notice 추가하기 -->
@@ -510,4 +528,9 @@
 	<update id="readNotice">
 		update notice set read_notice=1 where notice_seq=#{notice_seq}
 	</update>
+	
+	<!-- 1:1문의하기 보내기 -->
+	<insert id="oneOnInsert">
+		insert into oneOnOne(user_seq, content, create_date) values(#{user_seq},#{content},now())
+	</insert>
 </mapper>

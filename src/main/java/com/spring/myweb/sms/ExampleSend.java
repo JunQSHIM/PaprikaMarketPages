@@ -1,4 +1,4 @@
-package net.example.message;
+package com.spring.myweb.sms;
 
 import java.util.HashMap;
 

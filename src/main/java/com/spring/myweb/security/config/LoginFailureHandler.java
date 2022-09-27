@@ -55,6 +55,8 @@ public class LoginFailureHandler implements AuthenticationFailureHandler{
 				error = "이메일 인증을 먼저 해주십시오.";
 			}else if(vo.getJoin_type()==1) {
 				error = "카카오톡으로 가입한 회원입니다. 알맞은 로그인 방법으로 다시 로그인 해주십시오.";
+			}else if(vo.getRep_no()>=5) {
+				error = "신고횟수가 5회이상이 되어 이용정지가 된 회원입니다. 관리자에게 문의하십시오.";
 			}else {
 				error = "계정이 비활성화되었습니다. 관리자에게 문의하세요.";
 			}

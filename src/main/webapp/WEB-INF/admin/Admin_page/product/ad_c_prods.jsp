@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,31 +51,26 @@
 									<tr>
 										<th>사진</th>
 										<th>상품명</th>
-										<th>판매자</th>
+										<th>닉네임</th>
 										<th>구매자</th>
 										<th>업로드시간</th>
-										<th>닉네임</th>
 										<th>신고받은횟수</th>
-										<th>상태</th>
 
 									</tr>
 								</thead>
 								<tbody>
   
-									<c:forEach items="${board }" var="boardList">
+									<c:forEach items="${list }" var="list" varStatus="status">
 										<tr>
-										
 											<td><div class="pic">
-													<a href="prod_de.mdo?prod_seq=${boardList.prod_seq}"><img src="https://paprikaproject.s3.ap-northeast-2.amazonaws.com/김채원.jpg"
+													<a href="prod_de.mdo?prod_seq=${list.post_seq}"><img src="${photo[status.index] }"
 														width="80px"></a>
 												</div></td>
-											<td><a href="prod_de.mdo?prod_seq=${boardList.prod_seq}">${boardList.prod_title }</a></td>
-											<td id="seller"><a href="memde.mdo">${boardList.nickname }</a></td>
+											<td><a href="prod_de.mdo?prod_seq=${list.post_seq}">${list.post_title }</a></td>
+											<td id="seller"><a href="memde.mdo">${user.name }</a></td>
 											<td id="buyer"><a href="memde.mdo">Null</a></td>
-											<td>${boardList.upload_date }</td>
-											<td>${boardList.nickname }</td>
+											<td><fmt:formatDate value="${list.create_date }" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
 											<td>152</td>
-											<td>${boardList.status }</td>
 
 										</tr>
 									</c:forEach>
@@ -93,36 +89,6 @@
 		<!-- /.container-fluid -->
 	</section>
 	<!-- /.content -->
-
-
-
-
-	<!-- Bootstrap 4 -->
-	<script
-		src="/myweb/Admin_page/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- DataTables  & Plugins -->
-	<script
-		src="/myweb/Admin_page/plugins/datatables/jquery.dataTables.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-	<script src="/myweb/Admin_page/plugins/jszip/jszip.min.js"></script>
-	<script src="/myweb/Admin_page/plugins/pdfmake/pdfmake.min.js"></script>
-	<script src="/myweb/Admin_page/plugins/pdfmake/vfs_fonts.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-	<script
-		src="/myweb/Admin_page/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
 
 	<!-- Page specific script -->
 	<script>

@@ -22,6 +22,7 @@ import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
@@ -290,6 +291,21 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public int updatePay(HashMap<String, Object> vo) {
 		return session.update("adminDB.updatePay",vo);
+	}
+
+	@Override
+	public List<OneOnOneVO> oneOnList() {
+		return session.selectList("adminDB.oneOnList");
+	}
+
+	@Override
+	public OneOnOneVO findUser(int user_seq) {
+		return session.selectOne("adminDB.findUser", user_seq);
+	}
+
+	@Override
+	public int oneStatus(int status) {
+		return session.insert("adminDB.oneStatus", status);
 	}
 
 }

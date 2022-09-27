@@ -3,6 +3,7 @@ package com.spring.myweb.security.config;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,6 +29,7 @@ import lombok.Data;
 @Data
 public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 
+	
 	@Autowired
 	private UserDAO dao;
 	private static int TIME = 60 * 60 * 24; // 하루
@@ -36,6 +38,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 	private RequestCache reqCache = new HttpSessionRequestCache();
 	private RedirectStrategy redirectStratgy = new DefaultRedirectStrategy();
 
+	
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -51,6 +54,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 			if(vo.getJoin_type()==1) {
 				throw new DisabledException(defaultUrl);
 			}
+			if(vo.getRep_no()>=5) {
+				throw new DisabledException(defaultUrl);
+			}
 		}catch(MailException e) {
 			e.printStackTrace();
 		}
@@ -59,14 +65,22 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		HttpSession session = request.getSession();
 		session.setAttribute("user", vo);
 		session.setMaxInactiveInterval(TIME);
-		
-		System.out.println(vo.toString());
-		
 		if (vo.getUser_type()==1) {
 			redirectStratgy.sendRedirect(request, response, "/user.mdo");
 		} else {
 			resultRedirectStrategy(request, response, authentication);
 		}
+				
+		
+//		
+//		if (rememberId(rememberId)) {
+//			Cookie cookie = new Cookie("id", vo.getId());
+//			response.addCookie(cookie);
+//		} else {
+//			Cookie cookie = new Cookie("id", vo.getId());
+//			cookie.setMaxAge(0);
+//			response.addCookie(cookie);
+//		}
 		// 에러 세션 지우기
 		clearAuthenticationAttributes(request);
 
@@ -88,6 +102,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		if (session == null)
 			return;
 		session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+	}
+	
+	private boolean rememberId(boolean rememberId) {
+		return rememberId;
 	}
 
 }

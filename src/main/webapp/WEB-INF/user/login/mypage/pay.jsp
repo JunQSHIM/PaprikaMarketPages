@@ -47,11 +47,37 @@
 		<form action="mypage.do" method="post" name="ppkPay" id="payForm">
 		<input id="pay" type="text" name="pay" placeholder="qr을 입력해주세요.">
 		<input type="text" name="KID" placeholder="카카오페이에 설정되어있는 이름을 입력해주세요.">
-		<input id="send" type="submit" value="전송">
+		<input id="send" type="button" value="전송">
 		</form>
 		</div>
 	</div>
 	</article>
+	<script>
+	var theForm = document.ppkPay;
+	function setOutline(objFormElement, color) {
+		if (objFormElement.style)
+			objFormElement.style.outline = color;
+	}
+		$("#send").click(function() {
+			if (!theForm.pay.value) {
+				setOutline(theForm.pay, "2px solid red");
+				theForm.pay.placeholder = 'qr을 입력해주세요';
+				theForm.pay.focus();
+				return;
+			} else {
+				setOutline(theForm.pay, "1px solid black");
+			}
+			if (!theForm.KID.value) {
+				setOutline(theForm.KID, "2px solid red");
+				theForm.KID.placeholder = '이름을 입력해주세요';
+				theForm.KID.focus();
+				return;
+			} else {
+				setOutline(theForm.KID, "1px solid black");
+			}
+			theForm.submit();
+		});
+	</script>
 	<footer class="container_12">
 		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>

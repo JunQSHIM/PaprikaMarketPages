@@ -50,6 +50,9 @@
     });
 	function login()  {
 		 window.location.href ='/login.do';
+	}
+	function quit()  {
+		 alert("탈퇴한 회원입니다.")
 	}	
 	function register()  {
 		 window.location.href ='/register.do';
@@ -207,7 +210,6 @@
 			}
 		});
    	}
-   	
    	
     function showPopUp() {
     	//창 크기 지정

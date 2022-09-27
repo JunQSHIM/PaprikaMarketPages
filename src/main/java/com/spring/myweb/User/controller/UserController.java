@@ -2,7 +2,9 @@ package com.spring.myweb.User.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletRequest;
@@ -11,7 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,22 +37,33 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.Service.AdminService.AdminService;
-import com.spring.myweb.Service.NoticeService.NoticeService;
 import com.spring.myweb.Service.BoardService.UserBoardService;
+import com.spring.myweb.Service.NoticeService.NoticeService;
 import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
 import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
 @Controller
 @SessionAttributes("user")
+@PropertySource(value = { "classpath:config/api.properties" })
 public class UserController {
+
+	@Value("${SMS_API_KEY}")
+	private String api_key;
+
+	@Value("${SMS_API_SECRET}")
+	private String api_secret;
 
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
@@ -61,10 +82,10 @@ public class UserController {
 
 	@Autowired
 	RegisterAgreementService registerService;
-	
+
 	@Autowired
 	NoticeService noticeService;
-	
+
 	@RequestMapping(value = "/")
 	public String mainPage() {
 		return "redirect:main.do";
@@ -82,6 +103,29 @@ public class UserController {
 		if (result == 1) {
 			session.setAttribute("user", vo);
 			model.addAttribute("user", vo);
+			System.out.println("INSERT   " + vo.getMsg_agree());
+			if (vo.getMsg_agree() == 1) {
+				HashMap<String, String> params = new HashMap<String, String>();
+				params.put("to", vo.getPhone()); // 수신전화번호
+				params.put("from", "01041250363"); // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+				params.put("type", "SMS");
+				String[] text = { "파프리카 마켓 회원가입을 축하합니다.", "이 아이디는 신고횟수가 5회가 넘어 이용정지 되었으니 고객센터번호로 문의 바랍니다.",
+						"님에게 신고가 접수되었습니다. 현재 신고횟수=" };
+				String msg = vo.getId() + "님!!";
+				msg += text[0];
+				params.put("text", msg);
+				params.put("app_version", "test app 1.2"); // application name and version
+
+				Message coolsms = new Message(api_key, api_secret);
+
+				try {
+					JSONObject obj = (JSONObject) coolsms.send(params);
+					System.out.println(obj.toString());
+				} catch (CoolsmsException e) {
+					System.out.println(e.getMessage());
+					System.out.println(e.getCode());
+				}
+			}
 		} else {
 			System.out.println("FAIL");
 		}
@@ -89,9 +133,11 @@ public class UserController {
 
 	}
 
-	@GetMapping("/registerEmail.do")
-	public String emailConfirm(UserVO vo) throws Exception {
+	@GetMapping("/rEmail.do")
+	public String emailConfirm(UserVO vo, Model model) throws Exception {
 		userService.updateMailAuth(vo);
+		System.out.println("이메일 인증 완료");
+
 		return "login/login&register/emailAuthSuccess";
 	}
 
@@ -113,13 +159,9 @@ public class UserController {
 		return "login/login&register/login";
 	}
 
-	private boolean rememberId(boolean rememberId) {
-		return rememberId;
-	}
-
 	@RequestMapping(value = "/login.do")
 	public String loginUser(HttpSession session, Model model, String id, String password, ServletRequest request,
-			HttpServletResponse response, boolean rememberId) throws Exception {
+			HttpServletResponse response) throws Exception {
 		System.out.println("User login service");
 		UserVO vo = userService.select(id);
 		if (passwordEncoder.matches(password, vo.getPassword())) {
@@ -128,20 +170,12 @@ public class UserController {
 		} else {
 			System.out.println("FAILS");
 		}
-		if (rememberId(rememberId)) {
-			Cookie cookie = new Cookie("id", id);
-			response.addCookie(cookie);
-		} else {
-			Cookie cookie = new Cookie("id", id);
-			cookie.setMaxAge(0);
-			response.addCookie(cookie);
-		}
 
 		return "login/main/mother";
 	}
 
 	// 카카오 로그인창 호출
-	@RequestMapping(value = "/kakaoLogin.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/kakaoLogin.do")
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest req,
 			Model model) throws Exception {
 		String access_Token = userService.getAccessToken(code);
@@ -150,20 +184,39 @@ public class UserController {
 		model.addAttribute("kakaoUser", userInfo);
 		session.setAttribute("kakaoUser", userInfo);
 		session.setAttribute("kakaoId", userInfo.getId());
+		session.setAttribute("user", userInfo);
+		model.addAttribute("user", userInfo);
 		System.out.println(userInfo.getEmail());
 		System.out.println(userInfo.getProfile_image());
-		return "login/main/mother";
+		List<GrantedAuthority> roles = new ArrayList<>();
+		roles.add(new SimpleGrantedAuthority("ROLE_USER"));
+		Authentication auth = new UsernamePasswordAuthenticationToken(userInfo, null, roles);
+		SecurityContextHolder.getContext().setAuthentication(auth);
+		return "redirect:main.do";
 	}
 
+	/////
+
 	@RequestMapping(value = "/mypage.do")
-	public String mypage(Model model, HttpSession session) {
+	public String mypage(Model model, HttpSession session, UserVO uvo, PageVO page, LikeVO lvo) throws Exception {
+		uvo = (UserVO) session.getAttribute("user");
+		lvo.setUser_seq(uvo.getUser_seq());
+		int jjimCart = postService.jjimCart(lvo);
+		int reviewCnt = postService.reviewCount(uvo.getUser_seq());
+		List<MyMannerVO> manner = postService.reviewList(uvo.getUser_seq());
+
+		model.addAttribute("manner", manner);
+		model.addAttribute("reviewCnt", reviewCnt);
+		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("user", userService.select((String) session.getAttribute("id")));
 		return "login/mypage/mypage";
 	}
-	@RequestMapping(value="/mypage.do", method=RequestMethod.POST)
-	public String mypage(Model model, String pay, String KID) throws Exception{
+
+	@RequestMapping(value = "/mypage.do", method = RequestMethod.POST)
+	public String mypage(HttpSession session, Model model, String pay, String KID) throws Exception {
 		System.out.println("파프리카 페이 사용하기");
-		UserVO vo = (UserVO) model.getAttribute("user");
+		UserVO vo = (UserVO) session.getAttribute("user");
+		System.out.println(KID);
 		vo.setPay(pay);
 		vo.setKID(KID);
 		int result = userService.updatePay(vo);
@@ -172,22 +225,34 @@ public class UserController {
 		}
 		return "login/mypage/mypage";
 	}
-	
-	//내가 받은 매너 평가 페이지 이동
-	@RequestMapping(value="mannerView.do")
-	public String mannerView() throws Exception {
+
+	// 내가 받은 매너 평가 페이지 이동
+	@RequestMapping(value = "mannerView.do")
+	public String mannerView(HttpSession session, Model model, UserVO uvo, LikeVO lvo) throws Exception {
+		uvo = (UserVO) session.getAttribute("user");
+		lvo.setUser_seq(uvo.getUser_seq());
+		int jjimCart = postService.jjimCart(lvo);
+		int reviewCnt = postService.reviewCount(uvo.getUser_seq());
+		List<MyMannerVO> manner = postService.reviewList(uvo.getUser_seq());
+
+		model.addAttribute("reviewCnt", reviewCnt);
+		model.addAttribute("jjimCart", jjimCart);
+		model.addAttribute("manner", manner);
 		return "login/mypage/mannerEval";
 	}
-	
+
 	// 구매 완료 후 매너평가 페이지
-	@RequestMapping(value="evaluationView.do")
-	public String evaluationView() throws Exception {
+	@RequestMapping(value = "evaluationView.do")
+	public String evaluationView(HttpSession session, Model model, UserVO uvo, LikeVO lvo) throws Exception {
+		uvo = (UserVO) session.getAttribute("user");
+		int jjimCart = postService.jjimCart(lvo);
+		model.addAttribute("jjimCart", jjimCart);
 		return "login/product&purchase/purchase";
 	}
-	
+
 	@RequestMapping(value = "evaluation.do")
 	public @ResponseBody int evaluation(HttpSession session, MyMannerVO vo) throws Exception {
-		UserVO uvo = (UserVO)session.getAttribute("user");
+		UserVO uvo = (UserVO) session.getAttribute("user");
 		vo.setUser_seq(uvo.getUser_seq());
 		return userService.evaluation(vo);
 	}
@@ -197,17 +262,19 @@ public class UserController {
 	public String withdrawaView() throws Exception {
 		return "login/quit";
 	}
-	//탈퇴사유
+
+	// 탈퇴사유
 	@RequestMapping(value = "/reason.do")
-	public @ResponseBody int Reason(HttpSession session, WithdrawalVO vo) throws Exception{
-		UserVO uvo = (UserVO)session.getAttribute("user");
+	public @ResponseBody int Reason(HttpSession session, WithdrawalVO vo) throws Exception {
+		UserVO uvo = (UserVO) session.getAttribute("user");
 		vo.setUser_seq(uvo.getUser_seq());
 		return userService.WithdrawalReason(vo);
 	}
-	
+
 	// 회원탈퇴
 	@RequestMapping(value = "/withdrawal.do")
-	public ModelAndView withdrawal(Model model, UserVO vo, RedirectAttributes rttr,HttpServletRequest req,  HttpSession session, LikeVO lvo) throws Exception {
+	public ModelAndView withdrawal(Model model, UserVO vo, RedirectAttributes rttr, HttpServletRequest req,
+			HttpSession session, LikeVO lvo) throws Exception {
 		vo = (UserVO) session.getAttribute("user");
 		String password = vo.getPassword();
 
@@ -223,8 +290,6 @@ public class UserController {
 		session.invalidate();
 		return mv;
 	}
-	
-	
 
 	@RequestMapping(value = "/main.do")
 	public String main() {
@@ -232,20 +297,22 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
-	public ModelAndView logout(Model model, HttpServletRequest req) throws Exception {
+	public ModelAndView logout(HttpSession session, Model model, HttpServletRequest req) throws Exception {
 		model.addAttribute("user", null);
 		ModelAndView mv = new ModelAndView("login/main/mother");
-		HttpSession session = req.getSession();
+		session = req.getSession();
 		session.invalidate();
 		return mv;
 	}
 
 	@RequestMapping(value = "/kakaoLogout.do")
-	public String logout(HttpSession session) {
+	public String logout(Model model, HttpSession session) {
 		userService.kakaoLogout((String) session.getAttribute("access_Token"));
 		session.removeAttribute("access_Token");
 		session.removeAttribute("kakaoUser");
-		return "login/main/mother";
+		session.removeAttribute("user");
+		model.addAttribute("user", null);
+		return "redirect:main.do";
 	}
 
 	@RequestMapping(value = "/kakaounlink.do")
@@ -420,10 +487,16 @@ public class UserController {
 		return "login/mypage/pay";
 	}
 
-	@RequestMapping(value="/chat.do")
-	public String echo() {
-		return "sadf";
+	// 알림 읽음 처리
+	@RequestMapping(value = "/readNotice.do")
+	public @ResponseBody int readNotice(String notice_seq) {
+		int result = 1;
+		int seq = Integer.parseInt(notice_seq);
+		result = noticeService.updateNotice(seq);
+		if (result == 1) {
+			System.out.println("알림 읽음");
+			noticeService.deleteNotice();
+		}
+		return result;
 	}
-	
-		
 }

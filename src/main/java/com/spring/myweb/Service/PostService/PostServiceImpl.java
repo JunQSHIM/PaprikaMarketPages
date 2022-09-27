@@ -231,4 +231,19 @@ public class PostServiceImpl implements PostService {
 		return postDao.oneOnInsert(vo);
 	}
 
+	@Override
+	public String findReviewer(int user_seq) throws Exception {
+		return postDao.findReviewer(user_seq);
+	}
+
+	@Override
+	public String Reviewer(int post_seq) throws Exception {
+		return postDao.Reviewer(post_seq);
+	}
+
+	@Override
+	public void upPost(int post_seq) {
+		postDao.upPost(post_seq);
+	}
+
 }

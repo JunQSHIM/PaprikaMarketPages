@@ -5,9 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/myweb/login/css/review<odal.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/review_product/review_product.css">
-<script type="text/javascript" src="/myweb/login/review_product/review_product.js"></script>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -103,8 +105,9 @@
 					</button>
 				</div>
 			</div>
-			
  			</div>
  			<input type="hidden" name="post_seq" value="${post.post_seq }">
 </body>
+
+<script type="text/javascript" src="/myweb/login/review_product/review_product.js"></script>
 </html>

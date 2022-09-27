@@ -247,8 +247,6 @@
 
 	<!-- 찜목록 -->
 	<select id="jjimCart" parameterType="LikeVO" resultType="int">
-		<!-- select count(user_seq) from (select * from likePost where user_seq 
-			= #{user_seq}) as lk where likeCnt =1; -->
 		select count(*) from likePost a, post b where a.post_seq = b.post_seq
 		and likeCnt = 1 and a.user_seq = #{user_seq};
 	</select>
@@ -328,7 +326,7 @@
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="listPage" parameterType="PageVO" resultType="PostVO">
 		select * from (
-		select post_seq, post_title, price, upload_date,
+		select post_seq, post_title, price, create_date,
 		pay_check, location1
 		from post
 
@@ -336,7 +334,7 @@
 			where post_title like concat('%',#{keyword},'%')
 		</if>
 
-		order by post_seq desc) as T1
+		order by create_date desc) as T1
 		limit #{displayPost},#{postNum}
 	</select>
 
@@ -414,8 +412,8 @@
 	<!-- 매너 평가 하기 -->
 	<insert id="evaluation" parameterType="MyMannerVO">
 		insert into myManner
-		values(#{user_seq}, 289,
-		4,#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now());
+		values(#{user_seq}, #{sell_user_seq},
+		#{post_seq},#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now(), now());
 	</insert>
 	
 	<!-- 상품후기 리스트 -->
@@ -533,4 +531,18 @@
 	<insert id="oneOnInsert">
 		insert into oneOnOne(user_seq, content, create_date) values(#{user_seq},#{content},now())
 	</insert>
+	
+	<!-- findReviewer -->
+	<select id ="findReviewer" resultType="String">
+	select post_title from post where post_seq = #{post_seq};
+	</select>
+	
+	<select id ="Reviewer" resultType="String">
+	select nickname from user where user_seq = #{user_seq};
+	</select>
+	
+	<update id="upPost">
+		update post set create_date = now() where post_seq = #{post_seq}
+	</update>
+	
 </mapper>

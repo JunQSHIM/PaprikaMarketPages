@@ -32,6 +32,7 @@
 		<typeAlias alias="ChatRoom" type="com.spring.myweb.VO.ChatVO.ChatRoom"/>
 		<typeAlias alias="ChatMessage" type="com.spring.myweb.VO.ChatVO.ChatMessage"/>
 		<typeAlias alias="OneOnOneVO" type="com.spring.myweb.VO.OneOnOneVO.OneOnOneVO"/>
+		<typeAlias alias="ReviewReportVO" type="com.spring.myweb.VO.ReviewReportVO.ReviewReportVO"/>
 	</typeAliases>
 	
 	<mappers>

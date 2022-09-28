@@ -44,10 +44,12 @@
 		<br><br><br>
 		<div id="pay">
 		<h4>파프리카 페이 사용하기</h4>
-		<form action="mypage.do" method="post" name="ppkPay" id="payForm">
-		<input id="pay" type="text" name="pay" placeholder="qr을 입력해주세요.">
-		<input type="text" name="KID" placeholder="카카오페이에 설정되어있는 이름을 입력해주세요.">
-		<input id="send" type="button" value="전송">
+		<form action="mypageA.do" method="post" name="ppkPay" id="payForm" enctype="multipart/form-data">
+		
+		<div class="qrImg"><input id="pay" type="file" name="pay" placeholder="qr을 입력해주세요."></div>
+		<div class="KIDName"><input class="KID" type="text" name="KID" placeholder="카카오페이에 설정되어있는 이름을 입력해주세요."><button id="send" type="submit">전송</button></div>
+		
+		
 		</form>
 		</div>
 	</div>

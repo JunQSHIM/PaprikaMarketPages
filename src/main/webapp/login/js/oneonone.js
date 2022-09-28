@@ -1,4 +1,4 @@
-function textarea() {
+function textarea3() {
 	var chk = confirm('문의하시겠습니까?');
 	var text = document.getElementById("reportText");
 	if(!chk){

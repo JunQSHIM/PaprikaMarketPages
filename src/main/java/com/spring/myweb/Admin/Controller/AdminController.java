@@ -1,5 +1,6 @@
 package com.spring.myweb.Admin.Controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,10 +8,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.myweb.MailUtil.MailHandler;
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.AdminService.PayService.PayService;
 import com.spring.myweb.Service.PostService.PostService;
@@ -36,7 +42,6 @@ import com.spring.myweb.VO.AdminVO.PayVO.PayVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
-import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
@@ -69,6 +74,21 @@ public class AdminController {
 
 	@Value("${SMS_API_SECRET}")
 	private String api_secret;
+	
+	@Value("${EMAIL_HOST}")
+	private String host;
+	
+	@Value("${EMAIL_PORT}")
+	private int port;
+	
+	@Value("${EMAIL_USERNAME}")
+	private String username;
+	
+	@Value("${EMAIL_PASSWORD}")
+	private String password;
+	
+	@Autowired
+    JavaMailSender mailSender;
 
 	@Autowired
 	RegisterAgreementService agreementService;
@@ -96,7 +116,47 @@ public class AdminController {
 		model.addAttribute("sms", sms);
 		return "Admin_page/admin_board/ad_board";
 	}
-
+	
+	//이메일 발송 페이지
+	@RequestMapping(value = "adminEmail.mdo")
+	public String adminEmail(Model model) {
+		List<UserVO> list = adminService.selectAll();
+		model.addAttribute("list", list);
+		return "Admin_page/admin_board/ad_email";
+	}
+	
+	@RequestMapping(value = "sendEmail.mdo")
+	@ResponseBody
+	public int sendEmail(@RequestParam(value="jarr[]") List<String> jStr, String msgText) throws AddressException, MessagingException, Exception{
+		
+		System.out.println(jStr.toString());
+		for(int i=0; i<jStr.size(); i++) {
+			MailHandler sendMail = new MailHandler(mailSender);
+	        sendMail.setSubject("[PaprikaMarket 입니다.]"); //메일제목
+	        sendMail.setText(msgText);
+	        		
+	        sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
+	        sendMail.setTo(jStr.get(i));
+	        sendMail.send();
+		}
+//		for(int i=0; i<email.length; i++) {
+//			MailHandler sendMail = new MailHandler(mailSender);
+//	        sendMail.setSubject("[PaprikaMarket 인증메일 입니다.]"); //메일제목
+//	        sendMail.setText(
+//	                "<h1>PaprikaMarket 메일인증</h1>" +
+//	                "<br>PaprikaMarket에 오신것을 환영합니다!");
+//	        		
+//	        sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
+//	        sendMail.setTo(email[i]);
+//	        sendMail.send();
+//		}
+		
+		
+		
+		return 1;
+	}
+	
+	
 	// 약관 불러오기
 	@RequestMapping(value = "/admin_list.mdo")
 	public String adminList(Model model, int agreement_seq) {
@@ -117,9 +177,12 @@ public class AdminController {
 	@RequestMapping(value = "/singo.mdo", method = RequestMethod.GET)
 	public String singoAdmin(Model model) {
 		System.out.println("관리자 페이지 singo목록");
+		
+
 		List<BoardSingoVO> boardsingo = adminService.selectBoardSingo();
 		List<ReviewSingoVO> reviewsingo = adminService.selectReviewSingo();
 		List<PostSingoVO> postsingo = adminService.selectPostSingo();
+		
 		model.addAttribute("review", reviewsingo);
 		model.addAttribute("board", boardsingo);
 		model.addAttribute("post", postsingo);
@@ -551,11 +614,17 @@ public class AdminController {
 	@RequestMapping(value = "oneOnAdminView.mdo")
 	public String oneOnAdminView(Model model) {
 		List<OneOnOneVO> one = adminService.oneOnList();
-
+		
 		for (OneOnOneVO vo : one) {
+			if(adminService.findUser(vo.getUser_seq()) == null) {
+				vo.setNickname("탈퇴한 회원");
+				vo.setId("탈퇴한 회원");
+				vo.setEmail("탈퇴한 회원");
+			} else {
 			vo.setNickname(adminService.findUser(vo.getUser_seq()).getNickname());
 			vo.setId(adminService.findUser(vo.getUser_seq()).getId());
 			vo.setEmail(adminService.findUser(vo.getUser_seq()).getEmail());
+			}
 		}
 
 		model.addAttribute("one", one);

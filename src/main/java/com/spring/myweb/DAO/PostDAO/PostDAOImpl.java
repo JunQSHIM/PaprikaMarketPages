@@ -36,6 +36,7 @@ import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 
 @Repository
 public class PostDAOImpl implements PostDAO {
@@ -260,6 +261,7 @@ public class PostDAOImpl implements PostDAO {
 
 	@Override
 	public List<PostVO> myPageList(PageVO vo) throws Exception {
+		
 		return session.selectList("userDB.myPageList", vo);
 	}
 
@@ -294,11 +296,6 @@ public class PostDAOImpl implements PostDAO {
 		return session.selectList("userDB.reportStatus",vo);
 	}
 
-	@Override
-	public void withdrawalPost(int user_seq) {
-		session.delete("userDB.withdrawalPost", user_seq);
-		
-	}
 
 	@Override
 	public int repNo(ReportVO vo) throws Exception {
@@ -338,6 +335,20 @@ public class PostDAOImpl implements PostDAO {
 	@Override
 	public void upPost(int post_seq) {
 		session.update("userDB.upPost",post_seq);
+	}
+
+	@Override
+	public List<Integer> related(int category_seq) throws Exception {
+		return session.selectList("userDB.related", category_seq);
+	}
+
+	@Override
+	public int withdrawalPost(int user_seq) {
+		int result = 0;
+		if(session.selectOne("userDB.withdrawalPost", user_seq) == null) {
+			result = 1;
+		}
+		return result;
 	}
 
 

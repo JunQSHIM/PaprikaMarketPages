@@ -2,7 +2,7 @@
 
  
 
-.singo_board body, input, textarea, select {
+.singo_board body,textarea, select {
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     direction: ltr;
@@ -68,7 +68,7 @@ div {
     float:right;
 }
 
-.singo_board button, input {
+.singo_board button {
     padding: 0px;
     border: 0px;
 }
@@ -154,7 +154,7 @@ div {
     font-size: 13px;
     background: rgb(255, 255, 255);
 }
-.singo_board button, input, optgroup, select, textarea {
+.singo_board button, optgroup, select, textarea {
     font-family: inherit;
     font-size: 100%;
     line-height: 1.15;

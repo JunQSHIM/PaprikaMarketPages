@@ -15,6 +15,7 @@ import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 
 public interface PostService {
 	public List<PostVO> postList(); // 글 목록
@@ -55,7 +56,7 @@ public interface PostService {
 	public int repNo(ReportVO vo) throws Exception;
 	public int postReport(ReportVO vo); // 신고하기
 	public List<ReportVO> reportStatus(ReportVO vo); // 신고 했는지 안했는지
-	public void withdrawalPost(int user_seq); // 회원탈퇴를 위한 게시판 삭제
+	public int withdrawalPost(int user_seq); // 탈퇴한 회원 리스트
 	
 	public List<MyMannerVO> reviewList(int user_seq) throws Exception; // 상품 후기 리스트
 	public int reviewCount(int user_seq); // 받은 리뷰 개수
@@ -70,5 +71,7 @@ public interface PostService {
 	public int oneOnInsert(OneOnOneVO vo) throws Exception; // 1:1문의하기
 	public String findReviewer(int post_seq) throws Exception; // 리뷰 제목
 	public String Reviewer(int user_seq) throws Exception; // 리뷰 준 유저
+	
+	public List<Integer> related(int category_seq) throws Exception; // 연관상품
 
 }

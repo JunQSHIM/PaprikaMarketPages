@@ -3,10 +3,10 @@ package com.spring.myweb.Service.UserService;
 import java.util.HashMap;
 import java.util.List;
 
-import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 
 public interface UserService {
 	public List<UserVO> selectAll();
@@ -36,4 +36,8 @@ public interface UserService {
 	public int evaluation(MyMannerVO vo) throws Exception; // 매너 평가 주기
 	public UserVO selectByUserSeq(int user_seq);
 	public int repNo(int user_seq) throws Exception;
+	public int mannerCount(MyMannerVO vo) throws Exception; // 받은 매너 칭찬
+	public int badCount(MyMannerVO vo) throws Exception; // 받은 비매너
+
+
 }

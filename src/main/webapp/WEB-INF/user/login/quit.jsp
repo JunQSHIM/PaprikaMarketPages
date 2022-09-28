@@ -25,8 +25,7 @@
 <!--Custom styles-->
 <script type="text/javascript"
 	src="/myweb/login/login&register/js/login.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="/myweb/login/login&register/styles.css">
+
 <link rel="stylesheet" type="text/css"
 	href="/myweb/login/css/quit.css">
 </head>

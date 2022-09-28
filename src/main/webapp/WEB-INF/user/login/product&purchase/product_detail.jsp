@@ -185,19 +185,15 @@
             </div>
             <div class="clear"></div>
             <div class="grid_12 item2">
-               연관상품
+             <div class="relatedFont">연관상품</div>
                <div id="rt_product">
                    <div class="slider">
-                   <div><img src="/myweb/login/images/1.png" title="1st"></div>
-                   <div><img src="/myweb/login/images/2.png" title="2nd"></div>
-                   <div><img src="/myweb/login/images/3.png" title="3rd"></div>
-                   <div><img src="/myweb/login/images/4.png" title="4th"></div>
-                   <div><img src="/myweb/login/images/5.png" title="5th"></div>
-                   <div><img src="/myweb/login/images/5.png" title="1st"></div>
-                   <div><img src="/myweb/login/images/4.png" title="1st"></div>
-                   <div><img src="/myweb/login/images/3.png" title="1st"></div>
-                   <div><img src="/myweb/login/images/2.png" title="1st"></div>
-                   <div><img src="/myweb/login/images/1.png" title="1st"></div>
+                   <c:forEach items="${rPhotoName }" var="related" varStatus="status">
+                		 <a href="postDetail.do?post_seq=${cate_seq[status.index]}&user_seq=${user.user_seq}">
+                			<img src="${related }" class="slider_img">
+                		 </a>
+                  </c:forEach>
+                  
                   </div>
             </div>
             
@@ -229,12 +225,13 @@
                      </div>
                      <div id="rt_img">
                         <div class="slider2">
-                            <div><img src="/myweb/login/images/test1.png" title="1st"></div>
-                            <div><img src="/myweb/login/images/test2.png" title="2nd"></div>
-                            <div><img src="/myweb/login/images/test3.png" title="3rd"></div>                            
-                            <div><img src="/myweb/login/images/test4.png" title="4th"></div>
-                            <div><img src="/myweb/login/images/test5.png" title="5th"></div>                                                        
+                  		 <c:forEach items="${rPhotoName }" var="related" varStatus="status">
+                        <div> <a href="postDetail.do?post_seq=${cate_seq[status.index]}&user_seq=${user.user_seq}">
+                			<img src="${related }" class="slider_img">
+                		 </a></div>
+                          </c:forEach>   
                         </div>
+                       
                   </div>
                   <div class="item">후기<hr style="border:1px solid gray;">
                   	<c:forEach items="${manner }" var="manner" begin="0" end="1" step="1">

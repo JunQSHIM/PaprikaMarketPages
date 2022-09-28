@@ -30,7 +30,7 @@
 								<div class="prod_info_content">
 									<textarea id="reportText"
 										placeholder="문의할 내용을 입력해주세요."></textarea>
-									<button type="button" class="content" onclick="textarea()" >등록</button>
+									<button type="button" class="content" onclick="textarea3()" >등록</button>
 								</div>
 							</div>
 						</div>

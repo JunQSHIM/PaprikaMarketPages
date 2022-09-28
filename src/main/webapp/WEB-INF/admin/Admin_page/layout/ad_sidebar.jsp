@@ -53,7 +53,12 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-
+						<li class="nav-item"><a
+							href="adminEmail.mdo"
+							class="nav-link"> <i 
+								class="nav-icon fa-solid fa-address-book"></i>
+								<p>이메일 발송</p>
+						</a></li>
 
 						<li class="nav-item"><a
 							href="sms.mdo"

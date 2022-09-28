@@ -61,7 +61,7 @@ function payForm(){
 										<tr>
 											<td>${payList.sellerId }(${payList.sellerKID })</td>
 											<td>${payList.buyerId }(${payList.buyerKID })</td>
-											<td><a href="/myweb/postDetail.do?post_seq=${payList.post_seq }" target="_blank">상품으로 이동</a></td>
+											<td><a href="adminPostDetail.mdo?post_seq=${payList.post_seq }" target="_blank">상품으로 이동</a></td>
 											<td>
 											<c:choose>
 												<c:when test="${payList.process eq 0}">

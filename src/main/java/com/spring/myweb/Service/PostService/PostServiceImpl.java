@@ -19,6 +19,7 @@ import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -201,10 +202,6 @@ public class PostServiceImpl implements PostService {
 		return postDao.reportStatus(vo);
 	}
 
-	@Override
-	public void withdrawalPost(int user_seq) {
-		postDao.withdrawalPost(user_seq);
-	}
 	
 	@Override
 	public int repNo(ReportVO vo) throws Exception {
@@ -244,6 +241,16 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public void upPost(int post_seq) {
 		postDao.upPost(post_seq);
+	}
+
+	@Override
+	public List<Integer> related(int category_seq) throws Exception {
+		return postDao.related(category_seq);
+	}
+
+	@Override
+	public int withdrawalPost(int user_seq) {
+		return postDao.withdrawalPost(user_seq);
 	}
 
 }

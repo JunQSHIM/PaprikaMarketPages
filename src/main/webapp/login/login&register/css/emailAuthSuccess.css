@@ -1,0 +1,8 @@
+@charset "UTF-8";
+.form-group{
+	align-content: center;
+}
+
+.join{
+	cursor: pointer;
+}

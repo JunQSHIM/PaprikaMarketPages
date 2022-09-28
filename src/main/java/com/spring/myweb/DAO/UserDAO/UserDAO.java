@@ -3,10 +3,10 @@ package com.spring.myweb.DAO.UserDAO;
 import java.util.HashMap;
 import java.util.List;
 
-import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 
 public interface UserDAO {
 	public List<UserVO> selectAll();
@@ -32,4 +32,7 @@ public interface UserDAO {
 	
 	public UserVO selectByUserSeq(int user_seq);
 	public int repNo(int user_seq) throws Exception; // 신고 횟수 증가
+	
+	public int mannerCount(MyMannerVO vo) throws Exception; // 받은 칭찬
+	public int badCount(MyMannerVO vo) throws Exception; // 받은 비매너
 }

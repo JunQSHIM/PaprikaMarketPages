@@ -48,15 +48,32 @@
 		<c:set var="user_seq" value="${user.user_seq }"/>
 		<c:set var="buser_seq" value="${board.user_seq }"/>
 		<c:if test="${ user_seq == buser_seq }">
+		<input type="hidden" name="board_seq" value="${board.board_seq }">
 		<div id="buttons">
 			<button onclick="location.href='updateboard.do?board_seq=${board.board_seq}'">수정</button>
-			<button onclick="location.href='deleteboard.do?board_seq=${board.board_seq}'">삭제</button>
+			<button id="delete">삭제</button>
 			<button onclick="location.href='boardlist.do'">목록</button>
 		</div>
 		</c:if>
 	</article>
-	<div style="margin-bottom: 40px;"></div>	<footer class="container_12">
+	<div style="margin-bottom: 40px;"></div><footer class="container_12">
 		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 </body>
+<script type="text/javascript">
+
+$('#delete').on('click', function(e) { 
+	var chk = confirm('삭제하시겠습니까?');
+	var board_seq = $('#board_seq').val();
+	if(chk == true){
+		location.href=('deleteboard.do?board_seq=' + board_seq);
+		alert('삭제되었습니다.')
+	} else {
+		alert('취소되었습니다.')
+		return false;
+	}
+	
+});
+
+</script>
 </html>

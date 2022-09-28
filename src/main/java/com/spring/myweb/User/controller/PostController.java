@@ -36,6 +36,7 @@ import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.VO.noticeVO.NoticeVO;
 import com.spring.myweb.awss3.vo.PostPhotoVO;
 
@@ -80,18 +81,20 @@ public class PostController {
 		int num = page.getNum();
 		System.out.println(page.getCount());
 		List<Integer> post_seq = new ArrayList<Integer>();
-
-		List<PostVO> list = postService.listPage(page);
-		System.out.println(list);
-		for (PostVO post : list) {
+		List<PostVO> temp = postService.listPage(page);
+		List<PostVO> list = new ArrayList<PostVO>();
+		for (PostVO post : temp) {
 			post_seq.add(post.getPost_seq());
+			if (postService.withdrawalPost(post.getUser_seq()) == 1) {
+					list.add(post);
+			}
 		}
+		System.out.println("탈퇴회원 제외되어야함 : " + list);
 
 		List<String> photoNames = new ArrayList<String>();
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
 		}
-
 		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("page", page);
 		model.addAttribute("select", num);
@@ -147,18 +150,19 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/create.do", method = RequestMethod.GET)
-	public String getCreate(HttpSession session, Model model, CategoryVO vo, UserVO uvo, PostVO pvo, PageVO page, LikeVO lvo) throws Exception {
+	public String getCreate(HttpSession session, Model model, CategoryVO vo, UserVO uvo, PostVO pvo, PageVO page,
+			LikeVO lvo) throws Exception {
 		System.out.println("판매하기 접속함");
 
 		int total = postService.myCount(page);
 		int jjimCart = postService.jjimCart(lvo);
 		int allLike = postService.allLike(lvo);
-		if(page.getNum() == 0) {
+		if (page.getNum() == 0) {
 			page.setNum(1);
 		}
 		page.setCount(total);
 		int num = page.getNum();
-		
+
 		List<CategoryVO> list = postService.categoryList();
 		List<PostVO> plist = postService.myPageList(page);
 		List<Integer> post_seq = new ArrayList<Integer>();
@@ -203,6 +207,7 @@ public class PostController {
 			model.addAttribute("post", vo);
 		}
 		int post_seq = postService.post_seq(vo.getUser_seq());
+
 		// 이미지 등록
 		Map<String, String> names = postService.uploadImg(img, "post/");
 		// 저장이름, 랜덤이름 db에 저장
@@ -230,17 +235,17 @@ public class PostController {
 
 	@RequestMapping(value = "/postDelete.do", method = RequestMethod.GET)
 	public String postDelete(HttpSession session, int post_seq) throws Exception {
-		UserVO user = (UserVO)session.getAttribute("user");
+		UserVO user = (UserVO) session.getAttribute("user");
 		int user_seq = user.getUser_seq();
 		System.out.println("글 삭제");
 		postService.deleteImage(post_seq);
 		postService.postDelete(post_seq);
-		return "redirect:create.do?user_seq=" + user_seq;
+		return "redirect:main.do";
 	}
-	
+
 	@RequestMapping(value = "upPost.do")
-	public String upPost(HttpSession session, int post_seq) throws Exception{
-		UserVO user = (UserVO)session.getAttribute("user");
+	public String upPost(HttpSession session, int post_seq) throws Exception {
+		UserVO user = (UserVO) session.getAttribute("user");
 		int user_seq = user.getUser_seq();
 		postService.upPost(post_seq);
 		return "redirect:create.do?user_seq=" + user_seq;
@@ -250,11 +255,10 @@ public class PostController {
 	public String getDetail(HttpSession session, HashMap<String, Object> info, Model model, int post_seq, UserVO uvo,
 			LikeVO lvo, ReportVO rvo) throws Exception {
 		uvo = (UserVO) session.getAttribute("user");
-		System.out.println("상세보기");
-		
+
 		postService.viewCount(post_seq); // 조회수
+
 		PostVO vo = postService.postDetail(post_seq);
-		
 		List<MyMannerVO> manner = postService.reviewList(vo.getUser_seq());
 		for (MyMannerVO mm : manner) {
 			mm.setPost_title(postService.findReviewer(mm.getPost_seq()));
@@ -263,6 +267,15 @@ public class PostController {
 		int report = 0;
 		if (postService.reportStatus(rvo).isEmpty()) {
 			report = 1;
+		}
+
+		int category_seq = vo.getCategory_seq();
+
+		// 연관상품
+		List<Integer> cate_seq = postService.related(category_seq);
+		List<String> rPhotoName = new ArrayList<String>();
+		for (int post : cate_seq) {
+			rPhotoName.add(postService.photoOne(post));
 		}
 		// 좋아요
 		lvo.setPost_seq(post_seq);
@@ -278,13 +291,14 @@ public class PostController {
 		} else if (check == 1) {
 			like = postService.likeGetInfo(lvo);
 		}
-		
+		model.addAttribute("cate_seq", cate_seq);
+		model.addAttribute("rPhotoName", rPhotoName);
 		model.addAttribute("report", report);
 		model.addAttribute("manner", manner);
 		model.addAttribute("like", like);
 		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("allLike", allLike);
-		
+
 		model.addAttribute("post", vo);
 
 		// 이미지 불러오기
@@ -439,7 +453,6 @@ public class PostController {
 			vo.setUser_seq(uvo.getUser_seq());
 			vo.setPost_seq(n);
 
-			System.out.println(n);
 			postService.jjimDelete(vo);
 		}
 
@@ -476,7 +489,7 @@ public class PostController {
 			lvo.setUser_seq(uvo.getUser_seq());
 		}
 		int reviewCnt = postService.reviewCount(uvo.getUser_seq());
-		                                                                     
+
 		List<MyMannerVO> manner = postService.reviewList(post.getUser_seq());
 		for (MyMannerVO mm : manner) {
 			mm.setPost_title(postService.findReviewer(mm.getPost_seq()));

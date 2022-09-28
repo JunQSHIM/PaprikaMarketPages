@@ -34,7 +34,8 @@
 		        maxSlides: 5,
 		        slideWidth:270,
 		        slideMargin: 0,
-		        controls:false 
+		        
+		        touchEnabled : false
 	    });
 		$('.slider2').bxSlider({
 			auto:false,

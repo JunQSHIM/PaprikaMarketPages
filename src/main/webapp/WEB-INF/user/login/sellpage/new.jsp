@@ -150,9 +150,8 @@
 				<li>
 					<p>안전결제(카카오페이) 요청을 거절하지 않는 대신 혜택을 받을 수 있어요.</p>
 					<p>
-						<small>거절 시, <a
-							href="https://help.bunjang.co.kr/faq/3/415" target="_blank">이용
-								제재</a>가 있을 수 있으니 주의해 주세요.
+						<small><a
+							href="pay.do?user_seq=${user.user_seq }" target="_blank">안전결제(카카오페이) 설정하러 가기</a>
 						</small>
 					</p>
 				</li>

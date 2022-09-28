@@ -36,4 +36,9 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDAO.updateNotice(notice_seq);
 	}
 
+	@Override
+	public void deleteUserNotice(String nickname) {
+		noticeDAO.deleteUserNotice(nickname);
+	}
+
 }

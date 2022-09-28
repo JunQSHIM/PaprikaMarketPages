@@ -355,5 +355,21 @@ public class PostDAOImpl implements PostDAO {
 		return result;
 	}
 
+	@Override
+	public void postWithdrawal(int user_seq) throws Exception {
+		session.delete("userDB.postWithdrawal", user_seq);
+	}
+
+	@Override
+	public void likeWithdrawal(int user_seq) throws Exception {
+		session.delete("userDB.likeWithdrawal", user_seq);
+	}
+
+	@Override
+	public void boardWithdrawal(int user_seq) throws Exception {
+		session.delete("userDB.boardWithdrawal", user_seq);
+		
+	}
+
 
 }

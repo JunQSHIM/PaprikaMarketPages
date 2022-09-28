@@ -41,4 +41,9 @@ public class NoticeDAOImpl implements NoticeDAO{
 		return result;
 	}
 
+	@Override
+	public void deleteUserNotice(String nickname) {
+		session.delete("userDB.deleteUserNotice",nickname);
+	}
+
 }

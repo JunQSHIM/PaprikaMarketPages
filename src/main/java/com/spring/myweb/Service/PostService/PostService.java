@@ -74,5 +74,9 @@ public interface PostService {
 	public String Reviewer(int user_seq) throws Exception; // 리뷰 준 유저
 	
 	public List<Integer> related(int category_seq) throws Exception; // 연관상품
+	
+	public void postWithdrawal(int user_seq) throws Exception; // 회원탈퇴 상품 삭제 
+	public void likeWithdrawal(int user_seq) throws Exception; // 회원탈퇴 좋아요 삭제
+	public void boardWithdrawal(int user_seq) throws Exception; // 회원탈퇴 게시판 삭제 
 
 }

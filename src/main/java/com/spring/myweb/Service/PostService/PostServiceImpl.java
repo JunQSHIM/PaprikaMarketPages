@@ -257,4 +257,21 @@ public class PostServiceImpl implements PostService {
 		return postDao.withdrawalPost(user_seq);
 	}
 
+	@Override
+	public void postWithdrawal(int user_seq) throws Exception {
+		postDao.postWithdrawal(user_seq);
+	}
+
+	@Override
+	public void likeWithdrawal(int user_seq) throws Exception {
+		postDao.likeWithdrawal(user_seq);
+		
+	}
+
+	@Override
+	public void boardWithdrawal(int user_seq) throws Exception {
+		postDao.boardWithdrawal(user_seq);
+		
+	}
+
 }

@@ -256,6 +256,7 @@ public class UserController {
 		int jjimCart = postService.jjimCart(lvo);
 		int reviewCnt = postService.reviewCount(uvo.getUser_seq());
 		List<MyMannerVO> manner = postService.reviewList(uvo.getUser_seq());
+		System.out.println("왜 3번 나오는거야 스벌 : " + manner);
 		mm.setSell_user_seq(uvo.getUser_seq());
 
 		mm.setManner_compliment("상품 상태가 설명한 것과 같아요.");
@@ -396,8 +397,8 @@ public class UserController {
 	public ModelAndView withdrawal(Model model, UserVO vo, RedirectAttributes rttr, HttpServletRequest req,
 			HttpSession session, LikeVO lvo) throws Exception {
 		vo = (UserVO) session.getAttribute("user");
+		
 		String password = vo.getPassword();
-
 		if (!(password.equals(password))) {
 			ModelAndView mv = new ModelAndView("login/mypage/withdrawal");
 			return mv;
@@ -405,12 +406,16 @@ public class UserController {
 		model.addAttribute("user", null);
 		ModelAndView mv = new ModelAndView("login/login&register/login");
 
-		//글
 		//상품
-		//채팅방
-		//후기
-		//알림
+		postService.postWithdrawal(vo.getUser_seq());
+		//찜
+		postService.likeWithdrawal(vo.getUser_seq());
+		//게시판
+		postService.boardWithdrawal(vo.getUser_seq());
 		
+		//알림
+		noticeService.deleteUserNotice(vo.getNickname());
+		//회원탈퇴
 		userService.withdrawal(vo);
 		session = req.getSession();
 		session.invalidate();

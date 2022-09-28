@@ -530,6 +530,11 @@
 	<delete id="deleteNotice">
 		delete from notice where read_notice=1
 	</delete>
+	
+	<!-- notice 삭제하기 탈퇴회원 -->
+	<delete id="deleteUserNotice">
+		<![CDATA[delete from notice where buyerId=#{nickname} or sellerId=#{nickname} ]]>
+	</delete>
 
 	<!-- notice 읽음 처리 -->
 	<update id="readNotice">
@@ -591,5 +596,19 @@
 	<select id="related" parameterType="Integer" resultType="Integer">
 		select post_seq from post where category_seq = #{category_seq} order by create_date desc limit 0, 5;
 	</select>
+	
+	<!-- 회원탈퇴 게시판 삭제 -->
+	<delete id="postWithdrawal">
+		delete from post where user_seq = #{user_seq}
+	</delete>
+	
+	<!-- 회원탈퇴 좋아요 삭제 -->
+	<delete id="likeWithdrawal">
+		delete from likePost where user_seq = #{user_seq}
+	</delete>
+	
+	<delete id="boardWithdrawal">
+		delete from board where user_seq = #{user_seq}
+	</delete>
 
 </mapper>

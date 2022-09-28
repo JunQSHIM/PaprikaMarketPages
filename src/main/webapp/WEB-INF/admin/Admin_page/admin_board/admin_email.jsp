@@ -107,12 +107,12 @@ $("#deleteBtn").click(function(){
 	                type: "post",
 	                data: {
 	                    "jarr": jarr,
-						"msgText":msgText
+						"msgText"
 	                },
 	                success: function(val){
 	                    if(val>=1){
 	                        alert("메일 발송이 완료되었습니다.");
-	                        location.href="/adminEmail.mdo";
+	                        location.href="/myweb/adminEmail.mdo";
 	                    }
 	                }
 	            })

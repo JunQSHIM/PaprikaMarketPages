@@ -75,18 +75,6 @@ public class AdminController {
 	@Value("${SMS_API_SECRET}")
 	private String api_secret;
 	
-	@Value("${EMAIL_HOST}")
-	private String host;
-	
-	@Value("${EMAIL_PORT}")
-	private int port;
-	
-	@Value("${EMAIL_USERNAME}")
-	private String username;
-	
-	@Value("${EMAIL_PASSWORD}")
-	private String password;
-	
 	@Autowired
     JavaMailSender mailSender;
 
@@ -132,27 +120,13 @@ public class AdminController {
 		System.out.println(jStr.toString());
 		for(int i=0; i<jStr.size(); i++) {
 			MailHandler sendMail = new MailHandler(mailSender);
-	        sendMail.setSubject("[PaprikaMarket 입니다.]"); //메일제목
+	        sendMail.setSubject("[][PaprikaMarket 입니다.]"); //메일제목
 	        sendMail.setText(msgText);
 	        		
 	        sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
 	        sendMail.setTo(jStr.get(i));
 	        sendMail.send();
 		}
-//		for(int i=0; i<email.length; i++) {
-//			MailHandler sendMail = new MailHandler(mailSender);
-//	        sendMail.setSubject("[PaprikaMarket 인증메일 입니다.]"); //메일제목
-//	        sendMail.setText(
-//	                "<h1>PaprikaMarket 메일인증</h1>" +
-//	                "<br>PaprikaMarket에 오신것을 환영합니다!");
-//	        		
-//	        sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
-//	        sendMail.setTo(email[i]);
-//	        sendMail.send();
-//		}
-		
-		
-		
 		return 1;
 	}
 	

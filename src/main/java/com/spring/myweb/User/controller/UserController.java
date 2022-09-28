@@ -360,6 +360,12 @@ public class UserController {
 		model.addAttribute("user", null);
 		ModelAndView mv = new ModelAndView("login/login&register/login");
 
+		//글
+		//상품
+		//채팅방
+		//후기
+		//알림
+		
 		userService.withdrawal(vo);
 		session = req.getSession();
 		session.invalidate();

@@ -46,7 +46,7 @@
 	
 	<!-- 구매 예약 -->
 	<update id="updateSellStatus">
-		update post set sell_status=#{sell_status} where post_seq=#{post_seq};
+		update post set pay_status=#{pay_status} where post_seq=#{post_seq};
 	</update>
 	
 </mapper>

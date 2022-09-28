@@ -17,8 +17,37 @@
             <h1 class="m-0">Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-	          제목 : <input type="text" id="new_card_title">
+          		<input type="text" value="제목" id="new_card_title">
 	          	<button id="create_btn">통계 생성</button>
+	          	<select id="type">
+	          		<option value="post">상품</option>
+	          		<option value="board">게시판</option>
+	          		<option value="reg">가입자</option>
+	          		<option value="quit">탈퇴자</option>
+	          		<option value="security">안전 거래 사용</option>
+	          		<option value="complete">거래완료</option>
+	          		<option value="loginHistory">접속자 수</option>
+	          	</select>
+	          	
+	          	<select id="time" name="time">
+	          		<option value="today">이번주</option>
+	          		<option value="lastweek">지난주</option>
+	          		<option value="lasttwoweek">2주전</option>
+	          		<option value="lasttreeweek">3주전</option>
+	          		<option value="year">올해</option>
+	          	</select>
+
+	          	<select id="chartType" name="chartType">
+	          		<option value="line">선</option>
+	          		<option value="bar">막대</option>
+	          	</select>
+	          	
+	          	<select id="idn">
+	          		<option>선택안함</option>
+	          		<option>카테고리별</option>
+	          		<option>탈퇴사유</option>
+	          	</select>
+	          	
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -30,160 +59,11 @@
 		
 			<div class="container-fluid">
 				<div class="row">
-					<section class="col-lg-7 connectedSortable">
-						<!-- AREA CHART -->
-						<div class="card card-primary">
-							<div class="card-header">
-								<h3 class="card-title">방문자수</h3>
-
-								<div class="card-tools">
-									<ul class="nav nav-pills ml-auto">
-										<li class="nav-item"><a class="nav-link active"
-											href="#day-chart" data-toggle="tab">Day</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="#week-chart" data-toggle="tab">Week</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="#month-chart" data-toggle="tab">Month</a></li>
-										<li>
-											<button type="button" class="btn btn-tool"
-												data-card-widget="collapse">
-												<i class="fas fa-minus"></i>
-											</button>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="tab-content p-0">
-									<div class="chart tab-pane active" id="day-chart"
-										style="position: relative; height: 300px;">
-										<div>오늘 방문자</div>
-										<br>
-										<canvas id="dayChart"
-											style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-									</div>
-
-									<div class="chart tab-pane" id="week-chart"
-										style="position: relative; height: 300px;">
-										<div>이번주 방문자</div>
-										<br>
-										<canvas id="weekChart"
-											style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-									</div>
-
-									<div class="chart tab-pane" id="month-chart"
-										style="position: relative; height: 300px;">
-										<div>이번달 방문자</div>
-										<br>
-										<canvas id="monthChart"
-											style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-									</div>
-								</div>
-							</div>
-							<!-- /.card-body -->
-						</div>
-						<!-- /.card -->
-
-						<!-- 카테고리별 품목 CHART -->
+					<section class="col-lg-12 connectedSortable" id="cre_page">
 						
-
-						<!-- 가입/탈퇴 CHART -->
-						<div class="card card-danger">
-							<div class="card-header">
-								<h3 class="card-title">가입자/탈퇴자</h3>
-
-								<div class="card-tools">
-									<button type="button" class="btn btn-tool"
-										data-card-widget="collapse">
-										<i class="fas fa-minus"></i>
-									</button>
-								</div>
-							</div>
-							<div class="card-body">
-								<canvas id="subscribersChart"
-									style="min-height: 300px; height: 250px; max-height: 300px; max-width: 100%;"></canvas>
-							</div>
-							<!-- /.card-body -->
-						</div>
-						<!-- /.card -->
-
-
-
 
 					</section>
 					<!-- /.col (LEFT) -->
-
-
-					<section class="col-lg-5 connectedSortable" id="cre_page">
-						<!-- LINE CHART -->
-						<div class="card card-danger">
-							<div class="card-header">
-								<h3 class="card-title">탈퇴 사유</h3>
-
-								<div class="card-tools">
-									<button type="button" class="btn btn-tool"
-										data-card-widget="collapse">
-										<i class="fas fa-minus"></i>
-									</button>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="chart">
-									<canvas id="quitChart"
-										style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-								</div>
-							</div>
-							<!-- /.card-body -->
-						</div>
-						<!-- /.card -->
-
-						<!-- 신고 CHART -->
-						<div class="card card-danger">
-							<div class="card-header">
-								<h3 class="card-title">신고사유</h3>
-
-								<div class="card-tools">
-									<button type="button" class="btn btn-tool"
-										data-card-widget="collapse">
-										<i class="fas fa-minus"></i>
-									</button>
-								</div>
-							</div>
-							<div class="card-body">
-								<canvas id="singoChart"
-									style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-							</div>
-							<!-- /.card-body -->
-						</div>
-						<!-- /.card -->
-
-						<!-- STACKED BAR CHART -->
-						<div class="card card-success">
-							<div class="card-header">
-								<h3 class="card-title">Stacked Bar Chart</h3>
-
-								<div class="card-tools">
-									<button type="button" class="btn btn-tool"
-										data-card-widget="collapse">
-										<i class="fas fa-minus"></i>
-									</button>
-									<button type="button" class="btn btn-tool"
-										data-card-widget="remove">
-										<i class="fas fa-times"></i>
-									</button>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="chart">
-									<canvas id="Chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-								</div>
-							</div>
-							<!-- /.card-body -->
-						</div>
-						<!-- /.card -->
-
-					</section>
-					<!-- /.col (RIGHT) -->
 				</div>
 				<!-- /.row -->
 			</div>
@@ -193,292 +73,10 @@
 	</div>
 
 	<script>
+	var a  = 1; //동적 id 생성
 	
-	
-	
-		$(function() {
-			
-			/* ChartJS
-			 * -------
-			 * Here we will create a few charts using ChartJS
-			 */
-
-			//--------------
-			//- day CHART -
-			//--------------
-			var dayChartCanvas = $('#dayChart').get(0).getContext('2d')
-
-			var dayChartData = {
-				labels : [ 00, 02, 04, 06, 08, 10, 12, 14, 16, 18, 20, 22 ],
-				datasets : [ {
-					data : [ 86, 114, 106, 106, 107, 111, 133, 221, 783, 2478,
-							432, 334 ],
-					label : "오늘 방문자 수",
-					borderColor : "#3e95cd",
-					fill : false
-				} ]
-			}
-
-			var dayChartOptions = {
-				maintainAspectRatio : false,
-				responsive : true,
-				legend : {
-					display : false
-				},
-				scales : {
-					xAxes : [ {
-						ticks : {
-							fontColor : 'rgba(12, 13, 13, 1)',
-							fontSize : 20
-						},
-					} ],
-					yAxes : [ {
-						ticks : {
-							fontColor : 'rgba(12, 13, 13, 1)',
-							fontSize : 20
-						}
-					} ]
-				}
-
-			}
-
-			// This will get the first returned node in the jQuery collection.
-			new Chart(dayChartCanvas, {
-				type : 'line',
-				data : dayChartData,
-				options : dayChartOptions
-			})
-			//-------------
-			//- week CHART -
-			//-------------
-			var weekChartCanvas = $('#weekChart').get(0).getContext('2d')
-			var weekChartData = {
-				labels : [ "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일" ],
-				datasets : [ {
-					label : "Population (millions)",
-					backgroundColor : [ "#3e95cd", "#3e95cd", "#3e95cd",
-							"#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850" ],
-					data : [ 2478, 5267, 734, 784, 433, 555, 999 ]
-				} ]
-			}
-
-			var weekChartOptions = {
-				responsive : true,
-				maintainAspectRatio : false,
-				datasetFill : false,
-				legend : {
-					display : false
-				},
-				scales : {
-					xAxes : [ {
-						ticks : {
-							fontColor : 'rgba(12, 13, 13, 1)',
-							fontSize : 20
-						},
-					} ],
-
-					yAxes : [ {
-						ticks : {
-							fontColor : 'rgba(12, 13, 13, 1)',
-							fontSize : 20
-						},
-					} ]
-				}
-
-			}
-
-			new Chart(weekChartCanvas, {
-				type : 'bar',
-				data : weekChartData,
-				options : weekChartOptions
-			})
-
-			//-------------
-			//- month CHART -
-			//-------------
-
-			var monthChartCanvas = $('#monthChart').get(0).getContext('2d')
-			var monthChartData = {
-				labels : [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월",
-						"9월", "10월", "11월", "12월" ],
-				datasets : [ {
-					label : "Population (millions)",
-					fontSize : 30,
-					backgroundColor : [ "#3e95cd", "#3e95cd", "#3e95cd",
-							"#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850",
-							"#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9",
-							"#c45850" ],
-					data : [ 2478, 5267, 734, 784, 433, 555, 999, 2478, 5267,
-							734, 784, 433 ]
-				} ]
-			}
-
-			var monthChartOptions = {
-				responsive : true,
-				maintainAspectRatio : false,
-				datasetFill : false,
-				legend : {
-					display : false
-				},
-				scales : {
-					xAxes : [ {
-						ticks : {
-							fontColor : 'rgba(12, 13, 13, 1)',
-							fontSize : 20
-						},
-					} ],
-
-					yAxes : [ {
-						ticks : {
-							fontColor : 'rgba(12, 13, 13, 1)',
-							fontSize : 20
-						},
-					} ]
-				}
-
-			}
-
-			new Chart(monthChartCanvas, {
-				type : 'bar',
-				data : monthChartData,
-				options : monthChartOptions
-			})
-
-			//-------------
-			//- Singo CHART -
-			//-------------
-			var singoChartCanvas = $('#singoChart').get(0).getContext('2d')
-			var singoData = {
-				labels : [ "광고 (상점 및 타사이트 홍보, 상품도배)",
-						"상품 정보 부정확(상품명, 이미지, 가격, 태그 등)", "거래 금지 품목",
-						"안전결제 허위매울(안전결제 표시 상품 안전결제 거부)", "사기의심(외부채널 유도)",
-						"기타(사유)" ],
-				datasets : [ {
-					label : "Population (millions)",
-					backgroundColor : [ "#3e95cd", "#8e5ea2", "#3cba9f",
-							"#e8c3b9", "#c45850", "#f00020" ],
-					data : [ 2478, 5267, 734, 784, 433, 223 ]
-				} ]
-			}
-			var singoOptions = {
-				maintainAspectRatio : false,
-				responsive : true,
-				title : {
-					display : true,
-					text : '신고 사유',
-					fontSize : 30
-				},
-				legend : {
-					position : 'right',
-				}
-			}
-
-			new Chart(singoChartCanvas, {
-				type : 'doughnut',
-				data : singoData,
-				options : singoOptions
-			})
-
-			//-------------
-			//- 가입 탈퇴자 CHART -
-			//-------------
-			// Get context with jQuery - using jQuery's .get() method.
-			var subscribersChartCanvas = $('#subscribersChart').get(0).getContext('2d')
-
-			var subscribersChartData = {
-				labels : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일' ],
-				datasets : [ {
-					label : '가입자 수',
-					backgroundColor : 'rgba(255, 99, 132, 0.2)',
-					borderColor : 'rgba(255, 99, 132, 1)',
-					pointRadius : false,
-					pointColor : '#3b8bba',
-					pointStrokeColor : 'rgba(60,141,188,1)',
-					pointHighlightFill : '#fff',
-					pointHighlightStroke : 'rgba(60,141,188,1)',
-					data : [ 28, 48, 40, 19, 86, 27, 90 ]
-				}, {
-					label : '탈퇴자수',
-					backgroundColor : 'rgba(75, 192, 192, 0.2)',
-					borderColor : 'rgba(75, 192, 192, 1)',
-					pointRadius : false,
-					pointColor : 'rgba(210, 214, 222, 1)',
-					pointStrokeColor : '#c1c7d1',
-					pointHighlightFill : '#fff',
-					pointHighlightStroke : 'rgba(220,220,220,1)',
-					data : [ 65, 59, 80, 81, 56, 55, 40 ]
-				}, ]
-			}
-
-			var subscribersChartOptions = {
-				responsive : true,
-				scales : {
-					x : {
-						title : {
-							display : true,
-							text : '요일'
-						}
-					},
-					'y-left' : {
-						type : 'linear',
-						position : 'left',
-						title : {
-							display : true,
-							text : '가입/탈퇴자 수'
-						},
-						grid : {
-							display : false
-						}
-					}
-				}
-			}
-
-			new Chart(subscribersChartCanvas, {
-				type : 'bar',
-				data : subscribersChartData,
-				options : subscribersChartOptions
-			})
-
-			//---------------------
-			//- 탈퇴 사유 CHART -
-			//---------------------
-
-			var quitChartCanvas = $('#quitChart').get(0).getContext('2d')
-			var quitData = {
-				labels : [ "서비스불만족", "장기미사용", "타 플랫폼 이용", "개인정보노출우려",
-						"상품의 다양성부족", "기타" ],
-				datasets : [ {
-					label : '회원탈퇴사유',
-					data : [ 12, 11, 10, 8, 19, 3 ],
-					backgroundColor : [ 'rgb(255, 99, 132)',
-							'rgb(255, 159, 64)', 'rgb(255, 205, 86)',
-							'rgb(75, 192, 192)', 'rgb(54, 162, 235)',
-							'rgb(153, 102, 255)' ]
-				} ]
-			}
-			var quitOptions = {
-				maintainAspectRatio : false,
-				responsive : true,
-				title : {
-					display : true,
-					text : "회원탈퇴사유",
-					fontSize : 30,
-					fontColor : "black"
-				},
-				legend : {
-					position : 'right',
-				}
-			}
-
-			new Chart(quitChartCanvas, {
-				type : 'doughnut',
-				data : quitData,
-				options : quitOptions
-			})
-
-			
-		
 		$("#create_btn").on("click", function() {
+	
 			var new_title = $('#new_card_title').val();
 			var card_layout1 =`
 				<div class="card card-info">
@@ -487,14 +85,13 @@
 			var card_layout2= `
 						</h3>
 						<div class="card-tools">
-						<button type="button" class="btn btn-tool" id="cre_chart">
-							통계생성
+						<button type="button" class="btns btn-tool">
+							통계 보기
 						</button>
 						<button type="button" class="btn btn-tool" data-card-widget="collapse">
 							<i class="fas fa-minus"></i>	
 						</button>
-						<button type="button" class="btn btn-tool"
-							data-card-widget="remove">
+						<button type="button" class="delete btn btn-tool" id="delete">
 							<i class="fas fa-times"></i>
 						</button>
 						</div>
@@ -503,65 +100,324 @@
 						<div id="place"></div>
 					</div>
 				</div>`
-				console.log(new_title);
 				$("#cre_page").append(card_layout1 + new_title + card_layout2);
 		});
-
-		$(document).on("click", "#cre_chart", function() {
-			var new_chart = `<canvas id="prodChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>`
-			console.log(new_chart);
-			$("#place").after(new_chart);
-			
-			//---------------------
-			//- prod BAR CHART -
-			//---------------------
-			var prodChartCanvas = $('#prodChart').get(0).getContext('2d')
-			var prodChartData = {
-				labels: ["디지털기기/가전", "가구/인테리어", "스포츠/레저", "게임/취미", "뷰티/미용"],
-			      datasets: [
-			        {
-			          label: "Population (millions)",
-			          backgroundColor: ["#dc3545", "#20c997","#007bff","#ffc107","#6f42c1"],
-			          data: [2478,5267,734,784,433]
-			        }
-			      ]
-			}
-			var prodChartOptions = {
-				responsive : true,
-				maintainAspectRatio : false,
-				scales: {
-					xAxes: [{
-						ticks:{
-							fontColor : 'rgba(12, 13, 13, 1)',
-							fontSize : 20
-						},
-					}],
-				
-					yAxes: [{
-						ticks:{
-							fontColor : 'rgba(12, 13, 13, 1)',
-							fontSize : 20
-						},
-					}]
-				},
-				 legend: { display: false },
-			      title: {
-			        display: true,
-			        text: '카테고리별 구매 수',
-			        fontSize: 30
-			      }
-			}
-
-			new Chart(prodChartCanvas, {
-				type : 'horizontalBar',
-				data : prodChartData,
-				options : prodChartOptions
-			})
-		})
-
+		
+		$(document).on("click", ".delete", function(e) {
+			  const div = $(e.target).parents(".card");
+			  div.remove();
 		});
 		
+		
+		$(document).on("click", ".btns", function() {
+			
+			var typeInt = document.getElementById("type").options.selectedIndex;
+			var type;
+			if(typeInt == 0){
+				type = "post";
+			}else if (typeInt ==1){
+				type = "board";
+			}else if (typeInt ==2){
+				type = "user";
+			}else if (typeInt ==3){
+				type="withdrawal";
+			}else if (typeInt ==4){
+				type="post_pay";
+			}else if (typeInt == 5){
+				type="post_complete";
+			}else if (typeInt == 6){
+				type="loginHistory";
+			}
+			
+			
+			var new_chart = `<canvas id="prodChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>`
+			var newid = $("#place").attr('id', "place"+a);
+			newid.after(new_chart);
+			$("#prodChart").attr('id', "prodChart"+a);
+			
+			var idnidx=document.getElementById("idn").options.selectedIndex;
+			if( idnidx == 1){
+				getcategoryGraph();
+			}else if (idnidx == 2){
+				getquitGraph();
+			}else{
+				if(document.getElementById("time").options.selectedIndex ==4){
+					getmonthGraph(type);
+				}else{
+					getweekGraph(type);
+				}
+			}
+		});
+		function getweekGraph(type){
+			var idx = document.getElementById("time").options.selectedIndex
+			var chartInt = document.getElementById("chartType").options.selectedIndex;
+			var charType;
+			if (chartInt == 0){
+				charType = "line";
+			}else if (chartInt == 1){
+				charType = "bar";
+			}
+			
+			let timeList =[];
+			let url = "/myweb/chart"+type+".mdo";
+			$.ajax({
+				url : url,
+				type:"post",
+				data: {time : idx},
+				success:function(data){
+					
+					for(let i=0 ; i < data.length ; i++){
+						timeList.push(data[i]);
+					}
+					
+					var dayChartCanvas = $('#prodChart' + a).get(0).getContext('2d')
+					a++;
+					var dayChartData = {
+						labels : [ "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일" ],
+						datasets : [ {
+							data : timeList,
+							borderColor : "#3e95cd",
+							fill : false
+						} ]
+					}
 
+					var dayChartOptions = {
+						maintainAspectRatio : false,
+						responsive : true,
+						legend : {
+							display : false
+						},
+						scales : {
+							xAxes : [ {
+								ticks : {
+									fontColor : 'rgba(12, 13, 13, 1)',
+									fontSize : 20
+								},
+							} ],
+							yAxes : [ {
+								ticks : {
+									fontColor : 'rgba(12, 13, 13, 1)',
+									fontSize : 20
+								}
+							} ]
+						}
+
+					}
+
+					// This will get the first returned node in the jQuery collection.
+						new Chart(dayChartCanvas, {
+							type : charType,
+							data : dayChartData,
+							options : dayChartOptions
+							})
+			}
+		})//ajax
+	}//getGraph()
+	
+function getmonthGraph(type){
+		var idx = document.getElementById("time").options.selectedIndex
+		var chartInt = document.getElementById("chartType").options.selectedIndex;
+		var charType;
+		if (chartInt == 0){
+			charType = "line";
+		}else if (chartInt == 1){
+			charType = "bar";
+		}
+		
+		let timeList =[];
+		let url = "/myweb/charty"+type+".mdo";
+		$.ajax({
+			url : url,
+			type:"post",
+			data: {time : idx},
+			success:function(data){
+				
+				for(let i=0 ; i < data.length ; i++){
+					timeList.push(data[i]);
+				}
+				console.log(timeList);
+				
+				var dayChartCanvas = $('#prodChart' + a).get(0).getContext('2d')
+				a++;
+				var dayChartData = {
+					labels : [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+					datasets : [ {
+						data : timeList,
+						borderColor : "#3e95cd",
+						fill : false
+					} ]
+				}
+
+				var dayChartOptions = {
+					maintainAspectRatio : false,
+					responsive : true,
+					legend : {
+						display : false
+					},
+					scales : {
+						xAxes : [ {
+							ticks : {
+								fontColor : 'rgba(12, 13, 13, 1)',
+								fontSize : 20
+							},
+						} ],
+						yAxes : [ {
+							ticks : {
+								fontColor : 'rgba(12, 13, 13, 1)',
+								fontSize : 20
+							}
+						} ]
+					}
+
+				}
+
+				// This will get the first returned node in the jQuery collection.
+					new Chart(dayChartCanvas, {
+						type : charType,
+						data : dayChartData,
+						options : dayChartOptions
+						})
+		}
+	})//ajax
+}//getmonthGraph()
+
+function getcategoryGraph(){
+			var chartInt = document.getElementById("chartType").options.selectedIndex;
+			var charType;
+			if (chartInt == 0){
+				charType = "line";
+			}else if (chartInt == 1){
+				charType = "bar";
+			}
+			
+			let categoryList =[];
+			let countList=[];
+			let url = "/myweb/chartcategory.mdo";
+			$.ajax({
+				url : url,
+				type:"post",
+				success:function(data){
+					
+					for(let i=0 ; i < data.length ; i++){
+						categoryList.push(data[i].name);
+						countList.push(data[i].cnt);
+					}
+					console.log(countList);
+					
+					var dayChartCanvas = $('#prodChart' + a).get(0).getContext('2d')
+					a++;
+					var dayChartData = {
+						labels : categoryList ,
+						datasets : [ {
+							data : countList,
+							label : categoryList,
+							borderColor : "#3e95cd",
+							fill : false
+						} ]
+					}
+
+					var dayChartOptions = {
+						maintainAspectRatio : false,
+						responsive : true,
+						legend : {
+							display : false
+						},
+						scales : {
+							xAxes : [ {
+								ticks : {
+									fontColor : 'rgba(12, 13, 13, 1)',
+									fontSize : 20
+								},
+							} ],
+							yAxes : [ {
+								ticks : {
+									fontColor : 'rgba(12, 13, 13, 1)',
+									fontSize : 20
+								}
+							} ]
+						}
+
+					}
+
+					// This will get the first returned node in the jQuery collection.
+						new Chart(dayChartCanvas, {
+							type : charType,
+							data : dayChartData,
+							options : dayChartOptions
+							})
+			}
+		})//ajax
+	}//getCategoryGraph()
+
+
+function getquitGraph(){
+			var chartInt = document.getElementById("chartType").options.selectedIndex;
+			var charType;
+			if (chartInt == 0){
+				charType = "line";
+			}else if (chartInt == 1){
+				charType = "bar";
+			}
+			
+			let quitList =[];
+			let countList=[];
+			let url = "/myweb/chartquit.mdo";
+			$.ajax({
+				url : url,
+				type:"post",
+				success:function(data){
+					
+					for(let i=0 ; i < data.length ; i++){
+						quitList.push(data[i].name);
+						countList.push(data[i].cnt);
+					}
+					console.log(countList);
+					
+					var dayChartCanvas = $('#prodChart' + a).get(0).getContext('2d')
+					a++;
+					var dayChartData = {
+						labels : quitList ,
+						datasets : [ {
+							data : countList,
+							label : quitList,
+							borderColor : "#3e95cd",
+							fill : false
+						} ]
+					}
+
+					var dayChartOptions = {
+						maintainAspectRatio : false,
+						responsive : true,
+						legend : {
+							display : false
+						},
+						scales : {
+							xAxes : [ {
+								ticks : {
+									fontColor : 'rgba(12, 13, 13, 1)',
+									fontSize : 20
+								},
+							} ],
+							yAxes : [ {
+								ticks : {
+									fontColor : 'rgba(12, 13, 13, 1)',
+									fontSize : 20
+								}
+							} ]
+						}
+
+					}
+
+					// This will get the first returned node in the jQuery collection.
+						new Chart(dayChartCanvas, {
+							type : charType,
+							data : dayChartData,
+							options : dayChartOptions
+							})
+			}
+		})//ajax
+	}//getquitGraph()
+	
 </script>
 </body>
 </html>

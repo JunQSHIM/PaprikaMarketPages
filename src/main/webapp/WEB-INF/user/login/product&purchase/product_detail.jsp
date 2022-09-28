@@ -164,25 +164,44 @@
 	                  	<input type="hidden" name="post_user_seq" value="${post.user_seq }">
 	                  </form>
                <c:choose>
-               <c:when test="${post.status eq 1 }">
-               	  <button type="button">판매 완료</button>
-               </c:when>
+               <c:when test="${post.pay_check == 1 and post.nickname ne user.nickname}">
+               		<c:choose>
+           	    		<c:when test="${post.status eq 1 }">
+          	 	    	  <button type="button">판매 완료</button>
+        		       </c:when>
+               			<c:when test="${post.pay_status == 2 }">
+               				<button onclick="" type="button" width="80">구매예약상품</button>
+               			</c:when>
+               			<c:when test="${post.pay_status == 3 }">
+               				<button onclick="" type="button" width="80">거래예약상품</button>
+               			</c:when>
+               			<c:otherwise>
+               				<button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
+               			</c:otherwise>
+               		</c:choose>
+               	</c:when>
+               	<c:otherwise>
+               		<c:when test="${post.status eq 1 }">
+               			  <button type="button">판매 완료</button>
+             		 </c:when>
+               	</c:otherwise>
                <c:when test="${post.pay_check == 1}">
                   <button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
                </c:when>
                <c:when test="${post.pay_check == 0 }">
-                     <button onclick="" style="visibility: hidden;">바로구매</button>
+               		<button onclick="" style="visibility: hidden;">바로구매</button>
                </c:when>
-            </c:choose>
-            </c:when>
-         </c:choose>
+				</c:choose>
+				</c:when>
+			</c:choose>
                </div>
+               
                <div class="item_btn" id="func">
             <c:choose>
                 <c:when test="${post.user_seq eq user.user_seq}">
-               <a  class="myStoreBtn" href="myProductCart.do?user_seq=${user.user_seq}">내 상품 관리</a>
+					<a  class="myStoreBtn" href="myProductCart.do?user_seq=${user.user_seq}">내 상품 관리</a>
                </c:when>
-         </c:choose>
+			</c:choose>
                </div>
             </div>
             </div>

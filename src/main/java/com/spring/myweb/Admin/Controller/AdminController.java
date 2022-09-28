@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.myweb.MailUtil.MailHandler;
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.AdminService.PayService.PayService;
+import com.spring.myweb.Service.ChartService.ChartService;
 import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
@@ -74,28 +75,30 @@ public class AdminController {
 
 	@Value("${SMS_API_SECRET}")
 	private String api_secret;
-	
-	@Value("${EMAIL_HOST}")
-	private String host;
-	
-	@Value("${EMAIL_PORT}")
-	private int port;
-	
-	@Value("${EMAIL_USERNAME}")
-	private String username;
-	
-	@Value("${EMAIL_PASSWORD}")
-	private String password;
-	
+
 	@Autowired
-    JavaMailSender mailSender;
+	JavaMailSender mailSender;
+
+
+	@Autowired
+	ChartService chartService;
 
 	@Autowired
 	RegisterAgreementService agreementService;
 
 	// 메인화면
 	@RequestMapping(value = "/main.mdo", method = RequestMethod.GET)
-	public String mainAdmin() {
+	public String mainAdmin(Model model) {
+		int newPost = chartService.getTodayPost();
+		int newBoard = chartService.getTodayBoard();
+		int newLogin = chartService.getTodayLogin();
+		int newSingo = chartService.getTodaySingo();
+
+		model.addAttribute("p", newPost);
+		model.addAttribute("b", newBoard);
+		model.addAttribute("l", newLogin);
+		model.addAttribute("s", newSingo);
+
 		return "Admin_page/layout/ad_main";
 	}
 

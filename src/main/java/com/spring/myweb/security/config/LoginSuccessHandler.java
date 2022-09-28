@@ -21,6 +21,7 @@ import org.springframework.security.web.savedrequest.SavedRequest;
 
 import com.spring.myweb.DAO.UserDAO.MailException;
 import com.spring.myweb.DAO.UserDAO.UserDAO;
+import com.spring.myweb.Service.ChartService.ChartService;
 import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.UserVO.UserVO;
@@ -30,6 +31,8 @@ import lombok.Data;
 @Data
 public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 
+	@Autowired
+	ChartService chartSerivce;
 	
 	@Autowired
 	private UserDAO dao;
@@ -70,11 +73,16 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		}
 		System.out.println(authentication);
 		System.out.println("로그인 된 유저VO : " + vo.toString());
+		
+		if(vo.getUser_type()==0) {
+			chartSerivce.saveHistory(vo);
+		}
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("user", vo);
 		session.setMaxInactiveInterval(TIME);
 		if (vo.getUser_type()==1) {
-			redirectStratgy.sendRedirect(request, response, "/user.mdo");
+			redirectStratgy.sendRedirect(request, response, "/main.mdo");
 		} else {
 			resultRedirectStrategy(request, response, authentication);
 		}

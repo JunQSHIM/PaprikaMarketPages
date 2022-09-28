@@ -74,7 +74,7 @@
 	<!-- 게시판 관리 -->
 		<!-- 게시판 목록 불러오기 -->
 	<select id="selectBoardAll" resultType="BoardVO">
-		select b.board_seq as board_seq, u.id as user_id, b.photo as photo, b.title as title, b.content as content, b.upload_date as upload_date, b.cnt as cnt, b.status as status
+		select b.board_seq as board_seq, u.id as user_id, b.title as title, b.content as content, b.create_date as create_date, b.cnt as cnt, b.status as status
 		from board b
 		inner join user u
 		on u.user_seq = b.user_seq;
@@ -255,6 +255,104 @@
 	<!-- 리뷰 목록 -->
 	<select id="adminReview" resultType="MyMannerVO">
 		select * from myManner;
+	</select>	
+	
+	
+	<!-- 통계-->
+	<!-- 날짜별 -->
+	<select id="today" resultType="Date">
+		select DATE(create_date) from ${type} where create_date between DATE_SUB(NOW(), INTERVAL #{today} DAY) and NOW() order by create_date;
+	</select>
+	<select id="lastweek" resultType="Date">
+		select DATE(create_date) from ${type} where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL #{today} DAY), INTERVAL #{week} DAY) and DATE_SUB(NOW(), INTERVAL #{today} DAY) order by create_date;
+	</select>
+	
+	<select id="month" resultType="Date">
+		select DATE(create_date) from ${type} where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL #{month}-1 month),INTERVAL #{today}-1 DAY) and NOW() order by create_date;
+	</select>
+	
+	<!-- 카테고리별 -->
+	<select id="category" resultType="ChartVO">
+		select category.category_name as name, c.cnt as cnt from category
+		inner join
+		(select category_seq, count(create_date) as cnt from post group by category_seq) as c
+		on category.category_seq = c.category_seq;
+	</select>
+	<!-- 탈퇴사유 -->
+	<select id="quit" resultType="ChartVO">
+		select withdrawalList.reason as name, c.cnt as cnt from withdrawalList
+		inner join
+		(select withdrawal_content, count(withdrawal_content) as cnt from withdrawal group by withdrawal_content order by withdrawal_content) as c
+		on withdrawalList.withdrawal= c.withdrawal_content;
+	</select>
+	<!-- 신고사유 -->
+	<select id="singo" resultType="ChartVO">
+		
+	</select>
+	
+	<!-- 안전결제 사용 -->
+	<select id="todaypay" resultType="Date">
+		select DATE(create_date) from post where create_date between DATE_SUB(NOW(), INTERVAL #{today} DAY) and NOW() and pay_check=1 order by create_date;
+	</select>
+	<select id="lastweekpay" resultType="Date">
+		select DATE(create_date) from post where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL #{today} DAY), INTERVAL #{week} DAY) and DATE_SUB(NOW(), INTERVAL #{today} DAY) and pay_check=1 order by create_date;
+	</select>
+	
+	<select id="monthpay" resultType="Date">
+		select DATE(create_date) from post where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL #{month}-1 month),INTERVAL #{today}-1 DAY) and NOW() and pay_check=1 order by create_date;
+	</select>
+
+	<!-- 거래완료 -->
+	<select id="todaycom" resultType="Date">
+		select DATE(create_date) from post where create_date between DATE_SUB(NOW(), INTERVAL #{today} DAY) and NOW() and pay_status=4 order by create_date;
+	</select>
+	<select id="lastweekcom" resultType="Date">
+		select DATE(create_date) from post where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL #{today} DAY), INTERVAL #{week} DAY) and DATE_SUB(NOW(), INTERVAL #{today} DAY) and pay_status=4 order by create_date;
+	</select>
+	
+	<select id="monthcom" resultType="Date">
+		select DATE(create_date) from post where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL #{month}-1 month),INTERVAL #{today}-1 DAY) and NOW() and pay_status=4 order by create_date;
+	</select>
+	
+	
+	<!-- 회원 접속 기록 -->
+	<insert id="loginHistory">
+		insert into loginHistory (user_seq, id, login_date) values (#{user_seq}, #{id}, now());
+	</insert>
+	
+	<select id="todayLogin" resultType="ChartVO">
+		select hour(login_date) as time, count(login_date) as cnt
+		from loginHistory
+		where login_date between DATE_FORMAT(now(), '%y-%m-%d') and  DATE_FORMAT(now(), '%y-%m-%d 23:59:59')
+		group by time
+		order by time;
+	</select>
+	
+	<select id="weekLogin" resultType="Date">
+		select DATE(login_date) from loginHistory where login_date between DATE_SUB(NOW(), INTERVAL #{today} DAY) and NOW() order by login_date;
+	</select>
+	<select id="lastweekLogin" resultType="Date">
+		select DATE(login_date) from loginHistory where login_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL #{today} DAY), INTERVAL #{week} DAY) and DATE_SUB(NOW(), INTERVAL #{today} DAY) order by login_date;
+	</select>
+	<select id="monthLogin" resultType="Date">
+		select DATE(login_date) from loginHistory where login_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL #{month}-1 month),INTERVAL #{today}-1 DAY) and NOW() order by login_date;
+	</select>
+	
+	<!-- 오늘 올라온 상품 -->
+	<select id="getTodayPost" resultType="int">
+		select count(*) from post where DATE(upload_date) = DATE(now());
+	</select>
+	<!-- 오늘 올라온 게시판 -->
+	<select id="getTodayBoard" resultType="int">
+		select count(*) from board where DATE(create_date) = DATE(now());
+	</select>
+	<!-- 오늘 방문자 -->
+	<select id="getTodayLogin" resultType="int">
+		select count(*) from loginHistory where DATE(login_date) = DATE(now());
+	</select>
+	<!-- 오늘 들어온 신고 -->
+	<select id="getTodaySingo" resultType="int">
+		select count(*) from post_reports where DATE(report_date) = DATE(now());
 	</select>
 	
 	

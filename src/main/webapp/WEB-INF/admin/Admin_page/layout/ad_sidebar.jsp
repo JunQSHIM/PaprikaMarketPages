@@ -142,7 +142,7 @@
 							</a>
 						</li>
 					</ul></li>
-				<li class="nav-item"><a href="/myweb/Admin_page/chart/chart.jsp" class="nav-link"> <i
+				<li class="nav-item"><a href="chart.mdo" class="nav-link"> <i
 						class="nav-icon fas fa-tree"></i>
 							통계
 				</a>

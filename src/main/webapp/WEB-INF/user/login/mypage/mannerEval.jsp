@@ -81,7 +81,6 @@ $(document).ready(function(){
 			</c:if>
 			<c:if test="${reviewCnt != 0 }">
 				<div id="bad_manner_detail">
-				<c:forEach items="${manner }" var="manner">
 					<ul>
 					<div class="mannerCnt">	<li><div class="a">상품상태가 설명한 것과 달라요.</div><div class="b"><span class="spanCnt">${cnt7}</span></div></li></div>
 					<div class="mannerCnt">	<li>불친절하고 매너가 안좋아요.<span class="spanCnt">${cnt8}</span></li></div>
@@ -90,10 +89,7 @@ $(document).ready(function(){
 					<div class="mannerCnt">	<li>응답이 느려요.<span class="spanCnt">${cnt11}</span></li></div>
 					<div class="mannerCnt">	<li>상품설명이 부족해요.<span class="spanCnt">${cnt12}</span></li></div>
 					<div class="mannerCnt">	<li>없음.<span class="spanCnt">${cnt13}</span></li></div>
-					
-					
 					</ul>
-				</c:forEach>
 				</div>
 			</c:if>
 			</div>

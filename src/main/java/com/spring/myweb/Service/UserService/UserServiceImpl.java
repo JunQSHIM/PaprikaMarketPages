@@ -29,6 +29,7 @@ import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.DAO.UserDAO.UserDAO;
 import com.spring.myweb.MailUtil.MailHandler;
 import com.spring.myweb.MailUtil.TempKey;
+import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
@@ -363,8 +364,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int evaluation(MyMannerVO vo) throws Exception {
-		return userDAO.evaluation(vo);
+	public int evaluation(HashMap<String, Object> info) throws Exception {
+		return userDAO.evaluation(info);
 	}
 
 	@Override
@@ -372,6 +373,20 @@ public class UserServiceImpl implements UserService{
 		return userDAO.repNo(user_seq);
 	}
 
-	
+	@Override
+	public int updateMannerTemp(UserVO vo) {
+		return userDAO.updateMannerTemp(vo);
+	}
+
+	@Override
+	public int doneDeal(DealVO vo) {
+		return userDAO.doneDeal(vo);
+	}
+
+	@Override
+	public List<DealVO> doneDealList(int user_seq) {
+		List<DealVO> dealList = userDAO.doneDealList(user_seq);
+		return dealList;
+	}
 
 }

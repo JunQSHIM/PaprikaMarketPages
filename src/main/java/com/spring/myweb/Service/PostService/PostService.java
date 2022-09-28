@@ -64,6 +64,5 @@ public interface PostService {
 	public int insertPPKPay(HashMap<String, Object> vo);
 	
 	public ReportVO reportReason(HashMap<String,Object> info); //신고사유보려고
-
-
+	public int updateSellProduct(int post_seq);
 }

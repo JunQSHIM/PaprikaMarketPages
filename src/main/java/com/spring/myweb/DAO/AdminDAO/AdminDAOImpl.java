@@ -292,4 +292,9 @@ public class AdminDAOImpl implements AdminDAO {
 		return session.update("adminDB.updatePay",vo);
 	}
 
+	@Override
+	public void deletePay() {
+		session.delete("adminDB.deletePay");
+	}
+
 }

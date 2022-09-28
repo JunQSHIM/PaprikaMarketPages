@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
-import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
-import com.spring.myweb.VO.ReportVO.ReportVO;
+import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 public interface UserDAO {
@@ -28,8 +27,14 @@ public interface UserDAO {
 	int updatePay(UserVO vo) throws Exception;
 	public void withdrawal(UserVO vo) throws Exception; // 회원탈퇴
 	public int WithdrawalReason(WithdrawalVO vo) throws Exception; // 탈퇴사유
-	public int evaluation(MyMannerVO vo) throws Exception; // 매너 평가 주기
+	public int evaluation(HashMap<String,Object> info) throws Exception; // 매너 평가 주기
 	
 	public UserVO selectByUserSeq(int user_seq);
 	public int repNo(int user_seq) throws Exception; // 신고 횟수 증가
+	
+	
+	public int updateMannerTemp(UserVO vo); //매너온도 업데이트
+	
+	public int doneDeal(DealVO vo); //구매확정 후 목록에 넣어주기
+	public List<DealVO> doneDealList(int user_seq); //구매확정 목록 불러오기
 }

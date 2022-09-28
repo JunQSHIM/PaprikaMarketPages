@@ -58,5 +58,6 @@ public interface AdminDAO {
 	public void abbBanner(BannerVO vo);//배너 저장
 	public void bannerDelete(int banner_seq);
 	public int updatePay(HashMap<String, Object> vo);
+	public void deletePay(); //완료된 페이 삭제
 }
 

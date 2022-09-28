@@ -138,7 +138,6 @@ $(window).on("beforeunload", function(){
                    return false;
                    $('div.chat-message textarea').focus();
                 }
-             
              sendMessage(message);
              // textarea 비우기
              clearTextarea();
@@ -147,11 +146,9 @@ $(window).on("beforeunload", function(){
 
     // 채팅 방 클릭 시 방번호 배정 후 웹소켓 연결
     function enterRoom(obj){
-         
     	roomId=obj;
          // 웹소켓 연결
          connect();
- 
          console.log("enterRoom");
     }
     
@@ -205,7 +202,7 @@ $(window).on("beforeunload", function(){
         let receive = evt.data.split(",");
          
         const data = {
-                "name" : receive[0],
+             "name" : receive[0],
              "message" : receive[1],
              "time" : today
         };
@@ -225,7 +222,6 @@ $(window).on("beforeunload", function(){
      
     // * 3 메세지 태그 append
     function appendMessageTag(LR_className, message, name, time) {
-		
     	
         const chatLi = createMessageTag(LR_className, message, name, time);
         $('#realtime').append(chatLi);
@@ -237,7 +233,6 @@ $(window).on("beforeunload", function(){
     // * 4 메세지 태그 생성
     function createMessageTag(LR_className, message, name, time) {
     	 
-    	
     	let chatLi;
          // 형식 가져오기 (나:상대방)
          if(LR_className =='me'){
@@ -257,7 +252,6 @@ $(window).on("beforeunload", function(){
          chatLi.find('.message-data-name').text(name);      // 이름 추가
          chatLi.find('.message').text(message); // 메세지 추가
          chatLi.find('.message-data-time').text(time.replace('T', ' ').substring(0, 19)); // 메세지 추가
-     
          return chatLi;
     };
      

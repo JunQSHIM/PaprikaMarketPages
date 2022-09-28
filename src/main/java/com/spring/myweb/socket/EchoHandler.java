@@ -245,7 +245,6 @@ public class EchoHandler extends TextWebSocketHandler{
 					ReportVO rvo = postService.reportReason(reportInfo);
 					System.out.println("신고내용 "+rvo.getReport_content());
 					
-					
 					if(sellerSession != null) {
 						logger.info("HIHI");
 						TextMessage sellerMsg = new TextMessage(sellerId + "님의 "

@@ -319,5 +319,10 @@ public class PostDAOImpl implements PostDAO {
 		return session.selectOne("userDB.reportReason",info);
 	}
 
+	@Override
+	public int updateSellProduct(int post_seq) {
+		return session.update("userDB.updateSellProduct", post_seq);
+	}
+
 
 }

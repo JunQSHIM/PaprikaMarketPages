@@ -57,4 +57,5 @@ public interface AdminService {
 	public void bannerDelete(int banner_seq);//배너 삭제
 	
 	public int updatePay(HashMap<String, Object> vo);
+	public void deletePay();
 }

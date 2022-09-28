@@ -222,4 +222,9 @@ public class AdminServiceImpl implements AdminService {
 	public int updatePay(HashMap<String, Object> vo) {
 		return adminDAO.updatePay(vo);
 	}
+
+	@Override
+	public void deletePay() {
+		adminDAO.deletePay();
+	}
 }

@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
-import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
-import com.spring.myweb.VO.ReportVO.ReportVO;
+import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 public interface UserService {
@@ -33,7 +32,10 @@ public interface UserService {
 	int updatePay(UserVO vo) throws Exception;
 	public void withdrawal(UserVO vo) throws Exception; // 회원탈퇴
 	public int WithdrawalReason(WithdrawalVO vo) throws Exception; // 탈퇴사유
-	public int evaluation(MyMannerVO vo) throws Exception; // 매너 평가 주기
+	public int evaluation(HashMap<String, Object> info) throws Exception; // 매너 평가 주기
 	public UserVO selectByUserSeq(int user_seq);
 	public int repNo(int user_seq) throws Exception;
+	public int updateMannerTemp(UserVO vo); //매너온도 업데이트
+	public int doneDeal(DealVO vo);
+	public List<DealVO> doneDealList(int user_seq);
 }

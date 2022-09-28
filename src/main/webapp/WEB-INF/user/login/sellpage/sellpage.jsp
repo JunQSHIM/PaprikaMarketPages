@@ -58,11 +58,20 @@
 							<img src="${photo[status.index] }" alt="img" name="post_seq">
 						</div>
 						<div class="state"><div id="show-state">
+						
+						
 						<select name="sell_status" id="select_value">
-							<option value="0">판매중</option>
-							<option value="1">예약중</option>
-							<option value="2">판매완료</option>
+							<c:choose>
+								<c:when test="${plist.status eq 0 }">
+									<option value="0">판매중</option>
+								</c:when>
+								<c:otherwise>
+									<option value="2">판매완료</option>
+								</c:otherwise>
+							</c:choose>
 						</select>
+						
+						
 					</div></div>
 						<div class="product-name" name="post_title">${plist.post_title }</div>
 						<div class="price" name="price"><fmt:formatNumber value="${plist.price }" pattern="###,###,###"/></div>
@@ -136,6 +145,7 @@
 						<div class="date">날짜</div>
 					</div>
 
+					<c:forEach var="deal" items="${doneDeal }">
 					<div class="sell-products">
 						<div class="select">
 							<input type="checkbox">
@@ -143,24 +153,12 @@
 						<div class="img">
 							<img src="images/jjim_icon/santiago.png" alt="img">
 						</div>
-						<div class="state">판매</div>
-						<div class="product-name">레고</div>
-						<div class="price">700,000원</div>
-						<div class="date">22-08-02</div>
+						<div class="state">구매완료</div>
+						<div class="product-name">${deal.post_title }</div>
+						<div class="price">${deal.price }원</div>
+						<div class="date"><fmt:formatDate value="${deal.deal_time }" pattern = "yyyy-MM-dd"/></div>
 					</div>
-
-					<div class="sell-products">
-						<div class="select">
-							<input type="checkbox">
-						</div>
-						<div class="img">
-							<img src="images/jjim_icon/travis.png" alt="img">
-						</div>
-						<div class="state">구매</div>
-						<div class="product-name">신발</div>
-						<div class="price">1700,000원</div>
-						<div class="date">22-08-02</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 

@@ -28,8 +28,8 @@
 	</select>
 	<select id="insertUser">
 		insert into
-		user(id,name,password,nickname,email,birth,phone,msg_agree,available,profile_image)
-		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image})
+		user(id,name,password,nickname,email,birth,phone,msg_agree,available,profile_image,create_date)
+		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image},now())
 		ON DUPLICATE KEY UPDATE id= #{id};
 	</select>
 
@@ -412,10 +412,8 @@
 	</insert>
 
 	<!-- 매너 평가 하기 -->
-	<insert id="evaluation" parameterType="MyMannerVO">
-		insert into myManner
-		values(#{user_seq}, 289,
-		4,#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now());
+	<insert id="evaluation" parameterType="java.util.HashMap">
+		insert into myManner values(#{user_seq}, #{sell_user_seq},#{post_seq},#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now());
 	</insert>
 	
 	<!-- 상품후기 리스트 -->
@@ -529,5 +527,23 @@
 		update notice set read_notice=1 where notice_seq=#{notice_seq}
 	</update>
 	
-	<!--  -->
+	<!-- 매너온도 업데이트 -->
+	<update id="updateMannerTemp">
+		update user set temp=#{temp} where user_seq=#{user_seq};
+	</update>
+	
+	<!-- 거래 확정시 구매목록에 넣어줌 -->
+	<insert id="doneDeal" parameterType="DealVO">
+		insert into deal values(#{deal_seq},#{user_seq},#{post_seq},#{price},now(),#{post_title})
+	</insert>
+	
+	<!-- 구매목록 보여주기  -->
+	<select id="doneDealList" resultType="DealVO">
+		select * from deal where user_seq=#{user_seq}
+	</select>
+	
+	<!-- 구매완료시 판매물품 상태 바꿔주기 -->
+	<update id="updateSellProduct">
+		update post set status=1 where post_seq=#{post_seq}
+	</update>
 </mapper>

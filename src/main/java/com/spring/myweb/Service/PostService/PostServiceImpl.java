@@ -225,4 +225,9 @@ public class PostServiceImpl implements PostService {
 		return postDao.reportReason(info);
 	}
 
+	@Override
+	public int updateSellProduct(int post_seq) {
+		return postDao.updateSellProduct(post_seq);
+	}
+
 }

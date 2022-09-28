@@ -1,7 +1,6 @@
 package com.spring.myweb.chat;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonIOException;
 import com.spring.myweb.Service.BoardService.UserBoardService;
@@ -22,10 +22,8 @@ import com.spring.myweb.Service.ChatService.ProductService;
 import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.VO.ChatVO.ChatMessage;
 import com.spring.myweb.VO.ChatVO.ChatRoom;
-import com.spring.myweb.VO.ChatVO.ChatSession;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.UserVO.UserVO;
-import com.spring.myweb.awss3.vo.PostPhotoVO;
  
 @Controller
 public class ChatController {
@@ -110,11 +108,13 @@ public class ChatController {
     }
     
     @RequestMapping("/sellStatus.cdo")
-    public String updateStatus(PostVO pvo, @RequestParam(value="post_seq")int post_seq) {
+    public @ResponseBody String updateStatus(PostVO pvo, @RequestParam(value="post_seq")int post_seq, @RequestParam(value="datepicker")String datepicker) {
     	pvo.setPost_seq(post_seq);
     	pvo.setSell_status(3);
     	cService.updateSellStatus(pvo);
-    	return "redirect:create.do";
+    	System.out.println(post_seq);
+    	System.out.println(datepicker);
+    	return datepicker;
     }
     
     

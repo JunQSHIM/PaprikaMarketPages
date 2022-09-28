@@ -32,6 +32,7 @@ import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 import com.spring.myweb.VO.AdminVO.PayVO.PayVO;
+import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
@@ -420,11 +421,16 @@ public class AdminController {
 	
 	//pay
 	@RequestMapping(value="pay.mdo", method=RequestMethod.POST)
-	public String payConfirm(Model model,HashMap<String, Object> vo, String[] process, String[] status, String[] pay_seq) {
+	public String payConfirm(PostVO pvo, Model model,HashMap<String, Object> vo, String[] post_seq, String[] process, String[] status, String[] pay_seq) {
 		System.out.println("수정된 파프리카 페이목록");
 		for(int i=0; i<pay_seq.length; i++) {
 			System.out.println("cc");
-			vo.put("process", process[i]);
+			pvo = postService.postDetail(Integer.parseInt(post_seq[i]));
+			if(Integer.parseInt(process[i])==4) {
+				vo.put("process", process[i]);
+			}else {
+				vo.put("process", pvo.getPay_status());
+			}
 			vo.put("status", status[i]);
 			vo.put("pay_seq", pay_seq[i]);
 			int result = adminService.updatePay(vo);
@@ -438,7 +444,10 @@ public class AdminController {
 		
 		List<PayVO> vo1 = payService.payList();
 		model.addAttribute("payList", vo1);
-		return "Admin_page/admin_list/pay";
+		for(int i=0; i<vo1.size(); i++) {
+			adminService.deletePay();
+		}
+		return "redirect:pay.mdo";
 	}
 	
 	@RequestMapping(value="payForm.mdo")

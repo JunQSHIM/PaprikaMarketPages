@@ -5,24 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>상품상세</title>
- 
+<title>AdminPage</title>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
-
-			<%@include file="/WEB-INF/admin/Admin_page/layout/ad_layout.jsp"%>
-
+		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_layout.jsp"%>
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Main content -->
 			<section class="content">
-				<%@include file="/WEB-INF/admin/Admin_page/product/ad_c_prod_de.jsp"%>
+				<%@include file="/WEB-INF/admin/Admin_page/admin_board/admin_review.jsp" %>
 			</section>
 			<!-- /.content -->
 		</div>
-			<%@include file="/WEB-INF/admin/Admin_page/layout/ad_footer.jsp"%>
+		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_footer.jsp"%>
 	</div>
-
+	
 </body>
 </html>

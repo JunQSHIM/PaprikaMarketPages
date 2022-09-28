@@ -47,11 +47,10 @@
 						<div class="state">판매상태</div>
 						<div class="product-name">상품명</div>
 						<div class="price">가격</div>
-						<div class="jjim">찜</div>
 						<div class="date">최근 수정일</div>
 						<div class="control">관리</div>
 					</div>
-
+				<input type="hidden" id="post_seq" name="post_seq" value="${post.post_seq }">
 				<c:forEach items="${ plist}" var="plist" varStatus="status">
 					<div class="sell-products">
 						<div class="img">
@@ -75,12 +74,14 @@
 					</div></div>
 						<div class="product-name" name="post_title">${plist.post_title }</div>
 						<div class="price" name="price"><fmt:formatNumber value="${plist.price }" pattern="###,###,###"/></div>
-						<div class="jjim">♥</div>
-						<div class="date" name="create_date"><fmt:formatDate value="${plist.create_date }" pattern="yyyy-MM-dd HH:mm:ss"/> </div>
+						<div class="jjim">
+						
+						</div>
+						<div class="date" name="upload_date">${plist.upload_date } </div>
 						<div class="control">
+							<button id="up" onclick="location.href='upPost.do?post_seq=${plist.post_seq }'">UP</button>
 							<button onclick="location.href='updatePost.do?post_seq=${plist.post_seq }'">수정</button>
-							<button onclick="location.href='postDelete.do?post_seq=${plist.post_seq }',removeCheck()" >삭제</button>
-							<button>중지</button>
+							<button id="delete">삭제</button>
 						</div>
 					</div>
 						</c:forEach>
@@ -187,6 +188,27 @@ function checkboxArr() {   
 				}
 		});
 		}
+
+	</script>
+	
+	<script type="text/javascript">
+	$('#delete').on('click', function() { 
+		var chk = confirm('삭제하시겠습니까?');
+		var post_seq = $('#post_seq').val();
+		console.log(post_seq);
+		if(chk == true){
+			location.href=('postDelete.do?post_seq=' +  post_seq);
+			location.replave=('main.do')
+			alert('삭제되었습니다.')
+		} else {
+			alert('취소되었습니다.')
+			return false;
+		}
+		
+	});
+	$('#up').on('click', function() { 
+		alert("상품을 맨 위로 올렸습니다.");
+	});
 	</script>
 </body>
 </html>

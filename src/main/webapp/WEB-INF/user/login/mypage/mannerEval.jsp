@@ -60,11 +60,16 @@ $(document).ready(function(){
 			</c:if>
 				<c:if test="${reviewCnt != 0 }">
 				<div id="good_manner_detail">
-					<c:forEach items="${manner }" var="manner">
+					
 						<ul>
-							<li>${manner.manner_compliment }</li>
+							<div class="mannerCnt"><li><div class="a">상품 상태가 설명한 것과 같아요.</div><div class="b"><span class="spanCnt">${cnt1}</span></div></li></div> 
+							<div class="mannerCnt"><li><div class="a">시간 약속을 잘 지켜요.</div> <span class="spanCnt">${cnt2}</span> </li></div>
+							<div class="mannerCnt"><li>친절하고 매너가 좋아요.  <span class="spanCnt">${cnt3}</span></li></div>
+							<div class="mannerCnt"><li>좋은 상품을 저렴하게 판매해요.<span class="spanCnt">${cnt4}</span></li></div>
+							<div class="mannerCnt"><li>응답이 빨라요.<span class="spanCnt">${cnt5}</span></li></div>
+							<div class="mannerCnt"><li>상품설명이 자세해요.<span class="spanCnt">${cnt6}</span></li></div>
 						</ul>
-					</c:forEach>
+					
 				</div>
 			</c:if>
 			</div>
@@ -78,7 +83,15 @@ $(document).ready(function(){
 				<div id="bad_manner_detail">
 				<c:forEach items="${manner }" var="manner">
 					<ul>
-						<li>${manner.bad_manner }</li>
+					<div class="mannerCnt">	<li><div class="a">상품상태가 설명한 것과 달라요.</div><div class="b"><span class="spanCnt">${cnt7}</span></div></li></div>
+					<div class="mannerCnt">	<li>불친절하고 매너가 안좋아요.<span class="spanCnt">${cnt8}</span></li></div>
+					<div class="mannerCnt">	<li>시간 약속을 잘 어겨요.<span class="spanCnt">${cnt9}</span></li></div>
+					<div class="mannerCnt">	<li>상품의 가격이 너무 비싸요.<span class="spanCnt">${cnt10}</span></li></div>
+					<div class="mannerCnt">	<li>응답이 느려요.<span class="spanCnt">${cnt11}</span></li></div>
+					<div class="mannerCnt">	<li>상품설명이 부족해요.<span class="spanCnt">${cnt12}</span></li></div>
+					<div class="mannerCnt">	<li>없음.<span class="spanCnt">${cnt13}</span></li></div>
+					
+					
 					</ul>
 				</c:forEach>
 				</div>
@@ -86,7 +99,7 @@ $(document).ready(function(){
 			</div>
 			<div id="tab-3" class="tab-content">
 				<div id="notice_detail">
-					<b>- 받은 비매너 내역은 나에게만 보입니다.</b><br /><br />
+					<b>- 받은 비매너 내역은 나에게만 보입니다.</b><br /><br/>
 					<b>- 매너 온도가 올라가는 경우(가산점 높은 순)</b><br />
 					1. 거래 상대에게 받은 긍정 거래 후기<br />
 					2. 거래 상대에게 받은 매너 칭찬<br />

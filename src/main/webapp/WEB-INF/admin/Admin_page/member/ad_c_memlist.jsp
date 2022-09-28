@@ -71,6 +71,7 @@
 											<th>신고받은횟수</th>
 											<th>회원가입경로</th>
 											<th>수신동의</th>
+											<th>차단관리</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -113,6 +114,18 @@
 															X
 														</c:otherwise>
 													</c:choose>
+												</td>
+												<td>
+												<c:if test="${user.rep_no le 5 }">
+													관리대상아님
+												</c:if>
+												<c:if test="${user.rep_no ge 5 }">
+													<select id="blockUser" onchange="myFunction(this.value)">
+														<option disabled="disabled" selected>차단여부선택</option>
+														<option value="block">차단하기</option>
+														<option value="unblock">차단풀기</option>
+													</select>
+												</c:if>
 												</td>
 											</tr>
 										</c:forEach>
@@ -185,6 +198,11 @@
 				"responsive" : true,
 			});
 		});
+		
+		function myFunction(str){
+			alert("사용자 " + str);
+		}
+		
 	</script>
 </body>
 </html>

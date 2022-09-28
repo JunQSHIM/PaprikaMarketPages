@@ -15,6 +15,9 @@ import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 import com.spring.myweb.VO.AdminVO.PayVO.PayVO;
+import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
+import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
@@ -25,19 +28,19 @@ public class AdminServiceImpl implements AdminService {
 
 	@Inject
 	private AdminDAO adminDAO;
-	
+
 	@Override
 	public List<UserVO> selectAll() {
 		return adminDAO.selectAll();
 	}
-	
+
 	@Override
 	public List<UserSmsVO> selectSmsAll() {
 		return adminDAO.selectSmsAll();
 	}
-	
+
 	@Override
-	public List<ReviewSingoVO> selectReviewSingo(){
+	public List<ReviewSingoVO> selectReviewSingo() {
 		return adminDAO.selectSingoReview();
 	}
 
@@ -45,13 +48,12 @@ public class AdminServiceImpl implements AdminService {
 	public List<BoardSingoVO> selectBoardSingo() {
 		return adminDAO.selectSingoBoard();
 	}
-	
+
 	@Override
 	public List<PostSingoVO> selectPostSingo() {
 		return adminDAO.selectSingoPost();
 	}
-	
-	
+
 	@Override
 	public void deleteSingoPage(int singo_page) {
 		adminDAO.deleteSingoPage(singo_page);
@@ -76,7 +78,7 @@ public class AdminServiceImpl implements AdminService {
 	public List<UserVO> adminList() {
 		return adminDAO.selectAdmin();
 	}
-	 
+
 	@Override
 	public int giveAdmin(String id) {
 		int result = adminDAO.giveAdmin(id);
@@ -88,6 +90,7 @@ public class AdminServiceImpl implements AdminService {
 		int result = adminDAO.deleteAdmin(id);
 		return result;
 	}
+
 	@Override
 	public List<BannerVO> bannerList() {
 		return adminDAO.bannerList();
@@ -152,7 +155,7 @@ public class AdminServiceImpl implements AdminService {
 	public QnaAnswersVO selectAStr(String answer) {
 		return adminDAO.selectAStr(answer);
 	}
-	
+
 	@Override
 	public QnaVO selectCate(int qna_seq) {
 		return adminDAO.selectCate(qna_seq);
@@ -167,7 +170,7 @@ public class AdminServiceImpl implements AdminService {
 	public QnaAnswersVO selectA(int a_seq) {
 		return adminDAO.selectA(a_seq);
 	}
-	
+
 	@Override
 	public List<QnaQuestionsVO> bringQ(String qna_title) {
 		return adminDAO.bringQ(qna_title);
@@ -208,7 +211,6 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.checkQ(question);
 	}
 
-
 	public void addBanner(BannerVO vo) {
 		adminDAO.abbBanner(vo);
 	}
@@ -226,5 +228,35 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void deletePay() {
 		adminDAO.deletePay();
+	}
+	
+	public List<OneOnOneVO> oneOnList() {
+		return adminDAO.oneOnList();
+	}
+
+	@Override
+	public OneOnOneVO findUser(int user_seq) {
+		return adminDAO.findUser(user_seq);
+	}
+
+	@Override
+	public int oneStatus(int status) {
+		return adminDAO.oneStatus(status);
+	}
+
+	@Override
+	public List<PostVO> adminPost() throws Exception {
+		return adminDAO.adminPost();
+	}
+
+	@Override
+	public PostVO adminPostDetail(int post_seq) throws Exception {
+		return adminDAO.adminPostDetail(post_seq);
+
+	}
+
+	@Override
+	public List<MyMannerVO> adminReview() throws Exception {
+		return adminDAO.adminReview();
 	}
 }

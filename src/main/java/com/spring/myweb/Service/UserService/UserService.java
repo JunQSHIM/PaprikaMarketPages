@@ -3,9 +3,11 @@ package com.spring.myweb.Service.UserService;
 import java.util.HashMap;
 import java.util.List;
 
-import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.VO.DealVO.DealVO;
+import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 
 public interface UserService {
 	public List<UserVO> selectAll();
@@ -38,4 +40,8 @@ public interface UserService {
 	public int updateMannerTemp(UserVO vo); //매너온도 업데이트
 	public int doneDeal(DealVO vo);
 	public List<DealVO> doneDealList(int user_seq);
+	public int mannerCount(MyMannerVO vo) throws Exception; // 받은 매너 칭찬
+	public int badCount(MyMannerVO vo) throws Exception; // 받은 비매너
+
+
 }

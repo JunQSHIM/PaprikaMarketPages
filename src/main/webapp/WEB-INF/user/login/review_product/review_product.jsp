@@ -5,9 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/myweb/login/css/review<odal.css">
 <link rel="stylesheet" type="text/css" href="/myweb/login/review_product/review_product.css">
-<script type="text/javascript" src="/myweb/login/review_product/review_product.js"></script>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -42,7 +44,7 @@
 							<div class="reviewer_title">
 								<div class="reviewer_name">
 									<a class="reviewer_name_1">
-										준귀염둥이규
+										${manner.nickname }
 									</a>
 									<div class="review_date">${manner.create_date }</div>
 								</div>
@@ -77,7 +79,7 @@
 								</a>
 							</div>
 							<a class="purchase_product" href="#">
-								<button class="purchase_name">트레비스 스캇 x 나이키 (정품)
+								<button class="purchase_name">${manner.post_title }
 								<img src="/myweb/login/images/jjim_icon/arrow2.png" width="6" height="10" alt="화살표">
 								</button>
 							</a>
@@ -103,8 +105,9 @@
 					</button>
 				</div>
 			</div>
-			
  			</div>
  			<input type="hidden" name="post_seq" value="${post.post_seq }">
 </body>
+
+<script type="text/javascript" src="/myweb/login/review_product/review_product.js"></script>
 </html>

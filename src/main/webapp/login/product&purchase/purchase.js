@@ -131,6 +131,7 @@ function review() {
 		return false;
 	}
 	$.ajax({
+<<<<<<< HEAD
 		url: "/myweb/evaluation.do",
 		type: 'post',
 		data: {
@@ -138,6 +139,15 @@ function review() {
 			post_seq: $('#post_seq').val(),
 			user_singo_seq: $('#sell_user_seq').val(),
 			review: text.value,
+=======
+		url : "/myweb/evaluation.do",
+		type : 'post',
+		data : {
+			user_seq : $('#user_seq').val(),
+			post_seq : $('#post_seq').val(),
+			sell_user_seq : $('#sell_user_seq').val(),
+			review : text.value,
+>>>>>>> 88a8bc6bbc3b7577a898b22b38b5b4727fbee5e3
 		},
 		success: function(data) {
 			console.log(text.value);

@@ -27,11 +27,13 @@
 		<typeAlias alias="UserBoardPageVO" type="com.spring.myweb.VO.PageVO.UserBoardPageVO"/>
 		<typeAlias alias="ReportVO" type="com.spring.myweb.VO.ReportVO.ReportVO"/>
 		<typeAlias alias="NoticeVO" type="com.spring.myweb.VO.noticeVO.NoticeVO"/>
-		<typeAlias alias="WithdrawalVO" type="com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO"/>
 		<typeAlias alias="MyMannerVO" type="com.spring.myweb.VO.MyMannerVO.MyMannerVO"/>
 		<typeAlias alias="ChatRoom" type="com.spring.myweb.VO.ChatVO.ChatRoom"/>
 		<typeAlias alias="ChatMessage" type="com.spring.myweb.VO.ChatVO.ChatMessage"/>
 		<typeAlias alias="DealVO" type="com.spring.myweb.VO.DealVO.DealVO"/>
+		<typeAlias alias="OneOnOneVO" type="com.spring.myweb.VO.OneOnOneVO.OneOnOneVO"/>
+		<typeAlias alias="ReviewReportVO" type="com.spring.myweb.VO.ReviewReportVO.ReviewReportVO"/>
+		<typeAlias alias="WithdrawalVO" type="com.spring.myweb.VO.WithdrawalVO.WithdrawalVO"/>
 	</typeAliases>
 	
 	<mappers>

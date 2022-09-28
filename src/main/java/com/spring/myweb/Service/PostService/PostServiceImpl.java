@@ -13,11 +13,13 @@ import com.spring.myweb.DAO.PostDAO.PostDAO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -200,10 +202,6 @@ public class PostServiceImpl implements PostService {
 		return postDao.reportStatus(vo);
 	}
 
-	@Override
-	public void withdrawalPost(int user_seq) {
-		postDao.withdrawalPost(user_seq);
-	}
 	
 	@Override
 	public int repNo(ReportVO vo) throws Exception {
@@ -228,6 +226,35 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public int updateSellProduct(int post_seq) {
 		return postDao.updateSellProduct(post_seq);
+	}
+	
+	public int oneOnInsert(OneOnOneVO vo) throws Exception {
+		return postDao.oneOnInsert(vo);
+	}
+
+	@Override
+	public String findReviewer(int user_seq) throws Exception {
+		return postDao.findReviewer(user_seq);
+	}
+
+	@Override
+	public String Reviewer(int post_seq) throws Exception {
+		return postDao.Reviewer(post_seq);
+	}
+
+	@Override
+	public void upPost(int post_seq) {
+		postDao.upPost(post_seq);
+	}
+
+	@Override
+	public List<Integer> related(int category_seq) throws Exception {
+		return postDao.related(category_seq);
+	}
+
+	@Override
+	public int withdrawalPost(int user_seq) {
+		return postDao.withdrawalPost(user_seq);
 	}
 
 }

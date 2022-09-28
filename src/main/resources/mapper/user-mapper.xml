@@ -5,7 +5,8 @@
 		select * from user;
 	</select>
 	<select id="selectByNickname" resultType="UserVO">
-		select * from user where nickname=#{nickname}
+		select * from user
+		where nickname=#{nickname}
 	</select>
 	<select id="selectUser" parameterType="string"
 		resultType="UserVO">
@@ -29,7 +30,7 @@
 	<select id="insertUser">
 		insert into
 		user(id,name,password,nickname,email,birth,phone,msg_agree,available,profile_image,create_date)
-		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image},now())
+		values(#{id},#{name},#{password},#{nickname},#{email},#{birth},#{phone},#{msg_agree},1,#{profile_image}, now())
 		ON DUPLICATE KEY UPDATE id= #{id};
 	</select>
 
@@ -42,7 +43,7 @@
 	<select id="insertboard" resultType="UserBoardVO">
 		insert into
 		board(user_seq,
-		title, content, upload_date)
+		title, content, create_date)
 		values(#{user_seq}, #{title},
 		#{content},now());
 	</select>
@@ -68,9 +69,8 @@
 	</select>
 
 	<!-- 회원 탈퇴를 위한 판매하기 삭제 -->
-	<select id="withdrawalPost" resultType="PostVO">
-		delete from post where
-		user_seq = #{user_seq};
+	<select id="withdrawalPost" resultType="int">
+		select * from withdrawal where user_seq = #{user_seq};
 	</select>
 
 	<!-- 사진삭제 게시판 -->
@@ -104,7 +104,7 @@
 	<select id="selectBoardNew" resultType="int">
 		select board_seq from
 		board
-		where user_seq = #{user_seq} order by upload_date desc limit 0,1;
+		where user_seq = #{user_seq} order by create_date desc limit 0,1;
 	</select>
 
 	<!-- 게시판 총 개수 -->
@@ -146,10 +146,10 @@
 	</select>
 
 	<!-- 판매상품 삭제하기 -->
-	<select id="postDelete" resultType="PostVO">
+	<delete id="postDelete" >
 		delete from post where
 		post_seq = #{post_seq};
-	</select>
+	</delete>
 
 	<!-- 판매상품 수정하기 -->
 	<select id="updatePost" resultType="PostVO">
@@ -247,10 +247,10 @@
 
 	<!-- 찜목록 -->
 	<select id="jjimCart" parameterType="LikeVO" resultType="int">
-		<!-- select count(user_seq) from (select * from likePost where user_seq 
-			= #{user_seq}) as lk where likeCnt =1; -->
-		select count(*) from likePost a, post b where a.post_seq = b.post_seq
-		and likeCnt = 1 and a.user_seq = #{user_seq};
+		select
+		count(*) from likePost a, post b where a.post_seq = b.post_seq
+		and
+		likeCnt = 1 and a.user_seq = #{user_seq};
 	</select>
 
 	<!-- 찜한 게시판 불러오기 -->
@@ -336,7 +336,7 @@
 			where post_title like concat('%',#{keyword},'%')
 		</if>
 
-		order by post_seq desc) as T1
+		order by upload_date desc) as T1
 		limit #{displayPost},#{postNum}
 	</select>
 
@@ -352,7 +352,7 @@
 	<select id="myPageList" parameterType="PageVO"
 		resultType="PostVO">
 		select * from (
-		select post_seq, post_title, price, create_date,
+		select post_seq, post_title, price, upload_date,
 		pay_check, location1
 		from post
 		<if test="user_seq != null">
@@ -365,7 +365,7 @@
 			order by post_seq desc
 		</if>
 		<if test="sort == 2">
-
+			order by cnt desc
 		</if>
 		<if test="sort == 3">
 			order by price ASC
@@ -391,10 +391,11 @@
 		report_date) values(#{user_seq}, #{user_singo_seq}, #{post_seq},
 		#{report_content}, now())
 	</insert>
-	
-	<!-- 신고사유보기  -->
+
+	<!-- 신고사유보기 -->
 	<select id="reportReason" resultType="ReportVO">
-		select * from post_reports where user_singo_seq=#{user_singo_seq} and user_seq=#{user_seq}
+		select * from post_reports
+		where user_singo_seq=#{user_singo_seq} and user_seq=#{user_seq}
 	</select>
 
 	<!-- 신고했는지 안 했는지 -->
@@ -407,25 +408,30 @@
 	<!-- 탈퇴사유 -->
 	<insert id="WithdrawalReason" parameterType="WithdrawalVO">
 		insert into
-		withdrawal(user_seq, withdrawal_content, withdrawal_date)
+		withdrawal(user_seq, withdrawal_content, create_date)
 		values(#{user_seq},#{withdrawal_content}, now());
 	</insert>
 
 	<!-- 매너 평가 하기 -->
-	<insert id="evaluation" parameterType="java.util.HashMap">
-		insert into myManner values(#{user_seq}, #{sell_user_seq},#{post_seq},#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now());
+	<insert id="evaluation" parameterType="MyMannerVO">
+		insert into myManner
+		values(#{user_seq}, #{sell_user_seq},
+		#{post_seq},#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now(),
+		now());
 	</insert>
-	
+
 	<!-- 상품후기 리스트 -->
 	<select id="reviewList" resultType="MyMannerVO">
-		select * from myManner where sell_user_seq = #{sell_user_seq};
+		select * from myManner where
+		sell_user_seq = #{sell_user_seq};
 	</select>
-	
-	<!--  상품 후기 개수 -->
+
+	<!-- 상품 후기 개수 -->
 	<select id="reviewCount" resultType="int">
-		select count(*) from myManner where sell_user_seq = #{sell_user_seq}
+		select count(*) from
+		myManner where sell_user_seq = #{sell_user_seq}
 	</select>
-	
+
 	<!-- 정보 찾기 -->
 	<select id="findKakao" parameterType="java.util.HashMap"
 		resultType="UserVO">
@@ -479,11 +485,12 @@
 		resultType="String">
 		select nickname from user where user_seq=${user_seq};
 	</select>
-	
-	
+
+
 	<!-- 신고 당한 횟수 -->
-	<update id = "repNo">
-		update user set rep_no = rep_no + 1 where user_seq = #{user_seq};
+	<update id="repNo">
+		update user set rep_no = rep_no + 1 where user_seq =
+		#{user_seq};
 	</update>
 
 	<!-- 파프리카페이 qr삽입 내일 이미지로 바꿔줭... -->
@@ -506,26 +513,30 @@
 		process, sellerQr, buyerQr, status, sellerKID, buyerKID)
 		values(#{pay_seq},#{sellerId},#{buyerId},#{post_seq},#{process},#{sellerQr},#{buyerQr},1,#{sellerKID},#{buyerKID})
 	</insert>
-	
+
 	<!-- notice 불러오기 -->
 	<select id="selectNotice" resultType="NoticeVO">
 		<![CDATA[select * from notice where sellerId=#{nickname} or buyerId=#{nickname} order by notice_seq desc]]>
 	</select>
-	
+
 	<!-- notice 추가하기 -->
 	<insert id="addNotice" parameterType="NoticeVO">
-		insert into notice values(#{notice_seq}, #{buyerId}, #{sellerId}, #{seq}, 0, #{messageFrom}, #{action}, now())
+		insert into notice
+		values(#{notice_seq}, #{buyerId}, #{sellerId}, #{seq}, 0,
+		#{messageFrom}, #{action}, now())
 	</insert>
-	
-	<!-- notice 삭제하기 0안읽음 1읽음-->
+
+	<!-- notice 삭제하기 0안읽음 1읽음 -->
 	<delete id="deleteNotice">
 		delete from notice where read_notice=1
 	</delete>
-	
-	<!-- notice 읽음 처리-->
+
+	<!-- notice 읽음 처리 -->
 	<update id="readNotice">
-		update notice set read_notice=1 where notice_seq=#{notice_seq}
+		update notice set read_notice=1 where
+		notice_seq=#{notice_seq}
 	</update>
+
 	
 	<!-- 매너온도 업데이트 -->
 	<update id="updateMannerTemp">
@@ -546,4 +557,39 @@
 	<update id="updateSellProduct">
 		update post set status=1 where post_seq=#{post_seq}
 	</update>
+
+	<!-- 1:1문의하기 보내기 -->
+	<insert id="oneOnInsert">
+		insert into oneOnOne(user_seq, content, create_date)
+		values(#{user_seq},#{content},now())
+	</insert>
+
+	<!-- findReviewer -->
+	<select id="findReviewer" resultType="String">
+		select post_title from post where post_seq = #{post_seq};
+	</select>
+
+	<select id="Reviewer" resultType="String">
+		select nickname from user where user_seq = #{user_seq};
+	</select>
+
+	<update id="upPost">
+		update post set upload_date = now() where post_seq =
+		#{post_seq}
+	</update>
+
+	<select id="mannerCount" parameterType="MyMannerVO" resultType="int">
+		select count(*) from myManner where sell_user_seq = #{sell_user_seq} and
+		manner_compliment like concat('%',#{manner_compliment},'%');
+	</select>
+	
+	<select id="badCount" parameterType="MyMannerVO" resultType="int">
+		select count(*) from myManner where sell_user_seq = #{sell_user_seq} and
+		bad_manner like concat('%',#{bad_manner},'%');
+	</select>
+	
+	<select id="related" parameterType="Integer" resultType="Integer">
+		select post_seq from post where category_seq = #{category_seq} order by create_date desc limit 0, 5;
+	</select>
+
 </mapper>

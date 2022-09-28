@@ -91,7 +91,7 @@
 										<fmt:formatNumber value="${list.price }" pattern ="###,###,###"></fmt:formatNumber>
 									</div>
 								</div>
-								<div class="jjim_day">4일 전</div>
+								<div class="jjim_day">${list.upload_date }</div>
 							</div>
 						<div class="jjim_location">
 							<img src="/myweb/login/images/jjim_icon/location.png" width="15" height="17" alt="위치 아이콘">

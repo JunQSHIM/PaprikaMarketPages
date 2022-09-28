@@ -51,7 +51,7 @@ function login(){
 			</div>
 			<div class="card-body">
 					<div class="input-group form-group">
-						<span>입력하신 이메일로 인증메일을 보냈습니다. 이메일 인증을 먼저 해주세요.</span>
+						<span>입력하신 이메일로 인증메일을 보냈습니다.<br> 이메일 인증을 먼저 해주세요.</span>
 					</div>
 					<button onclick="reload()">다시 보내기</button>
 					<button onclick="login()">로그인창으로 돌아가기</button>

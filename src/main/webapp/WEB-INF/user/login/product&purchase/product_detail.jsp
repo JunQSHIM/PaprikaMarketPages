@@ -188,19 +188,15 @@
             </div>
             <div class="clear"></div>
             <div class="grid_12 item2">
-               연관상품
+             <div class="relatedFont">연관상품</div>
                <div id="rt_product">
                    <div class="slider">
-                   <div><img src="/myweb/login/images/1.png" title="1st"></div>
-                   <div><img src="/myweb/login/images/2.png" title="2nd"></div>
-                   <div><img src="/myweb/login/images/3.png" title="3rd"></div>
-                   <div><img src="/myweb/login/images/4.png" title="4th"></div>
-                   <div><img src="/myweb/login/images/5.png" title="5th"></div>
-                   <div><img src="/myweb/login/images/5.png" title="1st"></div>
-                   <div><img src="/myweb/login/images/4.png" title="1st"></div>
-                   <div><img src="/myweb/login/images/3.png" title="1st"></div>
-                   <div><img src="/myweb/login/images/2.png" title="1st"></div>
-                   <div><img src="/myweb/login/images/1.png" title="1st"></div>
+                   <c:forEach items="${rPhotoName }" var="related" varStatus="status">
+                		 <a href="postDetail.do?post_seq=${cate_seq[status.index]}&user_seq=${user.user_seq}">
+                			<img src="${related }" class="slider_img">
+                		 </a>
+                  </c:forEach>
+                  
                   </div>
             </div>
             
@@ -232,23 +228,54 @@
                      </div>
                      <div id="rt_img">
                         <div class="slider2">
-                            <div><img src="/myweb/login/images/test1.png" title="1st"></div>
-                            <div><img src="/myweb/login/images/test2.png" title="2nd"></div>
-                            <div><img src="/myweb/login/images/test3.png" title="3rd"></div>                            
-                            <div><img src="/myweb/login/images/test4.png" title="4th"></div>
-                            <div><img src="/myweb/login/images/test5.png" title="5th"></div>                                                        
+                  		 <c:forEach items="${rPhotoName }" var="related" varStatus="status">
+                        <div> <a href="postDetail.do?post_seq=${cate_seq[status.index]}&user_seq=${user.user_seq}">
+                			<img src="${related }" class="slider_img">
+                		 </a></div>
+                          </c:forEach>   
                         </div>
+                       
                   </div>
                   <div class="item">후기<hr style="border:1px solid gray;">
+                  	<c:forEach items="${manner }" var="manner" begin="0" end="1" step="1">
                      <div class="review_container">
-                        sook315 ★★★★★
-                        <div style="background-color: rgb(0,0,0,0.08)">큘거래 감사합니다 유용하게 잘 쓰겠습니다</div>
+                     
+                      <a class="review_scores" href="#">
+                      	<div class="review_score">
+                      	${manner.nickname} 
+                      		<c:if test="${manner.manner_temp == 1 }">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+									</c:if>
+									<c:if test="${manner.manner_temp == 2 }">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+									</c:if>
+									<c:if test="${manner.manner_temp == 3 }">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+									</c:if>
+									<c:if test="${manner.manner_temp == 4 }">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+									</c:if>
+									<c:if test="${manner.manner_temp == 5 }">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+										<img src="/myweb/login/images/jjim_icon/score.png" width="15" height="14" alt="별">
+									</c:if>
+                      	</div>
+                      </a>
+                      
+                        <div style="background-color: rgb(0,0,0,0.08)"> ${manner.manner_review } </div>
                      </div>
                         <hr style="border: 1px solid rgb(0,0,0,0.07);">
-                     <div class="review_container">
-                        상점921호 ★★★★☆
-                        <div style="background-color: rgb(0,0,0,0.08)">어차피 수십년전 제품들이라 재생만이라도 잘 되면 좋은데 재생잘되요</div>
-                     </div>
+                  </c:forEach>
+                     
                      <div id="more_reivews"><button onclick="location.href='reviewProductView.do?user_seq=${post.user_seq}'">후기더보기</button></div>
                   </div>
                </div>

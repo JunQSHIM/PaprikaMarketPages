@@ -61,9 +61,7 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
-
-
-
+		
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok 롬복 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -71,6 +69,14 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+   		 <groupId>javax.mail</groupId>
+    		<artifactId>mail</artifactId>
+    		<version>1.4.7</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
 		<dependency>

@@ -1,3 +1,19 @@
 ul{
 	list-style: none;
 }
+
+input {
+	width:500px;
+	border: 1px solid black;
+	margin-right: 10px;
+	font-size:100%;
+}
+
+.qrImg{
+	display: block;
+	margin-bottom: 10px;
+}
+
+.KIDName{
+	display: flex;
+}

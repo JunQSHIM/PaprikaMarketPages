@@ -9,10 +9,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
 import com.spring.myweb.VO.PageVO.PageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 
 public interface PostDAO {
 	public List<PostVO> postList(); // 글 목록
@@ -37,6 +39,7 @@ public interface PostDAO {
 	
 	public int myCount(PageVO vo) throws Exception; // 내상품 갯수
 	public List<PostVO> myPageList(PageVO vo) throws Exception;// 내상품 목록
+	public void upPost(int post_seq); // 상품 맨 위로 올리기
 	
 	
 	public Map<String, String> uploadImg(List<MultipartFile> img, String place);//이미지 다수 등록
@@ -57,8 +60,7 @@ public interface PostDAO {
 	public int repNo(ReportVO vo) throws Exception;
 	public int postReport(ReportVO vo); // 신고하기
 	public List<ReportVO> reportStatus(ReportVO vo); // 신고 했는지 안했는지
-	public void withdrawalPost(int user_seq); // 회원탈퇴를 위한 게시판 삭제
-	
+	public int withdrawalPost(int user_seq); // 탈퇴한 회원 보기
 	public ReportVO reportReason(HashMap<String,Object> info); //신고사유보려고
 	
 	public List<MyMannerVO> reviewList(int user_seq) throws Exception; // 상품 후기 리스트
@@ -69,4 +71,10 @@ public interface PostDAO {
 	
 	public int insertPPKPay(HashMap<String,Object> vo); //구매예약시 정보들을 관리자에게 전달
 	public int updateSellProduct(int post_seq); //구매확정시 판매 상태 변경
+	
+	public int oneOnInsert(OneOnOneVO vo) throws Exception; // 1:1문의하기
+	public String findReviewer(int post_seq) throws Exception; // 리뷰 제목
+	public String Reviewer(int user_seq) throws Exception; // 리뷰 준 유저
+	
+	public List<Integer> related(int category_seq) throws Exception; // 연관상품
 }

@@ -1,28 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
+<html> 
+<head> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdminPage</title>
- 
+<title>관리자 페이지</title>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini">
 	<div class="wrapper">
 
 		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_layout.jsp"%>
 
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-			<!-- Main content -->
-			<section class="content">
-				<%@include file="/WEB-INF/admin/Admin_page/product/ad_c_prods.jsp"%>
-			</section>
-			<!-- /.content -->
-		</div>
+
+		<!-- 콘텐츠 jsp 삽입구간 -->
+		<%@include file="/WEB-INF/admin/Admin_page/admin_board/admin_post.jsp"%>
+		<!-- 콘텐츠 jsp 삽입구간 -->
+		
+		
+		
+		<!-- 푸터 -->
 		<%@include file="/WEB-INF/admin/Admin_page/layout/ad_footer.jsp"%>
 	</div>
-
 </body>
 </html>

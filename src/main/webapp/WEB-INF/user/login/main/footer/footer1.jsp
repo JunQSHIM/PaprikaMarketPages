@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-  
+<link rel="stylesheet" type="text/css" href="/myweb/login/css/modal.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body> 
 
@@ -27,7 +28,7 @@
 			<h3>고객센터 ></h3>
 			<ul class="footer-links">
 				<li><a href="#">공지사항</a></li>
-				<li><a href="#">1:1문의하기</a></li>
+				<li><a class="openBt">1:1문의하기</a></li>
 				<li><a href="/myweb/qna.do">자주 문는 질문</a></li>
 
 			</ul>
@@ -49,8 +50,9 @@
 			<p>&copy; paprikamarket. Inc All rights reserved.</p>
 			<br>
 		</div>
-
-
+		<input type="hidden" value="${user.user_seq }">
 	</footer>
+	 <%@ include file="/WEB-INF/user/login/singo/oneonone.jsp" %>
 </body>
+<script type="text/javascript" src="/myweb/login/main/footer/footer1.js"></script>
 </html>

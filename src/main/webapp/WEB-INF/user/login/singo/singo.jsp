@@ -51,10 +51,10 @@
 							</div>
 							<div class="prod_info_board" id="panel2">
 								<div class="prod_info_content">
-									<textarea id="reportText"
+									<textarea id="reportText1"
 										placeholder="신고 내용을 직접 작성해주세요.
 자세하게 적어주시면 신고처리에 큰 도움이 됩니다."></textarea>
-									<button type="button" onclick="textarea()" >등록</button>
+									<button type="button" onclick="textarea1()" >등록</button>
 								</div>
 							</div>
 						</div>
@@ -132,7 +132,7 @@
 									<textarea id="reportText2"
 										placeholder="신고 내용을 직접 작성해주세요.
 자세하게 적어주시면 신고처리에 큰 도움이 됩니다."></textarea>
-									<button type="button" class="report_content" onclick="textarea2()" >등록</button>
+									<button type="button" class="report_content1" onclick="textarea2()" >등록</button>
 								</div>
 							</div>
 						</div>

@@ -24,30 +24,30 @@ function ctProduct(){
 	});
 	
 	
-	//chat
-	$(function(){
-		$(".ui-dialog").dialog({
-			autoOpen : false,
-			height : 450,
-			width : 400,
-			position : {
-				my : "center center",
-				at : "right buttom",
-				of : window
-			},
-			show : {
-				effect : "slide",
-				duration : 1000
-			},
-			hide : {
-				effect : "slide",
-				duration : 1000
-			}
-		});
-		$(".chat").on("click", function() {
-			$("#chatting").dialog("open");
-		});
-	});
+//	//chat
+//	$(function(){
+//		$(".ui-dialog").dialog({
+//			autoOpen : false,
+//			height : 450,
+//			width : 400,
+//			position : {
+//				my : "center center",
+//				at : "right buttom",
+//				of : window
+//			},
+//			show : {
+//				effect : "slide",
+//				duration : 1000
+//			},
+//			hide : {
+//				effect : "slide",
+//				duration : 1000
+//			}
+//		});
+//		$(".chat").on("click", function() {
+//			$("#chatting").dialog("open");
+//		});
+//	});
 	
 function login()  {
 	 window.location.href ='login.jsp';
@@ -72,3 +72,8 @@ $(function(){
 	$(".none:hidden").slice(0, 2).show(); // 숨김 설정된 다음 2개를 선택하여 표시
 	});
 	});
+
+s
+
+  
+  

@@ -1,4 +1,4 @@
-package com.spring.myqwb.VO.WithdrawalVO;
+package com.spring.myweb.VO.WithdrawalVO;
 
 import java.util.Date;
 

@@ -8,9 +8,11 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.VO.DealVO.DealVO;
+import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 
 @Repository
 public class UserDAOImpl implements UserDAO{
@@ -160,6 +162,15 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public List<DealVO> doneDealList(int user_seq) {
 		return session.selectList("userDB.doneDealList",user_seq);
+	}
+	
+	public int mannerCount(MyMannerVO vo) throws Exception {
+		return session.selectOne("userDB.mannerCount", vo);
+	}
+
+	@Override
+	public int badCount(MyMannerVO vo) throws Exception {
+		return session.selectOne("userDB.badCount", vo);
 	}
 
 	

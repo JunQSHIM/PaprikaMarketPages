@@ -27,7 +27,7 @@
 				<div id="write_head">
 					<div id="pageName">글 쓰기</div>
 				</div>
-				<form action="insertboardProc.do" method="post" id="board_form" enctype="multipart/form-data" accept-charset="UTF-8">
+				<form action="insertboardProc.do" method="post" id="board_form" name="board" enctype="multipart/form-data" accept-charset="UTF-8">
 				<input type="hidden" name="user_seq"  value=${user.user_seq }>
 					<div id="write_form">
 							<div class="new_title">
@@ -40,7 +40,7 @@
 								<span id="currentMsgLen" style="padding-left: 60;">0</span>/500자
 							</div>
 							<div class="new_file" >
-								<input type="file" name="file" id="file"  accept="image/jpg,image/png,image/jpeg"/>
+								<input type="file" name="file" id="file"  accept="image/jpg,image/png,image/jpeg" onchange="fileCheck(this)")/>
 							</div>
 							
 						
@@ -49,7 +49,7 @@
 			</div>
 					<div class="button_wrap">
 						<button onclick="location.href='boardlist.do'">작성 취소</button>
-						<button onclick="document.getElementById('board_form').submit()">글 등록</button>
+						<button type="submit" id="submit">글 등록</button>
 					</div>
 				</div>
 		

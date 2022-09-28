@@ -53,7 +53,12 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-
+						<li class="nav-item"><a
+							href="adminEmail.mdo"
+							class="nav-link"> <i 
+								class="nav-icon fa-solid fa-address-book"></i>
+								<p>이메일 발송</p>
+						</a></li>
 
 						<li class="nav-item"><a
 							href="sms.mdo"
@@ -83,9 +88,14 @@
 				</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item"><a
-							href="prods.mdo" class="nav-link">
+							href="adminPostView.mdo" class="nav-link">
 								<i class="nav-icon fas fa-tree"></i>
-								<p>상품 / 후기</p>
+								<p>상품 목록</p>
+						</a></li>
+						<li class="nav-item"><a
+							href="adminReview.mdo" class="nav-link">
+								<i class="nav-icon fas fa-tree"></i>
+								<p>후기 목록</p>
 						</a></li>
 						<li class="nav-item"><a href="#" class="nav-link"> <i
 								class="nav-icon fas fa-tree"></i>
@@ -157,6 +167,11 @@
 							href="qna.mdo" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
 								<p>QnA</p>
+						</a></li>
+						<li class="nav-item"><a
+							href="oneOnAdminView.mdo" class="nav-link">
+								<i class="far fa-circle nav-icon"></i>
+								<p>1:1문의</p>
 						</a></li>
 						<li class="nav-item"><a
 							href="pay.mdo" class="nav-link">

@@ -9,6 +9,9 @@ import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
 import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
+import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
+import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
@@ -58,4 +61,13 @@ public interface AdminService {
 	
 	public int updatePay(HashMap<String, Object> vo);
 	public void deletePay();
+	
+	public List<OneOnOneVO> oneOnList(); // 1:1 문의 내역 불러오기
+	public OneOnOneVO findUser(int user_seq); // 문의한 사용자 정보 불러오기
+	public int oneStatus(int status);
+	
+	// 상품 + 상품 후기 관리
+	public List<PostVO> adminPost() throws Exception;
+	public PostVO adminPostDetail(int post_seq) throws Exception;
+	public List<MyMannerVO> adminReview() throws Exception;
 }

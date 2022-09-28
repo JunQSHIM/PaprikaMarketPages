@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +20,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myweb.Service.BoardService.UserBoardService;
 import com.spring.myweb.Service.PostService.PostService;
+import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.PageVO.UserBoardPageVO;
 import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.UserBoardVO.UserBoardVO;
+import com.spring.myweb.VO.UserVO.UserVO;
 
 @Controller
 @SessionAttributes("board")
@@ -34,7 +38,12 @@ public class UserBoardController {
 	
 	//userboard list 출력
 	@RequestMapping(value="/boardlist.do")
-	public String boardList(Model model, UserBoardVO vo, UserBoardPageVO pvo) throws Exception {
+	public String boardList(HttpSession session, Model model, UserBoardVO vo, UserBoardPageVO pvo, LikeVO lvo) throws Exception {
+		UserVO uvo = (UserVO)session.getAttribute("user");
+		lvo.setUser_seq(uvo.getUser_seq());
+		
+		int jjimCart = postService.jjimCart(lvo);
+		
 		if (pvo.getNum() == 0) {
 			pvo.setNum(1);
 		}
@@ -52,6 +61,7 @@ public class UserBoardController {
 			photoNames.add(boardService.photoOne(board_num));
 		}
 		
+		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("page", pvo);
 		model.addAttribute("select", num);
 		model.addAttribute("board", list);
@@ -90,7 +100,10 @@ public class UserBoardController {
 	
 	//userboard list 출력
 		@RequestMapping(value="/myboard.do")
-		public String myboardList(Model model, UserBoardVO vo, UserBoardPageVO pvo) throws Exception {
+		public String myboardList(HttpSession session, Model model, UserBoardVO vo, UserBoardPageVO pvo,LikeVO lvo) throws Exception {
+			UserVO uvo = (UserVO)session.getAttribute("user");
+			lvo.setUser_seq(uvo.getUser_seq());
+			int jjimCart = postService.jjimCart(lvo);
 			if (pvo.getNum() == 0) {
 				pvo.setNum(1);
 			}
@@ -108,6 +121,7 @@ public class UserBoardController {
 			for (int board_num : board_seq) {
 				photoNames.add(boardService.photoOne(board_num));
 			}
+			model.addAttribute("jjimCart", jjimCart);
 			model.addAttribute("page", pvo);
 			model.addAttribute("select", num);
 			model.addAttribute("board", list);
@@ -118,11 +132,17 @@ public class UserBoardController {
 
 	//글 상세보기
 	@RequestMapping(value = "/boardDetail.do")
-	public String getDetail(Model model, int board_seq){
+	public String getDetail(HttpSession session, Model model, int board_seq, LikeVO lvo){
+		UserVO uvo = (UserVO)session.getAttribute("user");
+		lvo.setUser_seq(uvo.getUser_seq());
+		int jjimCart = postService.jjimCart(lvo);
+		
 		boardService.viewCount(board_seq); // 조회수 증가
 		UserBoardVO vo = boardService.boardDetail(board_seq);
 		String photo = boardService.photoOne(board_seq);
 		vo.setNickname(boardService.findNickname(vo.getUser_seq()));
+		
+		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("board", vo);
 		model.addAttribute("photo", photo);
 		return "login/board/board_content";

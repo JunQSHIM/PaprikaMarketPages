@@ -5,7 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
@@ -31,10 +34,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.Service.AdminService.AdminService;
 import com.spring.myweb.Service.BoardService.UserBoardService;
 import com.spring.myweb.Service.NoticeService.NoticeService;
@@ -45,12 +48,15 @@ import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.PageVO.PageVO;
+import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.QnaVO.QnaAnswersVO;
 import com.spring.myweb.VO.QnaVO.QnaQuestionsVO;
 import com.spring.myweb.VO.QnaVO.QnaVO;
 import com.spring.myweb.VO.RegisterAgreementVO.RegisterAgreementVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
+import com.spring.myweb.awss3.vo.PostPhotoVO;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -213,29 +219,97 @@ public class UserController {
 		return "login/mypage/mypage";
 	}
 
-	@RequestMapping(value = "/mypage.do", method = RequestMethod.POST)
-	public String mypage(HttpSession session, Model model, String pay, String KID) throws Exception {
+	@RequestMapping(value = "/mypageA.do", method = RequestMethod.POST)
+	public String mypage(HttpSession session, Model model, String KID,
+			@RequestParam(value = "pay", required = false) List<MultipartFile> img)
+			throws Exception {
 		System.out.println("파프리카 페이 사용하기");
-		UserVO vo = (UserVO) session.getAttribute("user");
+		UserVO uvo = (UserVO) session.getAttribute("user");
 		System.out.println(KID);
-		vo.setPay(pay);
-		vo.setKID(KID);
-		int result = userService.updatePay(vo);
-		if (result == 1) {
-			System.out.println("Succ");
+		uvo.setKID(KID);
+		// 이미지등록
+		Map<String, String> names1 = postService.uploadImg(img, "qr/");
+
+		
+		// 저장이름, 랜덤이름 db에 저장
+		Iterator<Entry<String, String>> entries = names1.entrySet().iterator();
+
+		while (entries.hasNext()) {
+			Map.Entry<String, String> entry = entries.next();
+	
+			String save_file_name = entry.getValue();
+
+			uvo.setPay("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/qr/" + save_file_name);
+
+			userService.updatePay(uvo);
+			
 		}
-		return "login/mypage/mypage";
+		
+		return "redirect:main.do";
 	}
 
 	// 내가 받은 매너 평가 페이지 이동
 	@RequestMapping(value = "mannerView.do")
-	public String mannerView(HttpSession session, Model model, UserVO uvo, LikeVO lvo) throws Exception {
+	public String mannerView(HttpSession session, Model model, UserVO uvo, LikeVO lvo, MyMannerVO mm) throws Exception {
 		uvo = (UserVO) session.getAttribute("user");
 		lvo.setUser_seq(uvo.getUser_seq());
 		int jjimCart = postService.jjimCart(lvo);
 		int reviewCnt = postService.reviewCount(uvo.getUser_seq());
 		List<MyMannerVO> manner = postService.reviewList(uvo.getUser_seq());
+		mm.setSell_user_seq(uvo.getUser_seq());
 
+		mm.setManner_compliment("상품 상태가 설명한 것과 같아요.");
+		int cnt1 = userService.mannerCount(mm);
+
+		mm.setManner_compliment("시간 약속을 잘 지켜요.");
+		int cnt2 = userService.mannerCount(mm);
+
+		mm.setManner_compliment("친절하고 매너가 좋아요.");
+		int cnt3 = userService.mannerCount(mm);
+
+		mm.setManner_compliment("좋은 상품을 저렴하게 판매해요.");
+		int cnt4 = userService.mannerCount(mm);
+
+		mm.setManner_compliment("응답이 빨라요.");
+		int cnt5 = userService.mannerCount(mm);
+
+		mm.setManner_compliment("상품설명이 자세해요.");
+		int cnt6 = userService.mannerCount(mm);
+
+		mm.setBad_manner("상품상태가 설명한 것과 달라요.");
+		int cnt7 = userService.badCount(mm);
+
+		mm.setBad_manner("불친절하고 매너가 안좋아요.");
+		int cnt8 = userService.badCount(mm);
+
+		mm.setBad_manner("시간 약속을 잘 어겨요.");
+		int cnt9 = userService.badCount(mm);
+
+		mm.setBad_manner("상품의 가격이 너무 비싸요.");
+		int cnt10 = userService.badCount(mm);
+
+		mm.setBad_manner("응답이 느려요.");
+		int cnt11 = userService.badCount(mm);
+
+		mm.setBad_manner("상품설명이 부족해요.");
+		int cnt12 = userService.badCount(mm);
+
+		mm.setBad_manner("없음.");
+		int cnt13 = userService.badCount(mm);
+
+		model.addAttribute("cnt13", cnt13);
+		model.addAttribute("cnt12", cnt12);
+		model.addAttribute("cnt11", cnt11);
+		model.addAttribute("cnt10", cnt10);
+		model.addAttribute("cnt9", cnt9);
+		model.addAttribute("cnt8", cnt8);
+		model.addAttribute("cnt7", cnt7);
+		model.addAttribute("cnt6", cnt6);
+		model.addAttribute("cnt5", cnt5);
+		model.addAttribute("cnt4", cnt4);
+		model.addAttribute("cnt3", cnt3);
+		model.addAttribute("cnt2", cnt2);
+		model.addAttribute("cnt1", cnt1);
 		model.addAttribute("reviewCnt", reviewCnt);
 		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("manner", manner);
@@ -528,8 +602,9 @@ public class UserController {
 
 	@RequestMapping(value = "/pay.do")
 	public String pay(Model model) {
-		UserVO vo = (UserVO) model.getAttribute("user");
-		model.addAttribute("user", vo);
+		UserVO uvo = (UserVO) model.getAttribute("user");
+
+		model.addAttribute("user", uvo);
 		return "login/mypage/pay";
 	}
 

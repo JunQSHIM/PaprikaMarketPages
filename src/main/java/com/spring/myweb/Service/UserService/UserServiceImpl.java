@@ -25,7 +25,6 @@ import org.springframework.stereotype.Service;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.spring.myqwb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.DAO.UserDAO.UserDAO;
 import com.spring.myweb.MailUtil.MailHandler;
 import com.spring.myweb.MailUtil.TempKey;
@@ -33,6 +32,7 @@ import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
+import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -388,5 +388,15 @@ public class UserServiceImpl implements UserService{
 		List<DealVO> dealList = userDAO.doneDealList(user_seq);
 		return dealList;
 	}
+	
+	public int mannerCount(MyMannerVO vo) throws Exception {
+		return userDAO.mannerCount(vo);
+	}
+
+	@Override
+	public int badCount(MyMannerVO vo) throws Exception {
+		return userDAO.badCount(vo);
+	}
+	
 
 }

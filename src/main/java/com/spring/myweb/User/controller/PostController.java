@@ -1,4 +1,3 @@
-
 package com.spring.myweb.User.controller;
 
 import java.util.ArrayList;
@@ -28,6 +27,7 @@ import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.AdminVO.BannerVO;
 import com.spring.myweb.VO.CategoryVO.CategoryVO;
+import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.OneOnOneVO.OneOnOneVO;
@@ -36,7 +36,6 @@ import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.PostVO.PostVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
-import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.VO.noticeVO.NoticeVO;
 import com.spring.myweb.awss3.vo.PostPhotoVO;
 
@@ -175,18 +174,26 @@ public class PostController {
 		for (int post_num : post_seq) {
 			photoNames.add(postService.photoOne(post_num));
 		}
+		
+		List<DealVO> doneDealList = userService.doneDealList(uvo.getUser_seq());
+		
 		// 글 목록
 		model.addAttribute("plist", plist);
 		model.addAttribute("select", num);
 		model.addAttribute("page", page);
 		model.addAttribute("jjimCart", jjimCart);
 		model.addAttribute("allLike", allLike);
+		
 		// 카테고리 리스트
 		model.addAttribute("category", list);
 
 		// 이미지 보이기
 		model.addAttribute("photo", photoNames);
 
+		//구매목록 
+		model.addAttribute("doneDeal",doneDealList);
+
+		
 		return "login/sell";
 	}
 

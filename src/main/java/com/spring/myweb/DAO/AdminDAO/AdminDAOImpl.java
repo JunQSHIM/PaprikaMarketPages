@@ -296,6 +296,10 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
+	public void deletePay() {
+		session.delete("adminDB.deletePay");
+	}	
+		
 	public List<OneOnOneVO> oneOnList() {
 		return session.selectList("adminDB.oneOnList");
 	}

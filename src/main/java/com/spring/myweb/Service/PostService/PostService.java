@@ -67,6 +67,7 @@ public interface PostService {
 	public int insertPPKPay(HashMap<String, Object> vo);
 	
 	public ReportVO reportReason(HashMap<String,Object> info); //신고사유보려고
+	public int updateSellProduct(int post_seq);
 	
 	public int oneOnInsert(OneOnOneVO vo) throws Exception; // 1:1문의하기
 	public String findReviewer(int post_seq) throws Exception; // 리뷰 제목

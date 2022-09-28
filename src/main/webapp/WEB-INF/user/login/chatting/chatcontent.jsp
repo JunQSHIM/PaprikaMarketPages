@@ -15,6 +15,28 @@
 	    });
 	    $( "#datepicker" ).datepicker( "option", "showAnim", "slide" );
 	  } );
+  
+  function reserve(){
+	  var datepicker = document.getElementById('datepicker').value;
+	  var post_seq = document.getElementById('post_seq').value;
+	  $.ajax({ // ajax 기본형태
+			url : "/myweb/sellStatus.cdo",
+			type : "post",
+			data : {
+				post_seq : post_seq,
+				datepicker : datepicker
+			}, //위와동일
+			success : function(data){ // status, xhr 생략가능 
+				$("#reserveDate").append("약속날짜 : "+data);
+			},
+			error : function() { // (파라미터 생략가능)
+				alert("error");
+			}
+		});	
+  }
+  function compDeal(){
+	  alert("거래가 확정되었습니다.");
+  }
  </script>
 </head>
 <body>
@@ -34,10 +56,16 @@
 		</c:choose>
 			<div class="chat-num-messages">${room.post_seq }</div>
 		</div>
-		<form action="sellStatus.cdo" method="post">
 			<input type="text" id="datepicker">
 			<input type="hidden" id="post_seq" name="post_seq" value="${room.post_seq }">
-			<input type="submit" id="reserve" value="예약">
+			<button type="button" onclick="reserve()" id="reserve" value="예약">예약</button>
+		<div id="reserveDate">
+		</div>
+		<form action="compDeal.do">
+			<input type="hidden" name="post_seq" value="${room.post_seq }">
+			<input type="hidden" name="seller" value="${room.masterNickname }">
+			<input type="hidden" name="buyer" value="${room.userNickname }">
+			<button onclick="compDeal()">거래 확정하기</button>
 		</form>
 	</div>
 	<!-- end chat-header -->
@@ -61,7 +89,6 @@
 						<span class="message-data-time"><fmt:formatDate value="${chat.time}" pattern="yyyy-MM-dd HH:mm:ss"/></span> &nbsp;
 						&nbsp; <span class="message-data-name">${chat.name }</span> <i
 							class="fa fa-circle me"></i>
-	
 					</div>
 					<div class="message other-message float-right">${chat.message }</div>
 				</li>

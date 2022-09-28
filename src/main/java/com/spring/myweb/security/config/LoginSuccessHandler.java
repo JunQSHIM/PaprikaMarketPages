@@ -3,7 +3,6 @@ package com.spring.myweb.security.config;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,6 +21,8 @@ import org.springframework.security.web.savedrequest.SavedRequest;
 
 import com.spring.myweb.DAO.UserDAO.MailException;
 import com.spring.myweb.DAO.UserDAO.UserDAO;
+import com.spring.myweb.Service.PostService.PostService;
+import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.UserVO.UserVO;
 
 import lombok.Data;
@@ -32,6 +33,13 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 	
 	@Autowired
 	private UserDAO dao;
+	
+	@Autowired
+	private PostService postService;
+	
+	@Autowired
+	private UserService userService;
+	
 	private static int TIME = 60 * 60 * 24; // 하루
 	private String defaultUrl;
 

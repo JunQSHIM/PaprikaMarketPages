@@ -60,6 +60,7 @@ public interface AdminService {
 	public void bannerDelete(int banner_seq);//배너 삭제
 	
 	public int updatePay(HashMap<String, Object> vo);
+	public void deletePay();
 	
 	public List<OneOnOneVO> oneOnList(); // 1:1 문의 내역 불러오기
 	public OneOnOneVO findUser(int user_seq); // 문의한 사용자 정보 불러오기

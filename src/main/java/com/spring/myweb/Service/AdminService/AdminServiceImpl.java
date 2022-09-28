@@ -226,6 +226,10 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+	public void deletePay() {
+		adminDAO.deletePay();
+	}
+	
 	public List<OneOnOneVO> oneOnList() {
 		return adminDAO.oneOnList();
 	}

@@ -17,6 +17,7 @@ $(document).ready(function(){
 });
 var sock = new SockJS("/myweb/echo");
 sock.onmessage = function(e){
+	alert("알림이 도착했습니다.");
 	$("#noticeList").prepend("<li>"+e.data+"</li>");
 }
 sock.onclose = function(){

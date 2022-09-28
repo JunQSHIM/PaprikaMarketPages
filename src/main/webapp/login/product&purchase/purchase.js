@@ -60,14 +60,15 @@ function mannerArr() {
 		// 체크된 것만 값을 뽑아서 배열에 push   
 		manner_eval = mannerArr;
 		$.ajax({
-			url : '/myweb/evaluation.do',
-			type : 'post',
-			data : {
-				manner_eval : manner_eval
+			url: '/myweb/evaluation.do',
+			type: 'post',
+			data: {
+				manner_eval: manner_eval
 			},
-			success : function(data) {
+			success: function(data) {
 				if (data != null) {
-					location.replace("/myweb/main.do");
+					location.href = "/myweb/main.do";
+
 				}
 			}
 		})
@@ -84,14 +85,14 @@ function badArr() {
 		// 체크된 것만 값을 뽑아서 배열에 push   
 		bad_manner = badArr;
 		$.ajax({
-			url : '/myweb/evaluation.do',
-			type : 'post',
-			data : {
-				bad_manner : bad_manner
+			url: '/myweb/evaluation.do',
+			type: 'post',
+			data: {
+				bad_manner: bad_manner
 			},
-			success : function(data) {
+			success: function(data) {
 				if (data != null) {
-					location.replace("/myweb/main.do");
+					location.href = "/myweb/main.do";
 				}
 			}
 		})
@@ -108,14 +109,13 @@ function tempArr() {
 		// 체크된 것만 값을 뽑아서 배열에 push   
 		bad_manner = tempArr;
 		$.ajax({
-			url : '/myweb/evaluation.do',
-			type : 'post',
-			data : {
-				manner_temp : manner_temp
+			url: '/myweb/evaluation.do',
+			type: 'post',
+			data: {
+				manner_temp: manner_temp
 			},
-			success : function(data) {
+			success: function(data) {
 				if (data != null) {
-					location.replace("/myweb/main.do");
 				}
 			}
 		})
@@ -131,6 +131,15 @@ function review() {
 		return false;
 	}
 	$.ajax({
+<<<<<<< HEAD
+		url: "/myweb/evaluation.do",
+		type: 'post',
+		data: {
+			user_seq: $('#user_seq').val(),
+			post_seq: $('#post_seq').val(),
+			user_singo_seq: $('#sell_user_seq').val(),
+			review: text.value,
+=======
 		url : "/myweb/evaluation.do",
 		type : 'post',
 		data : {
@@ -138,18 +147,18 @@ function review() {
 			post_seq : $('#post_seq').val(),
 			sell_user_seq : $('#sell_user_seq').val(),
 			review : text.value,
+>>>>>>> 88a8bc6bbc3b7577a898b22b38b5b4727fbee5e3
 		},
-		success : function(data) {
+		success: function(data) {
 			console.log(text.value);
 			if (data != null) {
 				alert("평가가 완료 되었습니다.");
-				location.replace("/myweb/main.do");
+				moveM();
 			} else {
 				alert("에러!");
 			}
-
 		},
-		error : function(data) {
+		error: function(data) {
 			console.log("에러" + data);
 		}
 
@@ -158,12 +167,11 @@ function review() {
 
 function noreview() {
 	var chk = confirm("매너 평가를 하지 않으시겠습니까?");
-	var user_seq = $('#user_seq').val();
 	if (!chk) {
-		location.href = ("evaluationView.do?user_seq=" + user_seq);
-		return false
+		location.href = "/myweb/main.do";
+		return false;
 	} else {
-		location.href = "main.do";
+		location.href = "/myweb/main.do";
 	}
 
 }
@@ -182,29 +190,32 @@ $(document).ready(function() {
 		if (!$("input:checked[name='bad_manner']").is(":checked")) {
 			alert("하나 이상의 비매너를 평가해주세요.");
 			return false;
-		} 
-		
+		}
 		else {
 			var chk = confirm("매너 평가를 완료하셨습니까?");
-			var user_seq = $("#user_seq").val();
 			if (!chk) {
-				location.href = ("evaluationView.do?user_seq=" + user_seq);
-				return false
+				moveM();
+				moveM();
+				return false;
 			} else {
 				alert("매너평가를 완료하였습니다.")
-				location.href = "redirect:main.do";
+				moveM();
 			}
 			return true;
 		}
 	});
+	
 });
+function moveM(){
+	location.href="/myweb/main.do";
+}
 
 //function review1() {
 //	var chk = confirm("매너 평가를 완료하셨습니까?");
 //	var user_seq = $("#user_seq").val();
 //	if (!chk) {
 //		location.href = ("evaluationView.do?user_seq=" + user_seq);
-//		return false
+//		return false;
 //	} else {
 //		alert("매너평가를 완료하였습니다.")
 //		location.href = "redirect:main.do";

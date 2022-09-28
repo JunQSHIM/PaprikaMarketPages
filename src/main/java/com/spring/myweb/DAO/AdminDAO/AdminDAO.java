@@ -61,7 +61,7 @@ public interface AdminDAO {
 	public void abbBanner(BannerVO vo);//배너 저장
 	public void bannerDelete(int banner_seq);
 	public int updatePay(HashMap<String, Object> vo);
-	
+	public void deletePay(); //완료된 페이 삭제
 	
 	public List<OneOnOneVO> oneOnList(); // 1:1 문의 내역 불러오기
 	public OneOnOneVO findUser(int user_seq); // 문의한 사용자 정보 불러오기

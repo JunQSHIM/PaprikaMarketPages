@@ -70,6 +70,7 @@ public interface PostDAO {
 	public int updatePayStatus(PostVO vo); //구매 예약 대기 완료 변경해주는것 
 	
 	public int insertPPKPay(HashMap<String,Object> vo); //구매예약시 정보들을 관리자에게 전달
+	public int updateSellProduct(int post_seq); //구매확정시 판매 상태 변경
 	
 	public int oneOnInsert(OneOnOneVO vo) throws Exception; // 1:1문의하기
 	public String findReviewer(int post_seq) throws Exception; // 리뷰 제목

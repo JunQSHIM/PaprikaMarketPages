@@ -318,6 +318,10 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
+	public int updateSellProduct(int post_seq) {
+		return session.update("userDB.updateSellProduct", post_seq);
+	}
+	
 	public int oneOnInsert(OneOnOneVO vo) throws Exception {
 		return session.insert("userDB.oneOnInsert", vo);
 	}

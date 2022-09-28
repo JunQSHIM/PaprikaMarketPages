@@ -164,6 +164,9 @@
 	                  	<input type="hidden" name="post_user_seq" value="${post.user_seq }">
 	                  </form>
                <c:choose>
+               <c:when test="${post.status eq 1 }">
+               	  <button type="button">판매 완료</button>
+               </c:when>
                <c:when test="${post.pay_check == 1}">
                   <button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
                </c:when>

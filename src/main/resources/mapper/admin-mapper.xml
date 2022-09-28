@@ -96,7 +96,7 @@
 	</select>
 	
 	<!-- 처리완료된 업무 삭제 -->
-	<delete id="payDelete">
+	<delete id="deletePay">
 		delete from pay where status=2
 	</delete>
 	

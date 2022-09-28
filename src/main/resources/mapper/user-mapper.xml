@@ -537,6 +537,27 @@
 		notice_seq=#{notice_seq}
 	</update>
 
+	
+	<!-- 매너온도 업데이트 -->
+	<update id="updateMannerTemp">
+		update user set temp=#{temp} where user_seq=#{user_seq};
+	</update>
+	
+	<!-- 거래 확정시 구매목록에 넣어줌 -->
+	<insert id="doneDeal" parameterType="DealVO">
+		insert into deal values(#{deal_seq},#{user_seq},#{post_seq},#{price},now(),#{post_title})
+	</insert>
+	
+	<!-- 구매목록 보여주기  -->
+	<select id="doneDealList" resultType="DealVO">
+		select * from deal where user_seq=#{user_seq}
+	</select>
+	
+	<!-- 구매완료시 판매물품 상태 바꿔주기 -->
+	<update id="updateSellProduct">
+		update post set status=1 where post_seq=#{post_seq}
+	</update>
+
 	<!-- 1:1문의하기 보내기 -->
 	<insert id="oneOnInsert">
 		insert into oneOnOne(user_seq, content, create_date)

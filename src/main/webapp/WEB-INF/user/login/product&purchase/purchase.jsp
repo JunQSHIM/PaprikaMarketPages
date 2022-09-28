@@ -22,10 +22,17 @@
 	</article>
 	<article class="container_12">
 	<h2>구매가 완료되었습니다.</h2><br><br>
+<<<<<<< HEAD
+	<form name="purchase" id="purchase" method="post" action="evaluationComp.do">
+	<input type="hidden" name="bUser_seq" value="${bUser.user_seq }">
+	<input type="hidden" name="post_seq" value="${post_seq }">
+	<input type="hidden" name="sUser_seq" value="${sUser.user_seq }">
+=======
 	<form name="purchase" id="purchase" method="post" action="evaluation.do">
 	<input type="hidden" name="user_seq" value="${user.user_seq }">
 	<input type="hidden" name="post_seq" value="${post.post_seq }">
 	<input type="hidden" name="sell_user_seq" value="${post.user_seq }">
+>>>>>>> 88a8bc6bbc3b7577a898b22b38b5b4727fbee5e3
 	<div id="manner">
     <fieldset>
         <legend>매너온도 평가하기</legend>
@@ -66,8 +73,7 @@
 				</div>
 			</div>
 			<div id="tab-3" class="tab-content">
-				<textarea rows="40" cols="40" id="review" name="manner_review">
-				</textarea>
+				<textarea rows="40" cols="40" id="review" name="manner_review"></textarea>
 			</div>
 		</div>
 		<input type="submit" value="구매확인" id="confirm" >

@@ -32,4 +32,5 @@ public class UserVO {
 	private int mail_auth;
 	private String pay;
 	private String KID;
+	private Date create_date;
 }

@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.servlet.ServletRequest;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -45,6 +44,7 @@ import com.spring.myweb.Service.NoticeService.NoticeService;
 import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
+import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.PageVO.PageVO;
@@ -205,17 +205,17 @@ public class UserController {
 	/////
 
 	@RequestMapping(value = "/mypage.do")
-	public String mypage(Model model, HttpSession session, UserVO uvo, PageVO page, LikeVO lvo) throws Exception {
+	public String mypage(HashMap<String,Object> info, Model model, HttpSession session, UserVO uvo, PageVO page, LikeVO lvo) throws Exception {
 		uvo = (UserVO) session.getAttribute("user");
 		lvo.setUser_seq(uvo.getUser_seq());
 		int jjimCart = postService.jjimCart(lvo);
 		int reviewCnt = postService.reviewCount(uvo.getUser_seq());
 		List<MyMannerVO> manner = postService.reviewList(uvo.getUser_seq());
-
+		uvo = userService.select(uvo.getId());
 		model.addAttribute("manner", manner);
 		model.addAttribute("reviewCnt", reviewCnt);
 		model.addAttribute("jjimCart", jjimCart);
-		model.addAttribute("user", userService.select((String) session.getAttribute("id")));
+		model.addAttribute("user", uvo);
 		return "login/mypage/mypage";
 	}
 
@@ -324,12 +324,57 @@ public class UserController {
 		model.addAttribute("jjimCart", jjimCart);
 		return "login/product&purchase/purchase";
 	}
+	
+	
 
 	@RequestMapping(value = "evaluation.do")
-	public @ResponseBody int evaluation(HttpSession session, MyMannerVO vo) throws Exception {
-		UserVO uvo = (UserVO) session.getAttribute("user");
-		vo.setUser_seq(uvo.getUser_seq());
-		return userService.evaluation(vo);
+	public @ResponseBody int evaluation(DealVO dvo, HttpSession session,int bUser_seq, int sUser_seq, int post_seq, Model model, HashMap<String, Object> info, int manner_temp, String manner_compliment, String bad_manner, String manner_review) throws Exception {
+		info.put("user_seq", bUser_seq);
+		info.put("sell_user_seq", sUser_seq);
+		info.put("post_seq", post_seq);
+		info.put("manner_temp", manner_temp);
+		info.put("manner_compliment", manner_compliment);
+		info.put("bad_manner",bad_manner);
+		info.put("manner_review", manner_review);
+		int result = userService.evaluation(info);
+		if(result==1) {
+			System.out.println("매너평가 완료");
+		}
+		return result;
+	}
+	
+	@RequestMapping(value="evaluationComp.do")
+	public String evalComp(HttpSession session,int bUser_seq, int sUser_seq, int post_seq, Model model, HashMap<String, Object> info, int manner_temp, String manner_compliment, String bad_manner, String manner_review) throws Exception {
+		info.put("user_seq", bUser_seq);
+		info.put("sell_user_seq", sUser_seq);
+		info.put("post_seq", post_seq);
+		info.put("manner_temp", manner_temp);
+		info.put("manner_compliment", manner_compliment);
+		info.put("bad_manner",bad_manner);
+		info.put("manner_review", manner_review);
+		int result = userService.evaluation(info);
+		if(result==1) {
+			System.out.println("매너평가 완료");
+		}
+		UserVO vo = (UserVO)session.getAttribute("user");
+		
+		double mannerT = vo.getTemp();
+		if(manner_temp==1) {
+			mannerT -= 0.5;
+		}else if(manner_temp==2) {
+			mannerT -= 0.3;
+		}else if(manner_temp==4) {
+			mannerT += 0.3;
+		}else if(manner_temp==5) {
+			mannerT += 0.5;
+		}
+		vo.setTemp(mannerT);
+		int result1 = userService.updateMannerTemp(vo);
+		if(result1==1) {
+			System.out.println("매너온도 수정 완료");
+		}
+		
+		return "redirect:main.do";
 	}
 
 	// 회원탈퇴 페이지 이동
@@ -581,4 +626,37 @@ public class UserController {
 		}
 		return result;
 	}
+	
+	//채팅창에서 거래확정했을 때 
+	@RequestMapping("/compDeal.do")
+    public String compDeal(PostVO pvo, DealVO dvo, int post_seq, String buyer, String seller, Model model) {
+		System.out.println("후기작성하기");
+		System.out.println(post_seq);
+		System.out.println(buyer);
+		System.out.println(seller);
+		
+		UserVO bUser = (UserVO)userService.selectByNickname(buyer);
+		UserVO sUser = (UserVO)userService.selectByNickname(seller);
+		model.addAttribute("bUser",bUser);
+		model.addAttribute("sUser",sUser);
+		model.addAttribute("post_seq",post_seq);
+		
+		dvo.setUser_seq(bUser.getUser_seq());
+		dvo.setPost_seq(post_seq);
+		dvo.setPrice(postService.postDetail(post_seq).getPrice());
+		dvo.setPost_title(postService.postDetail(post_seq).getPost_title());
+		int result2 = userService.doneDeal(dvo);
+		
+		int result3 = postService.updateSellProduct(post_seq);
+		
+		pvo.setPost_seq(post_seq);
+		pvo.setPay_status(3);
+		int result4 = postService.updatePayStatus(pvo);
+		
+		if(result2 == 1 && result3 == 1) {
+			System.out.println("거래 완료");
+		}
+		
+    	return "login/product&purchase/purchase";
+    }
 }

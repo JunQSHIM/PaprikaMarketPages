@@ -2,13 +2,13 @@ package com.spring.myweb.DAO.UserDAO;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
@@ -140,8 +140,8 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public int evaluation(MyMannerVO vo) throws Exception {
-		return session.insert("userDB.evaluation",vo);
+	public int evaluation(HashMap<String, Object> info) throws Exception {
+		return session.insert("userDB.evaluation",info);
 	}
 
 	@Override
@@ -150,6 +150,20 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
+	public int updateMannerTemp(UserVO vo) {
+		return session.update("userDB.updateMannerTemp",vo);
+	}
+
+	@Override
+	public int doneDeal(DealVO vo) {
+		return session.insert("userDB.doneDeal",vo);
+	}
+
+	@Override
+	public List<DealVO> doneDealList(int user_seq) {
+		return session.selectList("userDB.doneDealList",user_seq);
+	}
+	
 	public int mannerCount(MyMannerVO vo) throws Exception {
 		return session.selectOne("userDB.mannerCount", vo);
 	}

@@ -224,6 +224,10 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
+	public int updateSellProduct(int post_seq) {
+		return postDao.updateSellProduct(post_seq);
+	}
+	
 	public int oneOnInsert(OneOnOneVO vo) throws Exception {
 		return postDao.oneOnInsert(vo);
 	}

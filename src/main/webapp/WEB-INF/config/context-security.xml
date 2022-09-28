@@ -18,6 +18,7 @@
   	  <security:intercept-url pattern="/createProc.do" access="hasRole('ROLE_USER')" />
 	  <security:intercept-url pattern="/user.mdo" access="hasRole('ROLE_ADMIN')" />
 	  <security:intercept-url pattern="/myProductCart.do" access="hasRole('ROLE_USER')" />
+	  <security:intercept-url pattern="/chat.cdo" access="hasRole('ROLE_USER')" />
 		
 	    <security:form-login
 	  username-parameter="id"

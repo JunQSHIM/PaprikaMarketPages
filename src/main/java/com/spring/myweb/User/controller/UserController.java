@@ -229,20 +229,13 @@ public class UserController {
 		uvo.setKID(KID);
 		// 이미지등록
 		Map<String, String> names1 = postService.uploadImg(img, "qr/");
-
-		
 		// 저장이름, 랜덤이름 db에 저장
 		Iterator<Entry<String, String>> entries = names1.entrySet().iterator();
-
 		while (entries.hasNext()) {
 			Map.Entry<String, String> entry = entries.next();
-	
 			String save_file_name = entry.getValue();
-
 			uvo.setPay("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/qr/" + save_file_name);
-
 			userService.updatePay(uvo);
-			
 		}
 		
 		return "redirect:main.do";

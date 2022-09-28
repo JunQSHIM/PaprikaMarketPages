@@ -71,5 +71,9 @@ public interface AdminDAO {
 	public List<PostVO> adminPost() throws Exception;
 	public PostVO adminPostDetail(int post_seq) throws Exception;
 	public List<MyMannerVO> adminReview() throws Exception;
+	
+	//회원 차단 / 해제
+	public int blockUser(int user_seq);
+	public int unblockUser(int user_seq);
 }
 

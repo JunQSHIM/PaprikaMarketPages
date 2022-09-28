@@ -693,4 +693,36 @@ public class AdminController {
 		model.addAttribute("review", review);
 		return "Admin_page/admin_board/ad_review";
 	}
+	
+	@RequestMapping(value="/block.mdo")
+	public @ResponseBody int blockUser(String user_seq, String email, String id) throws Exception {
+		UserVO vo = userService.select(id);
+		int result = adminService.blockUser(vo.getUser_seq());
+		if(result==1) {
+			System.out.println("차단성공");
+			MailHandler sendMail = new MailHandler(mailSender);
+	        sendMail.setSubject("[PaprikaMarket 입니다.]"); //메일제목
+	        sendMail.setText(id+"님은 신고 5회이상 누적으로 인해 차단당했음을 알려드립니다. 자세한 사항은 관리자 이메일로 답변주시기 바랍니다.");
+	        sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
+	        sendMail.setTo(email);
+	        sendMail.send();
+		}
+		return result;
+	}
+	
+	@RequestMapping(value="/unblock.mdo")
+	public @ResponseBody int unblockUser(String user_seq, String email, String id) throws Exception{
+		UserVO vo = userService.select(id);
+		int result = adminService.unblockUser(vo.getUser_seq());
+		if(result==1) {
+			System.out.println("해제성공");
+			MailHandler sendMail = new MailHandler(mailSender);
+	        sendMail.setSubject("[PaprikaMarket 입니다.]"); //메일제목
+	        sendMail.setText(id+"님은 차단이 해제되었습니다. 로그인 후 정상적으로 파프리카마켓 서비스를 이용하실 수 있습니다.");
+	        sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
+	        sendMail.setTo(email);
+	        sendMail.send();
+		}
+		return result;
+	}
 }

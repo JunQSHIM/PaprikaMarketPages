@@ -329,4 +329,14 @@ public class AdminDAOImpl implements AdminDAO {
 		return session.selectList("adminDB.adminReview");
 	}
 
+	@Override
+	public int blockUser(int user_seq) {
+		return session.update("adminDB.blockUser",user_seq);
+	}
+
+	@Override
+	public int unblockUser(int user_seq) {
+		return session.update("adminDB.unblockUser",user_seq);
+	}
+
 }

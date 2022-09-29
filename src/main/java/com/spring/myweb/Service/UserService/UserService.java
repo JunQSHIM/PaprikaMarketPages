@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
@@ -42,6 +43,7 @@ public interface UserService {
 	public List<DealVO> doneDealList(int user_seq);
 	public int mannerCount(MyMannerVO vo) throws Exception; // 받은 매너 칭찬
 	public int badCount(MyMannerVO vo) throws Exception; // 받은 비매너
+	public void insertPhoto(PhotoVO photo);//프로필 사진 등록
 
 
 }

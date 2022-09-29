@@ -31,7 +31,7 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 	<div align="center" style="margin-top: 40px;">
-		<a href="/myweb/login/main/mother.jsp"> <img
+		<a href="/myweb/main.do"> <img
 			src="/myweb/login/images/dklogo.png" width="26%">
 		</a>
 	</div>

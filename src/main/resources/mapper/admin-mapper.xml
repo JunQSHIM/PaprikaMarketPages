@@ -256,6 +256,13 @@
 	<select id="adminReview" resultType="MyMannerVO">
 		select * from myManner;
 	</select>
-	
+	<!-- 회원 차단 하기 -->
+	<update id="blockUser">
+		update user set rep_no=5 where user_seq=#{user_seq}
+	</update>
+	<!-- 회원 차단 해제  -->
+	<update id="unblockUser">
+		update user set rep_no=0 where user_seq=#{user_seq}
+	</update>
 	
 </mapper>

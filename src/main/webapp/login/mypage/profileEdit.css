@@ -94,10 +94,9 @@ div .edit{
 	align-items: center;
 }
 
-
-
 #profile_pic {
 	width: 200px;
+	
 }
 #profile_pic img{
     height: 200px;
@@ -106,12 +105,17 @@ div .edit{
     border-bottom-right-radius: 50px;  
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
-}
-#my_pic {
-	display: none;
+    z-index: 3;
 }
 
-
+#file {
+	height: 200px;
+    width: 200px;
+    opacity: 0;
+}
+#fcover{
+    position: absolute;
+}
 
 #nickname_edit button{
 	width:80px;

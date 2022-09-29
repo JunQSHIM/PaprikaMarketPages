@@ -156,24 +156,25 @@ public class PostDAOImpl implements PostDAO {
 	public Map<String, String> uploadImg(List<MultipartFile> img, String place) {
 
 		Map<String, String> fileNameList = new HashMap<>();
-
-		img.forEach(file -> {
-			String orgName = file.getOriginalFilename();
-			String fileName = createFileName(orgName);
-			ObjectMetadata objectMetadata = new ObjectMetadata();
-			objectMetadata.setContentLength(file.getSize());
-			objectMetadata.setContentType(file.getContentType());
-
-			try (InputStream inputStream = file.getInputStream()) {
-				amazonS3.putObject(new PutObjectRequest(bucket, place + fileName, inputStream, objectMetadata)
-						.withCannedAcl(CannedAccessControlList.PublicRead));
-			} catch (IOException e) {
-				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
-			}
-
-			fileNameList.put(orgName, fileName);
-		});
-
+		
+		if( img != null) {
+			img.forEach(file -> {
+				String orgName = file.getOriginalFilename();
+				String fileName = createFileName(orgName);
+				ObjectMetadata objectMetadata = new ObjectMetadata();
+				objectMetadata.setContentLength(file.getSize());
+				objectMetadata.setContentType(file.getContentType());
+	
+				try (InputStream inputStream = file.getInputStream()) {
+					amazonS3.putObject(new PutObjectRequest(bucket, place + fileName, inputStream, objectMetadata)
+							.withCannedAcl(CannedAccessControlList.PublicRead));
+				} catch (IOException e) {
+					throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
+				}
+	
+				fileNameList.put(orgName, fileName);
+			});
+		}
 		System.out.println("이미지 업로드 완료");
 
 		return fileNameList;

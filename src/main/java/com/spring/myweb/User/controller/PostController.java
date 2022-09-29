@@ -534,12 +534,15 @@ public class PostController {
 					if (result1 == 1) {
 						System.out.println("구매예약 대기 신청 -> 확인완료");
 					}
+					UserVO uvo2 = (UserVO)userService.selectByUserSeq(pvo.getUser_seq());
 					info.put("sellerId", pvo.getNickname());
 					info.put("buyerId", uvo.getNickname());
 					info.put("post_seq", pvo.getPost_seq());
 					info.put("process", 0);
 					info.put("sellerQr", pvo.getPay());
 					info.put("buyerQr", uvo.getPay());
+					info.put("sellerKID", uvo2.getKID());
+					info.put("buyerKID", uvo.getKID());
 
 					int result2 = postService.insertPPKPay(info);
 					if (result2 == 1) {

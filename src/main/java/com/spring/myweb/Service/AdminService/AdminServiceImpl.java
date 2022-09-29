@@ -259,4 +259,14 @@ public class AdminServiceImpl implements AdminService {
 	public List<MyMannerVO> adminReview() throws Exception {
 		return adminDAO.adminReview();
 	}
+
+	@Override
+	public int blockUser(int user_seq) {
+		return adminDAO.blockUser(user_seq);
+	}
+
+	@Override
+	public int unblockUser(int user_seq) {
+		return adminDAO.unblockUser(user_seq);
+	}
 }

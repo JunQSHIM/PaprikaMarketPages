@@ -6,6 +6,7 @@ import java.util.List;
 import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
 import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 
@@ -40,4 +41,5 @@ public interface UserDAO {
 	public List<DealVO> doneDealList(int user_seq); //구매확정 목록 불러오기
 	public int mannerCount(MyMannerVO vo) throws Exception; // 받은 칭찬
 	public int badCount(MyMannerVO vo) throws Exception; // 받은 비매너
+	public void insertPhoto(PhotoVO photo);//사진등록
 }

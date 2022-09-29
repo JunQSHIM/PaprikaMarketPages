@@ -27,16 +27,6 @@ var link =  document.location.href;
 			<div id="board_content">
 				<div id="board_head">
 					<div id="board_head_title">동네 정보</div>
-					<div id="search_category">
-						<select class="category" >
-							<option value="category_title">제목</option>
-							<option value="category_content">내용</option>
-						</select>
-					</div>
-					<div id="board_head_search">
-						<input type="text" placeholder="search">
-					</div>
-					<button type="submit">검색</button>
 				</div>
 				
 				<c:forEach items="${board }" var="board" varStatus="status">

@@ -70,4 +70,7 @@ public interface AdminService {
 	public List<PostVO> adminPost() throws Exception;
 	public PostVO adminPostDetail(int post_seq) throws Exception;
 	public List<MyMannerVO> adminReview() throws Exception;
+	
+	public int blockUser(int user_seq);
+	public int unblockUser(int user_seq);
 }

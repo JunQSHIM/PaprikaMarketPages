@@ -116,15 +116,11 @@
 													</c:choose>
 												</td>
 												<td>
-												<c:if test="${user.rep_no le 5 }">
-													관리대상아님
+												<c:if test="${user.rep_no < 5 }">
+													<button class="block">차단하기</button>
 												</c:if>
 												<c:if test="${user.rep_no ge 5 }">
-													<select id="blockUser" onchange="myFunction(this.value)">
-														<option disabled="disabled" selected>차단여부선택</option>
-														<option value="block">차단하기</option>
-														<option value="unblock">차단풀기</option>
-													</select>
+													<button class="unblock">차단풀기</button>
 												</c:if>
 												</td>
 											</tr>
@@ -198,11 +194,60 @@
 				"responsive" : true,
 			});
 		});
-		
-		function myFunction(str){
-			alert("사용자 " + str);
-		}
-		
+	
+		$(".block").click(function(){ 
+			//현재 row의 정보 가져오기 
+			var thisRow = $(this).closest('tr');
+			//주소 input 값 가져오기
+			var user_seq = thisRow.find('td:eq(0)').text();
+			var id = thisRow.find('td:eq(1)').text();
+			var email = thisRow.find('td:eq(5)').text();
+			
+			$.ajax({ // ajax 기본형태
+				url : "/myweb/block.mdo",
+				type : "post",
+				data : {
+					"user_seq" : user_seq,
+					"id" : id,
+					"email" : email
+				}, //위와동일
+				success : function(data){ // status, xhr 생략가능 
+					alert("차단했습니다.")
+					location.reload();
+				},
+				error : function() { // (파라미터 생략가능)
+					alert("error");
+				}
+			});	
+
+		});
+
+		$(".unblock").click(function(){ 
+			//현재 row의 정보 가져오기 
+			var thisRow = $(this).closest('tr');
+			//주소 input 값 가져오기
+			var user_seq = thisRow.find('td:eq(0)').text();
+			var id = thisRow.find('td:eq(1)').text();
+			var email = thisRow.find('td:eq(5)').text();
+			
+			$.ajax({ // ajax 기본형태
+				url : "/myweb/unblock.mdo",
+				type : "post",
+				data : {
+					"user_seq" : user_seq,
+					"id" : id,
+					"email" : email
+				}, //위와동일
+				success : function(data){ // status, xhr 생략가능 
+					alert("해제했습니다.")
+					location.reload();
+				},
+				error : function() { // (파라미터 생략가능)
+					alert("error");
+				}
+			});	
+
+		});
 	</script>
 </body>
 </html>

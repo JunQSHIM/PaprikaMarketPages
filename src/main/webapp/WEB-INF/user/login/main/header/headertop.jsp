@@ -53,13 +53,13 @@ function readNotice(){
 		<div class="button_wrap" style="z-index: 1; position: relative;">
 			<c:choose>
 				<c:when test="${user.id ne null and kakaoUser.email eq null }">
-					<button type="button" id="notice" onclick="notice()">알림</button>
+					<button type="button" id="notice" class="noticeBtn" onclick="notice()"><img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/alert.png" width="17" height="15" alt="알림">알림</button>
 					<button type="button" onclick="location.href='logout.do'">로그아웃</button>
 					<button type="button" onclick="location.href='mypage.do'">마이페이지</button>
 				</c:when>
 				<c:when test="${kakaoUser.email ne null }">
-					<button type="button" id="notice" onclick="notice()">알림</button>
-					<button type="button" onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=808d349080855e826b4c4cb8c77a836d&logout_redirect_uri=http://localhost:8080/myweb/kakaoLogout.do'">카카오로그아웃</button>
+					<button type="button" id="notice" onclick="notice()"><img src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/alert.png" width="17" height="15" alt="알림">알림</button>
+					<button class="kakaoLogout"type="button" onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=808d349080855e826b4c4cb8c77a836d&logout_redirect_uri=http://localhost:8080/myweb/kakaoLogout.do'">카카오로그아웃</button>
 					<button type="button" onclick="location.href='mypage.do'">마이페이지</button>
 				</c:when>
 				<c:otherwise> 

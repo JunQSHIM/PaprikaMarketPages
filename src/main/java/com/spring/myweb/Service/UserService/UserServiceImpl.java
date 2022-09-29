@@ -30,6 +30,7 @@ import com.spring.myweb.MailUtil.MailHandler;
 import com.spring.myweb.MailUtil.TempKey;
 import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
@@ -396,6 +397,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int badCount(MyMannerVO vo) throws Exception {
 		return userDAO.badCount(vo);
+	}
+
+	@Override
+	public void insertPhoto(PhotoVO photo) {
+		userDAO.insertPhoto(photo);
 	}
 	
 

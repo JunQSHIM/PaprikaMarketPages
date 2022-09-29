@@ -21,8 +21,6 @@ import com.spring.myweb.VO.UserVO.UserVO;
 public interface AdminService {
 	public List<UserVO> selectAll();
 	public List<UserSmsVO> selectSmsAll();
-	public List<ReviewSingoVO> selectReviewSingo();
-	public List<BoardSingoVO> selectBoardSingo();
 	public List<PostSingoVO> selectPostSingo();
 	public void deleteSingoPage(int singo_page);
 	public List<BoardVO> selectBoardAll();
@@ -65,6 +63,7 @@ public interface AdminService {
 	public List<OneOnOneVO> oneOnList(); // 1:1 문의 내역 불러오기
 	public OneOnOneVO findUser(int user_seq); // 문의한 사용자 정보 불러오기
 	public int oneStatus(int status);
+	public void oneDelete(int one_seq); //1:1 문의 삭제
 	
 	// 상품 + 상품 후기 관리
 	public List<PostVO> adminPost() throws Exception;

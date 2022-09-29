@@ -262,15 +262,37 @@ public class PostController {
 	public String getDetail(HttpSession session, HashMap<String, Object> info, Model model, int post_seq, UserVO uvo,
 			LikeVO lvo, ReportVO rvo) throws Exception {
 		uvo = (UserVO) session.getAttribute("user");
-
+		PostVO vo = postService.postDetail(post_seq);
 		postService.viewCount(post_seq); // 조회수
 
-		PostVO vo = postService.postDetail(post_seq);
-		List<MyMannerVO> manner = postService.reviewList(vo.getUser_seq());
-		for (MyMannerVO mm : manner) {
-			mm.setPost_title(postService.findReviewer(mm.getPost_seq()));
-			mm.setNickname(postService.Reviewer(mm.getUser_seq()));
+		if(uvo!=null) {
+			List<MyMannerVO> manner = postService.reviewList(vo.getUser_seq());
+			for (MyMannerVO mm : manner) {
+				mm.setPost_title(postService.findReviewer(mm.getPost_seq()));
+				mm.setNickname(postService.Reviewer(mm.getUser_seq()));
+			}
+			model.addAttribute("manner", manner);
+			
+			// 좋아요
+			lvo.setPost_seq(post_seq);
+			lvo.setUser_seq(uvo.getUser_seq());
+			int like = 0;
+
+			int check = postService.likeCount(lvo);
+			int jjimCart = postService.jjimCart(lvo);
+			int allLike = postService.allLike(lvo);
+
+			if (check == 0) {
+				postService.likeinsert(lvo);
+			} else if (check == 1) {
+				like = postService.likeGetInfo(lvo);
+			}
+			
+			model.addAttribute("like", like);
+			model.addAttribute("jjimCart", jjimCart);
+			model.addAttribute("allLike", allLike);
 		}
+		
 		int report = 0;
 		if (postService.reportStatus(rvo).isEmpty()) {
 			report = 1;
@@ -284,27 +306,11 @@ public class PostController {
 		for (int post : cate_seq) {
 			rPhotoName.add(postService.photoOne(post));
 		}
-		// 좋아요
-		lvo.setPost_seq(post_seq);
-		lvo.setUser_seq(uvo.getUser_seq());
-		int like = 0;
 
-		int check = postService.likeCount(lvo);
-		int jjimCart = postService.jjimCart(lvo);
-		int allLike = postService.allLike(lvo);
-
-		if (check == 0) {
-			postService.likeinsert(lvo);
-		} else if (check == 1) {
-			like = postService.likeGetInfo(lvo);
-		}
 		model.addAttribute("cate_seq", cate_seq);
 		model.addAttribute("rPhotoName", rPhotoName);
 		model.addAttribute("report", report);
-		model.addAttribute("manner", manner);
-		model.addAttribute("like", like);
-		model.addAttribute("jjimCart", jjimCart);
-		model.addAttribute("allLike", allLike);
+
 
 		model.addAttribute("post", vo);
 
@@ -318,17 +324,9 @@ public class PostController {
 	// 좋아요 컨트롤러
 	@PostMapping("/likeupdate.do")
 	@ResponseBody
-	public Map<String, String> likeupdate(LikeVO vo) {
-		Map<String, String> map = new HashMap<String, String>();
-
-		try {
-			postService.likeupdate(vo);
-			map.put("result", "success");
-		} catch (Exception e) {
-			e.printStackTrace();
-			map.put("result", "fail");
-		}
-		return map;
+	public void likeupdate(LikeVO vo) {
+		System.out.println(vo);
+		postService.likeupdate(vo);
 	}
 
 	// 카테고리 별 목록 나오게 하기.
@@ -393,9 +391,27 @@ public class PostController {
 
 	// 수정하기 폼
 	@RequestMapping(value = "/updateProc.do")
-	public String postUpdate(PostVO vo) throws Exception {
+		public String postUpdate(PostVO vo, @RequestParam(value = "origin_file_name",required=false)List<MultipartFile> img, PhotoVO photo) throws Exception {
 		System.out.println("수정완료");
+		
+		postService.deleteImage(vo.getPost_seq());
+		Map<String, String> img_name = postService.uploadImg(img, "post/");
+		
+		Iterator<Entry<String, String>> entries = img_name.entrySet().iterator();
+		while (entries.hasNext()) {
+			Map.Entry<String, String> entry = entries.next();
+			String origin_file_name = entry.getKey();
+			String save_file_name = entry.getValue();
+
+			photo.setPost_seq(vo.getPost_seq());
+			photo.setO_name(origin_file_name);
+			photo.setS_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/" + save_file_name);
+
+			postService.insertPhoto(photo);
+		}
+		
 		postService.updatePost(vo);
+		
 		return "redirect:main.do";
 	}
 

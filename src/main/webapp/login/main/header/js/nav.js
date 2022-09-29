@@ -10,3 +10,9 @@ $(document).ready(function() {
 	});
 }); //네비바 상단고정
 
+$("input[name='keyword']").keydown(function(e) {
+	if (e.keyCode == 13) {
+    $("#btnSearch").trigger('click');
+	}
+});
+

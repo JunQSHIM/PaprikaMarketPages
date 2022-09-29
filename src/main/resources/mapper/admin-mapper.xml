@@ -7,251 +7,257 @@
 	</select>
 	<!-- sms페이지 필요한 컬럼만 불러오기 -->
 	<select id="selectUserSms" resultType="UserSmsVO">
-		select user_seq,join_type,id,name,phone,email,msg_agree,user_type from user;
+		select
+		user_seq,join_type,id,name,phone,email,msg_agree,user_type from user;
 	</select>
-	<!-- 신고 상품 리뷰 불러오기 -->
-	<select id="selectReviewSingo" resultType="ReviewSingoVO">
-		select rev.user_id as user_id,  rev.user_singo_id as user_singo_id, rev.review_seq, rev.report_content, rev.report_date, rev.state, prod.review_content as review_content from
-		(select re.id as user_id, us.id as user_singo_id, re.review_seq as review_seq, re.report_content as report_content, re.report_date as report_date, re.status as state from
-			(select u.id, r.user_singo_seq user_seq, r.review_seq, r.report_content, r.report_date, r.status from review_reports r
-					left join user u
-					on r.user_seq=u.user_seq
-			) re
-			left join user us
-		on re.user_seq = us.user_seq
-        ) rev
-		left join productReview	prod
-		on rev.review_seq = prod.review_seq;
-	</select>
-	
-	<!-- 신고 게시판 불러오기 -->
-	<select id="selectBoardSingo" resultType="BoardSingoVO">
-		select b.user_id as user_id,  b.user_singo_id as user_singo_id, b.board_seq, b.report_content, b.report_date, b.state, board.content as board_content from
-		(select b.id as user_id, u.id as user_singo_id, b.board_seq as board_seq, b.report_content as report_content, b.report_date as report_date, b.status as state from
-			(select u.id as id, b.user_singo_seq user_seq, b.board_seq, b.report_content, b.report_date, b.status from board_reports b
-					left join user u
-					on b.user_seq=u.user_seq
-			) b
-			left join user u
-		on b.user_seq = u.user_seq
-        ) b
-		left join board
-		on b.board_seq = board.board_seq;
-	</select>
-	
+
 	<!-- 상품 신고 불러오기 -->
 	<select id="selectPostSingo" resultType="PostSingoVO">
-		select p.user_id as user_id,  p.user_singo_id as user_singo_id, p.post_seq, p.report_content, p.report_date, p.state, post.post_content as post_content  from
-		(select p.id as user_id, u.id as user_singo_id, p.post_seq as post_seq, p.report_content as report_content, p.report_date as report_date, p.status as state from
-			(select u.id as id, p.user_singo_seq user_seq, p.post_seq, p.report_content, p.report_date, p.status from post_reports p
-					left join user u
-					on p.user_seq=u.user_seq
-			) p
-			left join user u
+		select p.user_id as
+		user_id, p.user_singo_id as user_singo_id, p.post_seq,
+		p.report_content, p.report_date, p.state, post.post_content as
+		post_content from
+		(select p.id as user_id, u.id as user_singo_id,
+		p.post_seq as post_seq, p.report_content as report_content,
+		p.report_date as report_date, p.status as state from
+		(select u.id as id, p.user_singo_seq user_seq, p.post_seq, p.report_content,
+		p.report_date, p.status from post_reports p
+		left join user u
+		on p.user_seq=u.user_seq
+		) p
+		left join user u
 		on p.user_seq = u.user_seq
-        ) p
+		) p
 		left join post
 		on p.post_seq = post.post_seq;
 	</select>
-	
-	
+
+
 	<!-- 약관동의 -->
-	<select id="selectAgreement" parameterType="int" resultType="RegisterAgreeVO">
-		select * from agreement where agreement_seq=#{agreement_seq};
+	<select id="selectAgreement" parameterType="int"
+		resultType="RegisterAgreeVO">
+		select * from agreement where
+		agreement_seq=#{agreement_seq};
 	</select>
 	<select id="selectAgreementAll" resultType="RegisterAgreeVO">
-		select * from agreement ;
+		select * from
+		agreement ;
 	</select>
 	<update id="updateAgreement">
-		update agreement set register_agreement = #{register_agreement}, p_agreement = #{p_agreement} where agreement_seq=1;
+		update agreement set register_agreement =
+		#{register_agreement}, p_agreement = #{p_agreement} where
+		agreement_seq=1;
 	</update>
-	
-		<!-- 신고 삭제 처리 -->
+
+	<!-- 신고 삭제 처리 -->
 	<delete id="deleteSingoPage">
-		delete from productReview where review_seq = #{sing_page};
+		delete from productReview where review_seq =
+		#{sing_page};
 	</delete>
-	
+
 	<!-- 게시판 관리 -->
-		<!-- 게시판 목록 불러오기 -->
+	<!-- 게시판 목록 불러오기 -->
 	<select id="selectBoardAll" resultType="BoardVO">
-		select b.board_seq as board_seq, u.id as user_id, b.photo as photo, b.title as title, b.content as content, b.upload_date as upload_date, b.cnt as cnt, b.status as status
-		from board b
+		select b.board_seq as
+		board_seq, u.id as user_id, b.title as title, b.content as content,
+		b.create_date as create_date, b.cnt as cnt, b.status as status
+		from
+		board b
 		inner join user u
 		on u.user_seq = b.user_seq;
 	</select>
-	
+
 	<!-- 게시판 내용 불러오기 -->
-	<select id="boardDetail" resultType="BoardVO" parameterType="int">
+	<select id="boardDetail" resultType="BoardVO"
+		parameterType="int">
 		select * from board where board_seq = #{board_seq};
 	</select>
-	
+
 	<!-- 게시판 삭제 -->
 	<select id="boardDelete" resultType="BoardVO">
-		delete from board where board_seq = #{board_seq};
+		delete from board where
+		board_seq = #{board_seq};
 	</select>
-	
+
 	<!-- 파프리카 페이 처리 목록 불러오기 -->
 	<select id="payList" resultType="PayVO">
 		select * from pay
 	</select>
-	
+
 	<!-- 처리완료된 업무 삭제 -->
 	<delete id="deletePay">
 		delete from pay where status=2
 	</delete>
-	
+
 	<!-- 관리자목록 불러오기 -->
 	<select id="adminList" resultType="UserVO">
-		select * from user where user_type != 0 order by user_seq;
+		select * from user where
+		user_type != 0 order by user_seq;
 	</select>
-	
+
 	<!-- 관리자로 권한 주기 -->
 	<update id="giveAdmin" parameterType="string">
-		update user set user_type=1, authority='ROLE_ADMIN' where id=#{id}
+		update user set
+		user_type=1, authority='ROLE_ADMIN' where id=#{id}
 	</update>
-	
+
 	<!-- 관리자로 권한 내리기 -->
 	<update id="deleteAdmin">
-		update user set user_type=0, authority='ROLE_USER' where id=#{id}
+		update user set user_type=0, authority='ROLE_USER'
+		where id=#{id}
 	</update>
-	
+
 	<select id="selectQnaCategory" resultType="QnaVO">
 		select * from qna;
 	</select>
-	
+
 	<select id="selectQuestions" resultType="QnaQuestionsVO">
-		select * from qna_questions;
+		select * from
+		qna_questions;
 	</select>
-	
+
 	<select id="selectAnswers" resultType="QnaAnswersVO">
 		select * from qna_answers;
 	</select>
-	
+
 	<insert id="addQnaCate" parameterType="String">
 		<![CDATA[insert into qna values(qna_seq, #{qna_title}) ]]>
 	</insert>
-	
+
 	<insert id="addQ" parameterType="hashMap">
 		<![CDATA[insert into qna_questions values(q_seq,#{qna_title}, #{question}) ]]>
 	</insert>
-	
+
 	<insert id="addA" parameterType="hashMap">
 		<![CDATA[insert into qna_answers values(a_seq,#{question}, #{answer}) ]]>
 	</insert>
-	
+
 	<update id="updateQnaCate">
 		<![CDATA[update qna set qna_title=#{qna_title} where qna_seq=#{qna_seq}]]>
 	</update>
-	
+
 	<update id="updateQnaCateofQ">
 		<![CDATA[update qna_questions set qna_title=#{qna_title} where qna_title=(select qna_title from qna where qna_seq=#{qna_seq})]]>
 	</update>
-	
+
 	<update id="updateQ">
 		<![CDATA[update qna_questions set question=#{question} where q_seq=#{q_seq} ]]>
 	</update>
-	
+
 	<update id="updateA">
 		<![CDATA[update qna_answers set answer=#{answer} where a_seq=#{a_seq}]]>
 	</update>
-	
+
 	<update id="updateQofA">
 		<![CDATA[update qna_answers set question=#{question} where question=(select question from qna_questions where q_seq=#{q_seq})]]>
 	</update>
-	
-	<select id="selectCateStr" parameterType="String" resultType="QnaVO">
+
+	<select id="selectCateStr" parameterType="String"
+		resultType="QnaVO">
 		<![CDATA[select * from qna where qna_title=#{qna_title}]]>
 	</select>
 
-	<select id="selectQStr" parameterType="String" resultType="QnaQuestionsVO">
+	<select id="selectQStr" parameterType="String"
+		resultType="QnaQuestionsVO">
 		<![CDATA[select * from qna_questions where question=#{question}]]>
 	</select>
 
-	<select id="selectAStr" parameterType="String" resultType="QnaAnswersVO">
+	<select id="selectAStr" parameterType="String"
+		resultType="QnaAnswersVO">
 		<![CDATA[select * from qna_answers where answer=#{answer}]]>
-	</select> 
-	
+	</select>
+
 	<select id="selectCate" parameterType="int" resultType="QnaVO">
 		<![CDATA[select * from qna where qna_seq=#{qna_seq}]]>
 	</select>
 
-	<select id="selectQ" parameterType="int" resultType="QnaQuestionsVO">
+	<select id="selectQ" parameterType="int"
+		resultType="QnaQuestionsVO">
 		<![CDATA[select * from qna_questions where q_seq=#{q_seq}]]>
 	</select>
 
-	<select id="selectA" parameterType="int" resultType="QnaAnswersVO">
+	<select id="selectA" parameterType="int"
+		resultType="QnaAnswersVO">
 		<![CDATA[select * from qna_answers where a_seq=#{a_seq}]]>
 	</select>
-	
+
 	<select id="bringQ" resultType="QnaQuestionsVO">
 		<![CDATA[select * from qna_questions where qna_title=#{qna_title}]]>
 	</select>
-	
+
 	<select id="bringA" resultType="QnaAnswersVO">
 		<![CDATA[select * from qna_answers where question=#{question}]]>
 	</select>
-	
+
 	<delete id="deleteQna">
 		delete from qna where qna_seq=#{qna_seq}
 	</delete>
-	
+
 	<delete id="deleteQ">
 		delete from qna_questions where q_seq=#{q_seq}
 	</delete>
-	
+
 	<delete id="deleteA">
 		delete from qna_answers where a_seq=#{a_seq}
 	</delete>
-	
+
 	<select id="checkQ" resultType="int">
-		select count(*) from qna_questions where question=#{question};
+		select count(*) from
+		qna_questions where question=#{question};
 	</select>
 
-	<!--배너 관리  -->
+	<!--배너 관리 -->
 	<select id="bannerList" resultType="BannerVO">
 		select * from banner;
 	</select>
-	
+
 	<insert id="insertBanner">
 		insert into
-		banner ( title, content, origin_file_name, saved_file_name, create_time)
-		values (#{title}, #{content}, #{origin_file_name}, #{saved_file_name}, now());
+		banner ( title, content, origin_file_name,
+		saved_file_name, create_time)
+		values (#{title}, #{content},
+		#{origin_file_name}, #{saved_file_name}, now());
 	</insert>
-	
+
 	<delete id="deleteBanner">
 		delete from banner where banner_seq = #{banner_seq};
 	</delete>
-	
+
 	<select id="selectDeleteBanner" resultType="String">
-	select substring_index (saved_file_name, '/' ,-2) as saved_file_name from
-	(select saved_file_name from banner where banner_seq = #{banner_seq})banner_name;
+		select substring_index (saved_file_name, '/' ,-2) as saved_file_name from
+		(select saved_file_name from banner where banner_seq =
+		#{banner_seq})banner_name;
 	</select>
-	
+
 	<update id="updatePay">
-		update pay set process=#{process}, status=#{status} where pay_seq=#{pay_seq}
+		update pay set process=#{process}, status=#{status}
+		where pay_seq=#{pay_seq}
 	</update>
-	
+
 	<!-- 1:1 문의 리스트 -->
 	<select id="oneOnList" resultType="OneOnOneVO">
 		select * from oneOnOne;
 	</select>
-	
+
 	<!-- 1:1 문의자 정보 추출 -->
 	<select id="findUser" resultType="OneOnOneVO">
-		select nickname, id, email from user where user_seq = #{user_seq}
+		select nickname, id, email from
+		user where user_seq = #{user_seq}
 	</select>
-	
+
 	<!-- 관리자 상품 목록 불러오기 -->
 	<select id="adminPost" resultType="PostVO">
-		select * from post order by post_seq desc;
+		select * from post order by
+		post_seq desc;
 	</select>
-	
+
 	<!-- 상품 상세보기 -->
-	<select id="adminPostDetail" parameterType="int" resultType="PostVO">
+	<select id="adminPostDetail" parameterType="int"
+		resultType="PostVO">
 		select *
 		from post where post_seq = #{post_seq};
 	</select>
-	
+
 	<!-- 리뷰 목록 -->
 	<select id="adminReview" resultType="MyMannerVO">
 		select * from myManner;
@@ -260,9 +266,157 @@
 	<update id="blockUser">
 		update user set rep_no=5 where user_seq=#{user_seq}
 	</update>
-	<!-- 회원 차단 해제  -->
+	<!-- 회원 차단 해제 -->
 	<update id="unblockUser">
 		update user set rep_no=0 where user_seq=#{user_seq}
 	</update>
-	
+
+	<!-- 통계 -->
+	<!-- 날짜별 -->
+	<select id="today" resultType="Date">
+		select DATE(create_date) from
+		${type} where create_date between DATE_SUB(NOW(), INTERVAL #{today}
+		DAY) and NOW() order by create_date;
+	</select>
+	<select id="lastweek" resultType="Date">
+		select DATE(create_date) from
+		${type} where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL
+		#{today} DAY), INTERVAL #{week} DAY) and DATE_SUB(NOW(), INTERVAL
+		#{today} DAY) order by create_date;
+	</select>
+
+	<select id="month" resultType="Date">
+		select DATE(create_date) from
+		${type} where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL
+		#{month}-1 month),INTERVAL #{today}-1 DAY) and NOW() order by
+		create_date;
+	</select>
+
+	<!-- 카테고리별 -->
+	<select id="category" resultType="ChartVO">
+		select category.category_name
+		as name, c.cnt as cnt from category
+		inner join
+		(select category_seq,
+		count(create_date) as cnt from post group by category_seq) as c
+		on
+		category.category_seq = c.category_seq;
+	</select>
+	<!-- 탈퇴사유 -->
+	<select id="quit" resultType="ChartVO">
+		select withdrawalList.reason as
+		name, c.cnt as cnt from withdrawalList
+		inner join
+		(select
+		withdrawal_content, count(withdrawal_content) as cnt from withdrawal
+		group by withdrawal_content order by withdrawal_content) as c
+		on
+		withdrawalList.withdrawal= c.withdrawal_content;
+	</select>
+	<!-- 신고사유 -->
+	<select id="singo" resultType="ChartVO">
+
+	</select>
+
+	<!-- 안전결제 사용 -->
+	<select id="todaypay" resultType="Date">
+		select DATE(create_date) from
+		post where create_date between DATE_SUB(NOW(), INTERVAL #{today} DAY)
+		and NOW() and pay_check=1 order by create_date;
+	</select>
+	<select id="lastweekpay" resultType="Date">
+		select DATE(create_date)
+		from post where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL
+		#{today} DAY), INTERVAL #{week} DAY) and DATE_SUB(NOW(), INTERVAL
+		#{today} DAY) and pay_check=1 order by create_date;
+	</select>
+
+	<select id="monthpay" resultType="Date">
+		select DATE(create_date) from
+		post where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL
+		#{month}-1 month),INTERVAL #{today}-1 DAY) and NOW() and pay_check=1
+		order by create_date;
+	</select>
+
+	<!-- 거래완료 -->
+	<select id="todaycom" resultType="Date">
+		select DATE(create_date) from
+		post where create_date between DATE_SUB(NOW(), INTERVAL #{today} DAY)
+		and NOW() and pay_status=4 order by create_date;
+	</select>
+	<select id="lastweekcom" resultType="Date">
+		select DATE(create_date)
+		from post where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL
+		#{today} DAY), INTERVAL #{week} DAY) and DATE_SUB(NOW(), INTERVAL
+		#{today} DAY) and pay_status=4 order by create_date;
+	</select>
+
+	<select id="monthcom" resultType="Date">
+		select DATE(create_date) from
+		post where create_date between DATE_SUB(DATE_SUB(NOW(), INTERVAL
+		#{month}-1 month),INTERVAL #{today}-1 DAY) and NOW() and pay_status=4
+		order by create_date;
+	</select>
+
+
+	<!-- 회원 접속 기록 -->
+	<insert id="loginHistory">
+		insert into loginHistory (user_seq, id, login_date)
+		values (#{user_seq}, #{id}, now());
+	</insert>
+
+	<select id="todayLogin" resultType="ChartVO">
+		select hour(login_date) as
+		time, count(login_date) as cnt
+		from loginHistory
+		where login_date
+		between DATE_FORMAT(now(), '%y-%m-%d') and DATE_FORMAT(now(),
+		'%y-%m-%d 23:59:59')
+		group by time
+		order by time;
+	</select>
+
+	<select id="weekLogin" resultType="Date">
+		select DATE(login_date) from
+		loginHistory where login_date between DATE_SUB(NOW(), INTERVAL
+		#{today} DAY) and NOW() order by login_date;
+	</select>
+	<select id="lastweekLogin" resultType="Date">
+		select DATE(login_date)
+		from loginHistory where login_date between DATE_SUB(DATE_SUB(NOW(),
+		INTERVAL #{today} DAY), INTERVAL #{week} DAY) and DATE_SUB(NOW(),
+		INTERVAL #{today} DAY) order by login_date;
+	</select>
+	<select id="monthLogin" resultType="Date">
+		select DATE(login_date) from
+		loginHistory where login_date between DATE_SUB(DATE_SUB(NOW(),
+		INTERVAL #{month}-1 month),INTERVAL #{today}-1 DAY) and NOW() order by
+		login_date;
+	</select>
+
+	<!-- 오늘 올라온 상품 -->
+	<select id="getTodayPost" resultType="int">
+		select count(*) from post
+		where DATE(upload_date) = DATE(now());
+	</select>
+	<!-- 오늘 올라온 게시판 -->
+	<select id="getTodayBoard" resultType="int">
+		select count(*) from board
+		where DATE(create_date) = DATE(now());
+	</select>
+	<!-- 오늘 방문자 -->
+	<select id="getTodayLogin" resultType="int">
+		select count(*) from
+		loginHistory where DATE(login_date) = DATE(now());
+	</select>
+	<!-- 오늘 들어온 신고 -->
+	<select id="getTodaySingo" resultType="int">
+		select count(*) from
+		post_reports where DATE(report_date) = DATE(now());
+	</select>
+
+	<!-- 1:1 문의 처리 -->
+	<select id="oneDelete"> delete from oneOnOne where one_seq = #{one_seq}
+	</select>
+
 </mapper>

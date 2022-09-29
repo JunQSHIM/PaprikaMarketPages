@@ -42,3 +42,11 @@
 			theForm.submit();
 		});
 	});
+	
+	function onEnterLogin(){
+		var keyCode = window.event.keyCode;
+		
+		if (keyCode == 13) { //엔터키 이면
+			login.submit();
+		}
+	} //onEnterLogin()

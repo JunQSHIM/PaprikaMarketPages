@@ -213,7 +213,6 @@ function sendReport(){
 				'cmd': cmd
 			},
 			success: function(data) {
-				alert(data);
 				if(sock){
 					sock.send(data);
 				}

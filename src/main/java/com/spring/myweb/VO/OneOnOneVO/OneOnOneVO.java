@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class OneOnOneVO {
+	private int one_seq;
 	private int user_seq;
 	private String content;
 	private Date create_date;

@@ -68,18 +68,6 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public List<ReviewSingoVO> selectSingoReview() {
-		List<ReviewSingoVO> reviewSingoList = session.selectList("adminDB.selectReviewSingo");
-		return reviewSingoList;
-	}
-	
-	@Override
-	public List<BoardSingoVO> selectSingoBoard() {
-		List<BoardSingoVO> boardSingoList = session.selectList("adminDB.selectBoardSingo");
-		return boardSingoList;
-	}
-
-	@Override
 	public List<PostSingoVO> selectSingoPost() {
 		List<PostSingoVO> postSingoList = session.selectList("adminDB.selectPostSingo");
 		return postSingoList;
@@ -337,6 +325,12 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public int unblockUser(int user_seq) {
 		return session.update("adminDB.unblockUser",user_seq);
+	}
+	
+	@Override
+	public void oneDelete(int one_seq) {
+		session.delete("adminDB.oneDelete", one_seq);
+		
 	}
 
 }

@@ -21,8 +21,6 @@ import com.spring.myweb.VO.UserVO.UserVO;
 public interface AdminDAO {
 	public List<UserVO> selectAll();
 	public List<UserSmsVO> selectSmsAll();//회원 sms 목록 불러오기
-	public List<ReviewSingoVO> selectSingoReview();//리뷰의 신고 리스트 불러오기
-	public List<BoardSingoVO> selectSingoBoard();//리뷰의 신고 리스트 불러오기
 	public List<PostSingoVO> selectSingoPost();//리뷰의 신고 리스트 불러오기
 	
 	public void deleteSingoPage(int singo_page);//신고된 페이지 삭제
@@ -66,6 +64,7 @@ public interface AdminDAO {
 	public List<OneOnOneVO> oneOnList(); // 1:1 문의 내역 불러오기
 	public OneOnOneVO findUser(int user_seq); // 문의한 사용자 정보 불러오기
 	public int oneStatus(int status);
+	public void oneDelete(int one_seq); //1:1 문의 삭제
 	
 	// 상품 + 상품 후기 관리
 	public List<PostVO> adminPost() throws Exception;

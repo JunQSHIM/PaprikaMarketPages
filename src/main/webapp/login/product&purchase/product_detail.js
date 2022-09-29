@@ -88,7 +88,6 @@
 			post_seq : Number($('#post_seq').val()),
 			count : Number($('#likecheck').val())},
 		success : function(result){
-			console.log("수정" + result.result);
 			if(Number($('#likecheck').val()) == 1){
 				console.log("좋아요 취소");
 				 $('#likecheck').val(0);
@@ -117,7 +116,6 @@
 						'cmd': cmd
 					},
 					success: function(data) {
-						alert(data);
 						if(sock){
 							sock.send(data);
 						}
@@ -138,7 +136,6 @@
 						'cmd': cmd
 					},
 					success: function(data) {
-						alert(data);
 						if(sock){
 							sock.send(data);
 						}
@@ -148,12 +145,7 @@
 					}
 				});
 	}
-	/** 결제 * */
-    // 결제 금액, 구매자의 이름, 이메일
-    const priceAmount = "10";
-    const buyerMemberEmail = "uusin@gmail.com";
-    const buyerMemberName = "김유신(부산)";
-    // const form = document.getElementById("payment");
+
 	
     $(document).ready(function(){
         $('.lgWppt').bxSlider({
@@ -171,7 +163,6 @@
      }
      
    	function add_pay_notice(){
-   		console.log("fj");
    		var cmd = 'pay';
 		$.ajax({
 			url: '/myweb/addPayNotice.do',
@@ -180,7 +171,6 @@
 				'cmd': cmd
 			},
 			success: function(data) {
-				alert(data);
 				if(sock){
 					sock.send(data);
 				}
@@ -201,7 +191,6 @@
 				'cmd': cmd
 			},
 			success: function(data) {
-				alert(data);
 				if(sock){
 					sock.send(data);
 				}

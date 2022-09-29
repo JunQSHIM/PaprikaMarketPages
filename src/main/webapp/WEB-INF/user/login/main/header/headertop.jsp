@@ -21,7 +21,6 @@ sock.onmessage = function(e){
 	$("#noticeList").prepend("<li>"+e.data+"</li>");
 }
 sock.onclose = function(){
-	alert("quit");
 }
 function readNotice(){
 	var notice_seq = document.getElementById("notice_seq").value;

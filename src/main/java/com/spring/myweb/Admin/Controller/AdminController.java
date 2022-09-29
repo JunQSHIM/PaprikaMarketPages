@@ -166,14 +166,9 @@ public class AdminController {
 	@RequestMapping(value = "/singo.mdo", method = RequestMethod.GET)
 	public String singoAdmin(Model model) {
 		System.out.println("관리자 페이지 singo목록");
-		
 
-		List<BoardSingoVO> boardsingo = adminService.selectBoardSingo();
-		List<ReviewSingoVO> reviewsingo = adminService.selectReviewSingo();
 		List<PostSingoVO> postsingo = adminService.selectPostSingo();
 		
-		model.addAttribute("review", reviewsingo);
-		model.addAttribute("board", boardsingo);
 		model.addAttribute("post", postsingo);
 		return "Admin_page/singo/ad_singo_list";
 	}
@@ -581,14 +576,21 @@ public class AdminController {
 			String[] text = { "파프리카 마켓 회원가입을 축하합니다.", "이 아이디는 신고횟수가 5회가 넘어 이용정지 되었으니 고객센터번호로 문의 바랍니다.",
 					"님에게 신고가 접수되었습니다. 현재 신고횟수=" };
 			String msg = info.get(2) + "님!!";
-			if (info.get(7 + 8 * i).equals("0")) {
+			System.out.println(info.get(7+8*i));
+			if (info.get(7 + 8 * i).equals("1")) {
 				msg += text[0];
-			} else if (info.get(7 + 8 * i).equals("1")) {
+				System.out.println(text.toString());
+				System.out.println(msg);
+			} else if (info.get(7 + 8 * i).equals("2")) {
 				msg += text[1];
+				System.out.println(text.toString());
+				System.out.println(msg);
 			} else {
 				msg += text[2];
 				int repNo = userService.select(info.get(2 + 8 * i)).getRep_no();
 				msg += String.valueOf(repNo);
+				System.out.println(text.toString());
+				System.out.println(msg);
 			}
 			params.put("text", msg);
 			params.put("app_version", "test app 1.2"); // application name and version
@@ -602,6 +604,7 @@ public class AdminController {
 				System.out.println(e.getMessage());
 				System.out.println(e.getCode());
 			}
+			msg="";
 		}
 		return 1;
 	}
@@ -710,5 +713,11 @@ public class AdminController {
 	        sendMail.send();
 		}
 		return result;
+	}
+	
+	@RequestMapping(value = "/oneDelete.mdo")
+	@ResponseBody
+	public void oneDelete(int one_seq) {
+		adminService.oneDelete(one_seq);
 	}
 }

@@ -40,16 +40,6 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<ReviewSingoVO> selectReviewSingo() {
-		return adminDAO.selectSingoReview();
-	}
-
-	@Override
-	public List<BoardSingoVO> selectBoardSingo() {
-		return adminDAO.selectSingoBoard();
-	}
-
-	@Override
 	public List<PostSingoVO> selectPostSingo() {
 		return adminDAO.selectSingoPost();
 	}
@@ -268,5 +258,10 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int unblockUser(int user_seq) {
 		return adminDAO.unblockUser(user_seq);
+	}
+	
+	@Override
+	public void oneDelete(int one_seq) {
+		adminDAO.oneDelete(one_seq);
 	}
 }

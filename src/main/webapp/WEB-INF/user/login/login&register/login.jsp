@@ -19,29 +19,7 @@
 		if (objFormElement.style)
 			objFormElement.style.outline = color;
 	}
-	//아이디 비밀번호
-	$(document).ready(function() {
-		var theForm = document.login;
-		$("#loginButton").click(function() {
-			if (!theForm.id.value) {
-				setOutline(theForm.id, "2px solid red");
-				theForm.id.placeholder = '아이디를 입력해주세요';
-				theForm.id.focus();
-				return;
-			}
-
-			if (!theForm.password.value) {
-				setOutline(theForm.password, "2px solid red");
-				theForm.password.placeholder = '비밀번호를 입력해주세요';
-				theForm.password.focus();
-				if (theForm.id.value != "") {
-					setOutline(theForm.id, "1px solid black");
-				}
-				return;
-			}
-			theForm.submit();
-		});
-	});
+	
 </script>
 <title>login</title>
 <!--Bootsrap 4 CDN-->
@@ -60,7 +38,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/myweb/login/login&register/styles.css">
 </head>
-<body>
+<body onkeydown="javascript:onEnterLogin();">
 	<div align="center" style="margin-top: 70px; margin-bottom: 20px;">
 		<a href="main.do"> <img
 			src="/myweb/login/images/dklogo.png" width="26%">

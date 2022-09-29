@@ -14,7 +14,7 @@
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 			<div class="image">
-				<img src="/myweb/Admin_page/dist/img/usin.png"
+				<img src="${user.profile_image }"
 					class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
@@ -97,30 +97,10 @@
 								<i class="nav-icon fas fa-tree"></i>
 								<p>후기 목록</p>
 						</a></li>
-						<li class="nav-item"><a href="#" class="nav-link"> <i
+						<li class="nav-item"><a href="board.mdo" class="nav-link"> <i
 								class="nav-icon fas fa-tree"></i>
-								<p>
-									게시판<i class="fas fa-angle-left right"></i>
-								</p>
+								<p>	게시판</p>
 						</a>
-							<ul class="nav nav-treeview">
-								<li class="nav-item"><a
-									href="board.mdo"
-									class="nav-link"> <i class="far fa-circle nav-icon"></i>
-										<p>게시물 관리</p>
-								</a></li>
-								<li class="nav-item"><a
-								href="/myweb/Admin_page/admin_page_board/comment_manage.jsp"
-								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-										<p>댓글 관리</p>
-								</a></li>
-								<li class="nav-item"><a href="pages/UI/icons.html"
-									class="nav-link"> <i class="far fa-circle nav-icon"></i>
-										<p>공지 사항 쓰기</p>
-								</a></li>
-
-
-							</ul></li>
 					</ul></li>
 				<li class="nav-item"><a href="#" class="nav-link"> <i
 						class="nav-icon fas fa-chart-pie"></i>
@@ -142,7 +122,7 @@
 							</a>
 						</li>
 					</ul></li>
-				<li class="nav-item"><a href="/myweb/Admin_page/chart/chart.jsp" class="nav-link"> <i
+				<li class="nav-item"><a href="chart.mdo" class="nav-link"> <i
 						class="nav-icon fas fa-tree"></i>
 							통계
 				</a>

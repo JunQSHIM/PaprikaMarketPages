@@ -116,7 +116,12 @@ function toProfileEdit() {
 			</div>
 			<div id="profile_edit">
 				<div id="edit_button">
+				<c:if test="${user.join_type == 0 }">
 					<button type="button" onclick=toProfileEdit()>프로필 수정</button>
+				</c:if>
+				<c:if test="${user.join_type == 1 }">
+					<button type="button" onclick=toProfileEdit() style="visibility:hidden;">프로필 수정</button>
+				</c:if>
 					<button type="button" onclick="location.href='location.do'">동네 인증하기</button>
 					<button type="button" onclick="location.href='pay.do'">파프리카 페이 사용하기</button>
 					<button type="button" onclick="location.href='withdrawalView.do?user_seq=${user.user_seq}'">회원탈퇴</button>

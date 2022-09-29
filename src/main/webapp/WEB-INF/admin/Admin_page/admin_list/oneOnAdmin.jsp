@@ -46,19 +46,16 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${one }" var="one">
+					<c:forEach items="${one }" var="two">
 						<tr>
-							<td>${one.id }</td>
-						<td>${one.user_seq }</td>
-						<td>${one.nickname }</td>
-						<td><a href="mailto:${one.email }?subject= [파프리카마켓] [${one.nickname }]님이 문의하신 내용에 대한 답변입니다.&amp;body=[${one.nickname }]님, 저희 파프리카 마켓에 문의해주셔서 감사합니다.">${one.email }</a></td>
-						<td>${one.content }</td>
-						<td><fmt:formatDate value="${one.create_date }" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+							<td>${two.id }<input type="hidden" id="one_seq" name="one_seq" value="${two.one_seq }"></td>
+						<td>${two.user_seq }</td>
+						<td>${two.nickname }</td>
+						<td><a href="mailto:${two.email }?subject= [파프리카마켓] [${two.nickname }]님이 문의하신 내용에 대한 답변입니다.&amp;body=[${two.nickname }]님, 저희 파프리카 마켓에 문의해주셔서 감사합니다.">${two.email }</a></td>
+						<td>${two.content }</td>
+						<td><fmt:formatDate value="${two.create_date }" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
 							<td>
-							<select id="selectBox"onchange="myFunction(this.value)">
-							<option value="처리중" selected="selected" >처리중</option>
-							<option value="처리완료">처리완료</option>
-							</select>
+								<button id="done" onclick="myFunction()">처리중</button>
 							 </td>
 						</tr>
 					</c:forEach>
@@ -73,8 +70,28 @@
 </section>		
 
 <script type="text/javascript">
-function myFunction(str){
-	alert(str);
+function myFunction(){
+	var chk = confirm('처리를 완료하시겠습니까?');
+	if(!chk){
+		alert('취소하였습니다.')
+		return false;
+	}
+	var one_seq = Number($("#one_seq").val());
+	$.ajax({
+	    type : 'post', // 타입 (get, post, put 등등)
+	    url : '/myweb/oneDelete.mdo' // 요청할 서버url
+	    ,
+	    data : {
+	    	"one_seq" :one_seq  
+	    },
+	    success : function(data) { // 결과 성공 콜백함수
+	        alert("처리를 완료하였습니다.");
+	    	location.href="/myweb/oneOnAdminView.mdo"
+	    },
+	    error : function() { // 결과 에러 콜백함수
+	       
+	    }
+	})
 }
 
 </script>

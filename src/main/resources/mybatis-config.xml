@@ -34,6 +34,8 @@
 		<typeAlias alias="OneOnOneVO" type="com.spring.myweb.VO.OneOnOneVO.OneOnOneVO"/>
 		<typeAlias alias="ReviewReportVO" type="com.spring.myweb.VO.ReviewReportVO.ReviewReportVO"/>
 		<typeAlias alias="WithdrawalVO" type="com.spring.myweb.VO.WithdrawalVO.WithdrawalVO"/>
+		<typeAlias alias="ChartVO" type="com.spring.myweb.VO.ChartVO.ChartVO"/>
+		
 	</typeAliases>
 	
 	<mappers>

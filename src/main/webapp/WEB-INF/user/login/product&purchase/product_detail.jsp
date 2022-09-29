@@ -156,18 +156,18 @@
                      <button type="button" id="likebtn" class="">♥찜</button>
                      <input type="hidden" id="likecheck" value="${like }">
                   </c:when>
-               </c:choose>         
-                  <button onclick="document.getElementById('chat').submit()">연락하기</button>
-	                  <form action="/myweb/createChat.cdo" id="chat" method="post">
-	                  	<input type="hidden" name="post_seq" value="${post.post_seq }">
-	                  	<input type="hidden" name="userNickName" value="${user.nickname }">
-	                  	<input type="hidden" name="post_user_seq" value="${post.user_seq }">
-	                  </form>
+               </c:choose>   
+               	<button onclick="document.getElementById('chat').submit()">연락하기</button>
+		                  <form action="/myweb/createChat.cdo" id="chat" method="post">
+		                  	<input type="hidden" name="post_seq" value="${post.post_seq }">
+		                  	<input type="hidden" name="userNickName" value="${user.nickname }">
+		                  	<input type="hidden" name="post_user_seq" value="${post.user_seq }">
+		                  </form>
                <c:choose>
                <c:when test="${post.status eq 1 }">
                	  <button type="button">판매 완료</button>
                </c:when>
-               <c:when test="${post.pay_check == 1}">
+               <c:when test="${post.pay_check == 1 and user.user_seq ne null}">
                   <button onclick="showPopUp(); add_pay_notice();" >바로구매</button>
                </c:when>
                <c:when test="${post.pay_check == 0 }">

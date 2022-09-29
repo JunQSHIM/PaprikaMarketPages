@@ -177,6 +177,10 @@ public class PostController {
 		
 		List<DealVO> doneDealList = userService.doneDealList(uvo.getUser_seq());
 		
+		List<String> photoDeal = new ArrayList<String>();
+		for(DealVO post_num : doneDealList) {
+			photoDeal.add(postService.photoOne(post_num.getPost_seq()));
+		}
 		// 글 목록
 		model.addAttribute("plist", plist);
 		model.addAttribute("select", num);
@@ -189,6 +193,7 @@ public class PostController {
 
 		// 이미지 보이기
 		model.addAttribute("photo", photoNames);
+		model.addAttribute("dealPhoto", photoDeal);
 
 		//구매목록 
 		model.addAttribute("doneDeal",doneDealList);

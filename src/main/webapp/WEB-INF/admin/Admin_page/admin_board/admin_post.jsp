@@ -65,7 +65,7 @@
 											<th>제목</th>
 											<th>업로드날짜</th>
 											<th>지역</th>
-											<th>신고받은횟수</th>
+											<th>거래상태</th>
 
 										</tr>
 									</thead>
@@ -79,7 +79,16 @@
 												<td><a href="adminPostDetail.mdo?post_seq=${post.post_seq }">${post.post_title }</a></td>
 												<td><fmt:formatDate value="${post.create_date }" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
 												<td>${post.location1 }</td>
-												<td></td>
+												<td>
+												<c:choose>
+													<c:when test="${post.status eq 0 }">
+														판매중
+													</c:when>
+													<c:otherwise>
+														판매완료
+													</c:otherwise>
+												</c:choose>
+												</td>
 											
 											</tr>
 										</c:forEach>

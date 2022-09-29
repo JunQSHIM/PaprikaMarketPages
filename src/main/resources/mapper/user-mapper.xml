@@ -12,6 +12,9 @@
 		resultType="UserVO">
 		select * from user where id=#{value}
 	</select>
+	<select id="selectUserbySeq" resultType="UserVO">
+		select * from user where user_seq=#{user_seq}
+	</select>
 	<select id="idCheck" parameterType="String" resultType="int">
 		select
 		count(*) from user where id = #{id}
@@ -345,7 +348,7 @@
 		resultType="PostVO">
 		select * from (
 		select post_seq, post_title, price, upload_date,
-		pay_check, location1
+		pay_check, location1, status
 		from post
 		<if test="user_seq != null">
 			where user_seq = #{user_seq}
@@ -407,9 +410,7 @@
 	<!-- 매너 평가 하기 -->
 	<insert id="evaluation" parameterType="MyMannerVO">
 		insert into myManner
-		values(#{user_seq}, #{sell_user_seq},
-		#{post_seq},#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now(),
-		now());
+		values(#{user_seq}, #{sell_user_seq}, #{post_seq},#{manner_temp},#{manner_compliment},#{bad_manner},#{manner_review},now());
 	</insert>
 
 	<!-- 상품후기 리스트 -->

@@ -1,6 +1,5 @@
 package com.spring.myweb.Admin.Controller;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,6 +17,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,10 +34,8 @@ import com.spring.myweb.Service.PostService.PostService;
 import com.spring.myweb.Service.RegisterAgreementService.RegisterAgreementService;
 import com.spring.myweb.Service.UserService.UserService;
 import com.spring.myweb.VO.AdminVO.BannerVO;
-import com.spring.myweb.VO.AdminVO.BoardSingoVO;
 import com.spring.myweb.VO.AdminVO.BoardVO;
 import com.spring.myweb.VO.AdminVO.PostSingoVO;
-import com.spring.myweb.VO.AdminVO.ReviewSingoVO;
 import com.spring.myweb.VO.AdminVO.UserSmsVO;
 import com.spring.myweb.VO.AdminVO.PayVO.PayVO;
 import com.spring.myweb.VO.LikeVO.LikeVO;
@@ -75,16 +73,20 @@ public class AdminController {
 
 	@Value("${SMS_API_SECRET}")
 	private String api_secret;
-	
+
 	@Autowired
 	JavaMailSender mailSender;
 
-
 	@Autowired
 	ChartService chartService;
-	
+
 	@Autowired
 	RegisterAgreementService agreementService;
+
+	@GetMapping("/error.mdo")
+	public String error() {
+		return "redirect:main.do";
+	}
 
 	// 메인화면
 	@RequestMapping(value = "/main.mdo", method = RequestMethod.GET)
@@ -119,33 +121,33 @@ public class AdminController {
 		model.addAttribute("sms", sms);
 		return "Admin_page/admin_board/ad_board";
 	}
-	
-	//이메일 발송 페이지
+
+	// 이메일 발송 페이지
 	@RequestMapping(value = "adminEmail.mdo")
 	public String adminEmail(Model model) {
 		List<UserVO> list = adminService.selectAll();
 		model.addAttribute("list", list);
 		return "Admin_page/admin_board/ad_email";
 	}
-	
+
 	@RequestMapping(value = "sendEmail.mdo")
 	@ResponseBody
-	public int sendEmail(@RequestParam(value="jarr[]") List<String> jStr, String msgText) throws AddressException, MessagingException, Exception{
-		
+	public int sendEmail(@RequestParam(value = "jarr[]") List<String> jStr, String msgText)
+			throws AddressException, MessagingException, Exception {
+
 		System.out.println(jStr.toString());
-		for(int i=0; i<jStr.size(); i++) {
+		for (int i = 0; i < jStr.size(); i++) {
 			MailHandler sendMail = new MailHandler(mailSender);
-	        sendMail.setSubject("[단체발송][PaprikaMarket 입니다.]"); //메일제목
-	        sendMail.setText(msgText);
-	        		
-	        sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
-	        sendMail.setTo(jStr.get(i));
-	        sendMail.send();
+			sendMail.setSubject("[단체발송][PaprikaMarket 입니다.]"); // 메일제목
+			sendMail.setText(msgText);
+
+			sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
+			sendMail.setTo(jStr.get(i));
+			sendMail.send();
 		}
 		return 1;
 	}
-	
-	
+
 	// 약관 불러오기
 	@RequestMapping(value = "/admin_list.mdo")
 	public String adminList(Model model, int agreement_seq) {
@@ -168,7 +170,7 @@ public class AdminController {
 		System.out.println("관리자 페이지 singo목록");
 
 		List<PostSingoVO> postsingo = adminService.selectPostSingo();
-		
+
 		model.addAttribute("post", postsingo);
 		return "Admin_page/singo/ad_singo_list";
 	}
@@ -473,16 +475,18 @@ public class AdminController {
 		model.addAttribute("payList", vo);
 		return "Admin_page/admin_list/pay";
 	}
-	//pay
-	@RequestMapping(value="pay.mdo", method=RequestMethod.POST)
-	public String payConfirm(PostVO pvo, Model model,HashMap<String, Object> vo, String[] post_seq, String[] process, String[] status, String[] pay_seq) {
+
+	// pay
+	@RequestMapping(value = "pay.mdo", method = RequestMethod.POST)
+	public String payConfirm(PostVO pvo, Model model, HashMap<String, Object> vo, String[] post_seq, String[] process,
+			String[] status, String[] pay_seq) {
 		System.out.println("수정된 파프리카 페이목록");
 		for (int i = 0; i < pay_seq.length; i++) {
 			System.out.println("cc");
 			pvo = postService.postDetail(Integer.parseInt(post_seq[i]));
-			if(Integer.parseInt(process[i])==4) {
+			if (Integer.parseInt(process[i]) == 4) {
 				vo.put("process", process[i]);
-			}else {
+			} else {
 				vo.put("process", pvo.getPay_status());
 			}
 			vo.put("status", status[i]);
@@ -498,7 +502,7 @@ public class AdminController {
 
 		List<PayVO> vo1 = payService.payList();
 		model.addAttribute("payList", vo1);
-		for(int i=0; i<vo1.size(); i++) {
+		for (int i = 0; i < vo1.size(); i++) {
 			adminService.deletePay();
 		}
 		return "redirect:pay.mdo";
@@ -576,7 +580,7 @@ public class AdminController {
 			String[] text = { "파프리카 마켓 회원가입을 축하합니다.", "이 아이디는 신고횟수가 5회가 넘어 이용정지 되었으니 고객센터번호로 문의 바랍니다.",
 					"님에게 신고가 접수되었습니다. 현재 신고횟수=" };
 			String msg = info.get(2) + "님!!";
-			System.out.println(info.get(7+8*i));
+			System.out.println(info.get(7 + 8 * i));
 			if (info.get(7 + 8 * i).equals("1")) {
 				msg += text[0];
 				System.out.println(text.toString());
@@ -604,7 +608,7 @@ public class AdminController {
 				System.out.println(e.getMessage());
 				System.out.println(e.getCode());
 			}
-			msg="";
+			msg = "";
 		}
 		return 1;
 	}
@@ -612,16 +616,16 @@ public class AdminController {
 	@RequestMapping(value = "oneOnAdminView.mdo")
 	public String oneOnAdminView(Model model) {
 		List<OneOnOneVO> one = adminService.oneOnList();
-		
+
 		for (OneOnOneVO vo : one) {
-			if(adminService.findUser(vo.getUser_seq()) == null) {
+			if (adminService.findUser(vo.getUser_seq()) == null) {
 				vo.setNickname("탈퇴한 회원");
 				vo.setId("탈퇴한 회원");
 				vo.setEmail("탈퇴한 회원");
 			} else {
-			vo.setNickname(adminService.findUser(vo.getUser_seq()).getNickname());
-			vo.setId(adminService.findUser(vo.getUser_seq()).getId());
-			vo.setEmail(adminService.findUser(vo.getUser_seq()).getEmail());
+				vo.setNickname(adminService.findUser(vo.getUser_seq()).getNickname());
+				vo.setId(adminService.findUser(vo.getUser_seq()).getId());
+				vo.setEmail(adminService.findUser(vo.getUser_seq()).getEmail());
 			}
 		}
 
@@ -672,9 +676,8 @@ public class AdminController {
 	public String adminReview(Model model) throws Exception {
 		List<MyMannerVO> review = adminService.adminReview();
 		List<PostVO> post = adminService.adminPost();
-		
-		
-		for(MyMannerVO manner : review) {
+
+		for (MyMannerVO manner : review) {
 			manner.setPost_title(postService.findReviewer(manner.getPost_seq()));
 			manner.setNickname(postService.Reviewer(manner.getUser_seq()));
 		}
@@ -682,39 +685,39 @@ public class AdminController {
 		model.addAttribute("review", review);
 		return "Admin_page/admin_board/ad_review";
 	}
-	
-	@RequestMapping(value="/block.mdo")
+
+	@RequestMapping(value = "/block.mdo")
 	public @ResponseBody int blockUser(String user_seq, String email, String id) throws Exception {
 		UserVO vo = userService.select(id);
 		int result = adminService.blockUser(vo.getUser_seq());
-		if(result==1) {
+		if (result == 1) {
 			System.out.println("차단성공");
 			MailHandler sendMail = new MailHandler(mailSender);
-	        sendMail.setSubject("[PaprikaMarket 입니다.]"); //메일제목
-	        sendMail.setText(id+"님은 신고 5회이상 누적으로 인해 차단당했음을 알려드립니다. 자세한 사항은 관리자 이메일로 답변주시기 바랍니다.");
-	        sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
-	        sendMail.setTo(email);
-	        sendMail.send();
+			sendMail.setSubject("[PaprikaMarket 입니다.]"); // 메일제목
+			sendMail.setText(id + "님은 신고 5회이상 누적으로 인해 차단당했음을 알려드립니다. 자세한 사항은 관리자 이메일로 답변주시기 바랍니다.");
+			sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
+			sendMail.setTo(email);
+			sendMail.send();
 		}
 		return result;
 	}
-	
-	@RequestMapping(value="/unblock.mdo")
-	public @ResponseBody int unblockUser(String user_seq, String email, String id) throws Exception{
+
+	@RequestMapping(value = "/unblock.mdo")
+	public @ResponseBody int unblockUser(String user_seq, String email, String id) throws Exception {
 		UserVO vo = userService.select(id);
 		int result = adminService.unblockUser(vo.getUser_seq());
-		if(result==1) {
+		if (result == 1) {
 			System.out.println("해제성공");
 			MailHandler sendMail = new MailHandler(mailSender);
-	        sendMail.setSubject("[PaprikaMarket 입니다.]"); //메일제목
-	        sendMail.setText(id+"님은 차단이 해제되었습니다. 로그인 후 정상적으로 파프리카마켓 서비스를 이용하실 수 있습니다.");
-	        sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
-	        sendMail.setTo(email);
-	        sendMail.send();
+			sendMail.setSubject("[PaprikaMarket 입니다.]"); // 메일제목
+			sendMail.setText(id + "님은 차단이 해제되었습니다. 로그인 후 정상적으로 파프리카마켓 서비스를 이용하실 수 있습니다.");
+			sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
+			sendMail.setTo(email);
+			sendMail.send();
 		}
 		return result;
 	}
-	
+
 	@RequestMapping(value = "/oneDelete.mdo")
 	@ResponseBody
 	public void oneDelete(int one_seq) {

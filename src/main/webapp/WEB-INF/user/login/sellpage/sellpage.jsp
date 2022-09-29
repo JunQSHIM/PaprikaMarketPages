@@ -26,21 +26,6 @@
 			</div>
 
 			<div id="sell-control">
-				<div id="control-head">
-					<div id="sell-search">
-						<input type="text" placeholder="search" /> <i
-							class="fa fa-search"></i>
-					</div>
-
-					<div id="show-count">
-						<select name="count" id="count">
-							<option value="5">5개씩</option>
-							<option value="10">10개씩</option>
-						</select>
-					</div>
-
-					
-				</div>
 				<div id="control-main">
 					<div id="title">
 						<div class="img">사진</div>
@@ -57,7 +42,6 @@
 							<img src="${photo[status.index] }" alt="img" name="post_seq">
 						</div>
 						<div class="state"><div id="show-state">
-						
 						
 						<select name="sell_status" id="select_value">
 							<c:choose>
@@ -114,31 +98,8 @@
 				
 				
 			</div>
-			<div id="sell-list">
-				<div id="control-head">
-					<div id="sell-search">
-						<input type="text" placeholder="search" /> <i
-							class="fa fa-search"></i>
-					</div>
-
-					<div id="show-count">
-						<select name="count" id="count">
-							<option value="5">5개씩</option>
-							<option value="10">10개씩</option>
-						</select>
-					</div>
-
-					<div id="show-state">
-						<select name="count" id="count">
-							<option value="#">전체</option>
-							<option value="#">판매</option>
-							<option value="#">구매</option>
-						</select>
-					</div>
-				</div>
 				<div id="control-main">
 					<div id="title">
-						<div class="select">선택</div>
 						<div class="img">사진</div>
 						<div class="state">상태</div>
 						<div class="product-name">상품명</div>
@@ -146,13 +107,10 @@
 						<div class="date">날짜</div>
 					</div>
 
-					<c:forEach var="deal" items="${doneDeal }">
+					<c:forEach var="deal" items="${doneDeal }" varStatus="status">
 					<div class="sell-products">
-						<div class="select">
-							<input type="checkbox">
-						</div>
 						<div class="img">
-							<img src="images/jjim_icon/santiago.png" alt="img">
+							<img src="${dealPhoto[status.index] }" alt="img">
 						</div>
 						<div class="state">구매완료</div>
 						<div class="product-name">${deal.post_title }</div>

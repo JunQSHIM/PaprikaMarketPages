@@ -39,22 +39,18 @@
 		#{password};
 	</delete>
 
-	<!-- 게시판 글 쓰기 -->
+<!-- 게시판 글 쓰기 -->
 	<select id="insertboard" resultType="UserBoardVO">
 		insert into
-		board(user_seq,
-		title, content, create_date)
-		values(#{user_seq}, #{title},
-		#{content},now());
+		board(user_seq, title, content, upload_date)
+		values(#{user_seq}, #{title}, #{content},now());
 	</select>
 	<!-- 게시판 사진 등록 -->
 	<insert id="insertboardPhoto" parameterType="PhotoVO">
-		insert into
-		board_photo
+		insert into board_photo	
 		(board_seq, origin_file_name, saved_file_name, create_time)
 		values
-		(#{post_seq},
-		#{o_name}, #{s_name}, now());
+		(#{post_seq}, #{o_name}, #{s_name}, now());
 	</insert>
 
 	<!-- 게시판 상품 상세보기 -->
@@ -64,66 +60,57 @@
 	</select>
 	<!-- 게시판 삭제하기 -->
 	<select id="boardDelete" resultType="UserBoardVO">
-		delete from product where
-		prod_seq = #{prod_seq};
+		delete from board where
+		board_seq = #{board_seq};
 	</select>
-
-	<!-- 회원 탈퇴를 위한 판매하기 삭제 -->
-	<select id="withdrawalPost" resultType="int">
-		select * from withdrawal where user_seq = #{user_seq};
-	</select>
-
 	<!-- 사진삭제 게시판 -->
 	<delete id="deletePhotoBoard">
-		delete from board_photo where board_seq =
-		#{board_seq};
+		delete from board_photo where board_seq = #{board_seq};
 	</delete>
-
+	
 	<select id="selectDeleteBoard" resultType="String">
-		select substring_index
-		(saved_file_name, '/' ,-2) as saved_file_name from
-		(select
-		saved_file_name from board_photo where board_seq
-		=${board_seq})photo_name;
+		select substring_index (saved_file_name, '/' ,-2) as saved_file_name from
+		(select saved_file_name from board_photo where board_seq =${board_seq})photo_name;
 	</select>
-
-	<!-- 미리보기 사진 게시판 -->
+	
+	<!-- 미리보기 사진  게시판-->
 	<select id="selectOnePhotoBoard" resultType="String">
-		select
-		saved_file_name from board_photo where board_seq = #{board_seq} order
-		by create_time desc limit 0,1;
+		select saved_file_name from board_photo where board_seq = #{board_seq} order by create_time desc limit 0,1;
 	</select>
-
-	<!-- 사진 불러오기 게시판 -->
+	
+		<!-- 사진 불러오기 게시판 -->
 	<select id="selectboardPhoto" resultType="String">
-		select saved_file_name
-		from board_photo where board_seq = #{board_seq};
+		select saved_file_name from board_photo where board_seq = #{board_seq};
 	</select>
-
+	
 	<!-- 최신 게시판 -->
 	<select id="selectBoardNew" resultType="int">
-		select board_seq from
-		board
-		where user_seq = #{user_seq} order by create_date desc limit 0,1;
+		select board_seq from board
+		where user_seq = #{user_seq} order by upload_date desc limit 0,1;
 	</select>
-
+	
 	<!-- 게시판 총 개수 -->
 	<select id="countBoard" resultType="int">
 		select count(board_seq) from board
-		<if test="user_seq != 0">
-			where user_seq=#{user_seq}
-		</if>
+			<if test="user_seq != 0">
+				where user_seq=#{user_seq}
+			</if>
 	</select>
-
+	
 	<!-- 게시판 목록 + 페이징 -->
-	<select id="listBoardPage" parameterType="UserBoardPageVO"
-		resultType="UserBoardVO">
+	<select id="listBoardPage" parameterType="UserBoardPageVO" resultType="UserBoardVO">
 		select * from board
-		<if test="user_seq != 0">
-			where user_seq=#{user_seq}
-		</if>
+			<if test="user_seq != 0">
+				where user_seq=#{user_seq}
+			</if>
 		order by board_seq desc limit #{displayPost}, #{postNum}
 	</select>
+
+	<!-- 게시판 수정 -->
+	<update id="updateBoard" parameterType="UserBoardVO">
+		update board set title =#{title}, content = #{content}
+		where board_seq = #{board_seq};
+	</update>
 
 	<!-- 상품 리스트 -->
 	<select id="postList" resultType="PostVO">
@@ -150,6 +137,11 @@
 		delete from post where
 		post_seq = #{post_seq};
 	</delete>
+
+	<!-- 회원 탈퇴를 위한 판매하기 삭제 -->
+	<select id="withdrawalPost" resultType="int">
+		select * from withdrawal where user_seq = #{user_seq};
+	</select>
 
 	<!-- 판매상품 수정하기 -->
 	<select id="updatePost" resultType="PostVO">
@@ -610,5 +602,9 @@
 	<delete id="boardWithdrawal">
 		delete from board where user_seq = #{user_seq}
 	</delete>
+	<!-- 프로필 사진 등록 -->
+	<insert id="insertProfile" parameterType="PhotoVO">
+		update user set profile_image = #{s_name} where user_seq=#{post_seq};        
+	</insert>
 
 </mapper>

@@ -59,17 +59,18 @@ $(window).on("beforeunload", function(){
 		<div class="people-list" id="people-list">
 			<div class="back">
 				<a onclick="location.href='main.do'"><img id="main" src="/myweb/login/images/dklogo.png"></a>
+				메인으로
 			</div>
 			<button id="back" class="display-none">뒤로가기</button>
 			<ul class="store">
 				<li id="mystore">
-					<img class="cimg" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/2c24394e-60a1-4c03-965d-c0b8e7a966de.jpg" alt="Mystroe">
+					<img class="cimg" src="${user.profile_image }" alt="Mystroe">
 					<div class="about">
-						<div class="name" id="user_name">${user.nickname }</div>
+						<div class="name" id="user_name">${user.nickname }님의 상점</div>
 					</div>
 				</li>
 				<li id="sellstore">
-					<img class="cimg" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/019f6cf9-d9d2-43d8-beb1-570e5267f0a3.jpg" alt="Mystroe">
+					<img class="cimg" src="https://paprikamarket.s3.ap-northeast-2.amazonaws.com/post/store.svg" alt="Mystroe">
 					<div class="about">
 						<div class="name">구매하기</div>
 					</div>

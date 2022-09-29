@@ -12,14 +12,6 @@
 <link rel="stylesheet" type="text/css" href="/myweb/login/main/main.css">
 <meta charset="UTF-8">
 <title>프로필 수정</title>
-<script>
-function move() {
-	window.location.href = '/myweb/login/main/mother.jsp';
-}
-function toMypage() {
-	window.location.href = '/myweb/login/mypage/mypage.jsp';
-}
-</script>
 </head>
 <body>
 	<header>
@@ -35,12 +27,16 @@ function toMypage() {
 			<div id="edit_head">
 				<img src="/myweb/login/images/pkIcon.png"><b>프로필 수정</b>
 			</div>
-			<form action="mypageProc.do" method="post" name="edit" id="edit">
+			<form action="mypageProc.do" method="post" name="edit" id="edit" enctype="multipart/form-data">
    			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<div id="edit">
-				<input id="my_pic" type="file" accept="/myweb/login/image/*" onchange="setThumbnail(event);"/>
 				<div id="profile_pic">
-					<img id="profile_pic_update" src="/myweb/login/images/profile.png">
+					<div id="fcover">
+					<img id="profile_pic_update" src="${user.profile_image }">
+					</div>
+					<div id="cover">
+						<input name="file" id="file" type="file" accept="image/*" onchange="setThumbnail(event);"/>
+					</div>
 				</div>
 				<div id="nickname_edit">
 					<div class="nicknameDiv"><input type="text" name="nickname" id="nickname" placeholder="새로운 닉네임" value="${user.nickname }" oninput="checkNickname()"></div>
@@ -52,9 +48,8 @@ function toMypage() {
 			</div>
 			<div id="upload_bottom">
 				<div id="upload_button">
-					<button id="upload" onclick=upload()>프로필 사진 수정</button>
 					<button type="button" onclick=toMypage()>취소</button>
-					<button type="button" id="editSubmit" value="수정하기">수정하기</button>
+					<button type="submit" id="editSubmit" value="수정하기" >수정하기</button>
 				</div>
 	
 			</div>
@@ -66,29 +61,21 @@ function toMypage() {
 		<jsp:include page="/WEB-INF/user/login/main/footer/footer1.jsp"></jsp:include>
 	</footer>
 <script>
-function move() {
-	window.location.href = 'main.do';
-}
 function toMypage() {
 	window.location.href = 'mypage.do';
-}
-function upload() {
-    let myPic = document.getElementById("my_pic");
-    myPic.click();
 }
 
 function setThumbnail(event){
     var reader = new FileReader();
-    console.log('hi');
     reader.onload = function(event){
        var img = document.createElement("img");
        img.setAttribute("src", event.target.result);
        img.setAttribute("height", '100%');
              
        if(document.getElementById("profile_pic").childNodes.length!=0){
-			removeAllchild(document.getElementById("profile_pic"));
+			removeAllchild(document.getElementById("fcover"));
        }
-       document.getElementById("profile_pic").appendChild(img).setAttribute('width','100%');
+       document.getElementById("fcover").appendChild(img).setAttribute('width','100%');
      };
     
     reader.readAsDataURL(event.target.files[0]);

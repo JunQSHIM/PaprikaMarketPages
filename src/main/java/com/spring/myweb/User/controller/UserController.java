@@ -541,7 +541,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/mypageProc.do")
-	public String editProfile(UserVO vo, String id, Model model, HttpSession session) {
+	public String editProfile(UserVO vo, String id, Model model, HttpSession session, @RequestParam(value="file", required=false)List<MultipartFile> img, PhotoVO photo) {
 		int success = 0;
 
 		UserVO vo2 = (UserVO) model.getAttribute("user");
@@ -561,6 +561,20 @@ public class UserController {
 		} else {
 			System.out.println("fail");
 		}
+		if(img != null) {
+			Map<String, String> img_name = postService.uploadImg(img, "profile/");
+			Iterator<Entry<String, String>> entries = img_name.entrySet().iterator();
+			while (entries.hasNext()) {
+				Map.Entry<String, String> entry = entries.next();
+				String save_file_name = entry.getValue();
+	
+				photo.setPost_seq(vo2.getUser_seq());
+				photo.setS_name("https://paprikamarket.s3.ap-northeast-2.amazonaws.com/profile/" + save_file_name);
+	
+				userService.insertPhoto(photo);
+			}
+		}
+		
 		return "redirect:mypage.do";
 	}
 

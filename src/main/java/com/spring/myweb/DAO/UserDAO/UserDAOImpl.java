@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.myweb.VO.DealVO.DealVO;
 import com.spring.myweb.VO.MyMannerVO.MyMannerVO;
+import com.spring.myweb.VO.PhotoVO.PhotoVO;
 import com.spring.myweb.VO.ReportVO.ReportVO;
 import com.spring.myweb.VO.UserVO.UserVO;
 import com.spring.myweb.VO.WithdrawalVO.WithdrawalVO;
@@ -171,6 +172,11 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public int badCount(MyMannerVO vo) throws Exception {
 		return session.selectOne("userDB.badCount", vo);
+	}
+
+	@Override
+	public void insertPhoto(PhotoVO photo) {
+		session.insert("userDB.insertProfile", photo);
 	}
 
 	

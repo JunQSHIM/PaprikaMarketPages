@@ -51,7 +51,7 @@
 		<input type="hidden" name="board_seq" value="${board.board_seq }">
 		<div id="buttons">
 			<button onclick="location.href='updateboard.do?board_seq=${board.board_seq}'">수정</button>
-			<button id="delete">삭제</button>
+			<button id="delete" onclick="location.href='deleteboard.do?board_seq=${board.board_seq}'">삭제</button>
 			<button onclick="location.href='boardlist.do'">목록</button>
 		</div>
 		</c:if>
@@ -63,16 +63,7 @@
 <script type="text/javascript">
 
 $('#delete').on('click', function(e) { 
-	var chk = confirm('삭제하시겠습니까?');
-	var board_seq = $('#board_seq').val();
-	if(chk == true){
-		location.href=('deleteboard.do?board_seq=' + board_seq);
 		alert('삭제되었습니다.')
-	} else {
-		alert('취소되었습니다.')
-		return false;
-	}
-	
 });
 
 </script>

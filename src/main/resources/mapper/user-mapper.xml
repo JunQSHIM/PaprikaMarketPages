@@ -45,7 +45,7 @@
 <!-- 게시판 글 쓰기 -->
 	<select id="insertboard" resultType="UserBoardVO">
 		insert into
-		board(user_seq, title, content, upload_date)
+		board(user_seq, title, content, create_date)
 		values(#{user_seq}, #{title}, #{content},now());
 	</select>
 	<!-- 게시판 사진 등록 -->
@@ -89,7 +89,7 @@
 	<!-- 최신 게시판 -->
 	<select id="selectBoardNew" resultType="int">
 		select board_seq from board
-		where user_seq = #{user_seq} order by upload_date desc limit 0,1;
+		where user_seq = #{user_seq} order by create_date desc limit 0,1;
 	</select>
 	
 	<!-- 게시판 총 개수 -->
@@ -157,8 +157,7 @@
 
 	<!-- 상품 등록 상세 보기 -->
 	<select id="postDetail" parameterType="int" resultType="PostVO">
-		select *
-		from post where post_seq = #{post_seq};
+		select * from post where post_seq = #{post_seq};
 	</select>
 
 	<!-- 사진등록 -->

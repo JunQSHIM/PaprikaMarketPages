@@ -1,0 +1,223 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+div {
+
+}
+
+.pics, .texts {
+	height: 400px;
+}
+
+.pics img {
+	height: 400px;
+}
+
+.texts {
+	height: 400px;
+}
+
+.innertext {
+	margin-left: 30px;
+}
+
+.innertext .proinfo {
+	clear: both;
+}
+
+.texts .innertext .user {
+	height: 60px;
+	width: 100%
+}
+
+.name {
+	margin-top: 5px;
+}
+
+.user img {
+	margin: 5px;
+	float: left;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	float: left;
+}
+
+.location {
+	display: block;
+}
+
+.mannertemp {
+	margin-left: 0px;
+	line-height: 55px;
+	text-align: right;
+	height: 60px;
+}
+
+.proinfo_1 div {
+	margin-left: 10px;
+}
+
+.proinfo_1 .cate {
+	line-height: 60px;
+}
+
+.title {
+	font-size: 2.0rem;
+	font-weight: bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.price {
+	margin-bottom: 15px;
+	font-size: 3.0rem;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.state {
+	margin-top: 15px;
+	color: #a7a7a7;
+	line-height: 50px;
+	overflow: hidden;
+}
+
+.state div {
+	float: left;
+	margin: 0 5px;
+}
+
+.state img {
+	margin-top: 12px;
+}
+
+.state .s_4_1 {
+	float: right;
+}
+
+.buybtns div {
+	color: white;
+	float: left;
+	height: 55px;
+	line-height: 55px;
+	font-size: 1.3rem;
+	text-align: center;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.jjimbtn, .talk, .buy {
+	margin-top: 18px;
+	font-weight: bold;
+}
+
+.buybtns .jjimbtn {
+	background: #a7a7a7a7;
+}
+
+.buybtns .talk {
+	margin: 18px 28px;
+	background: orange;
+}
+
+.talk img {
+	margin-left: 10px;
+}
+
+.buybtns .buy {
+	background: red;
+}
+
+.separate {
+	height: 100px;
+}
+
+hr {
+	border: 1px solid orange;
+}
+
+.feat {
+	background: none;
+}
+
+.prodinfo, .storeinfo {
+	font-size: 1.5rem;
+}
+
+.featleft {
+	float: left;
+	background: none;
+}
+
+.innerfl {
+	margin-top: 35px;
+	width: 95%;
+	margin-left: 0;
+	width: 95%;
+}
+
+.featright {
+	border-left: 1px solid #a7a7a7a7;
+	border-right: 1px solid #a7a7a7a7;
+}
+
+.prodinfo, .storeinfo_1, .storeinfo_2, .storeinfo_3 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/*
+.storeinfo_1{
+	background: skyblue;
+}
+.storeinfo_2{
+	background: blue;
+} 
+.storeinfo_3{
+	background: purple;
+}
+*/
+.innerfr {
+	width: 85%;
+	margin: 15px auto;
+}
+
+.review, .reviews {
+	font-size: 1rem;
+}
+
+.featright .buybtns_feat .talk {
+	width: 45%;
+	background: orange;
+	float: left;
+	height: 45px;
+	text-align: center;
+	line-height: 45px;
+	margin-left: 10px;
+	color:white;
+	
+}
+
+.featright .buybtns_feat .buy {
+	
+	color:white;
+	margin-left: 10px;
+	line-height : 45px;
+	text-align: center;
+	float: left;
+	width: 45%;
+	background: red;
+	height: 45px;
+	line-height: 45px;
+}
+
+.count {
+	font-size: 1rem;
+	float: left;
+	color: red;
+}
+
+.storeinfo_2 .user {
+	font-size: 1rem;
+}

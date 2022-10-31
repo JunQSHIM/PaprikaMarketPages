@@ -118,8 +118,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
 	}
 	
-	private boolean rememberId(boolean rememberId) {
-		return rememberId;
-	}
+	
 
 }

@@ -140,7 +140,6 @@ public class AdminController {
 			MailHandler sendMail = new MailHandler(mailSender);
 			sendMail.setSubject("[단체발송][PaprikaMarket 입니다.]"); // 메일제목
 			sendMail.setText(msgText);
-
 			sendMail.setFrom("junkyu970307@gmail.com", "파프리카마켓");
 			sendMail.setTo(jStr.get(i));
 			sendMail.send();
@@ -480,10 +479,14 @@ public class AdminController {
 	@RequestMapping(value = "pay.mdo", method = RequestMethod.POST)
 	public String payConfirm(PostVO pvo, Model model, HashMap<String, Object> vo, String[] post_seq, String[] process,
 			String[] status, String[] pay_seq) {
+		System.out.println(post_seq[0]);
+		System.out.println("pay"+pay_seq.length);
+		System.out.println(post_seq.length);
 		System.out.println("수정된 파프리카 페이목록");
 		for (int i = 0; i < pay_seq.length; i++) {
-			System.out.println("cc");
-			pvo = postService.postDetail(Integer.parseInt(post_seq[i]));
+			System.out.println("cc"); 
+			
+			pvo = (PostVO)postService.postDetail(Integer.parseInt(post_seq[i]));
 			if (Integer.parseInt(process[i]) == 4) {
 				vo.put("process", process[i]);
 			} else {
@@ -701,6 +704,7 @@ public class AdminController {
 		}
 		return result;
 	}
+	
 
 	@RequestMapping(value = "/unblock.mdo")
 	public @ResponseBody int unblockUser(String user_seq, String email, String id) throws Exception {

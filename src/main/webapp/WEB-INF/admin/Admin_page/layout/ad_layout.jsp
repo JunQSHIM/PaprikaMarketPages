@@ -52,11 +52,6 @@
 	<script src="/myweb/Admin_page/layout/js/sortable.js"></script>
 </head>
 <body>
-	<!-- Preloader -->
-	<div class="preloader flex-column justify-content-center align-items-center">
-			<img class="animation__shake" src="/myweb/login/images/dklogo_face.png" alt="paprikaLogo" width="80%">
-		</div>
-	
 	<%@include file="/WEB-INF/admin/Admin_page/layout/ad_nav.jsp"%>
 	<%@include file="/WEB-INF/admin/Admin_page/layout/ad_sidebar.jsp"%>
 </body>

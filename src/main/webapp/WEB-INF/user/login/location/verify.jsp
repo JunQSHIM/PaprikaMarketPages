@@ -116,7 +116,7 @@
 			            console.log(result);
 			            var location = result[0].address.address_name;
 			            const loc = location.split(" ");
-			            $("#loc2").append("<button name='location2' value='"+loc[2]+"'>"+loc[2]+"</button><br>");
+			            $("#loc2").append("<button id='location2' name='location2' value='"+loc[2]+"'>"+loc[2]+"</button><br>");
 			            once = false;
 			        }
 			        if(once == false){

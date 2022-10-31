@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.7.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		<security:http auto-config="true" use-expressions="true">
+	  <security:intercept-url pattern="/registerAgree.do" access="permitAll" />
+  	  <security:intercept-url pattern="/findPassword.do" access="permitAll" />
+  	  <security:intercept-url pattern="/idCheck.do" access="permitAll" />
+	  <security:intercept-url pattern="/login.do" access="hasRole('ROLE_USER')" />
+  	  <security:intercept-url pattern="/mypageProc.do" access="hasRole('ROLE_USER')" />
+  	  <security:intercept-url pattern="/create.do" access="hasRole('ROLE_USER')" />
+  	  <security:intercept-url pattern="/createProc.do" access="hasRole('ROLE_USER')" />
+	  <security:intercept-url pattern="/user.mdo" access="hasRole('ROLE_ADMIN')" />
+	  <security:intercept-url pattern="/myProductCart.do" access="hasRole('ROLE_USER')" />
+	  <security:intercept-url pattern="/chat.cdo" access="hasRole('ROLE_USER')" />
+	  
+		
+	    <security:form-login
+	  username-parameter="id"
+	  password-parameter="password"
+      login-processing-url="/login.do"
+      login-page="/loginForm.do"
+      default-target-url="/main.do" 
+      always-use-default-target="true"
+	  authentication-success-handler-ref="loginSuccessHandler"
+	  authentication-failure-handler-ref="loginFailureHandler" />
+	  
+	   <security:logout
+	  logout-url="/logout.do"
+	  logout-success-url="/main.do"
+	  invalidate-session="true"        
+	  delete-cookies="JSESSIONID"/>
+	  
+	  <security:csrf disabled="true"/>
+	</security:http>
+	
+	<security:jdbc-user-service data-source-ref="dataSource" id="userService"
+	users-by-username-query="SELECT ID as id, PASSWORD as password, ENABLED FROM user WHERE ID=?"
+	authorities-by-username-query="SELECT ID as id, AUTHORITY FROM user WHERE ID=?"/>
+	
+	<security:authentication-manager>
+	  <security:authentication-provider user-service-ref="userService">
+	  	<security:password-encoder ref="bcryptPasswordEncoder"/>
+	  </security:authentication-provider>
+	</security:authentication-manager>
+
+	
+	<!-- <bean id="loginFailureHandler" class="com.spring.myweb.security.config">
+	    <property name="loginemailname" value="member_email"/>
+	    <property name="loginpwdname" value="member_pwd"/>
+	    <property name="errormsgname" value="ERRORMSG"/>
+	    <property name="defaultFailureUrl" value="/member/loginForm?error"/>
+	</bean> -->
+
+	<bean id="loginSuccessHandler" class="com.spring.myweb.security.config.LoginSuccessHandler">
+		<property name="defaultUrl" value="/main.do"/>
+	</bean>
+	
+	<bean id="loginFailureHandler" class="com.spring.myweb.security.config.LoginFailureHandler">
+		<property name="id" value="id"/>
+		<property name="password" value="password"/>
+		<property name="defaultFailureUrl" value="/loginForm.do"/>
+		<property name="errormsg" value="errormsg"/>
+	</bean>
+	
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />	
+	<!-- <security:authentication-manager>
+	  <security:authentication-provider>
+	    <security:user-service>
+	      <security:user name="admin" password="admin" authorities="ROLE_ADMIN"/>
+	      <security:user name="user" password="{noop}user" authorities="ROLE_USER"/>
+	    </security:user-service>
+	  </security:authentication-provider>
+	</security:authentication-manager> -->
+	<context:component-scan
+      base-package="com.spring.myweb.*"></context:component-scan>
+   
+</beans>

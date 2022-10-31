@@ -100,10 +100,8 @@ public class UserController {
 
 	@RequestMapping(value = "/insertProc.do")
 	public String insertUser(HttpSession session, Model model, UserVO vo, HttpServletRequest request) throws Exception {
-		System.out.println("암호화 전 : " + vo.getPassword());
 		String securePwd = passwordEncoder.encode(vo.getPassword());
 		vo.setPassword(securePwd);
-		System.out.println("암호화 후 : " + vo.getPassword());
 		int result = 0;
 		result = userService.insertUser(vo);
 
@@ -169,7 +167,6 @@ public class UserController {
 	@RequestMapping(value = "/login.do")
 	public String loginUser(HttpSession session, Model model, String id, String password, ServletRequest request,
 			HttpServletResponse response) throws Exception {
-		System.out.println("User login service");
 		UserVO vo = userService.select(id);
 		if (passwordEncoder.matches(password, vo.getPassword())) {
 			session.setAttribute("user", vo);
@@ -223,7 +220,6 @@ public class UserController {
 	public String mypage(HttpSession session, Model model, String KID,
 			@RequestParam(value = "pay", required = false) List<MultipartFile> img)
 			throws Exception {
-		System.out.println("파프리카 페이 사용하기");
 		UserVO uvo = (UserVO) session.getAttribute("user");
 		System.out.println(KID);
 		uvo.setKID(KID);
@@ -249,7 +245,6 @@ public class UserController {
 		int jjimCart = postService.jjimCart(lvo);
 		int reviewCnt = postService.reviewCount(uvo.getUser_seq());
 		List<MyMannerVO> manner = postService.reviewList(uvo.getUser_seq());
-		System.out.println("왜 3번 나오는거야 스벌 : " + manner);
 		mm.setSell_user_seq(uvo.getUser_seq());
 
 		mm.setManner_compliment("상품 상태가 설명한 것과 같아요.");
@@ -332,7 +327,6 @@ public class UserController {
 		info.put("manner_review", manner_review);
 		int result = userService.evaluation(info);
 		if(result==1) {
-			System.out.println("매너평가 완료");
 		}
 		return result;
 	}
@@ -348,7 +342,6 @@ public class UserController {
 		info.put("manner_review", manner_review);
 		int result = userService.evaluation(info);
 		if(result==1) {
-			System.out.println("매너평가 완료");
 		}
 		UserVO vo = (UserVO)session.getAttribute("user");
 		
@@ -365,7 +358,6 @@ public class UserController {
 		vo.setTemp(mannerT);
 		int result1 = userService.updateMannerTemp(vo);
 		if(result1==1) {
-			System.out.println("매너온도 수정 완료");
 		}
 		
 		return "redirect:main.do";
@@ -559,18 +551,14 @@ public class UserController {
 		id = vo2.getId();
 		vo.setId(id);
 		String securePwd = passwordEncoder.encode(vo.getPassword());
-		System.out.println(vo.getPassword());
 		vo.setPassword(securePwd);
 		success = userService.updateProfile(vo);
-		System.out.println(vo.toString());
-		System.out.println(vo2.toString());
 		if (success == 1) {
 			vo = userService.select(vo.getId());
 			System.out.println("success");
 			model.addAttribute("user", vo);
 			session.setAttribute("user", vo);
 		} else {
-			System.out.println("fail");
 		}
 		if(img != null) {
 			Map<String, String> img_name = postService.uploadImg(img, "profile/");
@@ -584,6 +572,7 @@ public class UserController {
 	
 				userService.insertPhoto(photo);
 			}
+		}else {
 		}
 		
 		return "redirect:mypage.do";
@@ -596,12 +585,9 @@ public class UserController {
 
 	@RequestMapping(value = "/findPassword.do", method = RequestMethod.POST)
 	public String findPassword(UserVO vo) throws Exception {
-		System.out.println(vo.getId());
-		System.out.println(vo.getEmail());
 		int success = 0;
 		success = userService.updatePw(vo);
 		if (success == 1) {
-			System.out.println("success");
 		}
 		return "login/login&register/findPasswordVerify";
 	}
@@ -642,11 +628,6 @@ public class UserController {
 	//채팅창에서 거래확정했을 때 
 	@RequestMapping("/compDeal.do")
     public String compDeal(PostVO pvo, DealVO dvo, int post_seq, String buyer, String seller, Model model) {
-		System.out.println("후기작성하기");
-		System.out.println(post_seq);
-		System.out.println(buyer);
-		System.out.println(seller);
-		
 		UserVO bUser = (UserVO)userService.selectByNickname(buyer);
 		UserVO sUser = (UserVO)userService.selectByNickname(seller);
 		model.addAttribute("bUser",bUser);

@@ -1,0 +1,77 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+#write_mainForm {
+	border-radius: 8px;
+    border: 1px solid #e9ecef;
+    margin: 0px;
+    margin-top: 30px;
+    background: #fff;
+}
+
+#write_detail {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#write_head {
+	display: flex;
+    font-weight: 600;
+    color: #212529;
+    font-size: 18px;
+    margin: 20px 0 0;
+    height: 30px;
+}
+
+#write_form {
+	margin-top: 20px;
+}
+
+.new_title, .new_region, .new_content {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+#title, #region {
+	outline: none;
+	border-radius: 8px;
+    border: 1px solid #e9ecef;
+    height: 30px;
+    width: 350px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 20px;
+}
+
+#write_form textarea {
+	resize: none;
+	outline: none;
+	border-radius: 8px;
+    border: 1px solid #e9ecef;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.button_wrap {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+#write_head button {
+	border-radius: 8px;
+    border: 1px solid #e9ecef;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    background-color: white;
+    color: #868e96;
+}
+
+#write_head button:hover {
+	color: white;
+	background-color: orange;
+}
+.counter{
+	float: right;
+}

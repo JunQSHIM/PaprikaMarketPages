@@ -1,0 +1,201 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+div {
+	
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.container_12 {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.row {
+	overflow: hidden;
+}
+
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8,
+	.grid_9, .grid_10, .grid_11, .grid_12 {
+	float: left;
+}
+
+.grid_1 {
+	width: 100px;
+}
+
+.grid_2 {
+	width: 199px;
+}
+
+.grid_3 {
+	width: 299px;
+}
+
+.grid_4 {
+	width: 399px;
+}
+
+.grid_5 {
+	width: 499px;
+}
+
+.grid_6 {
+	width: 598px;
+}
+
+.grid_7 {
+	width: 700px;
+}
+
+.grid_8 {
+	width: 800px;
+}
+
+.grid_9 {
+	width: 900px;
+}
+
+.grid_10 {
+	width: 999px;
+}
+
+.grid_11 {
+	width: 1100px;
+}
+
+.grid_12 {
+	width: 1200px;
+}
+
+.pics, .texts {
+	height: 400px;
+}
+
+.read {
+	margin-left: 20px;
+}
+
+.texts {
+	height: 400px;
+}
+
+.innertext {
+	margin-left: 30px;
+}
+
+.innertext .proinfo {
+	clear: both;
+}
+
+.texts .innertext .user {
+	height: 70px;
+	width: 100%
+}
+
+.name {
+	margin-top: 1px;
+}
+
+.user img {
+	margin: 5px;
+	float: left;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	float: left;
+}
+
+.location {
+	display: block;
+}
+
+.mannertemp {
+	margin-left: 0px;
+	line-height: 55px;
+	text-align: right;
+	height: 60px;
+}
+
+.proinfo_1 div {
+	margin-left: 10px;
+}
+
+.proinfo_1 .cate {
+	line-height: 60px;
+}
+
+.title {
+	font-size: 2.0rem;
+	font-weight: bold;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.price {
+	margin-bottom: 15px;
+	font-size: 3.0rem;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.state {
+	margin-top: 15px;
+	color: #a7a7a7;
+	line-height: 50px;
+	overflow: hidden;
+}
+
+.state div {
+	float: left;
+	margin: 0 5px;
+}
+
+.state img {
+	margin-top: 12px;
+}
+
+.state .s_4_1 {
+	float: right;
+}
+
+.delbtn button {
+	border: 1px solid orange;
+	background-color: rgba(0, 0, 0, 0);
+	color: orange;
+	font: bold;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	width: 90px;
+	text-align: center;
+	height: 30px;
+}
+
+.delbtn button:hover {
+	color: white;
+	background-color: orange;
+}
+
+#del_prod {
+	font-size: 1.5rem;
+	margin-top: 18px;
+	font-weight: bold;
+	background: orange;
+}
+
+hr {
+	border: 1px solid orange;
+}

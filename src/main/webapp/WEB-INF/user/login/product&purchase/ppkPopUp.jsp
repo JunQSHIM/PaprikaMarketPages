@@ -13,6 +13,7 @@
 	const ms = mes.split("'");
 	alert(ms[0]);
 	//창 크기 지정
+
 	if(ms[0] == "이미 구매 예약이 된 상품입니다."){
 		opener.parent.location.reload();
 		window.close();

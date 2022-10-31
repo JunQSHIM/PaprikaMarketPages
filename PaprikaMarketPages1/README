@@ -1,0 +1,57 @@
+현재 기존 login에 있던 파일은 그대로 변경 없이 유지
+paprika 폴더안에 page, css, js, parts, image로 분류 해놨음
+css, js, images는 기존 용도 그대로 사용
+page는 하나의 전체 페이지를 담아 놓음
+parts는 부품이 되는 코드들jsp만 모아 놓은 폴더
+
+현재 채팅기능이 되지 않음
+
+모든 page들에 mother를 씌우면서 script 부분을 따로 복사하여 js폴더안의 mother.js로 모아놓음
+모두 합친것이 mother.js
+기존 login폴더에 있던것과 대조하기위해 mother1.js로 복붙하여 대조중이나 현재 원인불명
+
+review_product.jsp 에서는 후기가 보이지 않음
+registerAgree.jsp와 register.jsp와 login.jsp 에서는 박스 색이 변함. css를 아무리 보아도 원인 불명
+
+product_detail.jsp 에서는 찜 클릭시 효과가 안뜸, div가 다소 깨짐
+myReview.jsp와 에서는 각 화면으로 클릭하면 넘어가는 효과 적용 안됨
+
+
+
+
+메인 페이지 검색창 DIV 태그로 더욱 세분화 해서 나누어 놓음.
+
+header 목록 디테일하게 바꿈
+DIV로 세분화해서 나눔. 찜목록도 DIV로 세분화하고 크기도 맞춤.
+푸터 부분도 수정했으나 크기가 안 맞아서 더 수정해야함.
+회원가입 약관동의 registerAgree.jsp 추가했음 ==> 집가서 다시 올림
+
+채팅창 오픈 추가
+sellpage.jsp sellpage.css 추가 및 main div,css 수정
+
+마이페이지 매너 온도 추가, 매너 평가, 받은 거래 후기 추가(김유신-부산)
+mypage.jsp, mypage.css 수정
+
+매너 평가 페이지 추가, mypage에 구분선 추가 및 수정(김유신-부산)
+mannerEval.jsp, mannerEval.css 추가, mypage.css 수정
+mypage.jsp 이모지 추가 (김유신-부산)
+
+마이페이지에 제목 추가(김유신-부산)
+매너 평가 페이지에 마이페이지로 이동 버튼 추가 (김유신-부산)
+거래 후기 페이지 작성(김유신-부산)
+mypage.jsp, mypage.css, mannerEval.jsp, mannerEval.css 수정
+myReview.jsp, myReview.css 추가
+
+프로필 수정 페이지 추가 - 김유신
+profileEdit.jsp, profileEdit.css 추가
+
+게시판 메인 리스트 페이지 추가-김유신
+board.jsp, board.css, board.js 파일 추가
+
+상품 상세보기 페이지
+product_detail.jsp product_detail.css 생성
+바로 구매 클릭시 결제창 띄움 --> 카카오페이, 네이버페이 다 쌉가능
+찜 클릭시 찜했습니다이미지와 함께 찜->♥찜으로 변경
+다시 클릭시 원상태로됨
+
+지도 api 동네인증 추가했음 (location->verify.jsp)

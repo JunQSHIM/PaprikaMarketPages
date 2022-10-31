@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+#logo {
+	width:200px;
+	height:50px;
+}
+
+.nav {
+	z-index: 999;
+}
+.search button {
+	border: 0px; 
+	background-color : rgba( 0, 0, 0, 0);
+	color: orange;
+	font: bold;
+	padding: 5px;
+	width: 70px;
+	height: 33x;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.search button:hover {
+	color: red;
+}
+
+.nafix {
+	background: white;
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+}
+
+.jbFixed {
+	position: fixed;
+	top: 0px;
+}
+
+.loca {
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+    width:250px;
+}
+
+.logo {
+	margin-left: 15px;
+}
+
+.btn_img {
+	float: left;
+}
+
+.btn_words {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.cb {
+	margin-left: 0;
+	float: left;
+}
+
+#showCategory {
+	cursor: pointer;
+}
+
+.category_btn img {
+	width: 50px;
+	height: 40px;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+    padding-left: 20px;
+	
+}
+
+.search_text {
+	border: 4px solid orange;
+	width: 100%
+}
+
+.search_text input {
+	border: 0px;
+	width: 80%;
+	padding: 2px;
+	margin: 3px;
+	outline: none;
+	font-size: 1.2rem;
+}
+
+.search_text a {
+	cursor: pointer;
+}
+
+.search_bar {
+	margin: 10px;
+}
+
+.nav a {
+	text-decoration: none;
+	color: black;
+}
+
+.nav .search_list {
+	width: 25px;
+	height: 25px;
+}
+
+.nav a:hover {
+	color: black;
+}
+
+.nav_btn {
+	float: left;
+	width:120px;
+	cursor: pointer;
+}
+
+.nav_btn_1 {
+	float: left;
+	width : 80px;
+	cursor: pointer;
+}
+
+.bts {
+    display: flex;
+    flex: auto;
+    padding-left: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fakenav {
+	height: 68px;
+}
+
+#mainLine {
+	border: 1px solid orange;
+	background: orange;
+}

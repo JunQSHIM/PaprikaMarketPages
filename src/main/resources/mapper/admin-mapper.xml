@@ -313,10 +313,6 @@
 		on
 		withdrawalList.withdrawal= c.withdrawal_content;
 	</select>
-	<!-- 신고사유 -->
-	<select id="singo" resultType="ChartVO">
-
-	</select>
 
 	<!-- 안전결제 사용 -->
 	<select id="todaypay" resultType="Date">
